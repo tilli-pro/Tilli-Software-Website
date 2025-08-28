@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli - The Better Way to Pay Invoices</title>
+    <meta name="description" content="Simplify invoice payments, manage bills, and streamline customer communication all in one platform. Cut billing costs and get paid faster.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-container">
+                <div class="nav-logo">
+                    <svg class="logo-svg" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Blue gradient swoosh -->
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#5B6FFF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 10 10 Q 15 5, 25 5 Q 35 5, 40 15 Q 42 25, 35 35 Q 25 45, 15 40 Q 5 30, 10 10" fill="url(#logoGradient)"/>
+                        <!-- Tilli text -->
+                        <text x="50" y="32" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#1A2B47">tilli</text>
+                    </svg>
+                </div>
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#products" class="nav-link">Products</a>
+                    <a href="#solutions" class="nav-link">Solutions</a>
+                    <a href="#about" class="nav-link">About</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="btn btn-primary" onclick="window.location.href='#contact'">Get Started</button>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-gradient"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        The Better Way to Pay<br>
+                        Invoices
+                    </h1>
+                    <p class="hero-subtitle">
+                        Simplify payments, manage invoices, and streamline operations all on one platform.<br>
+                        Built to help every invoice get paid faster.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary">Get Started</button>
+                        <button class="btn btn-secondary">Watch Demo</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="dashboard-preview">
+                        <img src="Images/Section.png" alt="Tilli Dashboard">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Overview -->
+    <section class="platform-overview" id="features">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">A Platform That Just Works</h2>
+                <p class="section-subtitle">Everything you need to manage payments in one place</p>
+            </div>
+            
+            <div class="platform-features">
+                <div class="feature-row">
+                    <div class="feature-number">1</div>
+                    <div class="feature-content">
+                        <h3>Customer Account Management</h3>
+                        <p>Give customers a modern portal to view invoices, make payments, and manage their account - all in one secure place.</p>
+                    </div>
+                    <div class="feature-visual-container">
+                        <img src="Images/Frame-1.png" alt="Account Management">
+                    </div>
+                </div>
+                
+                <div class="feature-row reverse">
+                    <div class="feature-number">2</div>
+                    <div class="feature-content">
+                        <h3>Customer Channel Delivery</h3>
+                        <p>Reach customers where they are with multi-channel delivery across SMS, email, WhatsApp, and more.</p>
+                    </div>
+                    <div class="feature-visual-container">
+                        <img src="Images/Frame-2.png" alt="Channel Delivery">
+                    </div>
+                </div>
+                
+                <div class="feature-row">
+                    <div class="feature-number">3</div>
+                    <div class="feature-content">
+                        <h3>Build Statements Automatically</h3>
+                        <p>Generate professional invoices automatically with your branding, terms, and payment options built right in.</p>
+                    </div>
+                    <div class="feature-visual-container">
+                        <img src="Images/Frame-3.png" alt="Automated Statements">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Built to Simplify How You Work</h2>
+            </div>
+            
+            <div class="workflow-grid">
+                <div class="workflow-card">
+                    <h3>Streamline Invoicing</h3>
+                    <p>Automate invoice creation and delivery to reduce manual work and errors.</p>
+                    <div class="workflow-visual">
+                        <img src="Images/Frame-4.png" alt="Streamline Invoicing">
+                    </div>
+                </div>
+                
+                <div class="workflow-card">
+                    <h3>Simplify Collections</h3>
+                    <p>Smart reminders and easy payment options help you get paid faster with less effort.</p>
+                    <div class="workflow-visual">
+                        <img src="Images/Frame-5.png" alt="Simplify Collections">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="workflow-grid mt-3">
+                <div class="workflow-card">
+                    <h3>Customer-Centric Design</h3>
+                    <p>Our platform adapts to your customers' needs with flexible payment options and communication preferences.</p>
+                    <div class="workflow-visual">
+                        <img src="Images/Frame-6.png" alt="Customer Experience">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">See the difference with tilliX</h2>
+                <p class="section-subtitle">Why businesses choose Tilli over traditional solutions</p>
+            </div>
+            
+            <div class="comparison-content">
+                <div class="comparison-visual">
+                    <div class="phone-mockup">
+                        <img src="Images/Frame-7.png" alt="tilliX Mobile">
+                    </div>
+                </div>
+                
+                <div class="comparison-points">
+                    <h3>Using the tilliX way</h3>
+                    <p class="comparison-subtitle">The old way</p>
+                    
+                    <div class="comparison-list">
+                        <div class="comparison-item">
+                            <div class="old-way">
+                                <span class="icon">📧</span>
+                                <p>Manual invoice emails that get lost in spam</p>
+                            </div>
+                            <div class="new-way">
+                                <span class="icon">✓</span>
+                                <p>Smart multi-channel delivery that reaches customers</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-item">
+                            <div class="old-way">
+                                <span class="icon">📞</span>
+                                <p>Endless phone calls for payment follow-ups</p>
+                            </div>
+                            <div class="new-way">
+                                <span class="icon">✓</span>
+                                <p>Automated reminders that work 24/7</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-item">
+                            <div class="old-way">
+                                <span class="icon">💳</span>
+                                <p>Limited payment options frustrate customers</p>
+                            </div>
+                            <div class="new-way">
+                                <span class="icon">✓</span>
+                                <p>Accept any payment method customers prefer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Teams Choose Tilli -->
+    <section class="why-tilli">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">Why Teams Choose tilliX</h2>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Reduce Costs</h3>
+                    <p>Cut billing and collection costs by up to 45% with automation</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Get Paid Faster</h3>
+                    <p>Reduce DSO by 7+ days with smart payment reminders</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">😊</div>
+                    <h3>Happier Customers</h3>
+                    <p>94% customer satisfaction with self-service options</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Scale Effortlessly</h3>
+                    <p>Handle millions of transactions without adding staff</p>
+                </div>
+            </div>
+            
+            <div class="team-visual">
+                <img src="Images/Frame-8.png" alt="Teams using Tilli">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">Smarter Financial Solutions for Every Industry</h2>
+                <p class="section-subtitle">Comprehensive tools designed for modern businesses</p>
+            </div>
+            
+            <div class="products-showcase">
+                <div class="product-card featured">
+                    <h3>tilliX</h3>
+                    <p class="product-description">
+                        Smart invoice management and EBPP platform that automates billing, 
+                        accelerates payments, and provides customers with a modern self-service experience.
+                    </p>
+                    <div class="product-features">
+                        <span class="feature-tag">Invoice Management</span>
+                        <span class="feature-tag">Customer Portal</span>
+                        <span class="feature-tag">Payment Processing</span>
+                    </div>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+                
+                <div class="product-card">
+                    <h3>Nudge</h3>
+                    <p class="product-description">
+                        Intelligent customer engagement platform that delivers the right message 
+                        at the right time across SMS, email, WhatsApp, and more.
+                    </p>
+                    <button class="btn btn-outline">Explore Nudge</button>
+                </div>
+                
+                <div class="product-card">
+                    <h3>tilliPay</h3>
+                    <p class="product-description">
+                        Unified payment processing that accepts any payment method, 
+                        from any channel, with enterprise-grade security.
+                    </p>
+                    <button class="btn btn-outline">Explore tilliPay</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions for Industries -->
+    <section class="solutions-industries" id="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Solutions for Banking and Finance</h2>
+                <p class="section-subtitle">Tailored for your industry's unique needs</p>
+            </div>
+            
+            <div class="solutions-grid">
+                <div class="solution-item">
+                    <h4>Seamless payment processing</h4>
+                    <p>Handle high-volume transactions seamlessly with our scalable infrastructure.</p>
+                </div>
+                
+                <div class="solution-item">
+                    <h4>Automate invoicing & reduce admin work</h4>
+                    <p>Eliminate manual tasks with intelligent automation that saves hours daily.</p>
+                </div>
+                
+                <div class="solution-item">
+                    <h4>Automate billing and invoicing</h4>
+                    <p>Generate and send invoices automatically based on your business rules.</p>
+                </div>
+                
+                <div class="solution-item">
+                    <h4>Get a complete view of your finances</h4>
+                    <p>Real-time dashboards and analytics for better financial decisions.</p>
+                </div>
+                
+                <div class="solution-item">
+                    <h4>Protect your business from fraud</h4>
+                    <p>Advanced security features and fraud detection to keep transactions safe.</p>
+                </div>
+                
+                <div class="solution-item">
+                    <h4>Improve Reporting</h4>
+                    <p>Comprehensive reports and insights to track performance and compliance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="about">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">Powering seamless payments and billing for businesses</h2>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">$14.5B</div>
+                    <div class="stat-label">Transactions processed annually</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">40%</div>
+                    <div class="stat-label">Average reduction in billing costs</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">94%</div>
+                    <div class="stat-label">Customer satisfaction rate</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">500K+</div>
+                    <div class="stat-label">Businesses trust Tilli</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Let's Simplify the Way You Handle Payments</h2>
+                <p class="cta-description">
+                    Join thousands of businesses that have transformed their payment operations with Tilli
+                </p>
+                <div class="cta-actions">
+                    <button class="btn btn-white btn-large">Get Started</button>
+                    <button class="btn btn-outline-white btn-large">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <svg class="footer-logo-svg" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Blue gradient swoosh -->
+                        <defs>
+                            <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#5B6FFF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 10 10 Q 15 5, 25 5 Q 35 5, 40 15 Q 42 25, 35 35 Q 25 45, 15 40 Q 5 30, 10 10" fill="url(#footerLogoGradient)"/>
+                        <!-- Tilli text -->
+                        <text x="50" y="32" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">tilli</text>
+                    </svg>
+                    <p class="footer-description">
+                        Simplifying payments and billing for businesses worldwide
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="Twitter">X</a>
+                        <a href="#" aria-label="Facebook">f</a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Products</h4>
+                        <a href="#tillix">tilliX</a>
+                        <a href="#nudge">Nudge</a>
+                        <a href="#tillipay">tilliPay</a>
+                        <a href="#api">API & Integrations</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Solutions</h4>
+                        <a href="#invoicing">Invoicing</a>
+                        <a href="#payments">Payments</a>
+                        <a href="#collections">Collections</a>
+                        <a href="#portal">Customer Portal</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#docs">Documentation</a>
+                        <a href="#guides">Guides</a>
+                        <a href="#blog">Blog</a>
+                        <a href="#support">Support</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#about">About Us</a>
+                        <a href="#careers">Careers</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#partners">Partners</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tilli. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#security">Security</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
