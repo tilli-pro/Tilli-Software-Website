@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli – Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Developer page/Logo.png" alt="Tilli Logo">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="index.html#resources">Resources</a></li>
+                    <li><a href="about.html">Company</a></li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                </ul>
+                <a class="cta-button" href="contact.html">Contact Us</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top:80px">
+        <section class="lead-capture" style="padding-top:40px">
+            <div class="container">
+                <div class="lead-content" style="align-items:flex-start;gap:28px">
+                    <div class="lead-text" style="max-width:520px">
+                        <h1 class="page-title" style="font-size:56px;line-height:1.05;margin-bottom:10px">Talk to our Sales Team</h1>
+                        <div class="feature-list" style="display:grid;gap:16px;color:#475569">
+                            <div>
+                                <h3 style="font-size:18px;margin-bottom:6px">Interested in a demo?</h3>
+                                <p>Discover how Tilli can streamline your operations, simplify billing, and unlock better payment experiences tailored to your business.</p>
+                            </div>
+                            <div>
+                                <h3 style="font-size:18px;margin-bottom:6px">Trusted by utilities and fintech leaders.</h3>
+                                <p>Join companies using Tilli to modernize payments, improve transparency, and stay ahead of customer expectations.</p>
+                            </div>
+                        </div>
+                        <a href="#contact-form" class="btn-primary" style="margin-top:16px;display:inline-flex;align-items:center;gap:8px">Apply Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="lead-form" style="width:100%;max-width:560px">
+                        <form id="contact-form" class="contact-form" novalidate>
+                            <label style="display:block;font-weight:600;margin-bottom:6px">Company Email<span style="color:#ef4444"> *</span></label>
+                            <input id="companyEmail" type="email" placeholder="Company email" required aria-describedby="emailError">
+                            <div id="emailError" class="input-error" style="display:none;color:#ef4444;font-size:14px;margin-top:6px">This email is already registered</div>
+
+                            <label style="display:block;font-weight:600;margin:14px 0 6px">Your Name<span style="color:#ef4444"> *</span></label>
+                            <input id="yourName" type="text" placeholder="John Doe" required>
+
+                            <label style="display:block;font-weight:600;margin:14px 0 6px">Company website</label>
+                            <input id="companyWebsite" type="url" placeholder="https://address.com">
+
+                            <label style="display:block;font-weight:600;margin:14px 0 6px">Primary Product of Interest</label>
+                            <select id="productInterest">
+                                <option value="">Select a product</option>
+                                <option value="Nudge">Nudge</option>
+                                <option value="tilliX">tilliX</option>
+                                <option value="TilliPay">TilliPay</option>
+                                <option value="Other">Other</option>
+                            </select>
+
+                            <label style="display:block;font-weight:600;margin:14px 0 6px">How can we help?</label>
+                            <textarea id="helpText" rows="5" placeholder="Tell us about your project…"></textarea>
+
+                            <div style="margin-top:16px">
+                                <h4 style="margin-bottom:8px">Validation</h4>
+                                <div class="form-checkbox" style="margin:8px 0">
+                                    <input type="checkbox" id="brandGuidelines" required>
+                                    <label for="brandGuidelines">I’ve reviewed and agree to Tilli’s Brand Guidelines.</label>
+                                </div>
+                                <div class="form-checkbox" style="margin:8px 0">
+                                    <input type="checkbox" id="codeOfConduct" required>
+                                    <label for="codeOfConduct">I agree to follow Tilli’s Partner Code of Conduct.</label>
+                                </div>
+                                <div class="form-checkbox" style="margin:12px 0">
+                                    <input type="checkbox" id="captcha" required>
+                                    <label for="captcha">I'm not a robot (reCAPTCHA)</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px">Talk to our Team <i class="fas fa-arrow-right"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="Developer page/Logo.png" alt="Tilli Logo">
+                        </div>
+                        <p>We’re devoted to creating a global consumer environment that feels more personalized and connected than ever before. Through cloud-based, customer-centric tools, we’re revolutionizing CPaaS and payment processing landscapes to create avenues that help businesses and people connect, collaborate, and make payments in real-time.</p>
+                        <a href="about.html" class="btn-link">More about us →</a>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="#" class="btn-link">Request a Demo →</a></li>
+                                <li><a href="#" class="btn-link">Start a Free Trial →</a></li>
+                                <li><a href="contact.html" class="btn-link">Contact →</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Industries</h4>
+                            <ul>
+                                <li><a href="industries.html">Utilities</a></li>
+                                <li><a href="industries.html">Banking & Finance</a></li>
+                                <li><a href="industries.html">Telecommunications</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Services</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Resources</h4>
+                            <ul>
+                                <li><a href="#">Request a Demo</a></li>
+                                <li><a href="#">Start a Free Trial</a></li>
+                                <li><a href="#">Compare Products</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="footer-legal">
+                        <p>&copy; 2025 Tilli. All rights reserved.</p>
+                    </div>
+                    <div class="footer-contact">
+                        <h5>Headquarters</h5>
+                        <p>8260 Greensboro Dr, Suite 270, McLean, VA 22102</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function(){
+        const form = document.getElementById('contact-form');
+        const email = document.getElementById('companyEmail');
+        const emailError = document.getElementById('emailError');
+        const nameField = document.getElementById('yourName');
+
+        const existingEmails = new Set(['sales@tilli.com','info@tilli.com']);
+
+        email.addEventListener('input',()=>{ emailError.style.display = 'none'; });
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+
+            if(existingEmails.has(email.value.trim().toLowerCase())){
+                emailError.style.display = 'block';
+                email.focus();
+                return;
+            }
+
+            if(!nameField.value.trim()){
+                nameField.focus();
+                return;
+            }
+
+            if(!document.getElementById('brandGuidelines').checked || !document.getElementById('codeOfConduct').checked || !document.getElementById('captcha').checked){
+                alert('Please complete the validation checks.');
+                return;
+            }
+
+            alert('Thanks! Our team will get in touch shortly.');
+            form.reset();
+        });
+    })();
+    </script>
+</body>
+</html>
+
+
