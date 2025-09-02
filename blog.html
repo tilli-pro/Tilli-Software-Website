@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="blog-page">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo" aria-label="Tilli">
+                <img src="Tilli Home Page/Logo.png" alt="Tilli logo">
+            </a>
+            <nav class="main-nav" aria-label="Primary">
+                <a href="index.html#products">Products</a>
+                <a href="index.html#services">Services</a>
+                <a href="industries.html">Industries</a>
+                <a href="developer.html">Developers</a>
+                <a href="index.html#resources">Resources</a>
+            </nav>
+            <div class="header-cta">
+                <a href="index.html#pricing" class="link-muted">Pricing ?</a>
+                <a href="Free Trail/index.html" class="btn btn-primary">Free Trial</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="blog-hero container">
+            <h1 class="page-title">tilli Blog</h1>
+            <div class="featured-post">
+                <div class="featured-media">
+                    <img src="Blog Page images/image.png" alt="House on currency notes banner">
+                </div>
+                <div class="featured-content">
+                    <span class="badge">Latest</span>
+                    <h2 class="featured-title">The Future is Now: Why Smart Businesses are Moving to S/4 HANA</h2>
+                    <p class="featured-desc">Our education system is in dire need of a facelift. With emerging technologies, we have the opportunity to reimagine learning for the next generation.</p>
+                    <div class="featured-actions">
+                        <a class="btn btn-secondary" href="#articles">Learn More →</a>
+                        <div class="meta">Author's Name • 5 min read</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="articles" class="articles container">
+            <h2 class="section-title">Articles</h2>
+            <div class="filters">
+                <div class="tag-list">
+                    <button class="tag is-active" data-tag="all">All</button>
+                    <button class="tag" data-tag="tilli-news">Tilli News</button>
+                    <button class="tag" data-tag="industry-insights">Industry Insights</button>
+                    <button class="tag" data-tag="security">Security &amp; Compliance</button>
+                    <button class="tag" data-tag="smart-city">Smart City Solutions</button>
+                    <button class="tag" data-tag="digital-payments">Digital Payments</button>
+                    <button class="tag" data-tag="baas">BaaS</button>
+                    <button class="tag" data-tag="fintech">Financial Technology</button>
+                    <button class="tag" data-tag="automation">Business Automation</button>
+                    <button class="tag" data-tag="cybersecurity">Cybersecurity</button>
+                </div>
+                <div class="search">
+                    <input type="text" placeholder="Search articles…" aria-label="Search articles">
+                </div>
+            </div>
+
+            <div class="article-grid">
+                <article class="card card-lg" data-tags="digital-payments">
+                    <div class="card-media">
+                        <img src="Blog Page images/Frame (3).png" alt="PCI DSS 4.0 illustration">
+                    </div>
+                    <div class="card-body">
+                        <span class="badge">Digital Payments</span>
+                        <h3 class="card-title">Leading the Way in Payment Security: Our PCI DSS 4.0 Certification</h3>
+                        <p class="card-desc">As digital payments evolve, so do the standards that protect them. PCI DSS 4.0 introduces new requirements to enhance security, transparency, and risk management across payment ecosystems.</p>
+                        <div class="card-meta">December 2024</div>
+                    </div>
+                </article>
+
+                <div class="side-cards">
+                    <article class="card card-sm" data-tags="digital-payments">
+                        <div class="card-media"><img src="Blog Page images/Frame 1984078746.png" alt="S/4HANA transition"></div>
+                        <div class="card-body">
+                            <span class="badge">Digital Payments</span>
+                            <h4 class="card-title">Decoding the Transition: Seamlessly Embracing S/4HANA for Business Success</h4>
+                            <div class="card-meta">December 2024</div>
+                        </div>
+                    </article>
+                    <article class="card card-sm" data-tags="digital-payments">
+                        <div class="card-media"><img src="Blog Page images/Frame (4).png" alt="Best payment gateway"></div>
+                        <div class="card-body">
+                            <span class="badge">Digital Payments</span>
+                            <h4 class="card-title">How to Choose the Best Payment Gateway for Your Subscription Business?</h4>
+                            <div class="card-meta">July 2024</div>
+                        </div>
+                    </article>
+                    <article class="card card-sm" data-tags="digital-payments">
+                        <div class="card-media"><img src="Blog Page images/Frame 1984078746.png" alt="Best payment gateway"></div>
+                        <div class="card-body">
+                            <span class="badge">Digital Payments</span>
+                            <h4 class="card-title">How to Choose the Best Payment Gateway for Your Subscription Business?</h4>
+                            <div class="card-meta">February 2024</div>
+                        </div>
+                    </article>
+                    <a class="see-all" href="#editors-picks">See All →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter container">
+            <div class="newsletter-media">
+                <img src="Blog Page images/contact us.png" alt="Team reading newsletter">
+            </div>
+            <div class="newsletter-content">
+                <h2 class="section-title">Get Smarter About Finance</h2>
+                <p>Join thousands of professionals receiving expert insights on payments, automation, and fintech trends—delivered bi-weekly.</p>
+                <form class="newsletter-form" action="#" method="post" onsubmit="return false;">
+                    <input type="email" required placeholder="Enter email address" aria-label="Email">
+                    <button class="btn btn-primary" type="submit">Sign up</button>
+                </form>
+                <div class="note">Unsubscribe anytime</div>
+            </div>
+        </section>
+
+        <section id="editors-picks" class="editors-picks container">
+            <h2 class="section-title">Editor’s Picks</h2>
+            <div class="carousel" data-carousel>
+                <button class="carousel-nav prev" aria-label="Previous">‹</button>
+                <div class="carousel-track">
+                    <article class="card card-md">
+                        <div class="card-media"><img src="Blog Page images/Tilli Blog Images/pick1.jpg" alt="Recurring Bill Payment"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">What is Recurring Bill Payment and How to Choose the Best Payment Gateway for Your Subscription Business?</h3>
+                            <div class="card-meta">Author’s Name • 5 min read • December 2024</div>
+                        </div>
+                    </article>
+                    <article class="card card-md">
+                        <div class="card-media"><img src="Blog Page images/Tilli Blog Images/pick2.jpg" alt="Too many gateways"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">Too Many Payment Gateways? Here is how you can choose the best one!</h3>
+                            <div class="card-meta">Author’s Name • 5 min read • December 2024</div>
+                        </div>
+                    </article>
+                    <article class="card card-md">
+                        <div class="card-media"><img src="Blog Page images/Tilli Blog Images/pick3.jpg" alt="Customer Experience Insurance"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">How to Improve Customer Experience in the Insurance Industry with Customer Communication Platform</h3>
+                            <div class="card-meta">Author’s Name • 5 min read • December 2024</div>
+                        </div>
+                    </article>
+                    <article class="card card-md">
+                        <div class="card-media"><img src="Blog Page images/Tilli Blog Images/pick4.jpg" alt="Placeholder"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">Editor’s pick placeholder from design</h3>
+                            <div class="card-meta">Author’s Name • 5 min read • December 2024</div>
+                        </div>
+                    </article>
+                </div>
+                <button class="carousel-nav next" aria-label="Next">›</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-top">
+            <div class="footer-brand">
+                <img src="Developer page/footer logo.png" alt="Tilli">
+                <p>We’re devoted to creating a global consumer environment that feels more personalized and connected than ever before. Through cloud-based, customer-centric tools, we’re revolutionizing CPaaS and payment processing landscapes to create avenues that help businesses and people connect, collaborate, and make payments in real-time.</p>
+                <a href="about.html" class="btn btn-secondary">More about us →</a>
+                <div class="socials">
+                    <a href="#" aria-label="YouTube">YouTube</a>
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="#" aria-label="TikTok">TikTok</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="col">
+                    <h4>About</h4>
+                    <a href="nudge.html">Nudge</a>
+                    <a href="industries.html#ibillx">iBillX</a>
+                    <a href="tillipay.html">tilliPay</a>
+                </div>
+                <div class="col">
+                    <h4>Industries</h4>
+                    <a href="industries.html#utilities">Utilities</a>
+                    <a href="industries.html#banking">Banking &amp; Finance</a>
+                    <a href="industries.html#telecom">Telecommunications</a>
+                </div>
+                <div class="col">
+                    <h4>Company</h4>
+                    <a href="about.html#about-us">About Us</a>
+                    <a href="about.html#careers">Careers</a>
+                    <a href="contact.html#services">Services</a>
+                </div>
+                <div class="col">
+                    <h4>Resources</h4>
+                    <a href="contact.html#demo">Request a Demo</a>
+                    <a href="Free Trail/index.html">Start a Free Trial</a>
+                    <a href="index.html#compare">Compare Products</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <div class="legal">
+                <div>© 2024 — Copyright. All rights reserved.</div>
+                <div class="links"><a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Cookies</a></div>
+            </div>
+            <div class="hq">
+                <div class="cta-row">
+                    <a href="contact.html#demo" class="btn btn-link">Request a Demo →</a>
+                    <a href="Free Trail/index.html" class="btn btn-link">Start a Free Trial →</a>
+                    <a href="contact.html" class="btn btn-link">Contact →</a>
+                </div>
+                <div class="address">
+                    <strong>Headquarters</strong><br>
+                    8260 Greensboro Dr, Suite 270, McLean, VA 22102
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
