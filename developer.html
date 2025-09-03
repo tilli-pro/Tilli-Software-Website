@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli – Developer Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Developer page/Logo.png" alt="Tilli Logo">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="index.html#resources">Resources</a></li>
+                    <li><a href="about.html">Company</a></li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                </ul>
+                <a class="cta-button" href="contact.html">Contact Us</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top:80px">
+        <!-- Hero Section -->
+        <section class="developer-hero">
+            <div class="container">
+                <div class="hero-content-centered">
+                    <div class="hero-text-centered">
+                        <div class="hero-badge">
+                            <i class="fas fa-code"></i>
+                            <span>Developer Resources</span>
+                        </div>
+                        <h1 class="hero-title-centered">Build with <span class="highlight-blue">tilli</span></h1>
+                        <p class="hero-subtitle-centered">The tools you need to integrate billing, payments, and messaging—fast.</p>
+                        
+                        <div class="hero-buttons-centered">
+                            <a href="#quick-start" class="btn-primary-large">Get Started <i class="fas fa-arrow-right"></i></a>
+                            <a href="#documentation" class="btn-secondary-large">View Documentation <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual-centered">
+                        <div class="developer-visual">
+                            <div class="code-preview">
+                                <div class="code-header">
+                                    <div class="code-dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <span class="code-title">API Integration</span>
+                                </div>
+                                <div class="code-content">
+                                    <div class="code-line">
+                                        <span class="code-keyword">const</span> 
+                                        <span class="code-variable">tilli</span> 
+                                        <span class="code-operator">=</span> 
+                                        <span class="code-function">require</span>
+                                        <span class="code-bracket">(</span>
+                                        <span class="code-string">'tilli-sdk'</span>
+                                        <span class="code-bracket">)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="code-variable">tilli</span>
+                                        <span class="code-dot">.</span>
+                                        <span class="code-function">payments</span>
+                                        <span class="code-bracket">.</span>
+                                        <span class="code-function">create</span>
+                                        <span class="code-bracket">({</span>
+                                    </div>
+                                    <div class="code-line indent">
+                                        <span class="code-property">amount</span>
+                                        <span class="code-operator">:</span> 
+                                        <span class="code-number">1000</span>
+                                        <span class="code-bracket">,</span>
+                                    </div>
+                                    <div class="code-line indent">
+                                        <span class="code-property">currency</span>
+                                        <span class="code-operator">:</span> 
+                                        <span class="code-string">'USD'</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="code-bracket">})</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Building Blocks Section -->
+        <section class="building-blocks">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Building Blocks for Developers</h2>
+                    <p>Build, customize, and scale with tilli's modern APIs for billing, payments, and communications. Whether you're integrating tilliX, tilliPay, or Nudge, our platform is built to get you up and running—fast.</p>
+                </div>
+
+                <div class="why-choose-grid">
+                    <div class="why-choose-card">
+                        <div class="card-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Purpose-Built for Billing</h3>
+                        <p>Designed specifically for complex billing cycles, customer notifications, and payment collection—no Frankenstein systems.</p>
+                    </div>
+                    
+                    <div class="why-choose-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3>Frictionless Customer Experience</h3>
+                        <p>Every product is built to make payments effortless for your users—across web, mobile, and QuickPay.</p>
+                    </div>
+                    
+                    <div class="why-choose-card">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure by Design</h3>
+                        <p>Every product is built to make payments effortless for your users—across web, mobile, and QuickPay.</p>
+                    </div>
+                    
+                    <div class="why-choose-card">
+                        <div class="card-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h3>Tailored to You</h3>
+                        <p>Utilities, municipalities, service providers—we don't believe in one-size-fits-all. tilli adapts to your workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Sections -->
+        <section class="quick-access" id="quick-start">
+            <div class="container">
+                <div class="quick-access-grid">
+                    <!-- Quick Start -->
+                    <div class="access-card">
+                        <div class="access-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>🚀 Quick Start</h3>
+                        <p>Launch your first integration in minutes.</p>
+                        <ul class="access-links">
+                            <li><a href="#documentation">User Guide <i class="fas fa-external-link-alt"></i></a></li>
+                            <li><a href="#partners">Technology Partners <i class="fas fa-external-link-alt"></i></a></li>
+                            <li><a href="#guide">Developers Guide <i class="fas fa-external-link-alt"></i></a></li>
+                            <li><a href="#auth">Authentication overview <i class="fas fa-external-link-alt"></i></a></li>
+                        </ul>
+                        <a href="#get-started" class="access-cta">Get Started</a>
+                    </div>
+
+                    <!-- FAQs -->
+                    <div class="access-card">
+                        <div class="access-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3>❓ FAQs</h3>
+                        <p>Launch your first integration in minutes.</p>
+                        <ul class="access-links">
+                            <li><a href="#troubleshooting">Troubleshooting failed payments <i class="fas fa-external-link-alt"></i></a></li>
+                            <li><a href="#billers">Managing billers in tilliX <i class="fas fa-external-link-alt"></i></a></li>
+                            <li><a href="#channels">Supported channels in Nudge <i class="fas fa-external-link-alt"></i></a></li>
+                        </ul>
+                        <a href="#faqs" class="access-cta">View FAQs</a>
+                    </div>
+
+                    <!-- Learn -->
+                    <div class="access-card">
+                        <div class="access-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>📘 Learn</h3>
+                        <p>Launch your first integration in minutes.</p>
+                        <ul class="access-links">
+                            <li><a href="#patterns">Design patterns and usage guidelines <i class="fas fa-external-link-alt"></i></a></li>
+                            <li><a href="#errors">Handling errors and retries <i class="fas fa-external-link-alt"></i></a></li>
+                            <li><a href="#limits">Rate limits and pagination <i class="fas fa-external-link-alt"></i></a></li>
+                            <li><a href="#structure">API structure and object models <i class="fas fa-external-link-alt"></i></a></li>
+                        </ul>
+                        <a href="#concepts" class="access-cta">Explore Concepts</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features Section -->
+        <section class="key-features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Key Features</h2>
+                </div>
+
+                <div class="features-grid">
+                    <!-- Integrated Payments -->
+                    <div class="feature-card-large">
+                        <div class="feature-content">
+                            <div class="feature-text">
+                                <h3>Integrated Payments</h3>
+                                <p>Save methods, boost success, and route payments intelligently.</p>
+                                <p>Integrated cards, wallets, and payment systems. tilli kits users securely save payment methods and check out faster with intelligent acquirer routing for higher payment success.</p>
+                            </div>
+                            <div class="feature-visual">
+                                <div class="payment-methods-visual">
+                                    <div class="payment-card">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>Cards</span>
+                                    </div>
+                                    <div class="payment-card">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <span>Wallets</span>
+                                    </div>
+                                    <div class="payment-card">
+                                        <i class="fas fa-university"></i>
+                                        <span>Banking</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Multi-channel Messaging -->
+                    <div class="feature-card-large">
+                        <div class="feature-content">
+                            <div class="feature-text">
+                                <h3>Multi-channel Messaging via One API</h3>
+                                <p>Deliver messages across SMS, WhatsApp, email, and push—all from a single endpoint. Personalize at scale, manage preferences, and track performance in real time.</p>
+                                <div class="messaging-api">
+                                    <h4>Messaging API</h4>
+                                    <p>Send SMS, WhatsApp, email, and push from one place.</p>
+                                </div>
+                            </div>
+                            <div class="feature-visual">
+                                <div class="messaging-channels">
+                                    <div class="channel">
+                                        <i class="fas fa-sms"></i>
+                                        <span>SMS</span>
+                                    </div>
+                                    <div class="channel">
+                                        <i class="fab fa-whatsapp"></i>
+                                        <span>WhatsApp</span>
+                                    </div>
+                                    <div class="channel">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>Email</span>
+                                    </div>
+                                    <div class="channel">
+                                        <i class="fas fa-bell"></i>
+                                        <span>Push</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Developer-first Payments -->
+                    <div class="feature-card-large">
+                        <div class="feature-content">
+                            <div class="feature-text">
+                                <h3>Developer-first Payments</h3>
+                                <p>Create, manage, and automate payments with ease.</p>
+                                <p>Powered by APIs—create, manage, and track payment links programmatically. Handle refunds, validate statuses, and support recurring logic—all through a simple API.</p>
+                            </div>
+                            <div class="feature-visual">
+                                <div class="api-visual">
+                                    <div class="api-endpoint">
+                                        <span class="method">POST</span>
+                                        <span class="url">/api/v1/payments</span>
+                                    </div>
+                                    <div class="api-response">
+                                        <div class="response-line">
+                                            <span class="response-key">"status"</span>
+                                            <span class="response-value">"success"</span>
+                                        </div>
+                                        <div class="response-line">
+                                            <span class="response-key">"payment_id"</span>
+                                            <span class="response-value">"pay_123"</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Helpful Links Section -->
+        <section class="helpful-links">
+            <div class="container">
+                <div class="links-content">
+                    <div class="links-section">
+                        <h3>Helpful Links</h3>
+                        <ul class="links-list">
+                            <li><a href="#deploy">Learn How to Deploy</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="links-section">
+                        <h3>Popular Guides</h3>
+                        <ul class="links-list">
+                            <li><a href="#billing">Building smarter billing with tilliX</a></li>
+                            <li><a href="#dashboard">Create a custom dashboard with tilliX APIs</a></li>
+                            <li><a href="#retry">Retry a failed payment</a></li>
+                            <li><a href="#links">Simplified payment links</a></li>
+                            <li><a href="#portal">Build a billing portal using Monay</a></li>
+                            <li><a href="#invoices">Multiple invoices in one transaction</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="Developer page/Logo.png" alt="Tilli Logo">
+                        </div>
+                        <p>We're devoted to creating a global consumer environment that feels more personalized and connected than ever before. Through cloud-based, customer-centric tools, we're revolutionizing CPaaS and payment processing landscapes to create avenues that help businesses and people connect, collaborate, and make payments in real-time.</p>
+                        <a href="about.html" class="btn-link">More about us →</a>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="#" class="btn-link">Request a Demo →</a></li>
+                                <li><a href="#" class="btn-link">Start a Free Trial →</a></li>
+                                <li><a href="contact.html" class="btn-link">Contact →</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Industries</h4>
+                            <ul>
+                                <li><a href="industries.html">Utilities</a></li>
+                                <li><a href="industries.html">Banking & Finance</a></li>
+                                <li><a href="industries.html">Telecommunications</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Services</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Resources</h4>
+                            <ul>
+                                <li><a href="#">Request a Demo</a></li>
+                                <li><a href="#">Start a Free Trial</a></li>
+                                <li><a href="#">Compare Products</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="social-links">
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <div class="footer-legal">
+                        <p>&copy; 2025 Tilli. All rights reserved.</p>
+                        <div class="legal-links">
+                            <a href="#">Terms</a>
+                            <a href="#">Privacy</a>
+                            <a href="#">Cookies</a>
+                        </div>
+                    </div>
+                    <div class="footer-contact">
+                        <h5>Headquarters</h5>
+                        <p>8260 Greensboro Dr, Suite 270, McLean, VA 22102</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
