@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Trial - Tilli Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Developer page/Logo.png" alt="Tilli Logo">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="about.html">Company</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+                <a class="cta-button" href="contact.html">Contact Us</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="free-trial-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Get started with tilli</h1>
+                    <h2 class="hero-subtitle">Experience tilli with a live demo</h2>
+                    <p class="hero-description">
+                        A 30-minute walkthrough tailored to your needs — no pressure, just insights.
+                        Enter your email to instantly preview how tilli helps you manage, track, and simplify your payments — no commitment required.
+                    </p>
+                    
+                    <form class="demo-form" id="demoForm">
+                        <div class="form-group">
+                            <input type="email" id="workEmail" name="email" placeholder="Enter your work email" required>
+                            <small class="form-note">Please enter a valid business email (not gmail.com)</small>
+                        </div>
+                        <a href="contact.html" class="btn-primary btn-large">
+                            Schedule a Demo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </form>
+                </div>
+                <div class="hero-visual">
+                    <div class="demo-preview">
+                        <div class="preview-header">
+                            <h3>Live Demo Preview</h3>
+                            <div class="status-indicator">
+                                <div class="status-dot active"></div>
+                                <span>Live</span>
+                            </div>
+                        </div>
+                        <div class="preview-content">
+                            <div class="demo-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">$2.4M</span>
+                                    <span class="stat-label">Processed</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">98.5%</span>
+                                    <span class="stat-label">Success Rate</span>
+                                </div>
+                            </div>
+                            <div class="demo-interface">
+                                <div class="interface-tab active" data-tab="dashboard">Dashboard</div>
+                                <div class="interface-tab" data-tab="payments">Payments</div>
+                                <div class="interface-tab" data-tab="analytics">Analytics</div>
+                            </div>
+                            
+                            <!-- Dynamic Content Area -->
+                            <div class="demo-content">
+                                <!-- Dashboard Content -->
+                                <div class="content-panel active" id="dashboard-content">
+                                    <div class="dashboard-grid">
+                                        <div class="dashboard-card">
+                                            <div class="card-header">
+                                                <h4>Recent Activity</h4>
+                                                <span class="status-badge active">Live</span>
+                                            </div>
+                                            <div class="activity-list">
+                                                <div class="activity-item">
+                                                    <div class="activity-icon payment">💳</div>
+                                                    <div class="activity-details">
+                                                        <span class="activity-title">Payment Received</span>
+                                                        <span class="activity-time">2 min ago</span>
+                                                    </div>
+                                                    <span class="activity-amount">$1,250</span>
+                                                </div>
+                                                <div class="activity-item">
+                                                    <div class="activity-icon notification">🔔</div>
+                                                    <div class="activity-details">
+                                                        <span class="activity-title">Bill Reminder Sent</span>
+                                                        <span class="activity-time">5 min ago</span>
+                                                    </div>
+                                                    <span class="activity-status">Sent</span>
+                                                </div>
+                                                <div class="activity-item">
+                                                    <div class="activity-icon user">👤</div>
+                                                    <div class="activity-details">
+                                                        <span class="activity-title">New Customer</span>
+                                                        <span class="activity-time">12 min ago</span>
+                                                    </div>
+                                                    <span class="activity-status">Registered</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="dashboard-card">
+                                            <div class="card-header">
+                                                <h4>Quick Actions</h4>
+                                            </div>
+                                            <div class="quick-actions">
+                                                <button class="action-btn primary">Send Bill</button>
+                                                <button class="action-btn secondary">View Reports</button>
+                                                <button class="action-btn secondary">Add Customer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Payments Content -->
+                                <div class="content-panel" id="payments-content">
+                                    <div class="payment-overview">
+                                        <div class="payment-summary">
+                                            <div class="payment-amount">
+                                                <span class="currency">$</span>
+                                                <span class="amount">12,450</span>
+                                                <span class="period">this month</span>
+                                            </div>
+                                            <div class="payment-stats">
+                                                <div class="stat">
+                                                    <span class="stat-number">156</span>
+                                                    <span class="stat-label">Transactions</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span class="stat-number">98.5%</span>
+                                                    <span class="stat-label">Success Rate</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="payment-actions">
+                                            <div class="payment-method">
+                                                <div class="method-icon">💳</div>
+                                                <div class="method-info">
+                                                    <span class="method-name">Credit Card</span>
+                                                    <span class="method-amount">$8,250</span>
+                                                </div>
+                                            </div>
+                                            <div class="payment-method">
+                                                <div class="method-icon">🏦</div>
+                                                <div class="method-info">
+                                                    <span class="method-name">Bank Transfer</span>
+                                                    <span class="method-amount">$4,200</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button class="pay-now-btn">
+                                            <span class="btn-icon">⚡</span>
+                                            Process Payment
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Analytics Content -->
+                                <div class="content-panel" id="analytics-content">
+                                    <div class="analytics-chart">
+                                        <div class="chart-header">
+                                            <h4>Revenue Trends</h4>
+                                            <div class="chart-period">
+                                                <span class="period active">7D</span>
+                                                <span class="period">30D</span>
+                                                <span class="period">90D</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="chart-container">
+                                            <div class="chart-bars">
+                                                <div class="bar" style="height: 60%">
+                                                    <span class="bar-value">$2.4K</span>
+                                                </div>
+                                                <div class="bar" style="height: 80%">
+                                                    <span class="bar-value">$3.2K</span>
+                                                </div>
+                                                <div class="bar" style="height: 45%">
+                                                    <span class="bar-value">$1.8K</span>
+                                                </div>
+                                                <div class="bar" style="height: 90%">
+                                                    <span class="bar-value">$4.1K</span>
+                                                </div>
+                                                <div class="bar" style="height: 70%">
+                                                    <span class="bar-value">$2.9K</span>
+                                                </div>
+                                                <div class="bar" style="height: 85%">
+                                                    <span class="bar-value">$3.7K</span>
+                                                </div>
+                                                <div class="bar" style="height: 95%">
+                                                    <span class="bar-value">$4.3K</span>
+                                                </div>
+                                            </div>
+                                            <div class="chart-labels">
+                                                <span>Mon</span>
+                                                <span>Tue</span>
+                                                <span>Wed</span>
+                                                <span>Thu</span>
+                                                <span>Fri</span>
+                                                <span>Sat</span>
+                                                <span>Sun</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="analytics-insights">
+                                            <div class="insight-item">
+                                                <div class="insight-icon positive">📈</div>
+                                                <div class="insight-text">
+                                                    <span class="insight-title">Revenue Growth</span>
+                                                    <span class="insight-value">+23.5%</span>
+                                                </div>
+                                            </div>
+                                            <div class="insight-item">
+                                                <div class="insight-icon neutral">👥</div>
+                                                <div class="insight-text">
+                                                    <span class="insight-title">Active Users</span>
+                                                    <span class="insight-value">1,247</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Highlight Section -->
+    <section class="products-highlight">
+        <div class="container">
+            <div class="products-grid">
+                <div class="product-card animate-on-scroll">
+                    <div class="product-header">
+                        <h3>Nudge</h3>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <p class="product-category">Digital Communication</p>
+                    
+                    <!-- Nudge Dashboard Preview -->
+                    <div class="nudge-dashboard-preview">
+                        <!-- Communication Channels -->
+                        <div class="communication-channels">
+                            <div class="channel-card">
+                                <div class="channel-icon whatsapp">💬</div>
+                                <span class="channel-label">WhatsApp</span>
+                            </div>
+                            <div class="channel-card">
+                                <div class="channel-icon sms">📱</div>
+                                <span class="channel-label">SMS</span>
+                            </div>
+                            <div class="channel-card">
+                                <div class="channel-icon email">✉️</div>
+                                <span class="channel-label">Email</span>
+                            </div>
+                            <div class="channel-card">
+                                <div class="channel-icon ivr">📞</div>
+                                <span class="channel-label">IVR</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Dashboard Panel -->
+                        <div class="dashboard-panel">
+                            <div class="panel-header">
+                                <h4>Nudge Dashboard</h4>
+                                <div class="status-indicator">
+                                    <span class="status-dot active"></span>
+                                    <span class="status-text">Active Campaigns</span>
+                                </div>
+                            </div>
+                            
+                            <div class="campaign-list">
+                                <div class="campaign-item">
+                                    <div class="campaign-info">
+                                        <h5>Payment Reminder</h5>
+                                        <p>2,450 messages sent</p>
+                                    </div>
+                                    <div class="success-badge">94%</div>
+                                </div>
+                                
+                                <div class="campaign-item">
+                                    <div class="campaign-info">
+                                        <h5>Appointment Confirmation</h5>
+                                        <p>1,200 messages sent</p>
+                                    </div>
+                                    <div class="success-badge">98%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card animate-on-scroll">
+                    <div class="product-header">
+                        <h3>tilliX</h3>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <p class="product-category">Customer Experience</p>
+                    <p class="product-description">Modern invoicing made simple — track, manage, and pay faster.</p>
+                    <div class="product-visual">
+                        <div class="mobile-preview">
+                            <div class="mobile-screen">
+                                <div class="mobile-header">
+                                    <h4>Invoice #INV-001</h4>
+                                    <div class="amount">$2,500.00</div>
+                                </div>
+                                <div class="payment-options">
+                                    <button class="payment-option active">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>Credit Card</span>
+                                    </button>
+                                    <button class="payment-option">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <span>Mobile Pay</span>
+                                    </button>
+                                </div>
+                                <button class="pay-now-btn">Pay Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card animate-on-scroll">
+                    <div class="product-header">
+                        <h3>tilliPay</h3>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <p class="product-category">Global Payment Stack</p>
+                    <div class="product-visual">
+                        <div class="dashboard-preview">
+                            <div class="dashboard-header">
+                                <h4>Payment Analytics</h4>
+                            </div>
+                            <div class="chart-container">
+                                <div class="chart-bar" style="height: 60%"></div>
+                                <div class="chart-bar" style="height: 80%"></div>
+                                <div class="chart-bar" style="height: 45%"></div>
+                                <div class="chart-bar" style="height: 90%"></div>
+                                <div class="chart-bar" style="height: 70%"></div>
+                            </div>
+                            <div class="chart-labels">
+                                <span>Jan</span>
+                                <span>Feb</span>
+                                <span>Mar</span>
+                                <span>Apr</span>
+                                <span>May</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted Clients Section -->
+    <section class="trusted-clients">
+        <div class="container">
+            <h2 class="section-title">Join our trusted business already using tilli</h2>
+            <div class="clients-grid">
+                <div class="client-logo">Washington Gas</div>
+                <div class="client-logo">New York Power Authority</div>
+                <div class="client-logo">Howard County</div>
+                <div class="client-logo">Frontier</div>
+                <div class="client-logo">Anglian Water</div>
+                <div class="client-logo">Northeast Ohio Natural Gas Corp.</div>
+                <div class="client-logo">Freeman</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials & Benefits Section -->
+    <section class="testimonials-benefits">
+        <div class="container">
+            <h2 class="section-title">But don't just use our word for it</h2>
+            
+            <div class="testimonials-content">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-image">
+                        <div class="team-photo">
+                            <div class="avatar"></div>
+                            <div class="avatar"></div>
+                            <div class="avatar"></div>
+                        </div>
+                    </div>
+                    <blockquote class="testimonial-quote">
+                        "Customers expect to be able to log in to do what they need to do without having to memorize any additional information. With tilli, they just need a login and their credit card and can view bills and make payments with just one click."
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <strong>Anthony Murdock</strong>
+                        <span>Customer Service Director, Washington Gas</span>
+                    </div>
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card animate-on-scroll">
+                        <div class="benefit-number">215+</div>
+                        <div class="benefit-label">industries served</div>
+                        <div class="benefit-description">From utilities to fintech, tilli scales with your needs.</div>
+                    </div>
+                    
+                    <div class="benefit-card animate-on-scroll">
+                        <div class="benefit-number">40%</div>
+                        <div class="benefit-label">faster onboarding</div>
+                        <div class="benefit-description">Reduce drop-off with frictionless, digital-first enrollment.</div>
+                    </div>
+                    
+                    <div class="benefit-card animate-on-scroll">
+                        <div class="benefit-number">100%</div>
+                        <div class="benefit-label">on-time bill delivery</div>
+                        <div class="benefit-description">Automated systems that ensure customers never miss a payment.</div>
+                    </div>
+                    
+                    <div class="benefit-card animate-on-scroll">
+                        <div class="benefit-number">2M+</div>
+                        <div class="benefit-label">monthly messages sent</div>
+                        <div class="benefit-description">Across SMS, WhatsApp, email, and push—at scale.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTAwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxNSIgZmlsbD0iIzQwOTlGRiIgZmlsbC1vcGFjaXR5PSIwLjIiLz4KPHN2ZyB4PSI0MCIgeT0iMTAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDYwIDIwIiBmaWxsPSJub25lIj4KPHRleHQgeD0iMCIgeT0iMTUiIGZvbnQtZmFtaWx5PSJJbnRlciIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzQwOTlGRiI+dGlsbGk8L3RleHQ+Cjwvc3ZnPgo8L3N2Zz4K" alt="Tilli Logo">
+                        </div>
+                        <p>We're devoted to creating a global consumer environment that feels more personalized and connected than ever before. Through cloud-based, customer-centric tools, we're revolutionizing CPaaS and payment processing landscapes to create avenues that help businesses and people connect, collaborate, and make payments in real-time.</p>
+                        <a href="about.html" class="more-about-btn">More about us <i class="fas fa-arrow-right"></i></a>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>About</h4>
+                            <ul>
+                                <li><a href="nudge.html">Nudge</a></li>
+                                <li><a href="tillix.html">tilliX</a></li>
+                                <li><a href="tillipay.html">tilliPay</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h4>Industries</h4>
+                            <ul>
+                                <li><a href="#">Utilities</a></li>
+                                <li><a href="#">Banking & Finance</a></li>
+                                <li><a href="#">Telecommunications</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="about.html">About us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Services</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h4>Resources</h4>
+                            <ul>
+                                <li><a href="free-trial.html">Request a Demo</a></li>
+                                <li><a href="free-trial.html">Start a Free Trial</a></li>
+                                <li><a href="#">Compare Products</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <div class="footer-cta">
+                        <a href="free-trial.html" class="footer-cta-btn">Request a Demo <i class="fas fa-arrow-right"></i></a>
+                        <a href="free-trial.html" class="footer-cta-btn">Start a Free Trial <i class="fas fa-arrow-right"></i></a>
+                        <a href="contact.html" class="footer-cta-btn">Contact <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="footer-legal">
+                        <p>&copy; 2024 - Copyright. All Rights reserved</p>
+                        <div class="legal-links">
+                            <a href="#">Terms</a>
+                            <a href="#">Privacy</a>
+                            <a href="#">Cookies</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h5>Headquarters</h5>
+                        <p>8260 Greensboro Dr, Suite 270<br>McLean VA, 22102</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Free Trial specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Demo form handling - now just for email validation before redirect
+            const demoForm = document.getElementById('demoForm');
+            const demoButton = document.querySelector('.demo-form .btn-primary');
+            
+            if (demoButton) {
+                demoButton.addEventListener('click', function(e) {
+                    const email = document.getElementById('workEmail').value;
+                    
+                    // Validate business email before allowing navigation
+                    if (email && !isValidBusinessEmail(email)) {
+                        e.preventDefault();
+                        showNotification('Please enter a valid business email address (not gmail.com)', 'error');
+                        return;
+                    }
+                    
+                    // If email is valid or empty, allow navigation to contact page
+                    // The contact page will handle the actual demo scheduling
+                });
+            }
+            
+            // Interface tabs functionality with analytics highlights
+            const interfaceTabs = document.querySelectorAll('.interface-tab');
+            interfaceTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    interfaceTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Add analytics highlight effect
+                    const tabType = this.getAttribute('data-tab');
+                    highlightAnalytics(tabType);
+                    
+                    // Trigger specific animations only when user clicks
+                    if (tabType === 'analytics') {
+                        animateChartBars();
+                    }
+                });
+            });
+            
+            // Function to animate chart bars on user interaction
+            function animateChartBars() {
+                const bars = document.querySelectorAll('.bar');
+                bars.forEach((bar, index) => {
+                    bar.style.animation = 'none';
+                    setTimeout(() => {
+                        bar.style.animation = `growUp 0.8s ease-out ${index * 0.1}s`;
+                    }, 100);
+                });
+            }
+            
+            // Auto-rotation disabled - tabs only change on user click
+            
+            function highlightAnalytics(tabType) {
+                // Add visual feedback for analytics
+                const demoPreview = document.querySelector('.demo-preview');
+                if (demoPreview) {
+                    demoPreview.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        demoPreview.style.transform = 'scale(1)';
+                    }, 200);
+                }
+                
+                // Update stats based on tab
+                const statValues = document.querySelectorAll('.stat-value');
+                if (statValues.length >= 3) {
+                    switch(tabType) {
+                        case 'dashboard':
+                            statValues[0].textContent = '2.4K';
+                            statValues[1].textContent = '98.5%';
+                            statValues[2].textContent = '1.2K';
+                            break;
+                        case 'payments':
+                            statValues[0].textContent = '1.8K';
+                            statValues[1].textContent = '99.2%';
+                            statValues[2].textContent = '856';
+                            break;
+                        case 'analytics':
+                            statValues[0].textContent = '3.1K';
+                            statValues[1].textContent = '97.8%';
+                            statValues[2].textContent = '1.5K';
+                            break;
+                    }
+                }
+                
+                // Switch content panels
+                const contentPanels = document.querySelectorAll('.content-panel');
+                contentPanels.forEach(panel => panel.classList.remove('active'));
+                
+                const targetPanel = document.getElementById(tabType + '-content');
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                }
+                
+                // Interactive effects only on user interaction, not automatic
+            }
+            
+            // Add interactive functionality to demo buttons
+            const actionButtons = document.querySelectorAll('.action-btn');
+            actionButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                    
+                    // Show notification for demo purposes
+                    showNotification('Demo action: ' + this.textContent, 'success');
+                });
+            });
+            
+            // Pay Now button functionality
+            const payNowBtn = document.querySelector('.pay-now-btn');
+            if (payNowBtn) {
+                payNowBtn.addEventListener('click', function() {
+                    this.innerHTML = '<span class="btn-icon">⏳</span>Processing...';
+                    this.disabled = true;
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<span class="btn-icon">✅</span>Payment Complete!';
+                        this.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = '<span class="btn-icon">⚡</span>Process Payment';
+                            this.disabled = false;
+                            this.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
+                        }, 2000);
+                    }, 1500);
+                });
+            }
+            
+            // Chart period selection
+            const chartPeriods = document.querySelectorAll('.chart-period .period');
+            chartPeriods.forEach(period => {
+                period.addEventListener('click', function() {
+                    chartPeriods.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Animate chart update
+                    const bars = document.querySelectorAll('.bar');
+                    bars.forEach((bar, index) => {
+                        bar.style.animation = 'none';
+                        setTimeout(() => {
+                            bar.style.animation = `growUp 0.6s ease-out ${index * 0.05}s`;
+                        }, 50);
+                    });
+                });
+            });
+            
+            // Product card hover effects
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Animate benefit numbers
+            const benefitNumbers = document.querySelectorAll('.benefit-number');
+            const benefitsObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        benefitsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            benefitNumbers.forEach(number => {
+                benefitsObserver.observe(number);
+            });
+            
+            // Animate chart bars on scroll
+            const chartBars = document.querySelectorAll('.chart-bar');
+            const chartObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bars = entry.target.parentElement.querySelectorAll('.chart-bar');
+                        bars.forEach((bar, index) => {
+                            setTimeout(() => {
+                                bar.style.transform = 'scaleY(1)';
+                                bar.style.transformOrigin = 'bottom';
+                            }, index * 100);
+                        });
+                        chartObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            chartBars.forEach(bar => {
+                bar.style.transform = 'scaleY(0)';
+                chartObserver.observe(bar);
+            });
+            
+            // Add floating animation to demo preview
+            const demoPreview = document.querySelector('.demo-preview');
+            if (demoPreview) {
+                let floatDirection = 1;
+                setInterval(() => {
+                    const currentTransform = demoPreview.style.transform || 'translateY(0px)';
+                    const currentY = parseFloat(currentTransform.match(/-?\d+/) || [0])[0];
+                    const newY = currentY + (floatDirection * 2);
+                    
+                    if (newY > 10) floatDirection = -1;
+                    if (newY < -10) floatDirection = 1;
+                    
+                    demoPreview.style.transform = `translateY(${newY}px)`;
+                }, 100);
+            }
+            
+            // Add typing effect to hero title
+            const heroTitle = document.querySelector('.free-trial-hero .hero-title');
+            if (heroTitle) {
+                const text = heroTitle.textContent;
+                heroTitle.textContent = '';
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        heroTitle.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    }
+                };
+                setTimeout(typeWriter, 500);
+            }
+            
+            // Scroll animation observer
+            const scrollObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe all elements with animate-on-scroll class
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                scrollObserver.observe(el);
+            });
+        });
+        
+        function isValidBusinessEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const businessEmailRegex = /^[^\s@]+@(?!gmail\.com|yahoo\.com|hotmail\.com|outlook\.com)[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email) && businessEmailRegex.test(email);
+        }
+        
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli – Savings Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Developer page/Logo.png" alt="Tilli Logo">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="index.html#resources">Resources</a></li>
+                    <li><a href="about.html">Company</a></li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                </ul>
+                <a class="cta-button" href="contact.html">Contact Us</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top:80px">
+        <!-- Hero Section -->
+        <section class="calculator-hero">
+            <div class="container">
+                <div class="hero-content-centered">
+                    <div class="hero-text-centered">
+                        <div class="hero-badge">
+                            <i class="fas fa-calculator"></i>
+                            <span>Savings Calculator</span>
+                        </div>
+                        <h1 class="hero-title-centered">See How Much You Could Save With <span class="highlight-blue">tilli</span></h1>
+                        <p class="hero-subtitle-centered">Whether you're handling one invoice or hundreds, our calculator reveals how much you could be saving with tilli—through automation, smarter workflows, and fewer fees.</p>
+                        
+                        <div class="hero-highlights-centered">
+                            <div class="highlight-item-centered">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Works for SMBs & Enterprises</span>
+                            </div>
+                            <div class="highlight-item-centered">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Secure, automated invoicing</span>
+                            </div>
+                            <div class="highlight-item-centered">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Easy-to-use calculator</span>
+                            </div>
+                            <div class="highlight-item-centered">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>No hidden fees</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-buttons-centered">
+                            <a href="index.html#products" class="btn-primary-large">View our Products <i class="fas fa-arrow-right"></i></a>
+                            <a href="contact.html" class="btn-secondary-large">Book a Demo <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual-centered">
+                        <div class="hero-images-stacked">
+                            <div class="hero-image-main">
+                                <div class="image-placeholder-enhanced">
+                                    <div class="image-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h4>Growth Analytics</h4>
+                                    <p>Track your savings progress</p>
+                                </div>
+                            </div>
+                            <div class="hero-image-secondary">
+                                <div class="image-placeholder-enhanced">
+                                    <div class="image-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <h4>Professional Team</h4>
+                                    <p>Expert support available</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section class="calculator-section">
+            <div class="container">
+                <div class="calculator-container">
+                    <div class="calculator-form">
+                        <div class="form-header">
+                            <h2>Savings Calculator</h2>
+                            <p>Get a personalized estimate of your potential savings with tilli</p>
+                        </div>
+
+                        <form id="savings-calculator" class="calculator-form-content">
+                            <!-- Step 1: Industry -->
+                            <div class="form-step active" data-step="1">
+                                <h3>Step 1 – Get Custom with your Industry</h3>
+                                <div class="form-group">
+                                    <label>Search industry...</label>
+                                    <input type="text" id="industry-search" placeholder="Search industry...">
+                                    <a href="#" class="skip-link">Continue without Industry</a>
+                                </div>
+                                
+                                <div class="industry-grid">
+                                    <button type="button" class="industry-btn" data-industry="saas-billing">SaaS Billing</button>
+                                    <button type="button" class="industry-btn" data-industry="usage-based">Usage-Based Subscriptions</button>
+                                    <button type="button" class="industry-btn" data-industry="insurance">Insurance</button>
+                                    <button type="button" class="industry-btn" data-industry="banking">Banking and Finance</button>
+                                    <button type="button" class="industry-btn" data-industry="public-sector">Public Sector</button>
+                                    <button type="button" class="industry-btn" data-industry="telecom">Telecommunications</button>
+                                    <button type="button" class="industry-btn" data-industry="gaming">Gaming Developers</button>
+                                    <button type="button" class="industry-btn" data-industry="rentals">Rentals and Leases</button>
+                                    <button type="button" class="industry-btn" data-industry="it">Information Technology</button>
+                                    <button type="button" class="industry-btn" data-industry="education">Education and Universities</button>
+                                    <button type="button" class="industry-btn" data-industry="memberships">Memberships</button>
+                                </div>
+
+                                <div class="company-size">
+                                    <label>Company Size</label>
+                                    <div class="size-options">
+                                        <button type="button" class="size-btn" data-size="startup">Startup</button>
+                                        <button type="button" class="size-btn active" data-size="mid-market">Mid-Market</button>
+                                        <button type="button" class="size-btn" data-size="enterprise" title="Select your company size for a best estimate">Enterprise</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Customer Base -->
+                            <div class="form-step" data-step="2">
+                                <h3>Step 2 – Understand your customer base</h3>
+                                
+                                <div class="form-group">
+                                    <label>Total Number of Current Customer Accounts</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="customer-accounts" min="1" max="3000" value="1000" class="slider">
+                                        <div class="slider-labels">
+                                            <span>1</span>
+                                            <span id="customer-accounts-value">1000</span>
+                                            <span>3000+</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Number of Emails Available</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="emails-available" min="1" max="3000" value="2000" class="slider">
+                                        <div class="slider-labels">
+                                            <span>1</span>
+                                            <span id="emails-available-value">2000</span>
+                                            <span>3000+</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Current Bill Adoption % Rate</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="bill-adoption" min="0" max="100" value="80" class="slider">
+                                        <div class="slider-labels">
+                                            <span>0%</span>
+                                            <span id="bill-adoption-value">80%</span>
+                                            <span>100%</span>
+                                        </div>
+                                    </div>
+                                    <small>This will show which the bill is to remain</small>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Payment & Billing Behavior -->
+                            <div class="form-step" data-step="3">
+                                <h3>Step 3 – Payer & Billing Behavior</h3>
+                                
+                                <div class="form-group">
+                                    <label>EFT/ACH in Industry</label>
+                                    <select id="eft-ach">
+                                        <option value="high">High</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="low">Low</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>If Enrolled in Payment Agreements</label>
+                                    <select id="payment-agreements">
+                                        <option value="high">High</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="low">Low</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Monthly Payments</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="monthly-payments" min="100" max="10000" value="5000" class="slider">
+                                        <div class="slider-labels">
+                                            <span>$100</span>
+                                            <span id="monthly-payments-value">$5,000</span>
+                                            <span>$10,000+</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Monthly CSR-assisted Payments</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="csr-payments" min="0" max="100" value="90" class="slider">
+                                        <div class="slider-labels">
+                                            <span>0%</span>
+                                            <span id="csr-payments-value">90%</span>
+                                            <span>100%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Current Costs -->
+                            <div class="form-step" data-step="4">
+                                <h3>Step 4 – Your company's current costs</h3>
+                                
+                                <div class="form-group">
+                                    <label>Monthly CSR Handling Cost (per week)</label>
+                                    <input type="number" id="csr-handling-cost" placeholder="Enter amount" value="500">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Cost in Post, Print, and Mail (per week)</label>
+                                    <input type="number" id="print-mail-cost" placeholder="Enter amount" value="300">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Letters Issued (per month)</label>
+                                    <input type="number" id="letters-issued" placeholder="Enter number" value="1000">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Invoices Mailed (per month)</label>
+                                    <input type="number" id="invoices-mailed" placeholder="Enter number" value="500">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Extra CSR Policy Tasks Outsourced (per month)</label>
+                                    <input type="number" id="csr-tasks-outsourced" placeholder="Enter number" value="200">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Current Bill Due to CSR Renewal (per month)</label>
+                                    <input type="number" id="bill-due-renewal" placeholder="Enter amount" value="1000">
+                                </div>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" id="prev-step" class="btn-secondary" style="display: none;">Previous</button>
+                                <button type="button" id="next-step" class="btn-primary">Next</button>
+                                <button type="button" id="calculate-savings" class="btn-primary" style="display: none;">Calculate Savings</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="calculator-results">
+                        <div class="results-header">
+                            <h3 class="results-title-white">Your Savings Estimate</h3>
+                        </div>
+                        
+                        <div class="results-content">
+                            <div class="result-item highlight">
+                                <span class="result-label result-label-white">Estimated Savings</span>
+                                <span class="result-value result-value-white" id="estimated-savings">$4,116,000.00</span>
+                            </div>
+                            
+                            <div class="result-item">
+                                <span class="result-label">Your New Cost</span>
+                                <span class="result-value" id="new-cost">$3,884,493.00</span>
+                            </div>
+                            
+                            <div class="result-item">
+                                <span class="result-label">Current Cost</span>
+                                <span class="result-value" id="current-cost">$8,000,493.00</span>
+                            </div>
+                        </div>
+
+                        <div class="results-actions">
+                            <button type="button" id="download-estimate" class="btn-primary">
+                                <i class="fas fa-download"></i> Download Estimate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Informational Sections -->
+        <section class="info-sections">
+            <div class="container">
+                <!-- Section 1: How we calculate savings -->
+                <div class="info-section">
+                    <div class="info-content">
+                        <div class="info-text">
+                            <span class="section-badge">SAVE WITH tilli</span>
+                            <h2>How we calculate your savings</h2>
+                            <p>Our estimates are based on real customer data, platform usage, and industry research. We compare your current operations with benchmarks from successful tilli adopters who've saved costs—in both cash and time. This insight lets you understand and forecast to guide smarter decisions.</p>
+                            <a href="index.html#products" class="btn-secondary">Our Products <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="info-visual">
+                            <div class="calculation-visual">
+                                <div class="benchmark-bar">
+                                    <div class="benchmark-fill"></div>
+                                    <span class="benchmark-label">Benchmarks</span>
+                                </div>
+                                <div class="data-points">
+                                    <div class="data-point">
+                                        <div class="point-circle"></div>
+                                        <span>Data Analysis</span>
+                                    </div>
+                                    <div class="data-point">
+                                        <div class="point-circle"></div>
+                                        <span>Industry Research</span>
+                                    </div>
+                                    <div class="data-point">
+                                        <div class="point-circle"></div>
+                                        <span>Customer Success</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Cost savings include -->
+                <div class="info-section">
+                    <div class="info-content">
+                        <div class="info-text">
+                            <span class="section-badge">SAVE WITH tilli</span>
+                            <h2>Cost savings include</h2>
+                            <ul class="savings-list">
+                                <li>Lower processing costs (print, post, and mail savings).</li>
+                                <li>Improved collection rates (due to digital-first workflows).</li>
+                                <li>Reduced support overhead (fewer CSR-assisted payments).</li>
+                            </ul>
+                            <a href="index.html#products" class="btn-secondary">Our Products <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="info-visual">
+                            <div class="savings-visual">
+                                <div class="savings-icon">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span class="savings-text">saved</span>
+                                </div>
+                                <div class="savings-outlines">
+                                    <div class="outline-box"></div>
+                                    <div class="outline-box"></div>
+                                    <div class="outline-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Time savings calculation -->
+                <div class="info-section">
+                    <div class="info-content">
+                        <div class="info-text">
+                            <span class="section-badge">SAVE WITH tilli</span>
+                            <h2>Time savings are calculated based on</h2>
+                            <ul class="savings-list">
+                                <li>Finance & Operations: Faster reconciliation, fewer manual tasks.</li>
+                                <li>Customer and Support: Fewer tickets with digital-first workflows.</li>
+                                <li>Admin & IT: Fewer tools by consolidating operations into tilli dashboards.</li>
+                            </ul>
+                            <a href="index.html#products" class="btn-secondary">Our Products <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="info-visual">
+                            <div class="calculation-visual">
+                                <div class="benchmark-bar">
+                                    <div class="benchmark-fill"></div>
+                                    <span class="benchmark-label">Benchmarks</span>
+                                </div>
+                                <div class="data-points">
+                                    <div class="data-point">
+                                        <div class="point-circle"></div>
+                                        <span>Finance & Ops</span>
+                                    </div>
+                                    <div class="data-point">
+                                        <div class="point-circle"></div>
+                                        <span>Customer Support</span>
+                                    </div>
+                                    <div class="data-point">
+                                        <div class="point-circle"></div>
+                                        <span>Admin & IT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="Developer page/Logo.png" alt="Tilli Logo">
+                        </div>
+                        <p>We're devoted to creating a global consumer environment that feels more personalized and connected than ever before. Through cloud-based, customer-centric tools, we're revolutionizing CPaaS and payment processing landscapes to create avenues that help businesses and people connect, collaborate, and make payments in real-time.</p>
+                        <a href="about.html" class="btn-link">More about us →</a>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="#" class="btn-link">Request a Demo →</a></li>
+                                <li><a href="#" class="btn-link">Start a Free Trial →</a></li>
+                                <li><a href="contact.html" class="btn-link">Contact →</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Industries</h4>
+                            <ul>
+                                <li><a href="industries.html">Utilities</a></li>
+                                <li><a href="industries.html">Banking & Finance</a></li>
+                                <li><a href="industries.html">Telecommunications</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Services</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Resources</h4>
+                            <ul>
+                                <li><a href="#">Request a Demo</a></li>
+                                <li><a href="#">Start a Free Trial</a></li>
+                                <li><a href="#">Compare Products</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="social-links">
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <div class="footer-legal">
+                        <p>&copy; 2025 Tilli. All rights reserved.</p>
+                        <div class="legal-links">
+                            <a href="#">Terms</a>
+                            <a href="#">Privacy</a>
+                            <a href="#">Cookies</a>
+                        </div>
+                    </div>
+                    <div class="footer-contact">
+                        <h5>Headquarters</h5>
+                        <p>8260 Greensboro Dr, Suite 270, McLean, VA 22102</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Calculator functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('savings-calculator');
+            const steps = document.querySelectorAll('.form-step');
+            const nextBtn = document.getElementById('next-step');
+            const prevBtn = document.getElementById('prev-step');
+            const calculateBtn = document.getElementById('calculate-savings');
+            let currentStep = 1;
+
+            // Industry selection
+            const industryBtns = document.querySelectorAll('.industry-btn');
+            industryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    industryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Company size selection
+            const sizeBtns = document.querySelectorAll('.size-btn');
+            sizeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    sizeBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Slider updates
+            const sliders = document.querySelectorAll('.slider');
+            sliders.forEach(slider => {
+                slider.addEventListener('input', function() {
+                    const valueSpan = document.getElementById(this.id + '-value');
+                    if (valueSpan) {
+                        if (this.id === 'customer-accounts' || this.id === 'emails-available') {
+                            valueSpan.textContent = this.value;
+                        } else if (this.id === 'bill-adoption' || this.id === 'csr-payments') {
+                            valueSpan.textContent = this.value + '%';
+                        } else if (this.id === 'monthly-payments') {
+                            valueSpan.textContent = '$' + parseInt(this.value).toLocaleString();
+                        }
+                    }
+                });
+            });
+
+            // Step navigation
+            nextBtn.addEventListener('click', function() {
+                if (currentStep < 4) {
+                    steps[currentStep - 1].classList.remove('active');
+                    currentStep++;
+                    steps[currentStep - 1].classList.add('active');
+                    
+                    if (currentStep === 4) {
+                        nextBtn.style.display = 'none';
+                        calculateBtn.style.display = 'inline-flex';
+                    }
+                    
+                    if (currentStep > 1) {
+                        prevBtn.style.display = 'inline-flex';
+                    }
+                }
+            });
+
+            prevBtn.addEventListener('click', function() {
+                if (currentStep > 1) {
+                    steps[currentStep - 1].classList.remove('active');
+                    currentStep--;
+                    steps[currentStep - 1].classList.add('active');
+                    
+                    if (currentStep === 1) {
+                        prevBtn.style.display = 'none';
+                    }
+                    
+                    if (currentStep < 4) {
+                        nextBtn.style.display = 'inline-flex';
+                        calculateBtn.style.display = 'none';
+                    }
+                }
+            });
+
+            // Calculate savings
+            calculateBtn.addEventListener('click', function() {
+                calculateSavings();
+            });
+
+            function calculateSavings() {
+                // Get form values
+                const customerAccounts = parseInt(document.getElementById('customer-accounts').value);
+                const emailsAvailable = parseInt(document.getElementById('emails-available').value);
+                const billAdoption = parseInt(document.getElementById('bill-adoption').value);
+                const monthlyPayments = parseInt(document.getElementById('monthly-payments').value);
+                const csrPayments = parseInt(document.getElementById('csr-payments').value);
+                const csrHandlingCost = parseInt(document.getElementById('csr-handling-cost').value) || 0;
+                const printMailCost = parseInt(document.getElementById('print-mail-cost').value) || 0;
+                const lettersIssued = parseInt(document.getElementById('letters-issued').value) || 0;
+                const invoicesMailed = parseInt(document.getElementById('invoices-mailed').value) || 0;
+                const csrTasksOutsourced = parseInt(document.getElementById('csr-tasks-outsourced').value) || 0;
+                const billDueRenewal = parseInt(document.getElementById('bill-due-renewal').value) || 0;
+
+                // Calculate savings (simplified calculation)
+                const monthlySavings = (csrHandlingCost * 4) + (printMailCost * 4) + (lettersIssued * 0.5) + (invoicesMailed * 2) + (csrTasksOutsourced * 5) + (billDueRenewal * 0.3);
+                const annualSavings = monthlySavings * 12;
+                const currentCost = annualSavings * 2; // Assume current cost is double the savings
+                const newCost = currentCost - annualSavings;
+
+                // Update results
+                document.getElementById('estimated-savings').textContent = '$' + annualSavings.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('current-cost').textContent = '$' + currentCost.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('new-cost').textContent = '$' + newCost.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+                // Show results with animation
+                const resultsSection = document.querySelector('.calculator-results');
+                resultsSection.style.opacity = '0';
+                resultsSection.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    resultsSection.style.opacity = '1';
+                    resultsSection.style.transform = 'translateY(0)';
+                }, 300);
+            }
+
+
+
+            // Download estimate
+            document.getElementById('download-estimate').addEventListener('click', function() {
+                // In a real implementation, this would generate and download a PDF
+                alert('Download feature would generate a detailed PDF report of your savings estimate.');
+            });
+        });
+    </script>
+</body>
+</html>
