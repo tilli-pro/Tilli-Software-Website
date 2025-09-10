@@ -1,0 +1,39 @@
+{
+  "development": {
+    "server": {
+      "port": 9000,
+      "host": "localhost",
+      "protocol": "http"
+    },
+    "options": {
+      "openBrowser": true,
+      "liveReload": true,
+      "cors": true,
+      "cacheControl": "no-cache"
+    },
+    "paths": {
+      "root": ".",
+      "index": "index.html",
+      "assets": "./",
+      "styles": "styles.css",
+      "scripts": "script.js"
+    },
+    "globals": {
+      "TILLI_DEV_PORT": 9000,
+      "TILLI_DEV_HOST": "localhost",
+      "TILLI_BASE_URL": "http://localhost:9000",
+      "TILLI_ENV": "development"
+    }
+  },
+  "production": {
+    "server": {
+      "port": 80,
+      "host": "tilli.com",
+      "protocol": "https"
+    },
+    "globals": {
+      "TILLI_BASE_URL": "https://tilli.com",
+      "TILLI_ENV": "production"
+    }
+  }
+}

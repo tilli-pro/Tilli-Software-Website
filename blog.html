@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli Blog</title>
+    <link rel="stylesheet" href="styles.css?v=blog2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="blog-page">
+    <div data-include="partials/header.html"></div>
+
+    <main>
+        <!-- Insights-style hero -->
+        <section class="insights-hero">
+            <div class="container insights-hero-inner">
+                <div class="insights-hero-content">
+                    <h1 class="page-title">Articles</h1>
+                    <div class="insights-search">
+                        <input id="blog-search" type="search" placeholder="Search articles, topics, or keywords" aria-label="Search articles">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters -->
+        <section class="insights-filters container">
+            <div class="chips" role="tablist" aria-label="Topics">
+                <button class="chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+                <button class="chip" data-filter="security" role="tab">Security &amp; Compliance</button>
+                <button class="chip" data-filter="billing-payments" role="tab">Billing &amp; Payments</button>
+                <button class="chip" data-filter="digital-experiences" role="tab">Digital Experiences</button>
+                <button class="chip" data-filter="fintech" role="tab">Fintech</button>
+            </div>
+        </section>
+
+        <!-- Posts grid -->
+        <section class="insights-list container">
+            <div id="posts-grid" class="posts-grid" aria-live="polite"></div>
+            <div id="posts-pagination" class="pagination" aria-label="Pagination"></div>
+        </section>
+
+        <!-- Data source for blog index rendering -->
+        <script id="posts-data" type="application/json">{
+            "pageSize": 10,
+            "posts": [
+                {
+                    "title": "How to Use Messaging Platforms as Your Point-of-Sale (POS) System to Boost Your Business",
+                    "href": "blog-messaging-platforms-pos.html",
+                    "image": "Blog Page images/Tilli Blog Images/point-of-sale-pos-system-boost-business-1080x675.jpg",
+                    "category": "digital-experiences",
+                    "author": "Tilli Software",
+                    "date": "January 17, 2023",
+                    "dateISO": "2023-01-17"
+                },
+                {
+                    "title": "Bharat Bill Payment System: A detailed briefing for a common man",
+                    "href": "blog-bharat-bill-payment-system.html",
+                    "image": "Blog Page images/Tilli Blog Images/bharat-bill-payment-system-1080x675.jpg",
+                    "category": "fintech",
+                    "author": "Tilli Software",
+                    "date": "January 25, 2023",
+                    "dateISO": "2023-01-25"
+                },
+                {
+                    "title": "6 Benefits of Adding a Communication Tool for Schools",
+                    "href": "blog-communication-tool-for-schools.html",
+                    "image": "Blog Page images/Tilli Blog Images/6-Benefits-of-Adding-Communication-Tool-for-Schools.png",
+                    "category": "digital-experiences",
+                    "author": "Tilli Software",
+                    "date": "April 20, 2023",
+                    "dateISO": "2023-04-20"
+                },
+                {
+                    "title": "The Future is Now: Why Smart Businesses Are Moving to S/4HANA",
+                    "href": "blog-future-is-now-moving-to-s4hana.html",
+                    "image": "Blog Page images/Tilli Blog Images/sap-moving-s4-hanaapproach-tilli-1080x627.png",
+                    "category": "digital-experiences",
+                    "author": "Tilli Software",
+                    "date": "April 12, 2023",
+                    "dateISO": "2023-04-12"
+                },
+                {
+                    "title": "Too Many Payment Gateways? Here’s How to Choose the Best One!",
+                    "href": "blog-choose-best-payment-gateway.html",
+                    "image": "Blog Page images/Tilli Blog Images/tillis-monay-payment-gateway-1080x627.jpg",
+                    "category": "billing-payments",
+                    "author": "Tilli Software",
+                    "date": "May 4, 2023"
+                },
+                {
+                    "title": "What Are Payment Facilitators and How They Simplify and Accelerate Your Payment Processes",
+                    "href": "blog-payment-facilitator.html",
+                    "image": "Blog Page images/Tilli Blog Images/monay-payment-facilitator-1080x627.jpg",
+                    "category": "billing-payments",
+                    "author": "Tilli Software",
+                    "date": "June 26, 2023"
+                },
+                {
+                    "title": "Payment Gateway for eCommerce – Streamline Customer Checkouts and Improve Your Sales!",
+                    "href": "blog-ecommerce-payment-gateway.html",
+                    "image": "Blog Page images/Tilli Blog Images/tilli-payment-gateway-for-ecommerce-980x551.jpg",
+                    "category": "billing-payments",
+                    "author": "Tilli Software",
+                    "date": "July 31, 2023"
+                },
+                {
+                    "title": "Decoding the Transition: Seamlessly Embracing S/4HANA for Business Success",
+                    "href": "blog-s4hana-transition.html",
+                    "image": "Blog Page images/Tilli Blog Images/upgrade-s4hana-tilli.webp",
+                    "category": "digital-experiences",
+                    "author": "Tilli Software",
+                    "date": "December 07, 2023",
+                    "dateISO": "2023-12-07"
+                },
+                {
+                    "title": "What is Recurring Bill Payment and How to Choose the Best Payment Gateway for Your Subscription Business?",
+                    "href": "blog-recurring-bill-payment.html",
+                    "image": "Blog Page images/Tilli Blog Images/tillis-recurring-bill-payment-1080x627-1.jpg",
+                    "category": "billing-payments",
+                    "author": "Tilli Software",
+                    "date": "March 21, 2024"
+                },
+                {
+                    "title": "Leading the Way in Payment Security: Our PCI DSS 4.0 Certification",
+                    "href": "blog-pci-dss-4-0.html",
+                    "image": "Blog Page images/Tilli Blog Images/Leading PCI DSS 4.0 Certification Blog-Creative_2.jpg",
+                    "category": "security",
+                    "author": "Tilli Software",
+                    "date": "January 17, 2025",
+                    "dateISO": "2025-01-17"
+                },
+                {
+                    "title": "How to Improve Customer Experience in the Insurance Industry?",
+                    "href": "blog-insurance-customer-experience.html",
+                    "image": "Blog Page images/Tilli Blog Images/how-to-improve-customer-experience-insurance-industry.webp",
+                    "category": "industry-insights",
+                    "author": "Tilli Software",
+                    "date": "June 09, 2023",
+                    "dateISO": "2023-06-09"
+                }
+                ,
+                {
+                    "title": "Tips to Build Incredible Customer Engagement in Today’s Digital Era",
+                    "href": "blog-tips-to-build-incredible-customer-engagement.html",
+                    "image": "Blog Page images/Tilli Blog Images/Tips-to-Build-Incredible-Customer-Experience-Tilli-Software-1-1080x675.jpg",
+                    "category": "digital-experiences",
+                    "author": "Tilli Software",
+                    "date": "August 04, 2022",
+                    "dateISO": "2022-08-04"
+                }
+                ,
+                {
+                    "title": "5 Reasons to Use a CPaaS for Your Business and the Best Ones for Your Company",
+                    "href": "blog-5-reasons-use-cpaas.html",
+                    "image": "Blog Page images/Tilli Blog Images/22_Nudge_Blog_5_Reasons-1080x675.jpg",
+                    "category": "digital-experiences",
+                    "author": "Tilli Software",
+                    "date": "June 30, 2022",
+                    "dateISO": "2022-06-30"
+                }
+                ,
+                {
+                    "title": "How to Deliver an Incredible Customer Engagement Experience",
+                    "href": "blog-how-to-deliver-incredible-customer-engagement.html",
+                    "image": "Blog Page images/Tilli Blog Images/How-to-Deliver-an-Incredible-Customer-Engagement-Experience.png",
+                    "category": "digital-experiences",
+                    "author": "Tilli Software",
+                    "date": "June 01, 2022",
+                    "dateISO": "2022-06-01"
+                }
+                ,
+                {
+                    "title": "How to Deliver an Incredible Customer Engagement Experience",
+                    "href": "blog-what-is-cpaas-customer-engagement.html",
+                    "image": "Blog Page images/Tilli Blog Images/What-is-CPaaS.png",
+                    "category": "digital-experiences",
+                    "author": "Tilli Software",
+                    "date": "June 01, 2022",
+                    "dateISO": "2022-06-01"
+                }
+                ,
+                {
+                    "title": "What is Digital Customer Engagement?",
+                    "href": "blog-what-is-digital-customer-engagement.html",
+                    "image": "Blog Page images/Tilli Blog Images/What-is-digital-customer-Engagement.png",
+                    "category": "digital-experiences",
+                    "author": "Tilli Software",
+                    "date": "May 04, 2022",
+                    "dateISO": "2022-05-04"
+                }
+                ,
+                {
+                    "title": "Putting the Power in Your Customer’s Hands: The Rise of the Prosumer",
+                    "href": "blog-rise-of-the-prosumer.html",
+                    "image": "Blog Page images/Tilli Blog Images/putting-the-power-in-your-customers-hands.png",
+                    "category": "digital-experiences",
+                    "author": "Tilli Software",
+                    "date": "April 20, 2022",
+                    "dateISO": "2022-04-20"
+                }
+            ]
+        }</script>
+    </main>
+
+    <div data-include="partials/footer.html"></div>
+
+    <script src="script.js?v=blog2"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli – Press Releases</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Scoped newsroom enhancements */
+        .newsroom-hero { padding: 2.5rem 0 1.5rem; border-bottom: 1px solid #E5E7EB; background: linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 100%); }
+        .newsroom-hero .subtitle { color: var(--dark-gray); max-width: 880px; }
+        .filter-tabs { display:flex; gap:.5rem; flex-wrap:wrap; margin-top: 1rem; }
+        .filter-tabs .tag { border:1px solid #E5E7EB; background:#fff; padding:.5rem .75rem; border-radius:999px; cursor:pointer; font-weight:500; }
+        .filter-tabs .tag.is-active { background:#4099FF; color:#fff; border-color:#4099FF; }
+        .featured-post { display:grid; grid-template-columns: 1.2fr 1fr; gap: 1rem; margin-top: 1.5rem; background:#fff; border:1px solid #E5E7EB; border-radius:12px; overflow:hidden; }
+        .featured-post .media { background:#F3F4F6; min-height: 220px; display:flex; align-items:center; justify-content:center; }
+        .featured-post img { width:100%; height:100%; object-fit:cover; }
+        .featured-post .content { padding:1rem; }
+        .featured-post .badge { margin-bottom:.25rem; }
+        @media (max-width: 900px){ .featured-post { grid-template-columns: 1fr; } }
+        .press-inquiries { margin-top: 2rem; padding: 1rem 1.25rem; background: #FFFFFF; border:1px solid #E5E7EB; border-radius: 12px; }
+        /* Offset under fixed header */
+        .press-page .newsroom-hero { margin-top: 90px; }
+        /* Featured without media */
+        .featured-post.no-media { grid-template-columns: 1fr; }
+        .featured-post.no-media .media { display: none; }
+        /* Uniform padding for all press cards */
+        .press-page .article-grid .card .card-body { padding: 1rem 1.25rem; }
+    </style>
+</head>
+<body class="press-page">
+    <div data-include="partials/header.html"></div>
+
+    <main>
+        <section class="newsroom-hero">
+            <div class="container">
+                <h1 class="page-title">Press Releases</h1>
+                <p class="subtitle">Latest product updates, partnerships, certifications, and company milestones from Tilli.</p>
+                <div class="filter-tabs" id="filters">
+                    <button class="tag is-active" data-tag="all">All</button>
+                    <button class="tag" data-tag="Awards">Awards</button>
+                    <button class="tag" data-tag="Product">Product</button>
+                    <button class="tag" data-tag="Partnerships">Partnerships</button>
+                    <button class="tag" data-tag="Company">Company</button>
+                    <button class="tag" data-tag="Industry">Industry</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="articles container" id="news">
+            <div id="empty-state" style="display:none; text-align:center; color: var(--dark-gray); padding:2rem;">
+                <p>No press releases to show yet.</p>
+            </div>
+            <div id="featured" class="featured-post" style="display:none;">
+                <div class="media" id="featured-media"></div>
+                <div class="content">
+                    <span class="badge" id="featured-tag"></span>
+                    <h2 class="card-title" id="featured-title" style="margin-top:.25rem;"></h2>
+                    <p class="card-desc" id="featured-summary" style="margin:.5rem 0 0.75rem;"></p>
+                    <div class="card-meta" id="featured-date"></div>
+                    <a id="featured-link" class="btn btn-secondary" style="margin-top: .75rem; display:inline-block;">Read more →</a>
+                </div>
+            </div>
+            <div id="press-grid" class="article-grid"></div>
+
+            <nav class="pagination" aria-label="Press pagination" style="margin-top:2rem; display:flex; align-items:center; gap:.5rem; justify-content:center;">
+                <div id="pageNumbers" class="page-numbers" style="display:flex; gap:.25rem;"></div>
+            </nav>
+        </section>
+    </main>
+
+    <div data-include="partials/footer.html"></div>
+
+    <script src="script.js"></script>
+    <script>
+    (function(){
+        const ITEMS_PER_PAGE = 6;
+        let pressItems = [];
+        const fallbackPressItems = [
+            {
+                slug: 'tilli-software-shines-global-fintech-fest-2023',
+                title: 'Tilli Software Shines at Global Fintech Fest 2023: Fostering Innovation and Collaboration',
+                tag: 'Industry',
+                date: 'Published on: September 14, 2023',
+                publishedAt: '2023-09-14T00:00:00Z',
+                image: '',
+                summary: 'Tilli Software announces its successful participation in GFF 2023 showcasing it’s suite of FinTech products including nudge and monay payment solutions, B2B payout, BBPS Onboarding.'
+            },
+            {
+                slug: 'meet-tilli-software-at-tie-global-summit-2022',
+                title: 'Meet Tilli Software at TiE Global Summit',
+                tag: 'Industry',
+                date: 'Published on: November 25, 2022',
+                publishedAt: '2022-11-25T00:00:00Z',
+                image: '',
+                summary: 'Join us in Hyderabad (Dec 12–14). Explore Nudge and Monay; book a demo at Booth #C5 and collect a freebie.'
+            },
+            {
+                slug: 'tilli-software-showcase-global-fintech-fest-2023',
+                title: 'Tilli Software to Showcase Cutting-Edge Fintech Solutions at Global Fintech Fest 2023',
+                tag: 'Industry',
+                date: 'Published on: August 21, 2023',
+                publishedAt: '2023-08-21T00:00:00Z',
+                image: '',
+                summary: 'Tilli will spotlight Monay Global Payment System, B2B Payouts, Merchant Processing, and BBPS Onboarding (as TSP) at Booths E19 & E21.'
+            },
+            {
+                slug: 'shabbir-gilani-joins-tilli-as-chief-revenue-officer',
+                title: 'Shabbir Gilani, a Seasoned Professional, Joins Tilli as Chief Revenue Officer',
+                tag: 'Company',
+                date: 'Published on: November 1, 2022',
+                publishedAt: '2022-11-01T00:00:00Z',
+                image: '',
+                summary: 'Tilli appoints Shabbir Gilani as Chief Revenue Officer to lead the next phase of growth.'
+            },
+            {
+                slug: 'tilli-2024-top-100-mbe-award-crmsdc',
+                title: 'Tilli 2024 Top 100 MBE Award by CRMSDC',
+                tag: 'Awards',
+                date: 'Published on: October 10, 2024',
+                publishedAt: '2024-10-10T00:00:00Z',
+                image: '',
+                summary: 'CRMSDC names Tilli a 2024 Top 100 MBE for innovation and impact.'
+            },
+            {
+                slug: 'fiserv-enhanced-billing-communications',
+                title: 'Billers Can Boost On-Time Payments and Streamline Operations with Enhanced Billing and Payment Communications from Fiserv',
+                tag: 'Partnerships',
+                date: 'Published on: April 30, 2024, at 9:00 AM EDT',
+                publishedAt: '2024-04-30T13:00:00Z',
+                image: '',
+                summary: 'Integrated call-to-action communications within BillMatrix®, powered by Tilli’s Nudge, help billers increase on-time payments and efficiency.'
+            },
+            {
+                slug: 'cs-week-2024-fort-worth-nudge-on-time-payments',
+                title: 'Join Tilli at CS Week 2024 to Nudge Your Customers for On-Time Payments and Several Other Call-To-Actions',
+                tag: 'Industry',
+                date: 'Published on: April 24, 2024, at 9:00 AM',
+                publishedAt: '2024-04-24T13:00:00Z',
+                image: '',
+                summary: 'Meet our leadership at CS Week in Fort Worth (Booth #622) and explore multichannel digital communications that drive on-time payments.'
+            },
+            {
+                slug: 'tilli-washington-gas-party-with-a-purpose-2023',
+                title: 'Tilli Software Joins Washington Gas in “Party with a Purpose” to Support Community Initiatives',
+                tag: 'Company',
+                date: 'Published on: September 29, 2023',
+                publishedAt: '2023-09-29T00:00:00Z',
+                image: '',
+                summary: 'Tilli joined Washington Gas’s “Party with a Purpose” supporting WAFF; celebrating a decade-long partnership and community impact.'
+            },
+            {
+                slug: 'software-top-100-mbe-crmsdc-2024',
+                title: 'Celebrating Excellence: Software Recognized as a Top 100 MBE by CRMSDC',
+                tag: 'Awards',
+                date: 'Published on: December 9, 2024',
+                publishedAt: '2024-12-09T00:00:00Z',
+                image: '',
+                summary: 'Recognized by CRMSDC as a Top 100 MBE for impactful contributions and innovation.'
+            }
+            ,
+            {
+                slug: 'monay-powered-by-nudge-global-fintech-fest-2022',
+                title: 'Monay, Powered by Nudge Marked its Promising Presence at the Global FinTech Fest, Mumbai, India.',
+                tag: 'Industry',
+                date: 'Published on: October 6, 2022',
+                publishedAt: '2022-10-06T00:00:00Z',
+                image: '',
+                summary: 'Tilli showcased Monay and Nudge at GFF 2022; strong response and participation in key sessions.'
+            },
+            {
+                slug: 'tilli-pro-emacs-2022-aha-moment-in-cx',
+                title: 'Come to Witness the “Aha Moment” in Customer Experience with Tilli Pro at EMACS, 2022, Conference.',
+                tag: 'Industry',
+                date: 'Published on: October 13, 2022',
+                publishedAt: '2022-10-13T00:00:00Z',
+                image: '',
+                summary: 'Join Tilli at Chartwell’s EMACS 2022 as a Worldpay partner; connect, learn, and see the Aha payment experience.'
+            },
+            {
+                slug: 'tilli-software-tie-global-summit-2022',
+                title: 'Tilli Software India Pvt. Ltd. Attends TiE Global Summit, 2022',
+                tag: 'Industry',
+                date: 'Published on: December 19, 2022',
+                publishedAt: '2022-12-19T00:00:00Z',
+                image: '',
+                summary: 'Showcased Nudge and Monay at TiE Global Summit 2022, highlighting customer-centric digital payments and omnichannel communications.'
+            },
+            {
+                slug: 'tilli-software-participates-tie-global-summit-2022-hyderabad',
+                title: 'Tilli Software India Pvt. Ltd. Announces its Participation at TiE Global Summit, 2022 Hyderabad',
+                tag: 'Industry',
+                date: 'Published on: December 7, 2022',
+                publishedAt: '2022-12-07T00:00:00Z',
+                image: '',
+                summary: 'Announcing participation at TiE Global Summit 2022 in Hyderabad; showcasing tilliCX, Nudge, and Monay at Booth #C5.'
+            }
+            ,
+            {
+                slug: 'monay-powered-by-nudge-gff-2022-sept-27',
+                title: 'Monay, Powered by Nudge, Grabs Attention at the Global FinTech Fest with its Unique CPaaS & Digital Payment Systems',
+                tag: 'Industry',
+                date: 'Published on: September 27, 2022',
+                publishedAt: '2022-09-27T00:00:00Z',
+                image: '',
+                summary: 'Tilli showcased Monay and Nudge at GFF 2022 Mumbai, drawing strong interest and engaging in key NPCI sessions.'
+            }
+            ,
+            {
+                slug: 'monay-powered-by-nudge-gff-2022-silver-sponsor',
+                title: 'Monay, powered by Nudge, to be a part of Global FinTech Fest as a Silver Sponsor',
+                tag: 'Industry',
+                date: 'Published on: September 14, 2022',
+                publishedAt: '2022-09-14T00:00:00Z',
+                image: '',
+                summary: 'Tilli participates as a Silver Sponsor at Global FinTech Fest; meet us at Booths E11 and E13.'
+            }
+        ];
+        let selectedTag = getTagFromQuery();
+
+        function getPageFromQuery(){
+            const params = new URLSearchParams(window.location.search);
+            const page = parseInt(params.get('page') || '1', 10);
+            return Number.isFinite(page) && page > 0 ? page : 1;
+        }
+
+        function getTagFromQuery(){
+            const params = new URLSearchParams(window.location.search);
+            return params.get('tag') || 'all';
+        }
+
+        function setQueryPage(page){
+            const params = new URLSearchParams(window.location.search);
+            params.set('page', String(page));
+            if (selectedTag && selectedTag !== 'all') params.set('tag', selectedTag); else params.delete('tag');
+            const newUrl = window.location.pathname + '?' + params.toString();
+            window.history.pushState({}, '', newUrl);
+        }
+
+        function setQueryTag(tag){
+            selectedTag = tag;
+            const params = new URLSearchParams(window.location.search);
+            if (selectedTag && selectedTag !== 'all') params.set('tag', selectedTag); else params.delete('tag');
+            params.set('page', '1');
+            const newUrl = window.location.pathname + '?' + params.toString();
+            window.history.pushState({}, '', newUrl);
+        }
+
+        function renderPage(page){
+            const filtered = (selectedTag && selectedTag !== 'all')
+                ? pressItems.filter(it => (it.tag || '').toLowerCase() === selectedTag.toLowerCase())
+                : pressItems.slice();
+
+            const totalItems = filtered.length;
+            const totalPages = Math.max(1, Math.ceil(totalItems / ITEMS_PER_PAGE));
+            const currentPage = Math.min(Math.max(1, page), totalPages);
+
+            const start = (currentPage - 1) * ITEMS_PER_PAGE;
+            const end = start + ITEMS_PER_PAGE;
+            let items = filtered.slice(start, end);
+
+            const grid = document.getElementById('press-grid');
+            const empty = document.getElementById('empty-state');
+            const featuredWrap = document.getElementById('featured');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            if (!items.length){
+                if (empty) empty.style.display = 'block';
+                if (featuredWrap) featuredWrap.style.display = 'none';
+            } else {
+                if (empty) empty.style.display = 'none';
+                // Always hide the special featured layout to keep uniform appearance
+                if (featuredWrap) featuredWrap.style.display = 'none';
+                // Keep items list unchanged (no featured extraction)
+            }
+
+            items.forEach(item => {
+                const article = document.createElement('article');
+                article.className = 'card card-md';
+                article.innerHTML = `
+                    <div class="card-body">
+                        <span class="badge">${item.tag}</span>
+                        <h3 class="card-title"><a href="press-release-post.html?slug=${encodeURIComponent(item.slug || '')}" style="text-decoration:none; color:inherit;">${item.title}</a></h3>
+                        <p class="card-desc">${item.summary}</p>
+                        <div class="card-meta">${item.date || ''}</div>
+                        <a class="btn btn-secondary" href="press-release-post.html?slug=${encodeURIComponent(item.slug || '')}">Read more →</a>
+                    </div>
+                `;
+                grid.appendChild(article);
+            });
+
+            // Pagination controls (numeric only)
+            const nums = document.getElementById('pageNumbers');
+            if (nums){
+                nums.innerHTML = '';
+
+                // Show up to 5 page numbers around current
+                const maxButtons = 5;
+                let startPage = Math.max(1, currentPage - Math.floor(maxButtons/2));
+                let endPage = Math.min(totalPages, startPage + maxButtons - 1);
+                if (endPage - startPage + 1 < maxButtons) {
+                    startPage = Math.max(1, endPage - maxButtons + 1);
+                }
+                for (let p = startPage; p <= endPage; p++){
+                    const btn = document.createElement('button');
+                    btn.className = 'btn ' + (p === currentPage ? 'btn-primary' : 'btn-secondary');
+                    btn.textContent = String(p);
+                    btn.disabled = p === currentPage;
+                    btn.addEventListener('click', () => {
+                        setQueryPage(p);
+                        renderPage(p);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                    nums.appendChild(btn);
+                }
+            }
+        }
+
+        async function loadData(){
+            try {
+                const res = await fetch('press-releases.json', { cache: 'no-cache' });
+                if (!res.ok) throw new Error('Failed to load');
+                const data = await res.json();
+                pressItems = Array.isArray(data) ? data : [];
+                if (!pressItems.length) pressItems = fallbackPressItems;
+            } catch(_) {
+                pressItems = fallbackPressItems;
+            }
+            // Sort latest first by publishedAt (fallback to date)
+            pressItems.sort((a,b) => {
+                const da = new Date(a.publishedAt || a.date || 0);
+                const db = new Date(b.publishedAt || b.date || 0);
+                return db - da;
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', async function(){
+            await loadData();
+            // Initialize filters
+            const filters = document.getElementById('filters');
+            if (filters){
+                Array.from(filters.querySelectorAll('.tag')).forEach(btn => {
+                    btn.classList.toggle('is-active', (btn.getAttribute('data-tag') || 'all') === selectedTag);
+                    btn.addEventListener('click', () => {
+                        Array.from(filters.querySelectorAll('.tag')).forEach(b=>b.classList.remove('is-active'));
+                        btn.classList.add('is-active');
+                        setQueryTag(btn.getAttribute('data-tag') || 'all');
+                        renderPage(1);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                });
+            }
+            const initial = getPageFromQuery();
+            renderPage(initial);
+        });
+        window.addEventListener('popstate', function(){
+            selectedTag = getTagFromQuery();
+            renderPage(getPageFromQuery());
+        });
+    })();
+    </script>
+</body>
+</html>
+
+

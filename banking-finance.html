@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli – Banking & Finance</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div data-include="partials/header.html"></div>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Banking and Finance</h1>
+                <p class="hero-subtitle">Digitally Transform Banking and Financial Services</p>
+                <p class="hero-subtext">Tilli empowers banks, credit unions, and lenders to optimize customer engagement, payment experiences, and operational intelligence through Nudge, tilliPay, and tilliX.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Talk to Sales</a>
+                    <a href="index.html#products" class="btn-secondary">Explore Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-delivery">
+        <div class="container">
+            <div class="section-content">
+                <div class="content-text">
+                    <h2>Unlock Value Across the Financial Lifecycle</h2>
+                    <ul class="product-features">
+                        <li>Increase on-time payments with intelligent reminders and embedded payment links</li>
+                        <li>Reduce servicing costs through digital-first interactions and automation</li>
+                        <li>Gain deep insights into customer behaviors and risk trends across channels</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="features">
+        <div class="container">
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3>Nudge</h3>
+                    <p>Automated, personalized nudges via SMS, email, or WhatsApp to guide customers through key financial actions:</p>
+                    <ul class="product-features">
+                        <li>Loan and credit card payment reminders</li>
+                        <li>Account inactivity re-engagement</li>
+                        <li>Digital onboarding and KYC prompts</li>
+                    </ul>
+                    <a class="discover-link" href="nudge.html">Learn more</a>
+                </div>
+                <div class="product-card">
+                    <h3>tilliPay</h3>
+                    <p>Frictionless digital payment experiences that support card, ACH, wallets, and pay-by-link—branded and secure for financial compliance:</p>
+                    <ul class="product-features">
+                        <li>Loan repayments & installment scheduling</li>
+                        <li>Real-time payment confirmations</li>
+                        <li>Flexible payment options from any device</li>
+                    </ul>
+                    <a class="discover-link" href="tillipay.html">Learn more</a>
+                </div>
+                <div class="product-card">
+                    <h3>tilliX</h3>
+                    <p>360° customer engagement insights and analytics to improve portfolio health, reduce risk, and optimize communication strategies:</p>
+                    <ul class="product-features">
+                        <li>Delinquency trend prediction</li>
+                        <li>Behavior-based segmentation and targeting</li>
+                        <li>Payment performance dashboards</li>
+                    </ul>
+                    <a class="discover-link" href="tillix.html">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="impact-metrics">
+        <div class="container">
+            <h2>Real Results for Real Institutions</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <blockquote>“Since deploying TilliPay and Nudge, our late payments have dropped by over 35% and our customers love the ease of use.”</blockquote>
+                    <p>— VP, Consumer Lending, Regional Bank</p>
+                </div>
+                <div class="feature-card">
+                    <blockquote>“TilliX showed us that customers who engage via SMS pay 40% faster. We restructured our campaigns accordingly and saw immediate gains.”</blockquote>
+                    <p>— Head of Digital, Credit Union</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lead-capture" id="contact">
+        <div class="container">
+            <div class="lead-content">
+                <div class="lead-text">
+                    <h2>Future-Ready Finance Starts Here</h2>
+                    <p>Tilli modernizes every step of your customer’s financial journey. Let’s transform engagement, payments, and insights together.</p>
+                </div>
+                <div class="lead-form">
+                    <form class="contact-form" data-captcha>
+                        <div class="form-row">
+                            <input type="text" name="firstName" placeholder="First Name" required>
+                            <input type="text" name="lastName" placeholder="Last Name" required>
+                        </div>
+                        <div class="form-row">
+                            <select name="industry" required>
+                                <option value="Banking &amp; Finance" selected>Banking &amp; Finance</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Insurance">Insurance</option>
+                                <option value="Public Sector">Public Sector</option>
+                                <option value="Education">Education</option>
+                                <option value="Telecommunications">Telecommunications</option>
+                            </select>
+                            <input type="text" name="organization" placeholder="Organization Name" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="text" name="jobTitle" placeholder="Job Title" required>
+                            <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="tel" name="phone" placeholder="Contact Number" required>
+                        </div>
+                        <textarea name="message" placeholder="Message" rows="4"></textarea>
+                        <div class="form-row">
+                            <label id="captcha-label"></label>
+                            <input type="text" name="captcha" placeholder="Your answer" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I agree to tilli's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                        <button type="submit" class="btn-primary">Download Brochure</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div data-include="partials/footer.html"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+

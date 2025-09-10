@@ -1,0 +1,36 @@
+{
+  "name": "tilli-website",
+  "version": "1.0.0",
+  "description": "Tilli Financial Solutions Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 9000 -o",
+    "dev": "npx http-server . -p 9000 -o -c-1",
+    "serve": "npx http-server . -p 9000",
+    "build": "echo 'Static site - no build required'",
+    "test": "echo 'No tests specified'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tilli/website.git"
+  },
+  "keywords": [
+    "tilli",
+    "financial",
+    "payments",
+    "website",
+    "static"
+  ],
+  "author": "Tilli Development Team",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "config": {
+    "port": 9000,
+    "host": "localhost"
+  }
+}
