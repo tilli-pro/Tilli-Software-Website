@@ -8,25 +8,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="blog-page">
-    <header class="site-header">
-        <div class="container header-inner">
-            <a href="index.html" class="logo" aria-label="Tilli">
-                <img src="Tilli Home Page/Logo.png" alt="Tilli logo">
-            </a>
-            <nav class="main-nav" aria-label="Primary">
-                <a href="index.html#products">Products</a>
-                <a href="index.html#services">Services</a>
-                <a href="industries.html">Industries</a>
-                <a href="developer.html">Developers</a>
-                <a href="index.html#resources">Resources</a>
-            </nav>
-            <div class="header-cta">
-                <a href="index.html#pricing" class="link-muted">Pricing ?</a>
-                <a href="Free Trail/index.html" class="btn btn-primary">Free Trial</a>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Developer page/Logo.png" alt="Tilli Logo">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="about.html">Company</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                </ul>
+                <a class="cta-button" href="contact.html">Contact Us</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
-        </div>
+        </nav>
     </header>
 
     <main>
@@ -165,62 +171,75 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-top">
-            <div class="footer-brand">
-                <img src="Developer page/footer logo.png" alt="Tilli">
-                <p>We’re devoted to creating a global consumer environment that feels more personalized and connected than ever before. Through cloud-based, customer-centric tools, we’re revolutionizing CPaaS and payment processing landscapes to create avenues that help businesses and people connect, collaborate, and make payments in real-time.</p>
-                <a href="about.html" class="btn btn-secondary">More about us →</a>
-                <div class="socials">
-                    <a href="#" aria-label="YouTube">YouTube</a>
-                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                    <a href="#" aria-label="Facebook">Facebook</a>
-                    <a href="#" aria-label="Instagram">Instagram</a>
-                    <a href="#" aria-label="TikTok">TikTok</a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTAwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxNSIgZmlsbD0iIzQwOTlGRiIgZmlsbC1vcGFjaXR5PSIwLjIiLz4KPHN2ZyB4PSI0MCIgeT0iMTAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDYwIDIwIiBmaWxsPSJub25lIj4KPHRleHQgeD0iMCIgeT0iMTUiIGZvbnQtZmFtaWx5PSJJbnRlciIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzQwOTlGRiI+dGlsbGk8L3RleHQ+Cjwvc3ZnPgo8L3N2Zz4K" alt="Tilli Logo">
+                        </div>
+                        <p>We're devoted to creating a global consumer environment that feels more personalized and connected than ever before. Through cloud-based, customer-centric tools, we're revolutionizing CPaaS and payment processing landscapes to create avenues that help businesses and people connect, collaborate, and make payments in real-time.</p>
+                        <div class="newsletter">
+                            <input type="email" placeholder="Your email address">
+                            <button class="btn-primary">Subscribe</button>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>About</h4>
+                            <ul>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Newsroom</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Products</h4>
+                            <ul>
+                                <li><a href="nudge.html">Nudge</a></li>
+                                <li><a href="tillix.html">tilliX</a></li>
+                                <li><a href="tillipay.html">tilliPay</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Industries</h4>
+                            <ul>
+                                <li><a href="industries.html">Utilities</a></li>
+                                <li><a href="industries.html">Banking & Finance</a></li>
+                                <li><a href="industries.html">Telecommunications</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Resources</h4>
+                            <ul>
+                                <li><a href="contact.html">Request a Demo</a></li>
+                                <li><a href="free-trial.html">Start a Free Trial</a></li>
+                                <li><a href="#">Compare Products</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="footer-links">
-                <div class="col">
-                    <h4>About</h4>
-                    <a href="nudge.html">Nudge</a>
-                    <a href="industries.html#ibillx">iBillX</a>
-                    <a href="tillipay.html">tilliPay</a>
-                </div>
-                <div class="col">
-                    <h4>Industries</h4>
-                    <a href="industries.html#utilities">Utilities</a>
-                    <a href="industries.html#banking">Banking &amp; Finance</a>
-                    <a href="industries.html#telecom">Telecommunications</a>
-                </div>
-                <div class="col">
-                    <h4>Company</h4>
-                    <a href="about.html#about-us">About Us</a>
-                    <a href="about.html#careers">Careers</a>
-                    <a href="contact.html#services">Services</a>
-                </div>
-                <div class="col">
-                    <h4>Resources</h4>
-                    <a href="contact.html#demo">Request a Demo</a>
-                    <a href="Free Trail/index.html">Start a Free Trial</a>
-                    <a href="index.html#compare">Compare Products</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </div>
-        </div>
-        <div class="container footer-bottom">
-            <div class="legal">
-                <div>© 2024 — Copyright. All rights reserved.</div>
-                <div class="links"><a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Cookies</a></div>
-            </div>
-            <div class="hq">
-                <div class="cta-row">
-                    <a href="contact.html#demo" class="btn btn-link">Request a Demo →</a>
-                    <a href="Free Trail/index.html" class="btn btn-link">Start a Free Trial →</a>
-                    <a href="contact.html" class="btn btn-link">Contact →</a>
-                </div>
-                <div class="address">
-                    <strong>Headquarters</strong><br>
-                    8260 Greensboro Dr, Suite 270, McLean, VA 22102
+                <div class="footer-bottom">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <div class="footer-legal">
+                        <p>© 2025 Tilli. All rights reserved.</p>
+                        <div class="legal-links">
+                            <a href="#">Terms</a>
+                            <a href="#">Privacy</a>
+                            <a href="#">Cookies</a>
+                        </div>
+                    </div>
+                    <div class="footer-contact">
+                        <h5>Headquarters</h5>
+                        <p>8260 Greensboro Dr, Suite 270, McLean, VA 22102</p>
+                    </div>
                 </div>
             </div>
         </div>
