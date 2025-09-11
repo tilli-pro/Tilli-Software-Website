@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     initIndustryTabs();
     initBlogIndex();
     initBlogPost();
+    initModals();
+    initProgressSteps();
 });
 
 async function includePartials() {
@@ -64,7 +66,7 @@ function getHeaderHTMLFallback() {
         <div class="nav-container">
             <div class="logo">
                 <a href="index.html" aria-label="Tilli Home">
-                    <img src="Tilli Home Page/tilli-logo.png" alt="Tilli Logo">
+                    <img style="height:44px;width:auto" src="Tilli Home Page/tilli-logo.png" alt="Tilli Logo">
                 </a>
             </div>
             <ul class="nav-menu">
@@ -911,6 +913,62 @@ keyboardStyle.textContent = `
     }
 `;
 document.head.appendChild(keyboardStyle);
+
+// Simple modal handling
+function initModals(){
+    function openModal(modal){
+        if(!modal) return;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal(modal){
+        if(!modal) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    // Open triggers
+    document.querySelectorAll('[data-modal-target]')
+        .forEach(btn => btn.addEventListener('click', function(e){
+            e.preventDefault();
+            const selector = this.getAttribute('data-modal-target');
+            const modal = document.querySelector(selector);
+            openModal(modal);
+        }));
+
+    // Close triggers
+    document.addEventListener('click', function(e){
+        const closeBtn = e.target.closest('[data-close-modal]');
+        if(closeBtn){
+            const modal = closeBtn.closest('.modal');
+            closeModal(modal);
+        }
+    });
+
+    // Esc to close
+    document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape'){
+            document.querySelectorAll('.modal.is-open').forEach(m => closeModal(m));
+        }
+    });
+}
+
+// Animate progress stepper when visible
+function initProgressSteps(){
+    const steps = document.querySelector('.progress-steps');
+    if(!steps) return;
+    const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                steps.classList.add('is-visible');
+                io.unobserve(steps);
+            }
+        });
+    }, { threshold: 0.3 });
+    io.observe(steps);
+}
 
 // Blog Index (Insights-style) rendering and pagination
 function initBlogIndex(){

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study – Streamlining Payment Processes with Tilli and Salesforce Sales Cloud Integration for WGL Energy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Scoped styles for case study detail */
+        .cs-post-page .hero { margin-top: 90px; padding: 1.75rem 0 1.25rem; background: linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 100%); border-bottom: 1px solid #E5E7EB; }
+        .cs-post-page .meta { color:#6B7280; font-size:.95rem; }
+        .cs-post-layout { display:grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin-top: 1.25rem; }
+        .cs-article { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:12px; padding:1rem 1.25rem; box-shadow:0 12px 24px rgba(17,24,39,0.06); }
+        .cs-article h2 { margin-top:1rem; }
+        .cs-article ul { padding-left: 1.1rem; margin:.25rem 0 .75rem; }
+        .cs-article li { margin:.25rem 0; }
+        .hero-media { margin-top:.75rem; display:flex; align-items:center; justify-content:center; height:auto; background:transparent; }
+        .hero-media img { width:70%; height:auto; object-fit:cover; display:block; border-radius:12px; box-shadow:0 12px 24px rgba(17,24,39,0.12), 0 0 0 3px #FFFFFF; filter: saturate(105%) contrast(105%); }
+        .back-link { display:inline-flex; align-items:center; gap:.35rem; color:#2563EB; font-weight:600; text-decoration:none; }
+        @media (max-width: 980px){ .hero-media img { width:100%; } }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            // Simple include for header/footer if script.js loader isn't available yet
+            if (!window.__includesInit && window.fetch){
+                document.querySelectorAll('[data-include]')?.forEach(async el => {
+                    try { const res = await fetch(el.getAttribute('data-include')); el.outerHTML = await res.text(); } catch(_){}}
+                );
+            }
+        });
+    </script>
+    <meta name="description" content="WGL Energy streamlined payments by integrating Tilli’s Monay Global Payment Stack with Salesforce Sales Cloud, enabling secure card and eCheck capture and automating Order→Invoice→Payment and Order→Payment→Invoice workflows.">
+</head>
+<body class="cs-post-page">
+    <div data-include="partials/header.html"></div>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <nav class="breadcrumb" style="font-size:.9rem; margin-bottom:.35rem; color: var(--dark-gray);">
+                    <a href="case-studies.html" style="color:inherit; text-decoration:none;">Case Studies</a>
+                    <span> / </span>
+                    <span>Streamlining Payment Processes with Tilli and Salesforce Sales Cloud Integration for WGL Energy</span>
+                </nav>
+                <h1 class="page-title">Streamlining Payment Processes with Tilli and Salesforce Sales Cloud Integration for WGL Energy</h1>
+                <div class="meta">Published by Tilli Software • February 13, 2025</div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="cs-post-layout">
+                <article class="cs-article">
+                    <div class="hero-media"><img src="Case Studies Page/wgl energy.jpg" alt="WGL Energy"></div>
+
+                    <h2>Summary</h2>
+                    <p>WGL Energy, a subsidiary of AltaGas, partnered with Tilli to modernize and secure their payment processes by integrating Tilli’s <strong>Monay Global Payment Stack</strong> with <strong>Salesforce Sales Cloud</strong>. The integration enabled seamless capturing of card and eCheck details and significantly improved the <strong>Order→Invoice→Payment</strong> and <strong>Order→Payment→Invoice</strong> workflows. As a Payment Facilitator, Tilli delivered a flexible, secure solution that exceeded the capabilities of traditional payment providers.</p>
+
+                    <h2>Introduction</h2>
+                    <h3>Client Overview</h3>
+                    <p>WGL Energy is a leading energy solutions provider and a subsidiary of AltaGas. They offer electricity, natural gas, and renewable energy solutions to residential, commercial, and government customers. Facing growing complexities in payment processing, WGL Energy sought a modern solution to simplify operations and improve customer experience.</p>
+
+                    <h2>Challenge</h2>
+                    <p>WGL Energy needed a secure, flexible platform that integrates seamlessly with Salesforce Sales Cloud to:</p>
+                    <ul>
+                        <li>Capture and securely store payment details (card and eCheck).</li>
+                        <li>Streamline and automate <strong>Order→Invoice→Payment</strong> and <strong>Order→Payment→Invoice</strong> processes.</li>
+                        <li>Enhance operational flexibility beyond traditional payment providers.</li>
+                    </ul>
+
+                    <h2>Problem Statement</h2>
+                    <ul>
+                        <li><strong>Lack of Integration:</strong> Existing solutions did not integrate smoothly with Salesforce Sales Cloud, causing manual interventions.</li>
+                        <li><strong>Limited Flexibility:</strong> Rigid provider processes hindered scalability and customization.</li>
+                        <li><strong>Compliance Risks:</strong> Handling sensitive payment data required a robust, standards‑compliant approach.</li>
+                    </ul>
+
+                    <h2>Solution</h2>
+                    <p>WGL Energy implemented Tilli’s <strong>Monay Global Payment Stack</strong>, delivering:</p>
+                    <ul>
+                        <li><strong>Seamless Integration:</strong>
+                            <ul>
+                                <li>Effortless integration with Salesforce Sales Cloud.</li>
+                                <li>Real‑time, bi‑directional syncing of payment data for both workflows.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Secure Payment Processing:</strong>
+                            <ul>
+                                <li>Robust security for capturing and handling card and eCheck details.</li>
+                                <li>Full compliance with industry standards, including PCI DSS.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Enhanced Flexibility:</strong>
+                            <ul>
+                                <li>As a Payment Facilitator, Tilli enabled custom workflows and features beyond traditional providers.</li>
+                                <li>Tailored solutions aligned with WGL Energy’s operational needs.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h2>Results</h2>
+                    <ul>
+                        <li><strong>Operational Efficiency:</strong>
+                            <ul>
+                                <li>Automated workflows reduced manual effort by approximately 60%.</li>
+                                <li>Streamlined processes saved time across departments.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Improved Accuracy:</strong>
+                            <ul>
+                                <li>Real‑time integration eliminated data discrepancies.</li>
+                                <li>Payment data synchronized seamlessly with Salesforce Sales Cloud.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Enhanced Security and Compliance:</strong>
+                            <ul>
+                                <li>Reduced risks associated with handling sensitive payment details.</li>
+                                <li>Met all regulatory and security standards.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Increased Flexibility:</strong>
+                            <ul>
+                                <li>Customized workflows matched WGL Energy’s business model.</li>
+                                <li>Scalable solution supports future growth.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <a class="back-link" href="case-studies.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Case Studies</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="partials/footer.html"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+

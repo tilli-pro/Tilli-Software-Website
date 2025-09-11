@@ -12,8 +12,10 @@
         .case-hero { margin-top: 90px; padding: 1.75rem 0 0.5rem; background: linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 100%); }
         .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem auto 2rem; }
         .case-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
-        .case-card .media { background: linear-gradient(180deg, #0B64D8 0%, #1F7BFF 100%); height: 160px; display:flex; align-items:center; justify-content:center; }
+        .case-card .media { background: linear-gradient(180deg, #0B64D8 0%, #1F7BFF 100%); height: 200px; display:flex; align-items:center; justify-content:center; }
         .case-card .media img { max-width: 76%; max-height: 70%; filter: brightness(0) invert(1); }
+        .case-card .media.has-photo { background:#F3F4F6; }
+        .case-card .media.has-photo img { max-width:100%; max-height:100%; width:100%; height:100%; object-fit:cover; filter:none; }
         .case-card .body { padding: 0.9rem 1rem 1.1rem; display:flex; flex-direction:column; gap: 0.4rem; }
         .case-card .meta { font-size: 12px; color: var(--dark-gray, #6B7280); }
         .case-card .title { font-size: 16px; line-height: 1.35; }
@@ -35,12 +37,14 @@
         .post-card .media img { width:100%; height:100%; object-fit:cover; }
         .post-card .body { padding: 1rem 1rem 1.1rem; }
         .post-card .badge { display:inline-block; background:#EEF2FF; color:#1D4ED8; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:600; }
-        .post-card .title { margin:.35rem 0; font-size:16px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-        .post-card .desc { color:#4B5563; font-size:14px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+        .post-card .title { margin:.35rem 0; font-size:16px; display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+        .post-card .desc { color:#4B5563; font-size:14px; display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
         .post-card .meta { color:#6B7280; font-size:12px; margin-top: 2px; }
         .post-card .btn { display:inline-block; margin-top:.25rem; color:#2563EB; font-weight:600; }
-        .carousel-nav { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:10px; }
-        .carousel-nav button { width:48px; height:48px; border-radius:999px; border:0; background:#2563EB; color:#FFFFFF; display:grid; place-items:center; box-shadow:0 10px 20px rgba(37, 99, 235, 0.3); transition: transform .2s, box-shadow .2s; }
+        [data-posts-carousel] .carousel-nav { position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; gap:8px; padding:0 8px; pointer-events:none; z-index:2; }
+        [data-posts-carousel] .carousel-nav button { width:44px; height:44px; border-radius:999px; border:0; background:#2563EB; color:#FFFFFF; display:grid; place-items:center; box-shadow:0 10px 20px rgba(37, 99, 235, 0.3); transition: transform .2s, box-shadow .2s; pointer-events:auto; }
+        [data-posts-carousel] .carousel-nav .prev { margin-left:-22px; }
+        [data-posts-carousel] .carousel-nav .next { margin-right:-22px; }
         .carousel-nav button:hover { transform: translateY(-1px); box-shadow:0 14px 24px rgba(37, 99, 235, 0.35); }
         .carousel-nav .prev, .carousel-nav .next { transform: none; }
         .carousel-dots { display:flex; gap:6px; justify-content:center; margin-top:.75rem; }
@@ -51,6 +55,30 @@
         .cs-pagination .nav-btn { border:1px solid #E5E7EB; background:#FFFFFF; color:#1F2937; padding:.5rem .9rem; border-radius:999px; font-weight:600; box-shadow:0 2px 6px rgba(17,24,39,0.06); }
         .cs-pagination .nav-btn:hover { background:#F9FAFB; }
         .cs-pagination .nav-btn[disabled] { opacity:.5; cursor:not-allowed; }
+        /* Results section */
+        .results { background: linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 100%); padding: 2rem 0 2.5rem; margin-top: .5rem; }
+        .results .eyebrow { display:inline-block; color:#6B7280; font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; }
+        .results .section-title { margin:.35rem 0; text-align:center; }
+        .results .section-sub { text-align:center; color:#6B7280; font-size:.85rem; letter-spacing:.06em; margin-bottom: 1rem; }
+        .results-cards { display:grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem auto 1.25rem; }
+        .results-card { position:relative; background:#FFFFFF; border:1px solid #E5E7EB; border-radius:16px; box-shadow:0 14px 30px rgba(17,24,39,0.08); padding:1.25rem 1.25rem 1.35rem; text-align:center; transition:transform .2s, box-shadow .2s; }
+        .results-card:hover { transform: translateY(-2px); box-shadow:0 18px 36px rgba(17,24,39,0.12); }
+        .results-card .accent { width:44px; height:44px; border-radius:999px; margin:0 auto .5rem; display:grid; place-items:center; color:#FFFFFF; background:linear-gradient(135deg, #1D4ED8 0%, #60A5FA 100%); box-shadow:0 10px 20px rgba(29,78,216,.25); }
+        .results-card .num { display:block; font-size:1.85rem; font-weight:900; background: linear-gradient(135deg, #1D4ED8 0%, #60A5FA 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+        .results-card .label { display:block; color:#6B7280; margin-top:.35rem; font-weight:500; }
+        .results-logos { display:grid; grid-auto-flow:column; grid-auto-columns:max-content; gap: 1.75rem; align-items:center; justify-content:center; opacity:.9; flex-wrap:wrap; }
+        .results .logos-sub { text-align:center; color:#6B7280; font-size:.8rem; letter-spacing:.08em; margin:.5rem 0 1rem; text-transform:uppercase; font-weight:600; }
+        .results-logos img { height:32px; width:auto; filter: grayscale(100%); opacity:.8; }
+        @media (max-width: 900px){ .results-cards { grid-template-columns: 1fr; } .results-logos { grid-auto-flow:row; grid-template-columns: repeat(3, minmax(0, max-content)); gap: 1rem; } }
+        /* Contact lite section */
+        .contact-lite { padding: 1.5rem 0 1.5rem; }
+        .contact-lite .form-wrap { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:12px; box-shadow:0 16px 32px rgba(17,24,39,0.08); padding:1rem; display:grid; grid-template-columns: repeat(2, 1fr); gap:.75rem; }
+        .contact-lite .form-wrap input,
+        .contact-lite .form-wrap textarea { width:100%; border:1px solid #E5E7EB; border-radius:10px; padding:.6rem .75rem; font: inherit; }
+        .contact-lite .form-wrap textarea { resize:vertical; }
+        .contact-lite .actions { display:flex; align-items:center; justify-content:space-between; gap:.75rem; grid-column:1 / -1; }
+        .contact-lite .btn-primary { background:#2563EB; color:#FFFFFF; border:0; padding:.6rem 1rem; border-radius:10px; font-weight:600; box-shadow:0 10px 22px rgba(37,99,235,.30); cursor:pointer; }
+        @media (max-width: 720px){ .contact-lite .form-wrap { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body class="case-studies-page">
@@ -63,79 +91,74 @@
             </div>
         </section>
 
-        <section class="container" id="cs-pagination-wrap">
-            <div class="cs-pagination">
-                <button id="cs-prev" class="nav-btn" aria-label="Previous page">Previous</button>
-                <button id="cs-next" class="nav-btn" aria-label="Next page">Next</button>
-            </div>
-        </section>
+        
 
         <section class="container">
             <div class="case-grid">
                 <article class="case-card">
-                    <div class="media">
-                        <img src="Tilli Home Page/isolated icons/freeman.png" alt="Freeman">
+                    <div class="media has-photo">
+                        <img src="Case Studies Page/freeman.jpg" alt="Freeman">
                     </div>
                     <div class="body">
                         <div class="meta">Feb 14, 2025 • Case Study</div>
                         <h3 class="title">Freeman Enhances Secure Checkout with tilliX’s Low‑Code BRF Solution</h3>
                         <p class="desc">How a leading provider improved event payments with a secure, flexible flow.</p>
-                        <a class="link" href="#">read more →</a>
+                        <a class="link" href="case-study-freeman.html">read more →</a>
                     </div>
                 </article>
                 <article class="case-card">
-                    <div class="media">
-                        <img src="Tilli Home Page/isolated icons/howardcounty.png" alt="Howard County">
+                    <div class="media has-photo">
+                        <img src="Case Studies Page/Howardcounty.jpg" alt="Howard County">
                     </div>
                     <div class="body">
                         <div class="meta">Feb 13, 2025 • Case Study</div>
                         <h3 class="title">Howard County, Maryland — Best Customer Portal Solution</h3>
                         <p class="desc">A modern resident portal delivering faster service and better access.</p>
-                        <a class="link" href="#">read more →</a>
+                        <a class="link" href="case-study-howard-county.html">read more →</a>
                     </div>
                 </article>
                 <article class="case-card">
-                    <div class="media">
-                        <img src="Tilli Home Page/isolated icons/Washington gas.png" alt="Washington Gas">
-                    </div>
-                    <div class="body">
-                        <div class="meta">Feb 13, 2025 • Case Study</div>
-                        <h3 class="title">Washington Gas Implements Tilli’s Nudge Solution</h3>
-                        <p class="desc">Driving on‑time payments and critical communications at scale.</p>
-                        <a class="link" href="#">read more →</a>
-                    </div>
-                </article>
-                <article class="case-card">
-                    <div class="media">
-                        <img src="Tilli Home Page/isolated icons/wglenergy.png" alt="WGL Energy">
-                    </div>
-                    <div class="body">
-                        <div class="meta">Feb 13, 2025 • Case Study</div>
-                        <h3 class="title">Streamlining Salesforce‑Native Sales Cloud Integration for WGL Energy</h3>
-                        <p class="desc">Seamless communications integrated with CRM for higher efficiency.</p>
-                        <a class="link" href="#">read more →</a>
-                    </div>
-                </article>
-                <article class="case-card">
-                    <div class="media">
-                        <img src="Tilli Home Page/isolated icons/Washington gas.png" alt="Washington Gas">
+                    <div class="media has-photo">
+                        <img src="Case Studies Page/washington.jpg" alt="Washington Gas">
                     </div>
                     <div class="body">
                         <div class="meta">Apr 19, 2022 • Case Study</div>
-                        <h3 class="title">Transforming Customer Communication for a Major Utility</h3>
-                        <p class="desc">Personalized, automated outreach across channels boosted response rates.</p>
-                        <a class="link" href="#">read more →</a>
+                        <h3 class="title">Transforming the Customer Communication Experience for a Major Utility</h3>
+                        <p class="desc">In partnership with Washington Gas: omni‑channel CX with measurable impact.</p>
+                        <a class="link" href="case-study-washington-communications.html">read more →</a>
                     </div>
                 </article>
                 <article class="case-card">
-                    <div class="media">
-                        <img src="Tilli Home Page/isolated icons/howardcounty.png" alt="Howard County">
+                    <div class="media has-photo">
+                        <img src="Case Studies Page/wgl energy.jpg" alt="WGL Energy">
+                    </div>
+                    <div class="body">
+                        <div class="meta">Feb 13, 2025 • Case Study</div>
+                        <h3 class="title">Streamlining Payment Processes with Tilli and Salesforce Sales Cloud Integration for WGL Energy</h3>
+                        <p class="desc">Secure card & eCheck capture with automated Order→Invoice→Payment workflows.</p>
+                        <a class="link" href="case-study-wgl-energy.html">read more →</a>
+                    </div>
+                </article>
+                <article class="case-card">
+                    <div class="media has-photo">
+                        <img src="Case Studies Page/washington.jpg" alt="Washington Gas">
+                    </div>
+                    <div class="body">
+                        <div class="meta">Feb 13, 2025 • Case Study</div>
+                        <h3 class="title">Washington Gas (WGL) Implements Tilli’s Nudge Solution</h3>
+                        <p class="desc">Driving on‑time payments and critical communications at scale.</p>
+                        <a class="link" href="case-study-washington-gas.html">read more →</a>
+                    </div>
+                </article>
+                <article class="case-card">
+                    <div class="media has-photo">
+                        <img src="Case Studies Page/Howardcounty.jpg" alt="Howard County">
                     </div>
                     <div class="body">
                         <div class="meta">Apr 19, 2022 • Case Study</div>
                         <h3 class="title">Digital Customer Experience for Howard County, Maryland</h3>
-                        <p class="desc">Faster, digital self‑service for residents and staff.</p>
-                        <a class="link" href="#">read more →</a>
+                        <p class="desc">Branded omni‑channel CX integrated with SAP in real time.</p>
+                        <a class="link" href="case-study-howard-digital-experience.html">read more →</a>
                     </div>
                 </article>
                 <article class="case-card">
@@ -146,9 +169,16 @@
                         <div class="meta">Apr 19, 2022 • Case Study</div>
                         <h3 class="title">Helping 30,000 People Find COVID‑19 Relief</h3>
                         <p class="desc">Rapid information delivery and payments support at scale.</p>
-                        <a class="link" href="#">read more →</a>
+                        <a class="link" href="case-study-washington-covid-relief.html">read more →</a>
                     </div>
                 </article>
+            </div>
+        </section>
+
+        <section class="container" id="cs-pagination-wrap">
+            <div class="cs-pagination">
+                <button id="cs-prev" class="nav-btn" aria-label="Previous page">Previous</button>
+                <button id="cs-next" class="nav-btn" aria-label="Next page">Next</button>
             </div>
         </section>
 
@@ -158,11 +188,58 @@
                 <div class="carousel-viewport">
                     <div class="carousel-track" id="latest-posts"></div>
                 </div>
-                <div class="carousel-nav">
-                    <button class="prev" aria-label="Previous">◄</button>
-                    <button class="next" aria-label="Next">►</button>
-                </div>
                 <div class="carousel-dots" id="posts-dots"></div>
+            </div>
+        </section>
+
+        <!-- Contact lite section placed below carousel -->
+        <section class="contact-lite">
+            <div class="container">
+                <div class="form-wrap">
+                    <input type="text" placeholder="Full Name" aria-label="Full Name">
+                    <input type="email" placeholder="Email Address" aria-label="Email Address">
+                    <input type="text" placeholder="Company" aria-label="Company">
+                    <input type="tel" placeholder="Phone Number" aria-label="Phone Number">
+                    <textarea rows="3" placeholder="How can we help?" aria-label="Message"></textarea>
+                    <div class="actions">
+                        <div style="color:#6B7280; font-size:.85rem;">We respect your privacy. Read our <a href="#" class="link-muted">Privacy Policy</a>.</div>
+                        <button class="btn-primary" type="button">Submit and Download Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results section placed below carousel -->
+        <section class="results">
+            <div class="container" style="text-align:center;">
+                <span class="eyebrow">Let's talk numbers</span>
+                <h2 class="section-title">Our Customers Get Results</h2>
+                <div class="section-sub">OVER $100 MILLION IN PAYMENT PROCESSING</div>
+                <div class="results-cards">
+                    <div class="results-card">
+                        <div class="accent"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                        <span class="num">200%</span>
+                        <span class="label">Increase in digital adoption</span>
+                    </div>
+                    <div class="results-card">
+                        <div class="accent"><i class="fas fa-receipt" aria-hidden="true"></i></div>
+                        <span class="num">19%</span>
+                        <span class="label">Reduction in unpaid bills</span>
+                    </div>
+                    <div class="results-card">
+                        <div class="accent"><i class="fas fa-arrow-up-right-dots" aria-hidden="true"></i></div>
+                        <span class="num">200%</span>
+                        <span class="label">Increase in digital payments</span>
+                    </div>
+                </div>
+                <div class="logos-sub">JOIN 500+ OTHER SCALING BUSINESSES THAT ARE LEADING WITH EXPERIENCE</div>
+                <div class="results-logos">
+                    <img src="Tilli Home Page/tilli-washington-gas.png" alt="Washington Gas">
+                    <img src="Tilli Home Page/isolated icons/howardcounty.png" alt="Howard County">
+                    <img src="Tilli Home Page/isolated icons/frontier.png" alt="Frontier">
+                    <img src="Tilli Home Page/wgl Energy.png" alt="WGL Energy">
+                    <img src="Tilli Home Page/isolated icons/freeman.png" alt="Freeman">
+                </div>
             </div>
         </section>
     </main>
@@ -176,7 +253,18 @@
         function initCaseStudiesPagination(){
             const grid = document.querySelector('.case-grid');
             if (!grid) return;
-            const cards = Array.from(grid.children);
+            let cards = Array.from(grid.children);
+            // Sort cards by date in meta (newest first)
+            function parseCaseDate(card){
+                const meta = card.querySelector('.meta');
+                if (!meta) return 0;
+                const text = String(meta.textContent || '');
+                const dateStr = text.split('•')[0].trim();
+                const d = new Date(dateStr);
+                return isNaN(d) ? 0 : d.getTime();
+            }
+            cards.sort((a,b)=> parseCaseDate(b) - parseCaseDate(a));
+            cards.forEach(c=> grid.appendChild(c));
             const pageSize = 6;
             let page = 1;
             const totalPages = Math.max(1, Math.ceil(cards.length / pageSize));
@@ -222,11 +310,14 @@
                     posts = Array.isArray(data.posts) ? data.posts : [];
                 }
             } catch (_) {
-                // Fallback minimal set
+                // Fallback dataset (6 posts)
                 posts = [
                     { title: 'Leading the Way in Payment Security: Our PCI DSS 4.0 Certification', href: 'blog-pci-dss-4-0.html', image: 'Blog Page images/Tilli Blog Images/Leading PCI DSS 4.0 Certification Blog-Creative_2.jpg', category: 'security', author: 'Tilli Software', date: 'January 17, 2025', dateISO: '2025-01-17' },
                     { title: 'What is Recurring Bill Payment? Choosing the Best Gateway', href: 'blog-recurring-bill-payment.html', image: 'Blog Page images/Tilli Blog Images/tillis-recurring-bill-payment-1080x627-1.jpg', category: 'billing-payments', author: 'Tilli Software', date: 'March 21, 2024', dateISO: '2024-03-21' },
-                    { title: 'Decoding the Transition: Seamlessly Embracing S/4HANA for Business Success', href: 'blog-s4hana-transition.html', image: 'Blog Page images/Tilli Blog Images/upgrade-s4hana-tilli.webp', category: 'digital-experiences', author: 'Tilli Software', date: 'December 07, 2023', dateISO: '2023-12-07' }
+                    { title: 'Decoding the Transition: Seamlessly Embracing S/4HANA for Business Success', href: 'blog-s4hana-transition.html', image: 'Blog Page images/Tilli Blog Images/upgrade-s4hana-tilli.webp', category: 'digital-experiences', author: 'Tilli Software', date: 'December 07, 2023', dateISO: '2023-12-07' },
+                    { title: 'Payment Gateway for eCommerce – Streamline Customer Checkouts and Improve Your Sales!', href: 'blog-ecommerce-payment-gateway.html', image: 'Blog Page images/Tilli Blog Images/tilli-payment-gateway-for-ecommerce-980x551.jpg', category: 'billing-payments', author: 'Tilli Software', date: 'July 31, 2023', dateISO: '2023-07-31' },
+                    { title: 'Too Many Payment Gateways? Here’s How to Choose the Best One!', href: 'blog-choose-best-payment-gateway.html', image: 'Blog Page images/Tilli Blog Images/tillis-monay-payment-gateway-1080x627.jpg', category: 'billing-payments', author: 'Tilli Software', date: 'May 4, 2023', dateISO: '2023-05-04' },
+                    { title: 'What Are Payment Facilitators and How They Simplify and Accelerate Your Payment Processes', href: 'blog-payment-facilitator.html', image: 'Blog Page images/Tilli Blog Images/monay-payment-facilitator-1080x627.jpg', category: 'billing-payments', author: 'Tilli Software', date: 'June 26, 2023', dateISO: '2023-06-26' }
                 ];
             }
 
@@ -235,8 +326,14 @@
                 const d = new Date(s);
                 return isNaN(d) ? 0 : d.getTime();
             }
-            // Take the first 6 posts in their original order from blog.html
-            posts = posts.slice(0, 6);
+            // Take the latest 6 posts by date
+            posts = posts
+                .sort((a, b) => {
+                    const ta = parseTs(a);
+                    const tb = parseTs(b);
+                    return tb - ta;
+                })
+                .slice(0, 6);
 
             const track = document.getElementById('latest-posts');
             const dots = document.getElementById('posts-dots');

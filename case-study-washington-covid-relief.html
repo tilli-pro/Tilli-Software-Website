@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study – Helping 30,000 People Find COVID-19 Relief</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Scoped styles */
+        .cs-post-page .hero { margin-top: 90px; padding: 1.75rem 0 1.25rem; background: linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 100%); border-bottom: 1px solid #E5E7EB; }
+        .cs-post-page .meta { color:#6B7280; font-size:.95rem; }
+        .cs-post-layout { display:grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin-top: 1.25rem; }
+        .cs-article { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:12px; padding:1rem 1.25rem; box-shadow:0 12px 24px rgba(17,24,39,0.06); }
+        .hero-media { margin-top:.75rem; display:flex; align-items:center; justify-content:center; }
+        .hero-media img { width:100%; max-width:980px; height:auto; border-radius:12px; box-shadow:0 16px 36px rgba(17,24,39,0.12); }
+        .partner-eyebrow { margin:.6rem 0 .25rem; color:#0B64D8; font-weight:800; letter-spacing:.02em; text-transform:uppercase; }
+        .partner-logo { display:flex; align-items:center; gap:.5rem; margin:.15rem 0 .35rem; }
+        .partner-logo img { height:24px; width:auto; filter: none; }
+        .section { margin-top:1rem; }
+        .kpis { display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin:.6rem 0 1rem; }
+        .kpi { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; padding:1rem; text-align:center; box-shadow:0 12px 26px rgba(17,24,39,0.06); }
+        .kpi .num { display:block; font-size:1.6rem; font-weight:900; color:#0B64D8; }
+        .kpi .label { display:block; margin-top:.25rem; color:#4B5563; font-weight:600; }
+        .phase { display:grid; grid-template-columns: 1fr; gap: 12px; margin:.5rem 0 1rem; }
+        .phase h3 { margin:.1rem 0; }
+        .phase .media { display:flex; align-items:center; justify-content:center; }
+        .phase .media img { width:100%; max-width:420px; height:auto; border-radius:12px; box-shadow:0 12px 26px rgba(17,24,39,0.10); }
+        .bottomline { background:#0F1E33; color:#FFFFFF; border-radius:12px; padding: .9rem 1rem; display:flex; align-items:center; gap:12px; margin-top: .5rem; box-shadow:0 16px 36px rgba(15,30,51,.35); }
+        .bottomline .accent { color:#6EC1FF; font-weight:800; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; }
+        .bottomline .media img { width:100%; max-width:520px; height:auto; border-radius:8px; }
+        /* Results two-column layout */
+        .results-grid { display:grid; grid-template-columns: 1.15fr .85fr; gap:16px; align-items:flex-start; margin:.4rem 0 .8rem; }
+        .results-media img { width:100%; max-width:420px; height:auto; border-radius:12px; box-shadow:0 12px 26px rgba(17,24,39,0.10); }
+        @media (max-width: 900px){ .kpis { grid-template-columns: 1fr; } .phase { grid-template-columns: 1fr; } }
+        @media (max-width: 900px){ .results-grid { grid-template-columns: 1fr; } }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if (!window.__includesInit && window.fetch){
+                document.querySelectorAll('[data-include]')?.forEach(async el => {
+                    try { const res = await fetch(el.getAttribute('data-include')); el.outerHTML = await res.text(); } catch(_){}}
+                );
+            }
+        });
+    </script>
+    <meta name="description" content="How Tilli and Washington Gas helped 30,000 people access COVID‑19 relief through a rapid, multi‑channel attestation program across email, IVR, ringless drops, and SMS.">
+</head>
+<body class="cs-post-page">
+    <div data-include="partials/header.html"></div>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <nav class="breadcrumb" style="font-size:.9rem; margin-bottom:.35rem; color: var(--dark-gray);">
+                    <a href="case-studies.html" style="color:inherit; text-decoration:none;">Case Studies</a>
+                    <span> / </span>
+                    <span>Helping 30,000 People Find COVID-19 Relief</span>
+                </nav>
+                <h1 class="page-title">Helping 30,000 People Find COVID-19 Relief</h1>
+                <div class="meta">Published by Tilli Software • April 19, 2022</div>
+            </div>
+        </section>
+
+        <section class="container cs-post-layout">
+            <article class="cs-article">
+                <div class="hero-media"><img src="Case Studies Page/washington.jpg" alt="Washington Gas"></div>
+                <div class="partner-eyebrow">Case study in partnership with Washington Gas</div>
+                <div class="partner-logo"><img src="Tilli Home Page/tilli-washington-gas.png" alt="Washington Gas"></div>
+
+                <div class="section">
+                    <h2>Background and Summary</h2>
+                    <p>Washington Gas is a regulated utility providing natural gas service to more than 1.2 million customers in the District of Columbia, Maryland, and Virginia. The clean‑burning natural gas supplied by Washington Gas is the fuel of choice for more than nine out of ten new home buyers in the D.C. metro area.</p>
+                    <p>In March 2020, COVID‑19 was officially declared a pandemic. Moratoria on utility shut‑offs across 32 states and D.C. halted collections, deferring outstanding utility bills for 12–24 months and creating revenue gaps for Washington Gas.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Problem</h2>
+                    <p>In November 2020, Virginia released COVID relief funds to help customers pay their utility bills. Washington Gas needed to quickly communicate availability and collect digitally signed attestations from eligible customers.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Solution</h2>
+                    <p>Washington Gas partnered with Tilli to deploy a rapid, multi‑channel communications approach to:</p>
+                    <ul>
+                        <li>Make customers aware of available relief options</li>
+                        <li>Obtain digitally signed attestations as proof for regulatory authorities</li>
+                        <li>Help customers receive funds to pay outstanding utility bills</li>
+                    </ul>
+                    <p>Tilli met customers where they are—using personalized email, customized direct mail, interactive voice response (IVR), ringless drops, and SMS. Phase 1 launched within two weeks of requirements.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Results</h2>
+                    <div class="results-grid" role="group" aria-label="Campaign results">
+                        <div class="results-copy">
+                            <p>After collecting digital attestations, Washington Gas assisted <strong>30,000 people</strong> by applying available funds to delinquent accounts—demonstrating the power of multi‑channel outreach and superior service.</p>
+                            <h3 style="margin:.6rem 0 .25rem;">Speed to Credit Attestations – Phase 1</h3>
+                            <p><strong>Developed and launched in 20 days.</strong> In the first phase, Washington Gas sent <strong>60,469</strong> emails to qualified customers:</p>
+                            <ul>
+                                <li>Emails in December 2020 — <strong>24,853</strong></li>
+                                <li>Emails in February 2021 — <strong>35,616</strong></li>
+                            </ul>
+                            <h3 style="margin:.6rem 0 .25rem;">Speed to Credit Attestations – Phase 2</h3>
+                            <p><strong>Developed and launched in 10 days.</strong> Washington Gas introduced IVR/ringless drops and SMS in addition to email. Totals included <strong>88,486</strong> outbound calls, <strong>117,025</strong> texts, and additional emails sent.</p>
+                        </div>
+                        <div class="results-media">
+                            <img src="Case Studies Page/outbound-call.png" alt="Campaign results analytics">
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="bottomline">
+                    <div class="copy">
+                        <div class="accent">Bottom line</div>
+                        <div>UtiliCX platform successfully achieved COVID‑19 Customer Credit Attestations, resulting in over <strong>$8M</strong> in customer credits via two multi‑channel campaigns within the open attestation periods allowed by the State Corporation Commission.</div>
+                    </div>
+                </div>
+
+                <a class="back-link" href="case-studies.html" style="display:inline-flex; align-items:center; gap:.35rem; color:#2563EB; font-weight:600; margin-top:.75rem; text-decoration:none;"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Case Studies</a>
+            </article>
+        </section>
+    </main>
+
+    <div data-include="partials/footer.html"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
