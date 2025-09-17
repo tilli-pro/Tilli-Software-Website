@@ -194,7 +194,7 @@
                                 </div>
                             </div>
                             <div style="padding: 48px; display: flex; flex-direction: column; justify-content: center; order: 2;">
-                                <img src="https://toppng.com/uploads/preview/consolidated-edison-logo-11530966660l7ve47jkos.png" alt="Con Edison" style="height: 100px; width: auto; object-fit: contain; margin-bottom: 24px;">
+                                <img src="Images/consolidated-edison-logo.png" alt="Con Edison" style="height: 100px; width: auto; object-fit: contain; margin-bottom: 24px;">
                                 <h2 style="font-size: 32px; margin-bottom: 16px; color: #1e293b;">Con Edison Reduces Delinquencies by 35% with Smart Nudges</h2>
                                 <p style="color: #64748b; line-height: 1.7; margin-bottom: 24px;">
                                     Con Edison implemented Tilli's Nudge platform to proactively engage customers with personalized payment reminders across WhatsApp, SMS, and email. The AI-driven communication strategy significantly improved payment rates and customer engagement.
@@ -282,7 +282,7 @@
                                 </div>
                             </div>
                             <div style="padding: 48px; display: flex; flex-direction: column; justify-content: center; order: 2;">
-                                <img src="https://mms.businesswire.com/media/20220425005197/en/1430403/4/Frontier_PrimaryLogo_RGB_Red.jpg" alt="Frontier" style="height: 50px; width: auto; object-fit: contain; margin-bottom: 24px;">
+                                <img src="Images/Frontier2025-09-17_11-48-53.png" alt="Frontier" style="height: 50px; width: auto; object-fit: contain; margin-bottom: 24px;">
                                 <h2 style="font-size: 32px; margin-bottom: 16px; color: #1e293b;">Frontier Communications Achieves 50% Cost Savings with tilliX</h2>
                                 <p style="color: #64748b; line-height: 1.7; margin-bottom: 24px;">
                                     Frontier leveraged tilliX's low-code experience platform to build custom payment workflows and automate complex billing scenarios, resulting in significant operational efficiency gains and cost reductions.
@@ -318,7 +318,7 @@
                     <h2 style="font-size: 40px; margin-bottom: 20px;">Ready to Transform Your Payments?</h2>
                     <p style="font-size: 20px; margin-bottom: 32px; opacity: 0.95;">Join industry leaders who trust Tilli to power their payment operations</p>
                     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <a href="contact.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: white; color: #5B9EFF; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                        <a href="contact.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: white; color: #5B9EFF; text-decoration: none; border-radius: 8px; font-weight: 600;" onclick="window.openBookingModal()">
                             Schedule a Demo
                             <i data-lucide="arrow-right" style="width: 20px; height: 20px;"></i>
                         </a>
@@ -409,4 +409,46 @@
         lucide.createIcons();
     </script>
 </body>
-</html>
+</html>    <script>
+// Booking Modal Functions
+window.openBookingModal = function() {
+    let modal = document.getElementById("bookingModal");
+    if (!modal) {
+        modal = document.createElement("div");
+        modal.id = "bookingModal";
+        modal.style.cssText = "display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7);";
+
+        const modalContent = document.createElement("div");
+        modalContent.style.cssText = "position: relative; background-color: white; margin: 2% auto; width: 90%; max-width: 1000px; height: 90%; border-radius: 12px; overflow: hidden;";
+
+        const closeBtn = document.createElement("span");
+        closeBtn.innerHTML = "&times;";
+        closeBtn.style.cssText = "position: absolute; right: 20px; top: 15px; font-size: 35px; font-weight: bold; color: #aaa; cursor: pointer; z-index: 1000;";
+        closeBtn.onclick = function() { window.closeBookingModal(); };
+
+        const iframe = document.createElement("iframe");
+        iframe.src = "https://outlook.office.com/book/TlliSales@utilli.com/?ismsaljsauthenabled";
+        iframe.style.cssText = "width: 100%; height: 100%; border: 0;";
+        iframe.scrolling = "yes";
+
+        modalContent.appendChild(closeBtn);
+        modalContent.appendChild(iframe);
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
+
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                window.closeBookingModal();
+            }
+        };
+    }
+    modal.style.display = "block";
+}
+
+window.closeBookingModal = function() {
+    const modal = document.getElementById("bookingModal");
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+</script>

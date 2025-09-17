@@ -508,7 +508,7 @@
                         <img src="https://www.washingtongas.com/-/media/d0aa9d6ad19d4666a3028c056fb6aad3.png?h=131&&w=400&la=en&hash=9F0B507DAE8007ECBA46D7F52C04629F84136291" alt="Washington Gas" style="height: 60px; width: auto; object-fit: contain;">
                     </div>
                     <div class="clients-carousel-item">
-                        <img src="https://toppng.com/uploads/preview/consolidated-edison-logo-11530966660l7ve47jkos.png" alt="Con Edison" style="height: 160px; min-width: 320px; object-fit: contain;">
+                        <img src="Images/consolidated-edison-logo.png" alt="Con Edison" style="height: 160px; min-width: 320px; object-fit: contain;">
                     </div>
                     <div class="clients-carousel-item">
                         <img src="https://www.freeman.com/wp-content/uploads/2024/10/freeman-logo@2x-1.png" alt="Freeman" style="height: 60px; width: auto; object-fit: contain;">
@@ -528,14 +528,14 @@
                         <img src="https://www.caresource.com/wp-content/themes/the-next-generation/assets/images/cs-tertiary-primary.svg" alt="CareSource" style="height: 60px; width: auto; object-fit: contain;">
                     </div>
                     <div class="clients-carousel-item">
-                        <img src="https://mms.businesswire.com/media/20220425005197/en/1430403/4/Frontier_PrimaryLogo_RGB_Red.jpg" alt="Frontier" style="height: 80px; width: auto; min-width: 140px; object-fit: contain;">
+                        <img src="Images/Frontier2025-09-17_11-48-53.png" alt="Frontier" style="height: 80px; width: auto; min-width: 140px; object-fit: contain;">
                     </div>
                     <!-- Duplicate set for seamless scrolling -->
                     <div class="clients-carousel-item">
                         <img src="https://www.washingtongas.com/-/media/d0aa9d6ad19d4666a3028c056fb6aad3.png?h=131&&w=400&la=en&hash=9F0B507DAE8007ECBA46D7F52C04629F84136291" alt="Washington Gas" style="height: 60px; width: auto; object-fit: contain;">
                     </div>
                     <div class="clients-carousel-item">
-                        <img src="https://toppng.com/uploads/preview/consolidated-edison-logo-11530966660l7ve47jkos.png" alt="Con Edison" style="height: 160px; min-width: 320px; object-fit: contain;">
+                        <img src="Images/consolidated-edison-logo.png" alt="Con Edison" style="height: 160px; min-width: 320px; object-fit: contain;">
                     </div>
                     <div class="clients-carousel-item">
                         <img src="https://www.freeman.com/wp-content/uploads/2024/10/freeman-logo@2x-1.png" alt="Freeman" style="height: 60px; width: auto; object-fit: contain;">
@@ -555,7 +555,7 @@
                         <img src="https://www.caresource.com/wp-content/themes/the-next-generation/assets/images/cs-tertiary-primary.svg" alt="CareSource" style="height: 60px; width: auto; object-fit: contain;">
                     </div>
                     <div class="clients-carousel-item">
-                        <img src="https://mms.businesswire.com/media/20220425005197/en/1430403/4/Frontier_PrimaryLogo_RGB_Red.jpg" alt="Frontier" style="height: 80px; width: auto; min-width: 140px; object-fit: contain;">
+                        <img src="Images/Frontier2025-09-17_11-48-53.png" alt="Frontier" style="height: 80px; width: auto; min-width: 140px; object-fit: contain;">
                     </div>
                 </div>
             </div>
@@ -818,36 +818,57 @@
         }
 
         // Booking Modal Functions
-        function openBookingModal() {
-            const modal = document.getElementById('bookingModal');
+        window.openBookingModal = function() {
+            let modal = document.getElementById('bookingModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'bookingModal';
+                modal.style.cssText = 'display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7);';
 
-            // Show modal
-            modal.classList.add('show');
+                const modalContent = document.createElement('div');
+                modalContent.style.cssText = 'position: relative; background-color: white; margin: 2% auto; width: 90%; max-width: 1000px; height: 90%; border-radius: 12px; overflow: hidden;';
+
+                const closeBtn = document.createElement('span');
+                closeBtn.innerHTML = '&times;';
+                closeBtn.style.cssText = 'position: absolute; right: 20px; top: 15px; font-size: 35px; font-weight: bold; color: #aaa; cursor: pointer; z-index: 1000;';
+                closeBtn.onclick = function() { window.closeBookingModal(); };
+
+                const iframe = document.createElement('iframe');
+                iframe.src = 'https://outlook.office.com/book/TlliSales@utilli.com/?ismsaljsauthenabled';
+                iframe.style.cssText = 'width: 100%; height: 100%; border: 0;';
+                iframe.scrolling = 'yes';
+
+                modalContent.appendChild(closeBtn);
+                modalContent.appendChild(iframe);
+                modal.appendChild(modalContent);
+                document.body.appendChild(modal);
+
+                modal.onclick = function(event) {
+                    if (event.target === modal) {
+                        window.closeBookingModal();
+                    }
+                };
+            }
+            modal.style.display = 'block';
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
 
             // Track event (for analytics if needed)
             console.log('Demo scheduling modal opened');
         }
 
-        function closeBookingModal() {
+        window.closeBookingModal = function() {
             const modal = document.getElementById('bookingModal');
-            modal.classList.remove('show');
-            document.body.style.overflow = ''; // Restore scrolling
-
-            // Optional: Clear iframe to stop any ongoing processes
-            const iframe = document.getElementById('bookingFrame');
-            const currentSrc = iframe.src;
-            iframe.src = '';
-            setTimeout(() => {
-                iframe.src = currentSrc;
-            }, 100);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = ''; // Restore scrolling
+            }
         }
 
         // Close modal when clicking outside
         window.addEventListener('click', function(event) {
             const modal = document.getElementById('bookingModal');
             if (event.target === modal) {
-                closeBookingModal();
+                window.closeBookingModal();
             }
         });
 
@@ -855,8 +876,8 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 const modal = document.getElementById('bookingModal');
-                if (modal.classList.contains('show')) {
-                    closeBookingModal();
+                if (modal && modal.style.display === 'block') {
+                    window.closeBookingModal();
                 }
             }
         });
