@@ -382,7 +382,7 @@ function animateCounter(element) {
     requestAnimationFrame(updateCounter);
 }
 
-// Button click effects
+// Button click effects and actions
 document.addEventListener('click', function(e) {
     if (e.target.matches('.btn-primary, .btn-secondary, .cta-button')) {
         // Create ripple effect
@@ -392,7 +392,7 @@ document.addEventListener('click', function(e) {
         const size = Math.max(rect.width, rect.height);
         const x = e.clientX - rect.left - size / 2;
         const y = e.clientY - rect.top - size / 2;
-        
+
         ripple.style.cssText = `
             position: absolute;
             width: ${size}px;
@@ -405,14 +405,92 @@ document.addEventListener('click', function(e) {
             animation: ripple 0.6s linear;
             pointer-events: none;
         `;
-        
+
         button.style.position = 'relative';
         button.style.overflow = 'hidden';
         button.appendChild(ripple);
-        
+
         setTimeout(() => ripple.remove(), 600);
+
+        // Handle button actions
+        const buttonText = button.textContent.trim();
+
+        if (buttonText === 'Get Started Free' || buttonText === 'Start Free Trial') {
+            window.location.href = '/free-trial.html';
+        } else if (buttonText === 'Book a Demo' || buttonText === 'Request Demo') {
+            window.location.href = '/contact.html#demo';
+        } else if (buttonText === 'Calculate ROI' || buttonText === 'Calculate Your Savings') {
+            window.location.href = '/calculator.html';
+        } else if (buttonText === 'Learn More') {
+            // Find the closest section and determine appropriate page
+            const section = button.closest('section');
+            if (section && section.id) {
+                window.location.href = `#${section.id}`;
+            }
+        }
     }
 });
+
+// Notification function for demo purposes
+function showNotification(message, type = 'success') {
+    // Remove any existing notifications
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+
+    // Create new notification
+    const notification = document.createElement('div');
+    notification.className = `notification ${type} show`;
+    notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+        <span>${message}</span>
+    `;
+
+    document.body.appendChild(notification);
+
+    // Auto-remove after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Counter animation function
+function animateCounter(element) {
+    const target = parseInt(element.textContent.replace(/[^0-9]/g, ''));
+    const duration = 2000;
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+
+    const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+            element.textContent = Math.floor(current) + (element.textContent.includes('+') ? '+' : element.textContent.includes('%') ? '%' : '');
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = element.textContent;
+        }
+    };
+
+    updateCounter();
+}
+
+// Function to update the next bill date dynamically
+function updateNextBillDate() {
+    const nextBillDateElement = document.getElementById('next-bill-date');
+    if (nextBillDateElement) {
+        const today = new Date();
+        const nextBillDate = new Date(today);
+        nextBillDate.setDate(today.getDate() + 30);
+
+        const options = { month: 'short', day: 'numeric', year: 'numeric' };
+        const formattedDate = nextBillDate.toLocaleDateString('en-US', options);
+
+        nextBillDateElement.textContent = formattedDate;
+    }
+}
 
 // Add ripple animation CSS
 const style = document.createElement('style');
@@ -544,3 +622,97 @@ keyboardStyle.textContent = `
     }
 `;
 document.head.appendChild(keyboardStyle);
+
+// SMS Conversation Animation for tilliX
+function animateSMSConversation() {
+    const smsMessages = document.querySelectorAll('.sms-message.animate-message');
+    const typingIndicator = document.querySelector('.typing-indicator');
+
+    if (smsMessages.length === 0) return;
+
+    // Reset all messages
+    smsMessages.forEach(msg => {
+        msg.classList.remove('visible');
+        msg.style.opacity = '0';
+    });
+
+    // Animate messages sequentially
+    smsMessages.forEach((message, index) => {
+        const delay = parseInt(message.dataset.delay) || (index * 1500);
+
+        // Show typing indicator before company messages
+        if (message.classList.contains('company') && typingIndicator && index > 0) {
+            setTimeout(() => {
+                typingIndicator.style.display = 'flex';
+                // Auto-scroll to bottom
+                const container = typingIndicator.parentElement;
+                container.scrollTop = container.scrollHeight;
+            }, delay - 800);
+
+            setTimeout(() => {
+                typingIndicator.style.display = 'none';
+            }, delay - 100);
+        }
+
+        // Show the message
+        setTimeout(() => {
+            message.style.opacity = '1';
+            message.classList.add('visible');
+
+            // Auto-scroll to show new message
+            const container = message.parentElement;
+            container.scrollTop = container.scrollHeight;
+
+            // Add subtle bounce effect for customer message
+            if (message.classList.contains('customer')) {
+                message.style.animation = 'slideInUp 0.5s ease, bounce 0.3s ease 0.5s';
+            }
+        }, delay);
+    });
+}
+
+// Trigger animation when tilliX card comes into view
+const observeSMSAnimation = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Start animation
+            animateSMSConversation();
+
+            // Restart animation every 10 seconds while in view
+            const animationInterval = setInterval(() => {
+                if (entry.isIntersecting) {
+                    animateSMSConversation();
+                } else {
+                    clearInterval(animationInterval);
+                }
+            }, 10000);
+
+            // Store interval ID for cleanup
+            entry.target.dataset.intervalId = animationInterval;
+        } else {
+            // Clear interval when out of view
+            const intervalId = entry.target.dataset.intervalId;
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+        }
+    });
+}, { threshold: 0.5 });
+
+// Start observing when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const smsConversation = document.querySelector('.sms-conversation');
+    if (smsConversation) {
+        observeSMSAnimation.observe(smsConversation);
+    }
+});
+
+// Add bounce keyframe animation
+const bounceStyle = document.createElement('style');
+bounceStyle.textContent = `
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+`;
+document.head.appendChild(bounceStyle);

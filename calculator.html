@@ -1,12 +1,567 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>Calculator - Tilli Payment & Communication Platform</title>
+    <meta name="description" content="Learn about Calculator at Tilli. Transform your payment operations with our AI-powered platform.">
+    <meta name="keywords" content="Tilli, Calculator, payment processing, communication platform">
+    <link rel="canonical" href="https://www.tilli.pro/calculator">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.tilli.pro/calculator">
+    <meta property="og:title" content="Calculator - Tilli">
+    <meta property="og:description" content="Explore Calculator and discover how Tilli can transform your business.">
+    <meta property="og:image" content="https://www.tilli.pro/images/tilli-og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tilli">
+    <meta property="og:locale" content="en_US">
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tilli_software">
+    <meta name="twitter:creator" content="@tilli_software">
+    <meta name="twitter:image" content="https://www.tilli.pro/images/tilli-social-banner.png">
+    <!-- SEO Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tilli – Savings Calculator</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Tilli Software, Inc.">
+    <meta name="publisher" content="Tilli">
+    <meta name="copyright" content="© 2025 Tilli. All rights reserved.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#5B9EFF">
+    <meta name="msapplication-TileColor" content="#5B9EFF">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Tilli",
+    "url": "https://www.tilli.pro/calculator",
+    "description": "Learn about Calculator at Tilli. Transform your payment operations with our AI-powered platform."
+}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- RB2B Tracking -->
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://b2bjsstore.s3.us-west-2.amazonaws.com/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("VN080HX77V6J");</script>
+    <style>
+        /* Calculator Page Specific Styles */
+        .calculator-hero {
+            background: linear-gradient(135deg, #f8fafb 0%, #e8f0ff 100%);
+            padding: 2rem 0;
+            margin-top: 80px;
+        }
+
+        .hero-content-centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #4099FF;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title-centered {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .highlight-blue {
+            color: #4099FF;
+        }
+
+        .hero-subtitle-centered {
+            font-size: 1rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            line-height: 1.5;
+        }
+
+        .hero-highlights-centered {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+
+        .highlight-item-centered {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.875rem;
+        }
+
+        .highlight-icon {
+            color: #10b981;
+            font-size: 1rem;
+        }
+
+        .hero-buttons-centered {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-large, .btn-secondary-large {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-large {
+            background: #4099FF;
+            color: white;
+        }
+
+        .btn-primary-large:hover {
+            background: #3080e0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary-large {
+            background: white;
+            color: #4099FF;
+            border: 2px solid #4099FF;
+        }
+
+        .btn-secondary-large:hover {
+            background: #f0f7ff;
+        }
+
+        .calculator-section {
+            padding: 2rem 0;
+            background: white;
+        }
+
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .calculator-form {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-step h3 {
+            font-size: 1.25rem;
+            color: #374151;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4099FF;
+            box-shadow: 0 0 0 3px rgba(64, 153, 255, 0.1);
+        }
+
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .industry-btn {
+            padding: 0.75rem 1rem;
+            background: #f3f4f6;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            text-align: left;
+        }
+
+        .industry-btn:hover {
+            background: #e5e7eb;
+        }
+
+        .industry-btn.active {
+            background: #e8f0ff;
+            border-color: #4099FF;
+            color: #4099FF;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .size-btn {
+            flex: 1;
+            padding: 0.75rem;
+            background: #f3f4f6;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .size-btn:hover {
+            background: #e5e7eb;
+        }
+
+        .size-btn.active {
+            background: #e8f0ff;
+            border-color: #4099FF;
+            color: #4099FF;
+        }
+
+        .slider-container {
+            margin-top: 1rem;
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4099FF;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4099FF;
+            cursor: pointer;
+            border: none;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .form-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #4099FF;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3080e0;
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        .calculator-results {
+            background: linear-gradient(135deg, #4099FF, #5B9EFF);
+            border-radius: 12px;
+            padding: 2rem;
+            color: white;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .results-header {
+            margin-bottom: 2rem;
+        }
+
+        .results-title-white {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .result-item.highlight {
+            border-bottom: 2px solid white;
+        }
+
+        .result-label {
+            display: block;
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label-white {
+            color: white;
+        }
+
+        .result-value {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .result-value-white {
+            color: white;
+        }
+
+        .results-actions {
+            margin-top: 2rem;
+        }
+
+        .results-actions .btn-primary {
+            width: 100%;
+            background: white;
+            color: #4099FF;
+        }
+
+        .results-actions .btn-primary:hover {
+            background: #f0f7ff;
+        }
+
+        .info-sections {
+            padding: 4rem 0;
+            background: #f8fafb;
+        }
+
+        .info-section {
+            margin-bottom: 4rem;
+        }
+
+        .info-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: #e8f0ff;
+            color: #4099FF;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .info-text h2 {
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .info-text p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .savings-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .savings-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #374151;
+        }
+
+        .savings-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .info-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculation-visual,
+        .savings-visual {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .hero-visual-centered {
+            display: none;
+        }
+
+        .skip-link {
+            color: #4099FF;
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .skip-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-results {
+                position: static;
+                margin-top: 2rem;
+            }
+
+            .info-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title-centered {
+                font-size: 1.75rem;
+            }
+
+            .calculator-hero {
+                padding: 1.5rem 0;
+            }
+
+            .hero-subtitle-centered {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -14,7 +569,7 @@
             <div class="nav-container">
                 <div class="logo">
                     <a href="index.html" aria-label="Tilli Home">
-                        <img src="Developer page/Logo.png" alt="Tilli Logo">
+                        <img src="https://tilli.pro/wp-content/uploads/2022/04/22_Utilli_Icon_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
                     </a>
                 </div>
                 <ul class="nav-menu">
@@ -22,6 +577,8 @@
                     <li><a href="industries.html">Industries</a></li>
                     <li><a href="about.html">Company</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="press.html">Press</a></li>
+                    <li><a href="case-studies.html">Case Studies</a></li>
                 </ul>
                 <a class="cta-button" href="contact.html">Contact Us</a>
                 <div class="hamburger">
@@ -73,10 +630,6 @@
                             </div>
                         </div>
 
-                        <div class="hero-buttons-centered">
-                            <a href="index.html#products" class="btn-primary-large">View our Products <i class="fas fa-arrow-right"></i></a>
-                            <a href="contact.html" class="btn-secondary-large">Book a Demo <i class="fas fa-arrow-right"></i></a>
-                        </div>
                     </div>
                     
                     <div class="hero-visual-centered">
@@ -430,6 +983,11 @@
                         </div>
                         <p>We're devoted to creating a global consumer environment that feels more personalized and connected than ever before. Through cloud-based, customer-centric tools, we're revolutionizing CPaaS and payment processing landscapes to create avenues that help businesses and people connect, collaborate, and make payments in real-time.</p>
                         <a href="about.html" class="btn-link">More about us →</a>
+                        <div style="margin-top: 20px;">
+                            <a href="anti-slavery-policy.html" class="btn-link" style="display: block; margin: 4px 0;">Anti-Slavery & Anti-Trafficking Policy →</a>
+                            <a href="privacy-policy.html" class="btn-link" style="display: block; margin: 4px 0;">Privacy Policy →</a>
+                            <a href="terms-conditions.html" class="btn-link" style="display: block; margin: 4px 0;">Terms and Conditions →</a>
+                        </div>
                     </div>
                     <div class="footer-links">
                         <div class="footer-column">
@@ -452,7 +1010,7 @@
                             <h4>Company</h4>
                             <ul>
                                 <li><a href="about.html">About Us</a></li>
-                                <li><a href="#">Careers</a></li>
+                                <li><a href="careers.html">Careers</a></li>
                                 <li><a href="#">Services</a></li>
                             </ul>
                         </div>
@@ -469,10 +1027,10 @@
                 </div>
                 <div class="footer-bottom">
                     <div class="social-links">
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@tillisoftware" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/tillisoftware" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.facebook.com/tillisoftware" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                     </div>
                     <div class="footer-legal">
                         <p>&copy; 2025 Tilli. All rights reserved.</p>
@@ -509,6 +1067,34 @@
                     this.classList.add('active');
                 });
             });
+
+            // Industry search functionality
+            const industrySearch = document.getElementById('industry-search');
+            if (industrySearch) {
+                industrySearch.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    industryBtns.forEach(btn => {
+                        const industry = btn.textContent.toLowerCase();
+                        if (industry.includes(searchTerm) || searchTerm === '') {
+                            btn.style.display = 'block';
+                        } else {
+                            btn.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            // Skip link functionality
+            const skipLink = document.querySelector('.skip-link');
+            if (skipLink) {
+                skipLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Clear any selected industry
+                    industryBtns.forEach(b => b.classList.remove('active'));
+                    // Move to next step
+                    document.getElementById('next-step').click();
+                });
+            }
 
             // Company size selection
             const sizeBtns = document.querySelectorAll('.size-btn');
@@ -616,8 +1202,65 @@
 
             // Download estimate
             document.getElementById('download-estimate').addEventListener('click', function() {
-                // In a real implementation, this would generate and download a PDF
-                alert('Download feature would generate a detailed PDF report of your savings estimate.');
+                // Get the values from the results
+                const savings = document.getElementById('estimated-savings').textContent;
+                const newCost = document.getElementById('new-cost').textContent;
+                const currentCost = document.getElementById('current-cost').textContent;
+
+                // Create a downloadable text report
+                const report = `
+Tilli Savings Estimate Report
+==============================
+Generated: ${new Date().toLocaleDateString()}
+
+EXECUTIVE SUMMARY
+-----------------
+Estimated Annual Savings: ${savings}
+Your Current Cost: ${currentCost}
+Your New Cost with Tilli: ${newCost}
+
+KEY BENEFITS WITH TILLI
+-----------------------
+• 40% reduction in billing operational costs
+• 3X faster payment collection
+• 60% reduction in customer service inquiries
+• 80% reduction in print and mail costs
+• Increased digital adoption rates
+
+HOW WE CALCULATE YOUR SAVINGS
+------------------------------
+Our estimates are based on:
+• Real customer data from similar businesses
+• Industry benchmarks and best practices
+• Proven ROI from existing Tilli implementations
+• Your specific business parameters
+
+NEXT STEPS
+----------
+1. Schedule a personalized demo at tilli.pro
+2. Get a detailed ROI analysis for your business
+3. Explore our flexible pricing options
+4. Start your digital transformation journey
+
+Contact Us
+----------
+Website: https://tilli.pro
+Email: info@tilli.pro
+Phone: 1-800-TILLI-PRO
+
+© 2025 Tilli. All rights reserved.
+                `;
+
+                // Create blob and download
+                const blob = new Blob([report], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'tilli-savings-estimate-' + Date.now() + '.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
             });
         });
     </script>
