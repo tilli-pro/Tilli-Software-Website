@@ -95,7 +95,7 @@
             <div class="nav-container">
                 <div class="tilli-logo.png">
                     <a href="index.html" aria-label="Tilli Home">
-                        <img src="https://tilli.pro/wp-content/uploads/2022/04/22_Utilli_Icon_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
+                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
                     </a>
                 </div>
                 <ul class="nav-menu">
@@ -123,7 +123,7 @@
                 <p class="hero-subtitle">Join Fortune 500 companies that trust Tilli to transform paper bills into digital experiences. Reduce operational costs by $8 per bill, accelerate payments by 15 days, and achieve 95% customer satisfaction - all while meeting enterprise compliance standards.</p>
                 <div class="hero-buttons" style="display: flex; gap: 0.75rem; flex-wrap: nowrap;">
                     <button class="btn-primary" style="padding: 0.65rem 1.25rem; font-size: 0.9rem; white-space: nowrap;">Get Started Free</button>
-                    <button class="btn-secondary" onclick="window.openBookingModal()" style="padding: 0.65rem 1.25rem; font-size: 0.9rem; white-space: nowrap;">Book a Demo</button>
+                    <button type="button" class="btn-secondary" onclick="event.preventDefault(); event.stopPropagation(); window.openBookingModal(); return false;" style="padding: 0.65rem 1.25rem; font-size: 0.9rem; white-space: nowrap;">Book a Demo</button>
                     <a href="calculator.html" class="btn-secondary" style="text-decoration: none; display: inline-flex; align-items: center; padding: 0.65rem 1.25rem; font-size: 0.9rem; white-space: nowrap;">Calculate Savings</a>
                 </div>
             </div>
@@ -2726,7 +2726,7 @@
                 <div class="footer-main">
                     <div class="footer-brand">
                         <div class="footer-logo">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTAwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxNSIgZmlsbD0iIzQwOTlGRiIgZmlsbC1vcGFjaXR5PSIwLjIiLz4KPHN2ZyB4PSI0MCIgeT0iMTAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDYwIDIwIiBmaWxsPSJub25lIj4KPHRleHQgeD0iMCIgeT0iMTUiIGZvbnQtZmFtaWx5PSJJbnRlciIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzQwOTlGRiI+dGlsbGk8L3RleHQ+Cjwvc3ZnPgo8L3N2Zz4K" alt="Tilli Logo">
+                            <img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo">
                         </div>
                         <p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
                         <div class="newsletter">
@@ -3173,6 +3173,19 @@
         // Ensure functions are available when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, checking button functions...');
+            console.log('openBookingModal function exists:', typeof window.openBookingModal === 'function');
+
+            // Directly attach event listener to the Book a Demo button
+            const bookDemoBtn = document.querySelector('.hero-buttons .btn-secondary');
+            if (bookDemoBtn && bookDemoBtn.textContent.includes('Book a Demo')) {
+                console.log('Found Book a Demo button, attaching direct listener');
+                bookDemoBtn.addEventListener('click', function(e) {
+                    console.log('Book a Demo clicked directly');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.openBookingModal();
+                });
+            }
 
             // Check if functions are defined
             console.log('viewBill defined:', typeof window.viewBill);
