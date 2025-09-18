@@ -62,7 +62,39 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+        /* Modern Flat Dropdown Styles */
+        #contact-form select {
+            background: white !important;
+            border: 2px solid #e5e7eb !important;
+            transition: all 0.2s ease !important;
+        }
+        #contact-form select:hover {
+            border-color: #9ca3af !important;
+        }
+        #contact-form select:focus {
+            outline: none !important;
+            border-color: #5B9EFF !important;
+            box-shadow: 0 0 0 3px rgba(91, 158, 255, 0.1) !important;
+        }
+        #contact-form input[type="text"],
+        #contact-form input[type="email"],
+        #contact-form input[type="tel"],
+        #contact-form textarea {
+            border: 2px solid #e5e7eb !important;
+            transition: all 0.2s ease !important;
+        }
+        #contact-form input:hover,
+        #contact-form textarea:hover {
+            border-color: #9ca3af !important;
+        }
+        #contact-form input:focus,
+        #contact-form textarea:focus {
+            outline: none !important;
+            border-color: #5B9EFF !important;
+            box-shadow: 0 0 0 3px rgba(91, 158, 255, 0.1) !important;
+        }
+    </style>
     <!-- RB2B Tracking -->
     <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://b2bjsstore.s3.us-west-2.amazonaws.com/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("VN080HX77V6J");</script>
 </head>
@@ -111,54 +143,121 @@
                     </div>
 
                     <div class="lead-form" style="width:100%;max-width:560px">
-                        <form id="contact-form" class="contact-form" novalidate>
-                            <label style="display:block;font-weight:600;margin-bottom:6px">Company Email<span style="color:#ef4444"> *</span></label>
-                            <input id="companyEmail" type="email" placeholder="Company email" required aria-describedby="emailError">
-                            <div id="emailError" class="input-error" style="display:none;color:#ef4444;font-size:14px;margin-top:6px">This email is already registered</div>
-
-                            <label style="display:block;font-weight:600;margin:14px 0 6px">Your Name<span style="color:#ef4444"> *</span></label>
-                            <input id="yourName" type="text" placeholder="John Doe" required>
-
-                            <label style="display:block;font-weight:600;margin:14px 0 6px">Company website</label>
-                            <input id="companyWebsite" type="url" placeholder="https://address.com">
-
-                            <label style="display:block;font-weight:600;margin:14px 0 6px">Primary Product of Interest</label>
-                            <select id="productInterest" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; background: white; color: #1e293b; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%23475569" d="M6 9L1 4h10z"/></svg>'); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; cursor: pointer; transition: border-color 0.2s;">
-                                <option value="">Select a product</option>
-                                <option value="Nudge">Nudge</option>
-                                <option value="tilliX">tilliX</option>
-                                <option value="TilliPay">TilliPay</option>
-                                <option value="Other">Other</option>
-                            </select>
-
-                            <label style="display:block;font-weight:600;margin:14px 0 6px">How can we help?</label>
-                            <textarea id="helpText" rows="5" placeholder="Tell us about your project…"></textarea>
-
-                            <div style="margin-top:24px">
-                                <h4 style="margin-bottom:12px;font-size:16px;color:#1e293b">Human Verification</h4>
-                                <div id="mathChallenge" style="margin-bottom: 16px; padding: 16px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
-                                    <p style="margin: 0 0 12px 0; font-size: 14px; color: #64748b;">Please solve this simple math problem to verify you're human:</p>
-                                    <div style="display: flex; align-items: center; gap: 12px;">
-                                        <span id="mathQuestion" style="font-weight: 600; font-size: 18px; color: #1e293b;"></span>
-                                        <input type="number" id="mathAnswer" style="width: 100px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 16px;">
-                                        <button type="button" onclick="verifyMath()" style="padding: 10px 20px; background: #5B9EFF; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; transition: background 0.2s;" onmouseover="this.style.background='#4a8de8'" onmouseout="this.style.background='#5B9EFF'">Verify</button>
-                                    </div>
-                                    <span id="verifyResult" style="display: block; margin-top: 12px; font-size: 14px; font-weight: 500;"></span>
-                                </div>
-                                <h4 style="margin: 20px 0 12px; font-size: 16px; color: #1e293b;">Agreement</h4>
-                                <div class="form-checkbox" style="margin:8px 0">
-                                    <input type="checkbox" id="brandGuidelines" required>
-                                    <label for="brandGuidelines">I’ve reviewed and agree to Tilli’s Brand Guidelines.</label>
-                                </div>
-                                <div class="form-checkbox" style="margin:8px 0">
-                                    <input type="checkbox" id="codeOfConduct" required>
-                                    <label for="codeOfConduct">I agree to follow Tilli’s Partner Code of Conduct.</label>
-                                </div>
-                                <!-- Honeypot field - invisible to users -->
-                                <input type="text" name="website_url" id="website_url" style="position: absolute; left: -9999px;" tabindex="-1" autocomplete="off">
+                        <form class="contact-form" id="contact-form" onsubmit="handleContactFormSubmit(event)">
+                            <div class="form-row">
+                                <input type="text" name="firstName" placeholder="First Name" required>
+                                <input type="text" name="lastName" placeholder="Last Name" required>
                             </div>
 
-                            <button type="submit" class="btn-primary" id="submitBtn" style="display:inline-flex;align-items:center;gap:8px;opacity:0.6;cursor:not-allowed" disabled>Talk to our Team <i class="fas fa-arrow-right"></i></button>
+                            <div class="form-row">
+                                <input type="email" name="email" placeholder="Email Address" required>
+                                <input type="text" name="company" placeholder="Company Name" required>
+                            </div>
+
+                            <div class="form-row">
+                                <input type="text" name="jobTitle" placeholder="Job Title / Role" required>
+                                <select name="country" id="country-select" required style="padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; font-size: 1rem; color: #374151; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23374151%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 20px; padding-right: 2.5rem; transition: border-color 0.2s; cursor: pointer;">
+                                    <option value="">Select Country</option>
+                                    <option value="US" data-code="+1">United States (+1)</option>
+                                    <option value="CA" data-code="+1">Canada (+1)</option>
+                                    <option value="GB" data-code="+44">United Kingdom (+44)</option>
+                                    <option value="IN" data-code="+91">India (+91)</option>
+                                    <option value="AU" data-code="+61">Australia (+61)</option>
+                                    <option value="DE" data-code="+49">Germany (+49)</option>
+                                    <option value="FR" data-code="+33">France (+33)</option>
+                                    <option value="JP" data-code="+81">Japan (+81)</option>
+                                    <option value="CN" data-code="+86">China (+86)</option>
+                                    <option value="BR" data-code="+55">Brazil (+55)</option>
+                                    <option value="MX" data-code="+52">Mexico (+52)</option>
+                                    <option value="AE" data-code="+971">UAE (+971)</option>
+                                    <option value="SG" data-code="+65">Singapore (+65)</option>
+                                    <option value="NL" data-code="+31">Netherlands (+31)</option>
+                                    <option value="ES" data-code="+34">Spain (+34)</option>
+                                    <option value="IT" data-code="+39">Italy (+39)</option>
+                                    <option value="OTHER">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div style="flex: 1; display: flex; gap: 0.5rem;">
+                                    <input type="text"
+                                           id="phone-code"
+                                           name="phoneCode"
+                                           placeholder="+1"
+                                           value="+1"
+                                           style="width: 80px; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: #f9fafb; font-size: 1rem; color: #374151; transition: border-color 0.2s;"
+                                           readonly>
+                                    <input type="tel"
+                                           name="phone"
+                                           id="phone-number"
+                                           placeholder="Phone Number (optional)"
+                                           style="flex: 1; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; font-size: 1rem; color: #374151; transition: border-color 0.2s;">
+                                </div>
+                                <select name="organizationSize" required style="flex: 1; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; font-size: 1rem; color: #374151; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23374151%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 20px; padding-right: 2.5rem; transition: border-color 0.2s; cursor: pointer;">
+                                    <option value="">Organization Size</option>
+                                    <option value="1-10">1-10 employees</option>
+                                    <option value="11-50">11-50 employees</option>
+                                    <option value="51-200">51-200 employees</option>
+                                    <option value="201-1000">201-1,000 employees</option>
+                                    <option value="1001-5000">1,001-5,000 employees</option>
+                                    <option value="5001+">5,001+ employees</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <select name="useCase" required style="flex: 1; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; font-size: 1rem; color: #374151; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23374151%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 20px; padding-right: 2.5rem; transition: border-color 0.2s; cursor: pointer;">
+                                    <option value="">Primary Use Case</option>
+                                    <option value="billing-automation">Billing Automation</option>
+                                    <option value="payment-processing">Payment Processing</option>
+                                    <option value="customer-communications">Customer Communications</option>
+                                    <option value="digital-transformation">Digital Transformation</option>
+                                    <option value="compliance">Compliance & Security</option>
+                                    <option value="cost-reduction">Cost Reduction</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <select name="monthlyActiveUsers" style="flex: 1; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; font-size: 1rem; color: #374151; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23374151%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 20px; padding-right: 2.5rem; transition: border-color 0.2s; cursor: pointer;">
+                                    <option value="">Monthly Active Users</option>
+                                    <option value="<1000">Less than 1,000</option>
+                                    <option value="1000-10000">1,000 - 10,000</option>
+                                    <option value="10001-50000">10,001 - 50,000</option>
+                                    <option value="50001-100000">50,001 - 100,000</option>
+                                    <option value="100001-500000">100,001 - 500,000</option>
+                                    <option value="500001+">500,000+</option>
+                                </select>
+                            </div>
+
+                            <select name="transactionVolume" style="width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; font-size: 1rem; color: #374151; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23374151%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 20px; padding-right: 2.5rem; transition: border-color 0.2s; cursor: pointer; margin-bottom: 1rem;">
+                                <option value="">Expected Annual Transaction Volume</option>
+                                <option value="<100000">Less than $100,000</option>
+                                <option value="100000-500000">$100,000 - $500,000</option>
+                                <option value="500001-1000000">$500,001 - $1,000,000</option>
+                                <option value="1000001-5000000">$1,000,001 - $5,000,000</option>
+                                <option value="5000001-10000000">$5,000,001 - $10,000,000</option>
+                                <option value="10000001-50000000">$10,000,001 - $50,000,000</option>
+                                <option value="50000001+">$50,000,000+</option>
+                            </select>
+
+                            <textarea name="message" placeholder="Tell us about your specific needs (optional)" rows="3"></textarea>
+
+                            <!-- Math Captcha for Bot Prevention -->
+                            <div style="background: #f9fafb; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                                <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 0.5rem;">
+                                    Security Check: What is <span id="math-num1">5</span> + <span id="math-num2">3</span>?
+                                    <span style="color: #ef4444;">*</span>
+                                </label>
+                                <input type="number"
+                                       id="math-captcha"
+                                       placeholder="Your answer"
+                                       style="width: 120px; padding: 0.5rem; border: 2px solid #e5e7eb; border-radius: 6px; font-size: 1rem;"
+                                       oninput="validateCaptcha()">
+                            </div>
+
+                            <div id="form-status" style="display: none; margin-bottom: 1rem;"></div>
+
+                            <button type="submit" id="submit-btn" class="btn-primary" disabled
+                                    style="width: 100%; padding: 0.875rem 1.5rem; background: #5B9EFF; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: not-allowed; opacity: 0.5; transition: all 0.2s ease;">
+                                Request Information
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -238,209 +337,221 @@
     </footer>
 
     <script>
+    // Math Captcha variables
+    let mathNum1 = 0;
+    let mathNum2 = 0;
     let mathAnswer = 0;
-    let isHumanVerified = false;
 
-    function generateMathQuestion() {
-        const num1 = Math.floor(Math.random() * 10) + 1;
-        const num2 = Math.floor(Math.random() * 10) + 1;
-        mathAnswer = num1 + num2;
-        return `${num1} + ${num2} = `;
+    // Generate random math problem
+    function generateMathCaptcha() {
+        mathNum1 = Math.floor(Math.random() * 10) + 1;
+        mathNum2 = Math.floor(Math.random() * 10) + 1;
+        mathAnswer = mathNum1 + mathNum2;
+
+        const num1Element = document.getElementById('math-num1');
+        const num2Element = document.getElementById('math-num2');
+        if (num1Element) num1Element.textContent = mathNum1;
+        if (num2Element) num2Element.textContent = mathNum2;
+
+        const captchaInput = document.getElementById('math-captcha');
+        if (captchaInput) {
+            captchaInput.value = '';
+            validateCaptcha();
+        }
     }
 
-    // Initialize math question on page load
-    window.addEventListener('DOMContentLoaded', function() {
-        const question = generateMathQuestion();
-        document.getElementById('mathQuestion').textContent = question;
-        updateSubmitButton();
-    });
-
-    function verifyMath() {
-        const userAnswer = parseInt(document.getElementById('mathAnswer').value);
-        const result = document.getElementById('verifyResult');
+    // Validate captcha answer and update submit button
+    function validateCaptcha() {
+        const captchaInput = document.getElementById('math-captcha');
+        const submitBtn = document.getElementById('submit-btn');
+        const userAnswer = parseInt(captchaInput.value);
 
         if (userAnswer === mathAnswer) {
-            result.textContent = '✓ Verified! You can now submit the form.';
-            result.style.color = '#22c55e';
-            isHumanVerified = true;
-        } else {
-            result.textContent = '✗ Incorrect. Please try again.';
-            result.style.color = '#ef4444';
-            const question = generateMathQuestion();
-            document.getElementById('mathQuestion').textContent = question;
-            document.getElementById('mathAnswer').value = '';
-            isHumanVerified = false;
-        }
-        updateSubmitButton();
-    }
-
-    function updateSubmitButton() {
-        const submitBtn = document.getElementById('submitBtn');
-        const brandGuidelines = document.getElementById('brandGuidelines').checked;
-        const codeOfConduct = document.getElementById('codeOfConduct').checked;
-
-        if (brandGuidelines && codeOfConduct && isHumanVerified) {
             submitBtn.disabled = false;
             submitBtn.style.opacity = '1';
             submitBtn.style.cursor = 'pointer';
+            captchaInput.style.borderColor = '#10b981';
+
+            if (!captchaInput.parentElement.querySelector('.captcha-success')) {
+                const successIcon = document.createElement('span');
+                successIcon.className = 'captcha-success';
+                successIcon.innerHTML = ' ✓';
+                successIcon.style.color = '#10b981';
+                successIcon.style.fontWeight = 'bold';
+                captchaInput.parentElement.querySelector('label').appendChild(successIcon);
+            }
         } else {
             submitBtn.disabled = true;
-            submitBtn.style.opacity = '0.6';
+            submitBtn.style.opacity = '0.5';
             submitBtn.style.cursor = 'not-allowed';
+            captchaInput.style.borderColor = userAnswer && userAnswer !== mathAnswer ? '#ef4444' : '#e5e7eb';
+
+            const successIcon = captchaInput.parentElement.querySelector('.captcha-success');
+            if (successIcon) successIcon.remove();
         }
     }
 
-    // Add event listeners for checkboxes
-    document.getElementById('brandGuidelines').addEventListener('change', updateSubmitButton);
-    document.getElementById('codeOfConduct').addEventListener('change', updateSubmitButton);
+    // Handle Contact Form Submission
+    async function handleContactFormSubmit(event) {
+        event.preventDefault();
 
-    // Make verifyMath available globally
-    window.verifyMath = verifyMath;
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const statusDiv = document.getElementById('form-status');
 
-    // VTiger CRM Integration
-    async function submitToVTiger(leadData) {
-        // Store lead data in localStorage as backup
-        const leads = JSON.parse(localStorage.getItem('pendingLeads') || '[]');
-        leads.push({ ...leadData, timestamp: new Date().toISOString() });
-        localStorage.setItem('pendingLeads', JSON.stringify(leads));
+        // Verify captcha one more time
+        const captchaInput = document.getElementById('math-captcha');
+        const userAnswer = parseInt(captchaInput.value);
+        if (userAnswer !== mathAnswer) {
+            statusDiv.innerHTML = `
+                <div style="background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 8px;">
+                    <i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i>
+                    Please solve the math problem correctly to continue.
+                </div>
+            `;
+            statusDiv.style.display = 'block';
+            return;
+        }
 
-        // Since direct browser-to-VTiger calls may face CORS issues,
-        // we'll use a webhook/proxy approach similar to monay.com
+        // Get form data
+        const formData = new FormData(form);
 
-        // Use the backend API endpoint (same as demo form)
+        // Combine phone code with number
+        const phoneCode = formData.get('phoneCode') || '';
+        const phoneNumber = formData.get('phone') || '';
+        const fullPhone = phoneNumber ? `${phoneCode} ${phoneNumber}` : '';
+
+        const data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            company: formData.get('company'),
+            phone: fullPhone,
+            jobTitle: formData.get('jobTitle') || '',
+            country: formData.get('country') || '',
+            organizationSize: formData.get('organizationSize') || '',
+            useCase: formData.get('useCase') || '',
+            monthlyActiveUsers: formData.get('monthlyActiveUsers') || '',
+            transactionVolume: formData.get('transactionVolume') || '',
+            message: formData.get('message') || '',
+            formType: 'Contact Form',
+            pageUrl: window.location.href,
+            submissionDate: new Date().toISOString(),
+            source: 'Tilli Website - Contact Form'
+        };
+
+        // Disable submit button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        statusDiv.style.display = 'none';
+
         try {
             const apiUrl = window.location.hostname === 'localhost'
                 ? '/api/vtiger'
                 : 'https://tillisoftware.com/api/vtiger';
 
-            const apiResponse = await fetch(apiUrl, {
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    firstName: '', // Contact form doesn't have first name
-                    lastName: leadData.lastname,
-                    email: leadData.email,
-                    company: leadData.company,
-                    message: leadData.description,
-                    formType: 'Contact Form',
-                    pageUrl: window.location.href,
-                    submissionDate: new Date().toISOString()
-                })
+                body: JSON.stringify(data)
             });
 
-            if (apiResponse.ok) {
-                const result = await apiResponse.json();
-                if (result.success) {
-                    // Remove from localStorage if successfully sent
-                    const updatedLeads = leads.filter(l => l.email !== leadData.email);
-                    localStorage.setItem('pendingLeads', JSON.stringify(updatedLeads));
-                    return { success: true, method: 'api' };
-                }
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('API Error Response:', errorText);
+                throw new Error(`API Error: ${response.status}`);
             }
-        } catch (apiError) {
-            console.log('API submission failed, data saved locally...');
-        }
 
-        // If API fails, store in localStorage for later sync
-        return { success: true, method: 'localStorage', message: 'Lead saved locally for later sync' };
+            const responseData = await response.json();
+
+            if (responseData.success) {
+                statusDiv.innerHTML = `
+                    <div style="background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 8px;">
+                        <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                        <strong>Thank you!</strong> We'll contact you within 24 hours.
+                    </div>
+                `;
+                statusDiv.style.display = 'block';
+
+                // Reset form
+                form.reset();
+                generateMathCaptcha();
+
+                // Track conversion
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'conversion', {
+                        'event_category': 'Lead',
+                        'event_label': 'Contact Form',
+                        'value': 1
+                    });
+                }
+            } else {
+                throw new Error('Submission failed');
+            }
+
+        } catch (error) {
+            console.error('Form submission error:', error);
+
+            statusDiv.innerHTML = `
+                <div style="background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 8px;">
+                    <i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i>
+                    <strong>Oops!</strong> Something went wrong. Please try again or email us at sales@tilli.pro
+                </div>
+            `;
+            statusDiv.style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Request Information';
+        }
     }
 
 
-    (function(){
-        const form = document.getElementById('contact-form');
-        const email = document.getElementById('companyEmail');
-        const emailError = document.getElementById('emailError');
-        const nameField = document.getElementById('yourName');
+    // Initialize form on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize math captcha
+        generateMathCaptcha();
 
-        const existingEmails = new Set(['sales@tilli.com','info@tilli.com']);
-
-        email.addEventListener('input',()=>{ emailError.style.display = 'none'; });
-
-        form.addEventListener('submit', function(e){
-            e.preventDefault();
-
-            // Check honeypot field (anti-spam)
-            const honeypot = document.getElementById('website_url');
-            if (honeypot && honeypot.value) {
-                console.log('Bot detected');
-                return;
-            }
-
-            if(existingEmails.has(email.value.trim().toLowerCase())){
-                emailError.style.display = 'block';
-                email.focus();
-                return;
-            }
-
-            if(!nameField.value.trim()){
-                nameField.focus();
-                return;
-            }
-
-            if(!isHumanVerified){
-                alert('Please solve the math problem to verify you are human.');
-                document.getElementById('mathAnswer').focus();
-                return;
-            }
-
-            if(!document.getElementById('brandGuidelines').checked || !document.getElementById('codeOfConduct').checked){
-                alert('Please agree to the Brand Guidelines and Code of Conduct.');
-                return;
-            }
-
-            // Prepare data for VTiger CRM
-            const formData = {
-                email: email.value.trim(),
-                lastname: nameField.value.trim(),
-                company: document.getElementById('companyWebsite').value.trim() || 'Not Provided',
-                description: document.getElementById('helpText').value.trim() || 'No description provided',
-                product_interest: document.getElementById('productInterest').value || 'Not Selected',
-                leadsource: 'Website Contact Form',
-                assigned_user_id: '1'
-            };
-
-            // Show loading state
-            const submitBtn = document.getElementById('submitBtn');
-            const originalBtnText = submitBtn.innerHTML;
+        // Disable submit button initially
+        const submitBtn = document.getElementById('submit-btn');
+        if (submitBtn) {
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.style.opacity = '0.5';
+            submitBtn.style.cursor = 'not-allowed';
+        }
 
-            // Submit to VTiger CRM
-            submitToVTiger(formData)
-                .then(response => {
-                    alert('Thanks! Our team will get in touch shortly.');
-                    form.reset();
-                    isHumanVerified = false;
+        // Add captcha validation listener
+        const captchaInput = document.getElementById('math-captcha');
+        if (captchaInput) {
+            captchaInput.addEventListener('input', validateCaptcha);
+            captchaInput.addEventListener('change', validateCaptcha);
+        }
 
-                    // Generate new math question
-                    const question = generateMathQuestion();
-                    document.getElementById('mathQuestion').textContent = question;
-                    document.getElementById('mathAnswer').value = '';
-                    document.getElementById('verifyResult').textContent = '';
+        // Handle country selection and phone code
+        const countrySelect = document.getElementById('country-select');
+        const phoneCodeInput = document.getElementById('phone-code');
 
-                    updateSubmitButton();
-                })
-                .catch(error => {
-                    console.error('Error submitting to CRM:', error);
-                    alert('Thank you for your interest! We have recorded your information and will contact you soon.');
-                    form.reset();
-                    isHumanVerified = false;
+        if (countrySelect && phoneCodeInput) {
+            countrySelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                const countryCode = selectedOption.getAttribute('data-code');
 
-                    // Generate new math question
-                    const question = generateMathQuestion();
-                    document.getElementById('mathQuestion').textContent = question;
-                    document.getElementById('mathAnswer').value = '';
-                    document.getElementById('verifyResult').textContent = '';
+                if (countryCode) {
+                    phoneCodeInput.value = countryCode;
+                } else if (this.value === 'OTHER') {
+                    phoneCodeInput.readOnly = false;
+                    phoneCodeInput.value = '';
+                    phoneCodeInput.placeholder = 'Code';
+                } else {
+                    phoneCodeInput.value = '';
+                }
+            });
+        }
+    });
 
-                    updateSubmitButton();
-                })
-                .finally(() => {
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
-                });
-        });
+    // Legacy code - keeping for compatibility
+    (function(){
     })();
     </script>
 </body>
