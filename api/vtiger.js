@@ -35,10 +35,22 @@ function checkRateLimit(ip) {
 }
 
 module.exports = async (req, res) => {
-    // Enable CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Enable CORS - allow from your domain
+    const allowedOrigins = [
+        'https://tillisoftware.com',
+        'https://www.tillisoftware.com',
+        'http://localhost:3000',
+        'http://localhost:8000'
+    ];
+
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
 
     // Handle preflight requests
     if (req.method === 'OPTIONS') {
@@ -49,6 +61,8 @@ module.exports = async (req, res) => {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
+
+    console.log('Vtiger API called with data:', JSON.stringify(req.body));
 
     // Check rate limiting
     const clientIp = req.headers['x-forwarded-for'] ||

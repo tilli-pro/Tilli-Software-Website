@@ -4,7 +4,10 @@
 // Configuration - Update these with your Vtiger credentials
 const VTIGER_CONFIG = {
     // Your Vtiger API endpoint - using your backend proxy for security
-    API_URL: '/api/vtiger', // This will proxy to your Vtiger instance
+    // Use absolute URL for production
+    API_URL: window.location.hostname === 'localhost'
+        ? '/api/vtiger'
+        : 'https://tillisoftware.com/api/vtiger',
     // Production Vtiger instance
     VTIGER_URL: 'https://utilliadmin.com/crm',
     // Note: Direct client-side calls to Vtiger are not recommended for security
@@ -127,10 +130,17 @@ async function handleDemoFormSubmit(event) {
         });
 
         console.log('Response status:', response.status);
-        const responseData = await response.text();
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('API Error Response:', errorText);
+            throw new Error(`API Error: ${response.status} - ${errorText}`);
+        }
+
+        const responseData = await response.json();
         console.log('Response data:', responseData);
 
-        if (response.ok) {
+        if (responseData.success) {
             // Success
             statusDiv.innerHTML = `
                 <div style="background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 8px;">
