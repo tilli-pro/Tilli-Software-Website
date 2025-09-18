@@ -64,9 +64,25 @@
     <!-- Lucid Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- RB2B Tracking -->
-    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://b2bjsstore.s3.us-west-2.amazonaws.com/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("VN080HX77V6J");</script>
+    <script type="text/plain" data-cookiecategory="analytics">!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://b2bjsstore.s3.us-west-2.amazonaws.com/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("VN080HX77V6J");</script>
     <!-- Vercel Analytics -->
-    <script defer src="https://cdn.vercel-insights.com/v1.js"></script>
+    <script type="text/plain" data-cookiecategory="analytics" defer src="https://cdn.vercel-insights.com/v1.js"></script>
+    <!-- CookieConsent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.css">
+    <style>
+        /* Custom CookieConsent Styles */
+        .cc-window { font-family: Inter, sans-serif !important; }
+        .cc-btn { border-radius: 6px !important; font-weight: 500 !important; }
+        .cc-btn.cc-btn-primary { background: #5B9EFF !important; border-color: #5B9EFF !important; }
+        .cc-btn.cc-btn-primary:hover { background: #4080E0 !important; }
+        .cc-btn.cc-btn-secondary { background: transparent !important; color: #64748b !important; border: 1px solid #e2e8f0 !important; }
+        .cc-btn.cc-btn-secondary:hover { background: #f8f9fa !important; }
+        #cc-main { font-size: 15px !important; }
+        #cc-main .cc-link { color: #5B9EFF !important; }
+        #cc-main .cc-toggle { background: #e2e8f0 !important; }
+        #cc-main .cc-toggle:checked ~ .cc-toggle__slider { background: #5B9EFF !important; }
+        #cc-main.cc-window.cc-banner { padding: 1.5rem !important; box-shadow: 0 -4px 20px rgba(0,0,0,0.1) !important; }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -1188,5 +1204,8 @@
             lucide.createIcons();
         });
     </script>
+    <!-- CookieConsent Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.js"></script>
+    <script src="cookie-config.js"></script>
 </body>
 </html>
