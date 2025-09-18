@@ -2,6 +2,8 @@
 // Deploy this to Vercel, Netlify Functions, or your Node.js server
 
 const crypto = require('crypto');
+const https = require('https');
+const url = require('url');
 
 // Configuration from environment variables
 const VTIGER_URL = process.env.VTIGER_URL || 'https://utilliadmin.com/crm';
@@ -88,11 +90,14 @@ module.exports = async (req, res) => {
 
         // Step 1: Get challenge token from Vtiger
         const challengeUrl = `${VTIGER_URL}/webservice.php?operation=getchallenge&username=${VTIGER_USERNAME}`;
-        const challengeResponse = await fetch(challengeUrl);
-        const challengeData = await challengeResponse.json();
+
+        console.log('Getting challenge token from:', challengeUrl);
+
+        const challengeData = await makeHttpRequest(challengeUrl, 'GET');
 
         if (!challengeData.success) {
-            throw new Error('Failed to get challenge token from Vtiger');
+            console.error('Challenge error:', challengeData);
+            throw new Error('Failed to get challenge token from Vtiger: ' + JSON.stringify(challengeData));
         }
 
         const token = challengeData.result.token;
@@ -109,16 +114,16 @@ module.exports = async (req, res) => {
         loginParams.append('username', VTIGER_USERNAME);
         loginParams.append('accessKey', accessKeyHash);
 
-        const loginResponse = await fetch(`${VTIGER_URL}/webservice.php`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: loginParams
-        });
-
-        const loginData = await loginResponse.json();
+        const loginData = await makeHttpRequest(
+            `${VTIGER_URL}/webservice.php`,
+            'POST',
+            loginParams.toString(),
+            { 'Content-Type': 'application/x-www-form-urlencoded' }
+        );
 
         if (!loginData.success) {
-            throw new Error('Failed to login to Vtiger');
+            console.error('Login error:', loginData);
+            throw new Error('Failed to login to Vtiger: ' + JSON.stringify(loginData));
         }
 
         const sessionName = loginData.result.sessionName;
@@ -205,13 +210,12 @@ module.exports = async (req, res) => {
         createParams.append('element', JSON.stringify(leadData));
         createParams.append('elementType', 'Leads');
 
-        const createResponse = await fetch(`${VTIGER_URL}/webservice.php`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: createParams
-        });
-
-        const createData = await createResponse.json();
+        const createData = await makeHttpRequest(
+            `${VTIGER_URL}/webservice.php`,
+            'POST',
+            createParams.toString(),
+            { 'Content-Type': 'application/x-www-form-urlencoded' }
+        );
 
         if (!createData.success) {
             throw new Error('Failed to create lead in Vtiger');
@@ -273,4 +277,47 @@ async function sendEmailNotification(formData, toEmail) {
 
     // Send email using your service
     // await sendgrid.send(emailContent);
+}
+
+// Helper function to make HTTP requests using native Node.js modules
+function makeHttpRequest(requestUrl, method = 'GET', data = null, headers = {}) {
+    return new Promise((resolve, reject) => {
+        const parsedUrl = url.parse(requestUrl);
+
+        const options = {
+            hostname: parsedUrl.hostname,
+            path: parsedUrl.path,
+            method: method,
+            headers: headers
+        };
+
+        const req = https.request(options, (res) => {
+            let responseData = '';
+
+            res.on('data', (chunk) => {
+                responseData += chunk;
+            });
+
+            res.on('end', () => {
+                try {
+                    const jsonData = JSON.parse(responseData);
+                    resolve(jsonData);
+                } catch (e) {
+                    console.error('Failed to parse response:', responseData);
+                    reject(new Error('Invalid JSON response from Vtiger'));
+                }
+            });
+        });
+
+        req.on('error', (error) => {
+            console.error('HTTP request error:', error);
+            reject(error);
+        });
+
+        if (data && method === 'POST') {
+            req.write(data);
+        }
+
+        req.end();
+    });
 }
