@@ -3,8 +3,15 @@
 
 const crypto = require('crypto');
 
-// Import node-fetch for Vercel environment
-const fetch = require('node-fetch');
+// Use native fetch in Node.js 18+ or fall back to node-fetch
+let fetch;
+try {
+    // Try to use native fetch if available (Node.js 18+)
+    fetch = globalThis.fetch || require('node-fetch');
+} catch (e) {
+    // Fallback to node-fetch
+    fetch = require('node-fetch');
+}
 
 // Configuration from environment variables
 const VTIGER_URL = process.env.VTIGER_URL || 'https://utilliadmin.com/crm';
