@@ -22,16 +22,16 @@ module.exports = async (req, res) => {
         // Test fetch capability
         const fetch = require('node-fetch');
 
-        // Try to fetch a simple endpoint
-        const testUrl = 'https://jsonplaceholder.typicode.com/todos/1';
-        const response = await fetch(testUrl);
+        // Test Vtiger connectivity
+        const vtigerUrl = 'https://utilliadmin.com/crm/webservice.php?operation=getchallenge&username=admin';
+        const response = await fetch(vtigerUrl);
         const data = await response.json();
 
         return res.status(200).json({
             success: true,
             message: 'Test API is working',
-            fetchTest: 'Fetch is working',
-            testData: data,
+            fetchTest: 'Can reach Vtiger',
+            vtigerResponse: data,
             requestBody: req.body
         });
     } catch (error) {
