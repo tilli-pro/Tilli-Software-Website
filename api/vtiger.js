@@ -3,15 +3,8 @@
 
 const crypto = require('crypto');
 
-// Use native fetch in Node.js 18+ or fall back to node-fetch
-let fetch;
-try {
-    // Try to use native fetch if available (Node.js 18+)
-    fetch = globalThis.fetch || require('node-fetch');
-} catch (e) {
-    // Fallback to node-fetch
-    fetch = require('node-fetch');
-}
+// Use node-fetch (proven to work in our test)
+const fetch = require('node-fetch');
 
 // Configuration from environment variables
 const VTIGER_URL = process.env.VTIGER_URL || 'https://utilliadmin.com/crm';
@@ -108,15 +101,23 @@ module.exports = async (req, res) => {
     }
 
     try {
+        console.log('Step 0: Request received');
         const formData = req.body;
+        console.log('Form data keys:', Object.keys(formData || {}));
 
         // Validate required fields
         if (!formData.firstName || !formData.lastName || !formData.email) {
+            console.log('Missing required fields:', {
+                hasFirstName: !!formData.firstName,
+                hasLastName: !!formData.lastName,
+                hasEmail: !!formData.email
+            });
             return res.status(400).json({
                 error: 'Missing required fields'
             });
         }
 
+        console.log('Step 1: Starting Vtiger integration');
         // Step 1: Get challenge token from Vtiger
         const challengeUrl = `${VTIGER_URL}/webservice.php?operation=getchallenge&username=${VTIGER_USERNAME}`;
 
