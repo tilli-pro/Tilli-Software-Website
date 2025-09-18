@@ -242,8 +242,11 @@ module.exports = async (req, res) => {
             annualrevenue: getAnnualRevenue(formData.transactionVolume),
             noofemployees: getEmployeeCount(formData.organizationSize),
             // Custom fields required by this Vtiger instance
-            cf_913: formData.useCase || 'Digital Transformation', // This seems to be a required field
-            // Add any other custom fields if needed
+            cf_913: formData.useCase || 'Digital Transformation', // Use case field
+            cf_915: formData.country || 'United States', // Country field
+            // Try adding other potential custom fields with defaults
+            cf_917: formData.monthlyActiveUsers || 'Not specified',
+            cf_919: formData.productInterest || 'Tilli Platform'
         };
 
         // Step 5: Create lead in Vtiger
