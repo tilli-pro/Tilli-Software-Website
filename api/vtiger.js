@@ -286,7 +286,8 @@ module.exports = async (req, res) => {
         return res.status(500).json({
             success: false,
             error: 'Failed to process request. Our team has been notified.',
-            details: isDevelopment ? error.message : undefined,
+            details: error.message, // Temporarily show error for debugging
+            stack: error.stack ? error.stack.substring(0, 500) : undefined, // Show partial stack
             // In production, log this error to your monitoring service
         });
     }
