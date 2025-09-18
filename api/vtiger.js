@@ -260,7 +260,8 @@ module.exports = async (req, res) => {
         const createData = await createResponse.json();
 
         if (!createData.success) {
-            throw new Error('Failed to create lead in Vtiger');
+            console.error('Create lead error:', createData);
+            throw new Error('Failed to create lead in Vtiger: ' + JSON.stringify(createData));
         }
 
         // Step 6: Send email notification (optional)
