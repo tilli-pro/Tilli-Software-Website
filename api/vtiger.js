@@ -241,8 +241,9 @@ module.exports = async (req, res) => {
             assigned_user_id: userId,
             annualrevenue: getAnnualRevenue(formData.transactionVolume),
             noofemployees: getEmployeeCount(formData.organizationSize),
-            // Add any custom fields specific to your Vtiger setup
-            // cf_xxx: formData.customField
+            // Custom fields required by this Vtiger instance
+            cf_913: formData.useCase || 'Digital Transformation', // This seems to be a required field
+            // Add any other custom fields if needed
         };
 
         // Step 5: Create lead in Vtiger
