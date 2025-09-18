@@ -1,0 +1,16 @@
+{
+  "name": "tilli-software-website",
+  "version": "1.0.0",
+  "description": "Tilli Software Website with Vtiger CRM Integration",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build required'",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
