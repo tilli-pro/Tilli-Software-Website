@@ -101,7 +101,7 @@
                 <p class="hero-subtitle">Simplify invoicing, reduce missed payments, and support flexible collections—all in one platform with tilliX.</p>
                 <div class="hero-buttons">
                     <button class="btn-primary" onclick="window.openBookingModal()">Book a Demo</button>
-                    <button class="btn-secondary">Get Started Free</button>
+                    <button class="btn-secondary" onclick="window.location.href='contact.html'">Get Started Free</button>
                 </div>
             </div>
             <div class="hero-visual">
@@ -116,7 +116,7 @@
                         </div>
                     </div>
                     <div class="dashboard-content">
-                        <div class="dashboard-stats">
+                        <div class="dashboard-stats" style="grid-column: 1 / -1;">
                             <div class="stat-card">
                                 <span class="stat-value">$1.2M</span>
                                 <span class="stat-label">Total Revenue</span>
@@ -130,8 +130,8 @@
                                 <span class="stat-label">Success Rate</span>
                             </div>
                         </div>
-                        <div class="invoice-table">
-                            <table>
+                        <div class="invoice-table" style="width: 100%; overflow-x: auto;">
+                            <table style="width: 100%; min-width: 500px;">
                                 <thead>
                                     <tr>
                                         <th>Invoice ID</th>
@@ -165,38 +165,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="payment-sidebar">
-                            <div class="payment-info">
-                                <h4>Payment Details</h4>
-                                <div class="payment-methods">
-                                    <div class="payment-method">
-                                        <i class="fas fa-credit-card"></i>
-                                        <span>Credit Card</span>
-                                    </div>
-                                    <div class="payment-method">
-                                        <i class="fas fa-university"></i>
-                                        <span>Bank Transfer</span>
-                                    </div>
-                                    <div class="payment-method">
-                                        <i class="fas fa-mobile-alt"></i>
-                                        <span>Digital Wallet</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="chat-section">
-                                <h4>Customer Communication</h4>
-                                <div class="chat-messages">
-                                    <div class="chat-message">
-                                        <p>Payment reminder sent</p>
-                                        <span class="timestamp">2 min ago</span>
-                                    </div>
-                                    <div class="chat-message">
-                                        <p>Customer viewed invoice</p>
-                                        <span class="timestamp">5 min ago</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

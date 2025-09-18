@@ -2743,11 +2743,12 @@ a:focus {
 .tillix-dashboard-preview {
     background: var(--white);
     border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
+    padding: 2rem;
     box-shadow: var(--shadow-xl);
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 800px;
+    margin: 2rem auto;
+    overflow: hidden;
 }
 
 .dashboard-controls {
@@ -2757,10 +2758,14 @@ a:focus {
 }
 
 .dashboard-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 1rem 0;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .dashboard-stats {
@@ -2771,25 +2776,31 @@ a:focus {
 
 .invoice-table {
     overflow-x: auto;
+    max-width: 100%;
+    margin: 1rem 0;
 }
 
 .invoice-table table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 500px;
 }
 
 .invoice-table th,
 .invoice-table td {
-    padding: 0.75rem 0.5rem;
+    padding: 0.75rem 1rem;
     text-align: left;
     border-bottom: 1px solid #E5E7EB;
     font-size: 0.875rem;
+    white-space: nowrap;
 }
 
 .invoice-table th {
     font-weight: 600;
     color: var(--medium-gray);
     background: var(--light-gray);
+    position: sticky;
+    top: 0;
 }
 
 .status.overdue {
@@ -5317,9 +5328,10 @@ a:focus {
 .modal-content {
     background: white;
     border-radius: 16px;
-    width: 90%;
-    max-width: 900px;
-    max-height: 90vh;
+    width: 95%;
+    max-width: 1200px;
+    height: 85vh;
+    max-height: 900px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     animation: slideUp 0.3s ease;
