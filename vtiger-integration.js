@@ -98,12 +98,24 @@ async function handleDemoFormSubmit(event) {
 
     // Get form data
     const formData = new FormData(form);
+
+    // Combine phone code with number
+    const phoneCode = formData.get('phoneCode') || '';
+    const phoneNumber = formData.get('phone') || '';
+    const fullPhone = phoneNumber ? `${phoneCode} ${phoneNumber}` : '';
+
     const data = {
         firstName: formData.get('firstName'),
         lastName: formData.get('lastName'),
         email: formData.get('email'),
         company: formData.get('company'),
-        phone: formData.get('phone') || '',
+        phone: fullPhone,
+        jobTitle: formData.get('jobTitle') || '',
+        country: formData.get('country') || '',
+        organizationSize: formData.get('organizationSize') || '',
+        useCase: formData.get('useCase') || '',
+        monthlyActiveUsers: formData.get('monthlyActiveUsers') || '',
+        transactionVolume: formData.get('transactionVolume') || '',
         message: formData.get('message') || '',
         formType: 'Tilli Demo Request',
         pageUrl: window.location.href,
@@ -261,24 +273,49 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Add phone number formatting
-        const phoneInput = form.querySelector('input[name="phone"]');
+        // Handle country selection and phone code
+        const countrySelect = document.getElementById('country-select');
+        const phoneCodeInput = document.getElementById('phone-code');
+        const phoneInput = document.getElementById('phone-number');
+
+        if (countrySelect && phoneCodeInput) {
+            countrySelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                const countryCode = selectedOption.getAttribute('data-code');
+
+                if (countryCode) {
+                    phoneCodeInput.value = countryCode;
+                } else if (this.value === 'OTHER') {
+                    phoneCodeInput.readOnly = false;
+                    phoneCodeInput.value = '';
+                    phoneCodeInput.placeholder = 'Code';
+                } else {
+                    phoneCodeInput.value = '';
+                }
+            });
+        }
+
+        // Add phone number validation (digits, spaces, dashes, parentheses allowed)
         if (phoneInput) {
             phoneInput.addEventListener('input', function(e) {
-                // Remove non-numeric characters
-                let value = e.target.value.replace(/\D/g, '');
+                // Allow digits, spaces, dashes, and parentheses
+                let value = e.target.value;
 
-                // Format as US phone number (xxx) xxx-xxxx
-                if (value.length > 0) {
-                    if (value.length <= 3) {
-                        value = `(${value}`;
-                    } else if (value.length <= 6) {
-                        value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
-                    } else {
-                        value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+                // If country is US or CA, format as North American number
+                const country = countrySelect ? countrySelect.value : '';
+                if (country === 'US' || country === 'CA') {
+                    value = value.replace(/\D/g, '');
+                    if (value.length > 0) {
+                        if (value.length <= 3) {
+                            value = `(${value}`;
+                        } else if (value.length <= 6) {
+                            value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+                        } else {
+                            value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+                        }
                     }
+                    e.target.value = value;
                 }
-                e.target.value = value;
             });
         }
 

@@ -124,6 +124,33 @@ module.exports = async (req, res) => {
         const sessionName = loginData.result.sessionName;
         const userId = loginData.result.userId;
 
+        // Helper function to convert organization size to numeric
+        const getEmployeeCount = (sizeRange) => {
+            const sizeMap = {
+                '1-10': 10,
+                '11-50': 50,
+                '51-200': 200,
+                '201-1000': 1000,
+                '1001-5000': 5000,
+                '5001+': 10000
+            };
+            return sizeMap[sizeRange] || 0;
+        };
+
+        // Helper function to convert transaction volume to numeric
+        const getAnnualRevenue = (volumeRange) => {
+            const volumeMap = {
+                '<100000': 100000,
+                '100000-500000': 500000,
+                '500001-1000000': 1000000,
+                '1000001-5000000': 5000000,
+                '5000001-10000000': 10000000,
+                '10000001-50000000': 50000000,
+                '50000001+': 100000000
+            };
+            return volumeMap[volumeRange] || 0;
+        };
+
         // Step 4: Prepare lead data for Vtiger
         const leadDescription = [
             '=== TILLI DEMO REQUEST ===',
@@ -134,7 +161,15 @@ module.exports = async (req, res) => {
             `Name: ${formData.firstName} ${formData.lastName}`,
             `Email: ${formData.email}`,
             `Company: ${formData.company || 'Not provided'}`,
+            `Job Title: ${formData.jobTitle || 'Not provided'}`,
             `Phone: ${formData.phone || 'Not provided'}`,
+            `Country: ${formData.country || 'Not provided'}`,
+            '',
+            '--- BUSINESS INFORMATION ---',
+            `Organization Size: ${formData.organizationSize || 'Not provided'}`,
+            `Use Case: ${formData.useCase || 'Not provided'}`,
+            `Monthly Active Users: ${formData.monthlyActiveUsers || 'Not provided'}`,
+            `Transaction Volume: ${formData.transactionVolume || 'Not provided'}`,
             '',
             '--- MESSAGE ---',
             formData.message || 'No message provided',
@@ -151,11 +186,14 @@ module.exports = async (req, res) => {
             company: formData.company || '',
             email: formData.email,
             phone: formData.phone || '',
+            designation: formData.jobTitle || '', // Job title maps to designation
             website: formData.website || '',
             description: leadDescription,
             leadsource: 'Tilli Website',
             leadstatus: 'Hot', // Demo requests are hot leads
             assigned_user_id: userId,
+            annualrevenue: getAnnualRevenue(formData.transactionVolume),
+            noofemployees: getEmployeeCount(formData.organizationSize),
             // Add any custom fields specific to your Vtiger setup
             // cf_xxx: formData.customField
         };
