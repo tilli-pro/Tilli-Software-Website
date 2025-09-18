@@ -3,19 +3,21 @@
 
 const crypto = require('crypto');
 
-// Use dynamic import for node-fetch in Vercel environment
-let fetch;
-if (typeof globalThis.fetch === 'undefined') {
-    fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-} else {
-    fetch = globalThis.fetch;
-}
+// Import node-fetch for Vercel environment
+const fetch = require('node-fetch');
 
 // Configuration from environment variables
 const VTIGER_URL = process.env.VTIGER_URL || 'https://utilliadmin.com/crm';
 const VTIGER_USERNAME = process.env.VTIGER_USERNAME || 'admin';
 const VTIGER_ACCESS_KEY = process.env.VTIGER_ACCESS_KEY || 'crsogur4p4yvzyur';
 const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || 'sales@tilli.pro';
+
+console.log('Vtiger configuration:', {
+    url: VTIGER_URL,
+    username: VTIGER_USERNAME,
+    hasAccessKey: !!VTIGER_ACCESS_KEY,
+    accessKeyLength: VTIGER_ACCESS_KEY ? VTIGER_ACCESS_KEY.length : 0
+});
 
 // Rate limiting store (simple in-memory store)
 const rateLimitStore = new Map();
@@ -48,7 +50,8 @@ module.exports = async (req, res) => {
         'https://tillisoftware.com',
         'https://www.tillisoftware.com',
         'http://localhost:3000',
-        'http://localhost:8000'
+        'http://localhost:8000',
+        'http://localhost:8348'
     ];
 
     const origin = req.headers.origin;
@@ -56,7 +59,7 @@ module.exports = async (req, res) => {
         res.setHeader('Access-Control-Allow-Origin', origin);
     }
 
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
 
@@ -65,7 +68,20 @@ module.exports = async (req, res) => {
         return res.status(200).end();
     }
 
-    // Only accept POST requests
+    // Test endpoint to verify API is working
+    if (req.method === 'GET') {
+        return res.status(200).json({
+            status: 'ok',
+            message: 'Vtiger API is running',
+            config: {
+                url: VTIGER_URL,
+                username: VTIGER_USERNAME,
+                hasAccessKey: !!VTIGER_ACCESS_KEY
+            }
+        });
+    }
+
+    // Only accept POST requests for form submission
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
@@ -99,7 +115,18 @@ module.exports = async (req, res) => {
 
         console.log('Getting challenge token from:', challengeUrl);
 
-        const challengeResponse = await fetch(challengeUrl);
+        let challengeResponse;
+        try {
+            challengeResponse = await fetch(challengeUrl);
+        } catch (fetchError) {
+            console.error('Fetch error for challenge:', fetchError);
+            throw new Error(`Failed to fetch challenge: ${fetchError.message}`);
+        }
+
+        if (!challengeResponse.ok) {
+            throw new Error(`Challenge HTTP error! status: ${challengeResponse.status}`);
+        }
+
         const challengeData = await challengeResponse.json();
 
         if (!challengeData.success) {
@@ -241,11 +268,17 @@ module.exports = async (req, res) => {
 
     } catch (error) {
         console.error('Vtiger integration error:', error);
+        console.error('Error stack:', error.stack);
+        console.error('Error message:', error.message);
 
-        // Don't expose internal error details to client
+        // Return more detailed error in development
+        const isDevelopment = process.env.NODE_ENV === 'development' ||
+                            process.env.VERCEL_ENV === 'development';
+
         return res.status(500).json({
             success: false,
             error: 'Failed to process request. Our team has been notified.',
+            details: isDevelopment ? error.message : undefined,
             // In production, log this error to your monitoring service
         });
     }
