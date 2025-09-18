@@ -94,44 +94,44 @@
 
     <!-- Hero Section -->
     <section class="free-trial-hero" style="min-height: 100vh; display: flex; align-items: center; padding: 80px 0 2rem; background: linear-gradient(135deg, #f8fafb 0%, #ffffff 100%);">
-        <div class="container" style="width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
-            <div class="hero-content" style="display: flex; gap: 4rem; align-items: center; min-height: calc(100vh - 160px);">
-                <div class="hero-text" style="flex: 1; max-width: 650px;">
-                    <h1 class="hero-title" style="font-size: 4rem; line-height: 1.15; margin-bottom: 2rem; font-weight: 700; color: #1e293b;">Get started with tilli</h1>
-                    <h2 class="hero-subtitle" style="font-size: 1.75rem; margin-bottom: 2rem; color: #475569; font-weight: 500;">Experience tilli with a live demo</h2>
-                    <p class="hero-description" style="font-size: 1.25rem; line-height: 1.8; margin-bottom: 3rem; color: #64748b;">
+        <div class="container" style="width: 100%; max-width: 1920px; margin: 0 auto; padding: 0 3rem;">
+            <div class="hero-content" style="display: flex; gap: 5rem; align-items: center; min-height: calc(100vh - 160px);">
+                <div class="hero-text" style="flex: 1; max-width: 800px;">
+                    <h1 class="hero-title" style="font-size: 4.5rem; line-height: 1.15; margin-bottom: 2rem; font-weight: 700; color: #1e293b;">Get started with tilli</h1>
+                    <h2 class="hero-subtitle" style="font-size: 2rem; margin-bottom: 2rem; color: #475569; font-weight: 500;">Experience tilli with a live demo</h2>
+                    <p class="hero-description" style="font-size: 1.35rem; line-height: 1.8; margin-bottom: 3rem; color: #64748b;">
                         A 30-minute walkthrough tailored to your needs — no pressure, just insights.
                         Enter your email to instantly preview how tilli helps you manage, track, and simplify your payments — no commitment required.
                     </p>
 
-                    <div class="verification-wrapper" style="margin-bottom: 3rem;">
-                        <div class="human-check" style="background: linear-gradient(to bottom, #ffffff, #f8fafb); padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-                            <label style="display: flex; align-items: center; gap: 1.25rem; cursor: pointer; font-size: 1.125rem;">
-                                <input type="checkbox" id="humanCheck" style="width: 24px; height: 24px; cursor: pointer;">
+                    <div class="verification-wrapper" style="margin-bottom: 3rem; max-width: 600px;">
+                        <div class="human-check" style="background: linear-gradient(to bottom, #ffffff, #f8fafb); padding: 2.5rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                            <label style="display: flex; align-items: center; gap: 1.5rem; cursor: pointer; font-size: 1.25rem;">
+                                <input type="checkbox" id="humanCheck" style="width: 28px; height: 28px; cursor: pointer;">
                                 <span style="font-weight: 500; color: #334155;">I'm a human, not a robot</span>
                             </label>
-                            <div id="mathChallenge" style="display: none; margin-top: 1.5rem; padding: 1.5rem; background: white; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
-                                <p style="margin: 0 0 1rem 0; font-size: 1.05rem; color: #64748b;">Please solve this simple math problem:</p>
-                                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                                    <span id="mathQuestion" style="font-weight: 600; font-size: 1.25rem; color: #1e293b;"></span>
-                                    <input type="number" id="mathAnswer" style="width: 120px; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1.125rem;">
-                                    <button type="button" onclick="verifyMath()" style="padding: 0.75rem 1.5rem; background: #5B9EFF; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 1.05rem; transition: all 0.2s;">Verify</button>
+                            <div id="mathChallenge" style="display: none; margin-top: 1.5rem; padding: 1.75rem; background: white; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                <p style="margin: 0 0 1rem 0; font-size: 1.15rem; color: #64748b;">Please solve this simple math problem:</p>
+                                <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
+                                    <span id="mathQuestion" style="font-weight: 600; font-size: 1.35rem; color: #1e293b;"></span>
+                                    <input type="number" id="mathAnswer" style="width: 140px; padding: 0.875rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1.25rem;">
+                                    <button type="button" onclick="verifyMath()" style="padding: 0.875rem 2rem; background: #5B9EFF; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 1.15rem; transition: all 0.2s;">Verify</button>
                                 </div>
-                                <span id="verifyResult" style="display: block; margin-top: 0.75rem; font-size: 0.95rem;"></span>
+                                <span id="verifyResult" style="display: block; margin-top: 0.75rem; font-size: 1rem;"></span>
                             </div>
                         </div>
                         <!-- Honeypot field - invisible to users -->
                         <input type="text" name="website" id="website" style="position: absolute; left: -9999px;" tabindex="-1" autocomplete="off">
                     </div>
 
-                    <button type="button" class="btn-primary btn-large" id="scheduleBtn" onclick="attemptScheduleDemo()" disabled style="opacity: 0.6; cursor: not-allowed; padding: 1.25rem 2.5rem; font-size: 1.25rem; margin-bottom: 1.5rem; border-radius: 8px; font-weight: 600; transition: all 0.3s;">
+                    <button type="button" class="btn-primary btn-large" id="scheduleBtn" onclick="attemptScheduleDemo()" disabled style="opacity: 0.6; cursor: not-allowed; padding: 1.35rem 3rem; font-size: 1.35rem; margin-bottom: 1.5rem; border-radius: 10px; font-weight: 600; transition: all 0.3s;">
                         Schedule a Demo <i class="fas fa-arrow-right"></i>
                     </button>
-                    <p style="font-size: 1.05rem; color: #64748b; margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <p style="font-size: 1.15rem; color: #64748b; margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                         <span style="color: #10b981;">✓</span> Quick verification keeps our scheduling secure
                     </p>
                 </div>
-                <div class="hero-visual" style="flex: 1; max-width: 650px;
+                <div class="hero-visual" style="flex: 1.2; max-width: 900px;
                     <div class="demo-preview">
                         <div class="preview-header">
                             <h3>Live Demo Preview</h3>
@@ -504,12 +504,33 @@
                 }
 
                 /* Responsive styles for free trial hero */
+                @media (max-width: 1600px) {
+                    .free-trial-hero h1.hero-title {
+                        font-size: 4rem !important;
+                    }
+                    .free-trial-hero h2.hero-subtitle {
+                        font-size: 1.75rem !important;
+                    }
+                    .free-trial-hero .hero-text {
+                        max-width: 700px !important;
+                    }
+                    .free-trial-hero .hero-visual {
+                        max-width: 750px !important;
+                    }
+                }
+
                 @media (max-width: 1200px) {
                     .free-trial-hero h1.hero-title {
                         font-size: 3.5rem !important;
                     }
                     .free-trial-hero .hero-content {
                         gap: 3rem !important;
+                    }
+                    .free-trial-hero .hero-text {
+                        max-width: 600px !important;
+                    }
+                    .free-trial-hero .hero-visual {
+                        max-width: 600px !important;
                     }
                 }
 
