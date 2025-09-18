@@ -130,27 +130,45 @@ async function handleDemoFormSubmit(event) {
 
     try {
         console.log('Submitting form data:', data);
-        console.log('Sending to:', VTIGER_CONFIG.API_URL);
 
-        // Option 1: Send to your backend API that handles Vtiger integration
-        const response = await fetch(VTIGER_CONFIG.API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        });
+        // Check if running locally for testing
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-        console.log('Response status:', response.status);
+        let responseData;
 
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error('API Error Response:', errorText);
-            throw new Error(`API Error: ${response.status} - ${errorText}`);
+        if (isLocalhost) {
+            // Simulate successful submission for local testing
+            console.log('Local testing mode - Form data:', data);
+
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            responseData = { success: true };
+            console.log('Simulated response:', responseData);
+
+        } else {
+            // Production API call
+            console.log('Sending to:', VTIGER_CONFIG.API_URL);
+
+            const response = await fetch(VTIGER_CONFIG.API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            console.log('Response status:', response.status);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('API Error Response:', errorText);
+                throw new Error(`API Error: ${response.status} - ${errorText}`);
+            }
+
+            responseData = await response.json();
+            console.log('Response data:', responseData);
         }
-
-        const responseData = await response.json();
-        console.log('Response data:', responseData);
 
         if (responseData.success) {
             // Success

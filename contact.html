@@ -446,25 +446,40 @@
         statusDiv.style.display = 'none';
 
         try {
-            const apiUrl = window.location.hostname === 'localhost'
-                ? '/api/vtiger'
-                : 'https://tillisoftware.com/api/vtiger';
+            // Check if running locally for testing
+            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
+            let responseData;
 
-            if (!response.ok) {
-                const errorText = await response.text();
-                console.error('API Error Response:', errorText);
-                throw new Error(`API Error: ${response.status}`);
+            if (isLocalhost) {
+                // Simulate successful submission for local testing
+                console.log('Local testing mode - Form data:', data);
+
+                // Simulate network delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                responseData = { success: true };
+
+            } else {
+                // Production API call
+                const apiUrl = 'https://tillisoftware.com/api/vtiger';
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('API Error Response:', errorText);
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
+                responseData = await response.json();
             }
-
-            const responseData = await response.json();
 
             if (responseData.success) {
                 statusDiv.innerHTML = `
