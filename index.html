@@ -96,94 +96,16 @@
     <style>
         /* Custom CookieConsent Styles */
         .cc-window { font-family: Inter, sans-serif !important; }
-        .cc-btn {
-            border-radius: 6px !important;
-            font-weight: 500 !important;
-            color: #333 !important;
-        }
-        .cc-btn.cc-btn-primary {
-            background: #5B9EFF !important;
-            border-color: #5B9EFF !important;
-            color: #ffffff !important;
-        }
-        .cc-btn.cc-btn-primary:hover {
-            background: #4080E0 !important;
-            color: #ffffff !important;
-        }
-        .cc-btn.cc-btn-secondary {
-            background: transparent !important;
-            color: #64748b !important;
-            border: 1px solid #e2e8f0 !important;
-        }
-        .cc-btn.cc-btn-secondary:hover {
-            background: #f8f9fa !important;
-            color: #64748b !important;
-        }
-        /* Ensure all button text is visible */
-        #cc-main .cc-btn,
-        .cc-window .cc-btn,
-        button.cc-btn {
-            color: #333 !important;
-        }
-        #cc-main .cc-btn.cc-btn-primary,
-        .cc-window .cc-btn.cc-btn-primary,
-        button.cc-btn.cc-btn-primary {
-            color: #ffffff !important;
-        }
-        #cc-main .cc-btn.cc-btn-secondary,
-        .cc-window .cc-btn.cc-btn-secondary,
-        button.cc-btn.cc-btn-secondary {
-            color: #64748b !important;
-        }
+        .cc-btn { border-radius: 6px !important; font-weight: 500 !important; }
+        .cc-btn.cc-btn-primary { background: #5B9EFF !important; border-color: #5B9EFF !important; }
+        .cc-btn.cc-btn-primary:hover { background: #4080E0 !important; }
+        .cc-btn.cc-btn-secondary { background: transparent !important; color: #64748b !important; border: 1px solid #e2e8f0 !important; }
+        .cc-btn.cc-btn-secondary:hover { background: #f8f9fa !important; }
         #cc-main { font-size: 15px !important; }
         #cc-main .cc-link { color: #5B9EFF !important; }
         #cc-main .cc-toggle { background: #e2e8f0 !important; }
         #cc-main .cc-toggle:checked ~ .cc-toggle__slider { background: #5B9EFF !important; }
         #cc-main.cc-window.cc-banner { padding: 1.5rem !important; box-shadow: 0 -4px 20px rgba(0,0,0,0.1) !important; }
-
-        /* FORCE FIX for button text visibility */
-        .cc-btn-primary,
-        .cc-btn-secondary,
-        button[data-role="accept-all"],
-        button[data-role="reject"],
-        button[data-role="accept-necessary"],
-        button[data-role="accept-custom"],
-        .cc-window button,
-        .cc-window .cc-btn,
-        #cc-main button,
-        #cc-main .cc-btn {
-            color: #333333 !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            position: relative !important;
-            z-index: 9999 !important;
-            overflow: visible !important;
-        }
-
-        /* Ensure cookie banner itself has high z-index */
-        .cc-window,
-        #cc-main {
-            z-index: 999999 !important;
-        }
-
-        .cc-btn-primary,
-        button[data-role="accept-all"],
-        button[data-role="accept-custom"],
-        .cc-window .cc-btn-primary,
-        #cc-main .cc-btn-primary {
-            color: #FFFFFF !important;
-            background-color: #5B9EFF !important;
-        }
-
-        .cc-btn-secondary,
-        button[data-role="reject"],
-        button[data-role="accept-necessary"],
-        .cc-window .cc-btn-secondary,
-        #cc-main .cc-btn-secondary {
-            color: #64748b !important;
-            background: white !important;
-            border: 1px solid #e2e8f0 !important;
-        }
     </style>
 </head>
 <body>
