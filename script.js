@@ -1,3 +1,19 @@
+(function(){
+  const frame = document.getElementById('solutionsFrame');
+  const slides = frame ? frame.querySelectorAll('.solution-slide') : [];
+  const dotsWrap = document.getElementById('solutionsDots');
+  const dots = dotsWrap ? dotsWrap.querySelectorAll('.dot') : [];
+  if (!slides.length || !dots.length) return;
+  let current = 0;
+  function show(idx){
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = idx;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+  dots.forEach(d => d.addEventListener('click', () => show(parseInt(d.dataset.index)||0)));
+})();
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', async function() {
     // Ensure site-wide favicon
