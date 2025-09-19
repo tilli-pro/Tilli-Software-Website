@@ -140,6 +140,41 @@
         #cc-main .cc-toggle { background: #e2e8f0 !important; }
         #cc-main .cc-toggle:checked ~ .cc-toggle__slider { background: #5B9EFF !important; }
         #cc-main.cc-window.cc-banner { padding: 1.5rem !important; box-shadow: 0 -4px 20px rgba(0,0,0,0.1) !important; }
+
+        /* FORCE FIX for button text visibility */
+        .cc-btn-primary,
+        .cc-btn-secondary,
+        button[data-role="accept-all"],
+        button[data-role="reject"],
+        button[data-role="accept-necessary"],
+        button[data-role="accept-custom"],
+        .cc-window button,
+        .cc-window .cc-btn,
+        #cc-main button,
+        #cc-main .cc-btn {
+            color: #333333 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .cc-btn-primary,
+        button[data-role="accept-all"],
+        button[data-role="accept-custom"],
+        .cc-window .cc-btn-primary,
+        #cc-main .cc-btn-primary {
+            color: #FFFFFF !important;
+            background-color: #5B9EFF !important;
+        }
+
+        .cc-btn-secondary,
+        button[data-role="reject"],
+        button[data-role="accept-necessary"],
+        .cc-window .cc-btn-secondary,
+        #cc-main .cc-btn-secondary {
+            color: #64748b !important;
+            background: white !important;
+            border: 1px solid #e2e8f0 !important;
+        }
     </style>
 </head>
 <body>
