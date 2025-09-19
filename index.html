@@ -96,11 +96,45 @@
     <style>
         /* Custom CookieConsent Styles */
         .cc-window { font-family: Inter, sans-serif !important; }
-        .cc-btn { border-radius: 6px !important; font-weight: 500 !important; }
-        .cc-btn.cc-btn-primary { background: #5B9EFF !important; border-color: #5B9EFF !important; }
-        .cc-btn.cc-btn-primary:hover { background: #4080E0 !important; }
-        .cc-btn.cc-btn-secondary { background: transparent !important; color: #64748b !important; border: 1px solid #e2e8f0 !important; }
-        .cc-btn.cc-btn-secondary:hover { background: #f8f9fa !important; }
+        .cc-btn {
+            border-radius: 6px !important;
+            font-weight: 500 !important;
+            color: #333 !important;
+        }
+        .cc-btn.cc-btn-primary {
+            background: #5B9EFF !important;
+            border-color: #5B9EFF !important;
+            color: #ffffff !important;
+        }
+        .cc-btn.cc-btn-primary:hover {
+            background: #4080E0 !important;
+            color: #ffffff !important;
+        }
+        .cc-btn.cc-btn-secondary {
+            background: transparent !important;
+            color: #64748b !important;
+            border: 1px solid #e2e8f0 !important;
+        }
+        .cc-btn.cc-btn-secondary:hover {
+            background: #f8f9fa !important;
+            color: #64748b !important;
+        }
+        /* Ensure all button text is visible */
+        #cc-main .cc-btn,
+        .cc-window .cc-btn,
+        button.cc-btn {
+            color: #333 !important;
+        }
+        #cc-main .cc-btn.cc-btn-primary,
+        .cc-window .cc-btn.cc-btn-primary,
+        button.cc-btn.cc-btn-primary {
+            color: #ffffff !important;
+        }
+        #cc-main .cc-btn.cc-btn-secondary,
+        .cc-window .cc-btn.cc-btn-secondary,
+        button.cc-btn.cc-btn-secondary {
+            color: #64748b !important;
+        }
         #cc-main { font-size: 15px !important; }
         #cc-main .cc-link { color: #5B9EFF !important; }
         #cc-main .cc-toggle { background: #e2e8f0 !important; }
