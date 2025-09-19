@@ -122,6 +122,35 @@
         #cc-main .cc-toggle { background: #e2e8f0 !important; }
         #cc-main .cc-toggle:checked ~ .cc-toggle__slider { background: #5B9EFF !important; }
         #cc-main.cc-window.cc-banner { padding: 1.5rem !important; box-shadow: 0 -4px 20px rgba(0,0,0,0.1) !important; }
+
+        /* AGGRESSIVE FIX - Force ALL button text to be visible */
+        .cc-btn-primary span,
+        .cc-btn-secondary span,
+        .cc-btn-primary *,
+        .cc-btn-secondary *,
+        button.cc-btn span,
+        button.cc-btn *,
+        .cc-window button span,
+        .cc-window button *,
+        #cc-main button span,
+        #cc-main button *,
+        [data-role="accept-all"] span,
+        [data-role="accept-all"] *,
+        [data-role="reject"] span,
+        [data-role="reject"] * {
+            color: inherit !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        /* Ensure text content is never transparent */
+        .cc-btn::before,
+        .cc-btn::after,
+        button.cc-btn::before,
+        button.cc-btn::after {
+            color: inherit !important;
+            opacity: 1 !important;
+        }
     </style>
 </head>
 <body>
