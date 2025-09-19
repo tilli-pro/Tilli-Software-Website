@@ -97,10 +97,26 @@
         /* Custom CookieConsent Styles */
         .cc-window { font-family: Inter, sans-serif !important; }
         .cc-btn { border-radius: 6px !important; font-weight: 500 !important; }
-        .cc-btn.cc-btn-primary { background: #5B9EFF !important; border-color: #5B9EFF !important; }
-        .cc-btn.cc-btn-primary:hover { background: #4080E0 !important; }
-        .cc-btn.cc-btn-secondary { background: transparent !important; color: #64748b !important; border: 1px solid #e2e8f0 !important; }
-        .cc-btn.cc-btn-secondary:hover { background: #f8f9fa !important; }
+        /* High contrast for primary button - dark blue bg with white text */
+        .cc-btn.cc-btn-primary {
+            background: #1e40af !important;
+            border-color: #1e40af !important;
+            color: #ffffff !important;
+        }
+        .cc-btn.cc-btn-primary:hover {
+            background: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        /* High contrast for secondary button - dark gray text on white bg */
+        .cc-btn.cc-btn-secondary {
+            background: #ffffff !important;
+            color: #1f2937 !important;
+            border: 2px solid #1f2937 !important;
+        }
+        .cc-btn.cc-btn-secondary:hover {
+            background: #f3f4f6 !important;
+            color: #111827 !important;
+        }
         #cc-main { font-size: 15px !important; }
         #cc-main .cc-link { color: #5B9EFF !important; }
         #cc-main .cc-toggle { background: #e2e8f0 !important; }
