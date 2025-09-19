@@ -123,22 +123,22 @@
         #cc-main .cc-toggle:checked ~ .cc-toggle__slider { background: #5B9EFF !important; }
         #cc-main.cc-window.cc-banner { padding: 1.5rem !important; box-shadow: 0 -4px 20px rgba(0,0,0,0.1) !important; }
 
-        /* AGGRESSIVE FIX - Force ALL button text to be visible */
-        .cc-btn-primary span,
-        .cc-btn-secondary span,
-        .cc-btn-primary *,
-        .cc-btn-secondary *,
-        button.cc-btn span,
-        button.cc-btn *,
-        .cc-window button span,
-        .cc-window button *,
-        #cc-main button span,
-        #cc-main button *,
-        [data-role="accept-all"] span,
-        [data-role="accept-all"] *,
-        [data-role="reject"] span,
-        [data-role="reject"] * {
-            color: inherit !important;
+        /* FIXED: Force specific colors instead of inherit */
+        #cc-main .cc-btn-primary,
+        #cc-main button[data-role="accept-all"],
+        .cc-window .cc-btn-primary {
+            color: #ffffff !important;
+        }
+
+        #cc-main .cc-btn-secondary,
+        #cc-main button[data-role="reject"],
+        .cc-window .cc-btn-secondary {
+            color: #1f2937 !important;
+        }
+
+        /* Ensure all child elements are visible */
+        #cc-main .cc-btn *,
+        .cc-window .cc-btn * {
             opacity: 1 !important;
             visibility: visible !important;
         }
