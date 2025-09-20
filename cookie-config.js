@@ -36,7 +36,7 @@ window.addEventListener('load', function(){
         // UI Configuration
         gui_options: {
             consent_modal: {
-                layout: 'bar',                 // bar/box/cloud
+                layout: 'box',                  // Changed to box for larger appearance
                 position: 'bottom center',     // bottom/middle/top + left/right/center
                 transition: 'slide',            // zoom/slide
                 swap_buttons: false
@@ -56,19 +56,30 @@ window.addEventListener('load', function(){
 
         onAccept: function (cookie) {
             // Analytics scripts will be automatically enabled
+            // Re-initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                setTimeout(() => lucide.createIcons(), 100);
+            }
+        },
+
+        onFirstAction: function(user_preferences, cookie) {
+            // Re-initialize Lucide icons after first action
+            if (typeof lucide !== 'undefined') {
+                setTimeout(() => lucide.createIcons(), 100);
+            }
         },
 
         languages: {
             'en': {
                 consent_modal: {
-                    title: '🍪 We use cookies',
+                    title: '<i data-lucide="cookie" style="display: inline-block; width: 24px; height: 24px; vertical-align: middle; margin-right: 8px;"></i>We use cookies',
                     description: 'We use cookies to enhance your experience, analyze site traffic, and improve our services. <button type="button" data-cc="c-settings" class="cc-link">Manage preferences</button>',
                     primary_btn: {
-                        text: 'Accept all',
+                        text: '<i data-lucide="check-circle" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;"></i>Accept all',
                         role: 'accept_all'
                     },
                     secondary_btn: {
-                        text: 'Reject all',
+                        text: '<i data-lucide="x-circle" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;"></i>Reject all',
                         role: 'accept_necessary'
                     }
                 },
@@ -115,7 +126,7 @@ window.addEventListener('load', function(){
                             description: 'These cookies allow us to count visits and traffic sources, so we can measure and improve the performance of our site.',
                             toggle: {
                                 value: 'analytics',
-                                enabled: false,
+                                enabled: true,
                                 readonly: false
                             },
                             cookie_table: [
@@ -137,7 +148,7 @@ window.addEventListener('load', function(){
                             description: 'These cookies are used to track visitors across websites to display ads that are relevant and engaging.',
                             toggle: {
                                 value: 'marketing',
-                                enabled: false,
+                                enabled: true,
                                 readonly: false
                             },
                             cookie_table: [
@@ -163,4 +174,11 @@ window.addEventListener('load', function(){
             }
         }
     });
+
+    // Initialize Lucide icons after cookie banner loads
+    setTimeout(function() {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }, 500);
 });

@@ -1,0 +1,2203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Interactive Product Demos - Tilli Platform | Try tilliX, Nudge & tilliPay</title>
+    <meta name="description" content="Experience the Tilli platform with interactive demos of tilliX, Nudge, and tilliPay. See how our solutions transform digital engagement and payments.">
+    <meta name="keywords" content="Tilli demos, tilliX demo, Nudge demo, tilliPay demo, payment platform demo, customer portal demo">
+    <link rel="canonical" href="https://www.tilli.pro/demos">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.tilli.pro/demos">
+    <meta property="og:title" content="Interactive Product Demos - Experience Tilli Platform">
+    <meta property="og:description" content="Try our interactive demos to see how tilliX, Nudge, and tilliPay transform customer engagement and payments.">
+    <meta property="og:image" content="https://www.tilli.pro/images/tilli-og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tilli">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tilli_software">
+    <meta name="twitter:creator" content="@tilli_software">
+    <meta name="twitter:image" content="https://www.tilli.pro/images/tilli-social-banner.png">
+
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Utilli, LLC (dba tilli)">
+    <meta name="publisher" content="Tilli">
+    <meta name="copyright" content="© 2025 Tilli. All rights reserved.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Favicon and Icons -->
+    <link rel="shortcut icon" href="/favicon.ico?v=2">
+    <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
+    <link rel="mask-icon" href="/favicon-32x32.png" color="#5B9EFF">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#5B9EFF">
+    <meta name="msapplication-TileColor" content="#5B9EFF">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- RB2B Tracking -->
+    <script type="text/plain" data-cookiecategory="analytics">!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://b2bjsstore.s3.us-west-2.amazonaws.com/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("VN080HX77V6J");</script>
+    <!-- Vercel Analytics -->
+    <script type="text/plain" data-cookiecategory="analytics" defer src="https://cdn.vercel-insights.com/v1.js"></script>
+
+    <!-- CookieConsent Styles -->
+    <style>
+        /* Custom CookieConsent Styles */
+        .cc-window { font-family: Inter, sans-serif !important; }
+        .cc-btn { border-radius: 6px !important; font-weight: 500 !important; }
+        .cc-btn.cc-btn-primary { background: #5B9EFF !important; border-color: #5B9EFF !important; }
+        .cc-btn.cc-btn-primary:hover { background: #4080E0 !important; }
+        .cc-btn.cc-btn-secondary { background: transparent !important; color: #64748b !important; border: 1px solid #e2e8f0 !important; }
+        .cc-btn.cc-btn-secondary:hover { background: #f8f9fa !important; }
+        #cc-main { font-size: 15px !important; }
+        #cc-main .cc-link { color: #5B9EFF !important; }
+        #cc-main .cc-toggle { background: #e2e8f0 !important; }
+        #cc-main .cc-toggle:checked ~ .cc-toggle__slider { background: #5B9EFF !important; }
+        #cc-main.cc-window.cc-banner { padding: 1.5rem !important; box-shadow: 0 -4px 20px rgba(0,0,0,0.1) !important; }
+
+        /* Demo Page Specific Styles */
+        body {
+            padding-top: 80px; /* Add padding for fixed header */
+        }
+
+        .demo-tabs {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0;
+            position: sticky;
+            top: 80px;
+            z-index: 99;
+        }
+
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .tab-button {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            color: #374151;
+        }
+
+        .tab-button.active {
+            color: #6366f1;
+            border-bottom-color: #6366f1;
+        }
+
+        .demo-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            padding-top: 1rem; /* Reduce top padding since body has padding */
+        }
+
+        .demo-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .demo-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .demo-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .demo-intro h1 {
+            color: #1a1a1a;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .demo-intro p {
+            color: #4b5563;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 3rem;
+            color: white;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-button-demo {
+            display: inline-block;
+            background: white;
+            color: #6366f1;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button-demo:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Back to top button */
+        .back-to-main {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #6366f1;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            text-decoration: none;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-main:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="about.html">Company</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="press.html">Press</a></li>
+                    <li><a href="demos.html" class="active">Demos</a></li>
+                </ul>
+                <a class="cta-button" href="contact.html">Contact Us</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Demo Tabs -->
+    <div class="demo-tabs">
+        <div class="tabs-container">
+            <button class="tab-button active" onclick="showDemo('tillix')">tilliX Portal</button>
+            <button class="tab-button" onclick="showDemo('nudge')">Nudge Communications</button>
+            <button class="tab-button" onclick="showDemo('tillipay')">tilliPay Payments</button>
+        </div>
+    </div>
+
+    <!-- Demo Content -->
+    <div class="demo-content">
+        <!-- TilliX Demo Section -->
+        <div id="tillix-demo" class="demo-section active">
+            <div class="demo-intro">
+                <h1>tilliX - Digital Engagement Portal</h1>
+                <p>Experience how tilliX transforms customer interactions with intuitive self-service portals and seamless payment experiences.</p>
+            </div>
+
+            <!-- TilliX interactive demo container - content will be loaded via JavaScript -->
+            <div id="tillix-demo-container">
+                <!-- Demo content will be dynamically loaded -->
+                <div style="text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 12px;">
+                    <p>Loading tilliX demo...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nudge Demo Section -->
+        <div id="nudge-demo" class="demo-section">
+            <div class="demo-intro">
+                <h1>Nudge - Intelligent Communications</h1>
+                <p>See how Nudge delivers timely, personalized messages across channels to drive action and improve engagement.</p>
+            </div>
+
+            <!-- Nudge phone mockup container - content will be loaded via JavaScript -->
+            <div id="nudge-demo-container">
+                <!-- Demo content will be dynamically loaded -->
+                <div style="text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 12px;">
+                    <p>Loading Nudge demo...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TilliPay Demo Section -->
+        <div id="tillipay-demo" class="demo-section">
+            <div class="demo-intro">
+                <h1>tilliPay - Payment Orchestration</h1>
+                <p>Discover how tilliPay streamlines payment processing with intelligent routing and multiple payment options.</p>
+            </div>
+
+            <!-- TilliPay demo container - content will be loaded via JavaScript -->
+            <div id="tillipay-demo-container">
+                <!-- Demo content will be dynamically loaded -->
+                <div style="text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 12px;">
+                    <p>Loading tilliPay demo...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Transform Your Digital Experience?</h2>
+            <p style="margin-bottom: 2rem;">Get a personalized demo from our experts</p>
+            <a href="contact.html" class="cta-button-demo">Request Live Demo</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo">
+                        </div>
+                        <p>Tilli builds secure, scalable communication and payments for enterprises and communities worldwide.</p>
+                        <div class="newsletter" id="newsletter">
+                            <input type="email" placeholder="Your email address">
+                            <button class="btn-primary">Subscribe</button>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>About</h4>
+                            <ul>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li><a href="#">Newsroom</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Solutions</h4>
+                            <ul>
+                                <li><a href="tillix.html">tilliX</a></li>
+                                <li><a href="nudge.html">Nudge</a></li>
+                                <li><a href="tillipay.html">tilliPay</a></li>
+                                <li><a href="index.html#solutions">Industries</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Developers</h4>
+                            <ul>
+                                <li><a href="#">Documentation</a></li>
+                                <li><a href="#">API Reference</a></li>
+                                <li><a href="#">SDKs</a></li>
+                                <li><a href="#">Community</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Resources</h4>
+                            <ul>
+                                <li><a href="#">Support</a></li>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Webinars</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Legal</h4>
+                            <ul>
+                                <li><a href="privacy-policy/">Privacy Policy</a></li>
+                                <li><a href="terms-and-conditions/">Terms &amp; Conditions</a></li>
+                                <li><a href="anti-slavery-policy.html">Anti-Slavery Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/tillisoftware" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.facebook.com/tillisoftware"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@tillisoftware"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="footer-legal">
+                        <p>&copy; 2025 Tilli. All rights reserved.</p>
+                        <div class="legal-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                        </div>
+                    </div>
+                    <div class="footer-contact">
+                        <h5>Headquarters</h5>
+                        <p>123 Business District<br>Financial Center, FC 12345</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Main Site Button -->
+    <a href="index.html" class="back-to-main" title="Back to Home">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+    </a>
+
+    <script>
+        // Tab switching functionality
+        function showDemo(demoName) {
+            // Update tabs
+            document.querySelectorAll('.tab-button').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update content
+            document.querySelectorAll('.demo-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(demoName + '-demo').classList.add('active');
+
+            // Scroll to top of demo
+            window.scrollTo({ top: 140, behavior: 'smooth' });
+        }
+
+        // Handle direct links to specific demos
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && ['tillix', 'nudge', 'tillipay'].includes(hash)) {
+                document.querySelector(`.tab-button[onclick="showDemo('${hash}')"]`).click();
+            }
+
+            // Load demo content dynamically to improve initial page load
+            loadDemoContent();
+        });
+
+        function loadDemoContent() {
+            // Load tilliX demo
+            loadTilliXDemo();
+            // Load Nudge demo
+            loadNudgeDemo();
+            // Load tilliPay demo
+            loadTilliPayDemo();
+            // Load tilliArc demo
+            loadTilliArcDemo();
+        }
+
+        // Interactive demo functions
+        window.currentScreen = 'prelogin';
+        window.paymentMethod = null;
+
+        window.goToScreen = function(screenName) {
+            // Find all tilliX screens within the demo container
+            const demoContainer = document.getElementById('tillix-demo-container');
+            if (!demoContainer) return;
+
+            const screens = demoContainer.querySelectorAll('.tillix-screen');
+            screens.forEach(screen => {
+                screen.style.display = 'none';
+                screen.classList.remove('active');
+            });
+
+            const targetScreen = demoContainer.querySelector('#' + screenName + '-screen');
+            if (targetScreen) {
+                targetScreen.style.display = 'block';
+                targetScreen.classList.add('active');
+                window.currentScreen = screenName;
+            }
+        }
+
+        window.goBack = function() {
+            // Always return to the main screen (prelogin)
+            window.goToScreen('prelogin');
+        }
+
+        window.viewBill = function() {
+            // Navigate to invoice list screen
+            window.goToScreen('invoice-list');
+        }
+
+        window.payNow = function() {
+            // Set default amount if no invoices selected
+            window.paymentAmount = window.paymentAmount || 500.00;
+            window.goToScreen('payment');
+            // Update payment display
+            setTimeout(() => {
+                const paymentDisplay = document.getElementById('payment-amount-display');
+                if (paymentDisplay) {
+                    paymentDisplay.textContent = '$' + window.paymentAmount.toFixed(2);
+                }
+            }, 100);
+        }
+
+        window.selectSavedPayment = function(method) {
+            window.paymentMethod = method;
+            document.querySelectorAll('.saved-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+
+            // Auto-proceed after selection
+            setTimeout(() => {
+                window.processPayment();
+            }, 500);
+        }
+
+        window.processPayment = function() {
+            window.goToScreen('payment-confirm');
+
+            // Simulate processing
+            setTimeout(() => {
+                document.querySelector('.payment-status').innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <div style="font-size: 4rem; color: #10b981; margin-bottom: 1rem;">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h2 style="color: #10b981; margin-bottom: 0.5rem;">Payment Successful!</h2>
+                        <p style="color: #6b7280; margin-bottom: 2rem;">Your payment of $115.00 has been processed</p>
+                        <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 1rem; margin-bottom: 2rem;">
+                            <strong>Confirmation Number:</strong> WG-2024-${Math.floor(Math.random() * 100000)}
+                        </div>
+                        <button class="btn-primary" onclick="window.goToScreen('dashboard')">
+                            <i class="fas fa-home"></i> Go to Dashboard
+                        </button>
+                    </div>
+                `;
+            }, 2000);
+        }
+
+        window.selectPaymentOption = function(option) {
+            document.querySelectorAll('.payment-option').forEach(opt => {
+                opt.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+        }
+
+        function loadTilliXDemo() {
+            const container = document.getElementById('tillix-demo-container');
+            if (container) {
+                // Set up the interactive functions for tilliX demo
+                window.currentTilliXScreen = 'prelogin';
+
+                // Override the global functions for tilliX demo
+                window.goToScreen = function(screenName) {
+                    const demoContainer = document.getElementById('tillix-demo-container');
+                    if (!demoContainer) return;
+
+                    const screens = demoContainer.querySelectorAll('.tillix-screen');
+                    screens.forEach(screen => {
+                        screen.style.display = 'none';
+                        screen.classList.remove('active');
+                    });
+
+                    const targetScreen = demoContainer.querySelector('#' + screenName + '-screen');
+                    if (targetScreen) {
+                        targetScreen.style.display = 'block';
+                        targetScreen.classList.add('active');
+                        window.currentTilliXScreen = screenName;
+                    }
+                };
+
+                window.goBack = function() {
+                    window.goToScreen('prelogin');
+                };
+
+                window.viewBill = function() {
+                    window.goToScreen('invoice-list');
+                };
+
+                window.payNow = function() {
+                    // Set default amount if no invoices selected
+                    window.paymentAmount = window.paymentAmount || 500.00;
+                    window.goToScreen('payment');
+                    // Update payment display
+                    setTimeout(() => {
+                        const paymentDisplay = document.getElementById('payment-amount-display');
+                        if (paymentDisplay) {
+                            paymentDisplay.textContent = '$' + window.paymentAmount.toFixed(2);
+                        }
+                    }, 100);
+                };
+
+                window.selectSavedPayment = function(method) {
+                    window.paymentMethod = method;
+                    // Highlight selected card
+                    const demoContainer = document.getElementById('tillix-demo-container');
+                    if (demoContainer) {
+                        demoContainer.querySelectorAll('.saved-card').forEach(card => {
+                            card.style.border = '2px solid #e5e7eb';
+                        });
+                        event.currentTarget.style.border = '2px solid #6366f1';
+                    }
+
+                    // Process payment after selection
+                    setTimeout(() => {
+                        window.processPayment();
+                    }, 500);
+                };
+
+                window.processPayment = function() {
+                    // Show processing state instead of popup
+                    window.goToScreen('process-payment');
+
+                    const btn = document.getElementById('process-payment-btn');
+                    if (btn) {
+                        btn.disabled = true;
+                        btn.innerHTML = '<svg style="width: 20px; height: 20px; animation: spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Processing...';
+                    }
+
+                    setTimeout(() => {
+                        window.goToScreen('payment-confirmation');
+
+                        const confirmDetails = document.getElementById('confirmation-details');
+                        if (confirmDetails) {
+                            const confirmNum = 'WG-2024-' + Math.floor(Math.random() * 100000);
+                            const paymentAmount = window.paymentAmount || 115.00;
+                            confirmDetails.innerHTML = `
+                                <div style="text-align: center; padding: 2rem;">
+                                    <div style="font-size: 4rem; color: #10b981; margin-bottom: 1rem;">
+                                        <svg style="width: 80px; height: 80px;" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                                    </div>
+                                    <h2 style="color: #10b981; margin-bottom: 0.5rem;">Payment Successful!</h2>
+                                    <p style="color: #6b7280; margin-bottom: 2rem;">Your payment of $${paymentAmount.toFixed(2)} has been processed</p>
+                                    <div style="background: #f3f4f6; border-radius: 12px; padding: 1.5rem; text-align: left; max-width: 400px; margin: 0 auto;">
+                                        <div style="margin-bottom: 1rem;">
+                                            <strong>Confirmation Number:</strong><br>
+                                            <span style="color: #6366f1; font-size: 1.1rem;">${confirmNum}</span>
+                                        </div>
+                                        <div style="margin-bottom: 1rem;">
+                                            <strong>Amount Paid:</strong><br>
+                                            $115.00
+                                        </div>
+                                        <div>
+                                            <strong>Date:</strong><br>
+                                            ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                        </div>
+                                    </div>
+                                    <button class="btn-primary" onclick="window.goToScreen('dashboard')" style="margin-top: 2rem; width: 100%;">
+                                        <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg> Go to Dashboard
+                                    </button>
+                                </div>
+                            `;
+                        }
+
+                        if (btn) {
+                            btn.disabled = false;
+                            btn.innerHTML = '<svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Process Secure Payment';
+                        }
+                    }, 2000);
+                };
+
+                container.innerHTML = `
+                    <style>
+                        /* tilliX Demo Styles */
+                        .tillix-preview {
+                            max-width: 1200px;
+                            margin: 2rem auto;
+                            padding: 2rem;
+                        }
+                        .tillix-screen {
+                            display: none;
+                            animation: fadeIn 0.5s ease-in;
+                            background: white;
+                            border-radius: 12px;
+                            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+                            overflow: hidden;
+                        }
+                        .tillix-screen.active {
+                            display: block;
+                        }
+                        .portal-header {
+                            background: linear-gradient(135deg, #7c3aed, #6366f1);
+                            color: white;
+                            padding: 1.5rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                        }
+                        .soft-auth-container {
+                            padding: 2rem;
+                        }
+                        .bill-summary-card {
+                            background: #f8f9fa;
+                            border-radius: 12px;
+                            padding: 1.5rem;
+                            margin: 1.5rem 0;
+                        }
+                        .bill-alert {
+                            background: #fff3cd;
+                            color: #856404;
+                            padding: 0.75rem;
+                            border-radius: 8px;
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                            margin-bottom: 1rem;
+                        }
+                        .bill-row {
+                            display: flex;
+                            justify-content: space-between;
+                            padding: 0.5rem 0;
+                            border-bottom: 1px solid #e9ecef;
+                        }
+                        .bill-row.highlight {
+                            font-weight: 600;
+                            color: #1a1a1a;
+                            font-size: 1.1rem;
+                        }
+                        .bill-actions {
+                            display: flex;
+                            gap: 1rem;
+                            margin-top: 1.5rem;
+                        }
+                        .btn-primary, .btn-secondary {
+                            padding: 0.75rem 1.5rem;
+                            border: none;
+                            border-radius: 8px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                        }
+                        .btn-primary {
+                            background: linear-gradient(135deg, #7c3aed, #6366f1);
+                            color: white;
+                        }
+                        .btn-secondary {
+                            background: white;
+                            color: #6366f1;
+                            border: 2px solid #6366f1;
+                        }
+                        @keyframes fadeIn {
+                            from { opacity: 0; transform: translateY(10px); }
+                            to { opacity: 1; transform: translateY(0); }
+                        }
+                    </style>
+                    <div class="tillix-preview">
+                        <div class="tillix-screen active" id="prelogin-screen">
+                            <div class="portal-header">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Ctext x='10' y='20' font-family='Inter' font-size='18' font-weight='600' fill='white'%3EtilliX%3C/text%3E%3C/svg%3E" alt="tilliX" style="height: 30px;">
+                                <span class="portal-title">Customer Portal - Quick Bill Pay</span>
+                            </div>
+                            <div class="soft-auth-container">
+                                <h3>Welcome Back!</h3>
+                                <p class="auth-subtitle">Access your account with minimal information</p>
+
+                                <div class="bill-summary-card">
+                                    <div class="bill-alert">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <span>Bill Due Today - Washington Gas Service</span>
+                                    </div>
+                                    <div class="bill-details">
+                                        <div class="bill-row">
+                                            <span class="bill-label">Account Number</span>
+                                            <span class="bill-value">786-123-4567</span>
+                                        </div>
+                                        <div class="bill-row">
+                                            <span class="bill-label">Service Period</span>
+                                            <span class="bill-value">Nov 1 - Nov 30, 2024</span>
+                                        </div>
+                                        <div class="bill-row">
+                                            <span class="bill-label">Due Date</span>
+                                            <span class="bill-value due-date" style="color: #dc3545; font-weight: 600;">Today, Dec 15</span>
+                                        </div>
+                                        <div class="bill-row highlight">
+                                            <span class="bill-label">Amount Due</span>
+                                            <span class="bill-value amount">$115.00</span>
+                                        </div>
+                                        <div class="bill-row">
+                                            <span class="bill-label">Last Payment</span>
+                                            <span class="bill-value">$125.00 on Nov 14</span>
+                                        </div>
+                                    </div>
+                                    <div class="bill-actions">
+                                        <button class="btn-secondary" onclick="window.viewBill()">
+                                            <i class="fas fa-file-invoice"></i> View Full Bill
+                                        </button>
+                                        <button class="btn-primary" onclick="window.payNow()">
+                                            <i class="fas fa-credit-card"></i> Pay Now
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 1.5rem; margin-top: 2rem;">
+                                    <h4 style="margin-bottom: 1rem;">Quick Actions</h4>
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                                        <button onclick="window.showPaymentHistory()" style="padding: 1rem; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; text-align: left; cursor: pointer; transition: all 0.3s;">
+                                            <svg style="width: 24px; height: 24px; color: #6366f1; margin-bottom: 0.5rem; display: block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                            <strong>Payment History</strong>
+                                            <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0.25rem;">View past payments</p>
+                                        </button>
+                                        <button onclick="window.showAutoPay()" style="padding: 1rem; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; text-align: left; cursor: pointer; transition: all 0.3s;">
+                                            <svg style="width: 24px; height: 24px; color: #6366f1; margin-bottom: 0.5rem; display: block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>
+                                            <strong>AutoPay Setup</strong>
+                                            <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0.25rem;">Never miss a payment</p>
+                                        </button>
+                                        <button onclick="window.showUsageReport()" style="padding: 1rem; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; text-align: left; cursor: pointer; transition: all 0.3s;">
+                                            <svg style="width: 24px; height: 24px; color: #6366f1; margin-bottom: 0.5rem; display: block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                                            <strong>Usage Analytics</strong>
+                                            <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0.25rem;">Track consumption</p>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Screen -->
+                        <div class="tillix-screen" id="payment-screen" style="display: none;">
+                            <div class="portal-header">
+                                <button class="back-btn" onclick="window.goBack()" style="background: none; border: none; color: white; font-size: 1.25rem; cursor: pointer;">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                                <span class="portal-title">Select Payment Method</span>
+                            </div>
+                            <div class="soft-auth-container">
+                                <div class="bill-summary-card">
+                                    <h4>Payment Summary</h4>
+                                    <div class="bill-row">
+                                        <span>Invoice IN78612345</span>
+                                        <span class="amount">$115.00</span>
+                                    </div>
+                                </div>
+
+                                <h4 style="margin: 1.5rem 0 1rem;">Saved Payment Methods</h4>
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <div class="saved-card" onclick="window.selectSavedPayment('visa-9876')" style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 1rem;">
+                                        <i class="fab fa-cc-visa" style="font-size: 2rem; color: #1a365d;"></i>
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 600;">Visa ending in 9876</div>
+                                            <div style="font-size: 0.85rem; color: #6b7280;">Exp: 12/25</div>
+                                        </div>
+                                        <span style="background: #10b981; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem;">Default</span>
+                                    </div>
+                                    <div class="saved-card" onclick="window.selectSavedPayment('mastercard-5432')" style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 1rem;">
+                                        <i class="fab fa-cc-mastercard" style="font-size: 2rem; color: #eb001b;"></i>
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 600;">Mastercard ending in 5432</div>
+                                            <div style="font-size: 0.85rem; color: #6b7280;">Exp: 08/26</div>
+                                        </div>
+                                    </div>
+                                    <div class="saved-card" onclick="window.selectSavedPayment('bank-1234')" style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 1rem;">
+                                        <i class="fas fa-university" style="font-size: 2rem; color: #4338ca;"></i>
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 600;">Chase Bank ****1234</div>
+                                            <div style="font-size: 0.85rem; color: #6b7280;">Checking Account</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Invoice List Screen -->
+                        <div class="tillix-screen" id="invoice-list-screen" style="display: none;">
+                            <div class="portal-header">
+                                <button class="back-btn" onclick="window.goBack()" style="background: none; border: none; color: white; font-size: 1.25rem; cursor: pointer;">
+                                    <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                </button>
+                                <span class="portal-title">Outstanding Invoices</span>
+                            </div>
+                            <div class="soft-auth-container">
+                                <div class="bill-summary-card" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; margin-bottom: 2rem;">
+                                    <h3 style="color: white; margin-bottom: 1rem;">Total Outstanding</h3>
+                                    <div class="bill-row" style="font-size: 2rem; font-weight: bold;">
+                                        <span>Total Due</span>
+                                        <span id="total-due-amount">$500.00</span>
+                                    </div>
+                                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
+                                        <div style="font-size: 0.9rem; opacity: 0.9;">3 Outstanding Invoices</div>
+                                        <div style="font-size: 1.25rem; font-weight: bold; margin-top: 0.5rem;">
+                                            Selected: <span id="selected-amount">$0.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 style="margin-bottom: 1.5rem;">Select Invoices to Pay</h3>
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <!-- Invoice 1 -->
+                                    <div class="bill-summary-card" style="border-left: 4px solid #ef4444; cursor: pointer;" onclick="window.toggleInvoice('inv1', 185.00)">
+                                        <div style="display: flex; align-items: center; gap: 1rem;">
+                                            <input type="checkbox" id="inv1" data-amount="185.00" style="width: 20px; height: 20px; cursor: pointer;" onclick="event.stopPropagation(); window.toggleInvoice('inv1', 185.00)">
+                                            <div style="flex: 1;">
+                                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                    <div>
+                                                        <strong>Invoice #WG-2024-0189</strong>
+                                                        <div style="font-size: 0.85rem; color: #6b7280;">Due: Dec 15, 2024</div>
+                                                        <div style="font-size: 0.85rem; color: #6b7280;">Service Period: Nov 1-30, 2024</div>
+                                                    </div>
+                                                    <div style="text-align: right;">
+                                                        <div style="font-size: 1.5rem; font-weight: bold; color: #ef4444;">$185.00</div>
+                                                        <span style="background: #fef2f2; color: #ef4444; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem;">Overdue</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Invoice 2 -->
+                                    <div class="bill-summary-card" style="border-left: 4px solid #f59e0b; cursor: pointer;" onclick="window.toggleInvoice('inv2', 175.00)">
+                                        <div style="display: flex; align-items: center; gap: 1rem;">
+                                            <input type="checkbox" id="inv2" data-amount="175.00" style="width: 20px; height: 20px; cursor: pointer;" onclick="event.stopPropagation(); window.toggleInvoice('inv2', 175.00)">
+                                            <div style="flex: 1;">
+                                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                    <div>
+                                                        <strong>Invoice #WG-2024-0212</strong>
+                                                        <div style="font-size: 0.85rem; color: #6b7280;">Due: Jan 5, 2025</div>
+                                                        <div style="font-size: 0.85rem; color: #6b7280;">Service Period: Dec 1-31, 2024</div>
+                                                    </div>
+                                                    <div style="text-align: right;">
+                                                        <div style="font-size: 1.5rem; font-weight: bold; color: #f59e0b;">$175.00</div>
+                                                        <span style="background: #fef3c7; color: #f59e0b; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem;">Due Soon</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Invoice 3 -->
+                                    <div class="bill-summary-card" style="border-left: 4px solid #6366f1; cursor: pointer;" onclick="window.toggleInvoice('inv3', 140.00)">
+                                        <div style="display: flex; align-items: center; gap: 1rem;">
+                                            <input type="checkbox" id="inv3" data-amount="140.00" style="width: 20px; height: 20px; cursor: pointer;" onclick="event.stopPropagation(); window.toggleInvoice('inv3', 140.00)">
+                                            <div style="flex: 1;">
+                                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                    <div>
+                                                        <strong>Invoice #WG-2024-0235</strong>
+                                                        <div style="font-size: 0.85rem; color: #6b7280;">Due: Jan 15, 2025</div>
+                                                        <div style="font-size: 0.85rem; color: #6b7280;">Service Period: Jan 1-15, 2025</div>
+                                                    </div>
+                                                    <div style="text-align: right;">
+                                                        <div style="font-size: 1.5rem; font-weight: bold; color: #6366f1;">$140.00</div>
+                                                        <span style="background: #eef2ff; color: #6366f1; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem;">Current</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 2rem; padding: 1rem; background: #f0f9ff; border: 1px solid #0284c7; border-radius: 8px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-weight: 600;">Amount to Pay:</span>
+                                        <span id="amount-to-pay" style="font-size: 1.5rem; font-weight: bold; color: #0284c7;">$0.00</span>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <button class="btn-secondary" onclick="window.selectAllInvoices()" style="width: 100%; justify-content: center;">
+                                        <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 11l3 3L22 4"/></svg>
+                                        Select All
+                                    </button>
+                                    <button id="pay-selected-btn" class="btn-primary" onclick="window.paySelectedInvoices()" style="width: 100%; justify-content: center;" disabled>
+                                        <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                                        Pay Selected
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dashboard Screen -->
+                        <div class="tillix-screen" id="dashboard-screen" style="display: none;">
+                            <div class="portal-header">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Ctext x='10' y='20' font-family='Inter' font-size='18' font-weight='600' fill='white'%3EtilliX%3C/text%3E%3C/svg%3E" alt="tilliX" style="height: 30px;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <span style="color: white;">Joe Smith</span>
+                                    <div style="width: 35px; height: 35px; background: white; color: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">JS</div>
+                                </div>
+                            </div>
+                            <div class="soft-auth-container">
+                                <h2>Account Overview</h2>
+
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                                    <div class="bill-summary-card" style="text-align: center;">
+                                        <div style="font-size: 0.85rem; color: #6b7280;">Current Balance</div>
+                                        <div style="font-size: 1.5rem; font-weight: 700; color: #ef4444;">$500.00</div>
+                                        <div style="font-size: 0.75rem; color: #ef4444;">3 Outstanding</div>
+                                    </div>
+                                    <div class="bill-summary-card" style="text-align: center;">
+                                        <div style="font-size: 0.85rem; color: #6b7280;">Next Bill Date</div>
+                                        <div style="font-size: 1.5rem; font-weight: 700;">Jan 15</div>
+                                        <div style="font-size: 0.75rem; color: #6b7280;">In 30 days</div>
+                                    </div>
+                                    <div class="bill-summary-card" style="text-align: center;">
+                                        <div style="font-size: 0.85rem; color: #6b7280;">Auto-Pay</div>
+                                        <div style="font-size: 1.5rem; font-weight: 700; color: #10b981;">ON</div>
+                                        <div style="font-size: 0.75rem; color: #6b7280;">Card ****9876</div>
+                                    </div>
+                                </div>
+
+                                <h3>Recent Activity</h3>
+                                <div style="background: white; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;">
+                                    <div style="padding: 1rem; border-bottom: 1px solid #f3f4f6; background: #f0fdf4; display: flex; align-items: center;">
+                                        <div style="width: 40px; height: 40px; background: #10b981; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 600;">Payment Processed</div>
+                                            <div style="font-size: 0.85rem; color: #6b7280;">Just now</div>
+                                        </div>
+                                        <div style="font-weight: 700;">-$500.00</div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 2rem;">
+                                    <button class="btn-secondary" onclick="window.goBack()" style="width: 100%; justify-content: center;">
+                                        <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to Home
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Process Payment Screen -->
+                        <div class="tillix-screen" id="process-payment-screen" style="display: none;">
+                            <div class="portal-header">
+                                <button class="back-btn" onclick="window.goToScreen('payment')" style="background: none; border: none; color: white; font-size: 1.25rem; cursor: pointer;">
+                                    <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                </button>
+                                <span class="portal-title">Confirm Payment</span>
+                            </div>
+                            <div class="soft-auth-container">
+                                <div class="bill-summary-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin-bottom: 2rem;">
+                                    <h3 style="color: white; margin-bottom: 1rem;">Payment Summary</h3>
+                                    <div class="bill-row" style="font-size: 1.5rem; font-weight: bold;">
+                                        <span>Total Due</span>
+                                        <span id="payment-amount-display">$115.00</span>
+                                    </div>
+                                </div>
+
+                                <div class="bill-summary-card">
+                                    <h4 style="margin-bottom: 1rem;">Selected Payment Method</h4>
+                                    <div id="selected-method-display" style="display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; font-weight: 600;">
+                                        <!-- Payment method will be displayed here -->
+                                    </div>
+                                </div>
+
+                                <button id="process-payment-btn" class="btn-primary" onclick="window.processPayment()" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                                    <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                                    Process Secure Payment
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Payment Confirmation Screen -->
+                        <div class="tillix-screen" id="payment-confirmation-screen" style="display: none;">
+                            <div class="portal-header">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Ctext x='10' y='20' font-family='Inter' font-size='18' font-weight='600' fill='white'%3EtilliX%3C/text%3E%3C/svg%3E" alt="tilliX" style="height: 30px;">
+                                <span class="portal-title">Payment Confirmation</span>
+                            </div>
+                            <div class="soft-auth-container">
+                                <div id="confirmation-details">
+                                    <!-- Confirmation details will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Action Screens -->
+                        <div class="tillix-screen" id="payment-history-screen" style="display: none;">
+                            <div class="portal-header">
+                                <button class="back-btn" onclick="window.goBack()" style="background: none; border: none; color: white; font-size: 1.25rem; cursor: pointer;">
+                                    <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                </button>
+                                <span class="portal-title">Payment History</span>
+                            </div>
+                            <div class="soft-auth-container">
+                                <h3 style="margin-bottom: 1.5rem;">Recent Payments</h3>
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <div class="bill-summary-card" style="border-left: 4px solid #10b981;">
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <div>
+                                                <strong>November 14, 2024</strong>
+                                                <div style="font-size: 0.85rem; color: #6b7280;">Visa ****9876</div>
+                                            </div>
+                                            <div style="text-align: right;">
+                                                <div style="font-size: 1.25rem; font-weight: bold;">$125.00</div>
+                                                <span style="background: #10b981; color: white; padding: 0.125rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Paid</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bill-summary-card" style="border-left: 4px solid #10b981;">
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <div>
+                                                <strong>October 15, 2024</strong>
+                                                <div style="font-size: 0.85rem; color: #6b7280;">Bank Account ****1234</div>
+                                            </div>
+                                            <div style="text-align: right;">
+                                                <div style="font-size: 1.25rem; font-weight: bold;">$132.00</div>
+                                                <span style="background: #10b981; color: white; padding: 0.125rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Paid</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bill-summary-card" style="border-left: 4px solid #10b981;">
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <div>
+                                                <strong>September 16, 2024</strong>
+                                                <div style="font-size: 0.85rem; color: #6b7280;">Mastercard ****5432</div>
+                                            </div>
+                                            <div style="text-align: right;">
+                                                <div style="font-size: 1.25rem; font-weight: bold;">$118.00</div>
+                                                <span style="background: #10b981; color: white; padding: 0.125rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Paid</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tillix-screen" id="autopay-setup-screen" style="display: none;">
+                            <div class="portal-header">
+                                <button class="back-btn" onclick="window.goBack()" style="background: none; border: none; color: white; font-size: 1.25rem; cursor: pointer;">
+                                    <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                </button>
+                                <span class="portal-title">AutoPay Setup</span>
+                            </div>
+                            <div class="soft-auth-container">
+                                <h3 style="margin-bottom: 1.5rem;">Configure AutoPay</h3>
+                                <div class="bill-summary-card" style="background: #f0fdf4; border: 1px solid #10b981;">
+                                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                        <svg style="width: 48px; height: 48px; color: #10b981;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                                        <div>
+                                            <h4 style="margin: 0;">AutoPay Benefits</h4>
+                                            <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #6b7280;">Never miss a payment and avoid late fees</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 2rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Payment Method</label>
+                                    <select style="width: 100%; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 1rem;">
+                                        <option>Visa ****9876 (Default)</option>
+                                        <option>Mastercard ****5432</option>
+                                        <option>Chase Bank ****1234</option>
+                                    </select>
+
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Payment Date</label>
+                                    <select style="width: 100%; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 2rem;">
+                                        <option>Due Date</option>
+                                        <option>5 days before due date</option>
+                                        <option>10 days before due date</option>
+                                    </select>
+
+                                    <button class="btn-primary" onclick="window.enableAutoPay()" style="width: 100%;">
+                                        <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                                        Enable AutoPay
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tillix-screen" id="usage-report-screen" style="display: none;">
+                            <div class="portal-header">
+                                <button class="back-btn" onclick="window.goBack()" style="background: none; border: none; color: white; font-size: 1.25rem; cursor: pointer;">
+                                    <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                </button>
+                                <span class="portal-title">Usage Report</span>
+                            </div>
+                            <div class="soft-auth-container">
+                                <h3 style="margin-bottom: 1.5rem;">November 2024 Usage</h3>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                                    <div class="bill-summary-card" style="text-align: center;">
+                                        <svg style="width: 32px; height: 32px; color: #6366f1; margin: 0 auto 0.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                        <div style="font-size: 0.85rem; color: #6b7280;">Total Usage</div>
+                                        <div style="font-size: 1.5rem; font-weight: 700;">850 kWh</div>
+                                    </div>
+                                    <div class="bill-summary-card" style="text-align: center;">
+                                        <svg style="width: 32px; height: 32px; color: #10b981; margin: 0 auto 0.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                        <div style="font-size: 0.85rem; color: #6b7280;">Daily Average</div>
+                                        <div style="font-size: 1.5rem; font-weight: 700;">28.3 kWh</div>
+                                    </div>
+                                    <div class="bill-summary-card" style="text-align: center;">
+                                        <svg style="width: 32px; height: 32px; color: #f59e0b; margin: 0 auto 0.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+                                        <div style="font-size: 0.85rem; color: #6b7280;">Total Cost</div>
+                                        <div style="font-size: 1.5rem; font-weight: 700;">$115.00</div>
+                                    </div>
+                                </div>
+                                <div class="bill-summary-card" style="background: #fef3c7; border: 1px solid #fcd34d;">
+                                    <h4 style="margin-bottom: 1rem;">Trend Analysis</h4>
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <svg style="width: 32px; height: 32px; color: #ef4444;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                                        <div>
+                                            <div style="font-size: 1.25rem; font-weight: bold; color: #ef4444;">+20% increase</div>
+                                            <div style="font-size: 0.9rem; color: #6b7280;">Cold weather increased usage</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AutoPay Confirmation Screen -->
+                        <div class="tillix-screen" id="autopay-confirmation-screen" style="display: none;">
+                            <div class="portal-header">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Ctext x='10' y='20' font-family='Inter' font-size='18' font-weight='600' fill='white'%3EtilliX%3C/text%3E%3C/svg%3E" alt="tilliX" style="height: 30px;">
+                                <span class="portal-title">AutoPay Confirmation</span>
+                            </div>
+                            <div class="soft-auth-container">
+                                <div style="text-align: center; padding: 2rem;">
+                                    <div style="font-size: 4rem; color: #10b981; margin-bottom: 1rem;">
+                                        <svg style="width: 80px; height: 80px;" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                                    </div>
+                                    <h2 style="color: #10b981; margin-bottom: 0.5rem;">AutoPay Successfully Enabled!</h2>
+                                    <p style="color: #6b7280; margin-bottom: 2rem;">Your bills will now be paid automatically</p>
+
+                                    <div style="background: #f0fdf4; border: 1px solid #10b981; border-radius: 12px; padding: 1.5rem; text-align: left; max-width: 500px; margin: 0 auto 2rem;">
+                                        <h4 style="color: #166534; margin-bottom: 1rem;">AutoPay Settings</h4>
+                                        <div style="display: grid; gap: 0.75rem; font-size: 0.95rem;">
+                                            <div style="display: flex; justify-content: space-between;">
+                                                <span style="color: #6b7280;">Payment Method:</span>
+                                                <strong>Visa ****9876</strong>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between;">
+                                                <span style="color: #6b7280;">Payment Date:</span>
+                                                <strong>Due Date</strong>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between;">
+                                                <span style="color: #6b7280;">Payment Amount:</span>
+                                                <strong>Full Balance</strong>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between;">
+                                                <span style="color: #6b7280;">Next Payment:</span>
+                                                <strong>Jan 15, 2025</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="background: #fef3c7; border: 1px solid #fcd34d; border-radius: 8px; padding: 1rem; margin-bottom: 2rem; display: flex; gap: 0.75rem; text-align: left; max-width: 500px; margin: 0 auto 2rem;">
+                                        <svg style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                                        <div style="font-size: 0.9rem; color: #92400e;">
+                                            You will receive an email notification 3 days before each automatic payment. You can modify or cancel AutoPay at any time from your account settings.
+                                        </div>
+                                    </div>
+
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 400px; margin: 0 auto;">
+                                        <button class="btn-secondary" onclick="window.goToScreen('dashboard')" style="width: 100%;">
+                                            <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg>
+                                            Go to Dashboard
+                                        </button>
+                                        <button class="btn-primary" onclick="window.goToScreen('prelogin')" style="width: 100%;">
+                                            <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 11l3 3L22 4"/></svg>
+                                            Done
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Add Quick Action functions
+                window.showPaymentHistory = function() {
+                    window.goToScreen('payment-history');
+                };
+
+                window.showAutoPay = function() {
+                    window.goToScreen('autopay-setup');
+                };
+
+                window.showUsageReport = function() {
+                    window.goToScreen('usage-report');
+                };
+
+                window.enableAutoPay = function() {
+                    const btn = event.currentTarget;
+                    btn.disabled = true;
+                    btn.innerHTML = '<svg style="width: 20px; height: 20px; animation: spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Enabling...';
+
+                    setTimeout(() => {
+                        window.goToScreen('prelogin');
+                    }, 1500);
+                };
+
+                // Invoice selection functions
+                window.selectedInvoices = new Set();
+                window.totalSelected = 0;
+
+                window.toggleInvoice = function(invoiceId, amount) {
+                    const checkbox = document.getElementById(invoiceId);
+                    if (checkbox.checked) {
+                        window.selectedInvoices.add(invoiceId);
+                        window.totalSelected += amount;
+                    } else {
+                        window.selectedInvoices.delete(invoiceId);
+                        window.totalSelected -= amount;
+                    }
+                    window.updateSelectedAmount();
+                };
+
+                window.updateSelectedAmount = function() {
+                    const selectedAmountEl = document.getElementById('selected-amount');
+                    const amountToPayEl = document.getElementById('amount-to-pay');
+                    const payBtn = document.getElementById('pay-selected-btn');
+
+                    if (selectedAmountEl) {
+                        selectedAmountEl.textContent = '$' + window.totalSelected.toFixed(2);
+                    }
+                    if (amountToPayEl) {
+                        amountToPayEl.textContent = '$' + window.totalSelected.toFixed(2);
+                    }
+                    if (payBtn) {
+                        payBtn.disabled = window.totalSelected === 0;
+                    }
+                };
+
+                window.selectAllInvoices = function() {
+                    const checkboxes = document.querySelectorAll('#invoice-list-screen input[type="checkbox"]');
+                    window.selectedInvoices.clear();
+                    window.totalSelected = 0;
+
+                    checkboxes.forEach(checkbox => {
+                        checkbox.checked = true;
+                        const amount = parseFloat(checkbox.dataset.amount);
+                        window.selectedInvoices.add(checkbox.id);
+                        window.totalSelected += amount;
+                    });
+
+                    window.updateSelectedAmount();
+                };
+
+                window.paySelectedInvoices = function() {
+                    if (window.totalSelected > 0) {
+                        // Store the amount for payment processing
+                        window.paymentAmount = window.totalSelected;
+                        // Navigate to payment screen
+                        window.goToScreen('payment');
+                        // Update payment display after a small delay to ensure DOM is ready
+                        setTimeout(() => {
+                            const paymentDisplay = document.getElementById('payment-amount-display');
+                            if (paymentDisplay) {
+                                paymentDisplay.textContent = '$' + window.totalSelected.toFixed(2);
+                            }
+                        }, 100);
+                    }
+                };
+            }
+        }
+
+        function loadNudgeDemo() {
+            const container = document.getElementById('nudge-demo-container');
+            if (container) {
+                container.innerHTML = `
+                    <style>
+                        .nudge-demo {
+                            max-width: 400px;
+                            margin: 2rem auto;
+                            position: relative;
+                        }
+                        .phone-mockup {
+                            background: #1a1a1a;
+                            border-radius: 30px;
+                            padding: 10px;
+                            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                        }
+                        .phone-screen {
+                            background: linear-gradient(to bottom, #f0f4f8, #ffffff);
+                            border-radius: 20px;
+                            height: 700px;
+                            overflow: hidden;
+                            position: relative;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        .message-header {
+                            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+                            color: white;
+                            padding: 1rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 0.75rem;
+                        }
+                        .message-container {
+                            flex: 1;
+                            overflow-y: auto;
+                            overflow-x: hidden;
+                            padding: 1rem;
+                            padding-bottom: 80px;
+                            display: flex;
+                            flex-direction: column;
+                            min-height: 0;
+                            scroll-behavior: smooth;
+                        }
+                        .sms-message {
+                            background: #e3f2fd;
+                            border-radius: 18px 18px 18px 4px;
+                            padding: 12px 16px;
+                            margin: 0.5rem 0;
+                            max-width: 80%;
+                            animation: slideIn 0.3s ease-out;
+                            animation-fill-mode: forwards;
+                            flex-shrink: 0;
+                        }
+                        .sms-message.user {
+                            background: #dcf8c6;
+                            border-radius: 18px 18px 4px 18px;
+                            margin-left: auto;
+                            text-align: right;
+                        }
+                        .sms-message.error {
+                            background: #ffebee;
+                        }
+                        .sms-message.success {
+                            background: #d4edda;
+                        }
+                        .sms-message.typing {
+                            background: #f0f0f0;
+                            padding: 16px;
+                            display: inline-block;
+                        }
+                        .typing-dots {
+                            display: flex;
+                            gap: 4px;
+                        }
+                        .typing-dots span {
+                            width: 8px;
+                            height: 8px;
+                            background: #999;
+                            border-radius: 50%;
+                            animation: typing 1.4s infinite;
+                        }
+                        .typing-dots span:nth-child(2) {
+                            animation-delay: 0.2s;
+                        }
+                        .typing-dots span:nth-child(3) {
+                            animation-delay: 0.4s;
+                        }
+                        .input-area {
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            background: white;
+                            border-top: 1px solid #e0e0e0;
+                            padding: 1rem;
+                            display: flex;
+                            gap: 0.5rem;
+                        }
+                        .sms-input {
+                            flex: 1;
+                            padding: 0.75rem;
+                            border: 1px solid #e0e0e0;
+                            border-radius: 24px;
+                            outline: none;
+                            font-size: 0.95rem;
+                        }
+                        .send-btn {
+                            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+                            color: white;
+                            border: none;
+                            border-radius: 50%;
+                            width: 40px;
+                            height: 40px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            transition: transform 0.2s;
+                        }
+                        .send-btn:hover {
+                            transform: scale(1.1);
+                        }
+                        .send-btn:disabled {
+                            opacity: 0.5;
+                            cursor: not-allowed;
+                        }
+                        @keyframes slideIn {
+                            from {
+                                opacity: 0;
+                                transform: scale(0.9);
+                            }
+                            to {
+                                opacity: 1;
+                                transform: scale(1);
+                            }
+                        }
+                        @keyframes typing {
+                            0%, 60%, 100% {
+                                transform: translateY(0);
+                            }
+                            30% {
+                                transform: translateY(-10px);
+                            }
+                        }
+                        .timestamp {
+                            font-size: 0.75rem;
+                            color: #999;
+                            margin-top: 4px;
+                        }
+                    </style>
+                    <div class="nudge-demo">
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <div class="message-header">
+                                    <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-bell" style="color: white; font-size: 1.2rem;"></i>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <strong style="display: block;">Washington Gas</strong>
+                                        <small style="opacity: 0.9;">SMS Service</small>
+                                    </div>
+                                    <div style="display: flex; gap: 1rem;">
+                                        <i class="fas fa-phone" style="opacity: 0.8; cursor: pointer;"></i>
+                                        <i class="fas fa-info-circle" style="opacity: 0.8; cursor: pointer;"></i>
+                                    </div>
+                                </div>
+
+                                <div class="message-container" id="nudge-messages">
+                                    <!-- Messages will be added here dynamically -->
+                                </div>
+
+                                <div class="input-area">
+                                    <input
+                                        type="text"
+                                        class="sms-input"
+                                        id="nudge-input"
+                                        placeholder="Type YES to pay, or any message..."
+                                        onkeypress="if(event.key==='Enter') window.sendNudgeMessage()"
+                                    >
+                                    <button class="send-btn" onclick="window.sendNudgeMessage()">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Initialize the Nudge conversation
+                window.nudgeMessages = [];
+                window.nudgeTimeout = null;
+
+                // Start the conversation
+                setTimeout(() => {
+                    window.addNudgeMessage('⚡ Payment Reminder: Your Washington Gas bill of $115.00 is due today. Reply YES to pay now and avoid late fees.', 'system');
+                }, 500);
+
+                // Add message function
+                window.addNudgeMessage = function(text, type = 'system') {
+                    const container = document.getElementById('nudge-messages');
+                    if (!container) return;
+
+                    const message = document.createElement('div');
+                    message.className = type === 'user' ? 'sms-message user' : 'sms-message';
+
+                    // Add specific styling for different message types
+                    if (type === 'error') message.classList.add('error');
+                    if (type === 'success') message.classList.add('success');
+
+                    const time = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                    message.innerHTML = text + '<div class="timestamp">' + time + '</div>';
+
+                    container.appendChild(message);
+
+                    // Ensure the new message is visible by scrolling to it
+                    setTimeout(() => {
+                        message.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                    }, 100);
+                };
+
+                // Show typing indicator
+                window.showTyping = function() {
+                    const container = document.getElementById('nudge-messages');
+                    if (!container) return;
+
+                    const typing = document.createElement('div');
+                    typing.className = 'sms-message typing';
+                    typing.id = 'typing-indicator';
+                    typing.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+
+                    container.appendChild(typing);
+                    container.scrollTop = container.scrollHeight;
+                };
+
+                // Remove typing indicator
+                window.hideTyping = function() {
+                    const typing = document.getElementById('typing-indicator');
+                    if (typing) typing.remove();
+                };
+
+                // Reset conversation function
+                window.resetNudgeConversation = function() {
+                    const container = document.getElementById('nudge-messages');
+                    if (container) {
+                        container.innerHTML = '';
+                        setTimeout(() => {
+                            window.addNudgeMessage('⚡ Payment Reminder: Your Washington Gas bill of $115.00 is due today. Reply YES to pay now and avoid late fees.', 'system');
+                        }, 500);
+                    }
+                };
+
+                // Send message function
+                window.sendNudgeMessage = function() {
+                    const input = document.getElementById('nudge-input');
+                    const sendBtn = document.querySelector('.send-btn');
+                    const message = input.value.trim();
+
+                    if (!message) return;
+
+                    // Clear any existing timeout
+                    if (window.nudgeTimeout) {
+                        clearTimeout(window.nudgeTimeout);
+                    }
+
+                    // Add user message
+                    window.addNudgeMessage(message, 'user');
+                    input.value = '';
+                    sendBtn.disabled = true;
+
+                    // Show typing indicator
+                    setTimeout(() => window.showTyping(), 500);
+
+                    // Process response based on user input
+                    setTimeout(() => {
+                        window.hideTyping();
+                        sendBtn.disabled = false;
+
+                        const lowerMessage = message.toLowerCase();
+
+                        if (lowerMessage === 'yes' || lowerMessage === 'y' || lowerMessage === 'yes!' || lowerMessage === 'yeah') {
+                            // Payment flow
+                            window.addNudgeMessage('🔄 Processing your payment...', 'system');
+
+                            setTimeout(() => {
+                                window.showTyping();
+                                setTimeout(() => {
+                                    window.hideTyping();
+                                    window.addNudgeMessage('✅ Payment Successful! Your payment of $115.00 has been processed. Confirmation #WG-' + Math.floor(Math.random() * 1000000), 'success');
+
+                                    setTimeout(() => {
+                                        window.addNudgeMessage('Thank you for your prompt payment! Your account is now current. 🎉', 'system');
+
+                                        // Add a reset button after successful payment
+                                        setTimeout(() => {
+                                            window.addNudgeMessage('<button onclick="window.resetNudgeConversation()" style="background: #8b5cf6; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer;">Start New Conversation</button>', 'system');
+                                        }, 1000);
+                                    }, 1500);
+                                }, 2000);
+                            }, 1500);
+
+                        } else if (lowerMessage.includes('no') || lowerMessage === 'n' || lowerMessage === 'nope') {
+                            // Rejection flow with humor
+                            const funnyResponses = [
+                                '😅 No worries! But remember, your gas might get as cold as your response! The bill of $115.00 is still due today.',
+                                '🤔 "No" to paying? Bold strategy! Let\'s see if it pays off... (Spoiler: You still owe $115.00)',
+                                '😬 Ouch! Even my circuits felt that rejection. Your $115.00 bill is patiently waiting though!',
+                                '🎭 Playing hard to get with your bills? Classic! But $115.00 doesn\'t care about the drama.',
+                                '🦆 Well, this is awkward... Like a duck out of water, your $115.00 bill is still floating around!'
+                            ];
+
+                            const randomResponse = funnyResponses[Math.floor(Math.random() * funnyResponses.length)];
+                            window.addNudgeMessage(randomResponse, 'error');
+
+                            setTimeout(() => {
+                                window.addNudgeMessage('💡 Pro tip: You can still pay anytime by replying YES or visiting our website. We\'ll remind you again tomorrow!', 'system');
+                            }, 2000);
+
+                        } else {
+                            // Unknown response
+                            const confusedResponses = [
+                                '🤖 Hmm, I didn\'t quite catch that. Reply YES to pay your $115.00 bill, or NO if you need more time.',
+                                '📝 Interesting response! But I only understand YES for payments. Your $115.00 bill is still waiting.',
+                                '🔮 My crystal ball is foggy... Did you mean to pay? Reply YES for your $115.00 payment.',
+                                '🤷 I\'m just a simple bot - YES pays the bill, everything else confuses me! ($115.00 due)',
+                                '💬 Great conversation starter! But about that $115.00 bill... Reply YES to pay?'
+                            ];
+
+                            const randomConfused = confusedResponses[Math.floor(Math.random() * confusedResponses.length)];
+                            window.addNudgeMessage(randomConfused, 'system');
+                        }
+                    }, 1500);
+                };
+            }
+        }
+
+        function loadTilliPayDemo() {
+            const container = document.getElementById('tillipay-demo-container');
+            if (container) {
+                container.innerHTML = `
+                    <style>
+                        .tillipay-demo {
+                            max-width: 1200px;
+                            margin: 2rem auto;
+                            padding: 2rem;
+                        }
+                        .payment-interface {
+                            background: white;
+                            border-radius: 16px;
+                            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+                            overflow: hidden;
+                            position: relative;
+                        }
+                        .payment-screen {
+                            display: none;
+                            animation: fadeIn 0.3s ease;
+                        }
+                        .payment-screen.active {
+                            display: block;
+                        }
+                        .payment-header {
+                            background: linear-gradient(135deg, #6366f1, #3b82f6);
+                            color: white;
+                            padding: 2rem;
+                            text-align: center;
+                            position: relative;
+                        }
+                        .back-btn-tillipay {
+                            position: absolute;
+                            left: 1rem;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            background: none;
+                            border: none;
+                            color: white;
+                            font-size: 1.5rem;
+                            cursor: pointer;
+                        }
+                        .payment-options {
+                            padding: 2rem;
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                            gap: 1rem;
+                        }
+                        .payment-method {
+                            border: 2px solid #e5e7eb;
+                            border-radius: 12px;
+                            padding: 1.5rem;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            text-align: center;
+                            position: relative;
+                            overflow: hidden;
+                            display: flex;
+                            flex-direction: column;
+                            min-height: 200px;
+                        }
+                        .payment-method:hover {
+                            border-color: #6366f1;
+                            transform: translateY(-2px);
+                            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+                        }
+                        .payment-method.selected {
+                            border-color: #6366f1;
+                            background: #f0f9ff;
+                        }
+                        .payment-icon {
+                            font-size: 2rem;
+                            margin-bottom: 1rem;
+                            color: #6366f1;
+                        }
+                        .pay-now-btn {
+                            margin-top: auto;
+                            background: #6366f1;
+                            color: white;
+                            border: none;
+                            padding: 0.5rem 1rem;
+                            border-radius: 6px;
+                            cursor: pointer;
+                            transition: background 0.3s ease;
+                            width: 100%;
+                            max-width: 150px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            font-size: 0.9rem;
+                        }
+                        .pay-now-btn:hover {
+                            background: #4f46e5;
+                        }
+                        .payment-form {
+                            padding: 2rem;
+                        }
+                        .form-group {
+                            margin-bottom: 1.5rem;
+                        }
+                        .form-group label {
+                            display: block;
+                            margin-bottom: 0.5rem;
+                            font-weight: 500;
+                            color: #374151;
+                        }
+                        .form-group input {
+                            width: 100%;
+                            padding: 0.75rem;
+                            border: 1px solid #e5e7eb;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                        }
+                        @keyframes fadeIn {
+                            from { opacity: 0; }
+                            to { opacity: 1; }
+                        }
+                    </style>
+                    <div class="tillipay-demo">
+                        <div class="payment-interface" id="tillipay-container">
+                            <!-- Main Payment Selection Screen -->
+                            <div class="payment-screen active" id="tillipay-selection">
+                                <div class="payment-header">
+                                    <h2>tilliPay - Smart Payment Processing</h2>
+                                    <p>Choose your preferred payment method</p>
+                                    <div style="margin-top: 1.5rem; font-size: 2rem; font-weight: 600;">$250.00</div>
+                                </div>
+
+                                <div class="payment-options">
+                                    <div class="payment-method">
+                                        <svg style="width: 40px; height: 40px; color: #6366f1; margin-bottom: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M5 11V7a7 7 0 0114 0v4"/></svg>
+                                        <h4 style="margin: 0.5rem 0; font-size: 1.1rem;">Credit/Debit Card</h4>
+                                        <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0;">Instant processing</p>
+                                        <small style="color: #6366f1; display: block; margin-bottom: 1rem;">✓ No fees</small>
+                                        <button class="pay-now-btn" onclick="window.tilliPayProcess('card')">Pay Now</button>
+                                    </div>
+
+                                    <div class="payment-method">
+                                        <svg style="width: 40px; height: 40px; color: #6366f1; margin-bottom: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>
+                                        <h4 style="margin: 0.5rem 0; font-size: 1.1rem;">Bank Account (ACH)</h4>
+                                        <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0;">1-2 business days</p>
+                                        <small style="color: #6366f1; display: block; margin-bottom: 1rem;">✓ No fees</small>
+                                        <button class="pay-now-btn" onclick="window.tilliPayProcess('ach')">Pay Now</button>
+                                    </div>
+
+                                    <div class="payment-method">
+                                        <svg style="width: 40px; height: 40px; color: #6366f1; margin-bottom: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><ellipse cx="12" cy="12" rx="3" ry="10"/></svg>
+                                        <h4 style="margin: 0.5rem 0; font-size: 1.1rem;">PayPal</h4>
+                                        <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0;">Instant processing</p>
+                                        <small style="color: #8b5cf6; display: block; margin-bottom: 1rem;">+$2.50 fee</small>
+                                        <button class="pay-now-btn" onclick="window.tilliPayProcess('paypal')">Pay Now</button>
+                                    </div>
+
+                                    <div class="payment-method">
+                                        <svg style="width: 40px; height: 40px; color: #6366f1; margin-bottom: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 2 2 2 2 0"/></svg>
+                                        <h4 style="margin: 0.5rem 0; font-size: 1.1rem;">Apple Pay</h4>
+                                        <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0;">Instant processing</p>
+                                        <small style="color: #6366f1; display: block; margin-bottom: 1rem;">✓ No fees</small>
+                                        <button class="pay-now-btn" onclick="window.tilliPayProcess('apple')">Pay Now</button>
+                                    </div>
+
+                                    <div class="payment-method">
+                                        <svg style="width: 40px; height: 40px; color: #6366f1; margin-bottom: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12a8 8 0 1 1-8-8c2.5 0 4.5 1 6 2.5"/><path d="M20 12h-8"/></svg>
+                                        <h4 style="margin: 0.5rem 0; font-size: 1.1rem;">Google Pay</h4>
+                                        <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0;">Instant processing</p>
+                                        <small style="color: #6366f1; display: block; margin-bottom: 1rem;">✓ No fees</small>
+                                        <button class="pay-now-btn" onclick="window.tilliPayProcess('google')">Pay Now</button>
+                                    </div>
+
+                                    <div class="payment-method">
+                                        <svg style="width: 40px; height: 40px; color: #6366f1; margin-bottom: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                                        <h4 style="margin: 0.5rem 0; font-size: 1.1rem;">Venmo</h4>
+                                        <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0;">Instant processing</p>
+                                        <small style="color: #8b5cf6; display: block; margin-bottom: 1rem;">+$1.50 fee</small>
+                                        <button class="pay-now-btn" onclick="window.tilliPayProcess('venmo')">Pay Now</button>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 2rem; background: #f8f9fa; border-top: 1px solid #e5e7eb;">
+                                    <h4 style="margin-bottom: 1rem;">Payment Processing Features</h4>
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <svg style="width: 20px; height: 20px; color: #10b981;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                                            <span>PCI DSS Compliant</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <svg style="width: 20px; height: 20px; color: #10b981;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                                            <span>256-bit Encryption</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <svg style="width: 20px; height: 20px; color: #10b981;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+                                            <span>Smart Retry Logic</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <svg style="width: 20px; height: 20px; color: #10b981;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3l7 14 4-7 7-4L2 3zM13 11l9 9"/></svg>
+                                            <span>Intelligent Routing</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Processing Screen -->
+                            <div class="payment-screen" id="tillipay-processing">
+                                <div class="payment-header">
+                                    <h2>Processing Payment</h2>
+                                </div>
+                                <div style="padding: 4rem; text-align: center;">
+                                    <svg style="width: 80px; height: 80px; color: #6366f1; animation: spin 1s linear infinite; margin: 0 auto;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                    </svg>
+                                    <h3 style="margin-top: 2rem; color: #374151;">Processing your payment...</h3>
+                                    <p style="color: #6b7280; margin-top: 1rem;">Please wait while we securely process your transaction</p>
+                                </div>
+                            </div>
+
+                            <!-- Confirmation Screen -->
+                            <div class="payment-screen" id="tillipay-confirmation">
+                                <div class="payment-header">
+                                    <button class="back-btn-tillipay" onclick="window.tilliPayReset()">
+                                        <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                    </button>
+                                    <h2>Payment Successful</h2>
+                                </div>
+                                <div style="padding: 3rem; text-align: center;">
+                                    <div style="font-size: 4rem; color: #10b981; margin-bottom: 1rem;">
+                                        <svg style="width: 80px; height: 80px;" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <path d="M9 12l2 2 4-4"/>
+                                        </svg>
+                                    </div>
+                                    <h2 style="color: #10b981; margin-bottom: 0.5rem;">Payment Successful!</h2>
+                                    <p style="color: #6b7280; margin-bottom: 2rem;">Your payment of $250.00 has been processed</p>
+
+                                    <div style="background: #f3f4f6; border-radius: 12px; padding: 1.5rem; text-align: left; max-width: 500px; margin: 0 auto;">
+                                        <div style="margin-bottom: 1rem;">
+                                            <strong>Transaction ID:</strong><br>
+                                            <span id="tillipay-transaction-id" style="color: #6366f1; font-family: monospace;">TP-2024-89234</span>
+                                        </div>
+                                        <div style="margin-bottom: 1rem;">
+                                            <strong>Payment Method:</strong><br>
+                                            <span id="tillipay-method-name">Credit Card</span>
+                                        </div>
+                                        <div style="margin-bottom: 1rem;">
+                                            <strong>Amount Paid:</strong><br>
+                                            $250.00
+                                        </div>
+                                        <div>
+                                            <strong>Date & Time:</strong><br>
+                                            <span id="tillipay-date"></span>
+                                        </div>
+                                    </div>
+
+                                    <button class="pay-now-btn" onclick="window.tilliPayReset()" style="margin-top: 2rem; padding: 1rem 2rem; font-size: 1.1rem;">
+                                        Make Another Payment
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // tilliPay interaction functions
+                window.tilliPayProcess = function(method) {
+                    const container = document.getElementById('tillipay-container');
+                    const screens = container.querySelectorAll('.payment-screen');
+
+                    // Hide all screens
+                    screens.forEach(screen => {
+                        screen.classList.remove('active');
+                    });
+
+                    // Show processing screen
+                    document.getElementById('tillipay-processing').classList.add('active');
+
+                    // Simulate processing
+                    setTimeout(() => {
+                        // Hide processing
+                        document.getElementById('tillipay-processing').classList.remove('active');
+
+                        // Update confirmation details
+                        const methodNames = {
+                            'card': 'Credit/Debit Card',
+                            'ach': 'Bank Account (ACH)',
+                            'paypal': 'PayPal',
+                            'apple': 'Apple Pay',
+                            'google': 'Google Pay',
+                            'venmo': 'Venmo'
+                        };
+
+                        document.getElementById('tillipay-method-name').textContent = methodNames[method];
+                        document.getElementById('tillipay-transaction-id').textContent = 'TP-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 100000);
+                        document.getElementById('tillipay-date').textContent = new Date().toLocaleString();
+
+                        // Show confirmation
+                        document.getElementById('tillipay-confirmation').classList.add('active');
+                    }, 2000);
+                };
+
+                window.tilliPayReset = function() {
+                    const container = document.getElementById('tillipay-container');
+                    const screens = container.querySelectorAll('.payment-screen');
+
+                    // Hide all screens
+                    screens.forEach(screen => {
+                        screen.classList.remove('active');
+                    });
+
+                    // Show selection screen
+                    document.getElementById('tillipay-selection').classList.add('active');
+                };
+            }
+        }
+
+        function loadTilliArcDemo() {
+            const container = document.getElementById('tilliarc-demo-container');
+            if (!container) {
+                // Create container for tilliArc since it's a new product
+                const demoContent = document.querySelector('.demo-content');
+                const tilliarcSection = document.createElement('div');
+                tilliarcSection.id = 'tilliarc-demo';
+                tilliarcSection.className = 'demo-section';
+                tilliarcSection.innerHTML = `
+                    <div class="demo-intro">
+                        <h1>tilliArc - Intelligent Document Archiving</h1>
+                        <p>Secure cloud archiving with AI-powered indexing and instant retrieval for enterprise compliance.</p>
+                    </div>
+                    <div id="tilliarc-demo-container"></div>
+                `;
+
+                // Add before CTA section
+                const ctaSection = document.querySelector('.cta-section');
+                demoContent.insertBefore(tilliarcSection, ctaSection);
+
+                // Add tab button
+                const tabsContainer = document.querySelector('.tabs-container');
+                const arcTab = document.createElement('button');
+                arcTab.className = 'tab-button';
+                arcTab.onclick = () => showDemo('tilliarc');
+                arcTab.textContent = 'tilliArc Archive';
+                tabsContainer.appendChild(arcTab);
+            }
+
+            const arcContainer = document.getElementById('tilliarc-demo-container') || container;
+            if (arcContainer) {
+                arcContainer.innerHTML = `
+                    <style>
+                        .tilliarc-demo {
+                            max-width: 1200px;
+                            margin: 2rem auto;
+                            padding: 2rem;
+                        }
+                        .archive-interface {
+                            background: white;
+                            border-radius: 16px;
+                            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+                            overflow: hidden;
+                        }
+                        .archive-header {
+                            background: linear-gradient(135deg, #10b981, #059669);
+                            color: white;
+                            padding: 1.5rem;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                        .document-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                            gap: 1rem;
+                            padding: 2rem;
+                        }
+                        .document-card {
+                            border: 1px solid #e5e7eb;
+                            border-radius: 8px;
+                            padding: 1rem;
+                            text-align: center;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                        }
+                        .document-card:hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                            border-color: #10b981;
+                        }
+                        .doc-icon {
+                            font-size: 3rem;
+                            margin-bottom: 0.5rem;
+                            color: #10b981;
+                        }
+                        .search-bar {
+                            background: white;
+                            border-radius: 8px;
+                            padding: 0.5rem 1rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                            width: 400px;
+                        }
+                        .search-bar input {
+                            border: none;
+                            outline: none;
+                            flex: 1;
+                        }
+                    </style>
+                    <div class="tilliarc-demo">
+                        <div class="archive-interface">
+                            <div class="archive-header">
+                                <div>
+                                    <h3 style="margin: 0;">tilliArc Document Archive</h3>
+                                    <small>15,247 documents archived • 82% storage saved</small>
+                                </div>
+                                <div class="search-bar">
+                                    <i class="fas fa-search" style="color: #6b7280;"></i>
+                                    <input type="text" placeholder="Search documents...">
+                                </div>
+                            </div>
+
+                            <div style="padding: 1.5rem; background: #f8f9fa; border-bottom: 1px solid #e5e7eb;">
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <button style="padding: 0.5rem 1rem; background: #10b981; color: white; border: none; border-radius: 6px; cursor: pointer;">
+                                        <i class="fas fa-upload"></i> Upload Documents
+                                    </button>
+                                    <select style="padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px;">
+                                        <option>All Documents</option>
+                                        <option>Bills & Invoices</option>
+                                        <option>Contracts</option>
+                                        <option>Reports</option>
+                                        <option>Compliance</option>
+                                    </select>
+                                    <select style="padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px;">
+                                        <option>Last 30 Days</option>
+                                        <option>Last 90 Days</option>
+                                        <option>Last Year</option>
+                                        <option>All Time</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="document-grid">
+                                <div class="document-card">
+                                    <i class="fas fa-file-invoice doc-icon"></i>
+                                    <h5>Invoice_2024_Nov.pdf</h5>
+                                    <small style="color: #6b7280;">2.1 MB • Nov 30, 2024</small>
+                                    <div style="margin-top: 0.5rem;">
+                                        <span style="background: #d4edda; color: #155724; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Indexed</span>
+                                    </div>
+                                </div>
+
+                                <div class="document-card">
+                                    <i class="fas fa-file-contract doc-icon"></i>
+                                    <h5>Service_Agreement.pdf</h5>
+                                    <small style="color: #6b7280;">1.5 MB • Nov 15, 2024</small>
+                                    <div style="margin-top: 0.5rem;">
+                                        <span style="background: #d4edda; color: #155724; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Compliant</span>
+                                    </div>
+                                </div>
+
+                                <div class="document-card">
+                                    <i class="fas fa-file-alt doc-icon"></i>
+                                    <h5>Usage_Report_Q3.xlsx</h5>
+                                    <small style="color: #6b7280;">850 KB • Oct 31, 2024</small>
+                                    <div style="margin-top: 0.5rem;">
+                                        <span style="background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Processing</span>
+                                    </div>
+                                </div>
+
+                                <div class="document-card">
+                                    <i class="fas fa-file-pdf doc-icon" style="color: #dc3545;"></i>
+                                    <h5>Compliance_Cert.pdf</h5>
+                                    <small style="color: #6b7280;">3.2 MB • Oct 1, 2024</small>
+                                    <div style="margin-top: 0.5rem;">
+                                        <span style="background: #d4edda; color: #155724; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Verified</span>
+                                    </div>
+                                </div>
+
+                                <div class="document-card">
+                                    <i class="fas fa-file-image doc-icon" style="color: #6366f1;"></i>
+                                    <h5>Site_Photos.zip</h5>
+                                    <small style="color: #6b7280;">15.7 MB • Sep 20, 2024</small>
+                                    <div style="margin-top: 0.5rem;">
+                                        <span style="background: #e3f2fd; color: #1976d2; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Compressed</span>
+                                    </div>
+                                </div>
+
+                                <div class="document-card">
+                                    <i class="fas fa-file-csv doc-icon" style="color: #f59e0b;"></i>
+                                    <h5>Transactions_2024.csv</h5>
+                                    <small style="color: #6b7280;">420 KB • Sep 1, 2024</small>
+                                    <div style="margin-top: 0.5rem;">
+                                        <span style="background: #d4edda; color: #155724; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Archived</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="padding: 2rem; background: #f8f9fa; border-top: 1px solid #e5e7eb;">
+                                <h4 style="margin-bottom: 1rem;">Archive Statistics</h4>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                                    <div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                            <i class="fas fa-database" style="color: #10b981;"></i>
+                                            <strong>Storage Saved</strong>
+                                        </div>
+                                        <div style="font-size: 2rem; font-weight: 600; color: #10b981;">82%</div>
+                                        <small style="color: #6b7280;">Through compression</small>
+                                    </div>
+                                    <div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                            <i class="fas fa-search" style="color: #6366f1;"></i>
+                                            <strong>Avg Retrieval Time</strong>
+                                        </div>
+                                        <div style="font-size: 2rem; font-weight: 600; color: #6366f1;">0.3s</div>
+                                        <small style="color: #6b7280;">AI-powered indexing</small>
+                                    </div>
+                                    <div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                            <i class="fas fa-shield-alt" style="color: #f59e0b;"></i>
+                                            <strong>Compliance Rate</strong>
+                                        </div>
+                                        <div style="font-size: 2rem; font-weight: 600; color: #f59e0b;">100%</div>
+                                        <small style="color: #6b7280;">HIPAA, SOC2, PCI</small>
+                                    </div>
+                                    <div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                            <i class="fas fa-clock" style="color: #8b5cf6;"></i>
+                                            <strong>Retention</strong>
+                                        </div>
+                                        <div style="font-size: 2rem; font-weight: 600; color: #8b5cf6;">7 Years</div>
+                                        <small style="color: #6b7280;">Automated policies</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+    <!-- CookieConsent Scripts -->
+    <script src="enhanced-cookie-banner.js"></script>
+</body>
+</html>

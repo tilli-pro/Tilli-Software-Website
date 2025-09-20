@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Tilli Software Website with Vtiger CRM Integration",
   "scripts": {
-    "dev": "vercel dev",
+    "dev": "echo 'Use vercel dev directly'",
     "deploy": "vercel --prod"
   },
   "dependencies": {

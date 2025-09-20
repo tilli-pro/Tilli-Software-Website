@@ -86,23 +86,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Inline SVG icons for better performance -->
-    <style>
-        .icon-inline {
-            display: inline-block;
-            vertical-align: middle;
-            width: 20px;
-            height: 20px;
-        }
-        .icon-inline.icon-sm {
-            width: 16px;
-            height: 16px;
-        }
-        .icon-inline.icon-lg {
-            width: 24px;
-            height: 24px;
-        }
-    </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <!-- RB2B Tracking -->
     <script type="text/plain" data-cookiecategory="analytics">!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://b2bjsstore.s3.us-west-2.amazonaws.com/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("VN080HX77V6J");</script>
     <!-- Vercel Analytics -->
@@ -285,7 +269,7 @@
     <!-- Trusted By Section -->
     <section class="trusted-by">
         <div class="container">
-            <p class="trusted-text" style="font-size: 200%;">Supporting businesses across the globe</p>
+            <p class="trusted-text">Supporting businesses across the globe</p>
             <style>
                 /* Hide code overlays on mobile for better performance */
                 @media (max-width: 768px) {
@@ -297,11 +281,6 @@
                     .testimonials-grid {
                         grid-template-columns: 1fr !important;
                         padding: 0 1rem;
-                    }
-
-                    /* Product cards responsive - single column on mobile */
-                    .products-grid-container {
-                        grid-template-columns: 1fr !important;
                     }
 
                     .testimonial-card {
@@ -352,7 +331,7 @@
                 }
                 .logo-carousel {
                     display: flex;
-                    animation: scroll 15s linear infinite;
+                    animation: scroll 25s linear infinite;
                 }
                 .logo-carousel:hover {
                     animation-play-state: paused;
@@ -494,11 +473,11 @@
                     <div style="padding: 1rem 1.5rem; background: #f9fafb; border-top: 1px solid #e5e7eb; border-radius: 0 0 12px 12px;">
                         <div style="display: flex; gap: 2rem; justify-content: center;">
                             <div style="text-align: center;">
-                                <strong style="color: #6366f1; font-size: 1.25rem; display: block;">Weeks</strong>
+                                <strong style="color: #10b981; font-size: 1.25rem; display: block;">Weeks</strong>
                                 <span style="display: block; color: #6b7280; font-size: 0.8rem;">Deployment Time Saved</span>
                             </div>
                             <div style="text-align: center;">
-                                <strong style="color: #6366f1; font-size: 1.25rem; display: block;">99.38%</strong>
+                                <strong style="color: #10b981; font-size: 1.25rem; display: block;">99.38%</strong>
                                 <span style="display: block; color: #6b7280; font-size: 0.8rem;">Delivery Rate</span>
                             </div>
                         </div>
@@ -506,9 +485,7 @@
                 </div>
 
                 <!-- Howard County MD Testimonial -->
-                <div class="testimonial-card" style="position: relative; background: linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%); border-radius: 16px; border: 1px solid rgba(147, 51, 234, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; display: flex; flex-direction: column; height: 100%;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.15)'; this.style.background='linear-gradient(135deg, rgba(147, 51, 234, 0.08) 0%, rgba(59, 130, 246, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%)'">
+                <div class="testimonial-card" style="background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%;">
                     <!-- Header with Logo and Company Type -->
                     <div style="padding: 1rem 2rem 0.5rem; text-align: center; height: 110px;">
                         <div style="height: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; position: relative;">
@@ -530,11 +507,11 @@
                     <div style="padding: 1rem 1.5rem; background: #f9fafb; border-top: 1px solid #e5e7eb; border-radius: 0 0 12px 12px;">
                         <div style="display: flex; gap: 2rem; justify-content: center;">
                             <div style="text-align: center;">
-                                <strong style="color: #6366f1; font-size: 1.25rem; display: block;">2019</strong>
+                                <strong style="color: #10b981; font-size: 1.25rem; display: block;">2019</strong>
                                 <span style="display: block; color: #6b7280; font-size: 0.8rem;">NoCA Innovation Award</span>
                             </div>
                             <div style="text-align: center;">
-                                <strong style="color: #6366f1; font-size: 1.25rem; display: block;">14+ Years</strong>
+                                <strong style="color: #10b981; font-size: 1.25rem; display: block;">14+ Years</strong>
                                 <span style="display: block; color: #6b7280; font-size: 0.8rem;">Partnership</span>
                             </div>
                         </div>
@@ -542,9 +519,7 @@
                 </div>
 
                 <!-- Washington Gas Testimonial -->
-                <div class="testimonial-card" style="position: relative; background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%); border-radius: 16px; border: 1px solid rgba(139, 92, 246, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; display: flex; flex-direction: column; height: 100%;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.15)'; this.style.background='linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(96, 165, 250, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%)'">
+                <div class="testimonial-card" style="background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%;">
                     <!-- Header with Logo and Company Type -->
                     <div style="padding: 1rem 2rem 0.5rem; text-align: center; height: 110px;">
                         <div style="height: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; position: relative;">
@@ -566,11 +541,11 @@
                     <div style="padding: 1rem 1.5rem; background: #f9fafb; border-top: 1px solid #e5e7eb; border-radius: 0 0 12px 12px;">
                         <div style="display: flex; gap: 2rem; justify-content: center;">
                             <div style="text-align: center;">
-                                <strong style="color: #6366f1; font-size: 1.25rem; display: block;">72%</strong>
+                                <strong style="color: #10b981; font-size: 1.25rem; display: block;">72%</strong>
                                 <span style="display: block; color: #6b7280; font-size: 0.8rem;">eBill Open Rate</span>
                             </div>
                             <div style="text-align: center;">
-                                <strong style="color: #6366f1; font-size: 1.25rem; display: block;">200%</strong>
+                                <strong style="color: #10b981; font-size: 1.25rem; display: block;">200%</strong>
                                 <span style="display: block; color: #6b7280; font-size: 0.8rem;">IP Enrollment Growth</span>
                             </div>
                         </div>
@@ -667,127 +642,48 @@
                     Our integrated product suite delivers end-to-end digital transformation for enterprises
                 </p>
 
-                <!-- Modern Product Cards Grid -->
-                <div class="products-grid-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin: 3rem 0;">
-                    <!-- tilliX Card -->
-                    <div class="product-showcase-card" style="position: relative; background: linear-gradient(135deg, rgba(147, 51, 234, 0.06) 0%, rgba(59, 130, 246, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(147, 51, 234, 0.12); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                         onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.2)'; this.style.background='linear-gradient(135deg, rgba(147, 51, 234, 0.09) 0%, rgba(59, 130, 246, 0.05) 100%)'"
-                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(147, 51, 234, 0.06) 0%, rgba(59, 130, 246, 0.03) 100%)'">
-                        <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: radial-gradient(circle at top right, rgba(91, 158, 255, 0.2), transparent); border-radius: 0 16px 0 0;"></div>
-                        <div style="position: relative; z-index: 1;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #5B9EFF, #4080E0); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-                                <i class="fas fa-laptop" style="color: white; font-size: 1.5rem;"></i>
-                            </div>
-                            <h3 style="color: #1a1a1a; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">tilliX</h3>
-                            <p style="color: #4b5563; line-height: 1.6; margin-bottom: 1.5rem;">Transform customer experiences with intelligent self-service portals that enable frictionless bill pay and account management. Reduce support costs by 60% while improving satisfaction scores.</p>
-                            <a href="demos.html#tillix" style="display: inline-flex; align-items: center; background: linear-gradient(135deg, #5B9EFF, #4080E0); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;"
-                               onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 16px rgba(91, 158, 255, 0.4)'"
-                               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
-                                <i class="fas fa-play-circle" style="margin-right: 0.5rem;"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Nudge Card -->
-                    <div class="product-showcase-card" style="position: relative; background: linear-gradient(135deg, rgba(139, 92, 246, 0.06) 0%, rgba(96, 165, 250, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(139, 92, 246, 0.12); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                         onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.2)'; this.style.background='linear-gradient(135deg, rgba(139, 92, 246, 0.09) 0%, rgba(96, 165, 250, 0.05) 100%)'"
-                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(139, 92, 246, 0.06) 0%, rgba(96, 165, 250, 0.03) 100%)'">
-                        <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.2), transparent); border-radius: 0 16px 0 0;"></div>
-                        <div style="position: relative; z-index: 1;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #fbbf24, #f59e0b); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-                                <i class="fas fa-comment-dots" style="color: white; font-size: 1.5rem;"></i>
-                            </div>
-                            <h3 style="color: #1a1a1a; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">Nudge</h3>
-                            <p style="color: #4b5563; line-height: 1.6; margin-bottom: 1.5rem;">Drive action with intelligent omnichannel messaging that reaches customers at the perfect moment. Increase engagement by 95% with personalized SMS, WhatsApp, and email campaigns.</p>
-                            <a href="demos.html#nudge" style="display: inline-flex; align-items: center; background: linear-gradient(135deg, #fbbf24, #f59e0b); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;"
-                               onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 16px rgba(251, 191, 36, 0.4)'"
-                               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
-                                <i class="fas fa-play-circle" style="margin-right: 0.5rem;"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- tilliPay Card -->
-                    <div class="product-showcase-card" style="position: relative; background: linear-gradient(135deg, rgba(167, 139, 250, 0.06) 0%, rgba(96, 165, 250, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(167, 139, 250, 0.12); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                         onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(139, 92, 246, 0.2)'; this.style.background='linear-gradient(135deg, rgba(167, 139, 250, 0.09) 0%, rgba(96, 165, 250, 0.05) 100%)'"
-                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(167, 139, 250, 0.06) 0%, rgba(96, 165, 250, 0.03) 100%)'">
-                        <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.2), transparent); border-radius: 0 16px 0 0;"></div>
-                        <div style="position: relative; z-index: 1;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-                                <i class="fas fa-credit-card" style="color: white; font-size: 1.5rem;"></i>
-                            </div>
-                            <h3 style="color: #1a1a1a; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">tilliPay</h3>
-                            <p style="color: #4b5563; line-height: 1.6; margin-bottom: 1.5rem;">Orchestrate payments seamlessly across 16+ global processors with intelligent routing and retry logic. Reduce transaction costs by 30% while improving payment success rates.</p>
-                            <a href="demos.html#tillipay" style="display: inline-flex; align-items: center; background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;"
-                               onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 16px rgba(139, 92, 246, 0.4)'"
-                               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
-                                <i class="fas fa-play-circle" style="margin-right: 0.5rem;"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- tilliArc Card -->
-                    <div class="product-showcase-card" style="position: relative; background: linear-gradient(135deg, rgba(99, 102, 241, 0.06) 0%, rgba(59, 130, 246, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(99, 102, 241, 0.12); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                         onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.2)'; this.style.background='linear-gradient(135deg, rgba(99, 102, 241, 0.09) 0%, rgba(59, 130, 246, 0.05) 100%)'"
-                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(99, 102, 241, 0.06) 0%, rgba(59, 130, 246, 0.03) 100%)'">
-                        <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.2), transparent); border-radius: 0 16px 0 0;"></div>
-                        <div style="position: relative; z-index: 1;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-                                <i class="fas fa-archive" style="color: white; font-size: 1.5rem;"></i>
-                            </div>
-                            <h3 style="color: #1a1a1a; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">tilliArc</h3>
-                            <p style="color: #4b5563; line-height: 1.6; margin-bottom: 1.5rem;">Secure and compliant cloud document archiving with intelligent indexing and instant retrieval. Reduce storage costs by 70% while ensuring regulatory compliance and data governance.</p>
-                            <a href="demos.html#tilliarc" style="display: inline-flex; align-items: center; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;"
-                               onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 16px rgba(16, 185, 129, 0.4)'"
-                               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
-                                <i class="fas fa-play-circle" style="margin-right: 0.5rem;"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Common Features Summary -->
                 <div style="background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%); border-radius: 16px; padding: 2.5rem; margin-bottom: 3rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
                     <h3 style="color: #1a1a1a; margin-bottom: 1.5rem; font-size: 1.5rem;">Platform-Wide Capabilities</h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: left;">
                         <div style="padding: 1rem;">
                             <h4 style="color: #6366f1; margin-bottom: 0.5rem; display: flex; align-items: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #6366f1;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                <span style="margin-right: 0.5rem;">🔒</span>
                                 Enterprise Compliance
                             </h4>
                             <p style="color: #6b7280; font-size: 0.95rem;">PCI DSS, SOC 2 Type II, and HIPAA certified across all products</p>
                         </div>
                         <div style="padding: 1rem;">
-                            <h4 style="color: #7c3aed; margin-bottom: 0.5rem; display: flex; align-items: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #7c3aed;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                            <h4 style="color: #10b981; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                <span style="margin-right: 0.5rem;">💰</span>
                                 Cost Savings & ROI
                             </h4>
                             <p style="color: #6b7280; font-size: 0.95rem;">40% reduction in billing costs, 3X faster payments</p>
                         </div>
                         <div style="padding: 1rem;">
-                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem; display: flex; align-items: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #8b5cf6;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <h4 style="color: #f59e0b; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                <span style="margin-right: 0.5rem;">🔗</span>
                                 240+ Integrations
                             </h4>
                             <p style="color: #6b7280; font-size: 0.95rem;">Connect with existing CRMs, ERPs, and billing systems</p>
                         </div>
                         <div style="padding: 1rem;">
-                            <h4 style="color: #a78bfa; margin-bottom: 0.5rem; display: flex; align-items: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #a78bfa;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke-width="2"/><circle cx="12" cy="12" r="6" stroke-width="2"/><circle cx="12" cy="12" r="2" stroke-width="2"/></svg>
+                            <h4 style="color: #ef4444; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                <span style="margin-right: 0.5rem;">🎯</span>
                                 Data-Driven Personalization
                             </h4>
                             <p style="color: #6b7280; font-size: 0.95rem;">AI-powered insights for targeted customer engagement</p>
                         </div>
                         <div style="padding: 1rem;">
-                            <h4 style="color: #6366f1; margin-bottom: 0.5rem; display: flex; align-items: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #6366f1;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                <span style="margin-right: 0.5rem;">📈</span>
                                 Proven Outcomes
                             </h4>
                             <p style="color: #6b7280; font-size: 0.95rem;">72% eBill open rates, 200% enrollment growth</p>
                         </div>
                         <div style="padding: 1rem;">
-                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem; display: flex; align-items: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #3b82f6;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            <h4 style="color: #06b6d4; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                <span style="margin-right: 0.5rem;">⚡</span>
                                 Rapid Deployment
                             </h4>
                             <p style="color: #6b7280; font-size: 0.95rem;">Go live in days, not months with low-code configuration</p>
@@ -796,270 +692,518 @@
                 </div>
 
                 <!-- Product Comparison Table -->
-                <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 250, 251, 0.95) 100%); border-radius: 16px; padding: 2rem; margin-bottom: 3rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); overflow-x: auto; border: 1px solid rgba(147, 51, 234, 0.08);">
-                    <h3 style="color: #1a1a1a; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 600; display: flex; align-items: center;">
-                        <svg class="icon-inline icon-lg" style="margin-right: 0.75rem; color: #6366f1;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                        Product Comparison
-                    </h3>
-                    <table style="width: 100%; border-collapse: separate; border-spacing: 0; min-width: 700px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);">
+                <div style="background: white; border-radius: 12px; padding: 2rem; margin-bottom: 3rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06); overflow-x: auto;">
+                    <h3 style="color: #1a1a1a; margin-bottom: 1.5rem; font-size: 1.3rem;">Product Comparison</h3>
+                    <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
                         <thead>
-                            <tr style="background: linear-gradient(135deg, #f8f7ff 0%, #f0f7ff 100%);">
-                                <th style="padding: 1.25rem 1rem; text-align: left; color: #1f2937; font-weight: 600; font-size: 0.95rem; border-bottom: 2px solid #e5e7eb; width: 30%;">Feature</th>
-                                <th style="padding: 1.25rem 1rem; text-align: left; color: #7c3aed; font-weight: 600; font-size: 0.95rem; border-bottom: 2px solid #e5e7eb; width: 17.5%;">
-                                    <svg class="icon-inline icon-sm" style="margin-right: 0.25rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                                    tilliX
-                                </th>
-                                <th style="padding: 1.25rem 1rem; text-align: left; color: #8b5cf6; font-weight: 600; font-size: 0.95rem; border-bottom: 2px solid #e5e7eb; width: 17.5%;">
-                                    <svg class="icon-inline icon-sm" style="margin-right: 0.25rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                                    Nudge
-                                </th>
-                                <th style="padding: 1.25rem 1rem; text-align: left; color: #6366f1; font-weight: 600; font-size: 0.95rem; border-bottom: 2px solid #e5e7eb; width: 17.5%;">
-                                    <svg class="icon-inline icon-sm" style="margin-right: 0.25rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                                    tilliPay
-                                </th>
-                                <th style="padding: 1.25rem 1rem; text-align: left; color: #3b82f6; font-weight: 600; font-size: 0.95rem; border-bottom: 2px solid #e5e7eb; width: 17.5%;">
-                                    <svg class="icon-inline icon-sm" style="margin-right: 0.25rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
-                                    tilliArc
-                                </th>
+                            <tr style="background: #f9fafb; border-bottom: 2px solid #e5e7eb;">
+                                <th style="padding: 1rem; text-align: left; color: #374151; font-weight: 600;">Feature</th>
+                                <th style="padding: 1rem; text-align: center; color: #6366f1; font-weight: 600;">tilliX</th>
+                                <th style="padding: 1rem; text-align: center; color: #10b981; font-weight: 600;">Nudge</th>
+                                <th style="padding: 1rem; text-align: center; color: #f59e0b; font-weight: 600;">tilliPay</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr style="border-bottom: 1px solid #f3f4f6;">
-                                <td style="padding: 1rem; text-align: left; color: #374151; font-size: 0.9rem; font-weight: 500;">Primary Focus</td>
-                                <td style="padding: 1rem; text-align: left; color: #6b7280; font-size: 0.85rem;">Digital Engagement Portal</td>
-                                <td style="padding: 1rem; text-align: left; color: #6b7280; font-size: 0.85rem;">Communication Platform</td>
-                                <td style="padding: 1rem; text-align: left; color: #6b7280; font-size: 0.85rem;">Payment Orchestration</td>
-                                <td style="padding: 1rem; text-align: left; color: #6b7280; font-size: 0.85rem;">Document Archiving</td>
+                                <td style="padding: 0.875rem; color: #374151; font-size: 0.95rem;">Primary Focus</td>
+                                <td style="padding: 0.875rem; text-align: center; color: #6b7280;">Digital Engagement Portal</td>
+                                <td style="padding: 0.875rem; text-align: center; color: #6b7280;">Communication Platform</td>
+                                <td style="padding: 0.875rem; text-align: center; color: #6b7280;">Payment Orchestration</td>
                             </tr>
-                            <tr style="border-bottom: 1px solid #f3f4f6; background: rgba(147, 51, 234, 0.02);">
-                                <td style="padding: 1rem; text-align: left; color: #374151; font-size: 0.9rem; font-weight: 500;">Omnichannel Support</td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Web, Mobile</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">SMS, Email, WhatsApp</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">All Payment Channels</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Cloud Storage</span>
-                                </td>
+                            <tr style="border-bottom: 1px solid #f3f4f6; background: #fafafa;">
+                                <td style="padding: 0.875rem; color: #374151; font-size: 0.95rem;">Omnichannel Support</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ Web, Mobile</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ SMS, Email, WhatsApp, IVR</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ All Payment Channels</td>
                             </tr>
                             <tr style="border-bottom: 1px solid #f3f4f6;">
-                                <td style="padding: 1rem; text-align: left; color: #374151; font-size: 0.9rem; font-weight: 500;">Low-Code Configuration</td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Business Rules</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Campaign Builder</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Payment Flows</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Retention Policies</span>
-                                </td>
+                                <td style="padding: 0.875rem; color: #374151; font-size: 0.95rem;">Low-Code Configuration</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ Business Rules Engine</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ Campaign Builder</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ Payment Flows</td>
                             </tr>
-                            <tr style="border-bottom: 1px solid #f3f4f6; background: rgba(147, 51, 234, 0.02);">
-                                <td style="padding: 1rem; text-align: left; color: #374151; font-size: 0.9rem; font-weight: 500;">Core Capability</td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Full Portal</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Notifications</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Payment Pages</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Document Vault</span>
-                                </td>
+                            <tr style="border-bottom: 1px solid #f3f4f6; background: #fafafa;">
+                                <td style="padding: 0.875rem; color: #374151; font-size: 0.95rem;">Pre/Post Login Experience</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ Full Portal</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ Notifications</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ Payment Pages</td>
                             </tr>
                             <tr style="border-bottom: 1px solid #f3f4f6;">
-                                <td style="padding: 1rem; text-align: left; color: #374151; font-size: 0.9rem; font-weight: 500;">AI & Analytics</td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Engagement Analytics</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Behavior Prediction</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Payment Intelligence</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <svg style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-                                    <span style="color: #6b7280;">Smart Indexing</span>
-                                </td>
+                                <td style="padding: 0.875rem; color: #374151; font-size: 0.95rem;">AI & Analytics</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ Engagement Analytics</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ Behavior Prediction</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ Payment Intelligence</td>
                             </tr>
-                            <tr style="border-bottom: 1px solid #f3f4f6; background: rgba(147, 51, 234, 0.02);">
-                                <td style="padding: 1rem; text-align: left; color: #374151; font-size: 0.9rem; font-weight: 500;">Compliance Standards</td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <i data-lucide="shield-check" style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;"></i>
-                                    <span style="color: #6b7280;">All Standards</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <i data-lucide="shield-check" style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;"></i>
-                                    <span style="color: #6b7280;">All Standards</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <i data-lucide="shield-check" style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;"></i>
-                                    <span style="color: #6b7280;">PCI Level 1</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <i data-lucide="shield-check" style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;"></i>
-                                    <span style="color: #6b7280;">HIPAA, SOC2</span>
-                                </td>
+                            <tr style="border-bottom: 1px solid #f3f4f6; background: #fafafa;">
+                                <td style="padding: 0.875rem; color: #374151; font-size: 0.95rem;">Compliance Standards</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ All Standards</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ All Standards</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ All Standards + PCI Level 1</td>
                             </tr>
                             <tr style="border-bottom: 1px solid #f3f4f6;">
-                                <td style="padding: 1rem; text-align: left; color: #374151; font-size: 0.9rem; font-weight: 500;">Third-Party Integrations</td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <i data-lucide="plug" style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;"></i>
-                                    <span style="color: #6b7280;">240+ Systems</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <i data-lucide="plug" style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;"></i>
-                                    <span style="color: #6b7280;">240+ Systems</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <i data-lucide="plug" style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;"></i>
-                                    <span style="color: #6b7280;">16+ Processors</span>
-                                </td>
-                                <td style="padding: 1rem; text-align: left; font-size: 0.85rem;">
-                                    <i data-lucide="plug" style="width: 18px; height: 18px; color: #6366f1; display: inline-block; vertical-align: middle; margin-right: 0.25rem;"></i>
-                                    <span style="color: #6b7280;">S3, Azure, GCP</span>
-                                </td>
+                                <td style="padding: 0.875rem; color: #374151; font-size: 0.95rem;">Third-Party Integrations</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ 240+ Systems</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ 240+ Systems</td>
+                                <td style="padding: 0.875rem; text-align: center;">✅ 16+ Payment Processors</td>
                             </tr>
-                            <tr style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.05) 100%);">
-                                <td style="padding: 1rem; color: #1f2937; font-size: 0.95rem; font-weight: 600;">
-                                    <i data-lucide="target" style="width: 18px; height: 18px; color: #7c3aed; display: inline-block; vertical-align: middle; margin-right: 0.5rem;"></i>
-                                    Key Outcome
-                                </td>
-                                <td style="padding: 1rem; text-align: center; color: #7c3aed; font-weight: 600; font-size: 0.9rem;">Higher Digital Adoption</td>
-                                <td style="padding: 1rem; text-align: center; color: #7c3aed; font-weight: 600; font-size: 0.9rem;">Faster Payments</td>
-                                <td style="padding: 1rem; text-align: center; color: #7c3aed; font-weight: 600; font-size: 0.9rem;">Reduced Costs</td>
-                                <td style="padding: 1rem; text-align: center; color: #7c3aed; font-weight: 600; font-size: 0.9rem;">70% Storage Savings</td>
+                            <tr style="background: #f0fdf4;">
+                                <td style="padding: 0.875rem; color: #374151; font-size: 0.95rem; font-weight: 600;">Key Outcome</td>
+                                <td style="padding: 0.875rem; text-align: center; color: #059669; font-weight: 500;">Higher Digital Adoption</td>
+                                <td style="padding: 0.875rem; text-align: center; color: #059669; font-weight: 500;">Faster Payments</td>
+                                <td style="padding: 0.875rem; text-align: center; color: #059669; font-weight: 500;">Reduced Transaction Costs</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-        </div>
-    </section>
-
-    <!-- tilliX Section -->
-    <section style="padding: 4rem 0; background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-                <div class="tillix-text">
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a;">tilliX</h3>
-                    <p style="font-size: 1.2rem; color: #6b7280; margin-bottom: 2rem;">Engage Customers Before and After Login with Ease</p>
-                    <ul class="product-features" style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 1rem;"><strong>Pre-Login & Post-Login Engagement:</strong> Deliver consistent, branded experiences across portals, emails, and notifications—before and after customers sign in.</li>
-                        <li style="margin-bottom: 1rem;"><strong>Low-Code Business Rule Engine:</strong> Quickly configure workflows, branding, and logic without heavy IT dependency. Business teams can adapt experiences in real-time.</li>
-                        <li style="margin-bottom: 1rem;"><strong>Rapid Branding & Customization:</strong> Launch new experiences in days, not months—tailor portals, eBills, and interactions to your enterprise brand instantly.</li>
-                        <li style="margin-bottom: 1rem;"><strong>Omnichannel Experience:</strong> Unified digital touchpoints across web, mobile, and messaging for a seamless customer journey.</li>
-                        <li style="margin-bottom: 1rem;"><strong>Enterprise-Grade Security & Compliance:</strong> Built on PCI DSS, SOC 2 Type II, and HIPAA standards, giving regulated industries confidence at scale.</li>
-                        <li style="margin-bottom: 1rem;"><strong>Cost Savings + Higher Satisfaction:</strong> Cut service costs, reduce delinquencies, and improve CSAT by meeting customers where they are, with frictionless interactions.</li>
+            <div class="products-grid">
+                <!-- tilliX -->
+                <div class="product-card">
+                    <h3>tilliX</h3>
+                    <p>Engage Customers Before and After Login with Ease</p>
+                    <ul class="product-features">
+                        <li><strong>Pre-Login & Post-Login Engagement:</strong> Deliver consistent, branded experiences across portals, emails, and notifications—before and after customers sign in.</li>
+                        <li><strong>Low-Code Business Rule Engine:</strong> Quickly configure workflows, branding, and logic without heavy IT dependency. Business teams can adapt experiences in real-time.</li>
+                        <li><strong>Rapid Branding & Customization:</strong> Launch new experiences in days, not months—tailor portals, eBills, and interactions to your enterprise brand instantly.</li>
+                        <li><strong>Omnichannel Experience:</strong> Unified digital touchpoints across web, mobile, and messaging for a seamless customer journey.</li>
+                        <li><strong>Enterprise-Grade Security & Compliance:</strong> Built on PCI DSS, SOC 2 Type II, and HIPAA standards, giving regulated industries confidence at scale.</li>
+                        <li><strong>Cost Savings + Higher Satisfaction:</strong> Cut service costs, reduce delinquencies, and improve CSAT by meeting customers where they are, with frictionless interactions.</li>
                     </ul>
-                    <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1.5rem;">
-                        <a href="tillix.html" class="discover-link">Discover more</a>
-                        <a href="demos.html#tillix" class="btn-primary" style="background: linear-gradient(135deg, #5B9EFF 0%, #4080E0 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600;">
-                            <i class="fas fa-play-circle" style="margin-right: 0.5rem;"></i> Try Interactive Demo
-                        </a>
-                    </div>
-                </div>
-                <div class="tillix-visual">
-                    <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(91, 158, 255, 0.15);">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #5B9EFF, #4080E0); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                            <i class="fas fa-laptop" style="font-size: 2rem; color: white;"></i>
+                    <div class="product-visual">
+                        <div class="tillix-preview" style="background: linear-gradient(135deg, #f0f7ff 0%, #e6f3ff 100%); border-radius: 16px; padding: 2rem; text-align: center; box-shadow: 0 10px 30px rgba(91, 158, 255, 0.1); min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                            <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); max-width: 350px; width: 100%;">
+                                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #5B9EFF, #4080E0); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                                    <i class="fas fa-laptop" style="font-size: 2rem; color: white;"></i>
+                                </div>
+                                <h3 style="color: #1a1a1a; margin-bottom: 1rem;">Self-Service Portal</h3>
+                                <p style="color: #6b7280; margin-bottom: 1.5rem;">Experience frictionless bill pay, account management, and customer engagement</p>
+                                <a href="demos.html#tillix" class="btn-primary" style="background: linear-gradient(135deg, #5B9EFF 0%, #4080E0 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600;">
+                                    <i class="fas fa-play-circle" style="margin-right: 0.5rem;"></i> Try Interactive Demo
+                                </a>
+                                <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb;">
+                                    <div style="display: flex; justify-content: space-around; text-align: center;">
+                                        <div>
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: #5B9EFF;">60%</div>
+                                            <div style="font-size: 0.75rem; color: #6b7280;">Cost Reduction</div>
+                                        </div>
+                                        <div>
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: #5B9EFF;">3x</div>
+                                            <div style="font-size: 0.75rem; color: #6b7280;">Faster Payments</div>
+                                        </div>
+                                        <div>
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: #5B9EFF;">98%</div>
+                                            <div style="font-size: 0.75rem; color: #6b7280;">Satisfaction</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h3 style="color: #1a1a1a; margin-bottom: 1rem; text-align: center;">Self-Service Portal</h3>
-                        <p style="color: #6b7280; margin-bottom: 1.5rem; text-align: center;">Experience frictionless bill pay, account management, and customer engagement</p>
-                        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb;">
-                            <div style="display: flex; justify-content: space-around; text-align: center;">
-                                <div>
-                                    <div style="font-size: 1.5rem; font-weight: 700; color: #5B9EFF;">60%</div>
-                                    <div style="font-size: 0.75rem; color: #6b7280;">Cost Reduction</div>
+
+                    <a href="tillix.html" class="discover-link">Discover more</a>
+                </div>
+
+                <!-- Nudge -->
+                <div class="product-card">
+                    <h3>Nudge</h3>
+                    <p>A Nudge in Time Saves Nine</p>
+                    <ul class="product-features">
+                        <li><strong>Omnichannel Communication:</strong> Reach customers where they are—WhatsApp, SMS, email, IVR, push notifications, and more—all from one unified platform.</li>
+                        <li><strong>Smart Notifications & Reminders:</strong> Deliver timely, personalized nudges that drive action, reduce missed payments, and improve response rates.</li>
+                        <li><strong>240+ Third-Party Integrations:</strong> Plug into existing CRMs, billing systems, and apps to streamline workflows without costly re-engineering.</li>
+                        <li><strong>Data-Driven Personalization:</strong> Use customer behavior and preferences to tailor every message for maximum impact.</li>
+                        <li><strong>Compliance-Ready Messaging:</strong> Secure, reliable, and scalable—meeting PCI DSS, SOC 2 Type II, and HIPAA standards.</li>
+                        <li><strong>Proven Business Outcomes:</strong> Reduce delinquencies, improve collections, and increase customer satisfaction by engaging at the right time with the right message.</li>
+                    </ul>
+                    <div class="product-visual">
+                        <div class="nudge-preview" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 16px; padding: 2rem; text-align: center; box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15); min-height: 400px; display: flex; align-items: center; justify-content: center;">
+                            <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); max-width: 350px; width: 100%;">
+                                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fbbf24, #f59e0b); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                                    <i class="fas fa-comment-dots" style="font-size: 2rem; color: white;"></i>
                                 </div>
-                                <div>
-                                    <div style="font-size: 1.5rem; font-weight: 700; color: #5B9EFF;">3x</div>
-                                    <div style="font-size: 0.75rem; color: #6b7280;">Faster Payments</div>
+                                <h3 style="color: #1a1a1a; margin-bottom: 1rem;">Smart Messaging</h3>
+                                <p style="color: #6b7280; margin-bottom: 1.5rem;">Engage customers with personalized, timely messages across SMS, WhatsApp, Email, and more</p>
+                                <a href="demos.html#nudge" class="btn-primary" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600;">
+                                    <i class="fas fa-play-circle" style="margin-right: 0.5rem;"></i> See Live Demo
+                                </a>
+                                <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb;">
+                                    <div style="display: flex; justify-content: space-around; text-align: center;">
+                                        <div>
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">20M+</div>
+                                            <div style="font-size: 0.75rem; color: #6b7280;">Messages/mo</div>
+                                        </div>
+                                        <div>
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">95%</div>
+                                            <div style="font-size: 0.75rem; color: #6b7280;">Open Rate</div>
+                                        </div>
+                                        <div>
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">240+</div>
+                                            <div style="font-size: 0.75rem; color: #6b7280;">Integrations</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <div style="font-size: 1.5rem; font-weight: 700; color: #5B9EFF;">98%</div>
-                                    <div style="font-size: 0.75rem; color: #6b7280;">Satisfaction</div>
+                            </div>
+                        </div>
+                                display: flex;
+                                justify-content: center;
+                                padding: 1rem 0;
+                                margin: 0 auto;
+                                max-width: 450px;
+                            }
+
+                            .phone-frame {
+                                width: 100%;
+                                max-width: 430px;
+                                height: 800px;
+                                background: #1a1a1a;
+                                border-radius: 35px;
+                                padding: 10px;
+                                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                                           inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+                                position: relative;
+                            }
+
+                            .phone-frame::before {
+                                content: '';
+                                position: absolute;
+                                top: 25px;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                width: 150px;
+                                height: 5px;
+                                background: #000;
+                                border-radius: 3px;
+                            }
+
+                            .phone-screen {
+                                width: 100%;
+                                height: 100%;
+                                background: #fff;
+                                border-radius: 25px;
+                                overflow: hidden;
+                                display: flex;
+                                flex-direction: column;
+                            }
+
+                            .phone-screen .sms-header {
+                                background: linear-gradient(135deg, #5B9EFF 0%, #4080E0 100%);
+                                color: white;
+                                padding: 1rem;
+                                display: flex;
+                                align-items: center;
+                                gap: 1rem;
+                                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                            }
+
+                            .contact-info {
+                                flex: 1;
+                                text-align: center;
+                            }
+
+                            .contact-name {
+                                display: block;
+                                font-weight: 600;
+                                font-size: 1rem;
+                            }
+
+                            .contact-number {
+                                display: block;
+                                font-size: 0.75rem;
+                                opacity: 0.9;
+                            }
+
+                            .sms-chat {
+                                flex: 1;
+                                background: linear-gradient(to bottom, #f0f4f8, #ffffff);
+                                padding: 1rem;
+                                padding-bottom: 2rem;
+                                overflow-y: auto;
+                                overflow-x: hidden;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 1rem;
+                                scroll-behavior: smooth;
+                                min-height: 400px;
+                            }
+
+                            .message-row {
+                                display: flex;
+                                transition: all 0.5s ease;
+                            }
+
+                            .message-row.left {
+                                justify-content: flex-start;
+                            }
+
+                            .message-row.right {
+                                justify-content: flex-end;
+                            }
+
+                            .message-bubble-wrapper {
+                                max-width: 75%;
+                                display: flex;
+                                flex-direction: column;
+                            }
+
+                            .message-row.right .message-bubble-wrapper {
+                                align-items: flex-end;
+                            }
+
+                            .message-bubble {
+                                padding: 0.75rem 1rem;
+                                border-radius: 18px;
+                                position: relative;
+                                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+                            }
+
+                            .company-bubble {
+                                background: #e8e8e8;
+                                color: #1a1a1a;
+                                border-bottom-left-radius: 4px;
+                                margin-left: 8px;
+                            }
+
+                            .company-bubble::before {
+                                content: '';
+                                position: absolute;
+                                bottom: 0;
+                                left: -7px;
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: 0 10px 10px 0;
+                                border-color: transparent #e8e8e8 transparent transparent;
+                            }
+
+                            .customer-bubble {
+                                background: linear-gradient(135deg, #5B9EFF 0%, #4080E0 100%);
+                                color: white;
+                                border-bottom-right-radius: 4px;
+                                margin-right: 8px;
+                            }
+
+                            .customer-bubble::before {
+                                content: '';
+                                position: absolute;
+                                bottom: 0;
+                                right: -7px;
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: 0 0 10px 10px;
+                                border-color: transparent transparent transparent #4080E0;
+                            }
+
+                            .success-bubble {
+                                background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+                                border: 1px solid #81c784;
+                            }
+
+                            .success-bubble::before {
+                                border-color: transparent #c8e6c9 transparent transparent;
+                            }
+
+                            .message-bubble p {
+                                margin: 0;
+                                line-height: 1.4;
+                                font-size: 0.9rem;
+                            }
+
+                            .message-bubble p + p {
+                                margin-top: 0.5rem;
+                            }
+
+                            .action-text {
+                                padding-top: 0.5rem;
+                                margin-top: 0.5rem;
+                                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                                font-size: 0.85rem;
+                            }
+
+                            .bubble-footer {
+                                margin-top: 0.75rem;
+                                padding-top: 0.75rem;
+                                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                            }
+
+                            .signature {
+                                font-size: 0.8rem;
+                                font-style: italic;
+                                opacity: 0.7;
+                            }
+
+                            .message-time {
+                                font-size: 0.7rem;
+                                color: #888;
+                                margin-top: 0.25rem;
+                                padding: 0 0.5rem;
+                            }
+
+                            .typing-bubble {
+                                background: #e8e8e8;
+                                padding: 0.75rem 1.25rem;
+                                border-radius: 18px;
+                                border-bottom-left-radius: 4px;
+                                margin-left: 8px;
+                                display: inline-block;
+                            }
+
+                            .typing-dots {
+                                display: flex;
+                                gap: 4px;
+                                align-items: center;
+                            }
+
+                            .typing-dots span {
+                                width: 8px;
+                                height: 8px;
+                                background: #888;
+                                border-radius: 50%;
+                                animation: typingDot 1.4s infinite;
+                            }
+
+                            .typing-dots span:nth-child(2) {
+                                animation-delay: 0.2s;
+                            }
+
+                            .typing-dots span:nth-child(3) {
+                                animation-delay: 0.4s;
+                            }
+
+                            @keyframes typingDot {
+                                0%, 60%, 100% {
+                                    transform: translateY(0);
+                                    opacity: 0.5;
+                                }
+                                30% {
+                                    transform: translateY(-10px);
+                                    opacity: 1;
+                                }
+                            }
+
+                            .sms-input-bar {
+                                background: #f8f9fa;
+                                padding: 0.75rem;
+                                display: flex;
+                                align-items: center;
+                                gap: 0.75rem;
+                                border-top: 1px solid #e0e0e0;
+                            }
+
+                            .sms-input-bar input {
+                                flex: 1;
+                                padding: 0.5rem 1rem;
+                                border: 1px solid #ddd;
+                                border-radius: 20px;
+                                background: white;
+                                font-size: 0.9rem;
+                            }
+
+                            .sms-input-bar i {
+                                color: #5B9EFF;
+                                font-size: 1.25rem;
+                            }
+
+                            @keyframes fadeInUp {
+                                from {
+                                    opacity: 0;
+                                    transform: translateY(20px);
+                                }
+                                to {
+                                    opacity: 1;
+                                    transform: translateY(0);
+                                }
+                            }
+
+                            @keyframes pulse {
+                                0%, 100% { opacity: 1; transform: scale(1); }
+                                50% { opacity: 0.6; transform: scale(1.1); }
+                            }
+
+                            @keyframes bubblePop {
+                                0% { transform: scale(0.8); }
+                                50% { transform: scale(1.05); }
+                                100% { transform: scale(1); }
+                            }
+
+                            .message-row.visible {
+                                opacity: 1 !important;
+                            }
+                        </style>
+                        <div class="phone-mockup">
+                            <div class="phone-frame">
+                                <div class="phone-screen">
+                                    <div class="sms-header">
+                                        <i class="fas fa-chevron-left"></i>
+                                        <div class="contact-info">
+                                            <span class="contact-name">ABC Company</span>
+                                            <span class="contact-number">SMS</span>
+                                        </div>
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="sms-chat">
+                                        <!-- Company message -->
+                                        <div class="message-row left animate-message" data-delay="500" style="opacity: 0;">
+                                            <div class="message-bubble-wrapper">
+                                                <div class="message-bubble company-bubble">
+                                                    <p>Hi Joe! 👋</p>
+                                                    <p>Your ABC Company bill for XYZ services is due today.</p>
+                                                    <p><strong>Amount Due: $115.00</strong></p>
+                                                    <p>Do you want to pay using card ending in 9876?</p>
+                                                    <p class="action-text">Reply <strong>YES</strong> to confirm payment</p>
+                                                </div>
+                                                <span class="message-time">2:30 PM</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Customer response -->
+                                        <div class="message-row right animate-message" data-delay="3000" style="opacity: 0;">
+                                            <div class="message-bubble-wrapper">
+                                                <div class="message-bubble customer-bubble">
+                                                    <p>Yes</p>
+                                                </div>
+                                                <span class="message-time">2:31 PM ✓✓</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Processing Payment animation -->
+                                        <div class="message-row left animate-message" data-delay="4000" style="opacity: 0;">
+                                            <div class="message-bubble-wrapper">
+                                                <div class="message-bubble company-bubble" style="background: #f0f7ff;">
+                                                    <p style="color: #4099FF;">
+                                                        <span style="display: inline-block; animation: pulse 1.5s infinite;">⏳</span> Processing Payment...
+                                                    </p>
+                                                </div>
+                                                <span class="message-time">2:31 PM</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Confirmation message -->
+                                        <div class="message-row left animate-message" data-delay="6000" style="opacity: 0;">
+                                            <div class="message-bubble-wrapper">
+                                                <div class="message-bubble company-bubble success-bubble">
+                                                    <p>✅ Payment Successful!</p>
+                                                    <p><strong>Confirmation: RN786BVC567</strong></p>
+                                                    <p>Amount: $115.00</p>
+                                                    <p>Card: ****9876</p>
+                                                    <div class="bubble-footer">
+                                                        <p>Thank you for being a valued customer!</p>
+                                                        <p class="signature">- ABC Company Billing</p>
+                                                    </div>
+                                                </div>
+                                                <span class="message-time">2:31 PM</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sms-input-bar">
+                                        <input type="text" placeholder="Message" disabled>
+                                        <i class="fas fa-paper-plane"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nudge Section -->
-    <section style="padding: 4rem 0; background: linear-gradient(135deg, #f3e8ff 0%, #ffffff 100%);">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-                <div class="nudge-text">
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a;">Nudge</h3>
-                    <p style="font-size: 1.2rem; color: #6b7280; margin-bottom: 2rem;">A Nudge in Time Saves Nine</p>
-                    <ul class="product-features" style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 1rem;"><strong>Omnichannel Communication:</strong> Reach customers where they are—WhatsApp, SMS, email, IVR, push notifications, and more—all from one unified platform.</li>
-                        <li style="margin-bottom: 1rem;"><strong>Smart Notifications & Reminders:</strong> Deliver timely, personalized nudges that drive action, reduce missed payments, and improve response rates.</li>
-                        <li style="margin-bottom: 1rem;"><strong>240+ Third-Party Integrations:</strong> Plug into existing CRMs, billing systems, and apps to streamline workflows without costly re-engineering.</li>
-                        <li style="margin-bottom: 1rem;"><strong>Data-Driven Personalization:</strong> Use customer behavior and preferences to tailor every message for maximum impact.</li>
-                        <li style="margin-bottom: 1rem;"><strong>Compliance-Ready Messaging:</strong> Secure, reliable, and scalable—meeting PCI DSS, SOC 2 Type II, and HIPAA standards.</li>
-                        <li style="margin-bottom: 1rem;"><strong>Proven Business Outcomes:</strong> Reduce delinquencies, improve collections, and increase customer satisfaction by engaging at the right time with the right message.</li>
-                    </ul>
-                    <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1.5rem;">
-                        <a href="nudge.html" class="discover-link">Discover more</a>
-                        <a href="demos.html#nudge" class="btn-primary" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600;">
-                            <i class="fas fa-play-circle" style="margin-right: 0.5rem;"></i> See Live Demo
-                        </a>
-                    </div>
-                </div>
-                <div class="nudge-visual">
-                    <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                            <i class="fas fa-comment-dots" style="font-size: 2rem; color: white;"></i>
-                        </div>
-                        <h3 style="color: #1a1a1a; margin-bottom: 1rem; text-align: center;">Smart Messaging</h3>
-                        <p style="color: #6b7280; margin-bottom: 1.5rem; text-align: center;">Engage customers with personalized, timely messages across SMS, WhatsApp, Email, and more</p>
-                        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb;">
-                            <div style="display: flex; justify-content: space-around; text-align: center;">
-                                <div>
-                                    <div style="font-size: 1.5rem; font-weight: 700; color: #8b5cf6;">20M+</div>
-                                    <div style="font-size: 0.75rem; color: #6b7280;">Messages/mo</div>
-                                </div>
-                                <div>
-                                    <div style="font-size: 1.5rem; font-weight: 700; color: #8b5cf6;">95%</div>
-                                    <div style="font-size: 0.75rem; color: #6b7280;">Open Rate</div>
-                                </div>
-                                <div>
-                                    <div style="font-size: 1.5rem; font-weight: 700; color: #8b5cf6;">240+</div>
-                                    <div style="font-size: 0.75rem; color: #6b7280;">Integrations</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="nudge.html" class="discover-link">Discover more</a>
                 </div>
             </div>
         </div>
@@ -1080,12 +1224,7 @@
                         <li><strong>One Platform, Many Payment Options:</strong> Manage billing, collections, refunds, and reconciliations in one place—simplifying finance operations.</li>
                         <li><strong>Revenue Protection & Cost Savings:</strong> Reduce failed payments, cut processing fees, and accelerate cash flow.</li>
                     </ul>
-                    <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1.5rem;">
-                        <a href="tillipay.html" class="discover-link">Discover more</a>
-                        <a href="demos.html#tillipay" class="btn-primary" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600;">
-                            <i class="fas fa-play-circle" style="margin-right: 0.5rem;"></i> View Demo
-                        </a>
-                    </div>
+                    <a href="tillipay.html" class="discover-link">Discover more</a>
                 </div>
                 <div class="tillipay-visual">
                     <div class="payment-methods">
@@ -1413,92 +1552,68 @@
             <h2>How is Tilli Different?</h2>
             <p>Tilli powers financial ecosystems with a unique combination of communication and payments. Built with security and scalability in mind, we help businesses transform their digital experience.</p>
             
-            <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0;">
-                <!-- Seamless Payment Processing Card -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(147, 51, 234, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.15)'; this.style.background='linear-gradient(135deg, rgba(147, 51, 234, 0.08) 0%, rgba(96, 165, 250, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <div class="feature-visual" style="margin-bottom: 1.5rem;">
-                            <div class="payment-card-preview" style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
-                                <i class="fas fa-credit-card" style="color: #6366f1; font-size: 1.5rem; margin-bottom: 0.75rem; display: block;"></i>
-                                <span style="display: block; color: #6b7280; font-size: 0.9rem; margin-bottom: 0.75rem;">Visa ending in 2777</span>
-                                <button class="pay-btn" style="background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; cursor: pointer;">Pay Now</button>
-                            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-visual">
+                        <div class="payment-card-preview">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Visa ending in 2777</span>
+                            <button class="pay-btn">Pay Now</button>
                         </div>
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">Seamless payment processing</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">tilli helps you manage payments with ease and confidence across the platform.</p>
                     </div>
+                    <h3>Seamless payment processing</h3>
+                    <p>tilli helps you manage payments with ease and confidence across the platform.</p>
                 </div>
-
-                <!-- Automate Invoicing Card -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(139, 92, 246, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.15)'; this.style.background='linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(59, 130, 246, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(236, 72, 153, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <div class="feature-visual" style="margin-bottom: 1.5rem;">
-                            <div class="invoice-table" style="background: white; border-radius: 12px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
-                                <div class="table-row" style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #f3f4f6; font-size: 0.85rem; color: #6b7280;">
-                                    <span>Invoice ID</span>
-                                    <span>Amount</span>
-                                    <span>Status</span>
-                                </div>
-                                <div class="table-row" style="display: flex; justify-content: space-between; padding: 0.5rem 0; font-size: 0.9rem;">
-                                    <span style="color: #4b5563;">#INV-001</span>
-                                    <span style="color: #1a1a1a; font-weight: 600;">$2,500</span>
-                                    <span class="status-paid" style="color: #6366f1; font-weight: 600;">Paid</span>
-                                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-visual">
+                        <div class="invoice-table">
+                            <div class="table-row">
+                                <span>Invoice ID</span>
+                                <span>Amount</span>
+                                <span>Status</span>
+                            </div>
+                            <div class="table-row">
+                                <span>#INV-001</span>
+                                <span>$2,500</span>
+                                <span class="status-paid">Paid</span>
                             </div>
                         </div>
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">Automate invoicing & reduce admin work</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">Automate invoicing, cut down on admin, and get paid faster, successfully.</p>
                     </div>
+                    <h3>Automate invoicing & reduce admin work</h3>
+                    <p>Automate invoicing, cut down on admin, and get paid faster, successfully.</p>
                 </div>
-
-                <!-- Predictive Analytics Card -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(167, 139, 250, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(167, 139, 250, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(139, 92, 246, 0.15)'; this.style.background='linear-gradient(135deg, rgba(167, 139, 250, 0.08) 0%, rgba(96, 165, 250, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(167, 139, 250, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <div class="feature-visual" style="margin-bottom: 1.5rem;">
-                            <div class="chart-preview" style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.06); height: 80px; position: relative;">
-                                <div class="chart-line" style="position: absolute; bottom: 30%; left: 10%; right: 10%; height: 2px; background: linear-gradient(to right, #22c55e, #16a34a);"></div>
-                                <div class="chart-points" style="position: absolute; bottom: 25%; left: 10%; right: 10%; display: flex; justify-content: space-between;">
-                                    <div class="point" style="width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);"></div>
-                                    <div class="point" style="width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);"></div>
-                                    <div class="point" style="width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);"></div>
-                                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-visual">
+                        <div class="chart-preview">
+                            <div class="chart-line"></div>
+                            <div class="chart-points">
+                                <div class="point"></div>
+                                <div class="point"></div>
+                                <div class="point"></div>
                             </div>
                         </div>
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">Automated billing with predictive analytics</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">Reduce manual work with automated invoice generation and sending.</p>
                     </div>
+                    <h3>Automated billing with predictive analytics</h3>
+                    <p>Reduce manual work with automated invoice generation and sending.</p>
                 </div>
-
-                <!-- Unified Financial View Card -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(99, 102, 241, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.15)'; this.style.background='linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(59, 130, 246, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(251, 146, 60, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <div class="feature-visual" style="margin-bottom: 1.5rem;">
-                            <div class="dashboard-preview-small" style="background: white; border-radius: 12px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.06); display: flex; justify-content: space-around;">
-                                <div class="dashboard-item" style="text-align: center;">
-                                    <span class="metric" style="display: block; font-size: 1.25rem; font-weight: 700; color: #fb923c;">$1.2M</span>
-                                    <span class="label" style="display: block; font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">Revenue</span>
-                                </div>
-                                <div class="dashboard-item" style="text-align: center;">
-                                    <span class="metric" style="display: block; font-size: 1.25rem; font-weight: 700; color: #fb923c;">98%</span>
-                                    <span class="label" style="display: block; font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">Success Rate</span>
-                                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-visual">
+                        <div class="dashboard-preview-small">
+                            <div class="dashboard-item">
+                                <span class="metric">$1.2M</span>
+                                <span class="label">Revenue</span>
+                            </div>
+                            <div class="dashboard-item">
+                                <span class="metric">98%</span>
+                                <span class="label">Success Rate</span>
                             </div>
                         </div>
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">Unified financial view across channels</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">Automatic payments, billing and invoicing in one tilli stream.</p>
                     </div>
+                    <h3>Unified financial view across channels</h3>
+                    <p>Automatic payments, billing and invoicing in one tilli stream.</p>
                 </div>
             </div>
         </div>
@@ -1511,9 +1626,7 @@
             <p style="text-align: center; margin-bottom: 3rem;">Advanced fraud detection and prevention features to keep your transactions secure.</p>
 
             <div class="fraud-process">
-                <div class="process-card" style="position: relative; background: linear-gradient(135deg, rgba(167, 139, 250, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%); border-radius: 16px; border: 1px solid rgba(167, 139, 250, 0.1); padding: 1.5rem; backdrop-filter: blur(10px); transition: all 0.3s ease;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(139, 92, 246, 0.15)'; this.style.background='linear-gradient(135deg, rgba(167, 139, 250, 0.08) 0%, rgba(96, 165, 250, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(167, 139, 250, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%)'">
+                <div class="process-card">
                     <h3>Scanning</h3>
                     <div class="process-content">
                         <div class="process-item">
@@ -1530,9 +1643,7 @@
                     </div>
                 </div>
                 
-                <div class="process-card" style="position: relative; background: linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%); border-radius: 16px; border: 1px solid rgba(147, 51, 234, 0.1); padding: 1.5rem; backdrop-filter: blur(10px); transition: all 0.3s ease;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(139, 92, 246, 0.15)'; this.style.background='linear-gradient(135deg, rgba(147, 51, 234, 0.08) 0%, rgba(59, 130, 246, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%)'">
+                <div class="process-card">
                     <h3>Seeking Approval</h3>
                     <div class="process-content">
                         <div class="process-item">
@@ -1549,9 +1660,7 @@
                     </div>
                 </div>
                 
-                <div class="process-card" style="position: relative; background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%); border-radius: 16px; border: 1px solid rgba(99, 102, 241, 0.1); padding: 1.5rem; backdrop-filter: blur(10px); transition: all 0.3s ease;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.15)'; this.style.background='linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(96, 165, 250, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%)'">
+                <div class="process-card">
                     <h3>Approved</h3>
                     <div class="process-content">
                         <div class="process-item">
@@ -1610,10 +1719,10 @@
                     <h2>Ready to Save Millions on Billing Operations?</h2>
                     <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">See your ROI in 15 minutes. Book a demo to discover:</p>
                     <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem;">
-                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 10px;"></i> <strong>40% cost reduction</strong> - Eliminate paper, postage, and manual processing</li>
-                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 10px;"></i> <strong>3X faster payments</strong> - Get paid in 5 days instead of 15-20 days</li>
-                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 10px;"></i> <strong>80% digital adoption</strong> - Proven strategies from 500+ enterprise deployments</li>
-                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 10px;"></i> <strong>Zero IT burden</strong> - Deploy in weeks, not months, with our low-code platform</li>
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> <strong>40% cost reduction</strong> - Eliminate paper, postage, and manual processing</li>
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> <strong>3X faster payments</strong> - Get paid in 5 days instead of 15-20 days</li>
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> <strong>80% digital adoption</strong> - Proven strategies from 500+ enterprise deployments</li>
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> <strong>Zero IT burden</strong> - Deploy in weeks, not months, with our low-code platform</li>
                     </ul>
                     <div style="background: linear-gradient(135deg, #fef3c7, #fed7aa); padding: 16px; border-radius: 8px; margin-bottom: 1rem;">
                         <p style="margin: 0; font-weight: 600; color: #92400e;"><i data-lucide="gift" style="display: inline-block; width: 18px; height: 18px; vertical-align: middle; margin-right: 6px;"></i> Book Today & Get:</p>
@@ -2769,7 +2878,8 @@
     </div>
 
     <script>
-        // Icons are now inline SVGs for better performance
+        // Initialize Lucid Icons
+        lucide.createIcons();
     </script>
 
     <!-- Vtiger Integration Script -->
