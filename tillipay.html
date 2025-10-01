@@ -3,312 +3,1804 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tilliPay - Bill Payments Made Easy | Tilli</title>
+    <title>tilliPay - Modern Payment Solutions for Every Business | Tilli</title>
+    <meta name="description" content="Transform your payment processing with tilliPay - secure, scalable, and intelligent payment solutions for B2C, SaaS, and marketplace businesses. Accept payments globally with ease.">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* tilliPay Hero Background - Override home page styles */
+        .hero.home-hero {
+            background: url('tilliPay Product Page/monay hero img.png') center center / cover no-repeat !important;
+            position: relative !important;
+            padding: 10px 10px 0 10px !important;
+            min-height: 100vh !important;
+            width: 100% !important;
+            margin-top: 80px !important;
+        }
+        
+        .hero.home-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.7) !important;
+            z-index: 1;
+        }
+        
+        .hero.home-hero .hero-container {
+            position: relative !important;
+            z-index: 2;
+            max-width: 1000px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem 0 2rem !important;
+            text-align: center !important;
+        }
+
+        .hero.home-hero .hero-content {
+            text-align: center !important;
+        }
+
+        .hero.home-hero .hero-logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero.home-hero .hero-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #1a202c;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #000000 18%, #325EF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero.home-hero .hero-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero.home-hero .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero.home-hero .btn-primary {
+            background: #ffffff;
+            color: #000000;
+            border: 2px solid #e5e7eb;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: none;
+        }
+
+        .hero.home-hero .btn-primary:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .hero.home-hero .btn-secondary {
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: #ffffff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: none;
+            box-shadow: 0 4px 12px rgba(50, 94, 246, 0.3);
+        }
+
+        .hero.home-hero .btn-secondary:hover {
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: #ffffff;
+            transform: none;
+            box-shadow: 0 4px 12px rgba(50, 94, 246, 0.3);
+        }
+
+        .hero.home-hero .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-top: 2rem;
+        }
+
+        .hero.home-hero .hero-image {
+            max-width: 100%;
+            height: auto;
+            max-width: 800px;
+        }
+
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero.home-hero .hero-title {
+                font-size: 2.5rem !important;
+            }
+
+            .hero.home-hero .hero-subtitle {
+                font-size: 1.1rem !important;
+                max-width: 100% !important;
+            }
+
+            .hero.home-hero .hero-buttons {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            .hero.home-hero .btn {
+                width: 100% !important;
+                max-width: 280px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero.home-hero .hero-title {
+                font-size: 2rem !important;
+            }
+
+            .hero.home-hero .hero-subtitle {
+                font-size: 1rem !important;
+            }
+        }
+
+        /* New Section Styles */
+        .new-section {
+            background: #ffffff;
+            padding: 6rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .left-column {
+            text-align: left;
+        }
+
+        .right-column {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #4a5568;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .btn-try-tillipay {
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: #ffffff;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(50, 94, 246, 0.3);
+            white-space: nowrap;
+        }
+
+        .btn-try-tillipay:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(50, 94, 246, 0.4);
+        }
+
+        /* Main Content Section Styles */
+        .main-content-section {
+            background: #ffffff;
+            padding: 4rem 0;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+        }
+
+        .header-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .main-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .main-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #4a5568;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .header-button {
+            margin-left: 2rem;
+        }
+
+        .btn-try-tillipay i {
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .content-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .content-section {
+            background: #ffffff;
+            border: 1px solid #D9D9D9;
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            text-align: left;
+        }
+
+        .section-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* Images Section Styles */
+        .images-section {
+            margin-top: 2rem;
+        }
+
+        .image-container {
+            margin-bottom: 1rem;
+        }
+
+        .b2c-image {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .b2c-image:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .platform-image {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .platform-image:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        /* New Two-Column Section Styles */
+        .new-two-column-section {
+            background: #f8fafc;
+            padding: 6rem 0;
+        }
+
+        .new-two-column-section .two-column-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .new-two-column-section .left-column {
+            text-align: left;
+        }
+
+        .new-two-column-section .right-column {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .new-two-column-section .right-column img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .images-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+
+        .images-container img {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .images-container img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .subsection-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            text-align: left;
+        }
+
+        /* Checkout Experience Section Styles */
+        .checkout-experience-section {
+            background: #ffffff;
+            padding: 6rem 0;
+        }
+
+        .checkout-experience-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .checkout-experience-section img {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .checkout-experience-section img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Invoice Cards Styles */
+        .invoice-cards {
+            margin-bottom: 2rem;
+        }
+
+        .invoice-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .invoice-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .invoice-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 0.75rem;
+            overflow: hidden;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .invoice-info {
+            flex: 1;
+        }
+
+        .invoice-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 0.25rem;
+        }
+
+        .due-date {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .invoice-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .invoice-status.pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .invoice-status.completed {
+            background: #d1fae5;
+            color: #059669;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin-top: 2rem;
+        }
+
+        .comments-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+
+        .comment {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .comment-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .comment-content {
+            flex: 1;
+        }
+
+        .comment-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .comment-time {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: #9ca3af;
+        }
+
+        /* Dashboard Interface */
+        .dashboard-interface {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .dashboard-sidebar {
+            display: flex;
+            gap: 1rem;
+            margin-right: 1rem;
+        }
+
+        .dashboard-sidebar i {
+            color: #6b7280;
+            font-size: 1.2rem;
+        }
+
+        .dashboard-header h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin: 0;
+        }
+
+        .invoice-table {
+            margin-bottom: 1.5rem;
+        }
+
+        .invoice-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .invoice-table th,
+        .invoice-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .invoice-table th {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #6b7280;
+            background: #f9fafb;
+        }
+
+        .invoice-table td {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        .dashboard-comments {
+            margin-bottom: 1.5rem;
+        }
+
+        .dashboard-comments h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 0.75rem;
+        }
+
+        .dashboard-footer {
+            text-align: right;
+        }
+
+        .view-invoice-btn {
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: #ffffff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .view-invoice-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .top-header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .header-button {
+                margin-left: 0;
+                align-self: flex-start;
+            }
+
+            .content-sections {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .new-two-column-section {
+                padding: 4rem 0;
+            }
+
+            .new-two-column-section .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .new-two-column-section .left-column {
+                text-align: center;
+            }
+
+            .images-container {
+                height: 300px;
+                position: relative;
+                margin-bottom: 0;
+            }
+
+            .images-container img {
+                position: absolute !important;
+                width: auto !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                margin-bottom: 0;
+            }
+
+            .images-container img:first-child {
+                position: absolute !important;
+                top: 20px !important;
+                right: 0 !important;
+                width: 100% !important;
+                height: auto !important;
+                z-index: 1 !important;
+            }
+
+            .images-container img:last-child {
+                position: absolute !important;
+                top: 0 !important;
+                left: -30% !important;
+                width: 70% !important;
+                height: auto !important;
+                z-index: 2 !important;
+                margin-bottom: 0;
+            }
+
+            .checkout-experience-section {
+                padding: 4rem 0;
+            }
+
+            .checkout-experience-section .two-column-layout {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+    .checkout-experience-section .left-column,
+    .checkout-experience-section .right-column {
+        flex: 1;
+    }
+}
+
+/* Background Images Section */
+.background-images-section {
+    background: #ffffff;
+    padding: 0;
+    margin: 0;
+}
+
+.two-column-background-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    min-height: 400px;
+}
+
+.background-column {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 400px;
+    position: relative;
+    border: 1px solid #D9D9D9;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem 2rem 2rem 2rem;
+}
+
+.column-content {
+    text-align: center;
+    max-width: 80%;
+}
+
+.column-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.column-paragraph {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #000000;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.column-images {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.column-images img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.column-images img:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.crypto-image {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.crypto-image img {
+    border-radius: 8px;
+    border: none;
+    box-shadow: none;
+    transition: none;
+    background: transparent;
+    background-color: transparent;
+}
+
+.crypto-image img:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.left-bg-column {
+    background-image: url('tilliPay Product Page/Streamline invoicing.png');
+}
+
+.right-bg-column {
+    background-image: url('tilliPay Product Page/Cryptocurrency.png');
+}
+
+@media (max-width: 768px) {
+    .two-column-background-layout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        min-height: 200px;
+    }
+    
+    .background-column {
+        min-height: 200px;
+        padding: 1rem;
+    }
+    
+    .column-content {
+        max-width: 90%;
+    }
+    
+    .column-heading {
+        font-size: 1.25rem;
+    }
+    
+    .column-paragraph {
+        font-size: 0.85rem;
+    }
+    
+    .column-images {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 1rem;
+    }
+    
+    .column-images img {
+        width: 80% !important;
+    }
+    
+    .crypto-image img {
+        width: 90% !important;
+    }
+}
+
+/* Gradient Background Section */
+.gradient-background-section {
+    background: #ffffff;
+    padding: 4rem 0;
+}
+
+.gradient-container {
+    background-image: url('tilliPay Product Page/Rectangle 42792.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    min-height: 300px;
+    padding: 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.gradient-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+
+.gradient-paragraph {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #ffffff;
+    line-height: 1.6;
+    margin: 0 0 2rem 0;
+    max-width: 600px;
+}
+
+.gradient-content-row {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.gradient-left-column {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 250px;
+}
+
+.gradient-center-column {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+}
+
+.gradient-right-column {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 250px;
+}
+
+.timeline-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+}
+
+.setup-image-container {
+    margin-bottom: 1.5rem;
+}
+
+.setup-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 150px;
+}
+
+.setup-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.setup-paragraph {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-width: 400px;
+}
+
+.setup-highlight {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #ffffff;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+}
+
+.sso-image-container {
+    margin-top: 1rem;
+}
+
+.sso-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 120px;
+}
+
+.transactions-image-container {
+    margin-bottom: 1.5rem;
+}
+
+.transactions-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 150px;
+}
+
+.transactions-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.transactions-paragraph {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-width: 400px;
+}
+
+.transactions-highlight {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #ffffff;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+}
+
+@media (max-width: 768px) {
+    .gradient-background-section {
+        padding: 2rem 0;
+    }
+    
+    .gradient-container {
+        padding: 2rem;
+        min-height: 200px;
+    }
+    
+    .gradient-heading {
+        font-size: 1.5rem;
+    }
+    
+    .gradient-paragraph {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+    
+    .timeline-image {
+        max-height: 200px;
+    }
+    
+    .gradient-content-row {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    .gradient-left-column,
+    .gradient-center-column,
+    .gradient-right-column {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .setup-image {
+        max-height: 120px;
+    }
+    
+    .sso-image {
+        max-height: 100px;
+    }
+    
+    .setup-heading {
+        font-size: 1.1rem;
+    }
+    
+    .setup-paragraph,
+    .setup-highlight {
+        font-size: 11px;
+        max-width: 100%;
+    }
+    
+    .transactions-image {
+        max-height: 120px;
+    }
+    
+    .transactions-heading {
+        font-size: 1.1rem;
+    }
+    
+    .transactions-paragraph,
+    .transactions-highlight {
+        font-size: 11px;
+        max-width: 100%;
+    }
+}
+
+/* Retailers and Merchants Section */
+.retailers-section {
+    background: #ffffff;
+    padding: 6rem 0;
+}
+
+.retailers-two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.retailers-left-column {
+    text-align: left;
+}
+
+.retailers-category {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.retailers-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.retailers-paragraph {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.retailers-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #325EF6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.retailers-link:hover {
+    color: #2B4FD6;
+    text-decoration: underline;
+}
+
+.retailers-right-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.retailers-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .retailers-section {
+        padding: 4rem 0;
+    }
+    
+    .retailers-two-column-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .retailers-left-column {
+        text-align: center;
+    }
+    
+    .retailers-heading {
+        font-size: 2rem;
+    }
+    
+    .retailers-paragraph {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+}
+
+/* Marketplace Section */
+.marketplace-section {
+    background: #f8fafc;
+    padding: 6rem 0;
+}
+
+.marketplace-two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.marketplace-left-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marketplace-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.marketplace-right-column {
+    text-align: left;
+}
+
+.marketplace-category {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.marketplace-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.marketplace-paragraph {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.marketplace-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(50, 94, 246, 0.3);
+}
+
+.marketplace-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(50, 94, 246, 0.4);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.marketplace-button i {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.marketplace-button:hover i {
+    transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+    .marketplace-section {
+        padding: 4rem 0;
+    }
+    
+    .marketplace-two-column-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .marketplace-right-column {
+        text-align: center;
+    }
+    
+    .marketplace-heading {
+        font-size: 2rem;
+    }
+    
+    .marketplace-paragraph {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+    
+    .marketplace-button {
+        padding: 0.875rem 1.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Features Section */
+.features-section {
+    background: #ffffff;
+    padding: 6rem 0;
+}
+
+.features-container {
+    background: #ffffff;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    padding: 4rem;
+}
+
+.features-two-column-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.features-left-column {
+    text-align: left;
+}
+
+.features-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.features-paragraph {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.quick-cells-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.quick-cell {
+    background: rgba(244, 244, 244, 0.5);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    border: 1px solid #E5E7EB;
+}
+
+.cell-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 1rem;
+}
+
+.cell-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.cell-paragraph {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #4a5568;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.features-right-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.features-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .features-section {
+        padding: 4rem 0;
+    }
+    
+    .features-container {
+        padding: 2rem;
+    }
+    
+    .features-two-column-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .features-left-column {
+        text-align: center;
+    }
+    
+    .features-heading {
+        font-size: 2rem;
+    }
+    
+    .features-paragraph {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+    
+    .quick-cells-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .quick-cell {
+        text-align: center;
+    }
+}
+
+
+
+
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .new-section {
+                padding: 4rem 0;
+            }
+
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .left-column {
+                text-align: center;
+            }
+
+
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-description {
+                font-size: 13px;
+                max-width: 100%;
+            }
+
+            .btn-try-tillipay {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .section-description {
+                font-size: 13px;
+            }
+
+            .btn-try-tillipay {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <div data-include="partials/header.html"></div>
 
     <!-- Hero Section -->
-    <section class="hero tillipay-hero">
+    <section class="hero home-hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Bill Payments Made Easy</h1>
-                <p class="hero-subtitle">tilliPay delivers secure, intelligent, and scalable payment experiences—empowering B2C, SaaS, and marketplace businesses to collect and disburse with ease.</p>
+                <img src="tilliPay Product Page/tilliPay_logo_PNG 1.png" alt="tilliPay Logo" class="hero-logo">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Bill</span> Payments<br>
+                    Made Easy
+                </h1>
+                <p class="hero-subtitle">
+                    tilliPay helps you collect, manage, and automate payments in one seamless platform—built to meet the needs of modern service providers and their customers.
+                </p>
                 <div class="hero-buttons">
-                    <a href="free-trial.html" class="btn-primary">Get Started Free</a>
+                    <a href="#" class="btn-primary">View Our Products</a>
                     <a href="contact.html" class="btn-secondary">Book a Demo</a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="laptop-mockup">
-                    <div class="laptop-screen">
-                        <div class="tillipay-dashboard-preview">
-                            <div class="dashboard-header">
-                                <h3>tilliPay Dashboard</h3>
-                                <div class="dashboard-stats">
-                                    <div class="stat-card">
-                                        <span class="stat-value">$1.2M</span>
-                                        <span class="stat-label">Total Revenue</span>
-                                    </div>
-                                    <div class="stat-card">
-                                        <span class="stat-value">$2.7M</span>
-                                        <span class="stat-label">Pending</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="payment-methods-showcase">
-                                <div class="payment-method-card">
-                                    <i class="fas fa-credit-card"></i>
-                                    <span>Credit/Debit Cards</span>
-                                </div>
-                                <div class="payment-method-card">
-                                    <i class="fas fa-mobile-alt"></i>
-                                    <span>UPI</span>
-                                </div>
-                                <div class="payment-method-card">
-                                    <i class="fas fa-university"></i>
-                                    <span>Net Banking</span>
-                                </div>
-                                <div class="payment-method-card">
-                                    <i class="fas fa-wallet"></i>
-                                    <span>Digital Wallets</span>
-                                </div>
-                            </div>
-                            <div class="checkout-preview">
-                                <h4>Checkout Experience</h4>
-                                <div class="checkout-form">
-                                    <div class="form-field">
-                                        <label>Amount</label>
-                                        <input type="text" value="$2,500.00" readonly>
-                                    </div>
-                                    <div class="form-field">
-                                        <label>Payment Method</label>
-                                        <select>
-                                            <option>Credit Card ending in 2777</option>
-                                        </select>
-                                    </div>
-                                    <button class="pay-now-btn">Pay Now</button>
-                                </div>
-                            </div>
-                        </div>
+                <img src="tilliPay Product Page/Dashboard 16_ - 5th Gen - Silver.png" alt="tilliPay Dashboard" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section class="main-content-section">
+        <div class="container">
+            <!-- Top Header -->
+            <div class="top-header">
+                <div class="header-content">
+                    <h1 class="main-title">All-In-One Payments, Done Right</h1>
+                    <p class="main-description">
+                        Everything your team needs to accept, track, and manage payments—without jumping between tools.
+                    </p>
+                </div>
+                <div class="header-button">
+                    <a href="#" class="btn-try-tillipay">Try tilliPay <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            
+            <!-- Two Main Content Sections -->
+            <div class="content-sections">
+                <!-- Left Section: B2C Payment Solutions -->
+                <div class="content-section left-section">
+                    <h2 class="section-title">B2C Payment Solutions</h2>
+                    <p class="section-description">
+                        Our B2C payment solutions are built with the customers in mind. tilliPay's B2C payment solution provides immediate and innovative customer payment options coupled with a unified customer experience.
+                    </p>
+                    
+                    <!-- Images Section - tilliX Style -->
+                    <div class="images-section" style="display: flex; gap: 20px; align-items: flex-start;">
+                        <img src="tilliPay Product Page/Frame 1984078274 (1).png" alt="Invoice Cards" style="width: 50%; height: auto;">
+                        <img src="tilliPay Product Page/tillix glass component 1.png" alt="Glass Component" style="width: 50%; height: auto;">
+                    </div>
+                </div>
+
+                <!-- Right Section: Online Payment Platform -->
+                <div class="content-section right-section">
+                    <h2 class="section-title">An Online Payment Platform for the New Age</h2>
+                    <p class="section-description">
+                        Accept multiple payment methods, create offers, and seamlessly onboard customers — tilliPay's Digital Payment Solution has it all.
+                    </p>
+                    
+                    <!-- Images Section - tilliX Style -->
+                    <div class="images-section" style="display: flex; gap: 20px; align-items: flex-start; justify-content: space-between;">
+                        <img src="tilliPay Product Page/bell.png" alt="Bell Icon" style="width: 10%; height: auto;">
+                        <img src="tilliPay Product Page/View invoice.png" alt="View Invoice Interface" style="width: 67%; height: auto;">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- All-In-One Payments Section -->
-    <section class="all-in-one-payments">
+    <!-- New Two-Column Section -->
+    <section class="new-two-column-section">
         <div class="container">
-            <div class="section-header">
-                <h2>All-In-One Payments, Done Right</h2>
-                <p>tilliPay is built for modern businesses that demand more from their payment solutions.</p>
-            </div>
-            
-            <div class="payment-highlights">
-                <div class="highlight-grid">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3>B2C Payment Solutions</h3>
-                        <p>Simplify customer payments with multiple channels—cards, wallets, UPI, ACH, and more.</p>
-                    </div>
-                    
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h3>An Online Payment Platform for the New Age</h3>
-                        <p>Accept payments across borders with PCI DSS compliance and robust fraud protection.</p>
-                    </div>
-                    
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <h3>SaaS-Friendly</h3>
-                        <p>Integrate payments seamlessly into your applications and scale effortlessly.</p>
-                    </div>
+            <div class="two-column-layout">
+                <div class="left-column">
+                    <h2 class="section-title">SaaS-Easy and convenient for your<br>customers</h2>
+                    <p class="section-description">
+                        Control everything from one unified dashboard, including everything from customer communications to subscription billing.
+                    </p>
                 </div>
-                
-                <div class="cta-section">
-                    <button class="btn-outline">Learn More</button>
+                <div class="right-column">
+                    <div class="images-container" style="position: relative; width: 100%; height: 400px;">
+                        <img src="tilliPay Product Page/image 521.png" alt="Customer using smartphone" style="position: absolute; top: 20px; right: 0; width: 100%; height: auto; border-radius: 8px; z-index: 1;">
+                        <img src="tilliPay Product Page/image 522.png" alt="Dashboard Interface" style="position: absolute; top: 0; left: -50%; width: 70%; height: auto; border-radius: 8px; z-index: 2;">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Checkout Experience Section -->
-    <section class="checkout-experience">
+    <section class="checkout-experience-section">
         <div class="container">
-            <div class="section-content">
-                <div class="content-text">
-                    <h2>Seamless, intuitive, and optimized for conversions</h2>
-                    <p>tilliPay ensures businesses deliver a frictionless checkout across devices.</p>
+            <div style="background: linear-gradient(90deg, rgba(217, 217, 217, 0.05) 0%, rgba(115, 115, 115, 0.02) 100%); padding: 40px 0 0 40px; border-radius: 8px; border: 1px solid #D9D9D9;">
+                <h3 style="font-family: 'Sora', sans-serif; font-weight: 500; margin-bottom: 20px; color: #000000;">Checkout Experience</h3>
+                <p style="font-family: 'Inter', sans-serif; font-weight: 400; color: #000000; line-height: 1.6; margin-bottom: 40px; max-width: 60%;">tilliPay makes it easy to accept global payments, reduce fraud, and process transactions without breaking a sweat. We'll handle the hard stuff. You get back to selling.</p>
+                
+                <!-- Two Column Layout -->
+                <div class="two-column-layout" style="display: flex; gap: 20px; align-items: flex-start;">
+                    <!-- Left Column - Dashboard Content -->
+                    <div class="left-column" style="flex: 0.6;">
+                        <!-- Financial Metrics -->
+                        <div style="margin-bottom: 20px; display: flex; justify-content: flex-start;">
+                            <img src="Nudge Product Page/figures.png" alt="Financial Metrics" style="width: 80%; height: auto;">
                 </div>
-                <div class="content-visual">
-                    <div class="checkout-demo">
-                        <div class="mobile-checkout">
-                            <div class="mobile-header">
-                                <h4>Payment</h4>
-                                <span class="amount">$2,500.00</span>
+                
+                        <!-- Invoice Status Cards -->
+                        <div style="display: flex; justify-content: flex-end;">
+                            <img src="Nudge Product Page/figures invoice group.png" alt="Invoice Status" style="width: 90%; height: auto;">
+                </div>
+            </div>
+            
+                    <!-- Right Column - Conversation Image -->
+                    <div class="right-column" style="flex: 1.4; display: flex; justify-content: flex-end; align-items: flex-end;">
+                        <img src="Nudge Product Page/two conversation.png" alt="Team Collaboration" style="width: 70%; height: auto; object-fit: cover; border: none; box-shadow: none;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Background Images Section -->
+    <section class="background-images-section">
+        <div class="container">
+            <div class="two-column-background-layout">
+                <!-- Left Column with Streamline Invoicing Background -->
+                <div class="background-column left-bg-column" style="background-image: url('tilliPay Product Page/Streamline invoicing.png');">
+                    <div class="column-content">
+                        <h4 class="column-heading">Gig Economy</h4>
+                        <p class="column-paragraph">Our B2C payment solutions are built with the customers in mind. tilliPay's B2C payment solution provides immediate and innovative customer payment options coupled with a unified customer experience.</p>
+                        <!-- Images Section -->
+                        <div class="column-images" style="display: flex; gap: 15px; align-items: flex-end; justify-content: center; margin-top: 1.5rem;">
+                            <img src="tilliPay Product Page/image 526.png" alt="Delivery Driver" style="width: 40%; height: auto; border-radius: 8px; margin-bottom: 20px;">
+                            <img src="tilliPay Product Page/image 525.png" alt="Bicycle Courier" style="width: 55%; height: auto; border-radius: 8px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column with Cryptocurrency Background -->
+                <div class="background-column right-bg-column" style="background-image: url('tilliPay Product Page/Cryptocurrency.png');">
+                    <div class="column-content">
+                        <h4 class="column-heading">Cryptocurrency</h4>
+                        <p class="column-paragraph">No need to convert crypto to fiat currencies and pay high transaction fees. tilliPay is a new way of life that gives you the freedom to spend and earn in the currency of your choice.</p>
+                        <!-- Cryptocurrency Image -->
+                        <div class="crypto-image" style="margin-top: 1.5rem; display: flex; justify-content: center;">
+                            <img src="tilliPay Product Page/Cryptocurrency-laptop and card updated.png" alt="Cryptocurrency Payment Interface" style="width: 80%; height: auto; border-radius: 8px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Gradient Background Section -->
+    <section class="gradient-background-section">
+        <div class="container">
+            <div class="gradient-container">
+                <h4 class="gradient-heading">See What tilliPay Unlocks Over Time</h4>
+                <p class="gradient-paragraph">Start simple, then scale with confidence. From your first payment to full automation, tilliPay helps your team save time, get paid faster, and stay in sync with customers—at every stage.</p>
+                
+                <!-- Three Column Layout for Images and Content -->
+                <div class="gradient-content-row">
+                    <!-- Left Column - First Transactions Content -->
+                    <div class="gradient-left-column">
+                        <div class="transactions-image-container">
+                            <img src="tilliPay Product Page/Step 2 Frame 1984078292.png" alt="First Transactions" class="transactions-image">
+                        </div>
+                        <h6 class="transactions-heading">First Transactions Live</h6>
+                        <p class="transactions-paragraph">Send your first invoice or payment request through a branded checkout page—no coding needed.</p>
+                        <p class="transactions-highlight">Make a professional first impression and collect faster.</p>
+                    </div>
+                    
+                    <!-- Center Column - Timeline Image -->
+                    <div class="gradient-center-column">
+                        <div class="timeline-image-container">
+                            <img src="tilliPay Product Page/Frame 1984078293.png" alt="Timeline Progress" class="timeline-image">
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column - Setup Content -->
+                    <div class="gradient-right-column">
+                        <div class="setup-image-container">
+                            <img src="tilliPay Product Page/Frame 1984078292.png" alt="Setup Interface" class="setup-image">
+                        </div>
+                        <h6 class="setup-heading">Set up in minutes</h6>
+                        <p class="setup-paragraph">No dev team required. tilliPay plugs into you existing systems, so you're ready to go right away.</p>
+                        <p class="setup-highlight">Save time and avoid complicated onboarding.</p>
+                        <div class="sso-image-container">
+                            <img src="tilliPay Product Page/Frame 1984078235.png" alt="SSO Login" class="sso-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retailers and Merchants Section -->
+    <section class="retailers-section">
+        <div class="container">
+            <div class="retailers-two-column-layout">
+                <!-- Left Column - Content -->
+                <div class="retailers-left-column">
+                    <p class="retailers-category">Retailers and Merchants</p>
+                    <h5 class="retailers-heading">Built for Retail. Ready to scale.</h5>
+                    <p class="retailers-paragraph">Offer seamless transactions, real-time insights, and effortless integration with your POS systems. tilliPay simplifies retail operations so you can focus on growth and customer experience.</p>
+                    <a href="#" class="retailers-link">See the Industries we work with</a>
+                </div>
+                
+                <!-- Right Column - Image -->
+                <div class="retailers-right-column">
+                    <img src="tilliPay Product Page/image (7).png" alt="Retail Shopping" class="retailers-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section class="marketplace-section">
+        <div class="container">
+            <div class="marketplace-two-column-layout">
+                <!-- Left Column - Image -->
+                <div class="marketplace-left-column">
+                    <img src="tilliPay Product Page/image (8).png" alt="Marketplace Business" class="marketplace-image">
+                </div>
+                
+                <!-- Right Column - Content -->
+                <div class="marketplace-right-column">
+                    <p class="marketplace-category">Marketplace</p>
+                    <h5 class="marketplace-heading">Power your marketplace from onboarding to payout.</h5>
+                    <p class="marketplace-paragraph">Offer seamless transactions, real-time insights, and effortless integration with your POS systems. tilliPay simplifies retail operations so you can focus on growth and customer experience.</p>
+                    <a href="#" class="marketplace-button">Discover more <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-container">
+                <div class="features-two-column-layout">
+                    <!-- Left Column - Content and Quick Cells -->
+                    <div class="features-left-column">
+                        <h4 class="features-heading">Built for Speed, Trust, and Control</h4>
+                        <p class="features-paragraph">Whether you're collecting one-time invoices or recurring charges, tilliPay adapts to your workflow—while keeping customers in the loop.</p>
+                        
+                        <!-- Quick Cells Grid -->
+                        <div class="quick-cells-grid">
+                            <!-- Cell 1 -->
+                            <div class="quick-cell">
+                                <img src="tilliPay Product Page/🧾 (3).png" alt="Invoice Icon" class="cell-icon">
+                                <h5 class="cell-heading">Customizable Payment Pages</h5>
+                                <p class="cell-paragraph">Match Your brand and Provide a seamless checkout for every customer.</p>
                             </div>
-                            <div class="payment-options">
-                                <div class="payment-option active">
-                                    <i class="fas fa-credit-card"></i>
-                                    <span>Credit Card</span>
-                                </div>
-                                <div class="payment-option">
-                                    <i class="fas fa-mobile-alt"></i>
-                                    <span>UPI</span>
-                                </div>
-                                <div class="payment-option">
-                                    <i class="fas fa-wallet"></i>
-                                    <span>Wallet</span>
-                                </div>
+                            
+                            <!-- Cell 2 -->
+                            <div class="quick-cell">
+                                <img src="tilliPay Product Page/⏱.png" alt="Stopwatch Icon" class="cell-icon">
+                                <h5 class="cell-heading">Real-Time Payment Status</h5>
+                                <p class="cell-paragraph">See when a payment is sent, received, or overdue—all in one view.</p>
                             </div>
-                            <button class="pay-now-btn">Pay Now</button>
+                            
+                            <!-- Cell 3 -->
+                            <div class="quick-cell">
+                                <img src="tilliPay Product Page/🔒 (1).png" alt="Lock Icon" class="cell-icon">
+                                <h5 class="cell-heading">Secure by Default</h5>
+                                <p class="cell-paragraph">Every transaction is protected with top-tier encryption and compliance standards.</p>
+                            </div>
+                            
+                            <!-- Cell 4 -->
+                            <div class="quick-cell">
+                                <img src="tilliPay Product Page/🔗 (2).png" alt="Link Icon" class="cell-icon">
+                                <h5 class="cell-heading">Work with Your Tools</h5>
+                                <p class="cell-paragraph">Integrates with your existing systems so you can avoid manual data entry and sync in real time.</p>
+                            </div>
                         </div>
+                    </div>
+                    
+                    <!-- Right Column - Image -->
+                    <div class="features-right-column">
+                        <img src="tilliPay Product Page/image (9).png" alt="Team Collaboration" class="features-image">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Industry Use Cases Section -->
-    <section class="industry-use-cases">
-        <div class="container">
-            <div class="section-header">
-                <h2>Industry Use Cases</h2>
-            </div>
-            
-            <div class="use-cases-grid">
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-car"></i>
-                    </div>
-                    <h3>Gig Economy</h3>
-                    <p>Empower workers with fast payouts and reliable settlement.</p>
-                </div>
-                
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fab fa-bitcoin"></i>
-                    </div>
-                    <h3>Cryptocurrency</h3>
-                    <p>Simplify digital currency transactions with secure on/off ramp solutions.</p>
-                </div>
-                
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-store"></i>
-                    </div>
-                    <h3>Retail</h3>
-                    <p>Real-time insights and POS integration for large-scale retail operations.</p>
-                </div>
-                
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3>Marketplaces</h3>
-                    <p>End-to-end payment orchestration, from onboarding to disbursement.</p>
-                </div>
-            </div>
-            
-            <div class="cta-section">
-                <button class="btn-outline">Explore Use Cases</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Proof & Value Section -->
-    <section class="proof-value">
-        <div class="container">
-            <div class="section-header">
-                <h2>See What tilliPay Unlocks Over Time</h2>
-                <p>Scale your financial operations with advanced reconciliation, global reach, and intelligent routing.</p>
-            </div>
-            
-            <div class="value-features">
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <i class="fas fa-eye"></i>
-                        <span>End-to-end transaction visibility</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-bolt"></i>
-                        <span>Faster settlements & payouts</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Reduced reconciliation overhead</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-rocket"></i>
-                        <span>Future-proof global expansion</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose tilliPay Section -->
-    <section class="why-choose-tillipay">
-        <div class="container">
-            <div class="section-header">
-                <h2>Built for Speed, Trust, and Control</h2>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-visual">
-                        <div class="feature-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                    </div>
-                    <h3>Global-Ready Payments Engine</h3>
-                    <p>Designed for businesses scaling across regions.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-visual">
-                        <div class="feature-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <h3>Real-Time Payment Tracking</h3>
-                    <p>Complete visibility into every transaction.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-visual">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                    </div>
-                    <h3>Security by Default</h3>
-                    <p>PCI DSS, HIPAA, GDPR compliance.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-visual">
-                        <div class="feature-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                    </div>
-                    <h3>Intelligently Scale Your FinOps</h3>
-                    <p>Automate reconciliation and reporting.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lead Capture Section -->
-    <section class="lead-capture">
-        <div class="container">
-            <div class="lead-content">
-                <div class="lead-text">
-                    <h2>Let's Make Payments Simple</h2>
-                    <p>Discover how tilliPay can transform your business payments and collections.</p>
-                </div>
-                <div class="lead-form">
-                    <form class="contact-form">
-                        <div class="form-row">
-                            <input type="text" placeholder="Name" required>
-                            <input type="email" placeholder="Email" required>
-                        </div>
-                        <input type="text" placeholder="Company" required>
-                        <textarea placeholder="Message (optional)" rows="4"></textarea>
-                        <button type="submit" class="btn-primary">Request Demo</button>
-                    </form>
-                </div>
-            </div>
+    <!-- FAQ Section -->
+    <section class="faq-section" style="padding: 40px 0; background: #ffffff;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: left;">
+            <p style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; color: #B8B8B8; margin: 0;">
+                Have some questions? <span style="text-decoration: underline;">Chat with us</span> or visit our <span style="text-decoration: underline;">tilliPay FAQ's</span>
+            </p>
         </div>
     </section>
 
