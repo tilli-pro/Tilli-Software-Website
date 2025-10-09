@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Python SDK Integration - tilli</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .developer-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            padding: 24px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 0 24px 24px;
+            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 24px;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .sidebar-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .sidebar-nav {
+            padding: 0 24px;
+        }
+
+        .nav-section {
+            margin-bottom: 32px;
+        }
+
+        .nav-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-item img {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+
+        .nav-item:hover {
+            background-color: #e5e7eb;
+            color: #1f2937;
+        }
+
+        .nav-item.active {
+            background-color: #dbeafe;
+            color: #2563eb;
+        }
+
+        .nav-item.has-dropdown::after {
+            content: '▼';
+            float: right;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 0;
+        }
+
+        .content-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e9ecef;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 8px 16px;
+            width: 400px;
+            position: relative;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f4f6;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .search-result-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .search-result-description {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .search-result-category {
+            font-size: 10px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .search-bar input::placeholder {
+            color: #9ca3af;
+        }
+
+        .search-shortcut {
+            background-color: #e5e7eb;
+            color: #6b7280;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-left: 8px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .header-icon:hover {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        /* Content Area */
+        .content-body {
+            padding: 32px;
+        }
+
+        .main-content-area {
+            width: 100%;
+        }
+
+
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+
+        .breadcrumb a {
+            color: #6b7280;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            margin-bottom: 64px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0 0 16px 0;
+            color: #1a1a1a;
+        }
+
+        .hero-description {
+            font-size: 20px;
+            color: #6b7280;
+            margin: 0 0 32px 0;
+            line-height: 1.5;
+        }
+
+        .integration-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .integration-badge {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .integration-badge:hover {
+            background-color: #e5e7eb;
+        }
+
+        .integration-badge.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .integration-badge i {
+            font-size: 16px;
+        }
+
+        /* Steps Section */
+        .steps-section {
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 32px 0;
+            color: #1a1a1a;
+            text-align: left;
+        }
+
+        .steps-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 12px;
+            bottom: 12px;
+            width: 2px;
+            background-color: #e5e7eb;
+            z-index: 1;
+        }
+
+        .step-card {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .step-number {
+            background-color: #f8f9fa;
+            color: #6b7280;
+            border: 1px solid #e9ecef;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 3;
+            margin-left: -12px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            line-height: 1.2;
+        }
+
+        .step-icon {
+            width: 20px;
+            height: 20px;
+            color: #2563eb;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+            margin: 0 0 16px 0;
+        }
+
+        .step-note {
+            font-size: 12px;
+            color: #9ca3af;
+            margin: 8px 0 0 0;
+            font-style: italic;
+        }
+
+        .code-snippet {
+            background-color: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            font-size: 13px;
+            color: #4a4a4a;
+            overflow-x: auto;
+            position: relative;
+            padding: 24px 16px 12px 16px;
+            max-width: 400px;
+            min-width: 300px;
+        }
+
+        .code-language {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            font-size: 11px;
+            color: #9b59b6;
+            background-color: #f5f5f5;
+            font-weight: 500;
+            z-index: 2;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .code-snippet::after {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: 16px;
+            right: 16px;
+            height: 1px;
+            background-color: #d0d0d0;
+            z-index: 1;
+        }
+
+        .code-snippet pre {
+            margin: 0;
+            padding: 16px 0 0 0;
+            background: transparent;
+            border: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            font-size: 13px;
+            color: #4a4a4a;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.3;
+        }
+
+        /* Black text for specific lines */
+        .code-line-black {
+            color: #4a4a4a;
+        }
+
+        /* Gradient colors for parameter lines */
+        .code-line-gradient {
+            background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Three Column Section */
+        .three-column-section {
+            margin-bottom: 64px;
+        }
+
+        .three-column-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .column-card {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: left;
+        }
+
+        .column-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #f3f4f6;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 20px;
+            color: #6b7280;
+        }
+
+        .column-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 12px 0;
+            color: #1a1a1a;
+        }
+
+        .column-description {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+            margin: 0 0 16px 0;
+        }
+
+        .column-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px 0;
+            text-align: left;
+        }
+
+        .column-list li {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 4px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .column-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+        }
+
+        .column-link {
+            background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .column-link:hover {
+            background: linear-gradient(90deg, #3a7bd5 0%, #8aa8d6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Learn More Section */
+        .learn-more-section {
+            margin-bottom: 64px;
+        }
+
+        .learn-more-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .learn-more-link {
+            color: #d9d9d9;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .learn-more-link:hover {
+            color: #d9d9d9;
+        }
+
+        /* Feedback Section */
+        .feedback-section {
+            margin-bottom: 64px;
+            text-align: center;
+        }
+
+        .feedback-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 0 0 16px 0;
+            color: #1a1a1a;
+        }
+
+        .feedback-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .feedback-button {
+            background-color: transparent;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .feedback-button:hover {
+            background-color: #f8f9fa;
+        }
+
+        .feedback-button i {
+            font-size: 18px;
+            color: #6b7280;
+        }
+
+        /* Footer Section */
+        .footer-section {
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            padding: 48px 0;
+            margin-top: 64px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            height: 32px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: #374151;
+        }
+
+        .footer-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 400px;
+        }
+
+        .footer-heading {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+
+        .footer-description {
+            font-size: 14px;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .email-signup {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .email-input:focus {
+            border-color: #3b82f6;
+        }
+
+        .signup-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .signup-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+            }
+            
+            .steps-grid {
+                flex-direction: column;
+            }
+            
+            .three-column-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .content-header {
+                padding: 12px 16px;
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+            }
+            
+            .search-bar {
+                width: 100%;
+                max-width: 100%;
+                order: 1;
+                position: relative;
+            }
+            
+            .search-results {
+                position: fixed;
+                top: 80px;
+                left: 16px;
+                right: 16px;
+                z-index: 1001;
+                max-height: 60vh;
+            }
+            
+            .header-actions {
+                justify-content: center;
+                order: 2;
+                gap: 12px;
+            }
+            
+            .content-body {
+                padding: 16px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+            
+            .hero-description {
+                font-size: 18px;
+                line-height: 1.4;
+            }
+            
+            .integration-badges {
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 24px;
+                text-align: center;
+            }
+            
+            .steps-grid {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .three-column-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Mobile steps section - maintain connecting line */
+            .steps-grid::before {
+                left: 12px !important;
+                top: 20px !important;
+                bottom: 20px !important;
+            }
+
+            .step-card {
+                padding: 24px !important;
+                flex-direction: row !important;
+                align-items: flex-start !important;
+                gap: 16px !important;
+            }
+
+            .step-number {
+                width: 24px !important;
+                height: 24px !important;
+                font-size: 12px !important;
+                flex-shrink: 0 !important;
+                margin-left: -12px !important;
+                z-index: 3 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-body {
+                padding: 12px;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+                line-height: 1.1;
+            }
+            
+            .hero-description {
+                font-size: 16px;
+                line-height: 1.3;
+            }
+            
+            .section-title {
+                font-size: 20px;
+                text-align: center;
+            }
+            
+            .step-card {
+                padding: 20px;
+            }
+            
+            .column-card {
+                padding: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 32px;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+
+            .footer-icons {
+                justify-content: center;
+            }
+
+            .email-signup {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="developer-layout">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="sidebar-logo">
+                    <img src="Developer page/Frame 1261157062.png" alt="tilli docs logo">
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">General Documentation</div>
+                    <a href="#" class="nav-item">Home</a>
+                    <a href="#" class="nav-item">User Guide</a>
+                    <a href="developer-guide.html" class="nav-item has-dropdown">Developers Guide</a>
+                    <a href="#" class="nav-item">Help Center</a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Product-Specific Documentation</div>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/Vector 29.png" alt="Nudge">
+                        Nudge
+                    </a>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/24X24PX 1.png" alt="tilliPay">
+                        tilliPay
+                    </a>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/Logo.png" alt="tilliX">
+                        tilliX
+                    </a>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/Frame (3).png" alt="Help Center">
+                        Help Center
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="content-header">
+                <div class="search-bar">
+                    <input type="text" id="universal-search" placeholder="Search documentation..." autocomplete="off">
+                    <span class="search-shortcut">⌘K</span>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="header-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="header-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Body -->
+            <div class="content-body">
+
+                <div class="main-content-area">
+                    <!-- Breadcrumb -->
+                    <div class="breadcrumb">
+                        <a href="#">Home</a> > <a href="developer-guide.html">Developer Guide</a> > Python SDK Integration
+                    </div>
+
+                    <!-- Hero Section -->
+                    <section class="hero-section">
+                        <h1 class="hero-title">Python SDK Integration</h1>
+                        <p class="hero-description">A guide to integrating the tilli SDK in your Python environment to manage invoices, payments, and webhooks.</p>
+                        
+                        <div class="integration-badges">
+                            <div class="integration-badge active">
+                                <img src="Developer Guide Page/python-logo.png" alt="Python SDK" style="width: 16px; height: 16px;">
+                                Python SDK
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/zapler-logo.png" alt="Zapier" style="width: 16px; height: 16px;">
+                                Zapier
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/slack-logo.png" alt="Slack" style="width: 16px; height: 16px;">
+                                Slack
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/node-logo.png" alt="Node.js" style="width: 16px; height: 16px;">
+                                node.js
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/erp-sync-logo.png" alt="ERP Sync Tools" style="width: 16px; height: 16px;">
+                                ERP Sync Tools
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/postman-logo.png" alt="Postman" style="width: 16px; height: 16px;">
+                                Postman
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/java-logo.png" alt="Java" style="width: 16px; height: 16px;">
+                                Java
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/web-logo.png" alt="Web SDK" style="width: 16px; height: 16px;">
+                                Web (tilli.js WEB SDK)
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/react-logo.png" alt="React" style="width: 16px; height: 16px;">
+                                React (Quick Pay Button)
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Steps Section -->
+                    <section class="steps-section" id="get-started">
+                        
+                        <div class="steps-grid">
+                            <div class="step-card">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3 class="step-title">
+                                        <img src="Developer Guide Page/01-📦.png" alt="Installation" class="step-icon" style="width: 20px; height: 20px;">
+                                        Installation
+                                    </h3>
+                                    <p class="step-description">Install the official tilli Python SDK via pip:</p>
+                                    <div class="code-snippet">
+                                        <div class="code-language">bash</div>
+                                        <pre>pip install tilli</pre>
+                                    </div>
+                                    <p class="step-note">Requires Python 3.7 or later.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3 class="step-title">
+                                        <img src="Developer Guide Page/02-🛠️.png" alt="Initialization" class="step-icon" style="width: 20px; height: 20px;">
+                                        Initialization
+                                    </h3>
+                                    <p class="step-description">Import the SDK and initialize it with your API key:</p>
+                                    <div class="code-snippet">
+                                        <div class="code-language">bash</div>
+                                        <pre>from tilli import tilliClient
+
+client = tilliClient(api_key="your_api_key_here")</pre>
+                                    </div>
+                                    <p class="step-note">Use sandbox key for testing, or a live key for production.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3 class="step-title">
+                                        <img src="Developer Guide Page/03-💳️.png" alt="Send Your First Invoice" class="step-icon" style="width: 20px; height: 20px;">
+                                        Send Your First Invoice
+                                    </h3>
+                                    <p class="step-description">Use the create_invoice() method to send a new invoice:</p>
+                                    <div class="code-snippet">
+                                        <div class="code-language">bash</div>
+                                        <pre><span class="code-line-black">invoice = client.invoices.create({</span>
+  <span class="code-line-gradient">"amount": 125.50,</span>
+    <span class="code-line-gradient">"currency": "USD",</span>
+    <span class="code-line-gradient">"customer_email": "customer@example.com",</span>
+    <span class="code-line-gradient">"due_date": "2025-06-01"</span>
+})
+<span class="code-line-black">print(invoice.id)</span></pre>
+                                    </div>
+                                    <p class="step-note">Use sandbox key for testing, or a live key for production.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h3 class="step-title">
+                                        <img src="Developer Guide Page/04-📡️.png" alt="Listen for Webhooks" class="step-icon" style="width: 20px; height: 20px;">
+                                        Listen for Webhooks
+                                    </h3>
+                                    <p class="step-description">Set up a basic Flask endpoint to receive invoice event notifications:</p>
+                                    <div class="code-snippet">
+                                        <div class="code-language">bash</div>
+                                        <pre>from flask import Flask, request
+import json
+        app = Flask(__name__)
+})
+@app.route("/webhooks/tilli", methods=["POST"])
+def tilli_webhook():
+     payload = request.get_json()
+    print("Received event:", payload["event_type"])
+    return "", 200</pre>
+                                    </div>
+                                    <p class="step-note">You can configure events like:</p>
+                                    <p class="step-note">invoice.paid</p>
+                                    <p class="step-note">invoice.overdue</p>
+                                    <p class="step-note">invoice.canceled</p>
+                                    <p class="step-note">Secure your webhooks using X-tilli-Signature headers. <a href="#" class="column-link">→ View Webhook Docs</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Three Column Section -->
+                    <section class="three-column-section" id="dev-resources">
+                        <div class="three-column-grid">
+                            <div class="column-card">
+                                <h3 class="column-title">Test Your Integration</h3>
+                                <p class="column-description">Launch your first integration in minutes.</p>
+                                <ul class="column-list">
+                                    <li>Create a test invoice</li>
+                                    <li>Trigger a fake payment event</li>
+                                    <li>Confirm webhook delivery</li>
+                                </ul>
+                                <p class="step-note">Use the tilli sandbox dashboard to simulate different outcomes.</p>
+                            </div>
+
+                            <div class="column-card">
+                                <h3 class="column-title">Full SDK Reference</h3>
+                                <p class="column-description">Launch your first integration in minutes.</p>
+                                <ul class="column-list">
+                                    <li>Invoice methods</li>
+                                    <li>QuickPay button generation</li>
+                                    <li>Customer profile management</li>
+                                    <li>Error Handling</li>
+                                    <li>Rate limits & retries</li>
+                                </ul>
+                                <a href="#" class="column-link">View Full Python SDK Docs →</a>
+                            </div>
+
+                            <div class="column-card">
+                                <h3 class="column-title">Need Help?</h3>
+                                <p class="column-description">Launch your first integration in minutes.</p>
+                                <ul class="column-list">
+                                    <li><a href="#" class="column-link">→ Join our Dev Slack</a></li>
+                                    <li><a href="#" class="column-link">→ Visit FAQs</a></li>
+                                </ul>
+                                <a href="#" class="column-link">Contact Support →</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Learn More Section -->
+                    <section class="learn-more-section">
+                        <h3 class="section-title">Learn more</h3>
+                        <div class="learn-more-links">
+                            <a href="#" class="learn-more-link">Join our Slack</a>
+                            <a href="#" class="learn-more-link">Contact Developer Support</a>
+                            <a href="#" class="learn-more-link">System Status</a>
+                            <a href="#" class="learn-more-link">Submit a Ticket</a>
+                        </div>
+                    </section>
+
+                    <!-- Feedback Section -->
+                    <section class="feedback-section">
+                        <h3 class="feedback-title">Was this guide useful?</h3>
+                        <div class="feedback-buttons">
+                            <button class="feedback-button">
+                                <i class="fas fa-thumbs-up"></i>
+                            </button>
+                            <button class="feedback-button">
+                                <i class="fas fa-thumbs-down"></i>
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Footer Section -->
+                    <section class="footer-section">
+                        <div class="footer-content">
+                            <div class="footer-left">
+                                <img src="Developer page/Frame 1261157062.png" alt="tilli logo" class="footer-logo">
+                                <div class="footer-links">
+                                    <a href="#" class="footer-link">tilli.pro</a>
+                                    <a href="#" class="footer-link">Privacy Policy</a>
+                                    <a href="#" class="footer-link">Terms</a>
+                                    <a href="#" class="footer-link">Contact Support</a>
+                                </div>
+                                <div class="footer-icons">
+                                    <img src="Developer page/image 442.png" alt="Social icon" class="footer-icon">
+                                    <img src="Developer page/footer logo.png" alt="Footer logo" class="footer-icon">
+                                </div>
+                            </div>
+                            <div class="footer-right">
+                                <h6 class="footer-heading">Sign up for developer updates:</h6>
+                                <p class="footer-description">You can unsubscribe anytime. These are not marketing emails</p>
+                                <div class="email-signup">
+                                    <input type="email" placeholder="Enter email address..." class="email-input">
+                                    <button class="signup-button">Sign up</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Universal Search Functionality
+        const searchData = [
+            {
+                title: "Python SDK Integration",
+                description: "A guide to integrating the tilli SDK in your Python environment to manage invoices, payments, and webhooks.",
+                category: "Getting Started",
+                url: "#hero"
+            },
+            {
+                title: "Installation",
+                description: "Install the tilli Python SDK using pip. This will give you access to all the tools you need to integrate with tilli's APIs.",
+                category: "Getting Started",
+                url: "#get-started"
+            },
+            {
+                title: "Initialization",
+                description: "Import the SDK and initialize it with your API key. Use your sandbox key for testing, or a live key for production.",
+                category: "Getting Started",
+                url: "#get-started"
+            },
+            {
+                title: "Send Your First Invoice",
+                description: "Create and send your first invoice using the create_invoice() method. This will demonstrate the basic functionality of the SDK.",
+                category: "Getting Started",
+                url: "#get-started"
+            },
+            {
+                title: "Listen for Webhooks",
+                description: "Set up a basic Flask endpoint to receive invoice event notifications. This allows you to respond to payment events in real-time.",
+                category: "Getting Started",
+                url: "#get-started"
+            },
+            {
+                title: "Test Your Integration",
+                description: "Create a test invoice, trigger a fake payment event, and confirm webhook delivery.",
+                category: "Developer Resources",
+                url: "#dev-resources"
+            },
+            {
+                title: "Full SDK Reference",
+                description: "Complete reference including invoice methods, QuickPay button generation, customer profile management, error handling, and rate limits.",
+                category: "Developer Resources",
+                url: "#dev-resources"
+            },
+            {
+                title: "Need Help?",
+                description: "Get support through our Dev Slack, contact support, or visit FAQs.",
+                category: "Developer Resources",
+                url: "#dev-resources"
+            }
+        ];
+
+        const searchInput = document.getElementById('universal-search');
+        const searchResults = document.getElementById('search-results');
+
+        // Search function
+        function performSearch(query) {
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const filteredResults = searchData.filter(item => 
+                item.title.toLowerCase().includes(query.toLowerCase()) ||
+                item.description.toLowerCase().includes(query.toLowerCase()) ||
+                item.category.toLowerCase().includes(query.toLowerCase())
+            );
+
+            displayResults(filteredResults);
+        }
+
+        // Display search results
+        function displayResults(results) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item"><div class="search-result-title">No results found</div></div>';
+            } else {
+                searchResults.innerHTML = results.map(result => `
+                    <div class="search-result-item" onclick="navigateToResult('${result.url}')">
+                        <div class="search-result-category">${result.category}</div>
+                        <div class="search-result-title">${highlightMatch(result.title, searchInput.value)}</div>
+                        <div class="search-result-description">${highlightMatch(result.description, searchInput.value)}</div>
+                    </div>
+                `).join('');
+            }
+            searchResults.style.display = 'block';
+        }
+
+        // Highlight matching text
+        function highlightMatch(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<mark style="background-color: #fef3c7; padding: 1px 2px; border-radius: 2px;">$1</mark>');
+        }
+
+        // Navigate to result
+        function navigateToResult(url) {
+            if (url.startsWith('#')) {
+                const element = document.querySelector(url);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            searchResults.style.display = 'none';
+            searchInput.value = '';
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', (e) => {
+            performSearch(e.target.value);
+        });
+
+        searchInput.addEventListener('focus', () => {
+            if (searchInput.value.length >= 2) {
+                searchResults.style.display = 'block';
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-bar')) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Cmd/Ctrl + K to focus search
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            
+            // Escape to close search results
+            if (e.key === 'Escape') {
+                searchResults.style.display = 'none';
+                searchInput.blur();
+            }
+        });
+
+        // Add IDs to sections for navigation
+        document.addEventListener('DOMContentLoaded', () => {
+            const getStartedSection = document.querySelector('.steps-section');
+            if (getStartedSection) getStartedSection.id = 'get-started';
+            
+            const devResourcesSection = document.querySelector('.three-column-section');
+            if (devResourcesSection) devResourcesSection.id = 'dev-resources';
+            
+            const featuredIntegrations = document.querySelector('.learn-more-section');
+            if (featuredIntegrations) featuredIntegrations.id = 'featured-integrations';
+            
+            const allIntegrations = document.querySelector('.feedback-section');
+            if (allIntegrations) allIntegrations.id = 'all-integrations';
+
+        });
+    </script>
+</body>
+</html>

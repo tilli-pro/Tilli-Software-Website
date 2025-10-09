@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Developer Guide - tilli</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .developer-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            padding: 24px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 0 24px 24px;
+            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 24px;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .sidebar-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .sidebar-nav {
+            padding: 0 24px;
+        }
+
+        .nav-section {
+            margin-bottom: 32px;
+        }
+
+        .nav-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-item img {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+
+        .nav-item:hover {
+            background-color: #e5e7eb;
+            color: #1f2937;
+        }
+
+        .nav-item.active {
+            background-color: #dbeafe;
+            color: #2563eb;
+        }
+
+        .nav-item.has-dropdown::after {
+            content: '▼';
+            float: right;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 0;
+        }
+
+        .content-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e9ecef;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 8px 16px;
+            width: 400px;
+            position: relative;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f4f6;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .search-result-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .search-result-description {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .search-result-category {
+            font-size: 10px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .search-bar input::placeholder {
+            color: #9ca3af;
+        }
+
+        .search-shortcut {
+            background-color: #e5e7eb;
+            color: #6b7280;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-left: 8px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .header-icon:hover {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        /* Content Area */
+        .content-body {
+            padding: 32px;
+            display: flex;
+            gap: 32px;
+        }
+
+        .main-content-area {
+            flex: 1;
+        }
+
+        .right-sidebar {
+            width: 240px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 24px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .right-sidebar h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0 0 16px 0;
+        }
+
+        .right-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+
+        .right-sidebar ul::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: #e5e7eb;
+        }
+
+        .right-sidebar li {
+            margin-bottom: 16px;
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .right-sidebar li::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .right-sidebar li:hover::before {
+            background-color: #2563eb;
+            width: 12px;
+            height: 12px;
+            left: 6px;
+        }
+
+        .right-sidebar li.active::before {
+            background-color: #2563eb;
+            width: 12px;
+            height: 12px;
+            left: 6px;
+        }
+
+        .right-sidebar a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .right-sidebar a:hover {
+            color: #2563eb;
+        }
+
+        .right-sidebar-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+
+        .breadcrumb a {
+            color: #6b7280;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            margin-bottom: 64px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0 0 16px 0;
+            color: #1a1a1a;
+        }
+
+        .hero-description {
+            font-size: 20px;
+            color: #6b7280;
+            margin: 0 0 32px 0;
+            line-height: 1.5;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .integration-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .integration-badge {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .integration-badge i {
+            font-size: 16px;
+        }
+
+        /* Get Started Section */
+        .get-started-section {
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 32px 0;
+            color: #1a1a1a;
+            text-align: left;
+        }
+
+        .steps-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            left: 36px;
+            top: 12px;
+            bottom: 12px;
+            width: 2px;
+            background-color: #e5e7eb;
+            z-index: 1;
+        }
+
+        .step-card {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 24px 24px 24px 60px;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -12px;
+            left: 24px;
+            background-color: #2563eb;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 2;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 16px 0 8px 0;
+            color: #1a1a1a;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+            margin: 0 0 16px 0;
+        }
+
+        .step-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .step-link:hover {
+            color: #1d4ed8;
+        }
+
+        .code-snippet {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+            color: #374151;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-language {
+            position: absolute;
+            top: 8px;
+            left: 12px;
+            font-size: 11px;
+            color: #9ca3af;
+            background-color: transparent;
+            font-weight: 500;
+        }
+
+        .code-snippet pre {
+            margin: 0;
+            padding: 24px 16px 16px 16px;
+            background: transparent;
+            border: none;
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Developer Resources Section */
+        .dev-resources-section {
+            margin-bottom: 64px;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .resource-card {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+
+        .resource-card:hover {
+            border-color: #d1d5db;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            color: #1a1a1a;
+        }
+
+        .resource-description {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+            margin: 0 0 16px 0;
+        }
+
+        .resource-topics {
+            font-size: 12px;
+            color: #9ca3af;
+            margin: 0 0 16px 0;
+        }
+
+        .resource-topics.custom-color {
+            background: linear-gradient(90deg, #325EF6 0%, #000000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .resource-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .resource-link:hover {
+            color: #1d4ed8;
+        }
+
+        .api-endpoints {
+            font-size: 12px;
+            color: #6b7280;
+            margin: 8px 0 0 0;
+        }
+
+        /* Integrations Section */
+        .integrations-section {
+            margin-bottom: 64px;
+        }
+
+        .featured-integrations {
+            margin-bottom: 32px;
+        }
+
+        .integrations-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 16px 0;
+            color: #1a1a1a;
+        }
+
+        .integrations-flow {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .integration-item {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .integration-arrow {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .integrations-grid {
+            display: flex !important;
+            gap: 12px !important;
+            flex-wrap: wrap !important;
+            margin: 0 !important;
+            flex-direction: row !important;
+        }
+
+        .all-integrations {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .all-integrations .integrations-title {
+            margin: 0;
+        }
+
+        /* Learn More Section */
+        .learn-more-section {
+            margin-bottom: 64px;
+        }
+
+        .learn-more-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .learn-more-link {
+            color: #d9d9d9;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .learn-more-link:hover {
+            color: #d9d9d9;
+        }
+
+        /* Feedback Section */
+        .feedback-section {
+            margin-bottom: 64px;
+            text-align: center;
+        }
+
+        .feedback-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 0 0 16px 0;
+            color: #1a1a1a;
+        }
+
+        .feedback-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .feedback-button {
+            background-color: transparent;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .feedback-button:hover {
+            background-color: #f8f9fa;
+        }
+
+        .feedback-button i {
+            font-size: 18px;
+            color: #6b7280;
+        }
+
+        /* Footer Section */
+        .footer-section {
+            margin: 64px 0 0 0;
+            padding: 32px;
+            background-color: #f8f9fa;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            width: 120px;
+            height: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-heading {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .footer-description {
+            font-size: 12px;
+            color: #6b7280;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .email-signup {
+            display: flex;
+            background-color: #ffffff;
+            border-radius: 25px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            max-width: 400px;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background-color: transparent;
+        }
+
+        .email-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .signup-button {
+            background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 0 25px 25px 0;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .mobile-nav h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0 0 12px 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-nav li {
+            flex-shrink: 0;
+        }
+
+        .mobile-nav a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e5e7eb;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        .mobile-nav li.active a {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        .mobile-nav-icon {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+            }
+            
+            .content-body {
+                flex-direction: column;
+            }
+            
+            .right-sidebar {
+                width: 100%;
+                position: static;
+            }
+            
+            .steps-grid {
+                flex-direction: column;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .integrations-flow {
+                justify-content: center;
+            }
+            
+            .all-integrations {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .content-header {
+                padding: 12px 16px;
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+            }
+            
+            .search-bar {
+                width: 100%;
+                max-width: 100%;
+                order: 1;
+                position: relative;
+            }
+            
+            .search-results {
+                position: fixed;
+                top: 80px;
+                left: 16px;
+                right: 16px;
+                z-index: 1001;
+                max-height: 60vh;
+            }
+            
+            .header-actions {
+                justify-content: center;
+                order: 2;
+                gap: 12px;
+            }
+            
+            .content-body {
+                padding: 16px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+            
+            .hero-description {
+                font-size: 18px;
+                line-height: 1.4;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .integration-badges {
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 24px;
+                text-align: center;
+            }
+            
+            .steps-grid {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .integrations-flow {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .integration-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .all-integrations {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .learn-more-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+            
+            .footer-icons {
+                justify-content: flex-start;
+            }
+            
+            .email-signup {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            /* Show mobile navigation */
+            .mobile-nav {
+                display: block;
+            }
+
+            /* Hide desktop right sidebar */
+            .right-sidebar {
+                display: none;
+            }
+
+            /* Mobile steps section - force override */
+            .steps-grid::before {
+                left: 20px !important;
+                top: 20px !important;
+                bottom: 20px !important;
+            }
+
+            .step-card {
+                padding: 24px 24px 24px 100px !important;
+            }
+
+            .step-number {
+                left: 8px !important;
+                width: 24px !important;
+                height: 24px !important;
+                font-size: 12px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .content-header {
+                padding: 12px 16px;
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+            }
+            
+            .search-bar {
+                width: 100%;
+                max-width: 100%;
+                order: 1;
+                position: relative;
+            }
+            
+            .search-results {
+                position: fixed;
+                top: 80px;
+                left: 16px;
+                right: 16px;
+                z-index: 1001;
+                max-height: 60vh;
+            }
+            
+            .header-actions {
+                justify-content: center;
+                order: 2;
+                gap: 12px;
+            }
+            
+            .content-body {
+                padding: 16px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+            
+            .hero-description {
+                font-size: 18px;
+                line-height: 1.4;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .integration-badges {
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 24px;
+                text-align: center;
+            }
+            
+            .steps-grid {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .integrations-flow {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .integration-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .all-integrations {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .learn-more-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+            
+            .footer-icons {
+                justify-content: flex-start;
+            }
+            
+            .email-signup {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-body {
+                padding: 12px;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+                line-height: 1.1;
+            }
+            
+            .hero-description {
+                font-size: 16px;
+                line-height: 1.3;
+            }
+            
+            .section-title {
+                font-size: 20px;
+                text-align: center;
+            }
+            
+            .step-card {
+                padding: 20px;
+            }
+            
+            .resource-card {
+                padding: 20px;
+            }
+            
+            .all-integrations {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-section {
+                padding: 24px 16px;
+                margin: 32px 0 0 0;
+            }
+            
+            .footer-heading {
+                font-size: 14px;
+            }
+            
+            .footer-description {
+                font-size: 11px;
+            }
+            
+            .email-input {
+                font-size: 12px;
+                padding: 10px 12px;
+            }
+            
+            .signup-button {
+                font-size: 12px;
+                padding: 10px 16px;
+            }
+            
+            .footer-logo {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="developer-layout">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="sidebar-logo">
+                    <img src="Developer page/Frame 1261157062.png" alt="tilli docs logo">
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">General Documentation</div>
+                    <a href="#" class="nav-item">Home</a>
+                    <a href="#" class="nav-item">User Guide</a>
+                    <a href="developer-guide.html" class="nav-item active has-dropdown">Developers Guide</a>
+                    <div class="nav-dropdown" style="margin-left: 20px; margin-top: 8px;">
+                        <a href="python-sdk-integration.html" class="nav-item">Python SDK Integration</a>
+                    </div>
+                    <a href="#" class="nav-item">Help Center</a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Product-Specific Documentation</div>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/Vector 29.png" alt="Nudge">
+                        Nudge
+                    </a>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/24X24PX 1.png" alt="tilliPay">
+                        tilliPay
+                    </a>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/Logo.png" alt="tilliX">
+                        tilliX
+                    </a>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/Frame (3).png" alt="Help Center">
+                        Help Center
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="content-header">
+                <div class="search-bar">
+                    <input type="text" id="universal-search" placeholder="Search documentation..." autocomplete="off">
+                    <span class="search-shortcut">⌘K</span>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="header-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="header-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="header-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Body -->
+            <div class="content-body">
+                <!-- Mobile Navigation -->
+                <div class="mobile-nav">
+                    <h4>On this page</h4>
+                    <ul>
+                        <li><a href="#get-started"><img src="Developer Guide Page/👉.png" alt="Get Started" class="mobile-nav-icon">Get started in 3 Steps</a></li>
+                        <li><a href="#dev-resources"><img src="Developer Guide Page/📘.png" alt="Developer Resources" class="mobile-nav-icon">Developer Resources</a></li>
+                        <li><a href="#featured-integrations"><img src="Developer Guide Page/✨.png" alt="Featured Integrations" class="mobile-nav-icon">Featured Integrations</a></li>
+                        <li><a href="#all-integrations"><img src="Developer Guide Page/⭐.png" alt="All Integrations" class="mobile-nav-icon">All Integrations</a></li>
+                    </ul>
+                </div>
+
+                <div class="main-content-area">
+                    <!-- Breadcrumb -->
+                    <div class="breadcrumb">
+                        <a href="#">Home</a> > Developer Guide
+                    </div>
+
+                    <!-- Hero Section -->
+                    <section class="hero-section">
+                        <h1 class="hero-title">Developer Guide</h1>
+                        <p class="hero-description">Everything you need to integrate with tilli — APIs, SDKs, webhooks, and best practices.</p>
+                        
+                        <div class="hero-actions">
+                            <a href="#" class="btn-secondary">Explore API Docs</a>
+                            <a href="#" class="btn-primary">Get Started</a>
+                        </div>
+
+                        <div class="integration-badges">
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/zapler-logo.png" alt="Zapier" style="width: 16px; height: 16px;">
+                                Zapier
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/slack-logo.png" alt="Slack" style="width: 16px; height: 16px;">
+                                Slack
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/node-logo.png" alt="Node.js" style="width: 16px; height: 16px;">
+                                node.js
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/erp-sync-logo.png" alt="ERP Sync Tools" style="width: 16px; height: 16px;">
+                                ERP Sync Tools
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/shopify.png" alt="Shopify" style="width: 16px; height: 16px;">
+                                Shopify
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/postman-logo.png" alt="Postman" style="width: 16px; height: 16px;">
+                                Postman
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/java-logo.png" alt="Java" style="width: 16px; height: 16px;">
+                                Java
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/python-logo.png" alt="Python SDK" style="width: 16px; height: 16px;">
+                                Python SDK
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/web-logo.png" alt="Web SDK" style="width: 16px; height: 16px;">
+                                Web (tilli.js WEB SDK)
+                            </div>
+                            <div class="integration-badge">
+                                <img src="Developer Guide Page/react-logo.png" alt="React" style="width: 16px; height: 16px;">
+                                React (Quick Pay Button)
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Get Started Section -->
+                    <section class="get-started-section">
+                        <h2 class="section-title">Get started in a few steps</h2>
+                        
+                        <div class="steps-grid">
+                            <div class="step-card">
+                                <div class="step-number">1</div>
+                                <h3 class="step-title">Sign Up & Get Your API Key</h3>
+                                <p class="step-description">Create a free tilli developer account and instantly access your sandbox API keys. Test invoice creation, flows, and webhook events securely.</p>
+                                <a href="#" class="step-link">→ Generate API Key</a>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">2</div>
+                                <h3 class="step-title">Make Your First API Call</h3>
+                                <p class="step-description">Use our REST API or Postman collection to create and send your first invoice. See responses in real-time with our mock data or live environment.</p>
+                                <a href="#" class="step-link">→ Generate API Key</a>
+                                <div class="code-snippet">
+                                    <div class="code-language">bash</div>
+                                    <pre>curl -X POST https://api.tilli.pro/v1/invoices \
+  -H "Authorization: Bearer sk_test...." \
+  -d '{ "amount": 120.50, "customer_email": "customer@tilli.pro" }'</pre>
+                                </div>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-number">3</div>
+                                <h3 class="step-title">Set Up Webhooks</h3>
+                                <p class="step-description">Get notified instantly when invoices are paid, overdue, or canceled. Configure your webhook endpoint and validate requests using tilli's signature headers.</p>
+                                <a href="#" class="step-link">→ Webhook Setup Guide</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Developer Resources Section -->
+                    <section class="dev-resources-section">
+                        <h2 class="section-title">Developer resources</h2>
+                        <p class="section-description">Your building blocks to integrate, secure, and scale with tilliX.</p>
+                        
+                        <div class="resources-grid">
+                            <div class="resource-card">
+                                <h3 class="resource-title">API Overview</h3>
+                                <p class="resource-description">Understand the structure of tilliX's REST APIs, versioning, request/response formats, and best practices for building efficient integrations.</p>
+                                <p class="resource-topics custom-color">Topics: API Keys, headers, scopes, OAuth</p>
+                                <a href="#" class="resource-link">Generate API Key</a>
+                            </div>
+
+                            <div class="resource-card">
+                                <h3 class="resource-title">Authentication & Authorization</h3>
+                                <p class="resource-description">Learn how to securely authenticate with tilliX using bearer tokens, manage key rotation, and scope access for production vs. sandbox environments.</p>
+                                <p class="resource-topics custom-color">Topics: API Keys, headers, scopes, OAuth</p>
+                                <a href="#" class="resource-link">Learn about Auth</a>
+                            </div>
+
+                            <div class="resource-card">
+                                <h3 class="resource-title">Invoicing API</h3>
+                                <p class="resource-description">Send, update, and cancel invoices via our flexible endpoints. Supports metadata, recurring logic, and real-time validation.</p>
+                                <p class="resource-topics custom-color">POST /invoices                                    GET /invoices/:idA<br>PATCH /invoices/:id                              DELETE /invoices/:id</p>
+                                <a href="#" class="resource-link">View Invoicing Docs</a>
+                            </div>
+
+                            <div class="resource-card">
+                                <h3 class="resource-title">API</h3>
+                                <p class="resource-description">Embed one-time payment links or UI widgets with minimal setup. Supports auto-filled customer info and smart expiration.</p>
+                                <p class="resource-topics custom-color">Use Cases: Guest payments, invoice reminders</p>
+                                <a href="#" class="resource-link">See Setup</a>
+                            </div>
+
+                            <div class="resource-card">
+                                <h3 class="resource-title">Errors & Troubleshooting</h3>
+                                <p class="resource-description">Decode error codes, resolve failed requests, and get tips for debugging common issues like invalid payloads or expired tokens.</p>
+                                <p class="resource-topics custom-color">Topics: Error handling, debugging, common issues</p>
+                                <a href="#" class="resource-link">See Error Docs</a>
+                            </div>
+
+                            <div class="resource-card">
+                                <h3 class="resource-title">Webhooks</h3>
+                                <p class="resource-description">Stay up to date with real-time events: payment success, invoice overdue, refund issued, etc. Learn how to configure endpoints, retry logic, and secure your webhook listener.</p>
+                                <p class="resource-topics custom-color">Topics: HMAC signatures, response timing, event logs</p>
+                                <a href="#" class="resource-link">Webhook Guide</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Featured Integrations Section -->
+                    <section class="integrations-section">
+                        <div class="featured-integrations">
+                            <h3 class="integrations-title">Featured integrations</h3>
+                            <div class="integrations-flow">
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/node-logo.png" alt="Node.js" style="width: 16px; height: 16px;">
+                                    node.js
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/python-logo.png" alt="Python SDK" style="width: 16px; height: 16px;">
+                                    Python SDK
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/web-logo.png" alt="Web SDK" style="width: 16px; height: 16px;">
+                                    Web (tilli.js WEB SDK)
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/react-logo.png" alt="React" style="width: 16px; height: 16px;">
+                                    React (Quick Pay Button)
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/postman-logo.png" alt="Postman" style="width: 16px; height: 16px;">
+                                    Postman
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="all-integrations">
+                            <h3 class="integrations-title">All Integrations</h3>
+                            <div class="integrations-grid">
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/erp-sync-logo.png" alt="ERP Sync Tools" style="width: 16px; height: 16px;">
+                                    ERP Sync Tools
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/slack-logo.png" alt="Slack" style="width: 16px; height: 16px;">
+                                    Slack
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/node-logo.png" alt="Node.js" style="width: 16px; height: 16px;">
+                                    node.js
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/python-logo.png" alt="Python SDK" style="width: 16px; height: 16px;">
+                                    Python SDK
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/web-logo.png" alt="Web SDK" style="width: 16px; height: 16px;">
+                                    Web (tilli.js WEB SDK)
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/react-logo.png" alt="React" style="width: 16px; height: 16px;">
+                                    React (Quick Pay Button)
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/postman-logo.png" alt="Postman" style="width: 16px; height: 16px;">
+                                    Postman
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/java-logo.png" alt="Java" style="width: 16px; height: 16px;">
+                                    Java
+                                </div>
+                                <div class="integration-item">
+                                    <img src="Developer Guide Page/zapler-logo.png" alt="Zapier" style="width: 16px; height: 16px;">
+                                    Zapier
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Learn More Section -->
+                    <section class="learn-more-section">
+                        <h3 class="integrations-title">Learn more</h3>
+                        <div class="learn-more-links">
+                            <a href="#" class="learn-more-link">Join our Slack</a>
+                            <a href="#" class="learn-more-link">Contact Developer Support</a>
+                            <a href="#" class="learn-more-link">System Status</a>
+                            <a href="#" class="learn-more-link">Submit a Ticket</a>
+                        </div>
+                    </section>
+
+                    <!-- Feedback Section -->
+                    <section class="feedback-section">
+                        <h3 class="feedback-title">Was this guide useful?</h3>
+                        <div class="feedback-buttons">
+                            <button class="feedback-button">
+                                <i class="fas fa-thumbs-up"></i>
+                            </button>
+                            <button class="feedback-button">
+                                <i class="fas fa-thumbs-down"></i>
+                            </button>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Sidebar -->
+                <aside class="right-sidebar">
+                    <h4>On this page</h4>
+                    <ul>
+                        <li><a href="#get-started"><img src="Developer Guide Page/👉.png" alt="Get Started" class="right-sidebar-icon">Get started in 3 Steps</a></li>
+                        <li><a href="#dev-resources"><img src="Developer Guide Page/📘.png" alt="Developer Resources" class="right-sidebar-icon">Developer Resources</a></li>
+                        <li><a href="#featured-integrations"><img src="Developer Guide Page/✨.png" alt="Featured Integrations" class="right-sidebar-icon">Featured Integrations</a></li>
+                        <li><a href="#all-integrations"><img src="Developer Guide Page/⭐.png" alt="All Integrations" class="right-sidebar-icon">All Integrations</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <!-- Footer Section -->
+            <section class="footer-section">
+                <div class="footer-content">
+                    <div class="footer-left">
+                        <img src="Developer page/Frame 1261157062.png" alt="tilli logo" class="footer-logo">
+                        <div class="footer-links">
+                            <a href="#" class="footer-link">tilli.pro</a>
+                            <a href="#" class="footer-link">Privacy Policy</a>
+                            <a href="#" class="footer-link">Terms</a>
+                            <a href="#" class="footer-link">Contact Support</a>
+                        </div>
+                        <div class="footer-icons">
+                            <img src="Developer page/image 442.png" alt="Social icon" class="footer-icon">
+                            <img src="Developer page/footer logo.png" alt="Footer logo" class="footer-icon">
+                        </div>
+                    </div>
+                    <div class="footer-right">
+                        <h6 class="footer-heading">Sign up for developer updates:</h6>
+                        <p class="footer-description">You can unsubscribe anytime. These are not marketing emails</p>
+                        <div class="email-signup">
+                            <input type="email" placeholder="Enter email address..." class="email-input">
+                            <button class="signup-button">Sign up</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Universal Search Functionality
+        const searchData = [
+            {
+                title: "Developer Guide",
+                description: "Everything you need to integrate with tilli — APIs, SDKs, webhooks, and best practices.",
+                category: "Getting Started",
+                url: "#hero"
+            },
+            {
+                title: "Get started in a few steps",
+                description: "Sign up, make your first API call, and set up webhooks in just 3 steps.",
+                category: "Getting Started",
+                url: "#get-started"
+            },
+            {
+                title: "API Overview",
+                description: "REST API structure, versioning, request/response formats, and best practices.",
+                category: "Developer Resources",
+                url: "#dev-resources"
+            },
+            {
+                title: "Authentication & Authorization",
+                description: "Secure authentication with bearer tokens, key rotation, and scope access.",
+                category: "Developer Resources",
+                url: "#dev-resources"
+            },
+            {
+                title: "Invoicing API",
+                description: "Send, update, and cancel invoices via flexible endpoints with metadata and recurring logic.",
+                category: "Developer Resources",
+                url: "#dev-resources"
+            },
+            {
+                title: "Webhooks",
+                description: "Real-time events, configuring endpoints, retry logic, and securing webhook listeners.",
+                category: "Developer Resources",
+                url: "#dev-resources"
+            },
+            {
+                title: "Featured Integrations",
+                description: "Popular integration flows including node.js, Python SDK, Web SDK, and React.",
+                category: "Integrations",
+                url: "#featured-integrations"
+            },
+            {
+                title: "All Integrations",
+                description: "Complete list of available integrations including Zapier, Slack, Postman, and more.",
+                category: "Integrations",
+                url: "#all-integrations"
+            }
+        ];
+
+        const searchInput = document.getElementById('universal-search');
+        const searchResults = document.getElementById('search-results');
+
+        // Search function
+        function performSearch(query) {
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const filteredResults = searchData.filter(item => 
+                item.title.toLowerCase().includes(query.toLowerCase()) ||
+                item.description.toLowerCase().includes(query.toLowerCase()) ||
+                item.category.toLowerCase().includes(query.toLowerCase())
+            );
+
+            displayResults(filteredResults);
+        }
+
+        // Display search results
+        function displayResults(results) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item"><div class="search-result-title">No results found</div></div>';
+            } else {
+                searchResults.innerHTML = results.map(result => `
+                    <div class="search-result-item" onclick="navigateToResult('${result.url}')">
+                        <div class="search-result-category">${result.category}</div>
+                        <div class="search-result-title">${highlightMatch(result.title, searchInput.value)}</div>
+                        <div class="search-result-description">${highlightMatch(result.description, searchInput.value)}</div>
+                    </div>
+                `).join('');
+            }
+            searchResults.style.display = 'block';
+        }
+
+        // Highlight matching text
+        function highlightMatch(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<mark style="background-color: #fef3c7; padding: 1px 2px; border-radius: 2px;">$1</mark>');
+        }
+
+        // Navigate to result
+        function navigateToResult(url) {
+            if (url.startsWith('#')) {
+                const element = document.querySelector(url);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            searchResults.style.display = 'none';
+            searchInput.value = '';
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', (e) => {
+            performSearch(e.target.value);
+        });
+
+        searchInput.addEventListener('focus', () => {
+            if (searchInput.value.length >= 2) {
+                searchResults.style.display = 'block';
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-bar')) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Cmd/Ctrl + K to focus search
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            
+            // Escape to close search results
+            if (e.key === 'Escape') {
+                searchResults.style.display = 'none';
+                searchInput.blur();
+            }
+        });
+
+        // Add IDs to sections for navigation
+        document.addEventListener('DOMContentLoaded', () => {
+            const getStartedSection = document.querySelector('.get-started-section');
+            if (getStartedSection) getStartedSection.id = 'get-started';
+            
+            const devResourcesSection = document.querySelector('.dev-resources-section');
+            if (devResourcesSection) devResourcesSection.id = 'dev-resources';
+            
+            const featuredIntegrations = document.querySelector('.featured-integrations');
+            if (featuredIntegrations) featuredIntegrations.id = 'featured-integrations';
+            
+            const allIntegrations = document.querySelector('.all-integrations');
+            if (allIntegrations) allIntegrations.id = 'all-integrations';
+
+            // Handle navigation clicks and highlight active points
+            const navLinks = document.querySelectorAll('.right-sidebar a, .mobile-nav a');
+            const navItems = document.querySelectorAll('.right-sidebar li, .mobile-nav li');
+
+            navLinks.forEach((link, index) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove active class from all items
+                    navItems.forEach(item => item.classList.remove('active'));
+                    
+                    // Add active class to clicked item
+                    navItems[index].classList.add('active');
+                    
+                    // Scroll to target section
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Highlight active section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove active class from all items
+                        navItems.forEach(item => item.classList.remove('active'));
+                        
+                        // Find corresponding nav item and add active class
+                        const targetId = entry.target.id;
+                        const correspondingLink = document.querySelector(`.right-sidebar a[href="#${targetId}"]`);
+                        if (correspondingLink) {
+                            correspondingLink.parentElement.classList.add('active');
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>
+

@@ -2,148 +2,1257 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tilli – Developer Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Developer page - tilli</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .developer-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            padding: 24px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 0 24px 24px;
+            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 24px;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .sidebar-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .sidebar-nav {
+            padding: 0 24px;
+        }
+
+        .nav-section {
+            margin-bottom: 32px;
+        }
+
+        .nav-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-item img {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+
+        .nav-item:hover {
+            background-color: #e5e7eb;
+            color: #1f2937;
+        }
+
+        .nav-item.active {
+            background-color: #dbeafe;
+            color: #2563eb;
+        }
+
+        .nav-item.has-dropdown::after {
+            content: '▼';
+            float: right;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 0;
+        }
+
+        .content-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e9ecef;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 8px 16px;
+            width: 400px;
+            position: relative;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f4f6;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .search-result-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .search-result-description {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .search-result-category {
+            font-size: 10px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .search-bar input::placeholder {
+            color: #9ca3af;
+        }
+
+        .search-shortcut {
+            background-color: #e5e7eb;
+            color: #6b7280;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-left: 8px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .header-icon:hover {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        /* Content Area */
+        .content-body {
+            padding: 32px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            margin: 0 -32px 64px -32px;
+            padding: 0 32px;
+            background-color: #ffffff;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 100px;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-welcome {
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.5);
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0 0 16px 0;
+            color: #1a1a1a;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #6b7280;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Building Blocks Section */
+        .building-blocks {
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+            color: #1a1a1a;
+            text-align: left;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: #6b7280;
+            margin: 0 0 48px 0;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .why-choose-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .why-choose-card {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+
+        .why-choose-card:hover {
+            border-color: #d1d5db;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            color: #1a1a1a;
+            text-align: left;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* Quick Access Section */
+        .quick-access {
+            margin-bottom: 64px;
+        }
+
+        .quick-access-header {
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.5);
+            margin: 0 0 24px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: left;
+        }
+
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .access-card {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .access-card:hover {
+            border-color: #d1d5db;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .access-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #f3f4f6;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 20px;
+            color: #6b7280;
+        }
+
+        .access-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            color: #1a1a1a;
+        }
+
+        .access-description {
+            font-size: 14px;
+            color: #6b7280;
+            margin: 0 0 20px 0;
+            line-height: 1.5;
+        }
+
+        .access-links {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            text-align: left;
+        }
+
+        .access-links li {
+            margin-bottom: 8px;
+        }
+
+        .access-links a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4px 0;
+        }
+
+        .access-links a:hover {
+            color: #1d4ed8;
+        }
+
+        .access-cta {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .access-cta:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Integrated Features Section */
+        .integrated-features {
+            margin-bottom: 64px;
+        }
+
+        .feature-card {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 0;
+            margin-bottom: 32px;
+        }
+
+        .feature-content {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .feature-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            color: #1a1a1a;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .feature-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .feature-text-right {
+            width: 100%;
+        }
+
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .icon-circle {
+            width: 48px;
+            height: 48px;
+            background-color: #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .icon-circle span {
+            font-size: 24px;
+            color: white;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .payment-method {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .payment-method i {
+            font-size: 24px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .payment-method span {
+            display: block;
+            font-size: 12px;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .feature-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .messaging-channels {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .messaging-channel {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .messaging-channel i {
+            font-size: 24px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .messaging-channel span {
+            display: block;
+            font-size: 12px;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        /* Helpful Links Section */
+        .helpful-links {
+            margin: 64px 0;
+            padding: 0 32px;
+            text-align: center;
+        }
+
+        .helpful-links-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .helpful-links-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0 0 24px 0;
+            text-align: center;
+        }
+
+        .helpful-links-buttons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .helpful-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: none;
+            border: 1px solid;
+        }
+
+        .learn-button {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #000000;
+        }
+
+        .contact-button {
+            background-color: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+
+        .button-icon {
+            width: 16px;
+            height: 16px;
+            display: block;
+        }
+
+        /* Most Visited Docs Section */
+        .most-visited-docs {
+            margin: 64px 0;
+            padding: 0 32px;
+        }
+
+        .most-visited-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .most-visited-header {
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.5);
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: left;
+        }
+
+        .popular-guides-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0 0 24px 0;
+            text-align: left;
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .guide-card {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .guide-card:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .guide-icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 12px;
+        }
+
+        .guide-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Footer Section */
+        .footer-section {
+            margin: 64px 0 0 0;
+            padding: 32px;
+            background-color: #f8f9fa;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            width: 120px;
+            height: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-heading {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .footer-description {
+            font-size: 12px;
+            color: #6b7280;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .email-signup {
+            display: flex;
+            background-color: #ffffff;
+            border-radius: 25px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            max-width: 400px;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background-color: transparent;
+        }
+
+        .email-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .signup-button {
+            background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 0 25px 25px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+            
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-access-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .guides-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .content-header {
+                padding: 12px 16px;
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+            }
+            
+            .search-bar {
+                width: 100%;
+                max-width: 100%;
+                order: 1;
+                position: relative;
+            }
+            
+            .search-results {
+                position: fixed;
+                top: 80px;
+                left: 16px;
+                right: 16px;
+                z-index: 1001;
+                max-height: 60vh;
+            }
+            
+            .header-actions {
+                justify-content: center;
+                order: 2;
+                gap: 12px;
+            }
+            
+            .content-body {
+                padding: 16px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .hero-section {
+                margin: 0 -16px 24px -16px;
+                padding: 24px 16px;
+                width: calc(100% + 32px);
+                box-sizing: border-box;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+                line-height: 1.2;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+                line-height: 1.4;
+            }
+            
+            .hero-image {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .building-blocks {
+                margin-bottom: 32px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+                text-align: center;
+            }
+            
+            .section-description {
+                font-size: 16px;
+                text-align: center;
+            }
+            
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .quick-access-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .access-card {
+                padding: 20px;
+            }
+            
+            .feature-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .feature-text {
+                text-align: center;
+            }
+            
+            .feature-text-right {
+                text-align: center;
+            }
+            
+            .feature-image {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .guides-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .guide-card {
+                padding: 12px;
+            }
+            
+            .helpful-links {
+                margin: 32px 0;
+                padding: 0 16px;
+            }
+            
+            .helpful-links-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .helpful-button {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+            }
+            
+            .most-visited-docs {
+                margin: 32px 0;
+                padding: 0 16px;
+            }
+            
+            .footer-section {
+                padding: 24px 16px;
+                margin: 32px 0 0 0;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+            
+            .footer-icons {
+                justify-content: flex-start;
+            }
+            
+            .email-signup {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-body {
+                padding: 12px;
+            }
+            
+            .hero-section {
+                margin: 0 -12px 20px -12px;
+                padding: 20px 12px;
+                width: calc(100% + 24px);
+            }
+            
+            .hero-title {
+                font-size: 24px;
+                line-height: 1.1;
+            }
+            
+            .hero-subtitle {
+                font-size: 14px;
+                line-height: 1.3;
+            }
+            
+            .section-title {
+                font-size: 20px;
+                text-align: center;
+            }
+            
+            .section-description {
+                font-size: 14px;
+                text-align: center;
+            }
+            
+            .feature-title {
+                font-size: 16px;
+            }
+            
+            .feature-description {
+                font-size: 12px;
+            }
+            
+            .guide-card {
+                padding: 10px;
+            }
+            
+            .guide-title {
+                font-size: 12px;
+            }
+            
+            .access-card {
+                padding: 16px;
+            }
+            
+            .access-title {
+                font-size: 16px;
+            }
+            
+            .access-description {
+                font-size: 13px;
+            }
+            
+            .helpful-links {
+                margin: 24px 0;
+                padding: 0 12px;
+            }
+            
+            .most-visited-docs {
+                margin: 24px 0;
+                padding: 0 12px;
+            }
+            
+            .footer-section {
+                padding: 20px 12px;
+                margin: 24px 0 0 0;
+            }
+            
+            .footer-heading {
+                font-size: 14px;
+            }
+            
+            .footer-description {
+                font-size: 11px;
+            }
+            
+            .email-input {
+                font-size: 12px;
+                padding: 10px 12px;
+            }
+            
+            .signup-button {
+                font-size: 12px;
+                padding: 10px 16px;
+            }
+            
+            .footer-logo {
+                width: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <div data-include="partials/header.html"></div>
+    <div class="developer-layout">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="sidebar-logo">
+                    <img src="Developer page/Frame 1261157062.png" alt="tilli docs logo">
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">General Documentation</div>
+                    <a href="#" class="nav-item">Home</a>
+                    <a href="#" class="nav-item">User Guide</a>
+                    <a href="developer-guide.html" class="nav-item has-dropdown">Developers Guide</a>
+                    <div class="nav-dropdown" style="margin-left: 20px; margin-top: 8px;">
+                        <a href="python-sdk-integration.html" class="nav-item">Python SDK Integration</a>
+                    </div>
+                    <a href="#" class="nav-item">Help Center</a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Product-Specific Documentation</div>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/Vector 29.png" alt="Nudge">
+                        Nudge
+                    </a>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/24X24PX 1.png" alt="tilliPay">
+                        tilliPay
+                    </a>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/Logo.png" alt="tilliX">
+                        tilliX
+                    </a>
+                    <a href="#" class="nav-item">
+                        <img src="Developer page/Frame (3).png" alt="Help Center">
+                        Help Center
+                    </a>
+                        </div>
+            </nav>
+        </aside>
 
-    <main style="margin-top:80px">
-        <!-- Hero Section -->
-        <section class="developer-hero">
-            <div class="container">
-                <div class="hero-content-centered">
-                    <div class="hero-text-centered">
-                        <div class="hero-badge">
-                            <i class="fas fa-code"></i>
-                            <span>Developer Resources</span>
-                        </div>
-                        <h1 class="hero-title-centered">Build with <span class="highlight-blue">tilli</span></h1>
-                        <p class="hero-subtitle-centered">The tools you need to integrate billing, payments, and messaging—fast.</p>
-                        
-                        <div class="hero-buttons-centered">
-                            <a href="#quick-start" class="btn-primary-large">Get Started <i class="fas fa-arrow-right"></i></a>
-                            <a href="#documentation" class="btn-secondary-large">View Documentation <i class="fas fa-arrow-right"></i></a>
-                        </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="content-header">
+                <div class="search-bar">
+                    <input type="text" id="universal-search" placeholder="Search documentation..." autocomplete="off">
+                    <span class="search-shortcut">⌘K</span>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="header-icon">
+                        <i class="fab fa-github"></i>
                     </div>
-                    
-                    <div class="hero-visual-centered">
-                        <div class="developer-visual">
-                            <div class="code-preview">
-                                <div class="code-header">
-                                    <div class="code-dots">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
+                    <div class="header-icon">
+                        <i class="fas fa-link"></i>
                                     </div>
-                                    <span class="code-title">API Integration</span>
-                                </div>
-                                <div class="code-content">
-                                    <div class="code-line">
-                                        <span class="code-keyword">const</span> 
-                                        <span class="code-variable">tilli</span> 
-                                        <span class="code-operator">=</span> 
-                                        <span class="code-function">require</span>
-                                        <span class="code-bracket">(</span>
-                                        <span class="code-string">'tilli-sdk'</span>
-                                        <span class="code-bracket">)</span>
-                                    </div>
-                                    <div class="code-line">
-                                        <span class="code-variable">tilli</span>
-                                        <span class="code-dot">.</span>
-                                        <span class="code-function">payments</span>
-                                        <span class="code-bracket">.</span>
-                                        <span class="code-function">create</span>
-                                        <span class="code-bracket">({</span>
-                                    </div>
-                                    <div class="code-line indent">
-                                        <span class="code-property">amount</span>
-                                        <span class="code-operator">:</span> 
-                                        <span class="code-number">1000</span>
-                                        <span class="code-bracket">,</span>
-                                    </div>
-                                    <div class="code-line indent">
-                                        <span class="code-property">currency</span>
-                                        <span class="code-operator">:</span> 
-                                        <span class="code-string">'USD'</span>
-                                    </div>
-                                    <div class="code-line">
-                                        <span class="code-bracket">})</span>
+                    <div class="header-icon">
+                        <i class="fas fa-moon"></i>
                                     </div>
                                 </div>
+            </header>
+
+            <!-- Content Body -->
+            <div class="content-body">
+                <!-- Hero Section -->
+                <section class="hero-section">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <p class="hero-welcome">Welcome Developers</p>
+                            <h1 class="hero-title">Build with <span style="color: #2563eb;">tilli</span></h1>
+                            <p class="hero-subtitle">The tools you need to integrate billing, payments, and messaging—fast.</p>
                             </div>
-                        </div>
-                    </div>
+                        
+                        <div class="hero-visual">
+                            <img src="Developer page/Group 1171276267.png" alt="tilli developer tools" class="hero-image">
                 </div>
             </div>
         </section>
 
         <!-- Building Blocks Section -->
         <section class="building-blocks">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Building Blocks for Developers</h2>
-                    <p>Build, customize, and scale with tilli's modern APIs for billing, payments, and communications. Whether you're integrating tilliX, tilliPay, or Nudge, our platform is built to get you up and running—fast.</p>
-                </div>
+                    <h2 class="section-title">Building blocks for developers</h2>
+                    <p class="section-description">Build, customize, and scale with tilli's modern APIs for billing, payments, and communications. Whether you're integrating tilliPay, or Nudge, our platform is built to get you up and running—fast.</p>
+                    
+                    <h3 class="section-title" style="font-size: 24px; margin-bottom: 24px;">Why choose Tilli Software?</h3>
 
                 <div class="why-choose-grid">
                     <div class="why-choose-card">
-                        <div class="card-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <h3>Purpose-Built for Billing</h3>
-                        <p>Designed specifically for complex billing cycles, customer notifications, and payment collection—no Frankenstein systems.</p>
+                            <h4 class="card-title">Purpose-Built for Billing</h4>
+                            <p class="card-description">Designed specifically for complex billing cycles, customer notifications, and payment collection—no Frankenstein system.</p>
                     </div>
                     
                     <div class="why-choose-card">
-                        <div class="card-icon">
-                            <i class="fas fa-user-check"></i>
-                        </div>
-                        <h3>Frictionless Customer Experience</h3>
-                        <p>Every product is built to make payments effortless for your users—across web, mobile, and QuickPay.</p>
+                            <h4 class="card-title">Frictionless Customer Experience</h4>
+                            <p class="card-description">Every product is built to make payments effortless for your users—across web, mobile, and QuickPay.</p>
                     </div>
                     
                     <div class="why-choose-card">
-                        <div class="card-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Secure by Design</h3>
-                        <p>Every product is built to make payments effortless for your users—across web, mobile, and QuickPay.</p>
+                            <h4 class="card-title">Secure by Design</h4>
+                            <p class="card-description">Every product is built to make payments effortless for your users—across web, mobile, and QuickPay.</p>
                     </div>
                     
                     <div class="why-choose-card">
-                        <div class="card-icon">
-                            <i class="fas fa-puzzle-piece"></i>
-                        </div>
-                        <h3>Tailored to You</h3>
-                        <p>Utilities, municipalities, service providers—we don't believe in one-size-fits-all. tilli adapts to your workflows.</p>
-                    </div>
+                            <h4 class="card-title">Tailored to You</h4>
+                            <p class="card-description">Utilities, municipalities, service providers—we don't believe in one-size-fits-all. tilli adapts to your workflows.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Quick Access Sections -->
-        <section class="quick-access" id="quick-start">
-            <div class="container">
+                <!-- Quick Access Section -->
+                <section class="quick-access">
+                    <p class="quick-access-header">Most Visited links</p>
                 <div class="quick-access-grid">
                     <!-- Quick Start -->
                     <div class="access-card">
                         <div class="access-icon">
                             <i class="fas fa-rocket"></i>
                         </div>
-                        <h3>🚀 Quick Start</h3>
-                        <p>Launch your first integration in minutes.</p>
+                            <h3 class="access-title">Quick start</h3>
+                            <p class="access-description">Launch your first integration in minutes.</p>
                         <ul class="access-links">
-                            <li><a href="#documentation">User Guide <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#partners">Technology Partners <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#guide">Developers Guide <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#auth">Authentication overview <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="#">User Guide <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="#">Technology Partners <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="#">Developers Guide <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="#">Authentication overview <i class="fas fa-external-link-alt"></i></a></li>
                         </ul>
-                        <a href="#get-started" class="access-cta">Get Started</a>
+                            <a href="#" class="access-cta">Get Started</a>
                     </div>
 
                     <!-- FAQs -->
@@ -151,14 +1260,14 @@
                         <div class="access-icon">
                             <i class="fas fa-question-circle"></i>
                         </div>
-                        <h3>❓ FAQs</h3>
-                        <p>Launch your first integration in minutes.</p>
+                            <h3 class="access-title">FAQs</h3>
+                            <p class="access-description">Launch your first integration in minutes.</p>
                         <ul class="access-links">
-                            <li><a href="#troubleshooting">Troubleshooting failed payments <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#billers">Managing billers in tilliX <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#channels">Supported channels in Nudge <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="#">Troubleshooting failed payments <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="#">Managing tilliBX <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="#">Supported channels in Nudge <i class="fas fa-external-link-alt"></i></a></li>
                         </ul>
-                        <a href="#faqs" class="access-cta">View FAQs</a>
+                            <a href="#" class="access-cta">View FAQs</a>
                     </div>
 
                     <!-- Learn -->
@@ -166,151 +1275,359 @@
                         <div class="access-icon">
                             <i class="fas fa-book"></i>
                         </div>
-                        <h3>📘 Learn</h3>
-                        <p>Launch your first integration in minutes.</p>
+                            <h3 class="access-title">Learn</h3>
+                            <p class="access-description">Launch your first integration in minutes.</p>
                         <ul class="access-links">
-                            <li><a href="#patterns">Design patterns and usage guidelines <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#errors">Handling errors and retries <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#limits">Rate limits and pagination <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#structure">API structure and object models <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="#">Design patterns and usage guidelines <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="#">Handling errors and retries <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="#">Rate limits and pagination <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="#">API structure and object models <i class="fas fa-external-link-alt"></i></a></li>
                         </ul>
-                        <a href="#concepts" class="access-cta">Explore Concepts</a>
-                    </div>
-                </div>
+                            <a href="#" class="access-cta">Explore Concepts</a>
+                        </div>
             </div>
         </section>
 
-        <!-- Key Features Section -->
-        <section class="key-features">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Key Features</h2>
-                </div>
-
-                <div class="features-grid">
-                    <!-- Integrated Payments -->
-                    <div class="feature-card-large">
+                <!-- Integrated Features Section -->
+                <section class="integrated-features">
+                    <div class="feature-card">
                         <div class="feature-content">
                             <div class="feature-text">
-                                <h3>Integrated Payments</h3>
-                                <p>Save methods, boost success, and route payments intelligently.</p>
-                                <p>Integrated cards, wallets, and payment systems. tilli kits users securely save payment methods and check out faster with intelligent acquirer routing for higher payment success.</p>
+                                <h3 class="feature-title">Integrated Payments</h3>
+                                <p class="feature-description">Save methods, boost success, and route payments intelligently.</p>
                             </div>
                             <div class="feature-visual">
-                                <div class="payment-methods-visual">
-                                    <div class="payment-card">
-                                        <i class="fas fa-credit-card"></i>
-                                        <span>Cards</span>
-                                    </div>
-                                    <div class="payment-card">
-                                        <i class="fas fa-mobile-alt"></i>
-                                        <span>Wallets</span>
-                                    </div>
-                                    <div class="payment-card">
-                                        <i class="fas fa-university"></i>
-                                        <span>Banking</span>
-                                    </div>
+                                <div class="feature-text-right">
+                                    <h3 class="feature-title">Integrated cards, wallets and payment systems</h3>
+                                    <p class="feature-description">tillix lets users securely save payment methods and check out faster with—powered by intelligent acquirer routing for higher payment success.</p>
+                                    <img src="Developer page/Frame 1984079178.png" alt="Payment flow diagram" class="feature-image" style="margin-top: 20px;">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Multi-channel Messaging -->
-                    <div class="feature-card-large">
+                    <div class="feature-card">
                         <div class="feature-content">
                             <div class="feature-text">
-                                <h3>Multi-channel Messaging via One API</h3>
-                                <p>Deliver messages across SMS, WhatsApp, email, and push—all from a single endpoint. Personalize at scale, manage preferences, and track performance in real time.</p>
-                                <div class="messaging-api">
-                                    <h4>Messaging API</h4>
-                                    <p>Send SMS, WhatsApp, email, and push from one place.</p>
-                                </div>
+                                <h3 class="feature-title">Multi-channel messaging via one API</h3>
+                                <p class="feature-description">Deliver messages across SMS, WhatsApp, email, and push—all from a single endpoint. Personalize at scale, manage preferences, and track performance in real time.</p>
+                                <img src="Developer page/Frame 1984079179.png" alt="Messaging flow diagram" class="feature-image" style="margin-top: 20px;">
                             </div>
                             <div class="feature-visual">
-                                <div class="messaging-channels">
-                                    <div class="channel">
-                                        <i class="fas fa-sms"></i>
-                                        <span>SMS</span>
-                                    </div>
-                                    <div class="channel">
-                                        <i class="fab fa-whatsapp"></i>
-                                        <span>WhatsApp</span>
-                                    </div>
-                                    <div class="channel">
-                                        <i class="fas fa-envelope"></i>
-                                        <span>Email</span>
-                                    </div>
-                                    <div class="channel">
-                                        <i class="fas fa-bell"></i>
-                                        <span>Push</span>
-                                    </div>
+                                <div class="feature-text-right">
+                                    <h3 class="feature-title">Messaging API</h3>
+                                    <p class="feature-description">Send SMS, WhatsApp, email, and push from one place.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Developer-first Payments -->
-                    <div class="feature-card-large">
+                    <div class="feature-card">
                         <div class="feature-content">
                             <div class="feature-text">
-                                <h3>Developer-first Payments</h3>
-                                <p>Create, manage, and automate payments with ease.</p>
-                                <p>Powered by APIs—create, manage, and track payment links programmatically. Handle refunds, validate statuses, and support recurring logic—all through a simple API.</p>
+                                <h3 class="feature-title">Developer-first Payments</h3>
+                                <p class="feature-description">Create, manage, and automate payments with ease.</p>
                             </div>
                             <div class="feature-visual">
-                                <div class="api-visual">
-                                    <div class="api-endpoint">
-                                        <span class="method">POST</span>
-                                        <span class="url">/api/v1/payments</span>
-                                    </div>
-                                    <div class="api-response">
-                                        <div class="response-line">
-                                            <span class="response-key">"status"</span>
-                                            <span class="response-value">"success"</span>
-                                        </div>
-                                        <div class="response-line">
-                                            <span class="response-key">"payment_id"</span>
-                                            <span class="response-value">"pay_123"</span>
-                                        </div>
-                                    </div>
+                                <div class="feature-text-right">
+                                    <h3 class="feature-title">Developer-first payments, powered by APIs</h3>
+                                    <p class="feature-description">Send SMS, WhatsApp, email, and push from one place. Create, manage, and track payment links programmatically. Handle refunds, validate statuses, and support recurring logic—all through a simple, API</p>
+                                    <img src="Developer page/Group 1171276292.png" alt="Developer payments flow diagram" class="feature-image" style="margin-top: 20px;">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </section>
 
         <!-- Helpful Links Section -->
         <section class="helpful-links">
-            <div class="container">
-                <div class="links-content">
-                    <div class="links-section">
-                        <h3>Helpful Links</h3>
-                        <ul class="links-list">
-                            <li><a href="#deploy">Learn How to Deploy</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
+            <div class="helpful-links-content">
+                <h5 class="helpful-links-title">Helpful Links</h5>
+                <div class="helpful-links-buttons">
+                    <button class="helpful-button learn-button">
+                        <img src="Developer page/button icons.png" alt="Learn icon" class="button-icon">
+                        Learn How to Display
+                    </button>
+                    <button class="helpful-button contact-button">
+                        <img src="Developer page/phone.png" alt="Contact icon" class="button-icon">
+                        Contact Us
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Most Visited Docs Section -->
+        <section class="most-visited-docs">
+            <div class="most-visited-content">
+                <p class="most-visited-header">Most Visited Docs</p>
+                <h5 class="popular-guides-title">Popular guides</h5>
+                <div class="guides-grid">
+                    <div class="guide-card">
+                        <img src="Developer page/01.png" alt="Building smarter billing" class="guide-icon">
+                        <h6 class="guide-title">Building smarter billing with tilliX</h6>
                     </div>
-                    
-                    <div class="links-section">
-                        <h3>Popular Guides</h3>
-                        <ul class="links-list">
-                            <li><a href="#billing">Building smarter billing with tilliX</a></li>
-                            <li><a href="#dashboard">Create a custom dashboard with tilliX APIs</a></li>
-                            <li><a href="#retry">Retry a failed payment</a></li>
-                            <li><a href="#links">Simplified payment links</a></li>
-                            <li><a href="#portal">Build a billing portal using Monay</a></li>
-                            <li><a href="#invoices">Multiple invoices in one transaction</a></li>
-                        </ul>
+                    <div class="guide-card">
+                        <img src="Developer page/02.png" alt="Custom dashboard" class="guide-icon">
+                        <h6 class="guide-title">Create a custom dashboard with tilliS APIs</h6>
+                    </div>
+                    <div class="guide-card">
+                        <img src="Developer page/03.png" alt="Retry payment" class="guide-icon">
+                        <h6 class="guide-title">Retry a failed payment</h6>
+                    </div>
+                    <div class="guide-card">
+                        <img src="Developer page/04.png" alt="Payment links" class="guide-icon">
+                        <h6 class="guide-title">Simplified payment links</h6>
+                    </div>
+                    <div class="guide-card">
+                        <img src="Developer page/05.png" alt="Billing portal" class="guide-icon">
+                        <h6 class="guide-title">Build a billing portal using tilliPay</h6>
+                    </div>
+                    <div class="guide-card">
+                        <img src="Developer page/06.png" alt="Multiple invoices" class="guide-icon">
+                        <h6 class="guide-title">Multiple invoices in one transaction</h6>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Footer Section -->
+        <section class="footer-section">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <img src="Developer page/Frame 1261157062.png" alt="tilli logo" class="footer-logo">
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">tilli.pro</a>
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                        <a href="#" class="footer-link">Terms</a>
+                        <a href="#" class="footer-link">Contact Support</a>
+                    </div>
+                    <div class="footer-icons">
+                        <img src="Developer page/image 442.png" alt="Social icon" class="footer-icon">
+                        <img src="Developer page/footer logo.png" alt="Footer logo" class="footer-icon">
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <h6 class="footer-heading">Sign up for developer updates:</h6>
+                    <p class="footer-description">You can unsubscribe anytime. These are not marketing emails</p>
+                    <div class="email-signup">
+                        <input type="email" placeholder="Enter email address..." class="email-input">
+                        <button class="signup-button">Sign up</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+            </div>
     </main>
+    </div>
 
-    <div data-include="partials/footer.html"></div>
+    <script>
+        // Universal Search Functionality
+        const searchData = [
+            {
+                title: "Build with tilli",
+                description: "The tools you need to integrate billing, payments, and messaging—fast.",
+                category: "Getting Started",
+                url: "#hero"
+            },
+            {
+                title: "Integrated Payments",
+                description: "Save methods, boost success, and route payments intelligently.",
+                category: "Features",
+                url: "#integrated-payments"
+            },
+            {
+                title: "Integrated cards, wallets and payment systems",
+                description: "tilli lets users securely save payment methods and check out faster with intelligent acquirer routing.",
+                category: "Features",
+                url: "#integrated-payments"
+            },
+            {
+                title: "Multi-channel messaging via one API",
+                description: "Deliver messages across SMS, WhatsApp, email, and push—all from a single endpoint.",
+                category: "Features",
+                url: "#messaging"
+            },
+            {
+                title: "Developer-first Payments",
+                description: "Create, manage, and automate payments with ease.",
+                category: "Features",
+                url: "#developer-payments"
+            },
+            {
+                title: "Building smarter billing with tilliX",
+                description: "Learn how to build intelligent billing systems with tilliX APIs.",
+                category: "Guides",
+                url: "#guides"
+            },
+            {
+                title: "Create a custom dashboard with tilliS APIs",
+                description: "Build custom dashboards using tilliS APIs for better user experience.",
+                category: "Guides",
+                url: "#guides"
+            },
+            {
+                title: "Retry a failed payment",
+                description: "Handle failed payments and implement retry logic in your application.",
+                category: "Guides",
+                url: "#guides"
+            },
+            {
+                title: "Simplified payment links",
+                description: "Create and manage payment links for easy customer payments.",
+                category: "Guides",
+                url: "#guides"
+            },
+            {
+                title: "Build a billing portal using tilliPay",
+                description: "Create comprehensive billing portals with tilliPay integration.",
+                category: "Guides",
+                url: "#guides"
+            },
+            {
+                title: "Multiple invoices in one transaction",
+                description: "Handle multiple invoices in a single transaction efficiently.",
+                category: "Guides",
+                url: "#guides"
+            },
+            {
+                title: "Quick Start",
+                description: "Launch your first integration in minutes with our quick start guide.",
+                category: "Documentation",
+                url: "#quick-start"
+            },
+            {
+                title: "Authentication overview",
+                description: "Learn how to authenticate with tilli APIs securely.",
+                category: "Documentation",
+                url: "#auth"
+            },
+            {
+                title: "API Reference",
+                description: "Complete API reference for all tilli services and endpoints.",
+                category: "Documentation",
+                url: "#api-reference"
+            },
+            {
+                title: "Troubleshooting failed payments",
+                description: "Common issues and solutions for failed payment scenarios.",
+                category: "Support",
+                url: "#troubleshooting"
+            },
+            {
+                title: "Managing tilliX",
+                description: "Best practices for managing tilliX billing systems.",
+                category: "Support",
+                url: "#troubleshooting"
+            },
+            {
+                title: "Supported channels in Nudge",
+                description: "Complete list of messaging channels supported by Nudge.",
+                category: "Support",
+                url: "#troubleshooting"
+            }
+        ];
 
-    <script src="script.js"></script>
+        const searchInput = document.getElementById('universal-search');
+        const searchResults = document.getElementById('search-results');
+
+        // Search function
+        function performSearch(query) {
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const filteredResults = searchData.filter(item => 
+                item.title.toLowerCase().includes(query.toLowerCase()) ||
+                item.description.toLowerCase().includes(query.toLowerCase()) ||
+                item.category.toLowerCase().includes(query.toLowerCase())
+            );
+
+            displayResults(filteredResults);
+        }
+
+        // Display search results
+        function displayResults(results) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item"><div class="search-result-title">No results found</div></div>';
+            } else {
+                searchResults.innerHTML = results.map(result => `
+                    <div class="search-result-item" onclick="navigateToResult('${result.url}')">
+                        <div class="search-result-category">${result.category}</div>
+                        <div class="search-result-title">${highlightMatch(result.title, searchInput.value)}</div>
+                        <div class="search-result-description">${highlightMatch(result.description, searchInput.value)}</div>
+                    </div>
+                `).join('');
+            }
+            searchResults.style.display = 'block';
+        }
+
+        // Highlight matching text
+        function highlightMatch(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<mark style="background-color: #fef3c7; padding: 1px 2px; border-radius: 2px;">$1</mark>');
+        }
+
+        // Navigate to result
+        function navigateToResult(url) {
+            if (url.startsWith('#')) {
+                const element = document.querySelector(url);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            searchResults.style.display = 'none';
+            searchInput.value = '';
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', (e) => {
+            performSearch(e.target.value);
+        });
+
+        searchInput.addEventListener('focus', () => {
+            if (searchInput.value.length >= 2) {
+                searchResults.style.display = 'block';
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-bar')) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Cmd/Ctrl + K to focus search
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            
+            // Escape to close search results
+            if (e.key === 'Escape') {
+                searchResults.style.display = 'none';
+                searchInput.blur();
+            }
+        });
+
+        // Add IDs to sections for navigation
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection) heroSection.id = 'hero';
+            
+            const integratedFeatures = document.querySelector('.integrated-features');
+            if (integratedFeatures) integratedFeatures.id = 'integrated-payments';
+            
+            const quickAccess = document.querySelector('.quick-access');
+            if (quickAccess) quickAccess.id = 'quick-start';
+            
+            const helpfulLinks = document.querySelector('.helpful-links');
+            if (helpfulLinks) helpfulLinks.id = 'guides';
+        });
+    </script>
 </body>
 </html>
