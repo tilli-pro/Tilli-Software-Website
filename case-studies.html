@@ -3,465 +3,843 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tilli – Case Studies</title>
+    <title>Case Studies: How Businesses Scale Faster with tilli</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Scoped styles for Case Studies */
-        .case-hero { margin-top: 90px; padding: 1.75rem 0 0.5rem; background: linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 100%); }
-        .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem auto 2rem; }
-        .case-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
-        .case-card .media { background: linear-gradient(180deg, #0B64D8 0%, #1F7BFF 100%); height: 200px; display:flex; align-items:center; justify-content:center; }
-        .case-card .media img { max-width: 76%; max-height: 70%; filter: brightness(0) invert(1); }
-        .case-card .media.has-photo { background:#F3F4F6; }
-        .case-card .media.has-photo img { max-width:100%; max-height:100%; width:100%; height:100%; object-fit:cover; filter:none; }
-        .case-card .body { padding: 0.9rem 1rem 1.1rem; display:flex; flex-direction:column; gap: 0.4rem; }
-        .case-card .meta { font-size: 12px; color: var(--dark-gray, #6B7280); }
-        .case-card .title { font-size: 16px; line-height: 1.35; }
-        .case-card .desc { color:#4B5563; font-size: 14px; }
-        .case-card .link { margin-top: 0.25rem; display:inline-block; color:#2563EB; font-weight:600; }
-        @media (max-width: 1024px){ .case-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px){ .case-grid { grid-template-columns: 1fr; } }
-        /* Related resources */
-        .related { padding: 0.5rem 0 1.5rem; }
-        /* Carousel (Blog posts) */
-        .posts-carousel { padding: 0.5rem 0 2.25rem; }
-        [data-posts-carousel] { position: relative; display: block; }
-        [data-posts-carousel] .carousel-viewport { grid-column: unset; }
-        .carousel-viewport { overflow: hidden; padding: 0 20px; }
-        .carousel-track { display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 4px; scroll-snap-type: x mandatory; scrollbar-width: none; }
-        .carousel-track::-webkit-scrollbar { display: none; }
-        .post-card { min-width: 320px; max-width: 360px; background:#fff; border:1px solid #E5E7EB; border-radius:16px; overflow:hidden; box-shadow:0 10px 24px rgba(17,24,39,0.06); scroll-snap-align: start; }
-        .post-card .media { height: 180px; background:#F3F4F6; display:flex; align-items:center; justify-content:center; }
-        .post-card .media img { width:100%; height:100%; object-fit:cover; }
-        .post-card .body { padding: 1rem 1rem 1.1rem; }
-        .post-card .badge { display:inline-block; background:#EEF2FF; color:#1D4ED8; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:600; }
-        .post-card .title { margin:.35rem 0; font-size:16px; display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-        .post-card .desc { color:#4B5563; font-size:14px; display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-        .post-card .meta { color:#6B7280; font-size:12px; margin-top: 2px; }
-        .post-card .btn { display:inline-block; margin-top:.25rem; color:#2563EB; font-weight:600; }
-        [data-posts-carousel] .carousel-nav { position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; gap:8px; padding:0 8px; pointer-events:none; z-index:2; }
-        [data-posts-carousel] .carousel-nav button { width:44px; height:44px; border-radius:999px; border:0; background:#2563EB; color:#FFFFFF; display:grid; place-items:center; box-shadow:0 10px 20px rgba(37, 99, 235, 0.3); transition: transform .2s, box-shadow .2s; pointer-events:auto; }
-        [data-posts-carousel] .carousel-nav .prev { margin-left:-22px; }
-        [data-posts-carousel] .carousel-nav .next { margin-right:-22px; }
-        .carousel-nav button:hover { transform: translateY(-1px); box-shadow:0 14px 24px rgba(37, 99, 235, 0.35); }
-        .carousel-nav .prev, .carousel-nav .next { transform: none; }
-        .carousel-dots { display:flex; gap:6px; justify-content:center; margin-top:.75rem; }
-        .carousel-dots button { width:8px; height:8px; border-radius:999px; border:0; background:#E5E7EB; }
-        .carousel-dots button.is-active { background:#1D4ED8; }
-        /* Case studies pagination */
-        .cs-pagination { display:flex; gap:.5rem; justify-content:center; align-items:center; margin: 1rem 0 2rem; }
-        .cs-pagination .nav-btn { border:1px solid #E5E7EB; background:#FFFFFF; color:#1F2937; padding:.5rem .9rem; border-radius:999px; font-weight:600; box-shadow:0 2px 6px rgba(17,24,39,0.06); }
-        .cs-pagination .nav-btn:hover { background:#F9FAFB; }
-        .cs-pagination .nav-btn[disabled] { opacity:.5; cursor:not-allowed; }
-        /* Results section */
-        .results { background: linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 100%); padding: 2rem 0 2.5rem; margin-top: .5rem; }
-        .results .eyebrow { display:inline-block; color:#6B7280; font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; }
-        .results .section-title { margin:.35rem 0; text-align:center; }
-        .results .section-sub { text-align:center; color:#6B7280; font-size:.85rem; letter-spacing:.06em; margin-bottom: 1rem; }
-        .results-cards { display:grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem auto 1.25rem; }
-        .results-card { position:relative; background:#FFFFFF; border:1px solid #E5E7EB; border-radius:16px; box-shadow:0 14px 30px rgba(17,24,39,0.08); padding:1.25rem 1.25rem 1.35rem; text-align:center; transition:transform .2s, box-shadow .2s; }
-        .results-card:hover { transform: translateY(-2px); box-shadow:0 18px 36px rgba(17,24,39,0.12); }
-        .results-card .accent { width:44px; height:44px; border-radius:999px; margin:0 auto .5rem; display:grid; place-items:center; color:#FFFFFF; background:linear-gradient(135deg, #1D4ED8 0%, #60A5FA 100%); box-shadow:0 10px 20px rgba(29,78,216,.25); }
-        .results-card .num { display:block; font-size:1.85rem; font-weight:900; background: linear-gradient(135deg, #1D4ED8 0%, #60A5FA 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
-        .results-card .label { display:block; color:#6B7280; margin-top:.35rem; font-weight:500; }
-        .results-logos { display:grid; grid-auto-flow:column; grid-auto-columns:max-content; gap: 1.75rem; align-items:center; justify-content:center; opacity:.9; flex-wrap:wrap; }
-        .results .logos-sub { text-align:center; color:#6B7280; font-size:.8rem; letter-spacing:.08em; margin:.5rem 0 1rem; text-transform:uppercase; font-weight:600; }
-        .results-logos img { height:32px; width:auto; filter: grayscale(100%); opacity:.8; }
-        @media (max-width: 900px){ .results-cards { grid-template-columns: 1fr; } .results-logos { grid-auto-flow:row; grid-template-columns: repeat(3, minmax(0, max-content)); gap: 1rem; } }
-        /* Contact lite section */
-        .contact-lite { padding: 1.5rem 0 1.5rem; }
-        .contact-lite .form-wrap { background:#FFFFFF; border:1px solid #E5E7EB; border-radius:12px; box-shadow:0 16px 32px rgba(17,24,39,0.08); padding:1rem; display:grid; grid-template-columns: repeat(2, 1fr); gap:.75rem; }
-        .contact-lite .form-wrap input,
-        .contact-lite .form-wrap textarea { width:100%; border:1px solid #E5E7EB; border-radius:10px; padding:.6rem .75rem; font: inherit; }
-        .contact-lite .form-wrap textarea { resize:vertical; }
-        .contact-lite .actions { display:flex; align-items:center; justify-content:space-between; gap:.75rem; grid-column:1 / -1; }
-        .contact-lite .btn-primary { background:#2563EB; color:#FFFFFF; border:0; padding:.6rem 1rem; border-radius:10px; font-weight:600; box-shadow:0 10px 22px rgba(37,99,235,.30); cursor:pointer; }
-        @media (max-width: 720px){ .contact-lite .form-wrap { grid-template-columns: 1fr; } }
+        /* Case Studies Page Specific Styles */
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        /* Hero Section */
+        .case-hero {
+            background: #000000;
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .case-hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .case-hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .case-hero-content .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        .case-hero-content .read-more:hover {
+            color: #60A5FA;
+        }
+
+        .case-hero-featured {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid #333333;
+        }
+
+        .case-hero-featured h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .case-hero-featured p {
+            color: #9CA3AF;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+
+        /* Articles Section */
+        .articles-section {
+            background: #ffffff;
+            color: #000000;
+            padding: 80px 0;
+        }
+
+        .articles-section h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #ffffff;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6B7280;
+        }
+
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 12px 24px;
+            border: 2px solid #E5E7EB;
+            background: #ffffff;
+            color: #6B7280;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn.active {
+            background: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+
+        .category-btn:hover:not(.active) {
+            border-color: #000000;
+            color: #000000;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .article-card {
+            background: #ffffff;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, display 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 24px;
+        }
+
+        .article-date {
+            color: #6B7280;
+            font-size: 0.875rem;
+            margin-bottom: 12px;
+        }
+
+        .article-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #000000;
+            line-height: 1.4;
+        }
+
+        .article-description {
+            color: #4B5563;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .read-more-link {
+            color: #2563EB;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .read-more-link:hover {
+            text-decoration: underline;
+        }
+
+        .see-all-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 2px solid #000000;
+            background: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+        }
+
+        .see-all-btn:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: #000000;
+            padding: 80px 0;
+        }
+
+        .newsletter-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .newsletter-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .newsletter-content p {
+            color: #9CA3AF;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 16px 20px;
+            border: 2px solid #374151;
+            background: #000000;
+            color: #ffffff;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: #6B7280;
+        }
+
+        .newsletter-btn {
+            padding: 16px 32px;
+            background: #ffffff;
+            color: #000000;
+            border: 2px solid #ffffff;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        /* Editor's Picks Section */
+        .editors-picks-section {
+            background: #ffffff;
+            color: #000000;
+            padding: 80px 0;
+        }
+
+        .editors-picks-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .editors-picks-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .editors-picks-carousel {
+            position: relative;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .editors-card {
+            min-width: 320px;
+            background: #ffffff;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .editors-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .editors-card-content {
+            padding: 24px;
+        }
+
+        .editors-card-badge {
+            display: inline-block;
+            background: #EEF2FF;
+            color: #1D4ED8;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .editors-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #000000;
+            line-height: 1.4;
+        }
+
+        .editors-card-description {
+            color: #4B5563;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .editors-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .author-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6B7280;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .editors-card-date {
+            color: #6B7280;
+            font-size: 0.875rem;
+        }
+
+        .read-more-link {
+            color: #2563EB;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .read-more-link:hover {
+            text-decoration: underline;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .carousel-nav-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: #F3F4F6;
+            color: #6B7280;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav-btn:hover {
+            background: #E5E7EB;
+            color: #000000;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .case-hero .container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .case-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .newsletter-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .editors-picks-header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-hero {
+                padding: 100px 0 60px;
+            }
+
+            .case-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .articles-section h2,
+            .newsletter-content h2 {
+                font-size: 2rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .category-btn {
+                white-space: nowrap;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .editors-card {
+                min-width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .case-hero-content h1 {
+                font-size: 1.75rem;
+            }
+
+            .articles-section h2,
+            .newsletter-content h2 {
+                font-size: 1.75rem;
+            }
+
+            .editors-picks-header h2 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
-<body class="case-studies-page">
+<body>
+    <!-- Header -->
     <div data-include="partials/header.html"></div>
 
     <main>
+        <!-- Hero Section -->
         <section class="case-hero">
             <div class="container">
-                <h1 class="page-title">Case Studies</h1>
-            </div>
-        </section>
-
-        
-
-        <section class="container">
-            <div class="case-grid">
-                <article class="case-card">
-                    <div class="media has-photo">
-                        <img src="Case Studies Page/freeman.jpg" alt="Freeman">
-                    </div>
-                    <div class="body">
-                        <div class="meta">Feb 14, 2025 • Case Study</div>
-                        <h3 class="title">Freeman Enhances Secure Checkout with tilliX’s Low‑Code BRF Solution</h3>
-                        <p class="desc">How a leading provider improved event payments with a secure, flexible flow.</p>
-                        <a class="link" href="case-study-freeman.html">read more →</a>
-                    </div>
-                </article>
-                <article class="case-card">
-                    <div class="media has-photo">
-                        <img src="Case Studies Page/Howardcounty.jpg" alt="Howard County">
-                    </div>
-                    <div class="body">
-                        <div class="meta">Feb 13, 2025 • Case Study</div>
-                        <h3 class="title">Howard County, Maryland — Best Customer Portal Solution</h3>
-                        <p class="desc">A modern resident portal delivering faster service and better access.</p>
-                        <a class="link" href="case-study-howard-county.html">read more →</a>
-                    </div>
-                </article>
-                <article class="case-card">
-                    <div class="media has-photo">
-                        <img src="Case Studies Page/washington.jpg" alt="Washington Gas">
-                    </div>
-                    <div class="body">
-                        <div class="meta">Apr 19, 2022 • Case Study</div>
-                        <h3 class="title">Transforming the Customer Communication Experience for a Major Utility</h3>
-                        <p class="desc">In partnership with Washington Gas: omni‑channel CX with measurable impact.</p>
-                        <a class="link" href="case-study-washington-communications.html">read more →</a>
-                    </div>
-                </article>
-                <article class="case-card">
-                    <div class="media has-photo">
-                        <img src="Case Studies Page/wgl energy.jpg" alt="WGL Energy">
-                    </div>
-                    <div class="body">
-                        <div class="meta">Feb 13, 2025 • Case Study</div>
-                        <h3 class="title">Streamlining Payment Processes with Tilli and Salesforce Sales Cloud Integration for WGL Energy</h3>
-                        <p class="desc">Secure card & eCheck capture with automated Order→Invoice→Payment workflows.</p>
-                        <a class="link" href="case-study-wgl-energy.html">read more →</a>
-                    </div>
-                </article>
-                <article class="case-card">
-                    <div class="media has-photo">
-                        <img src="Case Studies Page/washington.jpg" alt="Washington Gas">
-                    </div>
-                    <div class="body">
-                        <div class="meta">Feb 13, 2025 • Case Study</div>
-                        <h3 class="title">Washington Gas (WGL) Implements Tilli’s Nudge Solution</h3>
-                        <p class="desc">Driving on‑time payments and critical communications at scale.</p>
-                        <a class="link" href="case-study-washington-gas.html">read more →</a>
-                    </div>
-                </article>
-                <article class="case-card">
-                    <div class="media has-photo">
-                        <img src="Case Studies Page/Howardcounty.jpg" alt="Howard County">
-                    </div>
-                    <div class="body">
-                        <div class="meta">Apr 19, 2022 • Case Study</div>
-                        <h3 class="title">Digital Customer Experience for Howard County, Maryland</h3>
-                        <p class="desc">Branded omni‑channel CX integrated with SAP in real time.</p>
-                        <a class="link" href="case-study-howard-digital-experience.html">read more →</a>
-                    </div>
-                </article>
-                <article class="case-card">
-                    <div class="media">
-                        <img src="Tilli Home Page/isolated icons/Washington gas.png" alt="Washington Gas">
-                    </div>
-                    <div class="body">
-                        <div class="meta">Apr 19, 2022 • Case Study</div>
-                        <h3 class="title">Helping 30,000 People Find COVID‑19 Relief</h3>
-                        <p class="desc">Rapid information delivery and payments support at scale.</p>
-                        <a class="link" href="case-study-washington-covid-relief.html">read more →</a>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="container" id="cs-pagination-wrap">
-            <div class="cs-pagination">
-                <button id="cs-prev" class="nav-btn" aria-label="Previous page">Previous</button>
-                <button id="cs-next" class="nav-btn" aria-label="Next page">Next</button>
-            </div>
-        </section>
-
-        <section class="related container posts-carousel">
-            <h2 style="margin-bottom:.5rem;">Latest from the Blog</h2>
-            <div class="carousel" data-posts-carousel>
-                <div class="carousel-viewport">
-                    <div class="carousel-track" id="latest-posts"></div>
+                <div class="case-hero-content">
+                    <h1>Case Studies: How Businesses Scale Faster with tilli</h1>
+                    <a href="#articles" class="read-more">
+                        Read More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="carousel-dots" id="posts-dots"></div>
+                <div class="case-hero-featured">
+                    <h3>6 Benefits of Adding Communication Tool for Schools</h3>
+                    <p>Our education system is in dire need of a facelift. With emerging technologies, we have the opportunity to reimagine learning for the next generation.</p>
+                </div>
             </div>
         </section>
 
-        <!-- Contact lite section placed below carousel -->
-        <section class="contact-lite">
+        <!-- Case Studies Section -->
+        <section class="articles-section" id="articles">
             <div class="container">
-                <div class="form-wrap">
-                    <input type="text" placeholder="Full Name" aria-label="Full Name">
-                    <input type="email" placeholder="Email Address" aria-label="Email Address">
-                    <input type="text" placeholder="Company" aria-label="Company">
-                    <input type="tel" placeholder="Phone Number" aria-label="Phone Number">
-                    <textarea rows="3" placeholder="How can we help?" aria-label="Message"></textarea>
-                    <div class="actions">
-                        <div style="color:#6B7280; font-size:.85rem;">We respect your privacy. Read our <a href="#" class="link-muted">Privacy Policy</a>.</div>
-                        <button class="btn-primary" type="button">Submit and Download Now</button>
+                <h2>Case Studies</h2>
+                
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search...">
+                </div>
+
+                <div class="category-filters">
+                    <button class="category-btn active">All</button>
+                    <button class="category-btn">Utilities</button>
+                    <button class="category-btn">Public Sector</button>
+                </div>
+
+                <div class="articles-grid" id="caseStudiesGrid">
+                    <article class="article-card" data-category="utilities">
+                        <img src="Case Studies Page/freeman.jpg" alt="Freeman Case Study" class="article-image">
+                        <div class="article-content">
+                            <div class="article-date">Feb 14, 2025 • Case Study</div>
+                            <h3 class="article-title">Freeman Enhances Secure Checkout with tilliX's Low‑Code BRF Solution</h3>
+                            <p class="article-description">How a leading provider improved event payments with a secure, flexible flow.</p>
+                            <a href="case-study-freeman.html" class="read-more-link">Read more →</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="public-sector">
+                        <img src="Case Studies Page/Howardcounty.jpg" alt="Howard County Case Study" class="article-image">
+                        <div class="article-content">
+                            <div class="article-date">Feb 13, 2025 • Case Study</div>
+                            <h3 class="article-title">Howard County, Maryland — Best Customer Portal Solution</h3>
+                            <p class="article-description">A modern resident portal delivering faster service and better access.</p>
+                            <a href="case-study-howard-county.html" class="read-more-link">Read more →</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="utilities">
+                        <img src="Case Studies Page/washington.jpg" alt="Washington Gas Case Study" class="article-image">
+                        <div class="article-content">
+                            <div class="article-date">Apr 19, 2022 • Case Study</div>
+                            <h3 class="article-title">Transforming the Customer Communication Experience for a Major Utility</h3>
+                            <p class="article-description">In partnership with Washington Gas: omni‑channel CX with measurable impact.</p>
+                            <a href="case-study-washington-communications.html" class="read-more-link">Read more →</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="utilities">
+                        <img src="Case Studies Page/wgl energy.jpg" alt="WGL Energy Case Study" class="article-image">
+                        <div class="article-content">
+                            <div class="article-date">Feb 13, 2025 • Case Study</div>
+                            <h3 class="article-title">Streamlining Payment Processes with Tilli and Salesforce Sales Cloud Integration for WGL Energy</h3>
+                            <p class="article-description">Secure card & eCheck capture with automated Order→Invoice→Payment workflows.</p>
+                            <a href="case-study-wgl-energy.html" class="read-more-link">Read more →</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="utilities">
+                        <img src="Case Studies Page/washington.jpg" alt="Washington Gas Case Study" class="article-image">
+                        <div class="article-content">
+                            <div class="article-date">Feb 13, 2025 • Case Study</div>
+                            <h3 class="article-title">Washington Gas (WGL) Implements Tilli's Nudge Solution</h3>
+                            <p class="article-description">Driving on‑time payments and critical communications at scale.</p>
+                            <a href="case-study-washington-gas.html" class="read-more-link">Read more →</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="public-sector">
+                        <img src="Case Studies Page/Howardcounty.jpg" alt="Howard County Digital Experience Case Study" class="article-image">
+                        <div class="article-content">
+                            <div class="article-date">Apr 19, 2022 • Case Study</div>
+                            <h3 class="article-title">Digital Customer Experience for Howard County, Maryland</h3>
+                            <p class="article-description">Branded omni‑channel CX integrated with SAP in real time.</p>
+                            <a href="case-study-howard-digital-experience.html" class="read-more-link">Read more →</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="public-sector">
+                        <img src="Tilli Home Page/isolated icons/Washington gas.png" alt="Washington Gas COVID Relief Case Study" class="article-image">
+                        <div class="article-content">
+                            <div class="article-date">Apr 19, 2022 • Case Study</div>
+                            <h3 class="article-title">Helping 30,000 People Find COVID‑19 Relief</h3>
+                            <p class="article-description">Rapid information delivery and payments support at scale.</p>
+                            <a href="case-study-washington-covid-relief.html" class="read-more-link">Read more →</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div id="noResultsMessage" style="display: none; text-align: center; padding: 60px 20px; color: #6B7280;">
+                    <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;"></i>
+                    <h3 style="margin-bottom: 10px; color: #374151;">No case studies found</h3>
+                    <p>Try adjusting your search terms or category filter.</p>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="case-studies.html" class="see-all-btn">See All</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-container">
+                    <div class="newsletter-content">
+                        <h2>Get Smarter About Finance</h2>
+                        <p>Join thousands of professionals receiving expert Insights on payments, automation, and fintech trends—delivered bi-weekly. Unsubscribe anytime</p>
+                    </div>
+                    <div class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Enter Email Address">
+                        <button class="newsletter-btn">Subscribe</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Results section placed below carousel -->
-        <section class="results">
-            <div class="container" style="text-align:center;">
-                <span class="eyebrow">Let's talk numbers</span>
-                <h2 class="section-title">Our Customers Get Results</h2>
-                <div class="section-sub">OVER $100 MILLION IN PAYMENT PROCESSING</div>
-                <div class="results-cards">
-                    <div class="results-card">
-                        <div class="accent"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
-                        <span class="num">200%</span>
-                        <span class="label">Increase in digital adoption</span>
-                    </div>
-                    <div class="results-card">
-                        <div class="accent"><i class="fas fa-receipt" aria-hidden="true"></i></div>
-                        <span class="num">19%</span>
-                        <span class="label">Reduction in unpaid bills</span>
-                    </div>
-                    <div class="results-card">
-                        <div class="accent"><i class="fas fa-arrow-up-right-dots" aria-hidden="true"></i></div>
-                        <span class="num">200%</span>
-                        <span class="label">Increase in digital payments</span>
-                    </div>
+        <!-- Editor's Picks Section -->
+        <section class="editors-picks-section">
+            <div class="container">
+                <div class="editors-picks-header">
+                    <h2>Editor's Picks / Our teams favorite picks</h2>
+                    <a href="blog.html" class="see-all-btn">See All</a>
                 </div>
-                <div class="logos-sub">JOIN 500+ OTHER SCALING BUSINESSES THAT ARE LEADING WITH EXPERIENCE</div>
-                <div class="results-logos">
-                    <img src="Tilli Home Page/tilli-washington-gas.png" alt="Washington Gas">
-                    <img src="Tilli Home Page/isolated icons/howardcounty.png" alt="Howard County">
-                    <img src="Tilli Home Page/isolated icons/frontier.png" alt="Frontier">
-                    <img src="Tilli Home Page/wgl Energy.png" alt="WGL Energy">
-                    <img src="Tilli Home Page/isolated icons/freeman.png" alt="Freeman">
+
+                <div class="editors-picks-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="editorsCarousel">
+                            <article class="editors-card">
+                                <img src="Blog Page images/Tilli Blog Images/Leading PCI DSS 4.0 Certification Blog-Creative_2.jpg" alt="PCI DSS 4.0 Certification" class="editors-card-image">
+                                <div class="editors-card-content">
+                                    <span class="editors-card-badge">Security</span>
+                                    <h3 class="editors-card-title">Leading the Way in Payment Security: Our PCI DSS 4.0 Certification</h3>
+                                    <p class="editors-card-description">Discover how tilli achieved PCI DSS 4.0 certification and what this means for your business security.</p>
+                                    <div class="editors-card-meta">
+                                        <div class="author-avatar">TS</div>
+                                        <span class="editors-card-date">January 17, 2025</span>
+                                    </div>
+                                    <a href="blog-pci-dss-4-0.html" class="read-more-link">Read More →</a>
+                                </div>
+                            </article>
+
+                            <article class="editors-card">
+                                <img src="Blog Page images/Tilli Blog Images/tillis-recurring-bill-payment-1080x627-1.jpg" alt="Recurring Bill Payment" class="editors-card-image">
+                                <div class="editors-card-content">
+                                    <span class="editors-card-badge">Payments</span>
+                                    <h3 class="editors-card-title">What Is Recurring Bill Payment And How To Choose The Best Payment Gateway</h3>
+                                    <p class="editors-card-description">Learn about recurring bill payment systems and how to select the right payment gateway for your subscription business.</p>
+                                    <div class="editors-card-meta">
+                                        <div class="author-avatar">TS</div>
+                                        <span class="editors-card-date">March 21, 2024</span>
+                                    </div>
+                                    <a href="blog-recurring-bill-payment.html" class="read-more-link">Read More →</a>
+                                </div>
+                            </article>
+
+                            <article class="editors-card">
+                                <img src="Blog Page images/Tilli Blog Images/upgrade-s4hana-tilli.webp" alt="S/4HANA Transition" class="editors-card-image">
+                                <div class="editors-card-content">
+                                    <span class="editors-card-badge">Technology</span>
+                                    <h3 class="editors-card-title">Making the Smart Move</h3>
+                                    <p class="editors-card-description">Explore how businesses are successfully transitioning to S/4HANA with tilli's comprehensive solutions.</p>
+                                    <div class="editors-card-meta">
+                                        <div class="author-avatar">TS</div>
+                                        <span class="editors-card-date">December 07, 2023</span>
+                                    </div>
+                                    <a href="blog-s4hana-transition.html" class="read-more-link">Read More →</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-nav-btn" id="prevBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-nav-btn" id="nextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <div data-include="partials/footer.html"></div>
 
     <script src="script.js"></script>
     <script>
-    (function(){
-        // Case Studies simple pagination: 6 per page
-        function initCaseStudiesPagination(){
-            const grid = document.querySelector('.case-grid');
-            if (!grid) return;
-            let cards = Array.from(grid.children);
-            // Sort cards by date in meta (newest first)
-            function parseCaseDate(card){
-                const meta = card.querySelector('.meta');
-                if (!meta) return 0;
-                const text = String(meta.textContent || '');
-                const dateStr = text.split('•')[0].trim();
-                const d = new Date(dateStr);
-                return isNaN(d) ? 0 : d.getTime();
+        // Carousel functionality for Editor's Picks
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('editorsCarousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const cards = carousel.querySelectorAll('.editors-card');
+            
+            let currentIndex = 0;
+            const cardsPerView = window.innerWidth < 768 ? 1 : 3;
+            const maxIndex = Math.max(0, cards.length - cardsPerView);
+            
+            function updateCarousel() {
+                const cardWidth = cards[0].offsetWidth + 24; // 24px gap
+                carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
             }
-            cards.sort((a,b)=> parseCaseDate(b) - parseCaseDate(a));
-            cards.forEach(c=> grid.appendChild(c));
-            const pageSize = 6;
-            let page = 1;
-            const totalPages = Math.max(1, Math.ceil(cards.length / pageSize));
-
-            function render(){
-                cards.forEach((card, idx) => {
-                    const p = Math.ceil((idx + 1) / pageSize);
-                    card.style.display = (p === page) ? '' : 'none';
-                });
-                updateButtons();
+            
+            function updateButtons() {
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex >= maxIndex;
             }
-            function updateButtons(){
-                const prev = document.getElementById('cs-prev');
-                const next = document.getElementById('cs-next');
-                if (prev) prev.disabled = page <= 1;
-                if (next) next.disabled = page >= totalPages;
-            }
-
-            const prevBtn = document.getElementById('cs-prev');
-            const nextBtn = document.getElementById('cs-next');
-            if (prevBtn) prevBtn.addEventListener('click', ()=>{ if (page > 1){ page -= 1; render(); window.scrollTo({ top: grid.offsetTop - 100, behavior: 'smooth' }); } });
-            if (nextBtn) nextBtn.addEventListener('click', ()=>{ if (page < totalPages){ page += 1; render(); window.scrollTo({ top: grid.offsetTop - 100, behavior: 'smooth' }); } });
-
-            render();
-        }
-
-        initCaseStudiesPagination();
-        function getVisibleCount(){
-            if (window.innerWidth < 640) return 1;
-            if (window.innerWidth < 1024) return 2;
-            return 3;
-        }
-
-        async function loadLatestPosts(){
-            // Attempt to fetch the posts JSON embedded in blog.html
-            let posts = [];
-            try {
-                const res = await fetch('blog.html', { cache: 'no-cache' });
-                const html = await res.text();
-                const match = html.match(/<script id=\"posts-data\"[^>]*>([\s\S]*?)<\/script>/i);
-                if (match && match[1]) {
-                    const data = JSON.parse(match[1]);
-                    posts = Array.isArray(data.posts) ? data.posts : [];
+            
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                    updateButtons();
                 }
-            } catch (_) {
-                // Fallback dataset (6 posts)
-                posts = [
-                    { title: 'Leading the Way in Payment Security: Our PCI DSS 4.0 Certification', href: 'blog-pci-dss-4-0.html', image: 'Blog Page images/Tilli Blog Images/Leading PCI DSS 4.0 Certification Blog-Creative_2.jpg', category: 'security', author: 'Tilli Software', date: 'January 17, 2025', dateISO: '2025-01-17' },
-                    { title: 'What is Recurring Bill Payment? Choosing the Best Gateway', href: 'blog-recurring-bill-payment.html', image: 'Blog Page images/Tilli Blog Images/tillis-recurring-bill-payment-1080x627-1.jpg', category: 'billing-payments', author: 'Tilli Software', date: 'March 21, 2024', dateISO: '2024-03-21' },
-                    { title: 'Decoding the Transition: Seamlessly Embracing S/4HANA for Business Success', href: 'blog-s4hana-transition.html', image: 'Blog Page images/Tilli Blog Images/upgrade-s4hana-tilli.webp', category: 'digital-experiences', author: 'Tilli Software', date: 'December 07, 2023', dateISO: '2023-12-07' },
-                    { title: 'Payment Gateway for eCommerce – Streamline Customer Checkouts and Improve Your Sales!', href: 'blog-ecommerce-payment-gateway.html', image: 'Blog Page images/Tilli Blog Images/tilli-payment-gateway-for-ecommerce-980x551.jpg', category: 'billing-payments', author: 'Tilli Software', date: 'July 31, 2023', dateISO: '2023-07-31' },
-                    { title: 'Too Many Payment Gateways? Here’s How to Choose the Best One!', href: 'blog-choose-best-payment-gateway.html', image: 'Blog Page images/Tilli Blog Images/tillis-monay-payment-gateway-1080x627.jpg', category: 'billing-payments', author: 'Tilli Software', date: 'May 4, 2023', dateISO: '2023-05-04' },
-                    { title: 'What Are Payment Facilitators and How They Simplify and Accelerate Your Payment Processes', href: 'blog-payment-facilitator.html', image: 'Blog Page images/Tilli Blog Images/monay-payment-facilitator-1080x627.jpg', category: 'billing-payments', author: 'Tilli Software', date: 'June 26, 2023', dateISO: '2023-06-26' }
-                ];
-            }
-
-            function parseTs(p){
-                const s = p.dateISO || p.date || '';
-                const d = new Date(s);
-                return isNaN(d) ? 0 : d.getTime();
-            }
-            // Take the latest 6 posts by date
-            posts = posts
-                .sort((a, b) => {
-                    const ta = parseTs(a);
-                    const tb = parseTs(b);
-                    return tb - ta;
-                })
-                .slice(0, 6);
-
-            const track = document.getElementById('latest-posts');
-            const dots = document.getElementById('posts-dots');
-            if (!track) return;
-            track.innerHTML = posts.map(p => `
-                <article class="post-card card">
-                    <a class="media" href="${p.href}">
-                        <img src="${p.image}" alt="${p.title}">
-                    </a>
-                    <div class="body">
-                        <span class="badge">${(p.category||'').replace('-', ' ')}</span>
-                        <h3 class="title"><a class="link-muted" href="${p.href}">${p.title}</a></h3>
-                        <div class="meta">${p.author || ''}${p.author && p.date ? ' • ' : ''}${p.date || ''}</div>
-                        <a class="btn" href="${p.href}">Read more →</a>
-                    </div>
-                </article>
-            `).join('');
-
-            // Build dots based on pages
-            if (dots){
-                const pageSize = getVisibleCount();
-                const pages = Math.max(1, Math.ceil(posts.length / pageSize));
-                dots.innerHTML = '';
-                for (let i=0;i<pages;i++){
-                    const b = document.createElement('button');
-                    if (i===0) b.classList.add('is-active');
-                    b.addEventListener('click', ()=> scrollToPage(i));
-                    dots.appendChild(b);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateCarousel();
+                    updateButtons();
                 }
-            }
-
-            initCarouselControls();
-
-            function scrollToPage(page){
-                const card = track.querySelector('.post-card');
-                if (!card) return;
-                const cardWidth = card.getBoundingClientRect().width + 16;
-                track.scrollTo({ left: page * cardWidth, behavior: 'smooth' });
-                syncDots(page);
-            }
-
-            function syncDots(active){
-                const all = dots ? dots.querySelectorAll('button') : [];
-                all.forEach((d, i)=> d.classList.toggle('is-active', i===active));
-            }
-
-            function initCarouselControls(){
-                const prev = document.querySelector('[data-posts-carousel] .prev');
-                const next = document.querySelector('[data-posts-carousel] .next');
-                const card = track.querySelector('.post-card');
-                if (!card) return;
-                const cardWidth = card.getBoundingClientRect().width + 16;
-
-                function pageFromScroll(){
-                    const idx = Math.round(track.scrollLeft / cardWidth);
-                    syncDots(idx);
-                    return idx;
-                }
-
-                if (prev) prev.addEventListener('click', ()=> {
-                    const idx = pageFromScroll();
-                    const target = Math.max(0, idx - 1);
-                    track.scrollTo({ left: target * cardWidth, behavior: 'smooth' });
-                    syncDots(target);
-                });
-                if (next) next.addEventListener('click', ()=> {
-                    const idx = pageFromScroll();
-                    const target = idx + 1;
-                    track.scrollTo({ left: target * cardWidth, behavior: 'smooth' });
-                    syncDots(target);
-                });
-
-                // Autoplay with pause on hover
-                let autoplay = setInterval(()=>{
-                    const idx = pageFromScroll();
-                    const pageSize = getVisibleCount();
-                    const pages = Math.max(1, Math.ceil(posts.length / pageSize));
-                    const target = (idx + 1) % pages;
-                    track.scrollTo({ left: target * cardWidth, behavior: 'smooth' });
-                    syncDots(target);
-                }, 5000);
-
-                const viewport = document.querySelector('[data-posts-carousel] .carousel-viewport');
-                if (viewport){
-                    viewport.addEventListener('mouseenter', ()=> clearInterval(autoplay));
-                    viewport.addEventListener('mouseleave', ()=> autoplay = setInterval(()=>{
-                        const idx = pageFromScroll();
-                        const pageSize = getVisibleCount();
-                        const pages = Math.max(1, Math.ceil(posts.length / pageSize));
-                        const target = (idx + 1) % pages;
-                        track.scrollTo({ left: target * cardWidth, behavior: 'smooth' });
-                        syncDots(target);
-                    }, 5000));
-                }
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', loadLatestPosts);
-        window.addEventListener('resize', debounceRecalc(200));
-
-        function debounceRecalc(wait){
-            let t;
-            return function(){
-                clearTimeout(t);
-                t = setTimeout(()=>{
-                    // Rebuild dots and snap to nearest page on resize
-                    const track = document.getElementById('latest-posts');
-                    const dots = document.getElementById('posts-dots');
-                    if (!track || !dots) return;
-                    const cards = track.querySelectorAll('.post-card');
-                    if (!cards.length) return;
-                    const cardWidth = cards[0].getBoundingClientRect().width + 16;
-                    const pageSize = getVisibleCount();
-                    const pages = Math.max(1, Math.ceil(cards.length / pageSize));
-                    dots.innerHTML = '';
-                    for (let i=0;i<pages;i++){
-                        const b = document.createElement('button');
-                        b.addEventListener('click', ()=>{
-                            track.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
-                        });
-                        dots.appendChild(b);
-                    }
-                }, wait);
+            });
+            
+            // Category filter functionality
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const caseStudiesGrid = document.getElementById('caseStudiesGrid');
+            const allCaseStudies = document.querySelectorAll('.article-card');
+            
+            // Category mapping
+            const categoryMap = {
+                'All': 'all',
+                'Utilities': 'utilities',
+                'Public Sector': 'public-sector'
             };
-        }
-    })();
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Get selected category
+                    const selectedCategory = categoryMap[btn.textContent.trim()];
+                    
+                    // Filter case studies
+                    allCaseStudies.forEach(card => {
+                        if (selectedCategory === 'all' || card.dataset.category === selectedCategory) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    // Update grid layout for visible items
+                    updateGridLayout();
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                allCaseStudies.forEach(article => {
+                    const title = article.querySelector('.article-title').textContent.toLowerCase();
+                    const description = article.querySelector('.article-description').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        article.style.display = 'block';
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+                
+                updateGridLayout();
+            });
+            
+            // Function to update grid layout for visible items
+            function updateGridLayout() {
+                const visibleCards = Array.from(allCaseStudies).filter(card => 
+                    card.style.display !== 'none'
+                );
+                
+                const noResultsMessage = document.getElementById('noResultsMessage');
+                
+                // Show/hide no results message
+                if (visibleCards.length === 0) {
+                    noResultsMessage.style.display = 'block';
+                    caseStudiesGrid.style.display = 'none';
+                } else {
+                    noResultsMessage.style.display = 'none';
+                    caseStudiesGrid.style.display = 'grid';
+                }
+                
+                // Add smooth transition effect
+                caseStudiesGrid.style.opacity = '0.7';
+                setTimeout(() => {
+                    caseStudiesGrid.style.opacity = '1';
+                }, 150);
+            }
+            
+            // Initialize
+            updateButtons();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                const newCardsPerView = window.innerWidth < 768 ? 1 : 3;
+                const newMaxIndex = Math.max(0, cards.length - newCardsPerView);
+                if (currentIndex > newMaxIndex) {
+                    currentIndex = newMaxIndex;
+                }
+                updateCarousel();
+                updateButtons();
+            });
+        });
     </script>
 </body>
 </html>
-
-

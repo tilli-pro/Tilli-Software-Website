@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli – Press Releases</title>
+    <link rel="icon" type="image/png" href="Tilli Home Page/tilli-logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Global Font Styles */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Sora', sans-serif;
+        }
+        
+        p, span, div, label, small, input, select, textarea {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Press Release Page Specific Styles */
+        .press-hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 30%, #ffffff 70%);
+            background-position: top center;
+            background-size: cover;
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+        }
+
+        .press-hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-content-press {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text-press h1 {
+            font-size: 4rem;
+            font-weight: 400;
+            color: #1e293b;
+            line-height: 1.1;
+            margin-bottom: 32px;
+        }
+
+        .hero-text-press h1 .highlight-blue {
+            color: #3b82f6;
+        }
+
+        .hero-text-press p {
+            font-size: 1.375rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .hero-highlights-press {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .highlight-item-press {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .highlight-icon-press {
+            width: 28px;
+            height: 28px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .highlight-item-press span {
+            font-size: 1.125rem;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .hero-visual-press {
+            position: relative;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .press-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 24px;
+            background: #f8fafc;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .featured-press {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+
+        .featured-press h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .featured-press p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 16px;
+        }
+
+        .featured-press .btn {
+            background: white;
+            color: #3b82f6;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .featured-press .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Featured Press Carousel */
+        .featured-carousel-section {
+            background: #ffffff;
+            padding: 80px 0;
+        }
+
+        .featured-carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .eyebrow {
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            color: #64748b;
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .featured-carousel {
+            position: relative;
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 32px;
+            transition: transform 0.3s ease;
+        }
+
+        .featured-card {
+            min-width: 400px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .featured-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .featured-card-content {
+            padding: 24px;
+        }
+
+        .featured-card-badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .featured-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .featured-card-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .featured-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .featured-card-date {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        .featured-card-link {
+            color: #3b82f6;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .featured-card-link:hover {
+            text-decoration: underline;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .carousel-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid #e2e8f0;
+            background: white;
+            color: #64748b;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Press Releases Grid */
+        .press-grid-section {
+            background: #f8fafc;
+            padding: 80px 0;
+        }
+
+        .press-grid-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .press-filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            color: #64748b;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .press-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .press-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .press-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 2rem;
+        }
+
+        .press-card-content {
+            padding: 24px;
+        }
+
+        .press-card-badge {
+            display: inline-block;
+            background: #f0f9ff;
+            color: #0369a1;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .press-card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .press-card-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .press-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .press-card-date {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        .press-card-link {
+            color: #3b82f6;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .press-card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: #1e293b;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('Tilli Home Page/blue-background.png') center/cover no-repeat;
+            opacity: 0.1;
+        }
+
+        .newsletter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-content {
+            text-align: center;
+            color: white;
+        }
+
+        .newsletter-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-content p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 12px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 16px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-btn {
+            padding: 16px 32px;
+            background: #3b82f6;
+            color: white;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: #2563eb;
+            border-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content-press {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text-press h1 {
+                font-size: 3rem;
+            }
+
+            .press-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .featured-card {
+                min-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .press-hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero-text-press h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .newsletter-content h2 {
+                font-size: 2rem;
+            }
+
+            .press-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .press-filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .filter-btn {
+                white-space: nowrap;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .featured-card {
+                min-width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text-press h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2,
+            .newsletter-content h2 {
+                font-size: 1.75rem;
+            }
+
+            .press-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div data-include="partials/header.html"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="press-hero">
+            <div class="container">
+                <div class="hero-content-press">
+                    <div class="hero-text-press">
+                        <h1>Press <span class="highlight-blue">Releases</span></h1>
+                        <p>Stay updated with the latest news, announcements, and milestones from Tilli. Discover our journey in transforming digital payments and customer engagement.</p>
+                        
+                        <div class="hero-highlights-press">
+                            <div class="highlight-item-press">
+                                <div class="highlight-icon-press">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <span>Award-Winning Solutions</span>
+                            </div>
+                            <div class="highlight-item-press">
+                                <div class="highlight-icon-press">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <span>Global Impact</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual-press">
+                        <div class="press-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Press Releases</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">15+</div>
+                                <div class="stat-label">Awards Won</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">100+</div>
+                                <div class="stat-label">Media Mentions</div>
+                            </div>
+                        </div>
+                        
+                        <div class="featured-press">
+                            <h3>Latest News</h3>
+                            <p>Tilli Software recognized as 2024 Top 100 MBE by CRMSDC for innovation and impact in the fintech industry.</p>
+                            <a href="#featured" class="btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Press Carousel -->
+        <section class="featured-carousel-section">
+            <div class="featured-carousel-container">
+                <div class="section-header">
+                    <span class="eyebrow">Featured</span>
+                    <h2>Latest Press Releases</h2>
+                    <p>Discover our most recent announcements, partnerships, and industry achievements.</p>
+                </div>
+
+                <div class="featured-carousel">
+                    <div class="carousel-track" id="featuredCarousel">
+                        <!-- Featured cards will be dynamically loaded here -->
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="prevBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn" id="nextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Press Releases Grid -->
+        <section class="press-grid-section">
+            <div class="press-grid-container">
+                <div class="press-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="Awards">Awards</button>
+                    <button class="filter-btn" data-filter="Product">Product</button>
+                    <button class="filter-btn" data-filter="Partnerships">Partnerships</button>
+                    <button class="filter-btn" data-filter="Company">Company</button>
+                    <button class="filter-btn" data-filter="Industry">Industry</button>
+                </div>
+
+                <div class="press-grid" id="pressGrid">
+                    <!-- Press releases will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <h2>Stay Updated</h2>
+                    <p>Get the latest press releases, product updates, and industry insights delivered directly to your inbox.</p>
+                    <div class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email address">
+                        <button class="newsletter-btn">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div data-include="partials/footer.html"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Press Release Page JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load press releases data
+            let pressItems = [];
+            const fallbackPressItems = [
+                {
+                    slug: 'tilli-software-shines-global-fintech-fest-2023',
+                    title: 'Tilli Software Shines at Global Fintech Fest 2023: Fostering Innovation and Collaboration',
+                    tag: 'Industry',
+                    date: 'Published on: September 14, 2023',
+                    publishedAt: '2023-09-14T00:00:00Z',
+                    image: '',
+                    summary: 'Tilli Software announces its successful participation in GFF 2023 showcasing it\'s suite of FinTech products including nudge and monay payment solutions, B2B payout, BBPS Onboarding.'
+                },
+                {
+                    slug: 'tilli-2024-top-100-mbe-award-crmsdc',
+                    title: 'Tilli 2024 Top 100 MBE Award by CRMSDC',
+                    tag: 'Awards',
+                    date: 'Published on: October 10, 2024',
+                    publishedAt: '2024-10-10T00:00:00Z',
+                    image: '',
+                    summary: 'CRMSDC names Tilli a 2024 Top 100 MBE for innovation and impact.'
+                },
+                {
+                    slug: 'fiserv-enhanced-billing-communications',
+                    title: 'Billers Can Boost On-Time Payments and Streamline Operations with Enhanced Billing and Payment Communications from Fiserv',
+                    tag: 'Partnerships',
+                    date: 'Published on: April 30, 2024, at 9:00 AM EDT',
+                    publishedAt: '2024-04-30T13:00:00Z',
+                    image: '',
+                    summary: 'Integrated call-to-action communications within BillMatrix®, powered by Tilli\'s Nudge, help billers increase on-time payments and efficiency.'
+                },
+                {
+                    slug: 'cs-week-2024-fort-worth-nudge-on-time-payments',
+                    title: 'Join Tilli at CS Week 2024 to Nudge Your Customers for On-Time Payments and Several Other Call-To-Actions',
+                    tag: 'Industry',
+                    date: 'Published on: April 24, 2024, at 9:00 AM',
+                    publishedAt: '2024-04-24T13:00:00Z',
+                    image: '',
+                    summary: 'Meet our leadership at CS Week in Fort Worth (Booth #622) and explore multichannel digital communications that drive on-time payments.'
+                },
+                {
+                    slug: 'tilli-washington-gas-party-with-a-purpose-2023',
+                    title: 'Tilli Software Joins Washington Gas in "Party with a Purpose" to Support Community Initiatives',
+                    tag: 'Company',
+                    date: 'Published on: September 29, 2023',
+                    publishedAt: '2023-09-29T00:00:00Z',
+                    image: '',
+                    summary: 'Tilli joined Washington Gas\'s "Party with a Purpose" supporting WAFF; celebrating a decade-long partnership and community impact.'
+                },
+                {
+                    slug: 'shabbir-gilani-joins-tilli-as-chief-revenue-officer',
+                    title: 'Shabbir Gilani, a Seasoned Professional, Joins Tilli as Chief Revenue Officer',
+                    tag: 'Company',
+                    date: 'Published on: November 1, 2022',
+                    publishedAt: '2022-11-01T00:00:00Z',
+                    image: '',
+                    summary: 'Tilli appoints Shabbir Gilani as Chief Revenue Officer to lead the next phase of growth.'
+                }
+            ];
+
+            let selectedTag = 'all';
+            let currentCarouselIndex = 0;
+
+            // Load data
+            async function loadData() {
+                try {
+                    const res = await fetch('press-releases.json', { cache: 'no-cache' });
+                    if (!res.ok) throw new Error('Failed to load');
+                    const data = await res.json();
+                    pressItems = Array.isArray(data) ? data : [];
+                    if (!pressItems.length) pressItems = fallbackPressItems;
+                } catch(_) {
+                    pressItems = fallbackPressItems;
+                }
+                // Sort latest first by publishedAt (fallback to date)
+                pressItems.sort((a,b) => {
+                    const da = new Date(a.publishedAt || a.date || 0);
+                    const db = new Date(b.publishedAt || b.date || 0);
+                    return db - da;
+                });
+            }
+
+            // Generate featured carousel
+            function generateFeaturedCarousel() {
+                const carousel = document.getElementById('featuredCarousel');
+                const latestPress = pressItems.slice(0, 5); // Show latest 5
+
+                carousel.innerHTML = '';
+                latestPress.forEach((item, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'featured-card';
+                    card.innerHTML = `
+                        <div class="featured-card-image">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="featured-card-content">
+                            <span class="featured-card-badge">${item.tag}</span>
+                            <h3 class="featured-card-title">${item.title}</h3>
+                            <p class="featured-card-description">${item.summary}</p>
+                            <div class="featured-card-meta">
+                                <span class="featured-card-date">${item.date}</span>
+                            </div>
+                            <a href="press-release-post.html?slug=${encodeURIComponent(item.slug || '')}" class="featured-card-link">Read More →</a>
+                        </div>
+                    `;
+                    carousel.appendChild(card);
+                });
+            }
+
+            // Generate press grid
+            function generatePressGrid(filter = 'all') {
+                const grid = document.getElementById('pressGrid');
+                const filtered = filter === 'all' ? pressItems : pressItems.filter(item => item.tag === filter);
+
+                grid.innerHTML = '';
+                filtered.forEach(item => {
+                    const card = document.createElement('article');
+                    card.className = 'press-card';
+                    card.innerHTML = `
+                        <div class="press-card-image">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="press-card-content">
+                            <span class="press-card-badge">${item.tag}</span>
+                            <h3 class="press-card-title">${item.title}</h3>
+                            <p class="press-card-description">${item.summary}</p>
+                            <div class="press-card-meta">
+                                <span class="press-card-date">${item.date}</span>
+                            </div>
+                            <a href="press-release-post.html?slug=${encodeURIComponent(item.slug || '')}" class="press-card-link">Read More →</a>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            // Carousel functionality
+            function initCarousel() {
+                const carousel = document.getElementById('featuredCarousel');
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                const cards = carousel.querySelectorAll('.featured-card');
+                
+                if (cards.length === 0) return;
+
+                let currentIndex = 0;
+                const cardsPerView = window.innerWidth < 768 ? 1 : 3;
+                const maxIndex = Math.max(0, cards.length - cardsPerView);
+
+                function updateCarousel() {
+                    const cardWidth = cards[0].offsetWidth + 32; // 32px gap
+                    carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                }
+
+                function updateButtons() {
+                    prevBtn.disabled = currentIndex === 0;
+                    nextBtn.disabled = currentIndex >= maxIndex;
+                }
+
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateCarousel();
+                        updateButtons();
+                    }
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    if (currentIndex < maxIndex) {
+                        currentIndex++;
+                        updateCarousel();
+                        updateButtons();
+                    }
+                });
+
+                // Initialize
+                updateButtons();
+            }
+
+            // Filter functionality
+            function initFilters() {
+                const filterBtns = document.querySelectorAll('.filter-btn');
+                
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        // Update active button
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        const filter = this.getAttribute('data-filter');
+                        selectedTag = filter;
+                        generatePressGrid(filter);
+                    });
+                });
+            }
+
+            // Newsletter functionality
+            function initNewsletter() {
+                const newsletterBtn = document.querySelector('.newsletter-btn');
+                const newsletterInput = document.querySelector('.newsletter-input');
+
+                newsletterBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const email = newsletterInput.value;
+                    if (email && email.includes('@')) {
+                        alert('Thank you for subscribing to our press releases!');
+                        newsletterInput.value = '';
+                    } else {
+                        alert('Please enter a valid email address.');
+                    }
+                });
+            }
+
+            // Initialize everything
+            async function init() {
+                await loadData();
+                generateFeaturedCarousel();
+                generatePressGrid();
+                initCarousel();
+                initFilters();
+                initNewsletter();
+            }
+
+            init();
+        });
+    </script>
+</body>
+</html>
