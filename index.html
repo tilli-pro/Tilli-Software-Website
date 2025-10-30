@@ -3,399 +3,2274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help Center - Website Redesign</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Our Pricing - Tilli</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #3b82f6;
+        }
+
+        .cta-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6f2ff 100%);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: #1f2937;
+        }
+
+        .hero-subheading {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .billing-toggle {
+            display: inline-flex;
+            background: white;
+            border-radius: 50px;
+            padding: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .billing-option {
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: #6b7280;
+        }
+
+        .billing-option.active {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+        }
+
+        .discount-badge {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 12px;
+            margin-left: 8px;
+        }
+
+        .hero-note {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Pricing Cards */
+        .pricing-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            min-height: 500px;
+        }
+
+
+        /* Essential card - larger with animated gradient border */
+        .pricing-card.featured {
+            min-height: 550px;
+            background: transparent;
+            position: relative;
+            z-index: 1;
+            border: none;
+            margin-top: -20px;
+        }
+
+        .pricing-card.featured > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-card.featured::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #767CFE, #61ABF4, #767CFE, #61ABF4);
+            background-size: 400% 400%;
+            border-radius: 18px;
+            z-index: -1;
+            animation: gradientBorder 3s ease infinite;
+        }
+
+        .pricing-card.featured::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: white;
+            border-radius: 14px;
+            z-index: -1;
+        }
+
+        @keyframes gradientBorder {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-4px);
+        }
+
+        .plan-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .plan-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .plan-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .plan-name {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #1f2937;
+            margin: 0;
+        }
+
+
+        .plan-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #060606;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .plan-cta {
+            margin-bottom: 2rem;
+        }
+
+        .cta-question {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            color: #060606;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .email-signup {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #d9d9d9;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #060606;
+        }
+
+        .email-input::placeholder {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #D9D9D9;
+        }
+
+        .signup-button {
+            background: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .signup-button::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(135deg, rgba(68, 141, 230, 0.3) 0%, rgba(152, 178, 233, 0.3) 100%);
+            border-radius: 50px;
+            z-index: 0;
+        }
+
+        .signup-button span,
+        .signup-button::after {
+            position: relative;
+            z-index: 1;
+        }
+
+        .signup-button:hover {
+            transform: translateY(-1px);
+        }
+
+        .signup-button span {
+            background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .signup-button::after {
+            content: '>';
+            font-size: 14px;
+            font-weight: normal;
+            background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Featured card (Essential) keeps the original filled style */
+        .featured .signup-button {
+            background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%);
+            color: white;
+            border: none;
+        }
+
+        .featured .signup-button::before {
+            display: none;
+        }
+
+        .featured .signup-button span {
+            color: white;
+            background: none;
+            -webkit-text-fill-color: white;
+        }
+
+        .featured .signup-button::after {
+            color: white;
+            -webkit-text-fill-color: white;
+            background: none;
+        }
+
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-1px);
+        }
+
+        .features-divider {
+            width: 295px;
+            height: 1px;
+            background-color: #F4F4F4;
+            margin: 1rem auto;
+        }
+
+        .key-features {
+            padding-top: 1rem;
+        }
+
+        .key-features h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        /* Supporting Businesses Section */
+        .businesses-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        /* Feature Comparison Table */
+        .feature-comparison-table {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .comparison-table {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 229px 336px 336px 336px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .header-cell {
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-cell.plan-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+        }
+
+        .header-cell.plan-header h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .header-cell.plan-header.featured {
+            background: #e6f0ff;
+        }
+
+        .table-contact-btn {
+            border-radius: 50px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: none;
+            width: 200px;
+            max-width: 100%;
+        }
+
+        .table-contact-btn.outline {
+            background: white;
+            border: none;
+            position: relative;
+            color: transparent;
+        }
+
+        .table-contact-btn.outline::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(135deg, rgba(68, 141, 230, 0.3) 0%, rgba(152, 178, 233, 0.3) 100%);
+            border-radius: 50px;
+            z-index: 0;
+        }
+
+        .table-contact-btn.outline span {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .table-contact-btn.filled {
+            background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%);
+            color: white;
+        }
+
+        .table-body {
+            background: white;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 229px 336px 336px 336px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .category-cell {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: #6b7280;
+            border-right: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .feature-cell {
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-right: 1px solid #e9ecef;
+            min-height: 100px;
+        }
+
+        .feature-cell:last-child {
+            border-right: none;
+        }
+
+        .feature-cell.featured {
+            background: #e6f0ff;
+        }
+
+        /* Essential column (3rd column) - continuous background without gaps */
+        .header-cell:nth-child(3),
+        .feature-cell:nth-child(3) {
+            background: #E6F0FF;
+        }
+
+        .checkmark {
+            color: #22c55e;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured .checkmark {
+            background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .feature-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .feature-text-block {
+            text-align: center;
+        }
+
+        .feature-text-block strong {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        .feature-subtext {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #a9a9a9;
+            line-height: 1.4;
+            margin-top: 0.5rem;
+        }
+
+        .feature-header {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #060606;
+            line-height: 1.4;
+        }
+
+        .gradient-dash {
+            background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .gradient-checkmark {
+            background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text-gray {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #a9a9a9;
+            margin-top: 0.5rem;
+        }
+
+        .custom-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #A9A9A9;
+        }
+
+        .business-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: nowrap;
+            margin-top: 2rem;
+            overflow-x: auto;
+        }
+
+        .logo-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 150px;
+            height: 80px;
+            background: transparent;
+        }
+
+        .logo-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .logo-item img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Quick Comparison Section */
+        .quick-comparison {
+            padding: 3rem 0;
+            background: white;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .comparison-item {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+
+        .comparison-item h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .comparison-cta:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Savings Section */
+        .savings-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .savings-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .savings-text h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .savings-text p {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+        }
+
+        .benefit-item {
+            margin-bottom: 2rem;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.125rem;
+            font-weight: 400;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-item p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .services-main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-icon img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .service-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .service-link:hover {
+            color: #1d4ed8;
+        }
+
+        /* Clean cards - no background/border styling */
+        .goals-card,
+        .support-card,
+        .delivery-card,
+        .simplify-card {
+            background: transparent !important;
+            border: none !important;
+            padding: 24px !important;
+        }
+
+        /* Default shadow on simplify card */
+        .simplify-card {
+            box-shadow: 0px 12px 56px rgba(6, 28, 61, 0.12) !important;
+            transition: box-shadow 0.3s ease !important;
+        }
+
+        /* Remove shadow from simplify card when any other card is hovered */
+        .services-grid:hover .simplify-card {
+            box-shadow: none !important;
+        }
+
+        /* Add shadow to any card on hover */
+        .goals-card:hover,
+        .support-card:hover,
+        .delivery-card:hover,
+        .simplify-card:hover {
+            box-shadow: 0px 12px 56px rgba(6, 28, 61, 0.12) !important;
+        }
+
+        /* Keep simplify card shadow when hovering over itself */
+        .services-grid:hover .simplify-card:hover {
+            box-shadow: 0px 12px 56px rgba(6, 28, 61, 0.12) !important;
+        }
+
+        /* Smooth transition for all cards */
+        .goals-card,
+        .support-card,
+        .delivery-card {
+            transition: box-shadow 0.3s ease !important;
+            box-shadow: none !important;
+        }
+
+        /* Gradient links - same styling with hover effect */
+        .goals-link,
+        .support-link,
+        .delivery-link,
+        .simplify-link {
+            background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .goals-link:hover,
+        .support-link:hover,
+        .delivery-link:hover,
+        .simplify-link:hover {
+            transform: translateX(4px);
+        }
+
+        .services-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .content-section {
+            max-width: 500px;
+        }
+
+        .content-section h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .content-description {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 16px;
+        }
+
+        .support-button {
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 50%, #2E67F8 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 400;
+            transition: transform 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .support-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-arrow {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 1;
+        }
+
+        /* Savings Contact Sales button - same styling as Contact Support */
+        .savings-contact-button {
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 50%, #2E67F8 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 400;
+            transition: transform 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .savings-contact-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Final CTA Section */
+        .final-cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(68, 141, 230, 0.2) 0%, rgba(152, 178, 233, 0.2) 100%);
+            color: black;
+        }
+
+        .final-cta-content {
+            text-align: center;
+        }
+
+        .final-cta-content h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: black;
+        }
+
+        .final-cta-content > p {
+            font-size: 1.125rem;
+            color: black;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .email-signup-large {
+            display: flex;
+            max-width: 400px;
+            width: 100%;
+            border-radius: 50px;
+            overflow: hidden;
+            border: 1px solid #D9D9D9;
+        }
+
+        .email-input-large {
+            flex: 1;
+            padding: 14px 50px 14px 50px;
+            border: none;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.85);
+            outline: none;
+        }
+
+        .email-input-large::placeholder {
+            color: #D9D9D9;
+        }
+
+        .signup-button-large {
+            background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%);
+            color: white;
+            padding: 14px 50px;
+            border: none;
+            font-weight: 400;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            white-space: nowrap;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .signup-button-large:hover {
+            transform: translateY(-1px);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-button {
+            padding: 14px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .action-button.primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            color: white;
+        }
+
+        /* Team button - white fill with light blue gradient border */
+        .team-button {
+            background: white !important;
+            color: black !important;
+            border: 2px solid transparent !important;
+            background-image: linear-gradient(white, white), linear-gradient(135deg, #448DE6 0%, #98B2E9 100%) !important;
+            background-origin: border-box !important;
+            background-clip: padding-box, border-box !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            border-radius: 50px !important;
+            font-weight: 400 !important;
+            padding: 10px 30px !important;
+        }
+
+        .chevron {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Products button - gradient 4 styling */
+        .products-button {
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 50%, #2E67F8 100%) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 50px !important;
+            font-weight: 400 !important;
+            padding: 10px 30px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+        }
+
+        .chevron-white {
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .action-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-amount {
+            font-family: 'Sora', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #6b7280;
+            margin-right: 4px;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: #6b7280;
+            margin-left: 4px;
+        }
+
+        .price-note {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            color: #374151;
+            font-size: 0.875rem;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .features-list li.unavailable {
+            color: #9ca3af;
+        }
+
+        .features-list li.unavailable::before {
+            content: "✗";
+            color: #ef4444;
+        }
+
+        .plan-button {
+            width: 100%;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .plan-button.primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            color: white;
+        }
+
+        .plan-button.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .plan-button.secondary {
+            background: transparent;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+        }
+
+        .plan-button.secondary:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-size: 1.125rem;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+        }
+
+        .table-header {
+            background: #f8fafc;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            padding: 1.5rem;
+            border-bottom: 1px solid #f3f4f6;
+            align-items: center;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .feature-name {
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .feature-value {
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .feature-check {
+            color: #10b981;
+            font-size: 1.25rem;
+        }
+
+        .feature-cross {
+            color: #ef4444;
+            font-size: 1.25rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: #6b7280;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(45deg);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            color: #d1d5db;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cta-button {
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button.primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            color: white;
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: #1f2937;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #f9fafb;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #60a5fa;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 1rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subheading {
+                font-size: 1.125rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+                min-height: auto;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-4px);
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .savings-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .savings-text h2 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .services-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .final-cta-content h2 {
+                font-size: 2rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .email-signup-large {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .business-logos {
+                gap: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .pricing-section,
+            .comparison-section,
+            .faq-section,
+            .cta-section {
+                padding: 3rem 0;
+            }
+
+            .pricing-card {
+                padding: 2rem;
+            }
+
+            .price-amount {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <h1>tilli</h1>
-                </div>
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li><a href="#" class="nav-link">Products</a></li>
-                        <li><a href="#" class="nav-link">Services</a></li>
-                        <li><a href="#" class="nav-link">Industries</a></li>
-                        <li><a href="#" class="nav-link">Developers</a></li>
-                        <li><a href="#" class="nav-link">Resources</a></li>
+                <a href="#" class="logo">Tilli</a>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#industries">Industries</a></li>
+                        <li><a href="#company">Company</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
-                <div class="header-actions">
-                    <a href="#" class="nav-link">Pricing <i class="fas fa-arrow-right"></i></a>
-                    <button class="btn btn-primary">Free Trial <i class="fas fa-arrow-right"></i></button>
-                </div>
-                <button class="mobile-menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <a href="#demo" class="cta-header">Try a Demo</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-laptop">
-                <img src="hero laptop image.png" alt="Laptop showing dashboard" class="laptop-img">
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Our Pricing</h1>
+                <p class="hero-subheading">Our simple product pricing for everything you need—payments, billing, tax compliance, and more.</p>
+                <p class="hero-note">No hidden fees. No surprises.</p>
+                <a href="#products" class="hero-cta">View our Products</a>
             </div>
-            <div class="hero-text">
-                <h1 class="hero-title">How can we help you?</h1>
-                <p class="hero-subtitle">We're here to help you build better. Find answers, explore features, or get step-by-step setup guides.</p>
-                
-                <!-- Search Bar -->
-                <div class="search-container">
-                    <div class="search-box">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" placeholder="Search our help center" class="search-input">
-                    </div>
-                </div>
-                
-                <!-- Popular Searches -->
-                <div class="popular-searches">
-                    <p class="popular-text">Popular searches:</p>
-                    <div class="search-tags">
-                        <span class="search-tag">Billing</span>
-                        <span class="search-tag">Brand Voice</span>
-                        <span class="search-tag">Github Integrations</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Feature Cards -->
-    <section class="feature-cards">
-        <div class="container">
-            <div class="cards-grid">
-                <div class="feature-card">
-                    <div class="card-content">
-                        <h3>Messages and Faxes</h3>
-                        <p>Maintain contact through efficient communication.</p>
+        <!-- Pricing Cards Section -->
+        <section class="pricing-section">
+            <div class="container">
+                <div class="pricing-grid">
+                    <!-- Pay As You Go -->
+                    <div class="pricing-card">
+                        <div class="plan-header">
+                            <div class="plan-icon">
+                                <img src="Pay-as-you-go-star.jpg" alt="Pay As You Go">
+                            </div>
+                            <h3 class="plan-name">Pay As You Go</h3>
+                        </div>
+                        <p class="plan-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        
+                        <div class="plan-cta">
+                            <p class="cta-question">Want to Learn More?</p>
+                            <div class="email-signup">
+                                <input type="email" placeholder="Enter your business email" class="email-input">
+                                <button class="signup-button"><span>Contact Us</span></button>
+                            </div>
+                        </div>
+
+                        <div class="features-divider"></div>
+
+                        <div class="key-features">
+                            <h4>Key Features</h4>
+                            <ul class="features-list">
+                                <li>Email</li>
+                                <li>SMS</li>
+                                <li>WhatsApp Outbound</li>
+                                <li class="unavailable">WhatsApp Business Initiated</li>
+                                <li class="unavailable">WhatsApp User Initiated</li>
+                                <li>Push Notifications</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="card-icon">
-                        <img src="emojis/emoji_1.png" alt="Messages and Faxes" class="emoji-icon">
+
+                    <!-- Essential Plan -->
+                    <div class="pricing-card featured">
+                        <div class="plan-header">
+                            <div class="plan-icon">
+                                <img src="Essential-star.jpg" alt="Essential">
+                            </div>
+                            <h3 class="plan-name">Essential</h3>
+                        </div>
+                        <p class="plan-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        
+                        <div class="plan-cta">
+                            <p class="cta-question">Want to Learn More?</p>
+                            <div class="email-signup">
+                                <input type="email" placeholder="Enter your business email" class="email-input">
+                                <button class="signup-button"><span>Contact Us</span></button>
+                            </div>
+                        </div>
+
+                        <div class="features-divider"></div>
+
+                        <div class="key-features">
+                            <h4>Key Features</h4>
+                            <ul class="features-list">
+                                <li>Email</li>
+                                <li>SMS</li>
+                                <li>WhatsApp Outbound</li>
+                                <li class="unavailable">WhatsApp Business Initiated</li>
+                                <li class="unavailable">WhatsApp User Initiated</li>
+                                <li>Push Notifications</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="card-content">
-                        <h3>Devices</h3>
-                        <p>Discover how to set up your electronic devices to utilize tilli products from anywhere!</p>
-                    </div>
-                    <div class="card-icon">
-                        <img src="emojis/emoji_2.png" alt="Devices" class="emoji-icon">
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="card-content">
-                        <h3>What's new</h3>
-                        <p>Bug fixes, company updates, product improvements, and more!</p>
-                    </div>
-                    <div class="card-icon">
-                        <img src="emojis/emoji_3.png" alt="What's new" class="emoji-icon">
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="card-content">
-                        <h3>Platform Integrations</h3>
-                        <p>Connect tilli with your favorite tools and platforms.</p>
-                    </div>
-                    <div class="card-icon">
-                        <img src="emojis/emoji_4.png" alt="Platform Integrations" class="emoji-icon">
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="card-content">
-                        <h3>Security & Privacy</h3>
-                        <p>Keep your data safe with our built-in compliance and encryption measures.</p>
-                    </div>
-                    <div class="card-icon">
-                        <img src="emojis/emoji_5.png" alt="Security & Privacy" class="emoji-icon">
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="card-content">
-                        <h3>Service Configuration</h3>
-                        <p>Customize your service rules, triggers, and workflows.</p>
-                    </div>
-                    <div class="card-icon">
-                        <img src="emojis/emoji_6.png" alt="Service Configuration" class="emoji-icon">
+
+                    <!-- Enterprise Plan -->
+                    <div class="pricing-card">
+                        <div class="plan-header">
+                            <div class="plan-icon">
+                                <img src="Enterprise-star.jpg" alt="Enterprise">
+                            </div>
+                            <h3 class="plan-name">Enterprise</h3>
+                        </div>
+                        <p class="plan-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        
+                        <div class="plan-cta">
+                            <p class="cta-question">Want to Learn More?</p>
+                            <div class="email-signup">
+                                <input type="email" placeholder="Enter email address..." class="email-input">
+                                <button class="signup-button"><span>Contact Us</span></button>
+                            </div>
+                        </div>
+
+                        <div class="features-divider"></div>
+
+                        <div class="key-features">
+                            <h4>Key Features</h4>
+                            <ul class="features-list">
+                                <li>Email</li>
+                                <li>SMS</li>
+                                <li>WhatsApp Outbound</li>
+                                <li>WhatsApp Business Initiated</li>
+                                <li>WhatsApp User Initiated</li>
+                                <li>Push Notifications</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Quick Links and Articles -->
-    <section class="bottom-section">
-        <div class="container">
-            <div class="bottom-content">
-                <div class="quick-links">
-                    <div class="quick-links-card">
-                        <img src="rocket emoji.png" alt="Rocket" class="rocket-emoji">
-                        <h3>Quick Links</h3>
-                        <p class="quick-links-subtitle">Some links that might be useful</p>
-                        
-                        <div class="product-tabs">
-                            <button class="product-tab active" data-product="tillix">
-                                <img src="Logo.png" alt="tilliX" class="brand-logo">
-                                <span>tilliX</span>
-                            </button>
-                            <button class="product-tab" data-product="tillipay">
-                                <img src="Group 1171276250.png" alt="tilliPay" class="brand-logo">
-                                <span>tilliPay</span>
-                            </button>
-                            <button class="product-tab" data-product="nudge">
-                                <img src="Vector 29.png" alt="Nudge" class="brand-logo">
-                                <span>Nudge</span>
-                            </button>
-                        </div>
-                        
-                        <ul class="links-list">
-                            <li><a href="#">API key setup</a></li>
-                            <li><a href="#">Environment setup</a></li>
-                            <li><a href="#">API Call</a></li>
-                            <li><a href="#">Authentication overview</a></li>
-                            <li><a href="#">Authentication overview</a></li>
-                            <li><a href="#">Authentication overview</a></li>
-                        </ul>
-                        
-                        <a href="#" class="get-started-link">Get Started <i class="fas fa-arrow-right"></i></a>
+        <!-- Supporting Businesses Section -->
+        <section class="businesses-section">
+            <div class="container">
+                <h2 class="section-title">Supporting businesses across the globe</h2>
+                <div class="business-logos">
+                    <div class="logo-item">
+                        <img src="Company Logos/tilli-anglian-water-hover 2.jpg" alt="Anglian Water">
+                    </div>
+                    <div class="logo-item">
+                        <img src="Company Logos/tilli-howard-county-hover 1.jpg" alt="Howard County">
+                    </div>
+                    <div class="logo-item">
+                        <img src="Company Logos/tilli-new-york-power-authority-hover 1.jpg" alt="New York Power Authority">
+                    </div>
+                    <div class="logo-item">
+                        <img src="Company Logos/tilli-northeast-ohio-natural-gas-hover 1.jpg" alt="Northeast Ohio Natural Gas">
+                    </div>
+                    <div class="logo-item">
+                        <img src="Company Logos/image.jpg" alt="Company Logo">
+                    </div>
+                    <div class="logo-item">
+                        <img src="Company Logos/image 1.jpg" alt="Company Logo">
+                    </div>
+                    <div class="logo-item">
+                        <img src="Company Logos/image 367.jpg" alt="Company Logo">
                     </div>
                 </div>
-                
-                <div class="articles">
-                    <h3>Articles our customers have found Helpful</h3>
-                    
-                    <div class="article-preview">
-                        <div class="article-image">
-                            <img src="image 1.png" alt="Troubleshoot Network">
+            </div>
+        </section>
+
+        <!-- Feature Comparison Table Section -->
+        <section class="feature-comparison-table">
+            <div class="container">
+                <div class="comparison-table">
+                    <!-- Table Header -->
+                    <div class="table-header">
+                        <div class="header-cell"></div>
+                        <div class="header-cell plan-header">
+                            <h3>Pay as you go</h3>
+                            <button class="table-contact-btn outline"><span>Contact Us ></span></button>
                         </div>
-                        <div class="article-content">
-                            <span class="article-category">Trouble Shoot</span>
-                            <h4>How to trouble shoot your connection router</h4>
-                            <div class="article-author">
-                                <img src="charlotte york.png" alt="Charlotte York" class="author-avatar">
-                                <span>Charlotte York</span>
+                        <div class="header-cell plan-header featured">
+                            <h3>Essential</h3>
+                            <button class="table-contact-btn filled">Contact Us ></button>
+                        </div>
+                        <div class="header-cell plan-header">
+                            <h3>Enterprise</h3>
+                            <button class="table-contact-btn outline"><span>Contact Us ></span></button>
+                        </div>
+                    </div>
+
+                    <!-- Table Body -->
+                    <div class="table-body">
+                        <!-- Row 1 -->
+                        <div class="table-row">
+                            <div class="category-cell">Category</div>
+                            <div class="feature-cell">
+                                <span class="gradient-dash">—</span>
+                            </div>
+                            <div class="feature-cell featured">
+                                <span class="checkmark">✓</span>
+                                <span class="feature-text">Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="feature-cell">
+                                <span class="custom-text">Custom</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="table-row">
+                            <div class="category-cell">Category</div>
+                            <div class="feature-cell">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Sunt in culpa qui officia deserunt mollit.</div>
+                                    <div class="feature-subtext">Fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada</div>
+                                </div>
+                            </div>
+                            <div class="feature-cell featured">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Lorem ipsum dolor sit amet</div>
+                                    <div class="feature-subtext">In id cursus mi pretium tellus duis.</div>
+                                </div>
+                            </div>
+                            <div class="feature-cell">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Excepteur sint occaecat cupidatat.</div>
+                                    <div class="feature-subtext">Ut enim ad minim veniam, quis nostrud.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="table-row">
+                            <div class="category-cell">Category</div>
+                            <div class="feature-cell">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Sunt in culpa qui officia deserunt mollit.</div>
+                                    <div class="feature-subtext">Fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada</div>
+                                </div>
+                            </div>
+                            <div class="feature-cell featured">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Lorem ipsum dolor sit amet</div>
+                                    <div class="feature-subtext">In id cursus mi pretium tellus duis.</div>
+                                </div>
+                            </div>
+                            <div class="feature-cell">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Excepteur sint occaecat cupidatat.</div>
+                                    <div class="feature-subtext">Ut enim ad minim veniam, quis nostrud.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 4 -->
+                        <div class="table-row">
+                            <div class="category-cell">Category</div>
+                            <div class="feature-cell">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Sunt in culpa qui officia deserunt mollit.</div>
+                                    <div class="feature-subtext">Fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada</div>
+                                </div>
+                            </div>
+                            <div class="feature-cell featured">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Lorem ipsum dolor sit amet</div>
+                                    <div class="feature-subtext">In id cursus mi pretium tellus duis.</div>
+                                </div>
+                            </div>
+                            <div class="feature-cell">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Excepteur sint occaecat cupidatat.</div>
+                                    <div class="feature-subtext">Ut enim ad minim veniam, quis nostrud.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 5 -->
+                        <div class="table-row">
+                            <div class="category-cell">Category</div>
+                            <div class="feature-cell">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Sunt in culpa qui officia deserunt mollit.</div>
+                                    <div class="feature-subtext">Fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada</div>
+                                </div>
+                            </div>
+                            <div class="feature-cell featured">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Lorem ipsum dolor sit amet</div>
+                                    <div class="feature-subtext">In id cursus mi pretium tellus duis.</div>
+                                </div>
+                            </div>
+                            <div class="feature-cell">
+                                <div class="feature-text-block">
+                                    <div class="feature-header">Excepteur sint occaecat cupidatat.</div>
+                                    <div class="feature-subtext">Ut enim ad minim veniam, quis nostrud.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 6 -->
+                        <div class="table-row">
+                            <div class="category-cell">Category</div>
+                            <div class="feature-cell">
+                                <span class="gradient-dash">—</span>
+                            </div>
+                            <div class="feature-cell featured">
+                                <span class="checkmark">✓</span>
+                                <span class="feature-text">Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="feature-cell">
+                                <span class="custom-text">Custom</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 7 -->
+                        <div class="table-row">
+                            <div class="category-cell">Category</div>
+                            <div class="feature-cell">
+                                <span class="gradient-checkmark">✓</span>
+                                <span class="feature-text-gray">Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="feature-cell featured">
+                                <span class="checkmark">✓</span>
+                                <span class="feature-text">Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="feature-cell">
+                                <span class="custom-text">Custom</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 8 -->
+                        <div class="table-row">
+                            <div class="category-cell">Category</div>
+                            <div class="feature-cell">
+                                <span class="gradient-dash">—</span>
+                            </div>
+                            <div class="feature-cell featured">
+                                <span class="checkmark">✓</span>
+                                <span class="feature-text">Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="feature-cell">
+                                <span class="custom-text">Custom</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 9 -->
+                        <div class="table-row">
+                            <div class="category-cell">Category</div>
+                            <div class="feature-cell">
+                                <span class="gradient-checkmark">✓</span>
+                                <span class="feature-text-gray">Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="feature-cell featured">
+                                <span class="checkmark">✓</span>
+                                <span class="feature-text">Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="feature-cell">
+                                <span class="custom-text">Custom</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 10 -->
+                        <div class="table-row">
+                            <div class="category-cell">Category</div>
+                            <div class="feature-cell">
+                                <span class="gradient-checkmark">✓</span>
+                                <span class="feature-text-gray">Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="feature-cell featured">
+                                <span class="checkmark">✓</span>
+                                <span class="feature-text">Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="feature-cell">
+                                <span class="custom-text">Custom</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="article-preview">
-                        <div class="article-image">
-                            <img src="image 2.png" alt="API Integration">
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Personalized Savings Section -->
+        <section class="savings-section">
+            <div class="container">
+                <div class="savings-content">
+                    <div class="savings-text">
+                        <h2>Get Your Personalized Savings Breakdown</h2>
+                        <p>Tailored insights based on your customer base, billing behavior, and payment flows.</p>
+                        <a href="#contact" class="savings-contact-button">
+                            <span>Contact Sales</span>
+                            <img src="Contact Support Arrow.png" alt="Arrow" class="button-arrow">
+                        </a>
+                    </div>
+                    <div class="savings-benefits">
+                        <div class="benefit-item">
+                            <h3>📊 Data-backed estimates built for your business</h3>
+                            <p>See how switching to tilli can streamline operations and reduce manual overhead.</p>
                         </div>
-                        <div class="article-content">
-                            <span class="article-category">API Integrations</span>
-                            <h4>Understanding PCI DSS 4.0 Requirements for API Integrations</h4>
-                            <div class="article-author">
-                                <img src="evan peter.png" alt="Evan Peter" class="author-avatar">
-                                <span>Evan Peter</span>
+                        <div class="benefit-item">
+                            <h3>💬 Talk to our team for a deeper dive</h3>
+                            <p>We'll walk you through your results and show how to maximize value.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <h3>🚀 Implementation support when you're ready</h3>
+                            <p>Our team helps you transition with ease—whether you're scaling or just getting started.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <div class="container">
+                <div class="services-main-layout">
+                    <!-- Left Side: Four Service Cards -->
+                    <div class="services-grid">
+                        <div class="service-card goals-card">
+                            <div class="service-icon">
+                                <img src="Your goals are ours too.jpg" alt="Your goals are ours too">
                             </div>
+                            <h3>Your goals are ours too:</h3>
+                            <p>Everything we build keeps your business objectives front and center. You're never alone on this journey.</p>
+                            <a href="#learn-more" class="service-link goals-link">Learn More →</a>
+                        </div>
+                        <div class="service-card simplify-card">
+                            <div class="service-icon">
+                                <img src="Built to simplify your workday.jpg" alt="Built to simplify your workday">
+                            </div>
+                            <h3>Built to simplify your workday:</h3>
+                            <p>Forget the complexity. Nudge handles the heavy lifting so you can focus on what matters most: meaningful engagement.</p>
+                            <a href="#learn-more" class="service-link simplify-link">Learn More →</a>
+                        </div>
+                        <div class="service-card support-card">
+                            <div class="service-icon">
+                                <img src="Real support from real people.jpg" alt="Real support from real people">
+                            </div>
+                            <h3>Real support from real people:</h3>
+                            <p>Reach our team anytime—no bots, no delays, just helpful humans eager to assist you.</p>
+                            <a href="#learn-more" class="service-link support-link">Learn More →</a>
+                        </div>
+                        <div class="service-card delivery-card">
+                            <div class="service-icon">
+                                <img src="Project Delivery.jpg" alt="Project Delivery">
+                            </div>
+                            <h3>Project Delivery</h3>
+                            <p>Donec mi lorem, consequat a quam nec, pellentesque pulvinar sem. Morbi lacus magna.</p>
+                            <a href="#learn-more" class="service-link delivery-link">Learn More →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side: We've got your back content -->
+                    <div class="services-content">
+                        <div class="content-section">
+                            <h2>We've got your back. Every step of the way.</h2>
+                            <p class="content-description">Choosing tilli means choosing a partner committed to your success. We're not just another marketing tool—we're your team, dedicated to simplifying your workflow, amplifying your message, and helping you hit every goal. Whether you're just getting started or scaling fast, tilli is here to make your growth personal, achievable, and stress-free.</p>
+                            <a href="#support" class="support-button">
+                                <span>Contact Support</span>
+                                <img src="Contact Support Arrow.png" alt="Arrow" class="button-arrow">
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Three Column Links Section -->
-    <section class="three-column-section">
-        <div class="container">
-            <div class="three-column-grid">
-                <div class="column-card">
-                    <p class="column-subtitle">Quick Link</p>
-                    <h3>A Quick Link Title</h3>
-                    <ul class="column-links">
-                        <li><a href="#">Building smarter billing with tilliX <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                        <li><a href="#">How we simplified payment links <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                        <li><a href="#">Personalizing comms at scale <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                        <li><a href="#" class="blue-link">Our onboarding process <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                    </ul>
-                    <button class="view-all-btn">View All</button>
-                </div>
-
-                <div class="column-card">
-                    <p class="column-subtitle">Most visited docs</p>
-                    <h3>Popular guides</h3>
-                    <ul class="column-links">
-                        <li><a href="#">Generate your first payment link <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                        <li><a href="#">Setup recurring invoices with tilliX <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                        <li><a href="#">WhatsApp with Nudge <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                        <li><a href="#">Implementing fallback logic <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                    </ul>
-                    <button class="view-all-btn">View All</button>
-                </div>
-
-                <div class="column-card">
-                    <p class="column-subtitle">@tilliliq on GitHub</p>
-                    <h3>Popular repos</h3>
-                    <ul class="column-links">
-                        <li><a href="#">@tilliHQ/tillix-node-sdk <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                        <li><a href="#">@tilliHQ/tilliPay-js-sdk <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                        <li><a href="#">@tilliHQ/nudge-api-wrapper <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                        <li><a href="#">@tilliHQ/tilli-sandbox-tools <img src="Frame (12).png" alt="arrow" class="link-arrow"></a></li>
-                    </ul>
-                    <button class="view-all-btn">View All</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work from anywhere Section -->
-    <section class="work-anywhere-section">
-        <div class="container">
-            <h2 class="work-anywhere-title">Work from anywhere</h2>
-            <div class="work-anywhere-grid">
-                <div class="work-card">
-                    <div class="work-card-content">
-                        <img src="image 498.png" alt="Laptop" class="work-image">
-                        <div class="work-text">
-                            <h3>Nudge on Desktop</h3>
-                            <p>You can use tilli on your Mac or PC as a downloadable desktop application. Here's what you need to know 💻</p>
+        <!-- Final CTA Section -->
+        <section class="final-cta-section">
+            <div class="container">
+                <div class="final-cta-content">
+                    <h2>Lets make payments simplier, faster and smarter</h2>
+                    <p>See how tilli can streamline your operations and boost savings—starting with a quick conversation or product deep dive.</p>
+                    <div class="final-cta-actions">
+                        <div class="email-signup-large">
+                            <input type="email" placeholder="Enter email address..." class="email-input-large">
+                            <button class="signup-button-large">Sign up</button>
+                        </div>
+                        <div class="action-buttons">
+                            <a href="#contact" class="action-button primary team-button">Talk to our team now <span class="chevron">></span></a>
+                            <a href="#products" class="action-button secondary products-button">View our products <span class="chevron-white">></span></a>
                         </div>
                     </div>
-                    <a href="#" class="work-link">Sign-in to download tilliX for PC <i class="fas fa-arrow-right"></i></a>
                 </div>
+            </div>
+        </section>
 
-                <div class="work-card">
-                    <div class="work-card-content">
-                        <img src="Frame 1984078248.png" alt="Phone" class="work-image">
-                        <div class="work-text">
-                            <h3>Nudge on Mobile</h3>
-                            <p>Stay connected on the go with tilli's mobile app for iPhone and Android. Get started with our handy guide 📱</p>
+        <!-- Feature Comparison Section -->
+        <section class="comparison-section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Compare Plans</h2>
+                <p class="section-subtitle">See exactly what's included in each plan to find the perfect fit for your business needs.</p>
+                
+                <div class="comparison-table">
+                    <div class="table-header">
+                        <div>Features</div>
+                        <div>Starter</div>
+                        <div>Professional</div>
+                        <div>Enterprise</div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="feature-name">Monthly Messages</div>
+                        <div class="feature-value">100</div>
+                        <div class="feature-value">5,000</div>
+                        <div class="feature-value">Unlimited</div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="feature-name">Email Support</div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="feature-name">Priority Support</div>
+                        <div class="feature-value"><span class="feature-cross">✗</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="feature-name">Custom Branding</div>
+                        <div class="feature-value"><span class="feature-cross">✗</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="feature-name">Advanced Analytics</div>
+                        <div class="feature-value"><span class="feature-cross">✗</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="feature-name">API Access</div>
+                        <div class="feature-value"><span class="feature-cross">✗</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="feature-name">Dedicated Account Manager</div>
+                        <div class="feature-value"><span class="feature-cross">✗</span></div>
+                        <div class="feature-value"><span class="feature-cross">✗</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="feature-name">24/7 Phone Support</div>
+                        <div class="feature-value"><span class="feature-cross">✗</span></div>
+                        <div class="feature-value"><span class="feature-cross">✗</span></div>
+                        <div class="feature-value"><span class="feature-check">✓</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Find answers to common questions about our pricing and plans.</p>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Can I change plans anytime?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any billing adjustments.
                         </div>
                     </div>
-                    <a href="#" class="work-link">Sign-in to download tilliX for mobile <i class="fas fa-arrow-right"></i></a>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Is there a free trial?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! We offer a 14-day free trial for the Professional plan, and our Starter plan is free forever with basic features.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What payment methods do you accept?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for Enterprise customers.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            How does message counting work?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Each SMS, email, or notification sent counts as one message. Unused messages don't roll over to the next month, but overage is available at $0.01 per message.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Do you offer volume discounts?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, we offer custom pricing for high-volume customers. Contact our sales team to discuss your specific needs and get a tailored quote.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Can I cancel anytime?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Absolutely! There are no long-term contracts. You can cancel your subscription at any time, and you'll continue to have access until the end of your current billing period.
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Common Help Center Asks Section -->
-    <section class="help-asks-section">
-        <div class="container">
-            <h2 class="help-asks-title">Common Help Center Asks</h2>
-            <div class="help-asks-grid">
-                <div class="help-card">
-                    <h3>tilli API Quick Start Guide</h3>
-                    <p>This article is designed for developers new to the tilli API. Learn how to authenticate, make your first API call, and integrate tilli's core features into your application. We'll walk you through the basics to get you up and running quickly.</p>
-                    <a href="#" class="help-link">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="help-card">
-                    <h3>Setting Up tilli SDK (Python)</h3>
-                    <p>Integrating tilli with Python is straightforward. This guide covers installation, environment setup, and basic usage of the tilli Python SDK. We'll show you how to streamline your development process and leverage tilli's capabilities within your Python projects.</p>
-                    <a href="#" class="help-link">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="help-card">
-                    <h3>Understanding tilli Authentication</h3>
-                    <p>This article explains the different authentication methods supported by the tilli API. Learn how to generate API keys, manage permissions, and securely authenticate your requests. We'll cover best practices and common troubleshooting tips.</p>
-                    <a href="#" class="help-link">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="help-card">
-                    <h3>Advanced API Filtering: Custom Queries</h3>
-                    <p>Unlock the full potential of the tilli API by using custom query filters. This deep dive will teach you how to construct complex queries to retrieve specific data sets, optimize performance, and tailor API responses to your application's needs.</p>
-                    <a href="#" class="help-link">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="help-card">
-                    <h3>Handling tilli API Error Codes</h3>
-                    <p>We understand that dealing with API errors can be frustrating. This guide provides a comprehensive list of tilli API error codes, their meanings, and recommended solutions. Learn how to debug common issues and ensure robust error handling in your integrations.</p>
-                    <a href="#" class="help-link">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="help-card">
-                    <h3>Integrating tilli Webhooks</h3>
-                    <p>Learn how to set up and use tilli webhooks to receive real-time updates and notifications. This article covers webhook registration, payload structure, and best practices for processing webhook events in your application.</p>
-                    <a href="#" class="help-link">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="help-card">
-                    <h3>Rate Limiting and Throttling</h3>
-                    <p>Understand tilli API rate limits and how to implement proper throttling in your applications. This guide covers rate limit headers, backoff strategies, and best practices for handling quota restrictions to ensure smooth API operations.</p>
-                    <a href="#" class="help-link">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="help-card">
-                    <h3>Data Export and Reporting</h3>
-                    <p>Discover how to export your data and generate comprehensive reports using the tilli platform. This article walks through bulk data retrieval, formatting options, scheduled exports, and how to integrate reporting features into your workflow.</p>
-                    <a href="#" class="help-link">Read More <i class="fas fa-arrow-right"></i></a>
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="cta-title">Ready to Transform Your Communication?</h2>
+                <p class="cta-description">Join thousands of businesses using Tilli to streamline their customer communication and boost engagement.</p>
+                <div class="cta-buttons">
+                    <a href="#signup" class="cta-button primary">Start Free Trial</a>
+                    <a href="#demo" class="cta-button secondary">Schedule Demo</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact CTA Section -->
-    <section class="contact-cta-section">
-        <div class="container">
-            <div class="contact-cta-card">
-                <div class="cta-content">
-                    <h2>Still need help?</h2>
-                    <p>Can't find what you're looking for? Our support team is here to help you 24/7.</p>
-                    <a href="#" class="cta-button">Contact Us <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Product</h3>
-                    <ul>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Templates</a></li>
-                        <li><a href="#">Integrations</a></li>
-                    </ul>
+                    <h3>Contact Information</h3>
+                    <p>8260 Greensboro Dr, Suite 270</p>
+                    <p>McLean, VA, 22102</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Status</a></li>
-                        <li><a href="#">Community</a></li>
-                    </ul>
+                    <h3>Quick Links</h3>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms and Conditions</a>
+                    <a href="#anti-slavery">Anti-slavery & Anti-trafficking Policy</a>
                 </div>
                 <div class="footer-section">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">GDPR</a></li>
-                    </ul>
+                    <h3>Follow Us</h3>
+                    <a href="#linkedin">LinkedIn</a>
+                    <a href="#twitter">Twitter</a>
+                    <a href="#facebook">Facebook</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Website Redesign. All rights reserved.</p>
+                <p>&copy; 2025 Tilli. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Email signup functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInputs = document.querySelectorAll('.email-input, .email-input-large');
+            const signupButtons = document.querySelectorAll('.signup-button, .signup-button-large');
+            
+            signupButtons.forEach((button, index) => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const emailInput = emailInputs[index];
+                    if (emailInput && emailInput.value) {
+                        alert('Thank you for your interest! We\'ll be in touch soon.');
+                        emailInput.value = '';
+                    } else {
+                        alert('Please enter a valid email address.');
+                    }
+                });
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects and animations
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>
