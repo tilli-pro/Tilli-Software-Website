@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Tilli</title>
+    <title>Contact Us per Industry - tilli</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         * {
             margin: 0;
@@ -15,20 +16,20 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #060606;
             background-color: #ffffff;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1728px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         /* Header Styles */
-        header {
+        .header {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
@@ -47,886 +48,643 @@
         .logo {
             font-size: 2rem;
             font-weight: bold;
-            color: #2563eb;
+            color: #325ef6;
             text-decoration: none;
+            font-family: 'Sora', sans-serif;
         }
 
-        nav ul {
+        .center-links {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
 
-        nav a {
+        .center-links a {
             text-decoration: none;
-            color: #333;
+            color: #060606;
             font-weight: 500;
+            font-size: 16px;
             transition: color 0.3s ease;
         }
 
-        nav a:hover {
-            color: #2563eb;
+        .center-links a:hover {
+            color: #325ef6;
         }
 
-        /* Main Content */
-        main {
-            margin-top: 80px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #f0f4ff 0%, #e6f2ff 100%);
-            padding: 4rem 0;
-            min-height: 70vh;
+        .right-links {
             display: flex;
+            gap: 1rem;
             align-items: center;
         }
 
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text {
-            text-align: left;
-        }
-
-        .hero h1 {
-            font-family: 'Sora', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            color: #1f2937;
-        }
-
-        .hero-subheading {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.125rem;
-            max-width: 500px;
-            margin-bottom: 2rem;
-            color: #4b5563;
-            line-height: 1.6;
-        }
-
-        .hero-image {
-            text-align: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+        .pricing-btn {
+            background: #060606;
             color: white;
             padding: 12px 24px;
             border-radius: 8px;
             text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #1f2937;
-        }
-
-        .section-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .section-content p {
-            font-size: 1.125rem;
-            margin-bottom: 1.5rem;
-            color: #4b5563;
-        }
-
-        /* Values Cards Section */
-        .values-cards {
-            background-color: #fafbfc;
-            padding: 4rem 0;
-        }
-
-        .values-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .value-card-item {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
-            border: 1px solid #e5e7eb;
-            text-align: left;
-        }
-
-        .value-icon {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 1.5rem;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        .value-card-item h3 {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
-
-        .value-card-item p {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: #6b7280;
-            line-height: 1.6;
-        }
-
-        /* Mission and What We Do Sections */
-        .content-section {
-            padding: 4rem 0;
-        }
-
-        .content-section.alt {
-            background-color: #fafbfc;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .content-grid.reverse {
-            direction: rtl;
-        }
-
-        .content-grid.reverse > * {
-            direction: ltr;
-        }
-
-        .content-text {
-            padding: 1rem 0;
-        }
-
-        .content-eyebrow {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.875rem;
             font-weight: 500;
-            color: #9ca3af;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            font-size: 16px;
+            transition: background 0.3s ease;
         }
 
-        .content-title {
-            font-family: 'Sora', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 400;
-            color: #1f2937;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+        .pricing-btn:hover {
+            background: #1a1a1a;
         }
 
-        .content-description {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.125rem;
-            color: #4b5563;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .content-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: transparent;
-            color: #1f2937;
-            padding: 8px 16px;
-            border: 1px solid #d1d5db;
+        .free-trial-btn {
+            background: linear-gradient(135deg, #00b1ff 0%, #325ef6 100%);
+            color: white;
+            padding: 12px 24px;
             border-radius: 8px;
             text-decoration: none;
-            font-family: 'Inter', sans-serif;
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 16px;
+            transition: transform 0.3s ease;
         }
 
-        .content-button:hover {
-            background: #f9fafb;
-            border-color: #9ca3af;
+        .free-trial-btn:hover {
+            transform: translateY(-2px);
         }
 
-        .content-image {
-            text-align: center;
+        /* Main Content */
+        main {
+            margin-top: 190px;
+            min-height: calc(100vh - 190px);
         }
 
-        .content-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 16px;
-        }
-
-        /* Timeline Evolution Section */
-        .evolution-section {
-            padding: 5rem 0;
-            background-color: #fafbfc;
-        }
-
-        .evolution-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-            align-items: flex-start;
-        }
-
-        .evolution-title {
-            font-family: 'Sora', sans-serif;
-            font-size: 3rem;
-            font-weight: 400;
-            color: #1f2937;
-            line-height: 1.2;
-        }
-
-        .evolution-description {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.125rem;
-            color: #4b5563;
-            line-height: 1.6;
-        }
-
-        .evolution-eyebrow {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #9ca3af;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .timeline-navigation {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .nav-arrow {
-            width: 40px;
-            height: 40px;
-            border: 1px solid #d1d5db;
-            border-radius: 50%;
-            background: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .nav-arrow:hover {
-            border-color: #9ca3af;
-            background: #f9fafb;
-        }
-
-        .timeline-container {
+        /* Hero Section */
+        .hero-section {
+            background: #ffffff;
+            padding: 5rem 0 8rem 0;
             position: relative;
             overflow: hidden;
-            height: 400px;
         }
 
-        .timeline-track {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            transition: transform 0.6s ease;
-        }
-
-        .timeline-line {
+        .hero-background {
             position: absolute;
-            top: 50%;
+            top: 0;
             left: 0;
-            right: 0;
-            height: 2px;
-            background: #d1d5db;
-            transform: translateY(-50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .blob-left {
+            position: absolute;
+            top: 50px;
+            left: 0px;
+            width: 750px;
+            height: 750px;
+            opacity: 1;
             z-index: 1;
         }
 
-        .timeline-years {
-            display: flex;
-            align-items: center;
-            gap: 8rem;
+        .blob-right {
+            position: absolute;
+            top: 5px;
+            left: 580px;
+            width: 500px;
+            height: 500px;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        /* Hero Content Layout */
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
             position: relative;
             z-index: 2;
         }
 
-        .timeline-year {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 300px;
+        .hero-left {
+            padding-right: 2rem;
         }
 
-        .year-badge {
-            background: white;
-            border: 2px solid #d1d5db;
-            border-radius: 25px;
-            padding: 8px 20px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #6b7280;
+        .hero-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 80px;
+            font-weight: 400;
             margin-bottom: 2rem;
-            transition: all 0.3s ease;
+            line-height: 1.1;
+            background: linear-gradient(225deg, #325ef6 5%, #000000 30%, #000000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
         }
 
-        .year-badge.active {
-            background: #3b82f6;
-            border-color: #3b82f6;
-            color: white;
-            transform: scale(1.1);
-        }
-
-        .milestone-info {
-            text-align: center;
-            opacity: 1;
-            transition: all 0.3s ease;
-        }
-
-        .milestone-title {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 400;
-            color: #1f2937;
-            margin-bottom: 0.75rem;
-        }
-
-        .milestone-description {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            color: #6b7280;
-            line-height: 1.5;
-        }
-
-        .milestone-image {
-            width: 100%;
-            max-width: 280px;
-            height: 180px;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-            background: #f3f4f6;
-        }
-
-        .milestone-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Join Us Section */
-        .join-us-section {
-            padding: 5rem 0;
-            background-color: white;
-        }
-
-        .join-us-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 4rem;
-            gap: 2rem;
-        }
-
-        .join-us-title {
-            font-family: 'Sora', sans-serif;
-            font-size: 3rem;
-            font-weight: 400;
-            color: #1f2937;
-            line-height: 1.2;
-            max-width: 600px;
-        }
-
-        .open-roles-button {
-            background: transparent;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            padding: 12px 20px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            color: #1f2937;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .open-roles-button:hover {
-            background: #f9fafb;
-            border-color: #9ca3af;
-        }
-
-        .join-us-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .join-card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 3rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .join-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-title {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
-
-        .card-description {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: #6b7280;
+        .hero-description {
+            font-size: 20px;
+            margin-bottom: 2rem;
+            color: #060606;
             line-height: 1.6;
-            margin-bottom: 2rem;
         }
 
-        .card-button {
-            background: transparent;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            padding: 10px 16px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            color: #1f2937;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
+        .demo-description {
+            font-size: 16px;
+            margin-bottom: 3rem;
+            color: #060606;
+            line-height: 1.6;
         }
 
-        .card-button:hover {
-            background: #f9fafb;
-            border-color: #9ca3af;
-        }
-
-        /* Leadership Team */
-        .leadership-header {
+        .demo-content {
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .demo-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .demo-text {
+            flex: 1;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
             align-items: center;
             margin-bottom: 3rem;
         }
 
-        .hiring-button {
-            background: #60a5fa;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
+        .btn-products {
+            background: white;
+            color: #000000;
+            border: 2px solid rgba(227, 227, 227, 0.2);
+            border-radius: 50px;
             text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
             font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 196px;
+            height: 47px;
+            position: relative;
+        }
+
+        .btn-products::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #5593F5 50%, transparent 100%);
+            border-radius: 50px;
+            z-index: 2;
+        }
+
+        .btn-products:hover {
+            background: #060606;
+            color: white;
+        }
+
+        .btn-demo {
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 196px;
+            height: 47px;
+        }
+
+        .btn-demo:hover {
+            transform: translateY(-2px);
+        }
+
+        .existing-customer {
+            font-size: 16px;
+            color: #060606;
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            background: white;
+            padding: 0;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #060606;
+            margin-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 12px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #060606;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #325ef6;
+            box-shadow: 0 0 0 3px rgba(50, 94, 246, 0.1);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .phone-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .country-select {
+            flex: 0 0 80px;
+        }
+
+        .phone-number {
+            flex: 1;
+        }
+
+        /* Services Section */
+        .services-section {
+            margin: 2rem 0;
+        }
+
+        .services-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #060606;
+            margin-bottom: 1rem;
+        }
+
+        .services-checkboxes {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .checkbox-group {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            transition: background 0.3s ease;
         }
 
-        .hiring-button:hover {
-            background: #3b82f6;
-        }
-
-        .leadership-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .team-member {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
+        .checkbox-input {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 4px;
+            appearance: none;
+            cursor: pointer;
             position: relative;
-            text-align: center;
+            transition: all 0.3s ease;
         }
 
-        .team-member:hover {
-            transform: translateY(-8px);
-            background: white;
-            box-shadow: 0 20px 40px rgba(126, 147, 221, 0.2);
-            border: 2px solid;
-            border-image: linear-gradient(135deg, #8BACE8 7%, #BDD6F6 16%, #F4F4F4 52%, #F4F4F4 70%, #BDD6F6 91%, #94BEF4 99%) 1;
-            border-radius: 20px;
+        .checkbox-input:checked {
+            background: linear-gradient(135deg, #00b1ff 0%, #325ef6 100%);
+            border-color: #325ef6;
         }
 
-        .member-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            overflow: hidden;
-            background: #f3f4f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .member-name {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 0.5rem;
-        }
-
-        .member-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            color: #6b7280;
-            font-weight: 400;
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-
-        .linkedin-button {
+        .checkbox-input:checked::after {
+            content: '✓';
             position: absolute;
-            bottom: 1.5rem;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            background: #0077b5;
+            transform: translate(-50%, -50%);
             color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .checkbox-label {
+            font-size: 16px;
+            color: #060606;
+            cursor: pointer;
+        }
+
+        /* Validation Section */
+        .validation-section {
+            margin: 2rem 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        .validation-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #060606;
+            margin-bottom: 1rem;
+        }
+
+        .validation-text {
+            font-size: 16px;
+            color: #060606;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .validation-checkboxes {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            font-size: 18px;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .team-member:hover .linkedin-button {
-            opacity: 1;
+        .validation-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
         }
 
-        .linkedin-button:hover {
-            background: #005885;
+        .validation-checkbox input {
+            margin-top: 2px;
         }
 
-        /* Quote Section */
-        .quote-section {
-            background: white;
-            padding: 5rem 0;
-            text-align: center;
+        .validation-checkbox label {
+            font-size: 16px;
+            color: #060606;
+            line-height: 1.5;
         }
 
-        .quote-text {
-            font-family: 'Sora', sans-serif;
-            font-size: 3rem;
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+        .gradient-link {
             background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            color: transparent;
+            text-decoration: underline;
         }
 
-        .quote-subheading {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 400;
-            color: #4b5563;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
+        .recaptcha-section {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
         }
 
-        .story-title {
-            font-family: 'Sora', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 400;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 2rem;
-        }
-
-        /* Our Story Section */
-        .story-section {
-            background-color: #f8fafc;
-        }
-
-        .story-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .story-content p {
-            font-size: 1.125rem;
-            margin-bottom: 1.5rem;
-            color: #374151;
-            text-align: left;
-        }
-
-        /* Looking Ahead Section */
-        .looking-ahead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* Submit Button */
+        .submit-btn {
+            background: linear-gradient(135deg, #00b1ff 0%, #325ef6 100%);
             color: white;
-        }
-
-        .looking-ahead .section-title {
-            color: white;
-        }
-
-        .looking-ahead p {
-            color: rgba(255, 255, 255, 0.95);
-        }
-
-        /* Values Section */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .value-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #2563eb;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
             transition: transform 0.3s ease;
+            width: auto;
+            margin-top: 2rem;
+            align-self: center;
         }
 
-        .value-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .value-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
-
-        .value-description {
-            font-size: 1rem;
-            color: #4b5563;
-            line-height: 1.6;
+        .submit-btn:hover {
+            transform: translateY(-2px);
         }
 
         /* Footer */
-        footer {
-            background-color: #1f2937;
+        .footer {
+            background-color: #060606;
             color: white;
-            padding: 3rem 0 2rem;
+            padding: 4rem 0 2rem;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer-section h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: #f9fafb;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: white;
         }
 
-        .footer-section p,
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
         .footer-section a {
             color: #d1d5db;
             text-decoration: none;
-            margin-bottom: 0.5rem;
-            display: block;
+            font-size: 14px;
+            transition: color 0.3s ease;
         }
 
         .footer-section a:hover {
-            color: #60a5fa;
+            color: #00b1ff;
+        }
+
+        .headquarters {
+            margin-bottom: 2rem;
+        }
+
+        .headquarters h3 {
+            font-size: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .headquarters p {
+            font-size: 14px;
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        .company-description {
+            max-width: 500px;
+            font-size: 16px;
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .footer-btn:hover {
+            background: white;
+            color: #060606;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #00b1ff;
         }
 
         .footer-bottom {
-            border-top: 1px solid #374151;
-            padding-top: 1rem;
-            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-size: 12px;
             color: #9ca3af;
         }
 
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            font-size: 12px;
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #00b1ff;
+        }
+
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 60px;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 3rem;
+            }
+            
+            .hero-left {
+                padding-right: 0;
                 text-align: center;
             }
-
-            .hero-text {
+            
+            .hero-title {
+                font-size: 40px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                justify-content: center;
+            }
+            
+            .center-links {
+                display: none;
+            }
+            
+            .right-links {
+                gap: 0.5rem;
+            }
+            
+            .services-checkboxes {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
                 text-align: center;
             }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subheading {
-                font-size: 1rem;
-                max-width: 100%;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .leadership-header {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-
-            .values-cards-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .content-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .content-grid.reverse {
-                direction: ltr;
-            }
-
-            .content-title {
-                font-size: 2rem;
-            }
-
-            .quote-text {
-                font-size: 2rem;
-            }
-
-            .quote-subheading {
-                font-size: 1rem;
-            }
-
-            .story-title {
-                font-size: 2rem;
-            }
-
-            .evolution-header {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .evolution-title {
-                font-size: 2rem;
-            }
-
-            .timeline-slide {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .join-us-header {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .join-us-title {
-                font-size: 2rem;
-            }
-
-            .join-us-cards {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .leadership-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .values-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
 
@@ -934,349 +692,201 @@
             .container {
                 padding: 0 15px;
             }
-
-            .hero {
-                padding: 2rem 0;
+            
+            .hero-title {
+                font-size: 32px;
             }
-
-            .section {
-                padding: 2rem 0;
+            
+            .hero-content {
+                gap: 2rem;
             }
-
-            .leadership-grid {
-                grid-template-columns: 1fr;
+            
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+            
+            .phone-input {
+                flex-direction: column;
                 gap: 1rem;
             }
-
-            .timeline-slide {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .team-member,
-            .value-card {
-                padding: 1.5rem;
+            
+            .country-select {
+                flex: 1;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">Tilli</a>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#industries">Industries</a></li>
-                        <li><a href="#company">Company</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                <a href="#" class="logo">tilli</a>
+                <nav class="center-links">
+                    <a href="#products">Products</a>
+                    <a href="#services">Services</a>
+                    <a href="#industries">Industries</a>
+                    <a href="#developers">Developers</a>
+                    <a href="#resources">Resources</a>
                 </nav>
+                <div class="right-links">
+                    <a href="#pricing" class="pricing-btn">Pricing</a>
+                    <a href="#trial" class="free-trial-btn">Free Trial</a>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
+        <!-- Hero Section with Contact Form -->
+        <section class="hero-section">
+            <div class="hero-background">
+                <img src="left-blob.png" alt="" class="blob-left">
+                <img src="right-blob.png" alt="" class="blob-right">
+            </div>
             <div class="container">
                 <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Powering the Future of Customer Communication</h1>
-                        <p class="hero-subheading">tilli is transforming how businesses connect with people—making every payment, reminder, and message seamless, secure, and human.</p>
-                        <a href="#contact" class="cta-button">Talk to our team now</a>
-                    </div>
-                    <div class="hero-image">
-                        <img src="hero-image.jpg" alt="Business professionals working together" id="hero-img">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Values Cards Section -->
-        <section class="values-cards">
-            <div class="container">
-                <div class="values-cards-grid">
-                    <div class="value-card-item">
-                        <div class="value-icon" style="background: #ecf7ff; color: #2563eb;">
-                            🌍
-                        </div>
-                        <h3>Connected.</h3>
-                        <p>Built to work across industries, platforms, and partners—tilli connects everything in one place.</p>
-                    </div>
-                    <div class="value-card-item">
-                        <div class="value-icon" style="background: #f0fdf4; color: #059669;">
-                            🔒
-                        </div>
-                        <h3>Secure.</h3>
-                        <p>Privacy and protection are built into every interaction, so your data stays yours.</p>
-                    </div>
-                    <div class="value-card-item">
-                        <div class="value-icon" style="background: #fef2f2; color: #dc2626;">
-                            🧠
-                        </div>
-                        <h3>Thoughtful.</h3>
-                        <p>Every detail is designed for clarity, usability, and real-world impact.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Our Mission Section -->
-        <section class="content-section">
-            <div class="container">
-                <div class="content-grid">
-                    <div class="content-text">
-                        <div class="content-eyebrow">OUR MISSION</div>
-                        <h2 class="content-title">We're building better connections</h2>
-                        <p class="content-description">We believe communication should move business forward. That's why tilli exists: to help organizations streamline billing, reach customers faster, and automate the right messages at the right time, without technical overhead.</p>
-                        <p class="content-description">Whether it's automating collections or improving customer satisfaction, we're here to make every interaction count.</p>
-                        <a href="#products" class="content-button">
-                            Our products
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M7 17L17 7"/>
-                                <path d="M7 7h10v10"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="content-image">
-                        <img src="mission-image.jpg" alt="Team collaborating and high-fiving">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- What We Do Section -->
-        <section class="content-section alt">
-            <div class="container">
-                <div class="content-grid">
-                    <div class="content-image">
-                        <img src="what-we-do-image.jpg" alt="Team working together in office">
-                    </div>
-                    <div class="content-text">
-                        <div class="content-eyebrow">WHAT WE DO</div>
-                        <h2 class="content-title">More than messaging, communication that drives outcomes</h2>
-                        <p class="content-description">From utility providers to public sector giants, tilli gives teams the tools they need to automate communication around billing, payments, and account updates, without relying on developers or third-party integrations.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Leadership Team Section -->
-        <section class="section">
-            <div class="container">
-                <div class="leadership-header">
-                    <h2 class="section-title" style="margin-bottom: 0;">Leadership Team</h2>
-                    <a href="#careers" class="hiring-button">
-                        We're Hiring
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M7 17L17 7"/>
-                            <path d="M7 7h10v10"/>
-                        </svg>
-                    </a>
-                </div>
-                <div class="leadership-grid">
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="ali-saberi.jpg" alt="Ali Saberi">
-                        </div>
-                        <h3 class="member-name">Ali Saberi</h3>
-                        <p class="member-title">Founder & Chief<br>Executive Officer</p>
-                        <a href="#linkedin" class="linkedin-button">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="raja-vemuri.jpg" alt="Raja Gopal Vemuri">
-                        </div>
-                        <h3 class="member-name">Raja Gopal Vemuri</h3>
-                        <p class="member-title">Chief Technology<br>Officer</p>
-                        <a href="#linkedin" class="linkedin-button">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="shahid-husain.jpg" alt="Shahid Husain">
-                        </div>
-                        <h3 class="member-name">Shahid Husain</h3>
-                        <p class="member-title">Chief Operating<br>Officer</p>
-                        <a href="#linkedin" class="linkedin-button">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="shabbir-gilani.jpg" alt="Shabbir Gilani">
-                        </div>
-                        <h3 class="member-name">Shabbir Gilani</h3>
-                        <p class="member-title">Chief Revenue<br>Officer</p>
-                        <a href="#linkedin" class="linkedin-button">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Timeline Evolution Section -->
-        <section class="evolution-section">
-            <div class="container">
-                <div class="evolution-header">
-                    <div>
-                        <div class="evolution-eyebrow">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                            </svg>
-                            OUR TEAM
-                        </div>
-                        <h2 class="evolution-title">Our endless evolution</h2>
-                    </div>
-                    <div class="evolution-description">
-                        For over two decades, we have evolved from a consulting firm to a leading force in payment automation and financial technology. Every milestone reflects our commitment to innovation, compliance, and seamless business operations. Explore the key moments that shaped tilliX into the trusted platform it is today.
-                    </div>
-                </div>
-
-                <div class="timeline-navigation">
-                    <button class="nav-arrow" id="prevBtn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15,18 9,12 15,6"/>
-                        </svg>
-                    </button>
-                    <button class="nav-arrow" id="nextBtn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9,18 15,12 9,6"/>
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="timeline-container">
-                    <div class="timeline-track" id="timelineTrack">
-                        <div class="timeline-line"></div>
-                        <div class="timeline-years">
-                            <div class="timeline-year" data-year="2003">
-                                <div class="year-badge">2003</div>
-                                <div class="milestone-info">
-                                    <div class="milestone-image">
-                                        <img src="timeline-2003.jpg" alt="Atrinova founding">
-                                    </div>
-                                    <h3 class="milestone-title">Atrinova</h3>
-                                    <p class="milestone-description">Foundation of Atrinova, an enterprise SAP consulting firm</p>
-                                </div>
-                            </div>
-
-                            <div class="timeline-year active" data-year="2023">
-                                <div class="year-badge active">2023</div>
-                                <div class="milestone-info">
-                                    <div class="milestone-image">
-                                        <img src="timeline-2023.jpg" alt="tilliPay Beacon and TSP">
-                                    </div>
-                                    <h3 class="milestone-title">tilliPay Beacon and TSP</h3>
-                                    <p class="milestone-description">B2b supplier payout solution launched, and tilli gets officially recognized as a Technology Service Provider (TSP) for BBPS Biller Onboarding Services</p>
-                                </div>
-                            </div>
-
-                            <div class="timeline-year" data-year="2022">
-                                <div class="year-badge">2022</div>
-                                <div class="milestone-info">
-                                    <div class="milestone-image">
-                                        <img src="timeline-2022.jpg" alt="Rebranded as tilli">
-                                    </div>
-                                    <h3 class="milestone-title">Rebranded as tilli Software</h3>
-                                    <p class="milestone-description">New office inaugurated in India and Nudge and tilliPay get a soft launch</p>
-                                </div>
-                            </div>
-
-                            <div class="timeline-year" data-year="2021">
-                                <div class="year-badge">2021</div>
-                                <div class="milestone-info">
-                                    <h3 class="milestone-title">PayFac Approval & More</h3>
-                                    <p class="milestone-description">AM/ OFAC qualifications, PCI- DSS, and ISO 8583/ISO - 2022 compliance. tilliPay GPS approval by SAP on HANA Cloud</p>
+                    <!-- Left Side: Content -->
+                    <div class="hero-left">
+                        <h1 class="hero-title">Let's Find the Right Solution for Your Business</h1>
+                        <p class="hero-description">Tell us a little about your business, and our team will help you find the best tilli product for your needs.</p>
+                        
+                        <div class="demo-description">
+                            <div class="demo-content">
+                                <img src="demo-icon.png" alt="Demo icon" class="demo-icon">
+                                <div class="demo-text">
+                                    <p><strong>Interested in a demo?</strong><br>
+                                    Discover how tilli can streamline your operations, simplify billing and unlock better payment experiences tailored to your business.</p>
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="hero-buttons">
+                            <a href="#products" class="btn-products">View our Products</a>
+                            <a href="#demo" class="btn-demo">
+                                <span>Book a Demo</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 3L11 8L6 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <p class="existing-customer">Are you an existing customer? <a href="#contact" style="background: linear-gradient(135deg, #448DE6 0%, #98B2E9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; text-decoration: underline;">Contact us</a> for inquiries about your products</p>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Quote Section -->
-        <section class="quote-section">
-            <div class="container">
-                <h2 class="quote-text">"A team driven by clarity, empathy, and execution."</h2>
-                <p class="quote-subheading">We're builders, thinkers, and collaborators. Committed to making communication smarter for everyone.</p>
-            </div>
-        </section>
-
-        <!-- Our Story Section -->
-        <section class="section story-section">
-            <div class="container">
-                <h2 class="story-title">Our Story</h2>
-                <div class="story-content">
-                    <p>Our CEO, Ali Saberi, founded Atrinova in 2003 as an enterprise SAP consulting firm for large businesses in need of SAP-certified developers for solution implementation and support. The high-caliber team dealt with a variety of clients and issues, granting them vast insight into unfulfilled needs in the consumer communication and payment processing spaces.</p>
-                    
-                    <p>Armed with this experience and information, the idea of Utilli began to coalesce. In 2013, Utilli acquired Atrinova and with it, all of its seasoned roster of over 40 full-time employees and over 200 off-shore and near-shore contractors. The dedication to building better solutions for the future of global customer communication has been in the DNA of the company ever since.</p>
-                    
-                    <p>In early 2022, Utilli rebranded to Tilli to more aptly describe our expanding suite of customer communication and payment solutions. Tilli means, "might in battle," and we are mighty, indeed.</p>
-                    
-                    <p>Since its beginnings, Tilli has become a massive player in customer communications and payment processing. We're writing the future story for the globally connected business world through grit, determination, and passion.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Join Us Section -->
-        <section class="join-us-section">
-            <div class="container">
-                <div class="join-us-header">
-                    <h2 class="join-us-title">Join us and shape the future of modern business tools.</h2>
-                    <a href="#careers" class="open-roles-button">
-                        See Our Open Roles
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M7 17L17 7"/>
-                            <path d="M7 7h10v10"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="join-us-cards">
-                    <div class="join-card">
-                        <h3 class="card-title">Customer stories</h3>
-                        <p class="card-description">Find out why the fastest growing businesses choose tilli</p>
-                        <a href="#stories" class="card-button">
-                            Talk to our team now
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M7 17L17 7"/>
-                                <path d="M7 7h10v10"/>
-                            </svg>
-                        </a>
+                    <!-- Right Side: Contact Form -->
+                    <div class="contact-section">
+                        <div class="container">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+                        </div>
                     </div>
-                    
-                    <div class="join-card">
-                        <h3 class="card-title">Stay in the loop</h3>
-                        <p class="card-description">Explore insights on smarter payments, customer engagement, and operational automation—straight from the tilli team.</p>
-                        <a href="#insights" class="card-button">
-                            Read the latest
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M7 17L17 7"/>
-                                <path d="M7 7h10v10"/>
-                            </svg>
-                        </a>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Company Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="Company email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="website" class="form-label">Company website</label>
+                            <input type="url" id="website" name="website" class="form-input" placeholder="https://address.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone number</label>
+                            <div class="phone-input">
+                                <select class="form-select country-select" name="country">
+                                    <option value="US">US</option>
+                                    <option value="CA">CA</option>
+                                    <option value="UK">UK</option>
+                                </select>
+                                <input type="tel" id="phone" name="phone" class="form-input phone-number" placeholder="Phone number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product" class="form-label">Primary Product of Interest</label>
+                            <select id="product" name="product" class="form-select" required>
+                                <option value="">Select a product</option>
+                                <option value="tilliX">tilliX</option>
+                                <option value="tilliPay">tilliPay</option>
+                                <option value="Nudge">Nudge</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="zipcode" class="form-label">Zipcode</label>
+                            <input type="text" id="zipcode" name="zipcode" class="form-input" placeholder="Zipcode">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="industry" class="form-label">Company Industry</label>
+                            <select id="industry" name="industry" class="form-select" required>
+                                <option value="">Company Industry</option>
+                                <option value="Banking & Finance">Banking & Finance</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Manufacturing">Manufacturing</option>
+                                <option value="Retail">Retail</option>
+                                <option value="Education">Education</option>
+                                <option value="Government">Government</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Telecommunications">Telecommunications</option>
+                                <option value="Insurance">Insurance</option>
+                                <option value="Real Estate">Real Estate</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="message" class="form-label">How can we help?</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project..." required></textarea>
+                        </div>
+                    </div>
+
+
+                    <!-- Validation Section -->
+                    <div class="validation-section">
+                        <div class="validation-title">Validation</div>
+                        <p class="validation-text">Before we move forward, please take a moment to review our <a href="#brand-guidelines" class="gradient-link">Brand Guidelines</a> and <a href="#code-of-conduct" class="gradient-link">Partner Code of Conduct</a>. These ensure consistency, transparency, and trust across our growing partner network.</p>
+                        
+                        <div class="validation-checkboxes">
+                            <div class="validation-checkbox">
+                                <input type="checkbox" id="brandGuidelines" name="brandGuidelines" class="checkbox-input" required>
+                                <label for="brandGuidelines">I've reviewed and agree to tilli's <a href="#brand-guidelines" class="gradient-link">Brand Guidelines</a>.</label>
+                            </div>
+                            <div class="validation-checkbox">
+                                <input type="checkbox" id="codeOfConduct" name="codeOfConduct" class="checkbox-input" required>
+                                <label for="codeOfConduct">I agree to follow tilli's <a href="#code-of-conduct" class="gradient-link">Partner Code of Conduct</a>.</label>
+                            </div>
+                        </div>
+                        
+                        <!-- reCAPTCHA -->
+                        <div class="recaptcha-section">
+                            <div class="g-recaptcha" data-sitekey="your-site-key-here"></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1284,80 +894,165 @@
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <p>8260 Greensboro Dr, Suite 270</p>
-                    <p>McLean, VA, 22102</p>
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#nudge">Nudge</a></li>
+                        <li><a href="#tillix">tilliX</a></li>
+                        <li><a href="#tillipay">tilliPay</a></li>
+                    </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <a href="#privacy">Privacy Policy</a>
-                    <a href="#terms">Terms and Conditions</a>
-                    <a href="#anti-slavery">Anti-slavery & Anti-trafficking Policy</a>
+                    <h3>Industries</h3>
+                    <ul>
+                        <li><a href="#utilities">Utilities</a></li>
+                        <li><a href="#banking">Banking & Finance</a></li>
+                        <li><a href="#telecommunications">Telecommunications</a></li>
+                        <li><a href="#industries">View All</a></li>
+                    </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <a href="#linkedin">LinkedIn</a>
-                    <a href="#twitter">Twitter</a>
-                    <a href="#facebook">Facebook</a>
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#demo">Request a Demo</a></li>
+                        <li><a href="#trial">Start a Free Trial</a></li>
+                        <li><a href="#compare">Compare Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
                 </div>
             </div>
+            
+            <div class="headquarters">
+                <h3>Headquarters</h3>
+                <p>8260 Greensboro Dr,<br>Suite 270, McLean VA, 22102</p>
+            </div>
+            
+            <div class="company-description">
+                <p>We're devoted to creating a global consumer environment that feels more personalized and connected than ever before. Through cloud-based, customer-centric tools, we're revolutionizing CPaaS and payment processing landscapes to create avenues that help businesses and people connect, collaborate, and make payments in real-time.</p>
+                <a href="#about" style="color: #00b1ff;">More about us</a>
+            </div>
+            
+            <div class="footer-buttons">
+                <a href="#demo" class="footer-btn">Request a Demo</a>
+                <a href="#trial" class="footer-btn">Start a Free Trial</a>
+                <a href="#contact" class="footer-btn">Contact</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#youtube" class="social-link">📺</a>
+                <a href="#linkedin" class="social-link">💼</a>
+                <a href="#twitter" class="social-link">🐦</a>
+                <a href="#facebook" class="social-link">📘</a>
+                <a href="#instagram" class="social-link">📸</a>
+            </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2025 Tilli. All rights reserved.</p>
+                <p class="copyright">© 2024 — Copyright All Rights reserved</p>
+                <div class="footer-links">
+                    <a href="#terms">Terms</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#cookies">Cookies</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Timeline Carousel functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const track = document.getElementById('timelineTrack');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const years = document.querySelectorAll('.timeline-year');
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            const yearData = ['2003', '2023', '2022', '2021'];
-            let currentIndex = 1; // Start with 2023 active (index 1)
+            // Get form data
+            const formData = new FormData(this);
+            const formObject = {};
             
-            function updateTimeline() {
-                // Remove active class from all years
-                years.forEach(year => {
-                    year.classList.remove('active');
-                    year.querySelector('.year-badge').classList.remove('active');
-                });
-                
-                // Add active class to current year
-                years[currentIndex].classList.add('active');
-                years[currentIndex].querySelector('.year-badge').classList.add('active');
-                
-                // Calculate transform to center the active year
-                const offset = currentIndex * -8; // 8rem gap between years
-                track.style.transform = `translateX(${offset}rem)`;
-                
-                // Update button states
-                prevBtn.classList.toggle('disabled', currentIndex === 0);
-                nextBtn.classList.toggle('disabled', currentIndex === years.length - 1);
+            for (let [key, value] of formData.entries()) {
+                if (key === 'services[]') {
+                    if (!formObject.services) formObject.services = [];
+                    formObject.services.push(value);
+                } else {
+                    formObject[key] = value;
+                }
             }
             
-            prevBtn.addEventListener('click', function() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateTimeline();
+            // Simple validation
+            const requiredFields = ['name', 'email', 'product', 'industry', 'message'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value.trim()) {
+                    input.style.borderColor = '#ef4444';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = '#e5e7eb';
                 }
             });
             
-            nextBtn.addEventListener('click', function() {
-                if (currentIndex < years.length - 1) {
-                    currentIndex++;
-                    updateTimeline();
+            // Check validation checkboxes
+            const brandGuidelines = document.getElementById('brandGuidelines');
+            const codeOfConduct = document.getElementById('codeOfConduct');
+            
+            if (!brandGuidelines.checked || !codeOfConduct.checked) {
+                alert('Please agree to the Brand Guidelines and Code of Conduct to continue.');
+                return;
+            }
+            
+            if (isValid) {
+                // Simulate form submission
+                const submitBtn = document.querySelector('.submit-btn');
+                submitBtn.textContent = 'Submitting...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Thank you for your submission! Our team will contact you soon.');
+                    this.reset();
+                    submitBtn.textContent = 'Submit';
+                    submitBtn.disabled = false;
+                }, 2000);
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
+        });
+
+        // Enhanced form interactions
+        document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.style.borderColor = '#325ef6';
+            });
             
-            // Initialize
-            updateTimeline();
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+                if (!this.value) {
+                    this.style.borderColor = '#e5e7eb';
+                }
+            });
         });
     </script>
 </body>
