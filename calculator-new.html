@@ -267,21 +267,30 @@
 
         .form-group input[type="text"],
         .form-group input[type="number"],
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 12px 16px;
             border: 1px solid #d1d5db;
             border-radius: 8px;
             font-size: 1rem;
             transition: border-color 0.3s ease;
+            font-family: 'Inter', sans-serif;
         }
 
         .form-group input:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
 
         /* Industry Grid */
         .industry-grid {
@@ -486,7 +495,8 @@
             text-align: center;
         }
 
-        .input-with-external-prefix input {
+        .input-with-external-prefix input,
+        .input-with-external-prefix textarea {
             flex: 1;
             padding: 12px 16px;
             border: 1px solid #d1d5db;
@@ -1005,7 +1015,7 @@
 
                         <div class="hero-buttons-calculator">
                             <a href="index.html#nudge" class="btn-primary-calculator">View our Products <i class="fas fa-arrow-right"></i></a>
-                            <a href="contact.html" class="btn-secondary-calculator">Book a Demo <i class="fas fa-arrow-right"></i></a>
+                            <a href="book-demo.html" class="btn-secondary-calculator">Book a Demo <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     
@@ -1078,21 +1088,21 @@
                                 <label>Total Number of Current Customer Accounts <i class="fas fa-info-circle info-icon"></i></label>
                                 <div class="radio-group">
                                     <div class="radio-option">
-                                        <input type="radio" id="accounts-100" name="customer-accounts" value="100">
-                                        <label for="accounts-100">&lt;100</label>
+                                        <input type="radio" id="accounts-10k" name="customer-accounts" value="10000">
+                                        <label for="accounts-10k">10K</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" id="accounts-900" name="customer-accounts" value="900">
-                                        <label for="accounts-900">100-900</label>
+                                        <input type="radio" id="accounts-2m" name="customer-accounts" value="2000000">
+                                        <label for="accounts-2m">2M</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" id="accounts-3000" name="customer-accounts" value="3000" checked>
-                                        <label for="accounts-3000">900-3,000</label>
+                                        <input type="radio" id="accounts-5m" name="customer-accounts" value="5000000" checked>
+                                        <label for="accounts-5m">5M</label>
                                     </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="accounts-3000plus" name="customer-accounts" value="3000+">
-                                        <label for="accounts-3000plus">3,000&gt;</label>
-                                    </div>
+                                </div>
+                                <div class="form-group" style="margin-top: 16px;">
+                                    <label style="font-size: 0.875rem; color: #64748b; font-weight: 400;">Or enter custom number of customer accounts:</label>
+                                    <textarea id="custom-customer-accounts" name="custom-customer-accounts" placeholder="Enter customer accounts count (e.g., 1000000, 5M, etc.)" rows="3"></textarea>
                                 </div>
                             </div>
 
@@ -1100,21 +1110,21 @@
                                 <label>Number of Emails Available <i class="fas fa-info-circle info-icon"></i></label>
                                 <div class="radio-group">
                                     <div class="radio-option">
-                                        <input type="radio" id="emails-100" name="emails-available" value="100">
-                                        <label for="emails-100">&lt;100</label>
+                                        <input type="radio" id="emails-50k" name="emails-available" value="50000">
+                                        <label for="emails-50k">50K</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" id="emails-900" name="emails-available" value="900">
-                                        <label for="emails-900">100-900</label>
+                                        <input type="radio" id="emails-1m" name="emails-available" value="1000000" checked>
+                                        <label for="emails-1m">1M</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" id="emails-3000" name="emails-available" value="3000" checked>
-                                        <label for="emails-3000">900-3,000</label>
+                                        <input type="radio" id="emails-5m" name="emails-available" value="5000000">
+                                        <label for="emails-5m">5M</label>
                                     </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="emails-3000plus" name="emails-available" value="3000+">
-                                        <label for="emails-3000plus">3,000&gt;</label>
-                                    </div>
+                                </div>
+                                <div class="form-group" style="margin-top: 16px;">
+                                    <label style="font-size: 0.875rem; color: #64748b; font-weight: 400;">Or enter custom number of emails available:</label>
+                                    <textarea id="custom-emails-available" name="custom-emails-available" placeholder="Enter emails available count (e.g., 1000000, 2M, etc.)" rows="3"></textarea>
                                 </div>
                             </div>
 
@@ -1158,23 +1168,9 @@
 
                             <div class="form-group">
                                 <label>Monthly Payments <i class="fas fa-info-circle info-icon"></i></label>
-                                <div class="radio-group">
-                                    <div class="radio-option">
-                                        <input type="radio" id="payments-100" name="monthly-payments" value="100">
-                                        <label for="payments-100">&lt;100</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="payments-900" name="monthly-payments" value="900">
-                                        <label for="payments-900">100-900</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="payments-3000" name="monthly-payments" value="3000" checked>
-                                        <label for="payments-3000">900-3,000</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="payments-3000plus" name="monthly-payments" value="3000+">
-                                        <label for="payments-3000plus">3,000&gt;</label>
-                                    </div>
+                                <div class="input-with-external-prefix">
+                                    <span class="external-prefix">$</span>
+                                    <textarea id="custom-monthly-payments" name="custom-monthly-payments" placeholder="Enter monthly payments count (e.g., 1000000, 2M, etc.)" rows="3"></textarea>
                                 </div>
                             </div>
 
@@ -1429,45 +1425,63 @@
                 }
             });
 
-            // Calculate savings
-            calculateBtn.addEventListener('click', function() {
-                calculateSavings();
-            });
+            // Calculate savings button - already handled above
 
-            // Real-time calculation updates
+            // Remove real-time calculation - only calculate when button is clicked
             function addCalculationListeners() {
-                // Radio button listeners
-                const radioGroups = ['customer-accounts', 'emails-available', 'monthly-payments'];
-                radioGroups.forEach(groupName => {
-                    const radios = document.querySelectorAll(`input[name="${groupName}"]`);
-                    radios.forEach(radio => {
-                        radio.addEventListener('change', calculateSavings);
+                // Remove all automatic calculation listeners
+                // Calculations will only happen when "Calculate Savings" button is clicked
+
+                // Custom customer accounts textarea listener - just handle UI interactions, no calculation
+                const customAccountsField = document.getElementById('custom-customer-accounts');
+                if (customAccountsField) {
+                    // Uncheck radio buttons when custom input is entered
+                    customAccountsField.addEventListener('input', function() {
+                        if (this.value.trim() !== '') {
+                            const radios = document.querySelectorAll('input[name="customer-accounts"]');
+                            radios.forEach(radio => radio.checked = false);
+                        }
+                    });
+                }
+
+                // Clear custom input when radio button is selected
+                const accountRadios = document.querySelectorAll('input[name="customer-accounts"]');
+                accountRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.checked && customAccountsField) {
+                            customAccountsField.value = '';
+                        }
                     });
                 });
 
-                // Slider listeners
-                const sliders = ['bill-adoption', 'csr-payments'];
-                sliders.forEach(sliderId => {
-                    const slider = document.getElementById(sliderId);
-                    if (slider) {
-                        slider.addEventListener('input', calculateSavings);
-                    }
+                // Custom emails available textarea listener - just handle UI interactions, no calculation
+                const customEmailsField = document.getElementById('custom-emails-available');
+                if (customEmailsField) {
+                    // Uncheck radio buttons when custom input is entered
+                    customEmailsField.addEventListener('input', function() {
+                        if (this.value.trim() !== '') {
+                            const radios = document.querySelectorAll('input[name="emails-available"]');
+                            radios.forEach(radio => radio.checked = false);
+                        }
+                    });
+                }
+
+                // Clear custom emails input when radio button is selected
+                const emailRadios = document.querySelectorAll('input[name="emails-available"]');
+                emailRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.checked && customEmailsField) {
+                            customEmailsField.value = '';
+                        }
+                    });
                 });
 
-                // Input field listeners
-                const inputFields = ['call-handling-cost', 'print-mail-cost', 'checks-mailed', 'current-dso', 'bad-debt-percentage'];
-                inputFields.forEach(fieldId => {
-                    const field = document.getElementById(fieldId);
-                    if (field) {
-                        field.addEventListener('input', calculateSavings);
-                    }
-                });
             }
 
             // Initialize calculation listeners
             addCalculationListeners();
 
-            // Set default values and calculate initial results
+            // Set default input values (but don't calculate until user clicks Calculate)
             function setDefaultValues() {
                 // Set default input values
                 document.getElementById('call-handling-cost').value = '15';
@@ -1476,19 +1490,66 @@
                 document.getElementById('current-dso').value = '45';
                 document.getElementById('bad-debt-percentage').value = '2.5';
                 
-                // Calculate initial results
-                calculateSavings();
+                // Do NOT calculate initial results - keep values at $0.00
             }
 
             // Initialize with default values
             setDefaultValues();
+            
+            // Calculate only when user clicks "Calculate Savings" button
+            document.getElementById('calculate-savings').addEventListener('click', function() {
+                calculateSavings();
+            });
 
             function calculateSavings() {
                 // Get form values
-                const customerAccounts = getRadioValue('customer-accounts');
-                const emailsAvailable = getRadioValue('emails-available');
+                // Check if custom customer accounts value is provided
+                const customAccountsInput = document.getElementById('custom-customer-accounts');
+                let customerAccounts;
+                if (customAccountsInput && customAccountsInput.value.trim() !== '') {
+                    // Use custom value if provided
+                    let customValue = customAccountsInput.value.trim().replace(/,/g, '');
+                    // Handle formats like "5M", "2M", "10K"
+                    if (customValue.toUpperCase().endsWith('M')) {
+                        customValue = parseFloat(customValue.replace(/M/i, '')) * 1000000;
+                    } else if (customValue.toUpperCase().endsWith('K')) {
+                        customValue = parseFloat(customValue.replace(/K/i, '')) * 1000;
+                    }
+                    customerAccounts = parseInt(customValue) || getRadioValue('customer-accounts');
+                } else {
+                    customerAccounts = getRadioValue('customer-accounts');
+                }
+                // Check if custom emails available value is provided
+                const customEmailsInput = document.getElementById('custom-emails-available');
+                let emailsAvailable;
+                if (customEmailsInput && customEmailsInput.value.trim() !== '') {
+                    // Use custom value if provided
+                    let customValue = customEmailsInput.value.trim().replace(/,/g, '');
+                    // Handle formats like "5M", "2M", "10K", "50K"
+                    if (customValue.toUpperCase().endsWith('M')) {
+                        customValue = parseFloat(customValue.replace(/M/i, '')) * 1000000;
+                    } else if (customValue.toUpperCase().endsWith('K')) {
+                        customValue = parseFloat(customValue.replace(/K/i, '')) * 1000;
+                    }
+                    emailsAvailable = parseInt(customValue) || getRadioValue('emails-available');
+                } else {
+                    emailsAvailable = getRadioValue('emails-available');
+                }
                 const billAdoption = parseInt(document.getElementById('bill-adoption').value);
-                const monthlyPayments = getRadioValue('monthly-payments');
+                // Get monthly payments from textarea only
+                const customPaymentsInput = document.getElementById('custom-monthly-payments');
+                let monthlyPayments = 0;
+                if (customPaymentsInput && customPaymentsInput.value.trim() !== '') {
+                    // Use custom value if provided
+                    let customValue = customPaymentsInput.value.trim().replace(/,/g, '');
+                    // Handle formats like "5M", "2M", "10K", "50K"
+                    if (customValue.toUpperCase().endsWith('M')) {
+                        customValue = parseFloat(customValue.replace(/M/i, '')) * 1000000;
+                    } else if (customValue.toUpperCase().endsWith('K')) {
+                        customValue = parseFloat(customValue.replace(/K/i, '')) * 1000;
+                    }
+                    monthlyPayments = parseInt(customValue) || 0;
+                }
                 const csrPayments = parseInt(document.getElementById('csr-payments').value);
                 const callHandlingCost = parseFloat(document.getElementById('call-handling-cost').value) || 0;
                 const printMailCost = parseFloat(document.getElementById('print-mail-cost').value) || 0;
@@ -1497,9 +1558,9 @@
                 const badDebtPercentage = parseFloat(document.getElementById('bad-debt-percentage').value) || 0;
 
                 // Convert string values to numbers
-                const accountsNum = customerAccounts === '3000+' ? 5000 : parseInt(customerAccounts);
-                const emailsNum = emailsAvailable === '3000+' ? 5000 : parseInt(emailsAvailable);
-                const paymentsNum = monthlyPayments === '3000+' ? 5000 : parseInt(monthlyPayments);
+                const accountsNum = parseInt(customerAccounts) || 5000000;
+                const emailsNum = parseInt(emailsAvailable) || 1000000;
+                const paymentsNum = parseInt(monthlyPayments) || 0;
 
                 // Calculate current costs
                 const currentCallCost = callHandlingCost * csrPayments * 12; // Annual call handling cost

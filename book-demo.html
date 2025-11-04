@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Demo - Tilli Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .demo-booking-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 120px 20px 80px;
+        }
+
+        .demo-booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .demo-booking-header {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(2, 6, 23, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .demo-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .demo-booking-header h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0b1220;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .demo-booking-header .demo-subtitle {
+            font-size: 1.125rem;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .demo-booking-header .demo-duration {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #eff6ff;
+            border-radius: 8px;
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .booking-form-container {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(2, 6, 23, 0.08);
+        }
+
+        .booking-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-form-group label {
+            display: block;
+            font-weight: 600;
+            color: #0b1220;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .booking-form-group label .optional {
+            color: #64748b;
+            font-weight: 400;
+            font-size: 0.875rem;
+        }
+
+        .booking-form-group input,
+        .booking-form-group select,
+        .booking-form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: #0b1220;
+            transition: all 0.2s ease;
+            background: #ffffff;
+        }
+
+        .booking-form-group input:focus,
+        .booking-form-group select:focus,
+        .booking-form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .booking-form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .calendar-wrapper {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-nav-btn {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #64748b;
+        }
+
+        .calendar-nav-btn:hover {
+            background: #eff6ff;
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        .calendar-month-year {
+            font-weight: 600;
+            color: #0b1220;
+            font-size: 1.125rem;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.875rem;
+            padding: 0.5rem 0;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #0b1220;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            border: 1.5px solid transparent;
+        }
+
+        .calendar-day:hover {
+            background: #eff6ff;
+            border-color: #2563eb;
+        }
+
+        .calendar-day.selected {
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: #ffffff;
+            border-color: transparent;
+            font-weight: 600;
+        }
+
+        .calendar-day.disabled {
+            color: #cbd5e1;
+            cursor: not-allowed;
+            background: #f1f5f9;
+        }
+
+        .calendar-day.today {
+            border: 2px solid #2563eb;
+            font-weight: 600;
+        }
+
+        .time-slots-container {
+            margin-top: 1.5rem;
+        }
+
+        .time-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .time-slot {
+            padding: 0.75rem 1rem;
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            color: #0b1220;
+        }
+
+        .time-slot:hover {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .time-slot.selected {
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: #ffffff;
+            border-color: transparent;
+        }
+
+        .time-slot.disabled {
+            color: #cbd5e1;
+            cursor: not-allowed;
+            background: #f1f5f9;
+            opacity: 0.6;
+        }
+
+        .submit-booking-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-booking-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+        }
+
+        .submit-booking-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .booking-info-sidebar {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(2, 6, 23, 0.08);
+            position: sticky;
+            top: 120px;
+        }
+
+        .info-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-item h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0b1220;
+            margin: 0 0 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-item h3 i {
+            color: #2563eb;
+        }
+
+        .info-item p {
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .info-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.75rem 0 0 0;
+        }
+
+        .info-item ul li {
+            color: #64748b;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .info-item ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        @media (max-width: 968px) {
+            .demo-booking-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .booking-info-sidebar {
+                position: static;
+            }
+        }
+
+        .selected-date-time {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #eff6ff;
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .selected-date-time p {
+            margin: 0.25rem 0;
+            color: #0b1220;
+            font-weight: 500;
+        }
+
+        .selected-date-time .label {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .staff-availability-status {
+            margin-top: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .staff-availability-status.available {
+            background: #d1fae5;
+            color: #065f46;
+            border-left: 4px solid #10b981;
+        }
+
+        .staff-availability-status.unavailable {
+            background: #fee2e2;
+            color: #991b1b;
+            border-left: 4px solid #ef4444;
+        }
+
+        .staff-availability-status.checking {
+            background: #fef3c7;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .existing-booking-alert {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .existing-booking-alert.show {
+            display: block;
+        }
+
+        .existing-booking-alert h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #92400e;
+            margin: 0 0 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .existing-booking-alert p {
+            color: #78350f;
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        .existing-booking-alert .booking-details {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .existing-booking-alert .booking-details strong {
+            color: #92400e;
+        }
+
+        .form-disabled {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .submit-booking-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: #94a3b8 !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .submit-booking-btn:disabled:hover {
+            transform: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div data-include="partials/header.html"></div>
+
+    <main class="demo-booking-page">
+        <div class="demo-booking-container">
+            <!-- Left Side - Booking Form -->
+            <div>
+                <div class="demo-booking-header">
+                    <div class="demo-logo">
+                        <img src="Tilli Home Page/tilli-logo.png" alt="Tilli Logo">
+                    </div>
+                    <h1>Tilli Sales</h1>
+                    <p class="demo-subtitle">Book your personalized demo and discover how Tilli can transform your billing and payment operations.</p>
+                    <div class="demo-duration">
+                        <i class="far fa-clock"></i>
+                        <span>Efficient 30-minute demo</span>
+                    </div>
+                </div>
+
+                <div class="booking-form-container">
+                    <!-- Existing Booking Alert -->
+                    <div id="existingBookingAlert" class="existing-booking-alert">
+                        <h3><i class="fas fa-calendar-check"></i> You Already Have a Scheduled Demo</h3>
+                        <p>You have an active demo booking. Please wait until your scheduled demo is completed before booking another session.</p>
+                        <div class="booking-details" id="existingBookingDetails"></div>
+                    </div>
+
+                    <form id="demoBookingForm">
+                        <!-- Name -->
+                        <div class="booking-form-group">
+                            <label for="fullName">Full Name <span style="color: #ef4444">*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="booking-form-group">
+                            <label for="email">Work Email <span style="color: #ef4444">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                        </div>
+
+                        <!-- Company -->
+                        <div class="booking-form-group">
+                            <label for="company">Company Name <span style="color: #ef4444">*</span></label>
+                            <input type="text" id="company" name="company" placeholder="Your Company" required>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="booking-form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                        </div>
+
+                        <!-- Select Product -->
+                        <div class="booking-form-group">
+                            <label for="product">Product Interest <span style="color: #ef4444">*</span></label>
+                            <select id="product" name="product" required>
+                                <option value="">Select a product</option>
+                                <option value="nudge">Nudge</option>
+                                <option value="tillix">tilliX</option>
+                                <option value="tillipay">tilliPay</option>
+                            </select>
+                        </div>
+
+                        <!-- Select Staff -->
+                        <div class="booking-form-group">
+                            <label for="staff">Select Staff <span class="optional">(Optional)</span></label>
+                            <select id="staff" name="staff">
+                                <option value="">Anyone</option>
+                                <option value="ali-saberi">Ali Saberi</option>
+                                <option value="shabbir-gilani">Shabbir Gilani</option>
+                            </select>
+                            <div id="staffAvailability" class="staff-availability-status" style="display: none;">
+                                <i class="fas fa-info-circle"></i>
+                                <span id="staffAvailabilityText"></span>
+                            </div>
+                        </div>
+
+                        <!-- Calendar -->
+                        <div class="booking-form-group">
+                            <label>Select Date <span style="color: #ef4444">*</span></label>
+                            <div class="calendar-wrapper">
+                                <div class="calendar-header">
+                                    <button type="button" class="calendar-nav-btn" id="prevMonth">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <div class="calendar-month-year" id="monthYear"></div>
+                                    <button type="button" class="calendar-nav-btn" id="nextMonth">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="calendar-grid" id="calendarGrid"></div>
+                            </div>
+                        </div>
+
+                        <!-- Selected Date Display -->
+                        <div id="selectedDateDisplay" class="selected-date-time" style="display: none;">
+                            <p><span class="label">Selected Date:</span> <span id="selectedDateText"></span></p>
+                        </div>
+
+                        <!-- Time Slots -->
+                        <div class="booking-form-group time-slots-container">
+                            <label>Select Time Slot <span style="color: #ef4444">*</span></label>
+                            <div class="time-slots-grid" id="timeSlotsGrid"></div>
+                        </div>
+
+                        <!-- Selected Time Display -->
+                        <div id="selectedTimeDisplay" class="selected-date-time" style="display: none;">
+                            <p><span class="label">Selected Time:</span> <span id="selectedTimeText"></span></p>
+                        </div>
+
+                        <!-- Additional Notes -->
+                        <div class="booking-form-group">
+                            <label for="notes">Additional Notes <span class="optional">(Optional)</span></label>
+                            <textarea id="notes" name="notes" placeholder="Tell us about your specific needs or questions..."></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="submit-booking-btn" id="submitBtn" disabled>
+                            <span>Book Demo</span>
+                            <i class="fas fa-calendar-check"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Side - Info Sidebar -->
+            <div class="booking-info-sidebar">
+                <div class="info-item">
+                    <h3><i class="fas fa-clock"></i> What to Expect</h3>
+                    <p>In this 30-minute session, you'll:</p>
+                    <ul>
+                        <li>See a live walkthrough of our platform</li>
+                        <li>Discuss your specific business needs</li>
+                        <li>Learn about integration options</li>
+                        <li>Get answers to your questions</li>
+                        <li>Receive a custom implementation roadmap</li>
+                    </ul>
+                </div>
+
+                <div class="info-item">
+                    <h3><i class="fas fa-shield-alt"></i> Trusted by Leaders</h3>
+                    <p>Tilli powers billing and payments for Fortune 500 companies, utilities, and enterprises across industries including:</p>
+                    <ul>
+                        <li>Washington Gas</li>
+                        <li>Con Edison</li>
+                        <li>Howard County</li>
+                        <li>And many more...</li>
+                    </ul>
+                </div>
+
+                <div class="info-item">
+                    <h3><i class="fas fa-gift"></i> Book Today & Get:</h3>
+                    <ul>
+                        <li>Free ROI analysis</li>
+                        <li>Custom implementation roadmap</li>
+                        <li>Priority onboarding</li>
+                        <li>Personalized consultation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div data-include="partials/footer.html"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Calendar and Booking Form Logic
+        (function() {
+            let currentDate = new Date();
+            let selectedDate = null;
+            let selectedTime = null;
+            let selectedStaff = null;
+            let existingBooking = null;
+
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+
+            const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+            // Time slots available
+            const timeSlots = [
+                "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM",
+                "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM",
+                "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM"
+            ];
+
+            // Storage key for bookings
+            const BOOKINGS_STORAGE_KEY = 'tilli_demo_bookings';
+            
+            // Get all bookings from storage
+            function getAllBookings() {
+                try {
+                    const bookings = localStorage.getItem(BOOKINGS_STORAGE_KEY);
+                    return bookings ? JSON.parse(bookings) : {};
+                } catch (e) {
+                    return {};
+                }
+            }
+
+            // Save booking to storage
+            function saveBooking(email, bookingData) {
+                const bookings = getAllBookings();
+                bookings[email.toLowerCase()] = bookingData;
+                try {
+                    localStorage.setItem(BOOKINGS_STORAGE_KEY, JSON.stringify(bookings));
+                } catch (e) {
+                    console.error('Failed to save booking:', e);
+                }
+            }
+
+            // Get booking for email
+            function getBookingForEmail(email) {
+                const bookings = getAllBookings();
+                return bookings[email.toLowerCase()] || null;
+            }
+
+            // Check if booking is completed (30 minutes after scheduled time)
+            function isBookingCompleted(booking) {
+                if (!booking) return true;
+                
+                const bookingDateTime = new Date(booking.dateTime);
+                const completionTime = new Date(bookingDateTime.getTime() + (30 * 60 * 1000)); // Add 30 minutes
+                const now = new Date();
+                
+                return now > completionTime;
+            }
+
+            // Check for existing booking on page load and on email change
+            function checkExistingBooking() {
+                const email = document.getElementById('email').value;
+                const submitBtn = document.getElementById('submitBtn');
+                
+                if (!email) {
+                    // If no email entered, keep button disabled initially
+                    // Only enable if we confirm there's no active booking
+                    const allBookings = getAllBookings();
+                    const hasActiveBooking = Object.keys(allBookings).some(emailKey => {
+                        const booking = allBookings[emailKey];
+                        return booking && !isBookingCompleted(booking);
+                    });
+                    
+                    if (!hasActiveBooking && !existingBooking) {
+                        enableForm();
+                        hideExistingBookingAlert();
+                    } else {
+                        // Keep disabled if there might be an active booking
+                        submitBtn.disabled = true;
+                    }
+                    return;
+                }
+
+                const booking = getBookingForEmail(email);
+                if (booking && !isBookingCompleted(booking)) {
+                    existingBooking = booking;
+                    showExistingBookingAlert(booking);
+                    disableForm();
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Demo Already Scheduled';
+                    return; // Important: return early to prevent enabling
+                } else {
+                    // No active booking found
+                    hideExistingBookingAlert();
+                    
+                    if (booking && isBookingCompleted(booking)) {
+                        // Remove completed booking
+                        const bookings = getAllBookings();
+                        delete bookings[email.toLowerCase()];
+                        localStorage.setItem(BOOKINGS_STORAGE_KEY, JSON.stringify(bookings));
+                    }
+                    
+                    // Only enable if email is valid and no active booking
+                    if (email.includes('@') && email.includes('.')) {
+                        enableForm();
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<span>Book Demo</span><i class="fas fa-calendar-check"></i>';
+                    } else {
+                        submitBtn.disabled = true;
+                    }
+                    existingBooking = null;
+                }
+            }
+
+            // Check all bookings on page load to see if any match current email
+            function checkAllBookingsOnLoad() {
+                const email = document.getElementById('email').value;
+                const submitBtn = document.getElementById('submitBtn');
+                
+                // First, check if email is already filled (from previous session or auto-fill)
+                if (email) {
+                    checkExistingBooking();
+                    return;
+                }
+
+                // If no email yet, check localStorage for any active bookings
+                // This helps if user had a booking and refreshes page
+                const allBookings = getAllBookings();
+                let hasActiveBooking = false;
+                
+                for (const emailKey in allBookings) {
+                    const booking = allBookings[emailKey];
+                    if (!isBookingCompleted(booking)) {
+                        hasActiveBooking = true;
+                        // Pre-populate email field if we find an active booking
+                        // This improves UX but keeps form disabled
+                        break;
+                    }
+                }
+
+                // Even without email, if there might be bookings, be cautious
+                // But we'll wait for email input to fully disable
+                if (!hasActiveBooking) {
+                    enableForm();
+                }
+            }
+
+            // Monitor date/time changes to keep button disabled if booking exists
+            function ensureButtonState() {
+                const submitBtn = document.getElementById('submitBtn');
+                const email = document.getElementById('email').value;
+                
+                if (email && existingBooking) {
+                    const booking = getBookingForEmail(email);
+                    if (booking && !isBookingCompleted(booking)) {
+                        // Keep button disabled
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = 'Demo Already Scheduled';
+                        disableForm();
+                    } else {
+                        // Booking completed, enable button
+                        existingBooking = null;
+                        enableForm();
+                        submitBtn.innerHTML = '<span>Book Demo</span><i class="fas fa-calendar-check"></i>';
+                    }
+                } else if (email) {
+                    // Re-check if we have a booking for this email
+                    const booking = getBookingForEmail(email);
+                    if (booking && !isBookingCompleted(booking)) {
+                        existingBooking = booking;
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = 'Demo Already Scheduled';
+                        showExistingBookingAlert(booking);
+                        disableForm();
+                    }
+                }
+            }
+
+            // Show existing booking alert
+            function showExistingBookingAlert(booking) {
+                const alert = document.getElementById('existingBookingAlert');
+                const details = document.getElementById('existingBookingDetails');
+                
+                const bookingDate = new Date(booking.dateTime);
+                const dateStr = bookingDate.toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                const timeStr = bookingDate.toLocaleTimeString('en-US', { 
+                    hour: 'numeric', 
+                    minute: '2-digit' 
+                });
+
+                const staffNames = {
+                    'ali-saberi': 'Ali Saberi',
+                    'shabbir-gilani': 'Shabbir Gilani',
+                    '': 'Anyone'
+                };
+                const displayStaffName = booking.staffName || (booking.staff ? staffNames[booking.staff] || booking.staff : 'Anyone');
+                
+                details.innerHTML = `
+                    <p><strong>Scheduled Date:</strong> ${dateStr}</p>
+                    <p><strong>Scheduled Time:</strong> ${timeStr}</p>
+                    <p><strong>Assigned Staff:</strong> ${displayStaffName}</p>
+                    <p><strong>Duration:</strong> 30 minutes</p>
+                `;
+
+                alert.classList.add('show');
+            }
+
+            // Hide existing booking alert
+            function hideExistingBookingAlert() {
+                const alert = document.getElementById('existingBookingAlert');
+                alert.classList.remove('show');
+                existingBooking = null;
+            }
+
+            // Disable form
+            function disableForm() {
+                const form = document.getElementById('demoBookingForm');
+                const submitBtn = document.getElementById('submitBtn');
+                form.classList.add('form-disabled');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Demo Already Scheduled';
+                
+                // Also disable all form inputs for extra protection
+                const inputs = form.querySelectorAll('input, select, textarea');
+                inputs.forEach(input => {
+                    input.disabled = true;
+                });
+            }
+
+            // Enable form
+            function enableForm() {
+                const form = document.getElementById('demoBookingForm');
+                const submitBtn = document.getElementById('submitBtn');
+                
+                // Double-check there's no active booking before enabling
+                const email = document.getElementById('email').value;
+                if (email) {
+                    const booking = getBookingForEmail(email);
+                    if (booking && !isBookingCompleted(booking)) {
+                        // Don't enable if there's an active booking
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = 'Demo Already Scheduled';
+                        form.classList.add('form-disabled');
+                        return;
+                    }
+                }
+                
+                // Re-enable all form inputs
+                const inputs = form.querySelectorAll('input, select, textarea');
+                inputs.forEach(input => {
+                    input.disabled = false;
+                });
+                
+                form.classList.remove('form-disabled');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Book Demo</span><i class="fas fa-calendar-check"></i>';
+            }
+
+            // Check staff availability
+            function checkStaffAvailability(staffId, date, time) {
+                if (!staffId || staffId === '' || !date || !time) {
+                    hideStaffAvailability();
+                    return;
+                }
+
+                const availabilityDiv = document.getElementById('staffAvailability');
+                const availabilityText = document.getElementById('staffAvailabilityText');
+                
+                // Show checking status
+                availabilityDiv.className = 'staff-availability-status checking';
+                availabilityDiv.style.display = 'flex';
+                availabilityText.textContent = 'Checking availability...';
+
+                // Get all bookings to check conflicts
+                const bookings = getAllBookings();
+                const bookingDateTime = getDateTimeFromSelection(date, time);
+                
+                // Check if staff has conflicting bookings
+                let hasConflict = false;
+                for (const email in bookings) {
+                    const booking = bookings[email];
+                    if (booking.staff === staffId && !isBookingCompleted(booking)) {
+                        const existingBookingDateTime = new Date(booking.dateTime);
+                        // Check if it's the same date and time (or within 30 minutes)
+                        const timeDiff = Math.abs(bookingDateTime.getTime() - existingBookingDateTime.getTime());
+                        if (timeDiff < (30 * 60 * 1000)) { // Less than 30 minutes difference
+                            hasConflict = true;
+                            break;
+                        }
+                    }
+                }
+
+                // Simulate availability check (you can replace with actual API call)
+                setTimeout(() => {
+                    if (hasConflict) {
+                        availabilityDiv.className = 'staff-availability-status unavailable';
+                        availabilityText.textContent = 'This staff member is not available at the selected date/time. Please choose another time or select "Anyone".';
+                    } else {
+                        const staffNames = {
+                            'ali-saberi': 'Ali Saberi',
+                            'shabbir-gilani': 'Shabbir Gilani'
+                        };
+                        availabilityDiv.className = 'staff-availability-status available';
+                        availabilityText.textContent = `${staffNames[staffId]} is available for this time slot.`;
+                    }
+                }, 500);
+            }
+
+            // Get DateTime object from selected date and time
+            function getDateTimeFromSelection(date, time) {
+                if (!date || !time) return null;
+
+                const dateStr = date.toLocaleDateString('en-US');
+                const [timePart, period] = time.split(' ');
+                const [hours, minutes] = timePart.split(':');
+                
+                let hour = parseInt(hours);
+                const minute = parseInt(minutes);
+                
+                if (period === 'PM' && hour !== 12) {
+                    hour += 12;
+                } else if (period === 'AM' && hour === 12) {
+                    hour = 0;
+                }
+
+                const [month, day, year] = dateStr.split('/');
+                const dateTime = new Date(year, month - 1, day, hour, minute);
+                
+                return dateTime;
+            }
+
+            // Hide staff availability
+            function hideStaffAvailability() {
+                const availabilityDiv = document.getElementById('staffAvailability');
+                availabilityDiv.style.display = 'none';
+            }
+
+            function renderCalendar() {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+
+                // Update month/year header
+                document.getElementById('monthYear').textContent = `${monthNames[month]} ${year}`;
+
+                // Get first day of month and number of days
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                // Clear calendar
+                const grid = document.getElementById('calendarGrid');
+                grid.innerHTML = '';
+
+                // Add day headers
+                dayNames.forEach(day => {
+                    const header = document.createElement('div');
+                    header.className = 'calendar-day-header';
+                    header.textContent = day;
+                    grid.appendChild(header);
+                });
+
+                // Add empty cells for days before month starts
+                for (let i = 0; i < firstDay; i++) {
+                    const empty = document.createElement('div');
+                    empty.className = 'calendar-day';
+                    grid.appendChild(empty);
+                }
+
+                // Add days of month
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    dayElement.textContent = day;
+
+                    const cellDate = new Date(year, month, day);
+                    cellDate.setHours(0, 0, 0, 0);
+
+                    // Disable past dates
+                    if (cellDate < today) {
+                        dayElement.classList.add('disabled');
+                    } else {
+                        // Mark today
+                        if (cellDate.getTime() === today.getTime()) {
+                            dayElement.classList.add('today');
+                        }
+
+                        // Mark selected date
+                        if (selectedDate && cellDate.getTime() === selectedDate.getTime()) {
+                            dayElement.classList.add('selected');
+                        }
+
+                        // Add click handler for selectable dates
+                        dayElement.addEventListener('click', () => {
+                            if (!dayElement.classList.contains('disabled')) {
+                                selectedDate = new Date(year, month, day);
+                                selectedTime = null; // Reset time when date changes
+                                renderCalendar();
+                                updateSelectedDateDisplay();
+                                renderTimeSlots();
+                                updateSelectedTimeDisplay();
+                                
+                                // Check staff availability if staff and time were selected
+                                if (selectedStaff && selectedTime) {
+                                    checkStaffAvailability(selectedStaff, selectedDate, selectedTime);
+                                } else {
+                                    hideStaffAvailability();
+                                }
+                                
+                                // Ensure button state is maintained if booking exists
+                                ensureButtonState();
+                            }
+                        });
+                    }
+
+                    grid.appendChild(dayElement);
+                }
+            }
+
+            function updateSelectedDateDisplay() {
+                const display = document.getElementById('selectedDateDisplay');
+                const text = document.getElementById('selectedDateText');
+                
+                if (selectedDate) {
+                    const dateStr = selectedDate.toLocaleDateString('en-US', { 
+                        weekday: 'long', 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    });
+                    text.textContent = dateStr;
+                    display.style.display = 'block';
+                } else {
+                    display.style.display = 'none';
+                }
+            }
+
+            function renderTimeSlots() {
+                const grid = document.getElementById('timeSlotsGrid');
+                grid.innerHTML = '';
+
+                if (!selectedDate) {
+                    return;
+                }
+
+                // Check if selected date is today
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const isToday = selectedDate.getTime() === today.getTime();
+                const currentHour = today.getHours();
+                const currentMinute = today.getMinutes();
+
+                timeSlots.forEach(slot => {
+                    const slotElement = document.createElement('div');
+                    slotElement.className = 'time-slot';
+                    slotElement.textContent = slot;
+
+                    // Disable past time slots if today
+                    if (isToday) {
+                        const [time, period] = slot.split(' ');
+                        const [hours, minutes] = time.split(':');
+                        let slotHour = parseInt(hours);
+                        const slotMinute = parseInt(minutes);
+
+                        if (period === 'PM' && slotHour !== 12) {
+                            slotHour += 12;
+                        } else if (period === 'AM' && slotHour === 12) {
+                            slotHour = 0;
+                        }
+
+                        if (slotHour < currentHour || (slotHour === currentHour && slotMinute <= currentMinute)) {
+                            slotElement.classList.add('disabled');
+                        }
+                    }
+
+                    // Mark selected time
+                    if (selectedTime === slot) {
+                        slotElement.classList.add('selected');
+                    }
+
+                    // Add click handler
+                    slotElement.addEventListener('click', () => {
+                        if (!slotElement.classList.contains('disabled')) {
+                            selectedTime = slot;
+                            renderTimeSlots();
+                            updateSelectedTimeDisplay();
+                            
+                            // Check staff availability if staff is selected
+                            if (selectedStaff && selectedDate) {
+                                checkStaffAvailability(selectedStaff, selectedDate, selectedTime);
+                            } else {
+                                hideStaffAvailability();
+                            }
+                            
+                            // Ensure button state is maintained if booking exists
+                            ensureButtonState();
+                        }
+                    });
+
+                    grid.appendChild(slotElement);
+                });
+            }
+
+            function updateSelectedTimeDisplay() {
+                const display = document.getElementById('selectedTimeDisplay');
+                const text = document.getElementById('selectedTimeText');
+                
+                if (selectedTime) {
+                    text.textContent = selectedTime;
+                    display.style.display = 'block';
+                } else {
+                    display.style.display = 'none';
+                }
+            }
+
+            // Month navigation
+            document.getElementById('prevMonth').addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar();
+            });
+
+            document.getElementById('nextMonth').addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar();
+            });
+
+            // Staff selection handler
+            document.getElementById('staff').addEventListener('change', function() {
+                selectedStaff = this.value;
+                
+                if (selectedStaff && selectedDate && selectedTime) {
+                    checkStaffAvailability(selectedStaff, selectedDate, selectedTime);
+                } else {
+                    hideStaffAvailability();
+                }
+                
+                // Ensure button state is maintained if booking exists
+                ensureButtonState();
+            });
+
+            // Email input handler to check for existing bookings
+            const emailInput = document.getElementById('email');
+            
+            emailInput.addEventListener('blur', function() {
+                checkExistingBooking();
+            });
+
+            // Also check on input for real-time validation
+            emailInput.addEventListener('input', function() {
+                // Debounce the check
+                clearTimeout(this.checkTimeout);
+                this.checkTimeout = setTimeout(() => {
+                    checkExistingBooking();
+                }, 300);
+            });
+
+            // Check on paste
+            emailInput.addEventListener('paste', function() {
+                setTimeout(() => {
+                    checkExistingBooking();
+                }, 100);
+            });
+
+            // Form submission
+            document.getElementById('demoBookingForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // First check: Is button disabled?
+                const submitBtn = document.getElementById('submitBtn');
+                if (submitBtn.disabled) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    alert('You already have a scheduled demo. Please wait until it\'s completed before booking another session.');
+                    return false;
+                }
+
+                // Second check: Validate existing booking
+                const email = document.getElementById('email').value;
+                if (!email) {
+                    alert('Please enter your email address.');
+                    return false;
+                }
+
+                const booking = getBookingForEmail(email);
+                if (booking && !isBookingCompleted(booking)) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    alert('You already have a scheduled demo. Please wait until it\'s completed before booking another session.');
+                    showExistingBookingAlert(booking);
+                    disableForm();
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Demo Already Scheduled';
+                    return false;
+                }
+
+                // Validate required fields
+                const productValue = document.getElementById('product').value;
+                if (!productValue) {
+                    alert('Please select a product interest.');
+                    document.getElementById('product').focus();
+                    return;
+                }
+
+                if (!selectedDate) {
+                    alert('Please select a date for your demo.');
+                    return;
+                }
+
+                if (!selectedTime) {
+                    alert('Please select a time slot for your demo.');
+                    return;
+                }
+
+                // Check staff availability if staff is selected
+                if (selectedStaff) {
+                    const bookingDateTime = getDateTimeFromSelection(selectedDate, selectedTime);
+                    const bookings = getAllBookings();
+                    
+                    for (const emailKey in bookings) {
+                        const booking = bookings[emailKey];
+                        if (booking.staff === selectedStaff && !isBookingCompleted(booking)) {
+                            const existingBookingDateTime = new Date(booking.dateTime);
+                            const timeDiff = Math.abs(bookingDateTime.getTime() - existingBookingDateTime.getTime());
+                            if (timeDiff < (30 * 60 * 1000)) {
+                                alert('The selected staff member is not available at this time. Please choose another time or select "Anyone".');
+                                return;
+                            }
+                        }
+                    }
+                }
+
+                // Get form data
+                const emailValue = document.getElementById('email').value;
+                const staffValue = document.getElementById('staff').value;
+                const staffNames = {
+                    'ali-saberi': 'Ali Saberi',
+                    'shabbir-gilani': 'Shabbir Gilani',
+                    '': 'Anyone'
+                };
+
+                const bookingDateTime = getDateTimeFromSelection(selectedDate, selectedTime);
+                
+                const productNames = {
+                    'nudge': 'Nudge',
+                    'tillix': 'tilliX',
+                    'tillipay': 'tilliPay'
+                };
+
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    email: emailValue,
+                    company: document.getElementById('company').value,
+                    phone: document.getElementById('phone').value,
+                    product: productValue,
+                    productName: productNames[productValue],
+                    staff: staffValue,
+                    staffName: staffNames[staffValue] || 'Anyone',
+                    date: selectedDate.toLocaleDateString('en-US'),
+                    time: selectedTime,
+                    dateTime: bookingDateTime.toISOString(),
+                    notes: document.getElementById('notes').value,
+                    bookedAt: new Date().toISOString()
+                };
+
+                // Save booking to storage
+                saveBooking(emailValue, formData);
+
+                // Here you would typically send the data to your backend
+                console.log('Booking submitted:', formData);
+
+                // Show success message
+                alert('Demo booked successfully! We\'ll send a confirmation email shortly.');
+                
+                // IMMEDIATELY disable button and form after booking
+                const submitBtn = document.getElementById('submitBtn');
+                const form = document.getElementById('demoBookingForm');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Demo Already Scheduled';
+                form.classList.add('form-disabled');
+                
+                // Disable all form inputs
+                const inputs = form.querySelectorAll('input, select, textarea');
+                inputs.forEach(input => {
+                    input.disabled = true;
+                });
+                
+                // Update existing booking reference
+                existingBooking = formData;
+                
+                // Show alert with booking details
+                showExistingBookingAlert(formData);
+                
+                // Force check to ensure everything is disabled
+                setTimeout(() => {
+                    checkExistingBooking();
+                    forceCheckOnLoad();
+                }, 100);
+            });
+
+            // Initialize calendar
+            renderCalendar();
+            
+            // Periodic check to ensure button stays disabled if booking exists
+            const form = document.getElementById('demoBookingForm');
+            setInterval(() => {
+                const email = document.getElementById('email').value;
+                const submitBtn = document.getElementById('submitBtn');
+                
+                if (email) {
+                    const booking = getBookingForEmail(email);
+                    if (booking && !isBookingCompleted(booking)) {
+                        // Force disable if booking exists
+                        existingBooking = booking;
+                        showExistingBookingAlert(booking);
+                        disableForm();
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = 'Demo Already Scheduled';
+                        
+                        // Also disable form inputs
+                        form.classList.add('form-disabled');
+                    } else {
+                        // No active booking - check if we should enable
+                        if (existingBooking) {
+                            hideExistingBookingAlert();
+                            existingBooking = null;
+                            // Only enable if email is valid
+                            if (email.includes('@') && email.includes('.')) {
+                                enableForm();
+                            }
+                        }
+                    }
+                } else {
+                    // No email - check if button should be disabled
+                    checkAllBookingsOnLoad();
+                }
+            }, 2000); // Check every 2 seconds for more responsiveness
+            
+            // Force check on page load - CRITICAL for refresh protection
+            function forceCheckOnLoad() {
+                const allBookings = getAllBookings();
+                const submitBtn = document.getElementById('submitBtn');
+                const emailInput = document.getElementById('email');
+                const form = document.getElementById('demoBookingForm');
+                
+                // Check all bookings to see if any are active
+                for (const emailKey in allBookings) {
+                    const booking = allBookings[emailKey];
+                    if (booking && !isBookingCompleted(booking)) {
+                        // Found an active booking - disable button immediately
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = 'Demo Already Scheduled';
+                        form.classList.add('form-disabled');
+                        
+                        // If email field has value, check if it matches
+                        if (emailInput.value && emailInput.value.toLowerCase() === emailKey.toLowerCase()) {
+                            existingBooking = booking;
+                            showExistingBookingAlert(booking);
+                            // Make sure form is fully disabled
+                            const inputs = form.querySelectorAll('input, select, textarea, button');
+                            inputs.forEach(input => {
+                                if (input.id !== 'submitBtn') {
+                                    input.disabled = true;
+                                }
+                            });
+                        }
+                    }
+                }
+                
+                // Now check with email if present
+                checkExistingBooking();
+            }
+
+            // Initial check on page load - multiple checks to ensure it works
+            // Check immediately when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    forceCheckOnLoad();
+                    setTimeout(() => {
+                        checkAllBookingsOnLoad();
+                        checkExistingBooking();
+                        forceCheckOnLoad();
+                    }, 100);
+                });
+            } else {
+                // DOM already loaded
+                forceCheckOnLoad();
+                setTimeout(() => {
+                    checkAllBookingsOnLoad();
+                    checkExistingBooking();
+                    forceCheckOnLoad();
+                }, 100);
+            }
+
+            // Also check when page becomes visible (user switches tabs back)
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) {
+                    forceCheckOnLoad();
+                    checkExistingBooking();
+                    checkAllBookingsOnLoad();
+                }
+            });
+
+            // Check on window focus (user switches back to window)
+            window.addEventListener('focus', () => {
+                forceCheckOnLoad();
+                checkExistingBooking();
+                checkAllBookingsOnLoad();
+            });
+
+            // Check on page show (browser back/forward navigation)
+            window.addEventListener('pageshow', (event) => {
+                forceCheckOnLoad();
+                checkExistingBooking();
+            });
+        })();
+    </script>
+</body>
+</html>
+
