@@ -241,7 +241,8 @@
     <!-- Demo Tabs -->
     <div class="demo-tabs" data-demo-guard>
         <div class="tabs-container">
-            <button class="tab-button active" onclick="showDemo('tillix')">tilliX Portal</button>
+            <button class="tab-button active" onclick="showDemo('tillix-prelogin')">tilliX Pre-Login</button>
+            <button class="tab-button" onclick="showDemo('tillix-postlogin')">tilliX Post-Login</button>
             <button class="tab-button" onclick="showDemo('nudge')">Nudge Communications</button>
             <button class="tab-button" onclick="showDemo('tillipay')">tilliPay Payments</button>
         </div>
@@ -249,18 +250,34 @@
 
     <!-- Demo Content -->
     <div class="demo-content" data-demo-guard>
-        <!-- TilliX Demo Section -->
-        <div id="tillix-demo" class="demo-section active">
+        <!-- TilliX Pre-Login Demo Section -->
+        <div id="tillix-prelogin-demo" class="demo-section active">
             <div class="demo-intro">
-                <h1>tilliX - Digital Engagement Portal</h1>
-                <p>Experience how tilliX transforms customer interactions with intuitive self-service portals and seamless payment experiences.</p>
+                <h1>tilliX Pre-Login - Low-Code Portal Builder</h1>
+                <p>Experience how tilliX's Business Rule Framework (BRF) enables rapid, no-code configuration of customer-facing portals with intelligent bill pay workflows.</p>
             </div>
 
-            <!-- TilliX interactive demo container - content will be loaded via JavaScript -->
+            <!-- TilliX Pre-Login interactive demo container - content will be loaded via JavaScript -->
             <div id="tillix-demo-container">
                 <!-- Demo content will be dynamically loaded -->
                 <div style="text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 12px;">
-                    <p>Loading tilliX demo...</p>
+                    <p>Loading tilliX Pre-Login demo...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TilliX Post-Login Demo Section -->
+        <div id="tillix-postlogin-demo" class="demo-section">
+            <div class="demo-intro">
+                <h1>tilliX Post-Login - Customer Dashboard</h1>
+                <p>Explore the complete post-login experience with account management, bill history, payment methods, and real-time usage analytics.</p>
+            </div>
+
+            <!-- TilliX Post-Login demo container -->
+            <div id="tillix-postlogin-container">
+                <!-- Demo content will be dynamically loaded -->
+                <div style="text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 12px;">
+                    <p>Loading tilliX Post-Login demo...</p>
                 </div>
             </div>
         </div>
@@ -430,8 +447,18 @@
         // Handle direct links to specific demos
         window.addEventListener('load', function() {
             const hash = window.location.hash.substring(1);
-            if (hash && ['tillix', 'nudge', 'tillipay', 'tilliarc', 'xdex'].includes(hash)) {
-                const tabButton = document.querySelector(`.tab-button[onclick="showDemo('${hash}')"]`);
+            // Map legacy tillix hash to prelogin
+            const demoMap = {
+                'tillix': 'tillix-prelogin',
+                'nudge': 'nudge',
+                'tillipay': 'tillipay',
+                'tilliarc': 'tilliarc',
+                'xdex': 'xdex'
+            };
+            const targetDemo = demoMap[hash] || hash;
+
+            if (hash && ['tillix', 'tillix-prelogin', 'tillix-postlogin', 'nudge', 'tillipay', 'tilliarc', 'xdex'].includes(hash)) {
+                const tabButton = document.querySelector(`.tab-button[onclick*="${targetDemo}"]`);
                 if (tabButton) {
                     tabButton.click();
                 }
@@ -442,8 +469,10 @@
         });
 
         function loadDemoContent() {
-            // Load tilliX demo
+            // Load tilliX pre-login demo
             loadTilliXDemo();
+            // Load tilliX post-login demo
+            loadTilliXPostLoginDemo();
             // Load Nudge demo
             loadNudgeDemo();
             // Load tilliPay demo
@@ -1335,6 +1364,592 @@
                                 paymentDisplay.textContent = '$' + window.totalSelected.toFixed(2);
                             }
                         }, 100);
+                    }
+                };
+            }
+        }
+
+        function loadTilliXPostLoginDemo() {
+            const container = document.getElementById('tillix-postlogin-container');
+            if (container) {
+                container.innerHTML = `
+                    <style>
+                        .postlogin-demo {
+                            background: #f8f9fa;
+                            border-radius: 16px;
+                            overflow: hidden;
+                            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+                        }
+
+                        .dashboard-header {
+                            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+                            color: white;
+                            padding: 2rem;
+                        }
+
+                        .dashboard-nav {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-bottom: 1.5rem;
+                        }
+
+                        .dashboard-tabs {
+                            display: flex;
+                            gap: 1rem;
+                            border-bottom: 1px solid rgba(255,255,255,0.2);
+                            padding-bottom: 1rem;
+                        }
+
+                        .dashboard-tab {
+                            background: none;
+                            border: none;
+                            color: rgba(255,255,255,0.7);
+                            padding: 0.5rem 1rem;
+                            cursor: pointer;
+                            border-bottom: 2px solid transparent;
+                            transition: all 0.3s;
+                            font-size: 0.95rem;
+                            font-weight: 500;
+                        }
+
+                        .dashboard-tab:hover {
+                            color: white;
+                        }
+
+                        .dashboard-tab.active {
+                            color: white;
+                            border-bottom-color: white;
+                        }
+
+                        .dashboard-content {
+                            padding: 2rem;
+                            background: white;
+                        }
+
+                        .dashboard-section {
+                            display: none;
+                        }
+
+                        .dashboard-section.active {
+                            display: block;
+                            animation: fadeInUp 0.4s ease;
+                        }
+
+                        @keyframes fadeInUp {
+                            from {
+                                opacity: 0;
+                                transform: translateY(10px);
+                            }
+                            to {
+                                opacity: 1;
+                                transform: translateY(0);
+                            }
+                        }
+
+                        .stats-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                            gap: 1.5rem;
+                            margin-bottom: 2rem;
+                        }
+
+                        .stat-card {
+                            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+                            border: 1px solid #e5e7eb;
+                            border-radius: 12px;
+                            padding: 1.5rem;
+                            transition: all 0.3s;
+                        }
+
+                        .stat-card:hover {
+                            transform: translateY(-4px);
+                            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+                        }
+
+                        .stat-icon {
+                            width: 48px;
+                            height: 48px;
+                            border-radius: 10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-bottom: 1rem;
+                            font-size: 1.5rem;
+                        }
+
+                        .stat-value {
+                            font-size: 1.75rem;
+                            font-weight: 700;
+                            color: #1a1a1a;
+                            margin-bottom: 0.25rem;
+                        }
+
+                        .stat-label {
+                            font-size: 0.9rem;
+                            color: #6b7280;
+                        }
+
+                        .bill-card {
+                            background: white;
+                            border: 1px solid #e5e7eb;
+                            border-radius: 12px;
+                            padding: 1.5rem;
+                            margin-bottom: 1rem;
+                            transition: all 0.3s;
+                        }
+
+                        .bill-card:hover {
+                            border-color: #6366f1;
+                            box-shadow: 0 4px 12px rgba(99,102,241,0.1);
+                        }
+
+                        .payment-method-card {
+                            background: white;
+                            border: 2px solid #e5e7eb;
+                            border-radius: 12px;
+                            padding: 1.5rem;
+                            margin-bottom: 1rem;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            transition: all 0.3s;
+                        }
+
+                        .payment-method-card:hover {
+                            border-color: #6366f1;
+                        }
+
+                        .payment-method-card.default {
+                            border-color: #6366f1;
+                            background: linear-gradient(135deg, rgba(99,102,241,0.05) 0%, rgba(139,92,246,0.05) 100%);
+                        }
+
+                        .action-btn {
+                            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+                            color: white;
+                            border: none;
+                            padding: 0.75rem 1.5rem;
+                            border-radius: 8px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s;
+                        }
+
+                        .action-btn:hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+                        }
+
+                        .secondary-btn {
+                            background: white;
+                            color: #6366f1;
+                            border: 2px solid #6366f1;
+                            padding: 0.5rem 1rem;
+                            border-radius: 8px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s;
+                            font-size: 0.9rem;
+                        }
+
+                        .secondary-btn:hover {
+                            background: #6366f1;
+                            color: white;
+                        }
+
+                        .usage-chart {
+                            background: white;
+                            border: 1px solid #e5e7eb;
+                            border-radius: 12px;
+                            padding: 1.5rem;
+                            margin-top: 1rem;
+                        }
+
+                        @media (max-width: 768px) {
+                            .dashboard-tabs {
+                                overflow-x: auto;
+                                flex-wrap: nowrap;
+                            }
+
+                            .stats-grid {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+                    </style>
+
+                    <div class="postlogin-demo">
+                        <div class="dashboard-header">
+                            <div class="dashboard-nav">
+                                <div>
+                                    <h2 style="margin: 0 0 0.5rem 0; font-size: 1.75rem;">Welcome back, John</h2>
+                                    <p style="margin: 0; opacity: 0.9; font-size: 0.95rem;">Account #: 4857-2938-1024</p>
+                                </div>
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <button onclick="alert('Notifications feature')" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 0.75rem; border-radius: 8px; cursor: pointer;">
+                                        <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                                        </svg>
+                                    </button>
+                                    <button onclick="alert('Profile settings')" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 0.75rem; border-radius: 8px; cursor: pointer;">
+                                        <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="dashboard-tabs">
+                                <button class="dashboard-tab active" onclick="switchDashboardTab(event, 'overview')">
+                                    <svg style="width: 16px; height: 16px; display: inline-block; margin-right: 0.25rem; vertical-align: middle;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                                    </svg>
+                                    Dashboard
+                                </button>
+                                <button class="dashboard-tab" onclick="switchDashboardTab(event, 'bills')">
+                                    <svg style="width: 16px; height: 16px; display: inline-block; margin-right: 0.25rem; vertical-align: middle;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                    Bills & Invoices
+                                </button>
+                                <button class="dashboard-tab" onclick="switchDashboardTab(event, 'payments')">
+                                    <svg style="width: 16px; height: 16px; display: inline-block; margin-right: 0.25rem; vertical-align: middle;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                                    </svg>
+                                    Payment Methods
+                                </button>
+                                <button class="dashboard-tab" onclick="switchDashboardTab(event, 'usage')">
+                                    <svg style="width: 16px; height: 16px; display: inline-block; margin-right: 0.25rem; vertical-align: middle;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                    </svg>
+                                    Usage & Analytics
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-content">
+                            <!-- Overview Section -->
+                            <div id="overview-section" class="dashboard-section active">
+                                <div class="stats-grid">
+                                    <div class="stat-card">
+                                        <div class="stat-icon" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+                                            💰
+                                        </div>
+                                        <div class="stat-value">$248.75</div>
+                                        <div class="stat-label">Current Balance</div>
+                                    </div>
+
+                                    <div class="stat-card">
+                                        <div class="stat-icon" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
+                                            📅
+                                        </div>
+                                        <div class="stat-value">Dec 28</div>
+                                        <div class="stat-label">Next Due Date</div>
+                                    </div>
+
+                                    <div class="stat-card">
+                                        <div class="stat-icon" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
+                                            ✓
+                                        </div>
+                                        <div class="stat-value">Auto-Pay</div>
+                                        <div class="stat-label">Payment Status</div>
+                                    </div>
+
+                                    <div class="stat-card">
+                                        <div class="stat-icon" style="background: linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%);">
+                                            📊
+                                        </div>
+                                        <div class="stat-value">$2,847</div>
+                                        <div class="stat-label">YTD Spending</div>
+                                    </div>
+                                </div>
+
+                                <h3 style="margin: 2rem 0 1rem 0;">Recent Activity</h3>
+                                <div class="bill-card">
+                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                        <div>
+                                            <h4 style="margin: 0 0 0.5rem 0; color: #1a1a1a;">November 2024 Bill</h4>
+                                            <p style="margin: 0; color: #6b7280; font-size: 0.9rem;">Due: Dec 15, 2024</p>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: #6366f1;">$248.75</div>
+                                            <span style="background: #dcfce7; color: #166534; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600;">Paid</span>
+                                        </div>
+                                    </div>
+                                    <button class="secondary-btn">View Details</button>
+                                </div>
+
+                                <div class="bill-card">
+                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                        <div>
+                                            <h4 style="margin: 0 0 0.5rem 0; color: #1a1a1a;">October 2024 Bill</h4>
+                                            <p style="margin: 0; color: #6b7280; font-size: 0.9rem;">Paid: Nov 10, 2024</p>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: #6b7280;">$235.40</div>
+                                            <span style="background: #dcfce7; color: #166534; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600;">Paid</span>
+                                        </div>
+                                    </div>
+                                    <button class="secondary-btn">View Details</button>
+                                </div>
+
+                                <button class="action-btn" style="margin-top: 1.5rem;">Make a Payment</button>
+                            </div>
+
+                            <!-- Bills Section -->
+                            <div id="bills-section" class="dashboard-section">
+                                <h3 style="margin: 0 0 1.5rem 0;">All Bills & Invoices</h3>
+
+                                <div class="bill-card">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                        <div>
+                                            <h4 style="margin: 0 0 0.25rem 0;">November 2024</h4>
+                                            <p style="margin: 0; color: #6b7280; font-size: 0.9rem;">Bill Period: Nov 1 - Nov 30</p>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-size: 1.25rem; font-weight: 700;">$248.75</div>
+                                            <span style="background: #dcfce7; color: #166534; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.8rem;">Paid</span>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 0.75rem;">
+                                        <button class="secondary-btn">
+                                            <svg style="width: 14px; height: 14px; display: inline-block; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                            </svg>
+                                            Download PDF
+                                        </button>
+                                        <button class="secondary-btn">View Details</button>
+                                    </div>
+                                </div>
+
+                                <div class="bill-card">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                        <div>
+                                            <h4 style="margin: 0 0 0.25rem 0;">October 2024</h4>
+                                            <p style="margin: 0; color: #6b7280; font-size: 0.9rem;">Bill Period: Oct 1 - Oct 31</p>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-size: 1.25rem; font-weight: 700;">$235.40</div>
+                                            <span style="background: #dcfce7; color: #166534; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.8rem;">Paid</span>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 0.75rem;">
+                                        <button class="secondary-btn">
+                                            <svg style="width: 14px; height: 14px; display: inline-block; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                            </svg>
+                                            Download PDF
+                                        </button>
+                                        <button class="secondary-btn">View Details</button>
+                                    </div>
+                                </div>
+
+                                <div class="bill-card">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                        <div>
+                                            <h4 style="margin: 0 0 0.25rem 0;">September 2024</h4>
+                                            <p style="margin: 0; color: #6b7280; font-size: 0.9rem;">Bill Period: Sep 1 - Sep 30</p>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-size: 1.25rem; font-weight: 700;">$218.90</div>
+                                            <span style="background: #dcfce7; color: #166534; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.8rem;">Paid</span>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 0.75rem;">
+                                        <button class="secondary-btn">
+                                            <svg style="width: 14px; height: 14px; display: inline-block; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                            </svg>
+                                            Download PDF
+                                        </button>
+                                        <button class="secondary-btn">View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Payment Methods Section -->
+                            <div id="payments-section" class="dashboard-section">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                                    <h3 style="margin: 0;">Saved Payment Methods</h3>
+                                    <button class="action-btn">
+                                        <svg style="width: 16px; height: 16px; display: inline-block; margin-right: 0.25rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+                                        </svg>
+                                        Add New Method
+                                    </button>
+                                </div>
+
+                                <div class="payment-method-card default">
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
+                                            VISA
+                                        </div>
+                                        <div>
+                                            <h4 style="margin: 0 0 0.25rem 0;">Visa •••• 4242</h4>
+                                            <p style="margin: 0; color: #6b7280; font-size: 0.9rem;">Expires 12/2026</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <span style="background: #dbeafe; color: #1e40af; padding: 0.375rem 0.75rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600;">Default</span>
+                                        <button class="secondary-btn">Edit</button>
+                                    </div>
+                                </div>
+
+                                <div class="payment-method-card">
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.8rem;">
+                                            AMEX
+                                        </div>
+                                        <div>
+                                            <h4 style="margin: 0 0 0.25rem 0;">American Express •••• 1005</h4>
+                                            <p style="margin: 0; color: #6b7280; font-size: 0.9rem;">Expires 08/2025</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <button class="secondary-btn">Set as Default</button>
+                                        <button class="secondary-btn">Edit</button>
+                                    </div>
+                                </div>
+
+                                <div class="payment-method-card">
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #047857 0%, #059669 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.8rem;">
+                                            BANK
+                                        </div>
+                                        <div>
+                                            <h4 style="margin: 0 0 0.25rem 0;">Bank Account •••• 7890</h4>
+                                            <p style="margin: 0; color: #6b7280; font-size: 0.9rem;">Wells Fargo - Checking</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <button class="secondary-btn">Set as Default</button>
+                                        <button class="secondary-btn">Edit</button>
+                                    </div>
+                                </div>
+
+                                <div style="background: #f0f9ff; border: 2px dashed #3b82f6; border-radius: 12px; padding: 2rem; text-align: center; margin-top: 1.5rem;">
+                                    <svg style="width: 48px; height: 48px; color: #3b82f6; margin: 0 auto 1rem;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                                    </svg>
+                                    <h4 style="margin: 0 0 0.5rem 0; color: #1e40af;">Set Up Auto-Pay</h4>
+                                    <p style="margin: 0 0 1rem 0; color: #6b7280; font-size: 0.9rem;">Never miss a payment. Enable automatic billing.</p>
+                                    <button class="action-btn">Enable Auto-Pay</button>
+                                </div>
+                            </div>
+
+                            <!-- Usage Section -->
+                            <div id="usage-section" class="dashboard-section">
+                                <h3 style="margin: 0 0 1.5rem 0;">Usage Analytics</h3>
+
+                                <div class="usage-chart">
+                                    <h4 style="margin: 0 0 1rem 0;">Monthly Usage Trend</h4>
+                                    <div style="display: flex; align-items: flex-end; gap: 0.5rem; height: 200px; padding: 1rem 0;">
+                                        <div style="flex: 1; background: linear-gradient(to top, #6366f1, #8b5cf6); border-radius: 4px; height: 60%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 0.5rem; color: white; font-size: 0.75rem; font-weight: 600;">
+                                            Jul<br>$215
+                                        </div>
+                                        <div style="flex: 1; background: linear-gradient(to top, #6366f1, #8b5cf6); border-radius: 4px; height: 70%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 0.5rem; color: white; font-size: 0.75rem; font-weight: 600;">
+                                            Aug<br>$242
+                                        </div>
+                                        <div style="flex: 1; background: linear-gradient(to top, #6366f1, #8b5cf6); border-radius: 4px; height: 55%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 0.5rem; color: white; font-size: 0.75rem; font-weight: 600;">
+                                            Sep<br>$218
+                                        </div>
+                                        <div style="flex: 1; background: linear-gradient(to top, #6366f1, #8b5cf6); border-radius: 4px; height: 65%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 0.5rem; color: white; font-size: 0.75rem; font-weight: 600;">
+                                            Oct<br>$235
+                                        </div>
+                                        <div style="flex: 1; background: linear-gradient(to top, #6366f1, #8b5cf6); border-radius: 4px; height: 75%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 0.5rem; color: white; font-size: 0.75rem; font-weight: 600;">
+                                            Nov<br>$248
+                                        </div>
+                                        <div style="flex: 1; background: linear-gradient(to top, #cbd5e1, #e2e8f0); border-radius: 4px; height: 80%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 0.5rem; color: #64748b; font-size: 0.75rem; font-weight: 600; border: 2px dashed #94a3b8;">
+                                            Dec<br>Est
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                                    <div class="usage-chart">
+                                        <h4 style="margin: 0 0 1rem 0;">Usage Breakdown</h4>
+                                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                            <div>
+                                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                                    <span style="font-size: 0.9rem; color: #6b7280;">Base Charge</span>
+                                                    <span style="font-weight: 600;">$89.95</span>
+                                                </div>
+                                                <div style="height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden;">
+                                                    <div style="width: 36%; height: 100%; background: linear-gradient(90deg, #6366f1, #8b5cf6);"></div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                                    <span style="font-size: 0.9rem; color: #6b7280;">Usage Charges</span>
+                                                    <span style="font-weight: 600;">$127.40</span>
+                                                </div>
+                                                <div style="height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden;">
+                                                    <div style="width: 51%; height: 100%; background: linear-gradient(90deg, #8b5cf6, #a78bfa);"></div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                                    <span style="font-size: 0.9rem; color: #6b7280;">Taxes & Fees</span>
+                                                    <span style="font-weight: 600;">$31.40</span>
+                                                </div>
+                                                <div style="height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden;">
+                                                    <div style="width: 13%; height: 100%; background: linear-gradient(90deg, #a78bfa, #c4b5fd);"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="usage-chart">
+                                        <h4 style="margin: 0 0 1rem 0;">Quick Stats</h4>
+                                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                            <div style="display: flex; justify-content: space-between;">
+                                                <span style="color: #6b7280; font-size: 0.9rem;">Average Monthly</span>
+                                                <span style="font-weight: 700; color: #6366f1;">$231.67</span>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between;">
+                                                <span style="color: #6b7280; font-size: 0.9rem;">Year-to-Date</span>
+                                                <span style="font-weight: 700; color: #6366f1;">$2,847.20</span>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between;">
+                                                <span style="color: #6b7280; font-size: 0.9rem;">vs Last Year</span>
+                                                <span style="font-weight: 700; color: #10b981;">↓ 8.5%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem;">
+                                    <div style="display: flex; align-items: start; gap: 1rem;">
+                                        <svg style="width: 24px; height: 24px; color: #16a34a; flex-shrink: 0;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <div>
+                                            <h4 style="margin: 0 0 0.5rem 0; color: #166534;">Great job!</h4>
+                                            <p style="margin: 0; color: #15803d; font-size: 0.9rem;">Your usage is 8.5% lower than last year. You're saving money and energy!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Set up tab switching for post-login demo
+                window.switchDashboardTab = function(event, section) {
+                    // Update tabs
+                    document.querySelectorAll('.dashboard-tab').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+                    event.currentTarget.classList.add('active');
+
+                    // Update sections
+                    document.querySelectorAll('.dashboard-section').forEach(sec => {
+                        sec.classList.remove('active');
+                    });
+
+                    const targetSection = document.getElementById(section + '-section');
+                    if (targetSection) {
+                        targetSection.classList.add('active');
                     }
                 };
             }
