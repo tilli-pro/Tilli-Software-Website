@@ -71,8 +71,13 @@
 
     // Create toggle button
     function createToggleButton() {
+        console.log('[Dark Mode] Creating toggle button...');
+
         // Check if button already exists
-        if (document.getElementById('theme-toggle')) return;
+        if (document.getElementById('theme-toggle')) {
+            console.log('[Dark Mode] Button already exists');
+            return;
+        }
 
         const button = document.createElement('button');
         button.id = 'theme-toggle';
@@ -99,6 +104,7 @@
 
         button.addEventListener('click', toggleTheme);
         document.body.appendChild(button);
+        console.log('[Dark Mode] ✅ Toggle button created and appended to body');
     }
 
     // Initialize theme on page load
