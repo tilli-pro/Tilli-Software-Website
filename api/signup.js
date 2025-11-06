@@ -19,7 +19,8 @@ export default async function handler(req, res) {
 
     try {
         const {
-            fullName,
+            firstName,
+            lastName,
             email,
             phone,
             companyName,
@@ -32,7 +33,7 @@ export default async function handler(req, res) {
         } = req.body;
 
         // Validate required fields
-        if (!fullName || !email || !phone || !companyName || !industry || !companySize || !password) {
+        if (!firstName || !lastName || !email || !phone || !companyName || !industry || !companySize || !password) {
             return res.status(400).json({
                 success: false,
                 error: 'All fields are required.'
@@ -76,8 +77,8 @@ export default async function handler(req, res) {
 
         // Send to VTiger CRM
         const crmPayload = {
-            firstname: fullName.split(' ')[0],
-            lastname: fullName.split(' ').slice(1).join(' ') || fullName.split(' ')[0],
+            firstname: firstName,
+            lastname: lastName,
             email: email,
             phone: phone,
             company: companyName,
@@ -123,7 +124,9 @@ export default async function handler(req, res) {
                     body: JSON.stringify({
                         email,
                         phone,
-                        fullName,
+                        firstName,
+                        lastName,
+                        fullName: `${firstName} ${lastName}`,
                         companyName,
                         password: userPassword
                     })
@@ -154,7 +157,9 @@ export default async function handler(req, res) {
                     body: JSON.stringify({
                         email,
                         phone,
-                        fullName,
+                        firstName,
+                        lastName,
+                        fullName: `${firstName} ${lastName}`,
                         companyName,
                         password: userPassword
                     })

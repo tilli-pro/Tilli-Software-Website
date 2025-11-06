@@ -16,9 +16,10 @@
 
         .signup-card {
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(91, 158, 255, 0.08);
             padding: 3rem;
+            border: 1px solid rgba(91, 158, 255, 0.1);
         }
 
         .signup-header {
@@ -85,18 +86,34 @@
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.875rem 1.125rem;
             border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.2s;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #ffffff;
+        }
+
+        .form-group input:hover,
+        .form-group select:hover {
+            border-color: #d1d5db;
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
             border-color: #5B9EFF;
-            box-shadow: 0 0 0 3px rgba(91, 158, 255, 0.1);
+            box-shadow: 0 0 0 4px rgba(91, 158, 255, 0.12);
+            background: #fafbff;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%235B9EFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 3rem;
+            cursor: pointer;
         }
 
         .form-group input.error {
@@ -210,24 +227,29 @@
 
         .submit-btn {
             width: 100%;
-            padding: 1rem 2rem;
+            padding: 1.125rem 2rem;
             background: linear-gradient(135deg, #5B9EFF, #4A90E2);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1.125rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(91, 158, 255, 0.25);
         }
 
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(91, 158, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(91, 158, 255, 0.35);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
         }
 
         .submit-btn:disabled {
-            opacity: 0.6;
+            opacity: 0.7;
             cursor: not-allowed;
             transform: none;
         }
@@ -303,31 +325,40 @@
                 <div class="form-section">
                     <h3><i class="fas fa-user"></i> Your Information</h3>
 
-                    <div class="form-group">
-                        <label for="fullName">Full Name <span class="required">*</span></label>
-                        <input type="text" id="fullName" name="fullName" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="John">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="email">
-                            Work Email Address <span class="required">*</span>
-                            <span id="email-verified-badge" class="verified-badge" style="display: none;">
-                                <i class="fas fa-check-circle"></i> Verified
-                            </span>
-                        </label>
-                        <input type="email" id="email" name="email" required>
-                        <span class="helper-text">Please use your company email (not gmail, yahoo, etc.)</span>
-                        <span class="error-text">Please use a company email address</span>
-                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">
+                                Work Email Address <span class="required">*</span>
+                                <span id="email-verified-badge" class="verified-badge" style="display: none;">
+                                    <i class="fas fa-check-circle"></i> Verified
+                                </span>
+                            </label>
+                            <input type="email" id="email" name="email" required placeholder="john.doe@company.com">
+                            <span class="helper-text">Use your company email (not gmail, yahoo, etc.)</span>
+                            <span class="error-text">Please use a company email address</span>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="phone">
-                            Phone Number <span class="required">*</span>
-                            <span id="phone-verified-badge" class="verified-badge" style="display: none;">
-                                <i class="fas fa-check-circle"></i> Verified
-                            </span>
-                        </label>
-                        <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
+                        <div class="form-group">
+                            <label for="phone">
+                                Phone Number <span class="required">*</span>
+                                <span id="phone-verified-badge" class="verified-badge" style="display: none;">
+                                    <i class="fas fa-check-circle"></i> Verified
+                                </span>
+                            </label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
+                        </div>
                     </div>
                 </div>
 
@@ -340,37 +371,39 @@
                         <input type="text" id="companyName" name="companyName" required>
                     </div>
 
-                    <div class="form-group">
-                        <label for="industry">Industry <span class="required">*</span></label>
-                        <select id="industry" name="industry" required>
-                            <option value="">Select your industry</option>
-                            <option value="banking">Banking and Finance</option>
-                            <option value="education">Education and Universities</option>
-                            <option value="gaming">Gaming Developers</option>
-                            <option value="information-technology">Information Technology</option>
-                            <option value="insurance">Insurance</option>
-                            <option value="media">Media and Entertainment</option>
-                            <option value="memberships">Memberships</option>
-                            <option value="public-sector">Public Sector</option>
-                            <option value="rentals">Rentals and Leases</option>
-                            <option value="saas-billing">SaaS Billing</option>
-                            <option value="telecom">Telecommunications</option>
-                            <option value="utilities">Utilities</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="industry">Industry <span class="required">*</span></label>
+                            <select id="industry" name="industry" required>
+                                <option value="">Select your industry</option>
+                                <option value="banking">Banking and Finance</option>
+                                <option value="education">Education and Universities</option>
+                                <option value="gaming">Gaming Developers</option>
+                                <option value="information-technology">Information Technology</option>
+                                <option value="insurance">Insurance</option>
+                                <option value="media">Media and Entertainment</option>
+                                <option value="memberships">Memberships</option>
+                                <option value="public-sector">Public Sector</option>
+                                <option value="rentals">Rentals and Leases</option>
+                                <option value="saas-billing">SaaS Billing</option>
+                                <option value="telecom">Telecommunications</option>
+                                <option value="utilities">Utilities</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="companySize">Company Size <span class="required">*</span></label>
-                        <select id="companySize" name="companySize" required>
-                            <option value="">Select company size</option>
-                            <option value="1-10">1-10 employees</option>
-                            <option value="11-50">11-50 employees</option>
-                            <option value="51-200">51-200 employees</option>
-                            <option value="201-500">201-500 employees</option>
-                            <option value="501-1000">501-1,000 employees</option>
-                            <option value="1001+">1,001+ employees</option>
-                        </select>
+                        <div class="form-group">
+                            <label for="companySize">Company Size <span class="required">*</span></label>
+                            <select id="companySize" name="companySize" required>
+                                <option value="">Select company size</option>
+                                <option value="1-10">1-10 employees</option>
+                                <option value="11-50">11-50 employees</option>
+                                <option value="51-200">51-200 employees</option>
+                                <option value="201-500">201-500 employees</option>
+                                <option value="501-1000">501-1,000 employees</option>
+                                <option value="1001+">1,001+ employees</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -379,28 +412,30 @@
                     <h3><i class="fas fa-lock"></i> Create Password</h3>
                     <p class="helper-text" style="margin-top: -0.5rem; margin-bottom: 1rem;">Choose a strong password for your Tilli accounts</p>
 
-                    <div class="form-group">
-                        <label for="password">Password <span class="required">*</span></label>
-                        <input type="password" id="password" name="password" required
-                               minlength="8" placeholder="Enter password">
-                        <div class="password-requirements" style="margin-top: 0.5rem; font-size: 0.875rem; color: #6b7280;">
-                            <p style="margin: 0 0 0.25rem 0; font-weight: 600;">Password must contain:</p>
-                            <ul style="margin: 0; padding-left: 1.5rem; list-style: disc;">
-                                <li id="req-length">At least 8 characters</li>
-                                <li id="req-uppercase">One uppercase letter (A-Z)</li>
-                                <li id="req-lowercase">One lowercase letter (a-z)</li>
-                                <li id="req-number">One number (0-9)</li>
-                                <li id="req-special">One special character (!@#$%^&*)</li>
-                            </ul>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password <span class="required">*</span></label>
+                            <input type="password" id="password" name="password" required
+                                   minlength="8" placeholder="Enter password">
+                            <div class="password-requirements" style="margin-top: 0.5rem; font-size: 0.8rem; color: #6b7280;">
+                                <p style="margin: 0 0 0.25rem 0; font-weight: 600; font-size: 0.8rem;">Must contain:</p>
+                                <ul style="margin: 0; padding-left: 1.25rem; list-style: none;">
+                                    <li id="req-length" style="font-size: 0.75rem;">✓ 8+ characters</li>
+                                    <li id="req-uppercase" style="font-size: 0.75rem;">✓ Uppercase</li>
+                                    <li id="req-lowercase" style="font-size: 0.75rem;">✓ Lowercase</li>
+                                    <li id="req-number" style="font-size: 0.75rem;">✓ Number</li>
+                                    <li id="req-special" style="font-size: 0.75rem;">✓ Special (!@#$)</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" required
-                               placeholder="Re-enter password">
-                        <div id="password-match-error" style="display: none; margin-top: 0.5rem; color: #ef4444; font-size: 0.875rem;">
-                            <i class="fas fa-exclamation-circle"></i> Passwords do not match
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required
+                                   placeholder="Re-enter password">
+                            <div id="password-match-error" style="display: none; margin-top: 0.5rem; color: #ef4444; font-size: 0.875rem;">
+                                <i class="fas fa-exclamation-circle"></i> Passwords do not match
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -580,7 +615,8 @@
 
             // Collect form data
             const formData = {
-                fullName: document.getElementById('fullName').value,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 companyName: document.getElementById('companyName').value,
