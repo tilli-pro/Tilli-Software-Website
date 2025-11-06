@@ -81,6 +81,30 @@ Allow: /
 User-agent: Bingbot-AI
 Allow: /
 
+# X.AI (Grok)
+User-agent: Grok
+Allow: /
+
+User-agent: Grokbot
+Allow: /
+
+User-agent: x-ai
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: MetaAI
+Allow: /
+
+# OpenAI Search (SearchGPT / Atlas)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: SearchGPT
+Allow: /
+
 # Alternative Search Engines
 User-agent: KagiBot
 Allow: /
