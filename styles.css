@@ -6207,3 +6207,29 @@ a:focus {
     background: #1E293B !important;
     background-color: #1E293B !important;
 }
+
+/* ===================================
+   DARK MODE LOGO FIXES
+   =================================== */
+
+/* Invert dark logos to white/light for dark mode */
+[data-theme="dark"] img[src*="caresource"],
+[data-theme="dark"] img[src*="frontier"],
+[data-theme="dark"] img[src*="washington"],
+[data-theme="dark"] img[src*="consolidated"],
+[data-theme="dark"] img[src*="conedison"],
+[data-theme="dark"] img[src*="logo"]:not([src*="white"]):not([src*="tilli"]) {
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+/* Keep Tilli logo proper colors */
+[data-theme="dark"] img[src*="tilli"],
+[data-theme="dark"] img[src*="Utilli"] {
+    filter: none !important;
+}
+
+/* Ensure SVG logos also work */
+[data-theme="dark"] svg.logo-dark {
+    filter: brightness(0) invert(1);
+}
