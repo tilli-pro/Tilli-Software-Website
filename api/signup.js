@@ -12,24 +12,24 @@ const crypto = require('crypto');
 const fetch = require('node-fetch');
 
 // Helper to safely get request body
+// NEVER access req.body - always read raw stream to avoid Vercel's broken body parser
 async function getRequestBody(req) {
-    // If body is already parsed, return it
-    if (req.body && typeof req.body === 'object') {
-        return req.body;
-    }
-
-    // Otherwise, read raw body
     const chunks = [];
     for await (const chunk of req) {
         chunks.push(chunk);
     }
     const rawBody = Buffer.concat(chunks).toString('utf8');
 
+    console.log('[SIGNUP] Raw body received:', rawBody.substring(0, 100));
+
     // Try to parse as JSON
     try {
-        return JSON.parse(rawBody);
+        const parsed = JSON.parse(rawBody);
+        console.log('[SIGNUP] JSON parsed successfully');
+        return parsed;
     } catch (e) {
-        throw new Error('Invalid JSON in request body');
+        console.error('[SIGNUP] JSON parse failed:', e.message);
+        throw new Error('Invalid JSON in request body: ' + e.message);
     }
 }
 
