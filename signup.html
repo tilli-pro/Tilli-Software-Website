@@ -663,18 +663,68 @@
 
         // All DOM-dependent code wrapped in DOMContentLoaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Pre-fill from session storage (from OTP verification)
+            // Pre-fill from URL parameters (highest priority)
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlEmail = urlParams.get('email');
+            const urlPhone = urlParams.get('phone');
+            const urlFirstName = urlParams.get('firstName') || urlParams.get('firstname');
+            const urlLastName = urlParams.get('lastName') || urlParams.get('lastname');
+            const urlCompany = urlParams.get('company') || urlParams.get('companyName');
+
+            // Pre-fill from localStorage (medium priority - from demos/calculators)
+            const storedEmail = localStorage.getItem('demo_email');
+            const storedPhone = localStorage.getItem('demo_phone');
+            const storedFirstName = localStorage.getItem('demo_firstName');
+            const storedLastName = localStorage.getItem('demo_lastName');
+            const storedCompany = localStorage.getItem('demo_company');
+
+            // Pre-fill from session storage (lowest priority - from OTP verification)
             const verifiedEmail = sessionStorage.getItem('verified_email');
             const verifiedPhone = sessionStorage.getItem('verified_phone');
 
-            if (verifiedEmail) {
-                document.getElementById('email').value = verifiedEmail;
-                document.getElementById('email-verified-badge').style.display = 'inline-flex';
+            // Email - URL params take precedence over localStorage over sessionStorage
+            const emailValue = urlEmail || storedEmail || verifiedEmail;
+            if (emailValue) {
+                document.getElementById('email').value = emailValue;
+                if (verifiedEmail && emailValue === verifiedEmail) {
+                    document.getElementById('email-verified-badge').style.display = 'inline-flex';
+                }
             }
 
-            if (verifiedPhone) {
-                document.getElementById('phone').value = verifiedPhone;
-                document.getElementById('phone-verified-badge').style.display = 'inline-flex';
+            // Phone - URL params take precedence over localStorage over sessionStorage
+            const phoneValue = urlPhone || storedPhone || verifiedPhone;
+            if (phoneValue) {
+                document.getElementById('phone').value = phoneValue;
+                if (verifiedPhone && phoneValue === verifiedPhone) {
+                    document.getElementById('phone-verified-badge').style.display = 'inline-flex';
+                }
+            }
+
+            // First Name
+            const firstNameValue = urlFirstName || storedFirstName;
+            if (firstNameValue) {
+                document.getElementById('firstName').value = firstNameValue;
+            }
+
+            // Last Name
+            const lastNameValue = urlLastName || storedLastName;
+            if (lastNameValue) {
+                document.getElementById('lastName').value = lastNameValue;
+            }
+
+            // Company Name
+            const companyValue = urlCompany || storedCompany;
+            if (companyValue) {
+                document.getElementById('companyName').value = companyValue;
+            }
+
+            // Clear localStorage after pre-filling (one-time use)
+            if (storedEmail || storedPhone || storedFirstName || storedLastName || storedCompany) {
+                localStorage.removeItem('demo_email');
+                localStorage.removeItem('demo_phone');
+                localStorage.removeItem('demo_firstName');
+                localStorage.removeItem('demo_lastName');
+                localStorage.removeItem('demo_company');
             }
 
             // Validate commercial email
