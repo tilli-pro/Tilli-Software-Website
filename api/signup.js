@@ -374,11 +374,14 @@ async function createVTigerLead(baseUrl, username, accessKey, leadData) {
         });
 
         const createData = await createResponse.json();
+        console.log('[VTIGER] Create lead response:', createData);
 
         if (!createData.success) {
-            throw new Error('Failed to create lead in VTiger');
+            console.error('[VTIGER] Lead creation failed:', JSON.stringify(createData));
+            throw new Error('Failed to create lead in VTiger: ' + (createData.error?.message || JSON.stringify(createData)));
         }
 
+        console.log('[VTIGER] Lead created successfully:', createData.result?.id);
         return createData.result;
 
     } catch (error) {
