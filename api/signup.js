@@ -343,9 +343,11 @@ async function createVTigerLead(baseUrl, username, accessKey, leadData) {
 
         const loginResponse = await fetch(`${loginUrl}?${loginParams}`);
         const loginData = await loginResponse.json();
+        console.log('[VTIGER] Login response:', loginData);
 
         if (!loginData.success) {
-            throw new Error('VTiger login failed');
+            console.error('[VTIGER] Login failed with data:', JSON.stringify(loginData));
+            throw new Error('VTiger login failed: ' + (loginData.error?.message || JSON.stringify(loginData)));
         }
 
         const sessionId = loginData.result.sessionName;
