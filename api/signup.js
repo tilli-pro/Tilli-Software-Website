@@ -134,6 +134,7 @@ module.exports = async (req, res) => {
             industry: industry,
             description: `Signup Request for: ${selectedProductNames}\n\nCompany Size: ${companySize}\nSource: ${source}\nTimestamp: ${timestamp}`,
             cf_product_interest: selectedProductNames,
+            cf_913: 'Product Signup', // Required use case field
             assigned_user_id: '19x1' // Default assignment
         };
 
