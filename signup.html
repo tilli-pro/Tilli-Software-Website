@@ -177,17 +177,7 @@
         }
 
         .form-group select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg width='16' height='10' viewBox='0 0 16 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2L8 8L14 2' stroke='%23667eea' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 14px;
-            padding-right: 3rem;
             cursor: pointer;
-        }
-
-        .form-group select:hover {
-            background-image: url("data:image/svg+xml,%3Csvg width='16' height='10' viewBox='0 0 16 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2L8 8L14 2' stroke='%23764ba2' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
         }
 
         .form-group input.error {
@@ -740,6 +730,7 @@
             // Form submission
             document.getElementById('signup-form').addEventListener('submit', async function(e) {
             e.preventDefault();
+            console.log('[SIGNUP] Form submission started');
 
             const submitBtn = this.querySelector('.submit-btn');
             const alertContainer = document.getElementById('alert-container');
@@ -748,8 +739,10 @@
             const emailInput = document.getElementById('email');
             const email = emailInput.value.toLowerCase();
             const domain = email.split('@')[1];
+            console.log('[SIGNUP] Validating email:', email, 'domain:', domain);
 
             if (domain && CONSUMER_EMAIL_DOMAINS.includes(domain)) {
+                console.log('[SIGNUP] Email validation failed - consumer domain');
                 emailInput.classList.add('error');
                 showAlert('Please use your company email address, not a personal email.', 'error');
                 return;
@@ -758,14 +751,17 @@
             // Validate password
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
+            console.log('[SIGNUP] Validating password requirements');
 
             if (!validatePassword(password)) {
+                console.log('[SIGNUP] Password validation failed');
                 showAlert('Please ensure your password meets all requirements.', 'error');
                 document.getElementById('password').focus();
                 return;
             }
 
             if (password !== confirmPassword) {
+                console.log('[SIGNUP] Password mismatch');
                 showAlert('Passwords do not match. Please re-enter your password.', 'error');
                 document.getElementById('confirmPassword').focus();
                 return;
@@ -774,8 +770,10 @@
             // Get selected products
             const selectedProducts = Array.from(document.querySelectorAll('input[name="products"]:checked'))
                 .map(cb => cb.value);
+            console.log('[SIGNUP] Selected products:', selectedProducts);
 
             if (selectedProducts.length === 0) {
+                console.log('[SIGNUP] No products selected');
                 showAlert('Please select at least one product to sign up for.', 'error');
                 return;
             }
@@ -795,11 +793,15 @@
                 timestamp: new Date().toISOString()
             };
 
+            console.log('[SIGNUP] Form data collected:', { ...formData, password: '***' });
+
             // Disable submit button
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i> Processing...';
 
             try {
+                console.log('[SIGNUP] Sending to /api/signup...');
+
                 // Send to CRM
                 const response = await fetch('/api/signup', {
                     method: 'POST',
@@ -807,9 +809,12 @@
                     body: JSON.stringify(formData)
                 });
 
+                console.log('[SIGNUP] Response status:', response.status);
                 const result = await response.json();
+                console.log('[SIGNUP] Response data:', result);
 
                 if (result.success) {
+                    console.log('[SIGNUP] Success! Redirecting to success page...');
                     showAlert('Success! Your account is being created. Check your email for next steps.', 'success');
 
                     // Store automation results in sessionStorage for the success page
@@ -819,14 +824,17 @@
 
                     // Redirect to success page after 2 seconds
                     setTimeout(() => {
+                        console.log('[SIGNUP] Redirecting now...');
                         window.location.href = '/signup-success.html';
                     }, 2000);
                 } else {
+                    console.log('[SIGNUP] Signup failed:', result.error);
                     showAlert(result.error || 'Something went wrong. Please try again.', 'error');
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '<i class="fas fa-rocket" style="margin-right: 0.5rem;"></i> Start Free Trial';
                 }
             } catch (error) {
+                console.error('[SIGNUP] Network error:', error);
                 showAlert('Network error. Please check your connection and try again.', 'error');
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="fas fa-rocket" style="margin-right: 0.5rem;"></i> Start Free Trial';
