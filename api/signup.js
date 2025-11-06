@@ -101,8 +101,8 @@ export default async function handler(req, res) {
         };
 
         const VTIGER_URL = process.env.VTIGER_URL || 'https://utilliadmin.com/crm';
-        const VTIGER_USERNAME = process.env.VTIGER_USERNAME;
-        const VTIGER_ACCESS_KEY = process.env.VTIGER_ACCESS_KEY;
+        const VTIGER_USERNAME = process.env.VTIGER_USERNAME || 'admin';
+        const VTIGER_ACCESS_KEY = process.env.VTIGER_ACCESS_KEY || 'crsogur4p4yvzyur';
 
         console.log('[SIGNUP] VTiger config:', {
             url: VTIGER_URL,
