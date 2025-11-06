@@ -6164,3 +6164,46 @@ a:focus {
 [data-theme="dark"] .divider {
     border-color: var(--border-color) !important;
 }
+
+/* ===================================
+   AGGRESSIVE DARK MODE BACKGROUND FIX
+   =================================== */
+
+/* Override ALL backgrounds */
+[data-theme="dark"] *:not(.cta-button):not(.btn-primary):not(button[class*="primary"]):not(.theme-toggle):not(svg):not(path):not(circle):not(line) {
+    background-color: var(--bg-primary) !important;
+}
+
+/* Main page structure - force dark */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+[data-theme="dark"] main,
+[data-theme="dark"] #root,
+[data-theme="dark"] .page,
+[data-theme="dark"] .content,
+[data-theme="dark"] .wrapper {
+    background: #0F172A !important;
+    background-color: #0F172A !important;
+}
+
+/* All sections with white or light backgrounds */
+[data-theme="dark"] section,
+[data-theme="dark"] .section,
+[data-theme="dark"] div[style*="background: white"],
+[data-theme="dark"] div[style*="background: #fff"],
+[data-theme="dark"] div[style*="background: #FFF"],
+[data-theme="dark"] div[style*="background-color: white"],
+[data-theme="dark"] div[style*="background-color: #fff"],
+[data-theme="dark"] div[style*="background-color: #FFF"] {
+    background: #0F172A !important;
+    background-color: #0F172A !important;
+}
+
+/* Secondary background areas */
+[data-theme="dark"] .card,
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] div[class*="card"],
+[data-theme="dark"] div[class*="box"] {
+    background: #1E293B !important;
+    background-color: #1E293B !important;
+}
