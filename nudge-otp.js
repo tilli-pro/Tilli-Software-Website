@@ -412,6 +412,17 @@
             }
 
             sessionStorage.setItem(STORAGE_KEY, "true");
+
+            // Store verified email/phone for signup form pre-fill
+            const emailInput = document.getElementById("demo-otp-email");
+            const phoneInput = document.getElementById("demo-otp-phone");
+            if (emailInput && emailInput.value) {
+                sessionStorage.setItem("verified_email", emailInput.value);
+            }
+            if (phoneInput && phoneInput.value) {
+                sessionStorage.setItem("verified_phone", phoneInput.value);
+            }
+
             successEl.textContent = "Verified! Redirecting to the demo…";
             successEl.style.display = "block";
             setTimeout(() => {

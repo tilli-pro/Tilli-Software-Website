@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up for Tilli Products | Nudge, tilliPay, tilliX, tilliArc</title>
+    <meta name="description" content="Sign up for Tilli products - Nudge communications, tilliPay payments, tilliX portal, tilliArc archiving. Start your free trial today.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .signup-container {
+            max-width: 800px;
+            margin: 80px auto 40px;
+            padding: 2rem;
+        }
+
+        .signup-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            padding: 3rem;
+        }
+
+        .signup-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .signup-header h1 {
+            color: #1a1a1a;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .signup-header p {
+            color: #6b7280;
+            font-size: 1rem;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            color: #1a1a1a;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-section h3 i {
+            color: #5B9EFF;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #374151;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group label .required {
+            color: #ef4444;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #5B9EFF;
+            box-shadow: 0 0 0 3px rgba(91, 158, 255, 0.1);
+        }
+
+        .form-group input.error {
+            border-color: #ef4444;
+        }
+
+        .form-group .helper-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        .form-group .error-text {
+            font-size: 0.875rem;
+            color: #ef4444;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group input.error + .error-text {
+            display: block;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .product-checkbox {
+            position: relative;
+        }
+
+        .product-checkbox input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .product-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .product-checkbox input[type="checkbox"]:checked + .product-label {
+            border-color: #5B9EFF;
+            background: rgba(91, 158, 255, 0.05);
+        }
+
+        .product-label i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #5B9EFF;
+        }
+
+        .product-label .product-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-label .product-desc {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        .product-checkbox input[type="checkbox"]:checked + .product-label .checkmark {
+            display: block;
+        }
+
+        .checkmark {
+            display: none;
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #5B9EFF;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.75rem;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: #d4edda;
+            color: #155724;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .verified-badge i {
+            font-size: 0.875rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #5B9EFF, #4A90E2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(91, 158, 255, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .signup-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="tilli-logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="calculator.html" class="btn-secondary">Calculate ROI</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="signup-container">
+        <div class="signup-card">
+            <div class="signup-header">
+                <h1>Start Your Free Trial</h1>
+                <p>Sign up for Tilli products and transform your billing and payment operations</p>
+            </div>
+
+            <div id="alert-container"></div>
+
+            <form id="signup-form">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Your Information</h3>
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">
+                            Work Email Address <span class="required">*</span>
+                            <span id="email-verified-badge" class="verified-badge" style="display: none;">
+                                <i class="fas fa-check-circle"></i> Verified
+                            </span>
+                        </label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="helper-text">Please use your company email (not gmail, yahoo, etc.)</span>
+                        <span class="error-text">Please use a company email address</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">
+                            Phone Number <span class="required">*</span>
+                            <span id="phone-verified-badge" class="verified-badge" style="display: none;">
+                                <i class="fas fa-check-circle"></i> Verified
+                            </span>
+                        </label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
+                    </div>
+                </div>
+
+                <!-- Company Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-building"></i> Company Information</h3>
+
+                    <div class="form-group">
+                        <label for="companyName">Company Name <span class="required">*</span></label>
+                        <input type="text" id="companyName" name="companyName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry">Industry <span class="required">*</span></label>
+                        <select id="industry" name="industry" required>
+                            <option value="">Select your industry</option>
+                            <option value="banking">Banking and Finance</option>
+                            <option value="education">Education and Universities</option>
+                            <option value="gaming">Gaming Developers</option>
+                            <option value="information-technology">Information Technology</option>
+                            <option value="insurance">Insurance</option>
+                            <option value="media">Media and Entertainment</option>
+                            <option value="memberships">Memberships</option>
+                            <option value="public-sector">Public Sector</option>
+                            <option value="rentals">Rentals and Leases</option>
+                            <option value="saas-billing">SaaS Billing</option>
+                            <option value="telecom">Telecommunications</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companySize">Company Size <span class="required">*</span></label>
+                        <select id="companySize" name="companySize" required>
+                            <option value="">Select company size</option>
+                            <option value="1-10">1-10 employees</option>
+                            <option value="11-50">11-50 employees</option>
+                            <option value="51-200">51-200 employees</option>
+                            <option value="201-500">201-500 employees</option>
+                            <option value="501-1000">501-1,000 employees</option>
+                            <option value="1001+">1,001+ employees</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Selection -->
+                <div class="form-section">
+                    <h3><i class="fas fa-check-square"></i> Select Products</h3>
+                    <p class="helper-text" style="margin-top: -0.5rem; margin-bottom: 1rem;">Choose one or more products to get started</p>
+
+                    <div class="product-grid">
+                        <div class="product-checkbox">
+                            <input type="checkbox" id="product-nudge" name="products" value="nudge">
+                            <label for="product-nudge" class="product-label">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                                <i class="fas fa-comment-dots"></i>
+                                <div class="product-name">Nudge</div>
+                                <div class="product-desc">Communications Platform</div>
+                            </label>
+                        </div>
+
+                        <div class="product-checkbox">
+                            <input type="checkbox" id="product-tillipay" name="products" value="tillipay">
+                            <label for="product-tillipay" class="product-label">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                                <i class="fas fa-credit-card"></i>
+                                <div class="product-name">tilliPay</div>
+                                <div class="product-desc">Payment Processing</div>
+                            </label>
+                        </div>
+
+                        <div class="product-checkbox">
+                            <input type="checkbox" id="product-tillix" name="products" value="tillix">
+                            <label for="product-tillix" class="product-label">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                                <i class="fas fa-desktop"></i>
+                                <div class="product-name">tilliX</div>
+                                <div class="product-desc">Customer Portal</div>
+                            </label>
+                        </div>
+
+                        <div class="product-checkbox">
+                            <input type="checkbox" id="product-tilliarc" name="products" value="tilliarc">
+                            <label for="product-tilliarc" class="product-label">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                                <i class="fas fa-archive"></i>
+                                <div class="product-name">tilliArc</div>
+                                <div class="product-desc">Document Archiving</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-rocket" style="margin-right: 0.5rem;"></i>
+                    Start Free Trial
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Commercial email domains to block
+        const CONSUMER_EMAIL_DOMAINS = [
+            'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com',
+            'icloud.com', 'mail.com', 'protonmail.com', 'yandex.com', 'zoho.com'
+        ];
+
+        // Pre-fill from session storage (from OTP verification)
+        document.addEventListener('DOMContentLoaded', function() {
+            const verifiedEmail = sessionStorage.getItem('verified_email');
+            const verifiedPhone = sessionStorage.getItem('verified_phone');
+
+            if (verifiedEmail) {
+                document.getElementById('email').value = verifiedEmail;
+                document.getElementById('email-verified-badge').style.display = 'inline-flex';
+            }
+
+            if (verifiedPhone) {
+                document.getElementById('phone').value = verifiedPhone;
+                document.getElementById('phone-verified-badge').style.display = 'inline-flex';
+            }
+        });
+
+        // Validate commercial email
+        document.getElementById('email').addEventListener('blur', function() {
+            const email = this.value.toLowerCase();
+            const domain = email.split('@')[1];
+
+            if (domain && CONSUMER_EMAIL_DOMAINS.includes(domain)) {
+                this.classList.add('error');
+                return false;
+            } else {
+                this.classList.remove('error');
+                return true;
+            }
+        });
+
+        // Form submission
+        document.getElementById('signup-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('.submit-btn');
+            const alertContainer = document.getElementById('alert-container');
+
+            // Validate email
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.toLowerCase();
+            const domain = email.split('@')[1];
+
+            if (domain && CONSUMER_EMAIL_DOMAINS.includes(domain)) {
+                emailInput.classList.add('error');
+                showAlert('Please use your company email address, not a personal email.', 'error');
+                return;
+            }
+
+            // Get selected products
+            const selectedProducts = Array.from(document.querySelectorAll('input[name="products"]:checked'))
+                .map(cb => cb.value);
+
+            if (selectedProducts.length === 0) {
+                showAlert('Please select at least one product to sign up for.', 'error');
+                return;
+            }
+
+            // Collect form data
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                companyName: document.getElementById('companyName').value,
+                industry: document.getElementById('industry').value,
+                companySize: document.getElementById('companySize').value,
+                products: selectedProducts,
+                source: 'website_signup',
+                timestamp: new Date().toISOString()
+            };
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i> Processing...';
+
+            try {
+                // Send to CRM
+                const response = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showAlert('Success! Your account is being created. Check your email for next steps.', 'success');
+
+                    // Reset form after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = '/signup-success.html';
+                    }, 2000);
+                } else {
+                    showAlert(result.error || 'Something went wrong. Please try again.', 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-rocket" style="margin-right: 0.5rem;"></i> Start Free Trial';
+                }
+            } catch (error) {
+                showAlert('Network error. Please check your connection and try again.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-rocket" style="margin-right: 0.5rem;"></i> Start Free Trial';
+            }
+        });
+
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alert-container');
+            alertContainer.innerHTML = `
+                <div class="alert ${type} show">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                    ${message}
+                </div>
+            `;
+
+            // Scroll to alert
+            alertContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+
+    <!-- Vercel Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

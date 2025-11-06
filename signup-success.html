@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Successful | Tilli Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .success-container {
+            max-width: 700px;
+            margin: 100px auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .success-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            padding: 3rem;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .success-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        h1 {
+            color: #1a1a1a;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #6b7280;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .next-steps {
+            background: #f3f4f6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .next-steps h2 {
+            color: #1a1a1a;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+
+        .next-steps li i {
+            color: #5B9EFF;
+            margin-top: 0.25rem;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: linear-gradient(135deg, #5B9EFF, #4A90E2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(91, 158, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="tilli-logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+
+            <h1>Welcome to Tilli!</h1>
+            <p>Your signup request has been received successfully. Our team will review your information and reach out to you shortly to set up your account.</p>
+
+            <div class="next-steps">
+                <h2>What Happens Next?</h2>
+                <ul>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>You'll receive a confirmation email with your signup details</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-user-check"></i>
+                        <span>Our team will review your request within 1 business day</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>We'll contact you to schedule an onboarding call</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-rocket"></i>
+                        <span>Get your account set up and start your free trial</span>
+                    </li>
+                </ul>
+            </div>
+
+            <a href="index.html" class="btn-home">
+                <i class="fas fa-home" style="margin-right: 0.5rem;"></i>
+                Return to Homepage
+            </a>
+        </div>
+    </div>
+
+    <!-- Vercel Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
