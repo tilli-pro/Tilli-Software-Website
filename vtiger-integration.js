@@ -104,6 +104,21 @@ async function handleDemoFormSubmit(event) {
     const phoneNumber = formData.get('phone') || '';
     const fullPhone = phoneNumber ? `${phoneCode} ${phoneNumber}` : '';
 
+    // Allow hidden inputs or data attributes to override defaults
+    const formTypeOverride = formData.get('formType') || (form && form.dataset.formType) || 'Tilli Demo Request';
+    const sourceOverride = formData.get('source') || (form && form.dataset.source) || 'Tilli Website - Demo Request Form';
+    const productInterest = formData.get('productInterest') || (form && form.dataset.productInterest) || '';
+    const ctaOrigin = formData.get('ctaOrigin') || (form && form.dataset.ctaOrigin) || '';
+    const campaign = formData.get('campaignId') || (form && form.dataset.campaignId) || '';
+
+    // Capture UTM parameters for attribution when available
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = formData.get('utmSource') || urlParams.get('utm_source') || '';
+    const utmMedium = formData.get('utmMedium') || urlParams.get('utm_medium') || '';
+    const utmCampaign = formData.get('utmCampaign') || urlParams.get('utm_campaign') || '';
+    const utmTerm = formData.get('utmTerm') || urlParams.get('utm_term') || '';
+    const utmContent = formData.get('utmContent') || urlParams.get('utm_content') || '';
+
     const data = {
         firstName: formData.get('firstName'),
         lastName: formData.get('lastName'),
@@ -117,10 +132,18 @@ async function handleDemoFormSubmit(event) {
         monthlyActiveUsers: formData.get('monthlyActiveUsers') || '',
         transactionVolume: formData.get('transactionVolume') || '',
         message: formData.get('message') || '',
-        formType: 'Tilli Demo Request',
+        formType: formTypeOverride,
+        productInterest,
+        ctaOrigin,
+        campaignId: campaign,
         pageUrl: window.location.href,
         submissionDate: new Date().toISOString(),
-        source: 'Tilli Website - Demo Request Form'
+        source: sourceOverride,
+        utmSource,
+        utmMedium,
+        utmCampaign,
+        utmTerm,
+        utmContent
     };
 
     // Disable submit button and show loading state

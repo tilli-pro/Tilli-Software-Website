@@ -96,6 +96,79 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(91, 158, 255, 0.3);
         }
+
+        .automation-results {
+            background: #f0f9ff;
+            border: 2px solid #5B9EFF;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+            display: none;
+        }
+
+        .automation-results.show {
+            display: block;
+        }
+
+        .automation-results h3 {
+            color: #1a1a1a;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .automation-item {
+            padding: 0.75rem;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+
+        .automation-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .automation-item i {
+            color: #10b981;
+            margin-top: 0.25rem;
+        }
+
+        .automation-item.failed i {
+            color: #ef4444;
+        }
+
+        .automation-details {
+            flex: 1;
+        }
+
+        .automation-details strong {
+            color: #1a1a1a;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .automation-details small {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .credentials-box {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+        }
+
+        .credentials-box p {
+            margin: 0.25rem 0;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body>
@@ -119,6 +192,12 @@
 
             <h1>Welcome to Tilli!</h1>
             <p>Your signup request has been received successfully. Our team will review your information and reach out to you shortly to set up your account.</p>
+
+            <!-- Automation Results (shown if accounts were auto-created) -->
+            <div id="automation-results" class="automation-results">
+                <h3>Your Accounts Have Been Created!</h3>
+                <div id="automation-list"></div>
+            </div>
 
             <div class="next-steps">
                 <h2>What Happens Next?</h2>
@@ -154,5 +233,98 @@
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+        // Check if automation results were passed via URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const automationsParam = urlParams.get('automations');
+
+            if (automationsParam) {
+                try {
+                    const automations = JSON.parse(decodeURIComponent(automationsParam));
+                    displayAutomationResults(automations);
+                } catch (e) {
+                    console.error('Failed to parse automation results:', e);
+                }
+            }
+
+            // Also check sessionStorage (if passed from previous page)
+            const storedAutomations = sessionStorage.getItem('signup_automations');
+            if (storedAutomations) {
+                try {
+                    const automations = JSON.parse(storedAutomations);
+                    displayAutomationResults(automations);
+                    sessionStorage.removeItem('signup_automations');
+                } catch (e) {
+                    console.error('Failed to parse stored automation results:', e);
+                }
+            }
+        });
+
+        function displayAutomationResults(automations) {
+            const resultsDiv = document.getElementById('automation-results');
+            const listDiv = document.getElementById('automation-list');
+
+            let hasSuccessfulAutomation = false;
+            let html = '';
+
+            // Display Nudge results
+            if (automations.nudge) {
+                hasSuccessfulAutomation = hasSuccessfulAutomation || automations.nudge.success;
+                html += `
+                    <div class="automation-item ${automations.nudge.success ? '' : 'failed'}">
+                        <i class="fas ${automations.nudge.success ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                        <div class="automation-details">
+                            <strong>Nudge Communications Platform</strong>
+                            <small>${automations.nudge.message}</small>
+                            ${automations.nudge.success && automations.nudge.password ? `
+                                <div class="credentials-box">
+                                    <p><strong>Login:</strong> <a href="https://app.nudge.net" target="_blank">app.nudge.net</a></p>
+                                    <p><strong>Temporary Password:</strong> ${automations.nudge.password}</p>
+                                    <p style="margin-top: 0.5rem; color: #92400e;">⚠️ Please change your password after first login</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Display tilliPay results
+            if (automations.tillipay) {
+                hasSuccessfulAutomation = hasSuccessfulAutomation || automations.tillipay.success;
+                html += `
+                    <div class="automation-item ${automations.tillipay.success ? '' : 'failed'}">
+                        <i class="fas ${automations.tillipay.success ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                        <div class="automation-details">
+                            <strong>tilliPay Payment Orchestration</strong>
+                            <small>${automations.tillipay.message}</small>
+                            ${automations.tillipay.success && automations.tillipay.password ? `
+                                <div class="credentials-box">
+                                    <p><strong>Login:</strong> <a href="https://gps.tillipay.com/portal" target="_blank">gps.tillipay.com/portal</a></p>
+                                    <p><strong>Temporary Password:</strong> ${automations.tillipay.password}</p>
+                                    <p style="margin-top: 0.5rem; color: #92400e;">⚠️ Please change your password after first login</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Only show results section if there's at least one automation result
+            if (html) {
+                listDiv.innerHTML = html;
+                resultsDiv.classList.add('show');
+
+                // If there were successful automations, update the main message
+                if (hasSuccessfulAutomation) {
+                    const mainMessage = document.querySelector('.success-card > p');
+                    if (mainMessage) {
+                        mainMessage.textContent = 'Your signup was successful and your accounts have been automatically created! Check below for your login credentials.';
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>

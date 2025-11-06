@@ -620,12 +620,121 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="nudge-cta">
+    <section class="lead-capture" id="nudge-enroll">
         <div class="container">
-            <div class="cta-content">
-                <h2>Ready to transform customer engagement?</h2>
-                <p>Book a personalized demo today and see how Nudge can power your customer communication.</p>
-                <button class="btn-primary btn-large">Request Demo</button>
+            <div class="lead-content">
+                <div class="lead-text">
+                    <h2>Ready to transform customer engagement?</h2>
+                    <p style="font-size: 1.05rem; margin-bottom: 1.5rem;">Tell us a bit about your organization and we’ll spin up a guided Nudge walkthrough within one business day.</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem; color: #1f2937;">
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #22c55e; margin-right: 10px;"></i> Personalized messaging journeys tailored to your industry</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #22c55e; margin-right: 10px;"></i> Proven playbooks that boost digital adoption and reduce churn</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #22c55e; margin-right: 10px;"></i> Integrated billing and payment reminders that keep cash flowing</li>
+                    </ul>
+                    <p style="margin: 0; font-weight: 500; color: #6366f1;">Need to talk now? <a href="javascript:void(0)" onclick="window.openBookingModal()" style="color: #4338ca; text-decoration: underline;">Book time with our team</a>.</p>
+                </div>
+                <div class="lead-form">
+                    <form class="contact-form" id="demo-form" onsubmit="handleDemoFormSubmit(event)" data-product-interest="Nudge">
+                        <input type="hidden" name="formType" value="Nudge Product Enrollment">
+                        <input type="hidden" name="productInterest" value="Nudge">
+                        <input type="hidden" name="source" value="Tilli Website - Nudge Product Page">
+                        <input type="hidden" name="ctaOrigin" value="nudge-enroll-form">
+                        <div class="form-row">
+                            <input type="text" name="firstName" placeholder="First Name" required>
+                            <input type="text" name="lastName" placeholder="Last Name" required>
+                        </div>
+
+                        <div class="form-row">
+                            <input type="email" name="email" placeholder="Work Email" required>
+                            <input type="text" name="company" placeholder="Company Name" required>
+                        </div>
+
+                        <div class="form-row">
+                            <input type="text" name="jobTitle" placeholder="Job Title / Role" required>
+                            <select name="country" id="country-select" required style="padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; font-size: 1rem; color: #374151; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23374151%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 20px; padding-right: 2.5rem; transition: border-color 0.2s; cursor: pointer;">
+                                <option value="">Select Country</option>
+                                <option value="US" data-code="+1">United States (+1)</option>
+                                <option value="CA" data-code="+1">Canada (+1)</option>
+                                <option value="GB" data-code="+44">United Kingdom (+44)</option>
+                                <option value="IN" data-code="+91">India (+91)</option>
+                                <option value="AU" data-code="+61">Australia (+61)</option>
+                                <option value="DE" data-code="+49">Germany (+49)</option>
+                                <option value="FR" data-code="+33">France (+33)</option>
+                                <option value="JP" data-code="+81">Japan (+81)</option>
+                                <option value="CN" data-code="+86">China (+86)</option>
+                                <option value="BR" data-code="+55">Brazil (+55)</option>
+                                <option value="MX" data-code="+52">Mexico (+52)</option>
+                                <option value="AE" data-code="+971">UAE (+971)</option>
+                                <option value="SG" data-code="+65">Singapore (+65)</option>
+                                <option value="NL" data-code="+31">Netherlands (+31)</option>
+                                <option value="ES" data-code="+34">Spain (+34)</option>
+                                <option value="IT" data-code="+39">Italy (+39)</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div style="flex: 1; display: flex; gap: 0.5rem;">
+                                <input type="text"
+                                       id="phone-code"
+                                       name="phoneCode"
+                                       placeholder="+1"
+                                       value="+1"
+                                       style="width: 80px; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: #f9fafb; font-size: 1rem; color: #374151; transition: border-color 0.2s;"
+                                       readonly>
+                                <input type="tel"
+                                       name="phone"
+                                       id="phone-number"
+                                       placeholder="Phone Number (optional)"
+                                       style="flex: 1; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; font-size: 1rem; color: #374151; transition: border-color 0.2s;">
+                            </div>
+                            <select name="organizationSize" required style="flex: 1; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; font-size: 1rem; color: #374151; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23374151%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 20px; padding-right: 2.5rem; transition: border-color 0.2s; cursor: pointer;">
+                                <option value="">Organization Size</option>
+                                <option value="1-10">1-10 employees</option>
+                                <option value="11-50">11-50 employees</option>
+                                <option value="51-200">51-200 employees</option>
+                                <option value="201-1000">201-1,000 employees</option>
+                                <option value="1001-5000">1,001-5,000 employees</option>
+                                <option value="5001+">5,001+ employees</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <select name="useCase" required style="flex: 1; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; font-size: 1rem; color: #374151; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23374151%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 20px; padding-right: 2.5rem; transition: border-color 0.2s; cursor: pointer;">
+                                <option value="">Primary Engagement Goal</option>
+                                <option value="billing-reminders">Reduce late payments</option>
+                                <option value="digital-adoption">Increase digital adoption</option>
+                                <option value="collections-automation">Automate collections workflows</option>
+                                <option value="customer-communications">Improve customer communications</option>
+                                <option value="operational-efficiency">Improve agent efficiency</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <select name="transactionVolume" style="flex: 1; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; font-size: 1rem; color: #374151; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23374151%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 20px; padding-right: 2.5rem; transition: border-color 0.2s; cursor: pointer;">
+                                <option value="">Monthly Message Volume</option>
+                                <option value="0-100k">0 - 100K notifications</option>
+                                <option value="100k-250k">100K - 250K notifications</option>
+                                <option value="250k-500k">250K - 500K notifications</option>
+                                <option value="500k-1m">500K - 1M notifications</option>
+                                <option value="1m+">1M+ notifications</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <textarea name="message" placeholder="Anything else we should know?" rows="4"></textarea>
+                        </div>
+
+                        <div class="math-challenge" style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem;">
+                            <label style="margin: 0; font-weight: 500; color: #374151;">Security Check: What is <span id="math-num1">5</span> + <span id="math-num2">3</span>?</label>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="number" id="math-captcha" name="mathCaptcha" placeholder="Answer" style="width: 120px; padding: 0.65rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-large" id="submit-btn">Submit Enrollment Request</button>
+                        <div id="form-status" style="margin-top: 1rem; text-align: center; display: none;"></div>
+                        <p style="margin-top: 1rem; font-size: 0.95rem; color: #6b7280;">We respond within one business day with your tailored Nudge onboarding plan.</p>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -1175,7 +1284,7 @@
 
                 <p>Book a personalized demo today and see how Nudge can power your customer communication.</p>
 
-                <button class="btn-primary btn-large">Request Demo</button>
+                <a class="btn-primary btn-large" href="#nudge-enroll">Request Demo</a>
 
             </div>
 
@@ -1829,21 +1938,13 @@
     <!-- CTA Section -->
 
     <section class="nudge-cta">
-
         <div class="container">
-
             <div class="cta-content">
-
                 <h2>Ready to transform customer engagement?</h2>
-
                 <p>Book a personalized demo today and see how Nudge can power your customer communication.</p>
-
-                <button class="btn-primary btn-large">Request Demo</button>
-
+                <a class="btn-primary btn-large" href="#nudge-enroll">Request Demo</a>
             </div>
-
         </div>
-
     </section>
 
 
@@ -2061,17 +2162,10 @@
 
     </footer>
 
-
-
     <script src="script.js"></script>
-
+    <script src="vtiger-integration.js"></script>
     <!-- CookieConsent Scripts -->
     <script src="enhanced-cookie-banner.js"></script>
-</body>
-
-</html>
-
-
     <script>
 // Booking Modal Functions
 window.openBookingModal = function() {
@@ -2115,3 +2209,5 @@ window.closeBookingModal = function() {
     }
 }
 </script>
+</body>
+</html>

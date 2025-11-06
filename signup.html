@@ -513,7 +513,12 @@
                 if (result.success) {
                     showAlert('Success! Your account is being created. Check your email for next steps.', 'success');
 
-                    // Reset form after 2 seconds
+                    // Store automation results in sessionStorage for the success page
+                    if (result.automations) {
+                        sessionStorage.setItem('signup_automations', JSON.stringify(result.automations));
+                    }
+
+                    // Redirect to success page after 2 seconds
                     setTimeout(() => {
                         window.location.href = '/signup-success.html';
                     }, 2000);

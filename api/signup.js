@@ -93,15 +93,78 @@ export default async function handler(req, res) {
         // Create lead in VTiger
         const crmResponse = await createVTigerLead(VTIGER_URL, VTIGER_USERNAME, VTIGER_ACCESS_KEY, crmPayload);
 
-        // TODO: Trigger Nudge and tilliPay signup automation
-        // For now, we'll handle this manually or via webhook
-        // Future: Implement Puppeteer-based signup automation
+        // Trigger product-specific signup automations
+        const automationResults = {
+            nudge: null,
+            tillipay: null
+        };
+
+        // If Nudge is selected, trigger Nudge signup automation
+        if (products.includes('nudge')) {
+            try {
+                const nudgeResponse = await fetch(`${req.headers.origin || 'https://tillisoftware.com'}/api/nudge/signup-automation`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email,
+                        phone,
+                        fullName,
+                        companyName
+                    })
+                });
+                const nudgeData = await nudgeResponse.json();
+                automationResults.nudge = {
+                    success: nudgeData.success,
+                    message: nudgeData.message || nudgeData.error,
+                    password: nudgeData.temporaryPassword
+                };
+            } catch (error) {
+                console.error('Nudge automation error:', error);
+                automationResults.nudge = {
+                    success: false,
+                    message: 'Automation failed - will be processed manually'
+                };
+            }
+        }
+
+        // If tilliPay is selected, trigger tilliPay signup automation
+        if (products.includes('tillipay')) {
+            try {
+                const tilliPayResponse = await fetch(`${req.headers.origin || 'https://tillisoftware.com'}/api/tillipay/signup-automation`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email,
+                        phone,
+                        fullName,
+                        companyName
+                    })
+                });
+                const tilliPayData = await tilliPayResponse.json();
+                automationResults.tillipay = {
+                    success: tilliPayData.success,
+                    message: tilliPayData.message || tilliPayData.error,
+                    password: tilliPayData.temporaryPassword
+                };
+            } catch (error) {
+                console.error('tilliPay automation error:', error);
+                automationResults.tillipay = {
+                    success: false,
+                    message: 'Automation failed - will be processed manually'
+                };
+            }
+        }
 
         return res.status(200).json({
             success: true,
             message: 'Signup successful! We will contact you shortly.',
             crmLeadId: crmResponse?.id || null,
-            products: selectedProductNames
+            products: selectedProductNames,
+            automations: automationResults
         });
 
     } catch (error) {
