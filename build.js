@@ -11,10 +11,27 @@ const path = require('path');
 const sourceDir = __dirname;
 const outputDir = path.join(__dirname, 'public');
 
-// Create public directory if it doesn't exist
-if (!fs.existsSync(outputDir)) {
-  fs.mkdirSync(outputDir, { recursive: true });
+// Remove existing public directory if it exists, then create fresh one
+function removeDir(dir) {
+  if (fs.existsSync(dir)) {
+    fs.readdirSync(dir).forEach(file => {
+      const curPath = path.join(dir, file);
+      if (fs.lstatSync(curPath).isDirectory()) {
+        removeDir(curPath);
+      } else {
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(dir);
+  }
 }
+
+if (fs.existsSync(outputDir)) {
+  console.log('Cleaning existing public directory...');
+  removeDir(outputDir);
+}
+fs.mkdirSync(outputDir, { recursive: true });
+console.log('Created fresh public directory');
 
 // Function to copy file
 function copyFile(src, dest) {
@@ -148,10 +165,19 @@ try {
     copyFile(path.join(sourceDir, caseFile), path.join(outputDir, caseFile));
   }
   
-  console.log('✅ Build completed successfully!');
+  // Verify public directory was created and has files
+  const publicFiles = fs.readdirSync(outputDir);
+  console.log(`✅ Build completed successfully!`);
   console.log(`📁 Files copied to: ${outputDir}`);
+  console.log(`📊 Total items in public directory: ${publicFiles.length}`);
+  
+  if (publicFiles.length === 0) {
+    console.error('❌ Warning: Public directory is empty!');
+    process.exit(1);
+  }
 } catch (error) {
   console.error('❌ Build failed:', error.message);
+  console.error(error.stack);
   process.exit(1);
 }
 
