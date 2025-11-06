@@ -31,11 +31,32 @@ module.exports = async (req, res) => {
     }
 
     console.log('[SIGNUP] API called');
+    console.log('[SIGNUP] Request method:', req.method);
+    console.log('[SIGNUP] Content-Type:', req.headers['content-type']);
+
+    // Try to access body with detailed logging
+    let formData;
+    try {
+        console.log('[SIGNUP] Attempting to access req.body...');
+        formData = req.body;
+        console.log('[SIGNUP] req.body accessed successfully');
+        console.log('[SIGNUP] Body type:', typeof formData);
+        console.log('[SIGNUP] Form data keys:', Object.keys(formData || {}));
+    } catch (bodyAccessError) {
+        console.error('[SIGNUP] ERROR accessing req.body:', bodyAccessError);
+        console.error('[SIGNUP] Error name:', bodyAccessError.name);
+        console.error('[SIGNUP] Error message:', bodyAccessError.message);
+        return res.status(500).json({
+            success: false,
+            error: 'Body parsing error: ' + bodyAccessError.message,
+            debug: {
+                contentType: req.headers['content-type'],
+                method: req.method
+            }
+        });
+    }
 
     try {
-        // Access request body directly (same as vtiger.js)
-        const formData = req.body;
-        console.log('[SIGNUP] Form data received:', Object.keys(formData || {}));
 
         const {
             firstName,
