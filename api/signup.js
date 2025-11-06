@@ -136,6 +136,7 @@ module.exports = async (req, res) => {
             cf_product_interest: selectedProductNames,
             cf_913: 'Product Signup', // Required use case field
             cf_915: 'United States', // Required country field
+            cf_917: companySize || 'Not specified', // Monthly active users / company size
             assigned_user_id: '19x1' // Default assignment
         };
 
