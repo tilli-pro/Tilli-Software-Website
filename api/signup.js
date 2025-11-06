@@ -31,6 +31,20 @@ module.exports = async (req, res) => {
     }
 
     try {
+        // Parse request body if it's not already parsed
+        let body = req.body;
+        if (typeof body === 'string') {
+            try {
+                body = JSON.parse(body);
+            } catch (parseError) {
+                console.error('[SIGNUP] JSON parse error:', parseError);
+                return res.status(400).json({
+                    success: false,
+                    error: 'Invalid request format.'
+                });
+            }
+        }
+
         const {
             firstName,
             lastName,
@@ -43,7 +57,7 @@ module.exports = async (req, res) => {
             products,
             source,
             timestamp
-        } = req.body;
+        } = body;
 
         // Validate required fields
         if (!firstName || !lastName || !email || !phone || !companyName || !industry || !companySize || !password) {
