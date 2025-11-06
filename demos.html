@@ -241,8 +241,7 @@
     <!-- Demo Tabs -->
     <div class="demo-tabs" data-demo-guard>
         <div class="tabs-container">
-            <button class="tab-button active" onclick="showDemo('tillix-prelogin')">tilliX Pre-Login</button>
-            <button class="tab-button" onclick="showDemo('tillix-postlogin')">tilliX Post-Login</button>
+            <button class="tab-button active" onclick="showDemo('tillix')">tilliX Portal</button>
             <button class="tab-button" onclick="showDemo('nudge')">Nudge Communications</button>
             <button class="tab-button" onclick="showDemo('tillipay')">tilliPay Payments</button>
         </div>
@@ -250,34 +249,60 @@
 
     <!-- Demo Content -->
     <div class="demo-content" data-demo-guard>
-        <!-- TilliX Pre-Login Demo Section -->
-        <div id="tillix-prelogin-demo" class="demo-section active">
+        <!-- TilliX Demo Section with Toggle -->
+        <div id="tillix-demo" class="demo-section active">
             <div class="demo-intro">
-                <h1>tilliX Pre-Login - Low-Code Portal Builder</h1>
-                <p>Experience how tilliX's Business Rule Framework (BRF) enables rapid, no-code configuration of customer-facing portals with intelligent bill pay workflows.</p>
+                <h1>tilliX - Digital Engagement Portal</h1>
+                <p>Experience how tilliX transforms customer interactions with intuitive self-service portals and seamless payment experiences.</p>
             </div>
 
-            <!-- TilliX Pre-Login interactive demo container - content will be loaded via JavaScript -->
-            <div id="tillix-demo-container">
-                <!-- Demo content will be dynamically loaded -->
-                <div style="text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 12px;">
-                    <p>Loading tilliX Pre-Login demo...</p>
+            <!-- Toggle Switch for Pre/Post Login -->
+            <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                <div style="background: #f3f4f6; border-radius: 12px; padding: 0.5rem; display: inline-flex; gap: 0.5rem;">
+                    <button id="prelogin-toggle" class="tillix-toggle-btn active" onclick="switchTillixView('prelogin')" style="padding: 0.75rem 1.5rem; border: none; background: white; color: #6366f1; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <svg style="width: 16px; height: 16px; display: inline-block; margin-right: 0.5rem; vertical-align: middle;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/>
+                        </svg>
+                        Pre-Login Portal
+                    </button>
+                    <button id="postlogin-toggle" class="tillix-toggle-btn" onclick="switchTillixView('postlogin')" style="padding: 0.75rem 1.5rem; border: none; background: transparent; color: #6b7280; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+                        <svg style="width: 16px; height: 16px; display: inline-block; margin-right: 0.5rem; vertical-align: middle;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        Customer Dashboard
+                    </button>
                 </div>
             </div>
-        </div>
 
-        <!-- TilliX Post-Login Demo Section -->
-        <div id="tillix-postlogin-demo" class="demo-section">
-            <div class="demo-intro">
-                <h1>tilliX Post-Login - Customer Dashboard</h1>
-                <p>Explore the complete post-login experience with account management, bill history, payment methods, and real-time usage analytics.</p>
+            <!-- Pre-Login View -->
+            <div id="prelogin-view" class="tillix-view" style="display: block;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h3 style="color: #1a1a1a; font-size: 1.5rem; margin-bottom: 0.5rem;">Low-Code Portal Builder</h3>
+                    <p style="color: #6b7280; font-size: 1rem;">Business Rule Framework (BRF) for rapid, no-code configuration</p>
+                </div>
+
+                <!-- TilliX Pre-Login interactive demo container -->
+                <div id="tillix-demo-container">
+                    <!-- Demo content will be dynamically loaded -->
+                    <div style="text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 12px;">
+                        <p>Loading tilliX demo...</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- TilliX Post-Login demo container -->
-            <div id="tillix-postlogin-container">
-                <!-- Demo content will be dynamically loaded -->
-                <div style="text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 12px;">
-                    <p>Loading tilliX Post-Login demo...</p>
+            <!-- Post-Login View -->
+            <div id="postlogin-view" class="tillix-view" style="display: none;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h3 style="color: #1a1a1a; font-size: 1.5rem; margin-bottom: 0.5rem;">Customer Dashboard</h3>
+                    <p style="color: #6b7280; font-size: 1rem;">Complete post-login experience with account management and analytics</p>
+                </div>
+
+                <!-- TilliX Post-Login demo container -->
+                <div id="tillix-postlogin-container">
+                    <!-- Demo content will be dynamically loaded -->
+                    <div style="text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 12px;">
+                        <p>Loading customer dashboard...</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -444,21 +469,53 @@
             window.scrollTo({ top: 140, behavior: 'smooth' });
         }
 
+        // Toggle between Pre-Login and Post-Login views within tilliX demo
+        function switchTillixView(view) {
+            // Update toggle buttons
+            document.querySelectorAll('.tillix-toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.background = 'transparent';
+                btn.style.color = '#6b7280';
+                btn.style.boxShadow = 'none';
+            });
+
+            const activeBtn = document.getElementById(view + '-toggle');
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+                activeBtn.style.background = 'white';
+                activeBtn.style.color = '#6366f1';
+                activeBtn.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+            }
+
+            // Update views
+            document.querySelectorAll('.tillix-view').forEach(v => {
+                v.style.display = 'none';
+            });
+
+            const targetView = document.getElementById(view + '-view');
+            if (targetView) {
+                targetView.style.display = 'block';
+                targetView.style.animation = 'fadeIn 0.5s ease';
+            }
+        }
+
         // Handle direct links to specific demos
         window.addEventListener('load', function() {
             const hash = window.location.hash.substring(1);
-            // Map legacy tillix hash to prelogin
-            const demoMap = {
-                'tillix': 'tillix-prelogin',
-                'nudge': 'nudge',
-                'tillipay': 'tillipay',
-                'tilliarc': 'tilliarc',
-                'xdex': 'xdex'
-            };
-            const targetDemo = demoMap[hash] || hash;
 
-            if (hash && ['tillix', 'tillix-prelogin', 'tillix-postlogin', 'nudge', 'tillipay', 'tilliarc', 'xdex'].includes(hash)) {
-                const tabButton = document.querySelector(`.tab-button[onclick*="${targetDemo}"]`);
+            // Handle tilliX with view parameter (e.g., #tillix or #tillix-postlogin)
+            if (hash === 'tillix' || hash.startsWith('tillix')) {
+                const tabButton = document.querySelector(`.tab-button[onclick*="tillix"]`);
+                if (tabButton) {
+                    tabButton.click();
+                }
+
+                // Check if we need to switch to post-login view
+                if (hash === 'tillix-postlogin' || hash === 'postlogin') {
+                    setTimeout(() => switchTillixView('postlogin'), 100);
+                }
+            } else if (hash && ['nudge', 'tillipay', 'tilliarc', 'xdex'].includes(hash)) {
+                const tabButton = document.querySelector(`.tab-button[onclick*="${hash}"]`);
                 if (tabButton) {
                     tabButton.click();
                 }
