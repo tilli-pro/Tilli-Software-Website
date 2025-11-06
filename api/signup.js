@@ -71,7 +71,8 @@ export default async function handler(req, res) {
             'nudge': 'Nudge',
             'tillipay': 'tilliPay',
             'tillix': 'tilliX',
-            'tilliarc': 'tilliArc'
+            'tilliarc': 'tilliArc',
+            'xdex': 'XDEX'
         };
         const selectedProductNames = products.map(p => productNames[p] || p).join(', ');
 
