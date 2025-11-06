@@ -247,7 +247,7 @@ img, svg, video, canvas {
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 2.75rem;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1.5rem;
@@ -255,7 +255,7 @@ img, svg, video, canvas {
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: var(--medium-gray);
     margin-bottom: 2rem;
     line-height: 1.6;
@@ -471,7 +471,7 @@ img, svg, video, canvas {
 }
 
 .content-text h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: var(--dark-gray);
@@ -846,7 +846,7 @@ img, svg, video, canvas {
 }
 
 .solutions-header h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--dark-gray);
 }
@@ -983,7 +983,7 @@ img, svg, video, canvas {
 }
 
 .why-tilli h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 1.5rem;
@@ -1182,7 +1182,7 @@ img, svg, video, canvas {
 }
 
 .fraud-protection h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 1.5rem;
@@ -1274,7 +1274,7 @@ img, svg, video, canvas {
 }
 
 .impact-metrics h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 1.5rem;
@@ -1356,7 +1356,7 @@ img, svg, video, canvas {
 }
 
 .lead-text h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: var(--dark-gray);
@@ -1622,7 +1622,7 @@ img, svg, video, canvas {
     }
     
     .hero-title {
-        font-size: 3rem;
+        font-size: 2.25rem;
     }
     
     .section-content {
@@ -1946,7 +1946,7 @@ a:focus {
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: var(--dark-gray);
@@ -2614,7 +2614,7 @@ a:focus {
 }
 
 .cta-content h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
 }
@@ -3390,7 +3390,7 @@ a:focus {
 }
 
 .cta-text h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: var(--dark-gray);
@@ -4243,7 +4243,7 @@ a:focus {
 /* Pricing Page */
 .pricing-hero { padding: 8rem 0 4rem; background: var(--light-gray); }
 .pricing-hero-content { max-width: 800px; margin: 0 auto; text-align: center; }
-.pricing-hero-title { font-size: 2.5rem; font-weight: 700; color: var(--dark-gray); margin-bottom: 0.75rem; }
+.pricing-hero-title { font-size: 2rem; font-weight: 700; color: var(--dark-gray); margin-bottom: 0.75rem; }
 .pricing-hero-subtitle { color: var(--medium-gray); font-size: 1.125rem; line-height: 1.7; }
 .pricing-hero-note { margin-top: 0.5rem; color: var(--dark-gray); font-weight: 600; }
 .pricing-hero-cta { margin-top: 1.5rem; }
@@ -4345,7 +4345,7 @@ a:focus {
 }
 
 .free-trial-hero .hero-title {
-    font-size: 3.5rem;
+    font-size: 2.75rem;
     font-weight: 700;
     color: var(--dark-gray);
     margin-bottom: 1rem;
@@ -4353,7 +4353,7 @@ a:focus {
 }
 
 .free-trial-hero .hero-subtitle {
-    font-size: 1.75rem;
+    font-size: 1.4rem;
     color: var(--primary-blue);
     margin-bottom: 1.5rem;
     font-weight: 600;
