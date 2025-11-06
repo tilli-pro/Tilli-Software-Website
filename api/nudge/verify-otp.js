@@ -46,90 +46,55 @@ export default async function handler(req, res) {
             });
         }
 
-        // First, try Upstash verification (for cases where Nudge returned sessionId=0)
+        // Verify OTP using Upstash (we generate and store our own OTPs)
+        console.log(`[OTP] Verifying code for session: ${sessionId}`);
+
         try {
             const storedOtp = await kv.get(`otp:${sessionId}`);
+            console.log(`[OTP] Retrieved from Upstash:`, storedOtp ? `Found: ${storedOtp}` : 'Not found');
 
-            if (storedOtp !== null) {
-                console.log(`Found OTP in Upstash for session: ${sessionId}`);
+            if (storedOtp === null || storedOtp === undefined) {
+                console.log(`[OTP] No OTP found in Upstash for session: ${sessionId}`);
+                return res.status(400).json({
+                    success: false,
+                    error: 'OTP expired or not found. Please request a new code.',
+                    verificationMethod: 'upstash'
+                });
+            }
 
-                // Verify OTP matches
-                if (storedOtp === code || storedOtp === code.toString()) {
-                    // Delete OTP after successful verification (one-time use)
-                    await kv.del(`otp:${sessionId}`);
+            // Verify OTP matches (compare as strings)
+            const inputCode = code.toString().trim();
+            const storedCode = storedOtp.toString().trim();
 
-                    return res.status(200).json({
-                        success: true,
-                        verified: true,
-                        verificationMethod: 'upstash',
-                        message: 'OTP verified successfully via Upstash.'
-                    });
-                } else {
-                    // Invalid OTP code
-                    return res.status(400).json({
-                        success: false,
-                        error: 'Invalid OTP code. Please try again.',
-                        verificationMethod: 'upstash'
-                    });
-                }
+            console.log(`[OTP] Comparing: input="${inputCode}" vs stored="${storedCode}"`);
+
+            if (storedCode === inputCode) {
+                // Delete OTP after successful verification (one-time use)
+                await kv.del(`otp:${sessionId}`);
+                console.log(`[OTP] Verification successful, OTP deleted`);
+
+                return res.status(200).json({
+                    success: true,
+                    verified: true,
+                    verificationMethod: 'upstash',
+                    message: 'OTP verified successfully.'
+                });
+            } else {
+                console.log(`[OTP] Verification failed - code mismatch`);
+                return res.status(400).json({
+                    success: false,
+                    error: 'Invalid OTP code. Please try again.',
+                    verificationMethod: 'upstash'
+                });
             }
         } catch (kvError) {
-            console.error('Upstash lookup error:', kvError);
-            // Continue to Nudge verification if Upstash fails
-        }
-
-        // If not in Upstash, try Nudge native verification
-        console.log(`OTP not found in Upstash, trying Nudge verification for session: ${sessionId}`);
-
-        // Construct Nudge API V1 verification request
-        // Format: { "OtpSessionId": "sessionId", "code": "123456" }
-        const nudgePayload = {
-            OtpSessionId: sessionId,
-            code: code.toString()
-        };
-
-        // Forward request to Nudge API V1
-        const response = await fetch(NUDGE_VERIFY_ENDPOINT, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': 'application/json, text/plain, */*',
-                'Authorization': apiKey
-            },
-            body: JSON.stringify(nudgePayload)
-        });
-
-        const responseData = await response.json();
-
-        if (!response.ok) {
-            return res.status(response.status).json({
+            console.error('[OTP] Upstash error:', kvError);
+            return res.status(500).json({
                 success: false,
-                error: responseData.message || 'Failed to verify OTP via Nudge.',
-                verificationMethod: 'nudge',
-                details: responseData
+                error: 'Error verifying OTP. Please try again.',
+                details: kvError.message
             });
         }
-
-        // Check if verification was successful
-        // Nudge API returns various formats - check multiple fields
-        const verified = responseData.verified || responseData.success || responseData.isValid || responseData.Success;
-
-        if (!verified) {
-            return res.status(400).json({
-                success: false,
-                error: 'Invalid OTP code. Please try again.',
-                verificationMethod: 'nudge',
-                nudgeResponse: responseData
-            });
-        }
-
-        // Success response
-        return res.status(200).json({
-            success: true,
-            verified: true,
-            verificationMethod: 'nudge',
-            message: 'OTP verified successfully via Nudge.'
-        });
 
     } catch (error) {
         console.error('Nudge verify-otp error:', error);

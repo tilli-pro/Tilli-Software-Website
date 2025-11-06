@@ -58,15 +58,36 @@ export default async function handler(req, res) {
         // Generate unique recipient ID
         const recipientId = generateUUID();
 
-        // Build message with proper line breaks
+        // ========================================
+        // GENERATE OUR OWN OTP CODE
+        // ========================================
+        // Nudge doesn't return the OTP in the API response, so we need to
+        // generate it ourselves, send it via Nudge, and store it in Upstash
+        const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
+        console.log(`[OTP] Generated code ${otpCode} for ${email || phone}`);
+
+        // Store OTP in Upstash immediately
+        try {
+            await kv.set(`otp:${recipientId}`, otpCode, { ex: 300 }); // 5 minutes expiry
+            console.log(`[OTP] Stored in Upstash with key: otp:${recipientId}`);
+        } catch (kvError) {
+            console.error('[OTP] Upstash storage error:', kvError);
+            return res.status(500).json({
+                success: false,
+                error: 'Failed to store OTP. Please try again.'
+            });
+        }
+
+        // Build message with the actual OTP code (no %OTP% placeholder)
         const name = firstName || "Customer";
-        let message = `Hello ${name},\n\nYour Tilli demo verification code is %OTP%.\n\nIt expires in 5 minutes.`;
+        let message = `Hello ${name},\n\nYour Tilli demo verification code is ${otpCode}.\n\nIt expires in 5 minutes.`;
         if (company) {
             message += `\n\nRequested by ${company}.`;
         }
         message += `\n\nThank you,\nTilli Team`;
 
-        // Construct Nudge API V2 request payload - exact format from developer docs
+        // Construct Nudge API V2 request payload - sending our OTP directly
+        // NOT using generateOtp flag since we're providing the code ourselves
         let nudgePayload;
 
         if (channel === 'sms' && phone) {
@@ -74,13 +95,10 @@ export default async function handler(req, res) {
             nudgePayload = {
                 recipientId: recipientId,
                 template: {
-                    bodyPlain: `Hello, your Tilli demo verification code is %OTP%. Valid for 5 minutes.`
+                    bodyPlain: `Hello, your Tilli demo verification code is ${otpCode}. Valid for 5 minutes.`
                 },
                 toPhoneNumber: phone,
                 senderNumber: "18334561408",
-                generateOtp: true,
-                expirySeconds: 300,
-                otpLength: 6,
                 channel: 1
             };
         } else {
@@ -96,9 +114,6 @@ export default async function handler(req, res) {
                     bodyHtml: "",
                     bodyPlain: message
                 },
-                generateOtp: true,
-                expirySeconds: 300,
-                otpLength: 6,
                 channel: 0
             };
         }
@@ -117,6 +132,7 @@ export default async function handler(req, res) {
         const responseData = await response.json();
 
         if (!response.ok || responseData.HasErrors) {
+            console.error('Nudge API error:', responseData);
             return res.status(response.status || 400).json({
                 success: false,
                 error: responseData.message || 'Failed to send OTP via Nudge.',
@@ -124,48 +140,17 @@ export default async function handler(req, res) {
             });
         }
 
-        // Extract OTP session ID and OTP code from Nudge API V2 response
-        // Response format: { HasErrors, Code, NotificationLogId, OtpSessionId, ExpiresAt, Otp }
-        const sessionId = responseData.OtpSessionId;
-        const notificationLogId = responseData.NotificationLogId;
-        const otpCode = responseData.Otp || responseData.Code;
-        const expiresAt = responseData.ExpiresAt;
+        console.log('[OTP] Nudge API response:', JSON.stringify(responseData));
 
-        // Check if sessionId is 0 (known Nudge bug) - use Upstash as fallback
-        if (!sessionId || sessionId === 0 || sessionId === '0') {
-            console.log('Nudge returned sessionId=0, using Upstash fallback');
-
-            // Use NotificationLogId as the key for Upstash storage
-            const fallbackId = notificationLogId || recipientId;
-
-            if (otpCode) {
-                // Store OTP in Upstash with 5 minute expiry (300 seconds)
-                try {
-                    await kv.set(`otp:${fallbackId}`, otpCode, { ex: 300 });
-                    console.log(`OTP stored in Upstash with key: otp:${fallbackId}`);
-                } catch (kvError) {
-                    console.error('Upstash storage error:', kvError);
-                    // Continue anyway - OTP was sent, worst case user can request new one
-                }
-            }
-
-            return res.status(200).json({
-                success: true,
-                sessionId: fallbackId,
-                notificationLogId: notificationLogId,
-                usingUpstash: true,
-                message: `OTP sent successfully via ${channel || 'email'}. Using Upstash fallback for verification.`
-            });
-        }
-
-        // Success response - Nudge native verification will work
+        // Success! OTP was sent via Nudge and stored in Upstash
+        // We use our recipientId as the sessionId for verification
         return res.status(200).json({
             success: true,
-            sessionId: sessionId.toString(),
-            notificationLogId: notificationLogId,
-            expiresAt: expiresAt,
-            usingUpstash: false,
-            message: `OTP sent successfully via ${channel || 'email'}.`
+            sessionId: recipientId,
+            notificationLogId: responseData.NotificationLogId,
+            usingUpstash: true,
+            message: `OTP sent successfully via ${channel || 'email'}.`,
+            expiresIn: 300 // 5 minutes
         });
 
     } catch (error) {
