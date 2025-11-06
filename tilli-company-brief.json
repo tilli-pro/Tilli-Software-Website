@@ -361,6 +361,8 @@
         "name": "PCI DSS Level 1",
         "description": "Highest level of payment card industry security compliance",
         "applies_to": [
+          "tilliX",
+          "Nudge",
           "tilliPay"
         ]
       },
@@ -368,7 +370,9 @@
         "name": "SOC 2 Type II",
         "description": "Independent audit of security, availability, and confidentiality controls",
         "applies_to": [
-          "All products"
+          "tilliX",
+          "Nudge",
+          "tilliPay"
         ]
       },
       {
@@ -376,6 +380,16 @@
         "description": "Healthcare billing and data privacy compliance",
         "applies_to": [
           "tilliX",
+          "Nudge",
+          "tilliPay"
+        ]
+      },
+      {
+        "name": "ISO 27001",
+        "description": "International standard for information security management systems",
+        "applies_to": [
+          "tilliX",
+          "Nudge",
           "tilliPay"
         ]
       },
