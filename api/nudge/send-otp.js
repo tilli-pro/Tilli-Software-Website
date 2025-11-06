@@ -2,7 +2,12 @@
  * Vercel Serverless Function: Send OTP via Nudge API V2
  * Endpoint: /api/nudge/send-otp
  * Requires: NUDGE_API_KEY environment variable in Vercel
+ *
+ * NOTE: When Nudge returns OtpSessionId=0, we use Upstash as fallback storage.
+ * Once Nudge V2 is fixed, Upstash won't be needed.
  */
+
+import { kv } from '@vercel/kv';
 
 const NUDGE_SEND_ENDPOINT = "https://app.nudge.net/api/v2/Nudge/Send";
 
@@ -119,27 +124,47 @@ export default async function handler(req, res) {
             });
         }
 
-        // Extract OTP session ID from Nudge API V2 response
-        // Response format: { HasErrors, Code, NotificationLogId, OtpSessionId, ExpiresAt }
-        const sessionId = responseData.OtpSessionId || responseData.NotificationLogId;
+        // Extract OTP session ID and OTP code from Nudge API V2 response
+        // Response format: { HasErrors, Code, NotificationLogId, OtpSessionId, ExpiresAt, Otp }
+        const sessionId = responseData.OtpSessionId;
+        const notificationLogId = responseData.NotificationLogId;
+        const otpCode = responseData.Otp || responseData.Code;
+        const expiresAt = responseData.ExpiresAt;
 
+        // Check if sessionId is 0 (known Nudge bug) - use Upstash as fallback
         if (!sessionId || sessionId === 0 || sessionId === '0') {
-            // Note: Developer mentioned OtpSessionId returns 0 sometimes - use NotificationLogId as fallback
-            const fallbackId = responseData.NotificationLogId || recipientId;
+            console.log('Nudge returned sessionId=0, using Upstash fallback');
+
+            // Use NotificationLogId as the key for Upstash storage
+            const fallbackId = notificationLogId || recipientId;
+
+            if (otpCode) {
+                // Store OTP in Upstash with 5 minute expiry (300 seconds)
+                try {
+                    await kv.set(`otp:${fallbackId}`, otpCode, { ex: 300 });
+                    console.log(`OTP stored in Upstash with key: otp:${fallbackId}`);
+                } catch (kvError) {
+                    console.error('Upstash storage error:', kvError);
+                    // Continue anyway - OTP was sent, worst case user can request new one
+                }
+            }
+
             return res.status(200).json({
                 success: true,
                 sessionId: fallbackId,
-                notificationLogId: responseData.NotificationLogId,
-                message: `OTP sent successfully via ${channel || 'email'}. Note: Using notification log ID for verification.`
+                notificationLogId: notificationLogId,
+                usingUpstash: true,
+                message: `OTP sent successfully via ${channel || 'email'}. Using Upstash fallback for verification.`
             });
         }
 
-        // Success response
+        // Success response - Nudge native verification will work
         return res.status(200).json({
             success: true,
             sessionId: sessionId.toString(),
-            notificationLogId: responseData.NotificationLogId,
-            expiresAt: responseData.ExpiresAt,
+            notificationLogId: notificationLogId,
+            expiresAt: expiresAt,
+            usingUpstash: false,
             message: `OTP sent successfully via ${channel || 'email'}.`
         });
 
