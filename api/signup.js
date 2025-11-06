@@ -137,6 +137,7 @@ module.exports = async (req, res) => {
             cf_913: 'Product Signup', // Required use case field
             cf_915: 'United States', // Required country field
             cf_917: companySize || 'Not specified', // Monthly active users / company size
+            cf_919: selectedProductNames || 'Tilli Platform', // Product interest field
             assigned_user_id: '19x1' // Default assignment
         };
 
