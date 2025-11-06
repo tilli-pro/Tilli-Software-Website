@@ -20,7 +20,8 @@ async function getRequestBody(req) {
     }
     const rawBody = Buffer.concat(chunks).toString('utf8');
 
-    console.log('[SIGNUP] Raw body received:', rawBody.substring(0, 100));
+    console.log('[SIGNUP] Raw body length:', rawBody.length);
+    console.log('[SIGNUP] Raw body sample:', rawBody.substring(0, 250));
 
     // Try to parse as JSON
     try {
@@ -29,6 +30,8 @@ async function getRequestBody(req) {
         return parsed;
     } catch (e) {
         console.error('[SIGNUP] JSON parse failed:', e.message);
+        console.error('[SIGNUP] Error position:', e.message.match(/position (\d+)/)?.[1]);
+        console.error('[SIGNUP] Context around error:', rawBody.substring(Math.max(0, 200), 220));
         throw new Error('Invalid JSON in request body: ' + e.message);
     }
 }
