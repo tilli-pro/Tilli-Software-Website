@@ -30,28 +30,12 @@ module.exports = async (req, res) => {
         });
     }
 
+    console.log('[SIGNUP] API called');
+
     try {
-        // Parse request body - handle both pre-parsed and raw body
-        let body;
-        try {
-            body = req.body;
-        } catch (bodyError) {
-            // If req.body throws an error, read raw body
-            console.log('[SIGNUP] Body access error, reading raw stream');
-            const buffers = [];
-            for await (const chunk of req) {
-                buffers.push(chunk);
-            }
-            const rawBody = Buffer.concat(buffers).toString();
-            body = JSON.parse(rawBody);
-        }
-
-        // If body is a string, parse it
-        if (typeof body === 'string') {
-            body = JSON.parse(body);
-        }
-
-        console.log('[SIGNUP] Body parsed successfully');
+        // Access request body directly (same as vtiger.js)
+        const formData = req.body;
+        console.log('[SIGNUP] Form data received:', Object.keys(formData || {}));
 
         const {
             firstName,
@@ -65,7 +49,7 @@ module.exports = async (req, res) => {
             products,
             source,
             timestamp
-        } = body;
+        } = formData;
 
         // Validate required fields
         if (!firstName || !lastName || !email || !phone || !companyName || !industry || !companySize || !password) {
