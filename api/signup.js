@@ -135,6 +135,10 @@ module.exports = async (req, res) => {
             tillipay: null
         };
 
+        console.log('[SIGNUP] Skipping automations for now to test VTiger integration');
+
+        // TEMPORARILY DISABLED - will re-enable after VTiger works
+        /*
         // If Nudge is selected, trigger Nudge signup automation
         if (products.includes('nudge')) {
             try {
@@ -200,6 +204,7 @@ module.exports = async (req, res) => {
                 };
             }
         }
+        */
 
         return res.status(200).json({
             success: true,
