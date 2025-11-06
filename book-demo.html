@@ -613,16 +613,6 @@
                         <li>And many more...</li>
                     </ul>
                 </div>
-
-                <div class="info-item">
-                    <h3><i class="fas fa-gift"></i> Book Today & Get:</h3>
-                    <ul>
-                        <li>Free ROI analysis</li>
-                        <li>Custom implementation roadmap</li>
-                        <li>Priority onboarding</li>
-                        <li>Personalized consultation</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </main>
@@ -709,6 +699,7 @@
                     if (!hasActiveBooking && !existingBooking) {
                         enableForm();
                         hideExistingBookingAlert();
+                        updateSubmitButtonState();
                     } else {
                         // Keep disabled if there might be an active booking
                         submitBtn.disabled = true;
@@ -735,15 +726,10 @@
                         localStorage.setItem(BOOKINGS_STORAGE_KEY, JSON.stringify(bookings));
                     }
                     
-                    // Only enable if email is valid and no active booking
-                    if (email.includes('@') && email.includes('.')) {
-                        enableForm();
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = '<span>Book Demo</span><i class="fas fa-calendar-check"></i>';
-                    } else {
-                        submitBtn.disabled = true;
-                    }
+                    // Enable form if no active booking
+                    enableForm();
                     existingBooking = null;
+                    updateSubmitButtonState();
                 }
             }
 
@@ -857,11 +843,12 @@
                 const form = document.getElementById('demoBookingForm');
                 const submitBtn = document.getElementById('submitBtn');
                 form.classList.add('form-disabled');
+                form.style.pointerEvents = 'none'; // Prevent any clicks
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = 'Demo Already Scheduled';
                 
                 // Also disable all form inputs for extra protection
-                const inputs = form.querySelectorAll('input, select, textarea');
+                const inputs = form.querySelectorAll('input, select, textarea, button');
                 inputs.forEach(input => {
                     input.disabled = true;
                 });
@@ -872,19 +859,36 @@
                 const form = document.getElementById('demoBookingForm');
                 const submitBtn = document.getElementById('submitBtn');
                 
+                // CRITICAL: Never enable if existingBooking is set and still active
+                if (existingBooking) {
+                    const email = document.getElementById('email').value;
+                    const booking = email ? getBookingForEmail(email) : null;
+                    if (booking && !isBookingCompleted(booking)) {
+                        // Don't enable if there's an active booking
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = 'Demo Already Scheduled';
+                        form.classList.add('form-disabled');
+                        form.style.pointerEvents = 'none';
+                        return;
+                    }
+                }
+                
                 // Double-check there's no active booking before enabling
                 const email = document.getElementById('email').value;
                 if (email) {
                     const booking = getBookingForEmail(email);
                     if (booking && !isBookingCompleted(booking)) {
                         // Don't enable if there's an active booking
+                        existingBooking = booking;
                         submitBtn.disabled = true;
                         submitBtn.innerHTML = 'Demo Already Scheduled';
                         form.classList.add('form-disabled');
+                        form.style.pointerEvents = 'none';
                         return;
                     }
                 }
                 
+                // Only re-enable if no active booking exists
                 // Re-enable all form inputs
                 const inputs = form.querySelectorAll('input, select, textarea');
                 inputs.forEach(input => {
@@ -892,8 +896,122 @@
                 });
                 
                 form.classList.remove('form-disabled');
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<span>Book Demo</span><i class="fas fa-calendar-check"></i>';
+                form.style.pointerEvents = 'auto';
+                // Button will be enabled/disabled based on form validation
+                updateSubmitButtonState();
+            }
+
+            // Update submit button state based on form validation
+            function updateSubmitButtonState() {
+                const submitBtn = document.getElementById('submitBtn');
+                const form = document.getElementById('demoBookingForm');
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const company = document.getElementById('company').value.trim();
+                const product = document.getElementById('product').value;
+                
+                // CRITICAL: If existingBooking is set, NEVER enable the button
+                if (existingBooking) {
+                    const booking = email ? getBookingForEmail(email) : null;
+                    if (booking && !isBookingCompleted(booking)) {
+                        // Active booking exists - FORCE disable everything
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = 'Demo Already Scheduled';
+                        form.classList.add('form-disabled');
+                        showExistingBookingAlert(booking);
+                        
+                        // Disable all inputs
+                        const inputs = form.querySelectorAll('input, select, textarea');
+                        inputs.forEach(input => {
+                            input.disabled = true;
+                        });
+                        return; // Exit early - do not enable
+                    }
+                }
+                
+                // CRITICAL: Always check for active bookings FIRST before enabling
+                if (email) {
+                    // Check for existing booking (case-insensitive)
+                    const booking = getBookingForEmail(email);
+                    if (booking && !isBookingCompleted(booking)) {
+                        // Active booking exists - ALWAYS disable
+                        existingBooking = booking;
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = 'Demo Already Scheduled';
+                        form.classList.add('form-disabled');
+                        showExistingBookingAlert(booking);
+                        
+                        // Disable all inputs
+                        const inputs = form.querySelectorAll('input, select, textarea');
+                        inputs.forEach(input => {
+                            input.disabled = true;
+                        });
+                        return; // Exit early - do not enable
+                    }
+                    
+                    // Double-check all bookings (case-insensitive check)
+                    const allBookings = getAllBookings();
+                    const emailLower = email.toLowerCase();
+                    for (const storedEmail in allBookings) {
+                        if (storedEmail.toLowerCase() === emailLower) {
+                            const storedBooking = allBookings[storedEmail];
+                            if (storedBooking && !isBookingCompleted(storedBooking)) {
+                                // Found active booking - disable
+                                existingBooking = storedBooking;
+                                submitBtn.disabled = true;
+                                submitBtn.innerHTML = 'Demo Already Scheduled';
+                                form.classList.add('form-disabled');
+                                showExistingBookingAlert(storedBooking);
+                                
+                                // Disable all inputs
+                                const inputs = form.querySelectorAll('input, select, textarea');
+                                inputs.forEach(input => {
+                                    input.disabled = true;
+                                });
+                                return; // Exit early - do not enable
+                            }
+                        }
+                    }
+                }
+                
+                // If we have existingBooking reference but it's completed, clear it
+                if (existingBooking) {
+                    const booking = email ? getBookingForEmail(email) : null;
+                    if (!booking || isBookingCompleted(booking)) {
+                        // Booking completed - clear it and re-enable form
+                        const bookings = getAllBookings();
+                        if (email) {
+                            delete bookings[email.toLowerCase()];
+                            localStorage.setItem(BOOKINGS_STORAGE_KEY, JSON.stringify(bookings));
+                        }
+                        existingBooking = null;
+                        hideExistingBookingAlert();
+                        
+                        // Re-enable form inputs
+                        const inputs = form.querySelectorAll('input, select, textarea');
+                        inputs.forEach(input => {
+                            input.disabled = false;
+                        });
+                        form.classList.remove('form-disabled');
+                        form.style.pointerEvents = 'auto';
+                    } else {
+                        // Still has active booking - keep disabled
+                        return;
+                    }
+                }
+                
+                // Check if all required fields are filled
+                const allFieldsFilled = fullName && email && company && product && selectedDate && selectedTime;
+                const emailValid = email.includes('@') && email.includes('.');
+                
+                // Only enable if all fields filled AND no active booking
+                if (allFieldsFilled && emailValid && !existingBooking) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span>Book Demo</span><i class="fas fa-calendar-check"></i>';
+                } else {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span>Book Demo</span><i class="fas fa-calendar-check"></i>';
+                }
             }
 
             // Check staff availability
@@ -1048,8 +1166,8 @@
                                     hideStaffAvailability();
                                 }
                                 
-                                // Ensure button state is maintained if booking exists
-                                ensureButtonState();
+                                // Update button state
+                                updateSubmitButtonState();
                             }
                         });
                     }
@@ -1133,8 +1251,8 @@
                                 hideStaffAvailability();
                             }
                             
-                            // Ensure button state is maintained if booking exists
-                            ensureButtonState();
+                            // Update button state
+                            updateSubmitButtonState();
                         }
                     });
 
@@ -1154,84 +1272,60 @@
                 }
             }
 
-            // Month navigation
-            document.getElementById('prevMonth').addEventListener('click', () => {
-                currentDate.setMonth(currentDate.getMonth() - 1);
-                renderCalendar();
-            });
-
-            document.getElementById('nextMonth').addEventListener('click', () => {
-                currentDate.setMonth(currentDate.getMonth() + 1);
-                renderCalendar();
-            });
-
-            // Staff selection handler
-            document.getElementById('staff').addEventListener('change', function() {
-                selectedStaff = this.value;
-                
-                if (selectedStaff && selectedDate && selectedTime) {
-                    checkStaffAvailability(selectedStaff, selectedDate, selectedTime);
-                } else {
-                    hideStaffAvailability();
-                }
-                
-                // Ensure button state is maintained if booking exists
-                ensureButtonState();
-            });
-
-            // Email input handler to check for existing bookings
-            const emailInput = document.getElementById('email');
-            
-            emailInput.addEventListener('blur', function() {
-                checkExistingBooking();
-            });
-
-            // Also check on input for real-time validation
-            emailInput.addEventListener('input', function() {
-                // Debounce the check
-                clearTimeout(this.checkTimeout);
-                this.checkTimeout = setTimeout(() => {
-                    checkExistingBooking();
-                }, 300);
-            });
-
-            // Check on paste
-            emailInput.addEventListener('paste', function() {
-                setTimeout(() => {
-                    checkExistingBooking();
-                }, 100);
-            });
+            // Month navigation and staff selection handlers are set up in initializeBookingForm()
+            // Email input handlers are also set up in initializeBookingForm()
 
             // Form submission
             document.getElementById('demoBookingForm').addEventListener('submit', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
 
-                // First check: Is button disabled?
+                // Get references once
                 const submitBtn = document.getElementById('submitBtn');
+                const email = document.getElementById('email').value.trim();
+
+                // CRITICAL CHECK 1: Is button disabled? (This should never be false if booking exists)
                 if (submitBtn.disabled) {
-                    e.preventDefault();
-                    e.stopPropagation();
                     alert('You already have a scheduled demo. Please wait until it\'s completed before booking another session.');
                     return false;
                 }
 
-                // Second check: Validate existing booking
-                const email = document.getElementById('email').value;
-                if (!email) {
-                    alert('Please enter your email address.');
+                // CRITICAL CHECK 2: Validate email exists
+                if (!email || !email.includes('@') || !email.includes('.')) {
+                    alert('Please enter a valid email address.');
                     return false;
                 }
 
+                // CRITICAL CHECK 3: Check for existing active booking (case-insensitive)
                 const booking = getBookingForEmail(email);
                 if (booking && !isBookingCompleted(booking)) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    alert('You already have a scheduled demo. Please wait until it\'s completed before booking another session.');
+                    // Active booking exists - disable everything
+                    existingBooking = booking;
                     showExistingBookingAlert(booking);
                     disableForm();
                     submitBtn.disabled = true;
                     submitBtn.innerHTML = 'Demo Already Scheduled';
+                    alert('You already have a scheduled demo. Please wait until it\'s completed before booking another session.');
                     return false;
+                }
+
+                // CRITICAL CHECK 4: Double-check all bookings for this email (case-insensitive)
+                const allBookings = getAllBookings();
+                const emailLower = email.toLowerCase();
+                for (const storedEmail in allBookings) {
+                    if (storedEmail.toLowerCase() === emailLower) {
+                        const storedBooking = allBookings[storedEmail];
+                        if (storedBooking && !isBookingCompleted(storedBooking)) {
+                            // Found active booking - block submission
+                            existingBooking = storedBooking;
+                            showExistingBookingAlert(storedBooking);
+                            disableForm();
+                            submitBtn.disabled = true;
+                            submitBtn.innerHTML = 'Demo Already Scheduled';
+                            alert('You already have a scheduled demo. Please wait until it\'s completed before booking another session.');
+                            return false;
+                        }
+                    }
                 }
 
                 // Validate required fields
@@ -1303,78 +1397,262 @@
                     bookedAt: new Date().toISOString()
                 };
 
+                // FINAL CHECK: One more time before saving - check if booking was created between validation and save
+                const finalCheck = getBookingForEmail(emailValue);
+                if (finalCheck && !isBookingCompleted(finalCheck)) {
+                    // Someone else booked in the meantime or duplicate submission
+                    alert('A booking already exists for this email. Please wait until your scheduled demo completes.');
+                    showExistingBookingAlert(finalCheck);
+                    disableForm();
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Demo Already Scheduled';
+                    existingBooking = finalCheck;
+                    return false;
+                }
+                
                 // Save booking to storage
                 saveBooking(emailValue, formData);
 
                 // Here you would typically send the data to your backend
                 console.log('Booking submitted:', formData);
 
-                // Show success message
-                alert('Demo booked successfully! We\'ll send a confirmation email shortly.');
-                
-                // IMMEDIATELY disable button and form after booking
-                const submitBtn = document.getElementById('submitBtn');
-                const form = document.getElementById('demoBookingForm');
+                // IMMEDIATELY disable button FIRST - before any alerts or delays
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = 'Demo Already Scheduled';
-                form.classList.add('form-disabled');
-                
-                // Disable all form inputs
-                const inputs = form.querySelectorAll('input, select, textarea');
-                inputs.forEach(input => {
-                    input.disabled = true;
-                });
                 
                 // Update existing booking reference
                 existingBooking = formData;
                 
+                // Disable ALL form inputs immediately
+                const form = document.getElementById('demoBookingForm');
+                form.classList.add('form-disabled');
+                
+                const inputs = form.querySelectorAll('input, select, textarea, button');
+                inputs.forEach(input => {
+                    if (input.id !== 'submitBtn') {
+                        input.disabled = true;
+                    }
+                });
+                
                 // Show alert with booking details
                 showExistingBookingAlert(formData);
                 
-                // Force check to ensure everything is disabled
+                // Show success message
+                alert('Demo booked successfully! We\'ll send a confirmation email shortly.\n\nYou cannot book another demo until this one completes.');
+                
+                // CRITICAL: Keep email field populated so we can track this booking
+                // DO NOT clear the email field - we need it to check against bookings
+                
+                // Force disable check - run multiple times to ensure it stays disabled
                 setTimeout(() => {
-                    checkExistingBooking();
-                    forceCheckOnLoad();
+                    // Force disable everything again
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Demo Already Scheduled';
+                    form.classList.add('form-disabled');
+                    inputs.forEach(input => {
+                        if (input.id !== 'submitBtn') {
+                            input.disabled = true;
+                        }
+                    });
+                    
+                    // Verify booking exists and keep form disabled
+                    const verifyBooking = getBookingForEmail(emailValue);
+                    if (verifyBooking && !isBookingCompleted(verifyBooking)) {
+                        existingBooking = verifyBooking;
+                        showExistingBookingAlert(verifyBooking);
+                    }
+                    
+                    // Force update button state to ensure it stays disabled
+                    updateSubmitButtonState();
                 }, 100);
+                
+                // Additional check after 1 second
+                setTimeout(() => {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Demo Already Scheduled';
+                    updateSubmitButtonState();
+                }, 1000);
+                
+                // Prevent any form interactions
+                form.style.pointerEvents = 'none';
             });
 
-            // Initialize calendar
-            renderCalendar();
+            // Initialize calendar and form when DOM is ready
+            function initializeBookingForm() {
+                // Verify elements exist
+                const calendarGrid = document.getElementById('calendarGrid');
+                const timeSlotsGrid = document.getElementById('timeSlotsGrid');
+                const fullNameInput = document.getElementById('fullName');
+                const emailInput = document.getElementById('email');
+                const companyInput = document.getElementById('company');
+                const productSelect = document.getElementById('product');
+                
+                if (!calendarGrid || !timeSlotsGrid || !fullNameInput || !emailInput || !companyInput || !productSelect) {
+                    // Elements not ready yet, retry
+                    console.log('Waiting for form elements to load...');
+                    setTimeout(initializeBookingForm, 200);
+                    return;
+                }
+                
+                console.log('Initializing booking form...');
+                
+                // Render calendar immediately
+                renderCalendar();
+                console.log('Calendar rendered');
+                
+                // Time slots will render when date is selected
+                renderTimeSlots(); // This will return early if no date selected, which is fine
+                
+                // Add event listeners for form validation
+                fullNameInput.addEventListener('input', updateSubmitButtonState);
+                
+                // Email input handlers - check for existing bookings
+                emailInput.addEventListener('blur', function() {
+                    checkExistingBooking();
+                });
+                
+                emailInput.addEventListener('input', function() {
+                    // Debounce the check
+                    clearTimeout(this.checkTimeout);
+                    this.checkTimeout = setTimeout(() => {
+                        checkExistingBooking();
+                        updateSubmitButtonState();
+                    }, 300);
+                });
+                
+                emailInput.addEventListener('paste', function() {
+                    setTimeout(() => {
+                        checkExistingBooking();
+                        updateSubmitButtonState();
+                    }, 100);
+                });
+                
+                companyInput.addEventListener('input', updateSubmitButtonState);
+                productSelect.addEventListener('change', updateSubmitButtonState);
+                
+                // Month navigation buttons
+                document.getElementById('prevMonth').addEventListener('click', () => {
+                    currentDate.setMonth(currentDate.getMonth() - 1);
+                    renderCalendar();
+                });
+                
+                document.getElementById('nextMonth').addEventListener('click', () => {
+                    currentDate.setMonth(currentDate.getMonth() + 1);
+                    renderCalendar();
+                });
+                
+                // Staff selection handler
+                const staffSelect = document.getElementById('staff');
+                if (staffSelect) {
+                    staffSelect.addEventListener('change', function() {
+                        selectedStaff = this.value;
+                        
+                        if (selectedStaff && selectedDate && selectedTime) {
+                            checkStaffAvailability(selectedStaff, selectedDate, selectedTime);
+                        } else {
+                            hideStaffAvailability();
+                        }
+                        
+                        updateSubmitButtonState();
+                    });
+                }
+                
+                // Enable form initially (will be disabled if active booking exists)
+                enableForm();
+                updateSubmitButtonState();
+                
+                console.log('Booking form initialized successfully');
+            }
+            
+            // Initialize when everything is ready
+            function startInitialization() {
+                // Wait for script.js to potentially load header/footer
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', function() {
+                        setTimeout(initializeBookingForm, 300);
+                    });
+                } else {
+                    // DOM already loaded
+                    setTimeout(initializeBookingForm, 300);
+                }
+            }
+            
+            // Start initialization
+            startInitialization();
             
             // Periodic check to ensure button stays disabled if booking exists
+            // This checks every 5 seconds to prevent duplicate bookings
             const form = document.getElementById('demoBookingForm');
             setInterval(() => {
                 const email = document.getElementById('email').value;
                 const submitBtn = document.getElementById('submitBtn');
                 
                 if (email) {
+                    // Check for booking (case-insensitive)
                     const booking = getBookingForEmail(email);
-                    if (booking && !isBookingCompleted(booking)) {
-                        // Force disable if booking exists
-                        existingBooking = booking;
-                        showExistingBookingAlert(booking);
-                        disableForm();
-                        submitBtn.disabled = true;
-                        submitBtn.innerHTML = 'Demo Already Scheduled';
-                        
-                        // Also disable form inputs
-                        form.classList.add('form-disabled');
-                    } else {
-                        // No active booking - check if we should enable
-                        if (existingBooking) {
+                    if (booking) {
+                        if (!isBookingCompleted(booking)) {
+                            // Booking still active - FORCE disable everything
+                            existingBooking = booking;
+                            showExistingBookingAlert(booking);
+                            disableForm();
+                            submitBtn.disabled = true;
+                            submitBtn.innerHTML = 'Demo Already Scheduled';
+                            form.classList.add('form-disabled');
+                            
+                            // Also disable all inputs
+                            const inputs = form.querySelectorAll('input, select, textarea');
+                            inputs.forEach(input => {
+                                input.disabled = true;
+                            });
+                        } else {
+                            // Demo has completed - remove booking and enable form
+                            const bookings = getAllBookings();
+                            delete bookings[email.toLowerCase()];
+                            localStorage.setItem(BOOKINGS_STORAGE_KEY, JSON.stringify(bookings));
+                            
+                            // Hide alert and enable form
                             hideExistingBookingAlert();
                             existingBooking = null;
-                            // Only enable if email is valid
-                            if (email.includes('@') && email.includes('.')) {
-                                enableForm();
+                            enableForm();
+                            updateSubmitButtonState();
+                        }
+                    } else {
+                        // Double-check all bookings (case-insensitive)
+                        const allBookings = getAllBookings();
+                        const emailLower = email.toLowerCase();
+                        let foundActive = false;
+                        
+                        for (const storedEmail in allBookings) {
+                            if (storedEmail.toLowerCase() === emailLower) {
+                                const storedBooking = allBookings[storedEmail];
+                                if (storedBooking && !isBookingCompleted(storedBooking)) {
+                                    foundActive = true;
+                                    existingBooking = storedBooking;
+                                    showExistingBookingAlert(storedBooking);
+                                    disableForm();
+                                    submitBtn.disabled = true;
+                                    submitBtn.innerHTML = 'Demo Already Scheduled';
+                                    form.classList.add('form-disabled');
+                                    break;
+                                }
                             }
+                        }
+                        
+                        // No active booking found - enable form if it was previously disabled
+                        if (!foundActive && existingBooking) {
+                            hideExistingBookingAlert();
+                            existingBooking = null;
+                            enableForm();
+                            updateSubmitButtonState();
                         }
                     }
                 } else {
                     // No email - check if button should be disabled
                     checkAllBookingsOnLoad();
+                    updateSubmitButtonState();
                 }
-            }, 2000); // Check every 2 seconds for more responsiveness
+            }, 5000); // Check every 5 seconds to prevent duplicate bookings
             
             // Force check on page load - CRITICAL for refresh protection
             function forceCheckOnLoad() {
@@ -1413,17 +1691,7 @@
 
             // Initial check on page load - multiple checks to ensure it works
             // Check immediately when DOM is ready
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', () => {
-                    forceCheckOnLoad();
-                    setTimeout(() => {
-                        checkAllBookingsOnLoad();
-                        checkExistingBooking();
-                        forceCheckOnLoad();
-                    }, 100);
-                });
-            } else {
-                // DOM already loaded
+            function initializePageChecks() {
                 forceCheckOnLoad();
                 setTimeout(() => {
                     checkAllBookingsOnLoad();
@@ -1431,10 +1699,44 @@
                     forceCheckOnLoad();
                 }, 100);
             }
+            
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    initializePageChecks();
+                });
+            } else {
+                // DOM already loaded
+                initializePageChecks();
+            }
+
+            // Function to check if demo completed and re-enable form if needed
+            function checkAndReenableIfCompleted() {
+                const email = document.getElementById('email').value;
+                if (email) {
+                    const booking = getBookingForEmail(email);
+                    if (booking && isBookingCompleted(booking)) {
+                        // Demo completed - remove booking and enable form
+                        const bookings = getAllBookings();
+                        delete bookings[email.toLowerCase()];
+                        localStorage.setItem(BOOKINGS_STORAGE_KEY, JSON.stringify(bookings));
+                        
+                        hideExistingBookingAlert();
+                        existingBooking = null;
+                        enableForm();
+                        updateSubmitButtonState();
+                    } else if (booking && !isBookingCompleted(booking)) {
+                        // Still active - keep disabled
+                        existingBooking = booking;
+                        showExistingBookingAlert(booking);
+                        disableForm();
+                    }
+                }
+            }
 
             // Also check when page becomes visible (user switches tabs back)
             document.addEventListener('visibilitychange', () => {
                 if (!document.hidden) {
+                    checkAndReenableIfCompleted();
                     forceCheckOnLoad();
                     checkExistingBooking();
                     checkAllBookingsOnLoad();
@@ -1443,6 +1745,7 @@
 
             // Check on window focus (user switches back to window)
             window.addEventListener('focus', () => {
+                checkAndReenableIfCompleted();
                 forceCheckOnLoad();
                 checkExistingBooking();
                 checkAllBookingsOnLoad();
@@ -1450,6 +1753,7 @@
 
             // Check on page show (browser back/forward navigation)
             window.addEventListener('pageshow', (event) => {
+                checkAndReenableIfCompleted();
                 forceCheckOnLoad();
                 checkExistingBooking();
             });
