@@ -83,7 +83,7 @@ export default async function handler(req, res) {
                 recipientId: recipientId,
                 toEmailAddress: email,
                 senderName: "Tilli Software",
-                senderEmail: "info@tilli.pro",
+                senderEmail: "tilli@nudge.net",
                 replyTo: "tilli@nudge.net",
                 template: {
                     subject: "Your Tilli Demo OTP",
