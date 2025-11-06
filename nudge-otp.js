@@ -414,8 +414,8 @@
             sessionStorage.setItem(STORAGE_KEY, "true");
 
             // Store verified email/phone for signup form pre-fill
-            const emailInput = document.getElementById("demo-otp-email");
-            const phoneInput = document.getElementById("demo-otp-phone");
+            const emailInput = document.getElementById("demoOtpEmail");
+            const phoneInput = document.getElementById("demoOtpPhone");
             if (emailInput && emailInput.value) {
                 sessionStorage.setItem("verified_email", emailInput.value);
             }
