@@ -267,22 +267,34 @@
             const listDiv = document.getElementById('automation-list');
 
             let hasSuccessfulAutomation = false;
+            let successfulProducts = [];
+            let sharedPassword = null;
             let html = '';
+
+            // Check which products were successfully created
+            if (automations.nudge && automations.nudge.success) {
+                hasSuccessfulAutomation = true;
+                successfulProducts.push('Nudge');
+                sharedPassword = automations.nudge.password;
+            }
+            if (automations.tillipay && automations.tillipay.success) {
+                hasSuccessfulAutomation = true;
+                successfulProducts.push('tilliPay');
+                if (!sharedPassword) sharedPassword = automations.tillipay.password;
+            }
 
             // Display Nudge results
             if (automations.nudge) {
-                hasSuccessfulAutomation = hasSuccessfulAutomation || automations.nudge.success;
                 html += `
                     <div class="automation-item ${automations.nudge.success ? '' : 'failed'}">
                         <i class="fas ${automations.nudge.success ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
                         <div class="automation-details">
                             <strong>Nudge Communications Platform</strong>
-                            <small>${automations.nudge.message}</small>
-                            ${automations.nudge.success && automations.nudge.password ? `
+                            <small>${automations.nudge.success ? 'Account created successfully!' : automations.nudge.message}</small>
+                            ${automations.nudge.success ? `
                                 <div class="credentials-box">
                                     <p><strong>Login:</strong> <a href="https://app.nudge.net" target="_blank">app.nudge.net</a></p>
-                                    <p><strong>Temporary Password:</strong> ${automations.nudge.password}</p>
-                                    <p style="margin-top: 0.5rem; color: #92400e;">⚠️ Please change your password after first login</p>
+                                    <p><strong>Email:</strong> Your registered email address</p>
                                 </div>
                             ` : ''}
                         </div>
@@ -292,21 +304,30 @@
 
             // Display tilliPay results
             if (automations.tillipay) {
-                hasSuccessfulAutomation = hasSuccessfulAutomation || automations.tillipay.success;
                 html += `
                     <div class="automation-item ${automations.tillipay.success ? '' : 'failed'}">
                         <i class="fas ${automations.tillipay.success ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
                         <div class="automation-details">
                             <strong>tilliPay Payment Orchestration</strong>
-                            <small>${automations.tillipay.message}</small>
-                            ${automations.tillipay.success && automations.tillipay.password ? `
+                            <small>${automations.tillipay.success ? 'Account created successfully!' : automations.tillipay.message}</small>
+                            ${automations.tillipay.success ? `
                                 <div class="credentials-box">
                                     <p><strong>Login:</strong> <a href="https://gps.tillipay.com/portal" target="_blank">gps.tillipay.com/portal</a></p>
-                                    <p><strong>Temporary Password:</strong> ${automations.tillipay.password}</p>
-                                    <p style="margin-top: 0.5rem; color: #92400e;">⚠️ Please change your password after first login</p>
+                                    <p><strong>Email:</strong> Your registered email address</p>
                                 </div>
                             ` : ''}
                         </div>
+                    </div>
+                `;
+            }
+
+            // Add shared password section if any products were successful
+            if (hasSuccessfulAutomation && sharedPassword) {
+                html += `
+                    <div style="background: #fef3c7; border: 2px solid #fbbf24; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                        <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #92400e;"><i class="fas fa-key"></i> Your Temporary Password</p>
+                        <p style="margin: 0 0 0.5rem 0; font-family: monospace; font-size: 1.125rem; color: #1a1a1a;"><strong>${sharedPassword}</strong></p>
+                        <p style="margin: 0; font-size: 0.875rem; color: #92400e;">⚠️ This password works for all your Tilli products. Please change it after your first login.</p>
                     </div>
                 `;
             }
@@ -316,11 +337,15 @@
                 listDiv.innerHTML = html;
                 resultsDiv.classList.add('show');
 
-                // If there were successful automations, update the main message
+                // Update the main message based on successful products
                 if (hasSuccessfulAutomation) {
                     const mainMessage = document.querySelector('.success-card > p');
                     if (mainMessage) {
-                        mainMessage.textContent = 'Your signup was successful and your accounts have been automatically created! Check below for your login credentials.';
+                        if (successfulProducts.length > 1) {
+                            mainMessage.textContent = `Congratulations! Your ${successfulProducts.join(' and ')} accounts have been created successfully. Check your email for verification links and use your credentials below to log in.`;
+                        } else if (successfulProducts.length === 1) {
+                            mainMessage.textContent = `Congratulations! Your ${successfulProducts[0]} account has been created successfully. Check your email for a verification link and use your credentials below to log in.`;
+                        }
                     }
                 }
             }
