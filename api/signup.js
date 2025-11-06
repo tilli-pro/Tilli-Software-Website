@@ -8,7 +8,9 @@
  * 3. Initiates registration in Nudge and tilliPay (if selected)
  */
 
-export default async function handler(req, res) {
+const crypto = require('crypto');
+
+module.exports = async (req, res) => {
     // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -280,7 +282,6 @@ async function createVTigerLead(baseUrl, username, accessKey, leadData) {
         console.log('[VTIGER] Got token:', token ? '***' : 'NONE');
 
         // Step 2: Generate access key
-        const crypto = await import('crypto');
         const generatedKey = crypto.createHash('md5').update(token + accessKey).digest('hex');
 
         // Step 3: Login
