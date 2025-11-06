@@ -45,7 +45,8 @@ function checkRateLimit(ip) {
 }
 
 module.exports = async (req, res) => {
-    // Enable CORS - allow from your domain
+    // Enable CORS - allow from your domain and Vercel preview URLs
+    const origin = req.headers.origin;
     const allowedOrigins = [
         'https://tillisoftware.com',
         'https://www.tillisoftware.com',
@@ -54,14 +55,16 @@ module.exports = async (req, res) => {
         'http://localhost:8348'
     ];
 
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
+    // Allow all Vercel preview URLs (*.vercel.app)
+    if (origin && (allowedOrigins.includes(origin) || origin.includes('.vercel.app'))) {
         res.setHeader('Access-Control-Allow-Origin', origin);
+    } else {
+        // Fallback: allow all origins (less secure but ensures functionality)
+        res.setHeader('Access-Control-Allow-Origin', '*');
     }
 
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
 
     // Handle preflight requests
     if (req.method === 'OPTIONS') {
