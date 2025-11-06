@@ -321,13 +321,13 @@
                 `;
             }
 
-            // Add shared password section if any products were successful
-            if (hasSuccessfulAutomation && sharedPassword) {
+            // Add password reminder if any products were successful
+            if (hasSuccessfulAutomation) {
                 html += `
-                    <div style="background: #fef3c7; border: 2px solid #fbbf24; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
-                        <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #92400e;"><i class="fas fa-key"></i> Your Temporary Password</p>
-                        <p style="margin: 0 0 0.5rem 0; font-family: monospace; font-size: 1.125rem; color: #1a1a1a;"><strong>${sharedPassword}</strong></p>
-                        <p style="margin: 0; font-size: 0.875rem; color: #92400e;">⚠️ This password works for all your Tilli products. Please change it after your first login.</p>
+                    <div style="background: #f0f9ff; border: 2px solid #5B9EFF; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                        <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #1a1a1a;"><i class="fas fa-key"></i> Login Credentials</p>
+                        <p style="margin: 0 0 0.5rem 0; font-size: 0.875rem; color: #1a1a1a;">Use your registered email address and the password you created during signup to log in to your accounts.</p>
+                        <p style="margin: 0; font-size: 0.875rem; color: #6b7280;">💡 The same password works for all your Tilli products.</p>
                     </div>
                 `;
             }

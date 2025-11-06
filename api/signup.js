@@ -25,16 +25,26 @@ export default async function handler(req, res) {
             companyName,
             industry,
             companySize,
+            password,
             products,
             source,
             timestamp
         } = req.body;
 
         // Validate required fields
-        if (!fullName || !email || !phone || !companyName || !industry || !companySize) {
+        if (!fullName || !email || !phone || !companyName || !industry || !companySize || !password) {
             return res.status(400).json({
                 success: false,
                 error: 'All fields are required.'
+            });
+        }
+
+        // Validate password requirements
+        const passwordValidation = validatePassword(password);
+        if (!passwordValidation.valid) {
+            return res.status(400).json({
+                success: false,
+                error: `Password does not meet requirements: ${passwordValidation.errors.join(', ')}`
             });
         }
 
@@ -93,9 +103,8 @@ export default async function handler(req, res) {
         // Create lead in VTiger
         const crmResponse = await createVTigerLead(VTIGER_URL, VTIGER_USERNAME, VTIGER_ACCESS_KEY, crmPayload);
 
-        // Generate one strong password that meets both Nudge and tilliPay requirements
-        // Requirements: 12+ chars, uppercase, lowercase, number, special characters
-        const sharedPassword = generateStrongPassword();
+        // Use the password provided by the user (already validated above)
+        const userPassword = password;
 
         // Trigger product-specific signup automations
         const automationResults = {
@@ -116,7 +125,7 @@ export default async function handler(req, res) {
                         phone,
                         fullName,
                         companyName,
-                        password: sharedPassword
+                        password: userPassword
                     })
                 });
                 const nudgeData = await nudgeResponse.json();
@@ -147,7 +156,7 @@ export default async function handler(req, res) {
                         phone,
                         fullName,
                         companyName,
-                        password: sharedPassword
+                        password: userPassword
                     })
                 });
                 const tilliPayData = await tilliPayResponse.json();
@@ -183,35 +192,32 @@ export default async function handler(req, res) {
 }
 
 /**
- * Generate a strong password that meets enterprise requirements
- * Requirements: 12+ chars, uppercase, lowercase, number, special characters
+ * Validate password meets enterprise requirements
+ * Requirements: 8+ chars, uppercase, lowercase, number, special characters
  */
-function generateStrongPassword() {
-    const length = 14;
-    const uppercase = 'ABCDEFGHJKLMNPQRSTUVWXYZ'; // Removed I, O for clarity
-    const lowercase = 'abcdefghjkmnpqrstuvwxyz'; // Removed i, l, o for clarity
-    const numbers = '23456789'; // Removed 0, 1 for clarity
-    const special = '!@#$%^&*';
+function validatePassword(password) {
+    const errors = [];
 
-    // Ensure at least 2 of each type for strong password
-    let password = '';
-    password += uppercase[Math.floor(Math.random() * uppercase.length)];
-    password += uppercase[Math.floor(Math.random() * uppercase.length)];
-    password += lowercase[Math.floor(Math.random() * lowercase.length)];
-    password += lowercase[Math.floor(Math.random() * lowercase.length)];
-    password += numbers[Math.floor(Math.random() * numbers.length)];
-    password += numbers[Math.floor(Math.random() * numbers.length)];
-    password += special[Math.floor(Math.random() * special.length)];
-    password += special[Math.floor(Math.random() * special.length)];
-
-    // Fill remaining with random mix
-    const allChars = uppercase + lowercase + numbers + special;
-    for (let i = password.length; i < length; i++) {
-        password += allChars[Math.floor(Math.random() * allChars.length)];
+    if (password.length < 8) {
+        errors.push('at least 8 characters');
+    }
+    if (!/[A-Z]/.test(password)) {
+        errors.push('one uppercase letter');
+    }
+    if (!/[a-z]/.test(password)) {
+        errors.push('one lowercase letter');
+    }
+    if (!/[0-9]/.test(password)) {
+        errors.push('one number');
+    }
+    if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+        errors.push('one special character');
     }
 
-    // Shuffle the password to randomize position of required characters
-    return password.split('').sort(() => Math.random() - 0.5).join('');
+    return {
+        valid: errors.length === 0,
+        errors
+    };
 }
 
 /**
