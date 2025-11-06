@@ -104,6 +104,12 @@ export default async function handler(req, res) {
         const VTIGER_USERNAME = process.env.VTIGER_USERNAME;
         const VTIGER_ACCESS_KEY = process.env.VTIGER_ACCESS_KEY;
 
+        console.log('[SIGNUP] VTiger config:', {
+            url: VTIGER_URL,
+            username: VTIGER_USERNAME ? '***' : 'MISSING',
+            accessKey: VTIGER_ACCESS_KEY ? '***' : 'MISSING'
+        });
+
         if (!VTIGER_USERNAME || !VTIGER_ACCESS_KEY) {
             console.error('VTiger credentials not configured');
             return res.status(500).json({
@@ -113,7 +119,9 @@ export default async function handler(req, res) {
         }
 
         // Create lead in VTiger
+        console.log('[SIGNUP] Creating VTiger lead...');
         const crmResponse = await createVTigerLead(VTIGER_URL, VTIGER_USERNAME, VTIGER_ACCESS_KEY, crmPayload);
+        console.log('[SIGNUP] VTiger lead created:', crmResponse?.id || 'no id');
 
         // Use the password provided by the user (already validated above)
         const userPassword = password;
@@ -200,9 +208,20 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error('Signup error:', error);
+        console.error('Error stack:', error.stack);
+        console.error('Error details:', {
+            message: error.message,
+            name: error.name,
+            cause: error.cause
+        });
+
         return res.status(500).json({
             success: false,
-            error: 'An error occurred during signup. Please try again or contact support.'
+            error: 'An error occurred during signup. Please try again or contact support.',
+            debug: process.env.NODE_ENV === 'development' ? {
+                message: error.message,
+                stack: error.stack
+            } : undefined
         });
     }
 }
@@ -241,16 +260,24 @@ function validatePassword(password) {
  */
 async function createVTigerLead(baseUrl, username, accessKey, leadData) {
     try {
+        console.log('[VTIGER] Starting lead creation');
+
         // Step 1: Get challenge token
         const challengeUrl = `${baseUrl}/webservice.php?operation=getchallenge&username=${encodeURIComponent(username)}`;
+        console.log('[VTIGER] Getting challenge from:', challengeUrl);
+
         const challengeResponse = await fetch(challengeUrl);
+        console.log('[VTIGER] Challenge response status:', challengeResponse.status);
+
         const challengeData = await challengeResponse.json();
+        console.log('[VTIGER] Challenge data:', challengeData);
 
         if (!challengeData.success) {
-            throw new Error('Failed to get challenge token from VTiger');
+            throw new Error('Failed to get challenge token from VTiger: ' + JSON.stringify(challengeData));
         }
 
         const token = challengeData.result.token;
+        console.log('[VTIGER] Got token:', token ? '***' : 'NONE');
 
         // Step 2: Generate access key
         const crypto = await import('crypto');
