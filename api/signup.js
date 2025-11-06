@@ -11,6 +11,28 @@
 const crypto = require('crypto');
 const fetch = require('node-fetch');
 
+// Helper to safely get request body
+async function getRequestBody(req) {
+    // If body is already parsed, return it
+    if (req.body && typeof req.body === 'object') {
+        return req.body;
+    }
+
+    // Otherwise, read raw body
+    const chunks = [];
+    for await (const chunk of req) {
+        chunks.push(chunk);
+    }
+    const rawBody = Buffer.concat(chunks).toString('utf8');
+
+    // Try to parse as JSON
+    try {
+        return JSON.parse(rawBody);
+    } catch (e) {
+        throw new Error('Invalid JSON in request body');
+    }
+}
+
 module.exports = async (req, res) => {
     // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -34,29 +56,11 @@ module.exports = async (req, res) => {
     console.log('[SIGNUP] Request method:', req.method);
     console.log('[SIGNUP] Content-Type:', req.headers['content-type']);
 
-    // Try to access body with detailed logging
-    let formData;
     try {
-        console.log('[SIGNUP] Attempting to access req.body...');
-        formData = req.body;
-        console.log('[SIGNUP] req.body accessed successfully');
-        console.log('[SIGNUP] Body type:', typeof formData);
-        console.log('[SIGNUP] Form data keys:', Object.keys(formData || {}));
-    } catch (bodyAccessError) {
-        console.error('[SIGNUP] ERROR accessing req.body:', bodyAccessError);
-        console.error('[SIGNUP] Error name:', bodyAccessError.name);
-        console.error('[SIGNUP] Error message:', bodyAccessError.message);
-        return res.status(500).json({
-            success: false,
-            error: 'Body parsing error: ' + bodyAccessError.message,
-            debug: {
-                contentType: req.headers['content-type'],
-                method: req.method
-            }
-        });
-    }
-
-    try {
+        // Use helper to safely get body
+        console.log('[SIGNUP] Getting request body...');
+        const formData = await getRequestBody(req);
+        console.log('[SIGNUP] Body received, keys:', Object.keys(formData || {}));
 
         const {
             firstName,
