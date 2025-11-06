@@ -6218,6 +6218,8 @@ a:focus {
 [data-theme="dark"] img[src*="washington"],
 [data-theme="dark"] img[src*="consolidated"],
 [data-theme="dark"] img[src*="conedison"],
+[data-theme="dark"] img[src*="howard"],
+[data-theme="dark"] img[src*="howardcountymd.gov"],
 [data-theme="dark"] img[src*="logo"]:not([src*="white"]):not([src*="tilli"]) {
     filter: brightness(0) invert(1);
     opacity: 0.9;
