@@ -426,8 +426,9 @@
             'icloud.com', 'mail.com', 'protonmail.com', 'yandex.com', 'zoho.com'
         ];
 
-        // Pre-fill from session storage (from OTP verification)
+        // All DOM-dependent code wrapped in DOMContentLoaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Pre-fill from session storage (from OTP verification)
             const verifiedEmail = sessionStorage.getItem('verified_email');
             const verifiedPhone = sessionStorage.getItem('verified_phone');
 
@@ -440,24 +441,23 @@
                 document.getElementById('phone').value = verifiedPhone;
                 document.getElementById('phone-verified-badge').style.display = 'inline-flex';
             }
-        });
 
-        // Validate commercial email
-        document.getElementById('email').addEventListener('blur', function() {
-            const email = this.value.toLowerCase();
-            const domain = email.split('@')[1];
+            // Validate commercial email
+            document.getElementById('email').addEventListener('blur', function() {
+                const email = this.value.toLowerCase();
+                const domain = email.split('@')[1];
 
-            if (domain && CONSUMER_EMAIL_DOMAINS.includes(domain)) {
-                this.classList.add('error');
-                return false;
-            } else {
-                this.classList.remove('error');
-                return true;
-            }
-        });
+                if (domain && CONSUMER_EMAIL_DOMAINS.includes(domain)) {
+                    this.classList.add('error');
+                    return false;
+                } else {
+                    this.classList.remove('error');
+                    return true;
+                }
+            });
 
-        // Form submission
-        document.getElementById('signup-form').addEventListener('submit', async function(e) {
+            // Form submission
+            document.getElementById('signup-form').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const submitBtn = this.querySelector('.submit-btn');
@@ -532,20 +532,21 @@
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="fas fa-rocket" style="margin-right: 0.5rem;"></i> Start Free Trial';
             }
+            });
+
+            function showAlert(message, type) {
+                const alertContainer = document.getElementById('alert-container');
+                alertContainer.innerHTML = `
+                    <div class="alert ${type} show">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                        ${message}
+                    </div>
+                `;
+
+                // Scroll to alert
+                alertContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         });
-
-        function showAlert(message, type) {
-            const alertContainer = document.getElementById('alert-container');
-            alertContainer.innerHTML = `
-                <div class="alert ${type} show">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-                    ${message}
-                </div>
-            `;
-
-            // Scroll to alert
-            alertContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
     </script>
 
     <!-- Vercel Analytics -->
