@@ -123,8 +123,17 @@ module.exports = async (req, res) => {
 
         // Create lead in VTiger
         console.log('[SIGNUP] Creating VTiger lead...');
-        const crmResponse = await createVTigerLead(VTIGER_URL, VTIGER_USERNAME, VTIGER_ACCESS_KEY, crmPayload);
-        console.log('[SIGNUP] VTiger lead created:', crmResponse?.id || 'no id');
+        let crmResponse;
+        try {
+            crmResponse = await createVTigerLead(VTIGER_URL, VTIGER_USERNAME, VTIGER_ACCESS_KEY, crmPayload);
+            console.log('[SIGNUP] VTiger lead created:', crmResponse?.id || 'no id');
+        } catch (vtigerError) {
+            console.error('[SIGNUP] VTiger creation failed:', vtigerError);
+            return res.status(500).json({
+                success: false,
+                error: 'Failed to create lead in CRM: ' + vtigerError.message
+            });
+        }
 
         // Use the password provided by the user (already validated above)
         const userPassword = password;
