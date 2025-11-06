@@ -1,0 +1,57 @@
+{
+  "company": {
+    "name": "Tilli",
+    "legal_name": "Utilli, LLC",
+    "founded": "2018",
+    "headquarters": {
+      "address": "8260 Greensboro Dr, Suite 270",
+      "city": "McLean",
+      "state": "VA",
+      "zip": "22102",
+      "country": "United States"
+    },
+    "contact": {
+      "website": "https://www.tillisoftware.com",
+      "email": "sales@tilli.pro",
+      "phone": "+1-888-845-5400"
+    },
+    "description": "Enterprise billing, payment, and communications platform that reduces costs by 40% and accelerates payment collection by 3X.",
+    "products": [
+      {
+        "name": "tilliX",
+        "category": "Self-Service Portal",
+        "description": "White-labeled customer experience portal with eBill, payment plans, and account management",
+        "url": "https://www.tillisoftware.com/tillix"
+      },
+      {
+        "name": "Nudge",
+        "category": "CPaaS",
+        "description": "Omnichannel communications platform for SMS, email, WhatsApp, voice notifications",
+        "channels": ["SMS", "Email", "WhatsApp", "Voice"],
+        "url": "https://www.tillisoftware.com/nudge"
+      },
+      {
+        "name": "tilliPay",
+        "category": "Payment Processing",
+        "description": "PCI DSS Level 1 payment processing for ACH, cards, digital wallets",
+        "payment_methods": ["ACH", "Credit Cards", "Debit Cards", "Apple Pay", "Google Pay"],
+        "url": "https://www.tillisoftware.com/tillipay"
+      },
+      {
+        "name": "tilliArc",
+        "category": "Document Archiving",
+        "description": "Secure document archiving for compliance and retrieval"
+      }
+    ],
+    "industries": ["Utilities", "Healthcare", "Insurance", "Education", "Financial Services"],
+    "customers": ["Con Edison", "Washington Gas", "AAA", "Howard County Maryland"],
+    "key_metrics": {
+      "cost_reduction": "40%",
+      "payment_acceleration": "3X",
+      "support_call_reduction": "60%",
+      "digital_adoption": "85%",
+      "dso_reduction": "35%"
+    },
+    "compliance": ["PCI DSS Level 1", "SOC 2 Type II", "HIPAA", "WCAG 2.1 AA"]
+  }
+}
