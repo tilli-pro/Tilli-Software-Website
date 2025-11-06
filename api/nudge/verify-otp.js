@@ -59,9 +59,25 @@ async function createVTigerLead(userData) {
         const userId = loginData.result.userId;
 
         // Step 4: Prepare lead data
-        const firstName = userData.firstName || 'Demo';
-        const lastName = userData.email ? userData.email.split('@')[0] : (userData.phone || 'User');
-        const company = userData.company || (userData.email ? userData.email.split('@')[1] : 'Unknown Company');
+        // VTiger requires non-empty firstname and lastname
+        let firstName = 'Demo';
+        let lastName = 'User';
+
+        if (userData.email) {
+            const emailParts = userData.email.split('@');
+            lastName = emailParts[0] || 'User';
+            firstName = 'Demo';
+        } else if (userData.phone) {
+            lastName = userData.phone.replace(/[^0-9]/g, '').slice(-4) || 'User';
+            firstName = 'Demo';
+        }
+
+        // Use provided firstName if available
+        if (userData.firstName && userData.firstName.trim()) {
+            firstName = userData.firstName.trim();
+        }
+
+        const company = userData.company || (userData.email ? userData.email.split('@')[1] : 'Demo Company');
 
         const leadDescription = [
             '=== OTP DEMO VERIFICATION ===',
