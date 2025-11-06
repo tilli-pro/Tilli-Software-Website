@@ -53,37 +53,48 @@ export default async function handler(req, res) {
         // Generate unique recipient ID
         const recipientId = generateUUID();
 
-        // Construct Nudge API V2 request payload
-        const nudgePayload = {
-            recipientId: recipientId,
-            senderName: "Tilli Software",
-            senderEmail: "info@tilli.pro",
-            replyTo: "tilli@nudge.net",
-            generateOtp: true,
-            expirySeconds: 300,
-            otpLength: 6,
-            channel: channel === 'sms' ? 1 : 0,
-            template: {
-                subject: "Your Tilli Demo OTP",
-                bodyHtml: "",
-                bodyPlain: ""
-            }
-        };
+        // Build message
+        const name = firstName || "Customer";
+        let message = `Hello ${name}, your Tilli demo verification code is %OTP%. It expires in 5 minutes.`;
+        if (company) {
+            message += ` Requested by ${company}.`;
+        }
 
-        // Configure channel-specific fields
+        // Construct Nudge API V2 request payload - exact format from developer docs
+        let nudgePayload;
+
         if (channel === 'sms' && phone) {
-            nudgePayload.toPhoneNumber = phone;
-            nudgePayload.senderNumber = "18334561408";
-            nudgePayload.template.bodyPlain = `Hello, your Tilli demo verification code is %OTP%. Valid for 5 minutes.`;
+            // SMS channel
+            nudgePayload = {
+                recipientId: recipientId,
+                template: {
+                    bodyPlain: `Hello, your Tilli demo verification code is %OTP%. Valid for 5 minutes.`
+                },
+                toPhoneNumber: phone,
+                senderNumber: "18334561408",
+                generateOtp: true,
+                expirySeconds: 300,
+                otpLength: 6,
+                channel: 1
+            };
         } else {
             // Email channel (default)
-            nudgePayload.toEmailAddress = email;
-            const name = firstName || "Customer";
-            let message = `Hello ${name}, your Tilli demo verification code is %OTP%. It expires in 5 minutes.`;
-            if (company) {
-                message += ` Requested by ${company}.`;
-            }
-            nudgePayload.template.bodyPlain = message;
+            nudgePayload = {
+                recipientId: recipientId,
+                toEmailAddress: email,
+                senderName: "Tilli Software",
+                senderEmail: "info@tilli.pro",
+                replyTo: "tilli@nudge.net",
+                template: {
+                    subject: "Your Tilli Demo OTP",
+                    bodyHtml: "",
+                    bodyPlain: message
+                },
+                generateOtp: true,
+                expirySeconds: 300,
+                otpLength: 6,
+                channel: 0
+            };
         }
 
         // Forward request to Nudge API
