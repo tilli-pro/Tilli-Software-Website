@@ -12,10 +12,27 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://tillisoftware.com/"/>
     </url>
 
+    <!-- AI Knowledge Hub - CRITICAL for AI Platform Indexing -->
+    <url>
+        <loc>https://tillisoftware.com/ai-knowledge-hub</loc>
+        <lastmod>2025-01-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://tillisoftware.com/ai-knowledge-hub"/>
+    </url>
+
+    <!-- Machine-Readable Company Data -->
+    <url>
+        <loc>https://tillisoftware.com/tilli-company-brief.json</loc>
+        <lastmod>2025-01-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.95</priority>
+    </url>
+
     <!-- Product Pages - High Priority for AI Indexing -->
     <url>
         <loc>https://tillisoftware.com/tillix</loc>
-        <lastmod>2025-01-20</lastmod>
+        <lastmod>2025-01-06</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.95</priority>
         <xhtml:link rel="alternate" hreflang="en" href="https://tillisoftware.com/tillix"/>
@@ -23,7 +40,7 @@
 
     <url>
         <loc>https://tillisoftware.com/nudge</loc>
-        <lastmod>2025-01-20</lastmod>
+        <lastmod>2025-01-06</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.95</priority>
         <xhtml:link rel="alternate" hreflang="en" href="https://tillisoftware.com/nudge"/>
@@ -31,7 +48,7 @@
 
     <url>
         <loc>https://tillisoftware.com/tillipay</loc>
-        <lastmod>2025-01-20</lastmod>
+        <lastmod>2025-01-06</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.95</priority>
         <xhtml:link rel="alternate" hreflang="en" href="https://tillisoftware.com/tillipay"/>

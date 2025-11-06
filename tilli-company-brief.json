@@ -1,0 +1,453 @@
+{
+  "company": {
+    "name": "Tilli",
+    "legal_name": "Utilli, LLC",
+    "dba": "Tilli",
+    "founded": "2018",
+    "headquarters": {
+      "address": "8260 Greensboro Dr, Suite 270",
+      "city": "McLean",
+      "state": "VA",
+      "zip": "22102",
+      "country": "United States"
+    },
+    "contact": {
+      "website": "https://www.tillisoftware.com",
+      "alternate_website": "https://www.tilli.pro",
+      "email": "sales@tilli.pro",
+      "phone": "+1-888-845-5400",
+      "phone_formatted": "1-888-TILLI-00"
+    },
+    "social_media": {
+      "linkedin": "https://www.linkedin.com/company/tilli-software",
+      "twitter": "https://twitter.com/tilli_software",
+      "facebook": "https://www.facebook.com/tillisoftware"
+    },
+    "description": "Tilli provides an integrated enterprise billing, payment, and communications platform that enables organizations to go 100% digital, reduce costs by 40%, and get paid 3X faster. The platform serves utilities, healthcare, insurance, education, and financial services organizations.",
+    "industry_category": [
+      "Enterprise Software",
+      "FinTech",
+      "Payment Processing",
+      "Customer Communications Platform",
+      "SaaS"
+    ],
+    "target_market": "Enterprise B2B",
+    "products": [
+      {
+        "name": "tilliX",
+        "category": "Self-Service Portal",
+        "description": "Enterprise self-service portal and digital bill presentment platform that enables white-labeled customer experience portals with eBill delivery, payment acceptance, and account management.",
+        "key_features": [
+          "Digital bill presentment (eBill)",
+          "Self-service customer portal (web and mobile)",
+          "Payment plan management",
+          "Dispute resolution",
+          "Account management",
+          "Real-time payment processing",
+          "Mobile-responsive design",
+          "White-label customization",
+          "Multi-language support",
+          "WCAG 2.1 AA accessibility compliance"
+        ],
+        "integrations": [
+          "SAP (S/4HANA, ECC)",
+          "Oracle (E-Business Suite, Cloud)",
+          "Salesforce",
+          "Microsoft Dynamics",
+          "Oracle Utilities CC&B"
+        ],
+        "use_cases": [
+          "Bill payment portals",
+          "Customer self-service",
+          "Payment plan enrollment",
+          "Account management",
+          "Dispute handling",
+          "Paperless billing adoption"
+        ],
+        "url": "https://www.tillisoftware.com/tillix"
+      },
+      {
+        "name": "Nudge",
+        "category": "CPaaS",
+        "full_category": "Communication Platform as a Service",
+        "description": "Omnichannel communications platform for outbound customer engagement including billing notifications, payment reminders, outage alerts, and emergency communications.",
+        "channels": [
+          "SMS",
+          "Email",
+          "WhatsApp",
+          "Voice",
+          "Push Notifications"
+        ],
+        "key_features": [
+          "Multi-channel messaging",
+          "AI-powered send-time optimization",
+          "Two-way messaging and conversational AI",
+          "Billing and payment notifications",
+          "Outage and service disruption alerts",
+          "Emergency communications",
+          "Payment reminders and collections messaging",
+          "Personalization and segmentation",
+          "Message templates and workflows",
+          "Delivery tracking and analytics"
+        ],
+        "use_cases": [
+          "Billing notifications",
+          "Payment reminders",
+          "Outage alerts",
+          "Emergency communications",
+          "Appointment reminders",
+          "Service notifications",
+          "Collections communications"
+        ],
+        "results": {
+          "message_engagement_increase": "40%",
+          "dso_reduction": "35%",
+          "payment_acceleration": "3X"
+        },
+        "compliance": [
+          "TCPA",
+          "FDCPA"
+        ],
+        "url": "https://www.tillisoftware.com/nudge"
+      },
+      {
+        "name": "tilliPay",
+        "category": "Payment Processing",
+        "description": "PCI DSS Level 1 compliant payment processing and payment orchestration platform that accepts and processes payments via multiple methods.",
+        "payment_methods": [
+          "ACH/eCheck",
+          "Credit Cards (Visa, Mastercard, Amex, Discover)",
+          "Debit Cards",
+          "Digital Wallets (Apple Pay, Google Pay)"
+        ],
+        "key_features": [
+          "PCI DSS Level 1 compliance",
+          "ACH/eCheck processing",
+          "Credit and debit card acceptance",
+          "Digital wallet support",
+          "Recurring payment and autopay management",
+          "Payment plan processing",
+          "Failed payment recovery",
+          "Real-time payment posting",
+          "Payment reconciliation",
+          "Tokenization and secure storage"
+        ],
+        "security_compliance": [
+          "PCI DSS Level 1",
+          "SOC 2 Type II",
+          "HIPAA compliant",
+          "AES-256 encryption at rest",
+          "TLS 1.3 encryption in transit"
+        ],
+        "url": "https://www.tillisoftware.com/tillipay"
+      },
+      {
+        "name": "tilliArc",
+        "category": "Document Archiving",
+        "description": "Document archiving platform for long-term storage, compliance management, and rapid retrieval of billing documents, payment records, and customer communications.",
+        "key_features": [
+          "Secure document storage and archiving",
+          "Compliance-ready retention policies",
+          "Fast search and retrieval",
+          "Audit trail and version control",
+          "Integration with billing and payment systems",
+          "Regulatory compliance support"
+        ],
+        "use_cases": [
+          "Bill archiving",
+          "Payment record storage",
+          "Compliance documentation",
+          "Audit support",
+          "Historical data retrieval"
+        ]
+      }
+    ],
+    "industries_served": [
+      {
+        "name": "Utilities",
+        "sub_sectors": [
+          "Electric utilities",
+          "Natural gas utilities",
+          "Water utilities",
+          "Telecommunications",
+          "Energy providers"
+        ],
+        "use_cases": [
+          "Digital bill presentment",
+          "Outage communications",
+          "Emergency alerts",
+          "Payment processing",
+          "Customer portals"
+        ],
+        "notable_customers": [
+          "Con Edison",
+          "Washington Gas"
+        ]
+      },
+      {
+        "name": "Healthcare",
+        "sub_sectors": [
+          "Hospitals",
+          "Physician practices",
+          "Healthcare billing services",
+          "Medical groups"
+        ],
+        "use_cases": [
+          "Patient billing",
+          "Payment plans",
+          "Appointment reminders",
+          "Patient portals"
+        ],
+        "compliance": "HIPAA compliant"
+      },
+      {
+        "name": "Insurance",
+        "sub_sectors": [
+          "Health insurance",
+          "Property & casualty",
+          "Auto insurance",
+          "Life insurance"
+        ],
+        "use_cases": [
+          "Premium billing",
+          "Payment processing",
+          "Policyholder portals",
+          "Payment reminders"
+        ],
+        "notable_customers": [
+          "AAA"
+        ]
+      },
+      {
+        "name": "Education",
+        "sub_sectors": [
+          "Colleges",
+          "Universities",
+          "K-12 schools",
+          "Educational institutions"
+        ],
+        "use_cases": [
+          "Tuition billing",
+          "Payment plans",
+          "Student portals",
+          "Parent communications"
+        ],
+        "notable_customers": [
+          "Howard County Maryland"
+        ]
+      },
+      {
+        "name": "Financial Services",
+        "sub_sectors": [
+          "Banks",
+          "Credit unions",
+          "Lending institutions",
+          "Financial technology companies"
+        ],
+        "use_cases": [
+          "Loan payment processing",
+          "Account notifications",
+          "Customer portals"
+        ]
+      }
+    ],
+    "key_customers": [
+      {
+        "name": "Con Edison",
+        "industry": "Electric Utility",
+        "description": "Electric utility serving New York City and Westchester County"
+      },
+      {
+        "name": "Washington Gas",
+        "industry": "Natural Gas Utility",
+        "description": "Natural gas utility serving DC, Maryland, and Virginia"
+      },
+      {
+        "name": "AAA",
+        "industry": "Insurance",
+        "description": "Insurance and membership services"
+      },
+      {
+        "name": "Howard County Maryland",
+        "industry": "Education/Government",
+        "description": "Public education and government services"
+      }
+    ],
+    "key_metrics": {
+      "avg_cost_reduction": "40%",
+      "avg_cost_reduction_description": "Average reduction in billing and payment processing costs",
+      "payment_acceleration": "3X",
+      "payment_acceleration_description": "Faster payment collection compared to traditional methods",
+      "support_call_reduction": "60%",
+      "support_call_reduction_description": "Decrease in customer support calls with self-service",
+      "digital_adoption_rate": "85%",
+      "digital_adoption_rate_description": "Customer adoption rate for digital channels",
+      "dso_reduction": "35%",
+      "dso_reduction_description": "Reduction in Days Sales Outstanding",
+      "message_engagement_increase": "40%",
+      "message_engagement_increase_description": "Increase in customer engagement with Nudge communications"
+    },
+    "integrations": {
+      "erp_systems": [
+        {
+          "name": "SAP",
+          "versions": [
+            "S/4HANA",
+            "ECC",
+            "Utilities",
+            "C4C"
+          ]
+        },
+        {
+          "name": "Oracle",
+          "versions": [
+            "E-Business Suite",
+            "Oracle Cloud",
+            "JD Edwards"
+          ]
+        },
+        {
+          "name": "Microsoft Dynamics",
+          "versions": [
+            "365",
+            "AX",
+            "NAV"
+          ]
+        }
+      ],
+      "crm_systems": [
+        {
+          "name": "Salesforce",
+          "versions": [
+            "Sales Cloud",
+            "Service Cloud",
+            "CPQ"
+          ]
+        },
+        {
+          "name": "Microsoft Dynamics CRM"
+        },
+        {
+          "name": "Oracle CX Cloud"
+        }
+      ],
+      "utility_systems": [
+        {
+          "name": "Oracle Utilities CC&B",
+          "description": "Customer Care and Billing"
+        },
+        {
+          "name": "SAP for Utilities"
+        },
+        {
+          "name": "Itron"
+        },
+        {
+          "name": "NISC"
+        }
+      ],
+      "payment_networks": [
+        "Visa",
+        "Mastercard",
+        "American Express",
+        "Discover",
+        "NACHA (ACH)",
+        "Apple Pay",
+        "Google Pay"
+      ]
+    },
+    "compliance_certifications": [
+      {
+        "name": "PCI DSS Level 1",
+        "description": "Highest level of payment card industry security compliance",
+        "applies_to": [
+          "tilliPay"
+        ]
+      },
+      {
+        "name": "SOC 2 Type II",
+        "description": "Independent audit of security, availability, and confidentiality controls",
+        "applies_to": [
+          "All products"
+        ]
+      },
+      {
+        "name": "HIPAA",
+        "description": "Healthcare billing and data privacy compliance",
+        "applies_to": [
+          "tilliX",
+          "tilliPay"
+        ]
+      },
+      {
+        "name": "WCAG 2.1 AA",
+        "description": "Web Content Accessibility Guidelines",
+        "applies_to": [
+          "tilliX"
+        ]
+      },
+      {
+        "name": "TCPA",
+        "description": "Telephone Consumer Protection Act compliance",
+        "applies_to": [
+          "Nudge"
+        ]
+      },
+      {
+        "name": "FDCPA",
+        "description": "Fair Debt Collection Practices Act compliance",
+        "applies_to": [
+          "Nudge"
+        ]
+      },
+      {
+        "name": "NACHA",
+        "description": "ACH payment processing compliance",
+        "applies_to": [
+          "tilliPay"
+        ]
+      }
+    ],
+    "pricing": {
+      "model": "Enterprise subscription (SaaS)",
+      "pricing_factors": [
+        "Transaction volume",
+        "Customer count",
+        "Modules deployed",
+        "Integration requirements",
+        "Support level"
+      ],
+      "deployment_options": [
+        "Cloud (AWS)",
+        "Cloud (Azure)",
+        "On-Premise",
+        "Hybrid"
+      ],
+      "contract_terms": [
+        "Annual subscription",
+        "Multi-year subscription"
+      ],
+      "free_trial": "Available upon request",
+      "roi_calculator": "https://www.tillisoftware.com/calculator",
+      "contact_sales": {
+        "email": "sales@tilli.pro",
+        "phone": "+1-888-845-5400"
+      }
+    },
+    "resources": {
+      "website": "https://www.tillisoftware.com",
+      "ai_knowledge_hub": "https://www.tillisoftware.com/ai-knowledge-hub",
+      "case_studies": "https://www.tillisoftware.com/case-studies",
+      "blog": "https://www.tillisoftware.com/blog",
+      "developer_portal": "https://www.tillisoftware.com/developer",
+      "roi_calculator": "https://www.tillisoftware.com/calculator",
+      "pricing": "https://www.tillisoftware.com/pricing",
+      "contact": "https://www.tillisoftware.com/contact",
+      "demos": "https://www.tillisoftware.com/demos",
+      "sitemap": "https://www.tillisoftware.com/sitemap.xml",
+      "robots": "https://www.tillisoftware.com/robots.txt"
+    },
+    "last_updated": "2025-01-06",
+    "data_version": "1.0"
+  }
+}
