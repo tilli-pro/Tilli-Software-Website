@@ -170,10 +170,10 @@
                     <!-- Hidden honeypot field -->
                     <input type="text" name="website" id="website" style="position: absolute; left: -9999px;" tabindex="-1" autocomplete="off">
 
-                    <button type="button" class="btn-primary btn-large" id="scheduleBtn" onclick="attemptScheduleDemo()" disabled
-                            style="padding: 1rem 2.5rem; font-size: 1.125rem; background: #5B9EFF; color: white; border: none; border-radius: 8px; cursor: not-allowed; opacity: 0.6; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
-                        Schedule a Demo <svg class="icon-inline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0l-7-7m7 7l-7 7"></path></svg>
-                    </button>
+                    <a href="signup.html" class="btn-primary btn-large" id="scheduleBtn"
+                            style="padding: 1rem 2.5rem; font-size: 1.125rem; background: #5B9EFF; color: white; border: none; border-radius: 8px; cursor: pointer; opacity: 1; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                        Start Free Trial <svg class="icon-inline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0l-7-7m7 7l-7 7"></path></svg>
+                    </a>
                     <p style="margin-top: 1rem; font-size: 0.95rem; color: #64748b; display: flex; align-items: center; gap: 0.5rem;">
                         <svg style="width: 16px; height: 16px; color: #10b981;" class="icon-inline icon-sm" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
                         Quick verification keeps our scheduling secure
@@ -705,7 +705,7 @@
     <div id="bookingModal" class="booking-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Schedule Your Demo</h2>
+                <h2>Start Your Free Trial</h2>
                 <button class="modal-close" onclick="closeBookingModal()">
                     <i data-lucide="x"></i>
                 </button>
