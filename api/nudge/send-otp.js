@@ -53,12 +53,13 @@ export default async function handler(req, res) {
         // Generate unique recipient ID
         const recipientId = generateUUID();
 
-        // Build message
+        // Build message with proper line breaks
         const name = firstName || "Customer";
-        let message = `Hello ${name}, your Tilli demo verification code is %OTP%. It expires in 5 minutes.`;
+        let message = `Hello ${name},\n\nYour Tilli demo verification code is %OTP%.\n\nIt expires in 5 minutes.`;
         if (company) {
-            message += ` Requested by ${company}.`;
+            message += `\n\nRequested by ${company}.`;
         }
+        message += `\n\nThank you,\nTilli Team`;
 
         // Construct Nudge API V2 request payload - exact format from developer docs
         let nudgePayload;
