@@ -6031,3 +6031,136 @@ a:focus {
         height: 24px;
     }
 }
+
+/* ===================================
+   COMPREHENSIVE DARK MODE OVERRIDES
+   =================================== */
+
+/* Body and main containers */
+[data-theme="dark"] body,
+[data-theme="dark"] .hero,
+[data-theme="dark"] .container,
+[data-theme="dark"] .section {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Headers and navigation */
+[data-theme="dark"] .header,
+[data-theme="dark"] .nav,
+[data-theme="dark"] .site-header {
+    background-color: rgba(15, 23, 42, 0.95) !important;
+    border-bottom-color: #334155 !important;
+}
+
+[data-theme="dark"] .nav a,
+[data-theme="dark"] .nav-link,
+[data-theme="dark"] .site-header .main-nav a {
+    color: #F1F5F9 !important;
+}
+
+[data-theme="dark"] .nav a:hover,
+[data-theme="dark"] .nav-link:hover {
+    color: #4099FF !important;
+}
+
+/* Cards and feature boxes */
+[data-theme="dark"] .card,
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .solution-card,
+[data-theme="dark"] .product-card,
+[data-theme="dark"] .testimonial-card {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Headings */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] .hero-title,
+[data-theme="dark"] .section-title {
+    color: var(--text-primary) !important;
+}
+
+/* Paragraphs and text */
+[data-theme="dark"] p,
+[data-theme="dark"] .hero-subtitle,
+[data-theme="dark"] .feature-description,
+[data-theme="dark"] .card-desc,
+[data-theme="dark"] .featured-desc {
+    color: var(--text-secondary) !important;
+}
+
+/* Footer */
+[data-theme="dark"] .footer,
+[data-theme="dark"] .site-footer {
+    background-color: #020617 !important;
+    color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .footer a,
+[data-theme="dark"] .site-footer a {
+    color: #CBD5E1 !important;
+}
+
+/* Forms and inputs */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: var(--text-tertiary) !important;
+}
+
+/* Buttons - preserve primary button colors but adjust secondary */
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .cta-button-secondary {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Lists and text elements */
+[data-theme="dark"] ul li,
+[data-theme="dark"] ol li {
+    color: var(--text-primary) !important;
+}
+
+/* Special content areas */
+[data-theme="dark"] .blog-page {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .see-all,
+[data-theme="dark"] .link-muted {
+    color: var(--text-secondary) !important;
+}
+
+/* Tags and badges */
+[data-theme="dark"] .tag {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .tag.is-active {
+    background: #4099FF !important;
+    color: #FFFFFF !important;
+}
+
+/* Dividers and borders */
+[data-theme="dark"] hr,
+[data-theme="dark"] .divider {
+    border-color: var(--border-color) !important;
+}
