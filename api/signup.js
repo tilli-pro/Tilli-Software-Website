@@ -333,15 +333,19 @@ async function createVTigerLead(baseUrl, username, accessKey, leadData) {
         // Step 2: Generate access key
         const generatedKey = crypto.createHash('md5').update(token + accessKey).digest('hex');
 
-        // Step 3: Login
+        // Step 3: Login (use POST, not GET - this is critical!)
         const loginUrl = `${baseUrl}/webservice.php`;
-        const loginParams = new URLSearchParams({
-            operation: 'login',
-            username: username,
-            accessKey: generatedKey
-        });
+        const loginParams = new URLSearchParams();
+        loginParams.append('operation', 'login');
+        loginParams.append('username', username);
+        loginParams.append('accessKey', generatedKey);
 
-        const loginResponse = await fetch(`${loginUrl}?${loginParams}`);
+        console.log('[VTIGER] Logging in with username:', username);
+        const loginResponse = await fetch(loginUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: loginParams.toString()
+        });
         const loginData = await loginResponse.json();
         console.log('[VTIGER] Login response:', loginData);
 
