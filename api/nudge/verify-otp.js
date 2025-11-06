@@ -4,11 +4,127 @@
  *
  * NOTE: When Nudge returns OtpSessionId=0, we use Upstash for verification.
  * The verification logic automatically detects whether to use Nudge or Upstash.
+ *
+ * After successful verification, creates a lead in VTiger CRM.
  */
 
 import { kv } from '@vercel/kv';
+import crypto from 'crypto';
 
 const NUDGE_VERIFY_ENDPOINT = "https://app.nudge.net/api/v1/Otp/Verify";
+
+// VTiger lead creation function
+async function createVTigerLead(userData) {
+    const VTIGER_URL = process.env.VTIGER_URL || 'https://utilliadmin.com/crm';
+    const VTIGER_USERNAME = process.env.VTIGER_USERNAME || 'admin';
+    const VTIGER_ACCESS_KEY = process.env.VTIGER_ACCESS_KEY || 'crsogur4p4yvzyur';
+
+    try {
+        console.log('[VTIGER] Creating lead for OTP verified user:', userData.email || userData.phone);
+
+        // Step 1: Get challenge token
+        const challengeResponse = await fetch(`${VTIGER_URL}/webservice.php?operation=getchallenge&username=${VTIGER_USERNAME}`);
+        const challengeData = await challengeResponse.json();
+
+        if (!challengeData.success) {
+            throw new Error('Failed to get VTiger challenge token');
+        }
+
+        const token = challengeData.result.token;
+
+        // Step 2: Create MD5 hash
+        const accessKeyHash = crypto
+            .createHash('md5')
+            .update(token + VTIGER_ACCESS_KEY)
+            .digest('hex');
+
+        // Step 3: Login
+        const loginParams = new URLSearchParams();
+        loginParams.append('operation', 'login');
+        loginParams.append('username', VTIGER_USERNAME);
+        loginParams.append('accessKey', accessKeyHash);
+
+        const loginResponse = await fetch(`${VTIGER_URL}/webservice.php`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: loginParams.toString()
+        });
+        const loginData = await loginResponse.json();
+
+        if (!loginData.success) {
+            throw new Error('Failed to login to VTiger');
+        }
+
+        const sessionName = loginData.result.sessionName;
+        const userId = loginData.result.userId;
+
+        // Step 4: Prepare lead data
+        const firstName = userData.firstName || 'Demo';
+        const lastName = userData.email ? userData.email.split('@')[0] : (userData.phone || 'User');
+        const company = userData.company || (userData.email ? userData.email.split('@')[1] : 'Unknown Company');
+
+        const leadDescription = [
+            '=== OTP DEMO VERIFICATION ===',
+            `Date: ${userData.timestamp || new Date().toISOString()}`,
+            `Source: Demo OTP Verification`,
+            `Channel: ${userData.channel || 'email'}`,
+            '',
+            '--- CONTACT DETAILS ---',
+            `Email: ${userData.email || 'Not provided'}`,
+            `Phone: ${userData.phone || 'Not provided'}`,
+            `First Name: ${firstName}`,
+            `Company: ${company}`,
+            '',
+            'User verified their contact information via OTP to access product demos.',
+            'This is a warm lead - user showed interest by completing verification.'
+        ].join('\n');
+
+        const leadData = {
+            lastname: lastName,
+            firstname: firstName,
+            company: company,
+            email: userData.email || '',
+            phone: userData.phone || '',
+            description: leadDescription,
+            leadsource: 'Demo OTP Verification',
+            leadstatus: 'Warm', // OTP verifications are warm leads
+            assigned_user_id: '19x1', // Default assignment
+            // Required custom fields
+            cf_913: 'Demo Access', // Use case field
+            cf_915: 'United States', // Country field
+            cf_917: 'Not specified', // Monthly active users
+            cf_919: 'Product Demo Interest' // Product interest
+        };
+
+        // Step 5: Create lead
+        const createParams = new URLSearchParams();
+        createParams.append('operation', 'create');
+        createParams.append('sessionName', sessionName);
+        createParams.append('elementType', 'Leads');
+        createParams.append('element', JSON.stringify(leadData));
+
+        const createResponse = await fetch(`${VTIGER_URL}/webservice.php`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: createParams.toString()
+        });
+
+        const createResult = await createResponse.json();
+
+        if (!createResult.success) {
+            console.error('[VTIGER] Lead creation failed:', createResult);
+            throw new Error(createResult.error?.message || 'Failed to create lead');
+        }
+
+        console.log('[VTIGER] Lead created successfully:', createResult.result.id);
+        return createResult.result.id;
+
+    } catch (error) {
+        console.error('[VTIGER] Error creating lead:', error.message);
+        // Don't throw - we don't want VTiger errors to block OTP verification
+        return null;
+    }
+}
 
 export default async function handler(req, res) {
     // Only allow POST requests
@@ -72,6 +188,28 @@ export default async function handler(req, res) {
                 // Delete OTP after successful verification (one-time use)
                 await kv.del(`otp:${sessionId}`);
                 console.log(`[OTP] Verification successful, OTP deleted`);
+
+                // Retrieve user data and create VTiger lead
+                try {
+                    const userDataJson = await kv.get(`otp_user:${sessionId}`);
+                    if (userDataJson) {
+                        const userData = JSON.parse(userDataJson);
+                        console.log('[OTP] Retrieved user data for VTiger lead creation');
+
+                        // Create VTiger lead asynchronously (don't wait for it)
+                        createVTigerLead(userData).catch(err => {
+                            console.error('[VTIGER] Background lead creation error:', err);
+                        });
+
+                        // Clean up user data from Upstash
+                        await kv.del(`otp_user:${sessionId}`);
+                    } else {
+                        console.log('[OTP] No user data found for VTiger lead creation');
+                    }
+                } catch (leadError) {
+                    console.error('[OTP] Error processing VTiger lead:', leadError);
+                    // Don't fail the verification if VTiger fails
+                }
 
                 return res.status(200).json({
                     success: true,

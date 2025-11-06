@@ -66,10 +66,22 @@ export default async function handler(req, res) {
         const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
         console.log(`[OTP] Generated code ${otpCode} for ${email || phone}`);
 
-        // Store OTP in Upstash immediately
+        // Store OTP and user data in Upstash immediately
         try {
             await kv.set(`otp:${recipientId}`, otpCode, { ex: 300 }); // 5 minutes expiry
             console.log(`[OTP] Stored in Upstash with key: otp:${recipientId}`);
+
+            // Also store user data for VTiger lead creation after verification
+            const userData = {
+                email: email || null,
+                phone: phone || null,
+                firstName: firstName || null,
+                company: company || null,
+                channel: channel || 'email',
+                timestamp: new Date().toISOString()
+            };
+            await kv.set(`otp_user:${recipientId}`, JSON.stringify(userData), { ex: 300 });
+            console.log(`[OTP] Stored user data for VTiger lead creation`);
         } catch (kvError) {
             console.error('[OTP] Upstash storage error:', kvError);
             return res.status(500).json({
