@@ -1,6 +1,7 @@
 {
   "name": "tilli-software-website",
   "version": "1.0.0",
+  "type": "module",
   "description": "Tilli Software Website with Vtiger CRM Integration",
   "scripts": {
     "dev": "echo 'Use vercel dev directly'",
