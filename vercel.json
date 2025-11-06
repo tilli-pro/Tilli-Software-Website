@@ -4,9 +4,7 @@
       "maxDuration": 10
     },
     "api/signup.js": {
-      "maxDuration": 30,
-      "memory": 1024,
-      "maxRequestBodySize": "10mb"
+      "maxDuration": 30
     }
   },
   "headers": [
