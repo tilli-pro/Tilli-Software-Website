@@ -35,8 +35,15 @@ export default async function handler(req, res) {
             });
         }
 
-        // Generate a default password if not provided
-        const userPassword = password || generatePassword();
+        // Use provided password (should always be provided by parent signup handler)
+        if (!password) {
+            return res.status(400).json({
+                success: false,
+                error: 'Password is required for tilliPay signup automation'
+            });
+        }
+
+        const userPassword = password;
 
         // Launch browser in serverless environment
         browser = await puppeteer.launch({

@@ -93,6 +93,10 @@ export default async function handler(req, res) {
         // Create lead in VTiger
         const crmResponse = await createVTigerLead(VTIGER_URL, VTIGER_USERNAME, VTIGER_ACCESS_KEY, crmPayload);
 
+        // Generate one strong password that meets both Nudge and tilliPay requirements
+        // Requirements: 12+ chars, uppercase, lowercase, number, special characters
+        const sharedPassword = generateStrongPassword();
+
         // Trigger product-specific signup automations
         const automationResults = {
             nudge: null,
@@ -111,7 +115,8 @@ export default async function handler(req, res) {
                         email,
                         phone,
                         fullName,
-                        companyName
+                        companyName,
+                        password: sharedPassword
                     })
                 });
                 const nudgeData = await nudgeResponse.json();
@@ -141,7 +146,8 @@ export default async function handler(req, res) {
                         email,
                         phone,
                         fullName,
-                        companyName
+                        companyName,
+                        password: sharedPassword
                     })
                 });
                 const tilliPayData = await tilliPayResponse.json();
@@ -174,6 +180,38 @@ export default async function handler(req, res) {
             error: 'An error occurred during signup. Please try again or contact support.'
         });
     }
+}
+
+/**
+ * Generate a strong password that meets enterprise requirements
+ * Requirements: 12+ chars, uppercase, lowercase, number, special characters
+ */
+function generateStrongPassword() {
+    const length = 14;
+    const uppercase = 'ABCDEFGHJKLMNPQRSTUVWXYZ'; // Removed I, O for clarity
+    const lowercase = 'abcdefghjkmnpqrstuvwxyz'; // Removed i, l, o for clarity
+    const numbers = '23456789'; // Removed 0, 1 for clarity
+    const special = '!@#$%^&*';
+
+    // Ensure at least 2 of each type for strong password
+    let password = '';
+    password += uppercase[Math.floor(Math.random() * uppercase.length)];
+    password += uppercase[Math.floor(Math.random() * uppercase.length)];
+    password += lowercase[Math.floor(Math.random() * lowercase.length)];
+    password += lowercase[Math.floor(Math.random() * lowercase.length)];
+    password += numbers[Math.floor(Math.random() * numbers.length)];
+    password += numbers[Math.floor(Math.random() * numbers.length)];
+    password += special[Math.floor(Math.random() * special.length)];
+    password += special[Math.floor(Math.random() * special.length)];
+
+    // Fill remaining with random mix
+    const allChars = uppercase + lowercase + numbers + special;
+    for (let i = password.length; i < length; i++) {
+        password += allChars[Math.floor(Math.random() * allChars.length)];
+    }
+
+    // Shuffle the password to randomize position of required characters
+    return password.split('').sort(() => Math.random() - 0.5).join('');
 }
 
 /**
