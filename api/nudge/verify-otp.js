@@ -208,11 +208,10 @@ export default async function handler(req, res) {
                 // Retrieve user data and create VTiger lead
                 try {
                     console.log(`[OTP] 🔍 Attempting to retrieve user data for session: ${sessionId}`);
-                    const userDataJson = await kv.get(`otp_user:${sessionId}`);
-                    console.log(`[OTP] User data JSON found:`, userDataJson ? 'YES' : 'NO');
+                    const userData = await kv.get(`otp_user:${sessionId}`);
+                    console.log(`[OTP] User data found:`, userData ? 'YES' : 'NO');
 
-                    if (userDataJson) {
-                        const userData = JSON.parse(userDataJson);
+                    if (userData) {
                         console.log('[OTP] ✅ Retrieved user data:', JSON.stringify(userData));
 
                         // Create VTiger lead and WAIT for it (so we see errors)

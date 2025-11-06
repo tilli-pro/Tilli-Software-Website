@@ -80,7 +80,8 @@ export default async function handler(req, res) {
                 channel: channel || 'email',
                 timestamp: new Date().toISOString()
             };
-            await kv.set(`otp_user:${recipientId}`, JSON.stringify(userData), { ex: 300 });
+            // Store as object - Upstash KV handles serialization automatically
+            await kv.set(`otp_user:${recipientId}`, userData, { ex: 300 });
             console.log(`[OTP] Stored user data for VTiger lead creation`);
         } catch (kvError) {
             console.error('[OTP] Upstash storage error:', kvError);

@@ -1,10 +1,8 @@
 // Backend API endpoint for Vtiger CRM integration
 // Deploy this to Vercel, Netlify Functions, or your Node.js server
 
-const crypto = require('crypto');
-
-// Use node-fetch (proven to work in our test)
-const fetch = require('node-fetch');
+import crypto from 'crypto';
+import fetch from 'node-fetch';
 
 // Configuration from environment variables
 const VTIGER_URL = process.env.VTIGER_URL || 'https://utilliadmin.com/crm';
@@ -44,7 +42,7 @@ function checkRateLimit(ip) {
     return true;
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
     // Enable CORS - allow from your domain and Vercel preview URLs
     const origin = req.headers.origin;
     const allowedOrigins = [
