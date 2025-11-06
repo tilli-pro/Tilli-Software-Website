@@ -41,17 +41,19 @@ export default async function handler(req, res) {
             });
         }
 
-        // Construct Nudge API verification request
+        // Construct Nudge API V1 verification request
+        // Format: { "OtpSessionId": "sessionId", "code": "123456" }
         const nudgePayload = {
-            sessionId: sessionId,
-            otp: code.toString()
+            OtpSessionId: sessionId,
+            code: code.toString()
         };
 
-        // Forward request to Nudge API
+        // Forward request to Nudge API V1
         const response = await fetch(NUDGE_VERIFY_ENDPOINT, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'accept': 'application/json, text/plain, */*',
                 'Authorization': apiKey
             },
             body: JSON.stringify(nudgePayload)
@@ -68,7 +70,9 @@ export default async function handler(req, res) {
         }
 
         // Check if verification was successful
-        const verified = responseData.verified || responseData.success || responseData.isValid;
+        // Nudge API returns various formats - check multiple fields
+        const verified = responseData.verified || responseData.success || responseData.isValid || responseData.Success;
+
         if (!verified) {
             return res.status(400).json({
                 success: false,

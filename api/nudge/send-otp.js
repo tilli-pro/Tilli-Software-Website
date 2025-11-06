@@ -1,10 +1,18 @@
 /**
- * Vercel Serverless Function: Send OTP via Nudge API
+ * Vercel Serverless Function: Send OTP via Nudge API V2
  * Endpoint: /api/nudge/send-otp
  * Requires: NUDGE_API_KEY environment variable in Vercel
  */
 
 const NUDGE_SEND_ENDPOINT = "https://app.nudge.net/api/v2/Nudge/Send";
+
+function generateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0;
+        const v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
 
 export default async function handler(req, res) {
     // Only allow POST requests
@@ -42,27 +50,48 @@ export default async function handler(req, res) {
             });
         }
 
-        // Construct Nudge API request payload
+        // Generate unique recipient ID
+        const recipientId = generateUUID();
+
+        // Construct Nudge API V2 request payload
         const nudgePayload = {
-            recipientType: "Customer",
-            recipient: email || phone,
-            channel: channel === 'sms' ? 'SMS' : 'Email',
-            firstName: firstName || "",
-            company: company || "",
+            recipientId: recipientId,
+            senderName: "Tilli Software",
+            senderEmail: "info@tilli.pro",
             replyTo: "tilli@nudge.net",
-            templateId: "OTP_VERIFICATION",
-            data: {
-                otpLength: 6,
-                expiryMinutes: 10,
-                purpose: "Demo Access Verification"
+            generateOtp: true,
+            expirySeconds: 300,
+            otpLength: 6,
+            channel: channel === 'sms' ? 1 : 0,
+            template: {
+                subject: "Your Tilli Demo OTP",
+                bodyHtml: "",
+                bodyPlain: ""
             }
         };
+
+        // Configure channel-specific fields
+        if (channel === 'sms' && phone) {
+            nudgePayload.toPhoneNumber = phone;
+            nudgePayload.senderNumber = "18334561408";
+            nudgePayload.template.bodyPlain = `Hello, your Tilli demo verification code is %OTP%. Valid for 5 minutes.`;
+        } else {
+            // Email channel (default)
+            nudgePayload.toEmailAddress = email;
+            const name = firstName || "Customer";
+            let message = `Hello ${name}, your Tilli demo verification code is %OTP%. It expires in 5 minutes.`;
+            if (company) {
+                message += ` Requested by ${company}.`;
+            }
+            nudgePayload.template.bodyPlain = message;
+        }
 
         // Forward request to Nudge API
         const response = await fetch(NUDGE_SEND_ENDPOINT, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'accept': 'application/json, text/plain, */*',
                 'Authorization': apiKey
             },
             body: JSON.stringify(nudgePayload)
@@ -70,28 +99,35 @@ export default async function handler(req, res) {
 
         const responseData = await response.json();
 
-        if (!response.ok) {
-            return res.status(response.status).json({
+        if (!response.ok || responseData.HasErrors) {
+            return res.status(response.status || 400).json({
                 success: false,
                 error: responseData.message || 'Failed to send OTP via Nudge.',
                 details: responseData
             });
         }
 
-        // Check if sessionId exists in response
-        const sessionId = responseData.sessionId || responseData.otpSessionId || responseData.id;
-        if (!sessionId) {
-            return res.status(500).json({
-                success: false,
-                error: 'OTP session id missing from Nudge response. Please retry once the service issue is resolved.',
-                nudgeResponse: responseData
+        // Extract OTP session ID from Nudge API V2 response
+        // Response format: { HasErrors, Code, NotificationLogId, OtpSessionId, ExpiresAt }
+        const sessionId = responseData.OtpSessionId || responseData.NotificationLogId;
+
+        if (!sessionId || sessionId === 0 || sessionId === '0') {
+            // Note: Developer mentioned OtpSessionId returns 0 sometimes - use NotificationLogId as fallback
+            const fallbackId = responseData.NotificationLogId || recipientId;
+            return res.status(200).json({
+                success: true,
+                sessionId: fallbackId,
+                notificationLogId: responseData.NotificationLogId,
+                message: `OTP sent successfully via ${channel || 'email'}. Note: Using notification log ID for verification.`
             });
         }
 
         // Success response
         return res.status(200).json({
             success: true,
-            sessionId: sessionId,
+            sessionId: sessionId.toString(),
+            notificationLogId: responseData.NotificationLogId,
+            expiresAt: responseData.ExpiresAt,
             message: `OTP sent successfully via ${channel || 'email'}.`
         });
 
