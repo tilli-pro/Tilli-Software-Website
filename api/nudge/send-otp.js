@@ -1,6 +1,7 @@
 /**
  * Vercel Serverless Function: Send OTP via Nudge API
  * Endpoint: /api/nudge/send-otp
+ * Requires: NUDGE_API_KEY environment variable in Vercel
  */
 
 const NUDGE_SEND_ENDPOINT = "https://app.nudge.net/api/v2/Nudge/Send";
