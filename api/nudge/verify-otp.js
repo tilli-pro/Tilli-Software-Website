@@ -191,23 +191,37 @@ export default async function handler(req, res) {
 
                 // Retrieve user data and create VTiger lead
                 try {
+                    console.log(`[OTP] 🔍 Attempting to retrieve user data for session: ${sessionId}`);
                     const userDataJson = await kv.get(`otp_user:${sessionId}`);
+                    console.log(`[OTP] User data JSON found:`, userDataJson ? 'YES' : 'NO');
+
                     if (userDataJson) {
                         const userData = JSON.parse(userDataJson);
-                        console.log('[OTP] Retrieved user data for VTiger lead creation');
+                        console.log('[OTP] ✅ Retrieved user data:', JSON.stringify(userData));
 
-                        // Create VTiger lead asynchronously (don't wait for it)
-                        createVTigerLead(userData).catch(err => {
-                            console.error('[VTIGER] Background lead creation error:', err);
-                        });
+                        // Create VTiger lead and WAIT for it (so we see errors)
+                        console.log('[VTIGER] 🚀 Starting VTiger lead creation...');
+                        try {
+                            const leadId = await createVTigerLead(userData);
+                            if (leadId) {
+                                console.log(`[VTIGER] ✅ SUCCESS! Lead created with ID: ${leadId}`);
+                            } else {
+                                console.log('[VTIGER] ⚠️  Lead creation returned null - check VTiger errors above');
+                            }
+                        } catch (vtigerError) {
+                            console.error('[VTIGER] ❌ Lead creation FAILED:', vtigerError.message);
+                            console.error('[VTIGER] Full error:', JSON.stringify(vtigerError));
+                        }
 
                         // Clean up user data from Upstash
                         await kv.del(`otp_user:${sessionId}`);
+                        console.log('[OTP] 🧹 Cleaned up user data');
                     } else {
-                        console.log('[OTP] No user data found for VTiger lead creation');
+                        console.log('[OTP] ❌ NO user data found - either send-otp didn\'t store it, or it expired');
                     }
                 } catch (leadError) {
-                    console.error('[OTP] Error processing VTiger lead:', leadError);
+                    console.error('[OTP] ❌ Error in VTiger lead process:', leadError.message);
+                    console.error('[OTP] Stack:', leadError.stack);
                     // Don't fail the verification if VTiger fails
                 }
 
