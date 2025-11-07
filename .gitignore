@@ -1,0 +1,31 @@
+# Build output
+public/
+
+# Dependencies
+node_modules/
+
+# Vercel
+.vercel
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+
+# Backup files
+backup_untracked_files_*
+
+

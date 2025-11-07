@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Demo Bookings - Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            padding: 2rem;
+        }
+
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-header {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-header h1 {
+            font-size: 2rem;
+            color: #0b1220;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-header p {
+            color: #64748b;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card h3 {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0b1220;
+        }
+
+        .bookings-table-container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        .bookings-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .bookings-table th {
+            text-align: left;
+            padding: 1rem;
+            background: #f8fafc;
+            font-weight: 600;
+            color: #0b1220;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .bookings-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #475569;
+        }
+
+        .bookings-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-badge.upcoming {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-badge.completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e1;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #64748b;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .export-btn {
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-calendar-check"></i> Demo Bookings Admin Panel</h1>
+            <p>View and manage all demo booking requests</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Bookings</h3>
+                <div class="value" id="totalBookings">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Upcoming Demos</h3>
+                <div class="value" id="upcomingBookings">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Completed</h3>
+                <div class="value" id="completedBookings">0</div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="refreshBookings()">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+            <button class="btn btn-secondary" onclick="exportToCSV()">
+                <i class="fas fa-download"></i> Export CSV
+            </button>
+            <button class="btn btn-secondary" onclick="clearCompleted()">
+                <i class="fas fa-trash"></i> Clear Completed
+            </button>
+        </div>
+
+        <div class="bookings-table-container">
+            <table class="bookings-table" id="bookingsTable">
+                <thead>
+                    <tr>
+                        <th>Booking Date</th>
+                        <th>Customer Name</th>
+                        <th>Email</th>
+                        <th>Company</th>
+                        <th>Phone</th>
+                        <th>Product</th>
+                        <th>Staff</th>
+                        <th>Scheduled Date & Time</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingsTableBody">
+                    <!-- Bookings will be populated here -->
+                </tbody>
+            </table>
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <i class="fas fa-calendar-times"></i>
+                <h3>No bookings found</h3>
+                <p>Bookings will appear here once customers start booking demos.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BOOKINGS_STORAGE_KEY = 'tilli_demo_bookings';
+
+        function getAllBookings() {
+            try {
+                const bookings = localStorage.getItem(BOOKINGS_STORAGE_KEY);
+                return bookings ? JSON.parse(bookings) : {};
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function isBookingCompleted(booking) {
+            if (!booking || !booking.dateTime) return true;
+            const bookingDateTime = new Date(booking.dateTime);
+            const completionTime = new Date(bookingDateTime.getTime() + (30 * 60 * 1000));
+            return new Date() > completionTime;
+        }
+
+        function formatDateTime(dateTimeStr) {
+            if (!dateTimeStr) return 'N/A';
+            try {
+                const date = new Date(dateTimeStr);
+                if (isNaN(date.getTime())) {
+                    return 'Invalid Date';
+                }
+                return date.toLocaleString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                    hour: 'numeric',
+                    minute: '2-digit'
+                });
+            } catch (error) {
+                console.error('Error formatting date:', dateTimeStr, error);
+                return 'Invalid Date';
+            }
+        }
+
+        function refreshBookings() {
+            try {
+                const bookings = getAllBookings();
+                console.log('All bookings from storage:', bookings); // Debug log
+                
+                const bookingsArray = Object.values(bookings);
+                console.log('Bookings array:', bookingsArray); // Debug log
+                
+                const tbody = document.getElementById('bookingsTableBody');
+                const emptyState = document.getElementById('emptyState');
+                
+                if (!tbody || !emptyState) {
+                    console.error('Table elements not found');
+                    return;
+                }
+                
+                // Update stats
+                const total = bookingsArray.length;
+                const upcoming = bookingsArray.filter(b => b && !isBookingCompleted(b)).length;
+                const completed = bookingsArray.filter(b => b && isBookingCompleted(b)).length;
+                
+                document.getElementById('totalBookings').textContent = total;
+                document.getElementById('upcomingBookings').textContent = upcoming;
+                document.getElementById('completedBookings').textContent = completed;
+
+                // Clear table
+                tbody.innerHTML = '';
+
+                if (bookingsArray.length === 0 || bookingsArray.every(b => !b)) {
+                    emptyState.style.display = 'block';
+                    console.log('No bookings found'); // Debug log
+                    return;
+                }
+
+                emptyState.style.display = 'none';
+
+                // Filter out null/undefined bookings and sort by date (most recent first)
+                const validBookings = bookingsArray.filter(b => b && (b.dateTime || b.bookedAt));
+                
+                validBookings.sort((a, b) => {
+                    const dateA = new Date(a.dateTime || a.bookedAt);
+                    const dateB = new Date(b.dateTime || b.bookedAt);
+                    return dateB - dateA;
+                });
+
+                console.log('Valid bookings to display:', validBookings.length); // Debug log
+
+                validBookings.forEach((booking, index) => {
+                    try {
+                        const completed = isBookingCompleted(booking);
+                        const row = document.createElement('tr');
+                        
+                        row.innerHTML = `
+                            <td>${formatDateTime(booking.bookedAt)}</td>
+                            <td><strong>${escapeHtml(booking.fullName || 'N/A')}</strong></td>
+                            <td>${escapeHtml(booking.email || 'N/A')}</td>
+                            <td>${escapeHtml(booking.company || 'N/A')}</td>
+                            <td>${escapeHtml(booking.phone || 'N/A')}</td>
+                            <td>${escapeHtml(booking.productName || booking.product || 'N/A')}</td>
+                            <td>${escapeHtml(booking.staffName || booking.staff || 'Anyone')}</td>
+                            <td><strong>${formatDateTime(booking.dateTime)}</strong></td>
+                            <td><span class="status-badge ${completed ? 'completed' : 'upcoming'}">${completed ? 'Completed' : 'Upcoming'}</span></td>
+                            <td>${escapeHtml(booking.notes || '-')}</td>
+                        `;
+                        
+                        tbody.appendChild(row);
+                    } catch (error) {
+                        console.error('Error rendering booking:', error, booking);
+                    }
+                });
+            } catch (error) {
+                console.error('Error refreshing bookings:', error);
+                alert('Error loading bookings. Check browser console for details.');
+            }
+        }
+
+        // Helper function to escape HTML
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function exportToCSV() {
+            const bookings = getAllBookings();
+            const bookingsArray = Object.values(bookings);
+            
+            if (bookingsArray.length === 0) {
+                alert('No bookings to export');
+                return;
+            }
+
+            // CSV Header
+            const headers = ['Booking Date', 'Customer Name', 'Email', 'Company', 'Phone', 'Product', 'Staff', 'Scheduled Date & Time', 'Status', 'Notes'];
+            
+            // CSV Rows
+            const rows = bookingsArray.map(booking => {
+                const completed = isBookingCompleted(booking);
+                return [
+                    formatDateTime(booking.bookedAt),
+                    booking.fullName || '',
+                    booking.email || '',
+                    booking.company || '',
+                    booking.phone || '',
+                    booking.productName || '',
+                    booking.staffName || 'Anyone',
+                    formatDateTime(booking.dateTime),
+                    completed ? 'Completed' : 'Upcoming',
+                    (booking.notes || '').replace(/,/g, ';')
+                ];
+            });
+
+            // Combine headers and rows
+            const csv = [
+                headers.join(','),
+                ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+            ].join('\n');
+
+            // Download
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `demo-bookings-${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function clearCompleted() {
+            if (!confirm('Are you sure you want to clear all completed bookings?')) {
+                return;
+            }
+
+            const bookings = getAllBookings();
+            const now = new Date();
+            let cleared = 0;
+
+            for (const email in bookings) {
+                const booking = bookings[email];
+                if (isBookingCompleted(booking)) {
+                    delete bookings[email];
+                    cleared++;
+                }
+            }
+
+            localStorage.setItem(BOOKINGS_STORAGE_KEY, JSON.stringify(bookings));
+            alert(`Cleared ${cleared} completed booking(s)`);
+            refreshBookings();
+        }
+
+        // Initial load - ensure DOM is ready
+        function initialize() {
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    setTimeout(refreshBookings, 100);
+                });
+            } else {
+                setTimeout(refreshBookings, 100);
+            }
+        }
+
+        // Initial load
+        initialize();
+
+        // Auto-refresh every 30 seconds
+        setInterval(refreshBookings, 30000);
+        
+        // Also refresh when page becomes visible
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                refreshBookings();
+            }
+        });
+    </script>
+</body>
+</html>
+

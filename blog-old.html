@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli Blog - All Posts</title>
+    <link rel="stylesheet" href="styles.css?v=blog-old">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="blog-old-page">
+    <div data-include="partials/header.html"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="blog-hero">
+            <div class="container">
+                <h1 class="blog-title">tilli Blog</h1>
+                <p class="blog-subtitle">Insights, trends, and innovations in finance, payments, and technology</p>
+            </div>
+        </section>
+
+        <!-- All Blog Posts Section -->
+        <section class="all-posts-section">
+            <div class="container">
+                <h2 class="section-title">All Blog Posts</h2>
+                
+                <!-- Search and Filter -->
+                <div class="posts-controls">
+                    <div class="search-container">
+                        <input type="search" placeholder="Search all posts..." class="search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    <div class="category-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="tilli-news">tilli News</button>
+                        <button class="filter-btn" data-filter="industry-insights">Industry Insights</button>
+                        <button class="filter-btn" data-filter="security-compliance">Security & Compliance</button>
+                        <button class="filter-btn" data-filter="smart-city">Smart City Solutions</button>
+                        <button class="filter-btn" data-filter="digital-payments">Digital Payments</button>
+                        <button class="filter-btn" data-filter="baas">BaaS</button>
+                        <button class="filter-btn" data-filter="fintech">Financial Technology</button>
+                        <button class="filter-btn" data-filter="business-automation">Business Automation</button>
+                    </div>
+                </div>
+
+                <!-- All Posts Grid -->
+                <div class="all-posts-grid" id="all-posts-grid">
+                    <!-- All posts will be dynamically loaded here -->
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <button class="load-more-btn" id="load-more-btn">Load More Posts</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="partials/footer.html"></div>
+
+    <script src="script.js?v=blog-old"></script>
+    
+    <!-- Blog Posts Data -->
+    <script id="blog-posts-data" type="application/json">
+    {
+        "posts": [
+            {
+                "title": "How to Use Messaging Platforms as Your Point-of-Sale (POS) System to Boost Your Business",
+                "href": "blog-messaging-platforms-pos.html",
+                "image": "Blog Page images/Tilli Blog Images/point-of-sale-pos-system-boost-business-1080x675.jpg",
+                "category": "digital-payments",
+                "author": "Tilli Software",
+                "date": "January 17, 2023",
+                "description": "Discover how messaging platforms can revolutionize your point-of-sale system and boost your business operations with real-time communication and customer engagement."
+            },
+            {
+                "title": "Bharat Bill Payment System: A detailed briefing for a common man",
+                "href": "blog-bharat-bill-payment-system.html",
+                "image": "Blog Page images/Tilli Blog Images/bharat-bill-payment-system-1080x675.jpg",
+                "category": "fintech",
+                "author": "Tilli Software",
+                "date": "January 25, 2023",
+                "description": "Understanding the Bharat Bill Payment System (BBPS) and how it simplifies bill payments for consumers across India with a unified platform."
+            },
+            {
+                "title": "6 Benefits of Adding a Communication Tool for Schools",
+                "href": "blog-communication-tool-for-schools.html",
+                "image": "Blog Page images/Tilli Blog Images/6-Benefits-of-Adding-Communication-Tool-for-Schools.png",
+                "category": "smart-city",
+                "author": "Tilli Software",
+                "date": "April 20, 2023",
+                "description": "Explore the key benefits of implementing communication tools in educational institutions to enhance student engagement and administrative efficiency."
+            },
+            {
+                "title": "The Future is Now: Why Smart Businesses are Moving to S/4 HANA",
+                "href": "blog-future-is-now-moving-to-s4hana.html",
+                "image": "Blog Page images/Tilli Blog Images/sap-moving-s4-hanaapproach-tilli-1080x627.png",
+                "category": "business-automation",
+                "author": "Tilli Software",
+                "date": "April 12, 2023",
+                "description": "Our education system is in dire need of a facelift. With emerging technologies, we have the opportunity to reimagine learning for the next generation."
+            },
+            {
+                "title": "Too Many Payment Gateways? Here's How to Choose the Best One!",
+                "href": "blog-choose-best-payment-gateway.html",
+                "image": "Blog Page images/Tilli Blog Images/tillis-monay-payment-gateway-1080x627.jpg",
+                "category": "digital-payments",
+                "author": "Tilli Software",
+                "date": "May 4, 2023",
+                "description": "With numerous payment gateway options available, selecting the right one for your business can be overwhelming. Here's a comprehensive guide to help you make the best choice."
+            },
+            {
+                "title": "What Are Payment Facilitators and How They Simplify and Accelerate Your Payment Processes",
+                "href": "blog-payment-facilitator.html",
+                "image": "Blog Page images/Tilli Blog Images/monay-payment-facilitator-1080x627.jpg",
+                "category": "digital-payments",
+                "author": "Tilli Software",
+                "date": "June 26, 2023",
+                "description": "Learn about payment facilitators and how they can streamline your payment processing, reduce complexity, and accelerate your business transactions."
+            },
+            {
+                "title": "Payment Gateway for eCommerce – Streamline Customer Checkouts and Improve Your Sales!",
+                "href": "blog-ecommerce-payment-gateway.html",
+                "image": "Blog Page images/Tilli Blog Images/tilli-payment-gateway-for-ecommerce-980x551.jpg",
+                "category": "digital-payments",
+                "author": "Tilli Software",
+                "date": "July 31, 2023",
+                "description": "Discover how the right payment gateway can transform your eCommerce checkout experience, reduce cart abandonment, and boost your sales conversion rates."
+            },
+            {
+                "title": "Decoding the Transition: Seamlessly Embracing S/4HANA for Business Success",
+                "href": "blog-s4hana-transition.html",
+                "image": "Blog Page images/Tilli Blog Images/upgrade-s4hana-tilli.webp",
+                "category": "business-automation",
+                "author": "Tilli Software",
+                "date": "December 07, 2023",
+                "description": "The transition to S/4HANA represents a significant opportunity for businesses to modernize their operations and gain competitive advantages in the digital economy."
+            },
+            {
+                "title": "What is Recurring Bill Payment and How to Choose the Best Payment Gateway for Your Subscription Business?",
+                "href": "blog-recurring-bill-payment.html",
+                "image": "Blog Page images/Tilli Blog Images/tillis-recurring-bill-payment-1080x627-1.jpg",
+                "category": "digital-payments",
+                "author": "Tilli Software",
+                "date": "March 21, 2024",
+                "description": "Recurring bill payments are automated transactions that occur at regular intervals, typically monthly, quarterly, or annually. This payment model is essential for subscription-based businesses."
+            },
+            {
+                "title": "Leading the Way in Payment Security: Our PCI DSS 4.0 Certification",
+                "href": "blog-pci-dss-4-0.html",
+                "image": "Blog Page images/Tilli Blog Images/Leading PCI DSS 4.0 Certification Blog-Creative_2.jpg",
+                "category": "security-compliance",
+                "author": "Tilli Software",
+                "date": "January 17, 2025",
+                "description": "As digital payments evolve, so do the standards that protect them. PCI DSS 4.0 introduces new requirements to enhance security, transparency, and risk management across payment ecosystems."
+            },
+            {
+                "title": "How to Improve Customer Experience in the Insurance Industry?",
+                "href": "blog-insurance-customer-experience.html",
+                "image": "Blog Page images/Tilli Blog Images/how-to-improve-customer-experience-insurance-industry.webp",
+                "category": "industry-insights",
+                "author": "Tilli Software",
+                "date": "June 09, 2023",
+                "description": "Explore strategies to enhance customer experience in the insurance sector through digital transformation, personalized services, and streamlined processes."
+            },
+            {
+                "title": "Tips to Build Incredible Customer Engagement in Today's Digital Era",
+                "href": "blog-tips-to-build-incredible-customer-engagement.html",
+                "image": "Blog Page images/Tilli Blog Images/Tips-to-Build-Incredible-Customer-Experience-Tilli-Software-1-1080x675.jpg",
+                "category": "tilli-news",
+                "author": "Tilli Software",
+                "date": "August 04, 2022",
+                "description": "Learn proven strategies to build exceptional customer engagement in the digital age, leveraging technology and human-centered approaches."
+            },
+            {
+                "title": "5 Reasons to Use a CPaaS for Your Business and the Best Ones for Your Company",
+                "href": "blog-5-reasons-use-cpaas.html",
+                "image": "Blog Page images/Tilli Blog Images/22_Nudge_Blog_5_Reasons-1080x675.jpg",
+                "category": "baas",
+                "author": "Tilli Software",
+                "date": "June 30, 2022",
+                "description": "Discover the top 5 reasons why your business should adopt CPaaS (Communications Platform as a Service) and find the best solutions for your specific needs."
+            },
+            {
+                "title": "How to Deliver an Incredible Customer Engagement Experience",
+                "href": "blog-how-to-deliver-incredible-customer-engagement.html",
+                "image": "Blog Page images/Tilli Blog Images/How-to-Deliver-an-Incredible-Customer-Engagement-Experience.png",
+                "category": "tilli-news",
+                "author": "Tilli Software",
+                "date": "June 01, 2022",
+                "description": "Master the art of delivering exceptional customer engagement experiences that drive loyalty, satisfaction, and business growth."
+            },
+            {
+                "title": "What is CPaaS Customer Engagement?",
+                "href": "blog-what-is-cpaas-customer-engagement.html",
+                "image": "Blog Page images/Tilli Blog Images/What-is-CPaaS.png",
+                "category": "baas",
+                "author": "Tilli Software",
+                "date": "June 01, 2022",
+                "description": "Understanding CPaaS (Communications Platform as a Service) and how it revolutionizes customer engagement through integrated communication channels."
+            },
+            {
+                "title": "What is Digital Customer Engagement?",
+                "href": "blog-what-is-digital-customer-engagement.html",
+                "image": "Blog Page images/Tilli Blog Images/What-is-digital-customer-Engagement.png",
+                "category": "tilli-news",
+                "author": "Tilli Software",
+                "date": "May 04, 2022",
+                "description": "Explore the fundamentals of digital customer engagement and how businesses can leverage technology to create meaningful customer relationships."
+            },
+            {
+                "title": "Putting the Power in Your Customer's Hands: The Rise of the Prosumer",
+                "href": "blog-rise-of-the-prosumer.html",
+                "image": "Blog Page images/Tilli Blog Images/putting-the-power-in-your-customers-hands.png",
+                "category": "industry-insights",
+                "author": "Tilli Software",
+                "date": "April 20, 2022",
+                "description": "Discover how the rise of prosumers is reshaping customer engagement and how businesses can adapt to this new consumer paradigm."
+            }
+        ]
+    }
+    </script>
+    
+    <script>
+        // Old blog page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load blog posts data
+            const postsData = JSON.parse(document.getElementById('blog-posts-data').textContent);
+            const allPostsGrid = document.getElementById('all-posts-grid');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const searchInput = document.querySelector('.search-input');
+            
+            let allPosts = postsData.posts;
+            let currentFilter = 'all';
+            let currentSearch = '';
+            let postsPerPage = 12;
+            let currentPage = 1;
+            let displayedPosts = 0;
+
+            // Generate all posts
+            function generateAllPosts(posts = allPosts, reset = true) {
+                if (reset) {
+                    allPostsGrid.innerHTML = '';
+                    displayedPosts = 0;
+                    currentPage = 1;
+                }
+
+                // Filter posts based on current filter and search
+                let filteredPosts = posts;
+                if (currentFilter !== 'all') {
+                    filteredPosts = filteredPosts.filter(post => post.category === currentFilter);
+                }
+                if (currentSearch) {
+                    filteredPosts = filteredPosts.filter(post => 
+                        post.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                        post.description.toLowerCase().includes(currentSearch.toLowerCase())
+                    );
+                }
+
+                // Sort by date (newest first)
+                filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                // Get posts for current page
+                const startIndex = displayedPosts;
+                const endIndex = Math.min(startIndex + postsPerPage, filteredPosts.length);
+                const postsToShow = filteredPosts.slice(startIndex, endIndex);
+
+                // Generate post cards
+                postsToShow.forEach(post => {
+                    const postCard = document.createElement('article');
+                    postCard.className = 'post-card';
+                    postCard.innerHTML = `
+                        <a href="${post.href}" class="post-link">
+                            <div class="post-image">
+                                <img src="${post.image}" alt="${post.title}">
+                            </div>
+                            <div class="post-content">
+                                <span class="post-category">${post.category.toUpperCase().replace('-', ' ')}</span>
+                                <h3 class="post-title">${post.title}</h3>
+                                <p class="post-excerpt">${post.description}</p>
+                                <div class="post-meta">
+                                    <span class="post-author">${post.author}</span>
+                                    <span class="post-date">${post.date}</span>
+                                    <span class="post-read-time">5 min read</span>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    allPostsGrid.appendChild(postCard);
+                });
+
+                displayedPosts = endIndex;
+
+                // Update load more button
+                if (displayedPosts >= filteredPosts.length) {
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    loadMoreBtn.style.display = 'block';
+                }
+            }
+
+            // Initialize posts
+            generateAllPosts();
+
+            // Filter functionality
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    currentFilter = filter;
+                    
+                    // Generate filtered posts
+                    generateAllPosts();
+                });
+            });
+
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                currentSearch = this.value;
+                generateAllPosts();
+            });
+
+            // Load more functionality
+            loadMoreBtn.addEventListener('click', function() {
+                generateAllPosts(allPosts, false);
+            });
+        });
+    </script>
+    
+    <!-- Include main script for mobile menu functionality -->
+    <script src="script.js"></script>
+    
+    <!-- Fallback mobile menu functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            console.log('Mobile menu elements:', { hamburger, navMenu, dropdowns });
+            
+            if (hamburger && navMenu) {
+                // Toggle mobile menu
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Hamburger clicked');
+                    
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    
+                    // Prevent body scroll when menu is open
+                    if (navMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                        console.log('Menu opened');
+                    } else {
+                        document.body.style.overflow = '';
+                        console.log('Menu closed');
+                    }
+                });
+                
+                // Handle dropdown toggles on mobile
+                dropdowns.forEach(dropdown => {
+                    const dropdownToggle = dropdown.querySelector('a');
+                    
+                    if (dropdownToggle) {
+                        dropdownToggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            console.log('Dropdown clicked');
+                            
+                            dropdown.classList.toggle('open');
+                            
+                            // Close other dropdowns
+                            dropdowns.forEach(otherDropdown => {
+                                if (otherDropdown !== dropdown) {
+                                    otherDropdown.classList.remove('open');
+                                }
+                            });
+                        });
+                    }
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                        console.log('Menu closed by outside click');
+                    }
+                });
+                
+                // Close menu when clicking on a link
+                navMenu.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'A') {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                        console.log('Menu closed by link click');
+                    }
+                });
+                
+                // Handle window resize
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('open');
+                        });
+                        console.log('Menu closed by resize');
+                    }
+                });
+            } else {
+                console.error('Mobile menu elements not found');
+            }
+        });
+    </script>
+</body>
+</html>

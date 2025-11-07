@@ -1,0 +1,15 @@
+node_modules
+.git
+.vercel
+*.log
+.DS_Store
+backup_untracked_files_*
+dev.config.json
+server.config.js
+start-server.js
+README.md
+*.md
+requirements.md
+how origin
+tatus
+

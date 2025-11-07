@@ -10,20 +10,22 @@
 </head>
 <body>
     <div data-include="partials/header.html"></div>
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <span class="hero-badge"><i class="fa-solid fa-bolt"></i>&nbsp; Stream. Subscribe. Retain.</span>
-                <h1 class="hero-title">Media &amp; Entertainment</h1>
-                <p class="hero-subtitle">Engage Audiences and Monetize Content at Scale</p>
-                <p class="hero-subtext">Tilli empowers media platforms — from OTT streaming and DTH operators to digital news publishers and e‑journal platforms — to modernize engagement, simplify subscription billing, and capture deep audience insights. With Nudge, tilliPay, and tilliX, you can boost conversions, reduce churn, and fine‑tune UX across both free and paid models.</p>
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('Industries Page/MEDIA ENTERTAINMENT.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat; position: relative; min-height: 100vh; margin-top: 80px; padding: 0; width: 100%; display: flex; align-items: center; overflow: hidden; background-color: #000;">
+        <div style="position: absolute; inset: 0; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0); z-index: 0;"></div>
+        <div class="hero-container" style="position: relative; z-index: 1; width: 100%; padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <div class="hero-content" style="grid-column: 1;">
+                <span class="hero-badge" style="color: #fff;"><i class="fa-solid fa-bolt"></i>&nbsp; Stream. Subscribe. Retain.</span>
+                <h1 class="hero-title" style="color: #fff;">Media &amp; Entertainment</h1>
+                <p class="hero-subtitle" style="color: #fff;">Engage Audiences and Monetize Content at Scale</p>
+                <p class="hero-subtext" style="color: #fff;">Tilli empowers media platforms — from OTT streaming and DTH operators to digital news publishers and e‑journal platforms — to modernize engagement, simplify subscription billing, and capture deep audience insights. With Nudge, tilliPay, and tilliX, you can boost conversions, reduce churn, and fine‑tune UX across both free and paid models.</p>
                 <div class="hero-buttons">
                     <a href="contact.html" class="btn-primary">Talk to Sales</a>
                     <a href="free-trial.html" class="btn-secondary">Start Free Trial</a>
                     <a href="pricing.html" class="btn-secondary">View Pricing</a>
                 </div>
             </div>
+            <div style="grid-column: 2;"></div>
         </div>
     </section>
 
@@ -144,15 +146,7 @@
                             <input type="text" name="lastName" placeholder="Last Name" required>
                         </div>
                         <div class="form-row">
-                            <select name="industry" required>
-                                <option value="Media &amp; Entertainment" selected>Media &amp; Entertainment</option>
-                                <option value="Banking &amp; Finance">Banking &amp; Finance</option>
-                                <option value="Utilities">Utilities</option>
-                                <option value="Insurance">Insurance</option>
-                                <option value="Public Sector">Public Sector</option>
-                                <option value="Education">Education</option>
-                                <option value="Telecommunications">Telecommunications</option>
-                            </select>
+                            <input type="text" name="industry" value="Media &amp; Entertainment" readonly style="background-color: #f8fafc; cursor: not-allowed; color: #60A5FA;">
                             <input type="text" name="organization" placeholder="Organization Name" required>
                         </div>
                         <div class="form-row">

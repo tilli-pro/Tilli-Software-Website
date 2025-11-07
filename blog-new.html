@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tilli Blog - Latest Insights on Finance, Payments & Technology</title>
+    <link rel="icon" type="image/png" href="Tilli Home Page/tilli-logo.png">
+    <link rel="stylesheet" href="styles.css?v=blog-new">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="blog-new-page">
+    <div data-include="partials/header.html"></div>
+
+    <main>
+        <!-- Hero & Articles Section (Merged) -->
+        <section class="blog-hero-articles">
+            <div class="geometric-background">
+                <img src="Blog Page images/GEOMERTIC SHAPE.png" alt="Geometric Background" class="geometric-shape">
+            </div>
+            <div class="container">
+                <h1 class="blog-title">tilli Blog</h1>
+                
+                <!-- Featured Post Carousel -->
+                <div class="featured-post-carousel" style="min-height: 500px; background: #f8fafc; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center; color: #64748b;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <p>Loading featured posts...</p>
+                    </div>
+                </div>
+                
+                <!-- Carousel Navigation -->
+                <div class="carousel-navigation">
+                    <button class="carousel-arrow prev-arrow" aria-label="Previous post">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                        <span class="dot" data-slide="3"></span>
+                        <span class="dot" data-slide="4"></span>
+                    </div>
+                    <button class="carousel-arrow next-arrow" aria-label="Next post">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <h2 class="section-title">Articles</h2>
+                
+                <!-- Filters and Search -->
+                <div class="articles-controls">
+                    <div class="category-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="tilli-news">tilli News</button>
+                        <button class="filter-btn" data-filter="industry-insights">Industry Insights</button>
+                        <button class="filter-btn" data-filter="security-compliance">Security & Compliance</button>
+                        <button class="filter-btn" data-filter="smart-city">Smart City Solutions</button>
+                        <button class="filter-btn" data-filter="digital-payments">Digital Payments</button>
+                        <button class="filter-btn" data-filter="baas">BaaS</button>
+                        <button class="filter-btn" data-filter="fintech">Financial Technology</button>
+                        <button class="filter-btn" data-filter="business-automation">Business Automation</button>
+                    </div>
+                    <div class="search-container">
+                        <input type="search" placeholder="Search articles" class="search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Articles Grid -->
+                <div class="articles-grid">
+                    <!-- Articles will be dynamically loaded here -->
+                </div>
+
+                <!-- See All Link -->
+                <div class="articles-footer">
+                    <a href="blog.html" class="see-all-link">See All <i class="fas fa-arrow-right"></i></a>
+                    <button class="nav-arrow"><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-card">
+                    <div class="newsletter-image">
+                        <img src="Blog Page images/Tilli Blog Images/1201960516142014.sdlVwIE5rQYAbGxy81xU_height640-2.png" alt="Finance Professionals">
+                    </div>
+                    <div class="newsletter-content">
+                        <h2 class="newsletter-title">Get Smarter About Finance</h2>
+                        <p class="newsletter-description">Join thousands of professionals receiving expert insights on payments, automation, and fintech trends—delivered bi-weekly.</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Enter email address..." class="newsletter-input">
+                            <button class="newsletter-btn">Sign up</button>
+                        </div>
+                        <p class="newsletter-disclaimer">Unsubscribe anytime</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editor's Picks Section -->
+        <section class="editors-picks-section">
+            <div class="container">
+                <h2 class="section-title">Editor's Picks</h2>
+                <div class="editors-picks-carousel">
+                    <div class="picks-container" id="editors-picks-container">
+                        <!-- Editor's picks will be dynamically loaded here -->
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev-btn"><i class="fas fa-arrow-left"></i></button>
+                        <div class="scroll-indicator">
+                            <span id="current-post">1</span> / <span id="total-posts">16</span>
+                        </div>
+                        <button class="carousel-btn next-btn"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="partials/footer.html"></div>
+
+    <script src="script.js?v=blog-new"></script>
+    
+    <!-- Blog Posts Data -->
+    <script id="blog-posts-data" type="application/json">
+    {
+        "posts": [
+            {
+                "title": "How to Use Messaging Platforms as Your Point-of-Sale (POS) System to Boost Your Business",
+                "href": "blog-messaging-platforms-pos.html",
+                "image": "Blog Page images/Tilli Blog Images/point-of-sale-pos-system-boost-business-1080x675.jpg",
+                "category": "digital-payments",
+                "author": "Tilli Software",
+                "date": "January 17, 2023",
+                "description": "Discover how messaging platforms can revolutionize your point-of-sale system and boost your business operations with real-time communication and customer engagement."
+            },
+            {
+                "title": "Bharat Bill Payment System: A detailed briefing for a common man",
+                "href": "blog-bharat-bill-payment-system.html",
+                "image": "Blog Page images/Tilli Blog Images/bharat-bill-payment-system-1080x675.jpg",
+                "category": "fintech",
+                "author": "Tilli Software",
+                "date": "January 25, 2023",
+                "description": "Understanding the Bharat Bill Payment System (BBPS) and how it simplifies bill payments for consumers across India with a unified platform."
+            },
+            {
+                "title": "6 Benefits of Adding a Communication Tool for Schools",
+                "href": "blog-communication-tool-for-schools.html",
+                "image": "Blog Page images/Tilli Blog Images/6-Benefits-of-Adding-Communication-Tool-for-Schools.png",
+                "category": "smart-city",
+                "author": "Tilli Software",
+                "date": "April 20, 2023",
+                "description": "Explore the key benefits of implementing communication tools in educational institutions to enhance student engagement and administrative efficiency."
+            },
+            {
+                "title": "The Future is Now: Why Smart Businesses are Moving to S/4 HANA",
+                "href": "blog-future-is-now-moving-to-s4hana.html",
+                "image": "Blog Page images/Tilli Blog Images/sap-moving-s4-hanaapproach-tilli-1080x627.png",
+                "category": "business-automation",
+                "author": "Tilli Software",
+                "date": "April 12, 2023",
+                "description": "Our education system is in dire need of a facelift. With emerging technologies, we have the opportunity to reimagine learning for the next generation."
+            },
+            {
+                "title": "Too Many Payment Gateways? Here's How to Choose the Best One!",
+                "href": "blog-choose-best-payment-gateway.html",
+                "image": "Blog Page images/Tilli Blog Images/tillis-monay-payment-gateway-1080x627.jpg",
+                "category": "digital-payments",
+                "author": "Tilli Software",
+                "date": "May 4, 2023",
+                "description": "With numerous payment gateway options available, selecting the right one for your business can be overwhelming. Here's a comprehensive guide to help you make the best choice."
+            },
+            {
+                "title": "What Are Payment Facilitators and How They Simplify and Accelerate Your Payment Processes",
+                "href": "blog-payment-facilitator.html",
+                "image": "Blog Page images/Tilli Blog Images/monay-payment-facilitator-1080x627.jpg",
+                "category": "digital-payments",
+                "author": "Tilli Software",
+                "date": "June 26, 2023",
+                "description": "Learn about payment facilitators and how they can streamline your payment processing, reduce complexity, and accelerate your business transactions."
+            },
+            {
+                "title": "Payment Gateway for eCommerce – Streamline Customer Checkouts and Improve Your Sales!",
+                "href": "blog-ecommerce-payment-gateway.html",
+                "image": "Blog Page images/Tilli Blog Images/tilli-payment-gateway-for-ecommerce-980x551.jpg",
+                "category": "digital-payments",
+                "author": "Tilli Software",
+                "date": "July 31, 2023",
+                "description": "Discover how the right payment gateway can transform your eCommerce checkout experience, reduce cart abandonment, and boost your sales conversion rates."
+            },
+            {
+                "title": "Decoding the Transition: Seamlessly Embracing S/4HANA for Business Success",
+                "href": "blog-s4hana-transition.html",
+                "image": "Blog Page images/Tilli Blog Images/upgrade-s4hana-tilli.webp",
+                "category": "business-automation",
+                "author": "Tilli Software",
+                "date": "December 07, 2023",
+                "description": "The transition to S/4HANA represents a significant opportunity for businesses to modernize their operations and gain competitive advantages in the digital economy."
+            },
+            {
+                "title": "What is Recurring Bill Payment and How to Choose the Best Payment Gateway for Your Subscription Business?",
+                "href": "blog-recurring-bill-payment.html",
+                "image": "Blog Page images/Tilli Blog Images/tillis-recurring-bill-payment-1080x627-1.jpg",
+                "category": "digital-payments",
+                "author": "Tilli Software",
+                "date": "March 21, 2024",
+                "description": "Recurring bill payments are automated transactions that occur at regular intervals, typically monthly, quarterly, or annually. This payment model is essential for subscription-based businesses."
+            },
+            {
+                "title": "Leading the Way in Payment Security: Our PCI DSS 4.0 Certification",
+                "href": "blog-pci-dss-4-0.html",
+                "image": "Blog Page images/Tilli Blog Images/Leading PCI DSS 4.0 Certification Blog-Creative_2.jpg",
+                "category": "security-compliance",
+                "author": "Tilli Software",
+                "date": "January 17, 2025",
+                "description": "As digital payments evolve, so do the standards that protect them. PCI DSS 4.0 introduces new requirements to enhance security, transparency, and risk management across payment ecosystems."
+            },
+            {
+                "title": "How to Improve Customer Experience in the Insurance Industry?",
+                "href": "blog-insurance-customer-experience.html",
+                "image": "Blog Page images/Tilli Blog Images/how-to-improve-customer-experience-insurance-industry.webp",
+                "category": "industry-insights",
+                "author": "Tilli Software",
+                "date": "June 09, 2023",
+                "description": "Explore strategies to enhance customer experience in the insurance sector through digital transformation, personalized services, and streamlined processes."
+            },
+            {
+                "title": "Tips to Build Incredible Customer Engagement in Today's Digital Era",
+                "href": "blog-tips-to-build-incredible-customer-engagement.html",
+                "image": "Blog Page images/Tilli Blog Images/Tips-to-Build-Incredible-Customer-Experience-Tilli-Software-1-1080x675.jpg",
+                "category": "tilli-news",
+                "author": "Tilli Software",
+                "date": "August 04, 2022",
+                "description": "Learn proven strategies to build exceptional customer engagement in the digital age, leveraging technology and human-centered approaches."
+            },
+            {
+                "title": "5 Reasons to Use a CPaaS for Your Business and the Best Ones for Your Company",
+                "href": "blog-5-reasons-use-cpaas.html",
+                "image": "Blog Page images/Tilli Blog Images/22_Nudge_Blog_5_Reasons-1080x675.jpg",
+                "category": "baas",
+                "author": "Tilli Software",
+                "date": "June 30, 2022",
+                "description": "Discover the top 5 reasons why your business should adopt CPaaS (Communications Platform as a Service) and find the best solutions for your specific needs."
+            },
+            {
+                "title": "How to Deliver an Incredible Customer Engagement Experience",
+                "href": "blog-how-to-deliver-incredible-customer-engagement.html",
+                "image": "Blog Page images/Tilli Blog Images/How-to-Deliver-an-Incredible-Customer-Engagement-Experience.png",
+                "category": "tilli-news",
+                "author": "Tilli Software",
+                "date": "June 01, 2022",
+                "description": "Master the art of delivering exceptional customer engagement experiences that drive loyalty, satisfaction, and business growth."
+            },
+            {
+                "title": "What is CPaaS Customer Engagement?",
+                "href": "blog-what-is-cpaas-customer-engagement.html",
+                "image": "Blog Page images/Tilli Blog Images/What-is-CPaaS.png",
+                "category": "baas",
+                "author": "Tilli Software",
+                "date": "June 01, 2022",
+                "description": "Understanding CPaaS (Communications Platform as a Service) and how it revolutionizes customer engagement through integrated communication channels."
+            },
+            {
+                "title": "What is Digital Customer Engagement?",
+                "href": "blog-what-is-digital-customer-engagement.html",
+                "image": "Blog Page images/Tilli Blog Images/What-is-digital-customer-Engagement.png",
+                "category": "tilli-news",
+                "author": "Tilli Software",
+                "date": "May 04, 2022",
+                "description": "Explore the fundamentals of digital customer engagement and how businesses can leverage technology to create meaningful customer relationships."
+            },
+            {
+                "title": "Putting the Power in Your Customer's Hands: The Rise of the Prosumer",
+                "href": "blog-rise-of-the-prosumer.html",
+                "image": "Blog Page images/Tilli Blog Images/putting-the-power-in-your-customers-hands.png",
+                "category": "industry-insights",
+                "author": "Tilli Software",
+                "date": "April 20, 2022",
+                "description": "Discover how the rise of prosumers is reshaping customer engagement and how businesses can adapt to this new consumer paradigm."
+            }
+        ]
+    }
+    </script>
+    
+    <script>
+        // Blog page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load blog posts data
+            const postsData = JSON.parse(document.getElementById('blog-posts-data').textContent);
+            const carousel = document.querySelector('.featured-post-carousel');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            
+            // Generate featured posts (latest 5 only)
+            function generateFeaturedPosts() {
+                // Clear loading message
+                carousel.innerHTML = '';
+                
+                // Sort posts by date and get latest 5
+                const sortedPosts = postsData.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                const latestPosts = sortedPosts.slice(0, 5);
+                
+                console.log('Latest 5 posts:', latestPosts.map(p => p.title));
+                
+                latestPosts.forEach((post, index) => {
+                    const postElement = document.createElement('div');
+                    postElement.className = `featured-post ${index === 0 ? 'active' : ''}`;
+                    postElement.setAttribute('data-post', index);
+                    
+                    postElement.innerHTML = `
+                        <div class="featured-post-content">
+                            <div class="featured-image">
+                                <img src="${post.image}" alt="${post.title}">
+                            </div>
+                            <div class="featured-text">
+                                <span class="latest-badge">LATEST</span>
+                                <h2 class="featured-title">${post.title}</h2>
+                                <p class="featured-description">${post.description}</p>
+                                <div class="featured-actions">
+                                    <a href="${post.href}" class="learn-more-btn">
+                                        Learn More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <div class="author-info">
+                                        <img src="Tilli Home Page/tilli-logo.png" alt="Tilli Software" class="author-avatar">
+                                        <div class="author-details">
+                                            <span class="author-name">${post.author}</span>
+                                            <span class="read-time">5 min read</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    carousel.appendChild(postElement);
+                });
+                
+                // Generate dots for latest 5 posts only
+                latestPosts.forEach((post, index) => {
+                    const dot = document.createElement('span');
+                    dot.className = `dot ${index === 0 ? 'active' : ''}`;
+                    dot.setAttribute('data-slide', index);
+                    dotsContainer.appendChild(dot);
+                });
+            }
+            
+            // Initialize posts
+            generateFeaturedPosts();
+            
+            // Wait a bit for DOM to update
+            setTimeout(() => {
+                // Featured Post Carousel
+                const featuredPosts = document.querySelectorAll('.featured-post');
+                const dots = document.querySelectorAll('.carousel-dots .dot');
+                const prevArrow = document.querySelector('.prev-arrow');
+                const nextArrow = document.querySelector('.next-arrow');
+                let currentSlide = 0;
+                const totalSlides = featuredPosts.length;
+                
+                console.log('Featured posts found:', featuredPosts.length);
+                console.log('Dots found:', dots.length);
+                
+                if (featuredPosts.length === 0) {
+                    console.error('No featured posts found!');
+                    return;
+                }
+
+            function showSlide(index) {
+                // Hide all posts
+                featuredPosts.forEach(post => post.classList.remove('active'));
+                // Show current post
+                featuredPosts[index].classList.add('active');
+                
+                // Update dots
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+                
+                // Update arrow states
+                prevArrow.disabled = index === 0;
+                nextArrow.disabled = index === totalSlides - 1;
+            }
+
+            function nextSlide() {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            }
+
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            }
+
+            // Event listeners
+            nextArrow.addEventListener('click', nextSlide);
+            prevArrow.addEventListener('click', prevSlide);
+
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                });
+            });
+
+            // Auto-play (optional)
+            setInterval(() => {
+                if (currentSlide < totalSlides - 1) {
+                    nextSlide();
+                } else {
+                    currentSlide = 0;
+                    showSlide(currentSlide);
+                }
+            }, 5000);
+
+                // Initialize
+                showSlide(0);
+            }, 100); // Small delay to ensure DOM is ready
+
+            // Filter functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const articlesGrid = document.querySelector('.articles-grid');
+            let allPosts = postsData.posts;
+            let currentFilter = 'all';
+
+            // Generate articles dynamically
+            function generateArticles(posts = allPosts) {
+                // Clear existing articles
+                const existingArticles = articlesGrid.querySelectorAll('.article-card');
+                existingArticles.forEach(article => article.remove());
+
+                // For "All" filter, show 4 different posts with different categories
+                let displayPosts = posts;
+                if (currentFilter === 'all') {
+                    // Get unique categories and select one post from each
+                    const categories = [...new Set(allPosts.map(post => post.category))];
+                    displayPosts = [];
+                    
+                    // Select one post from each category (up to 4 categories)
+                    for (let i = 0; i < Math.min(4, categories.length); i++) {
+                        const categoryPosts = allPosts.filter(post => post.category === categories[i]);
+                        if (categoryPosts.length > 0) {
+                            displayPosts.push(categoryPosts[0]);
+                        }
+                    }
+                }
+
+                // Generate featured article (first post)
+                if (displayPosts.length > 0) {
+                    const featuredPost = displayPosts[0];
+                    const featuredArticle = document.createElement('article');
+                    featuredArticle.className = 'article-card featured-article';
+                    featuredArticle.innerHTML = `
+                        <a href="${featuredPost.href}" class="article-link">
+                            <div class="article-image">
+                                <img src="${featuredPost.image}" alt="${featuredPost.title}">
+                            </div>
+                            <div class="article-content">
+                                <span class="article-category">${featuredPost.category.toUpperCase().replace('-', ' ')}</span>
+                                <h3 class="article-title">${featuredPost.title}</h3>
+                                <p class="article-excerpt">${featuredPost.description}</p>
+                                <div class="article-meta">
+                                    <span class="article-date">${featuredPost.date}</span>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    articlesGrid.appendChild(featuredArticle);
+                }
+
+                // Generate side articles (remaining posts, max 3)
+                const sideArticles = displayPosts.slice(1, 4);
+                if (sideArticles.length > 0) {
+                    const sideArticlesContainer = document.createElement('div');
+                    sideArticlesContainer.className = 'side-articles';
+                    
+                    sideArticles.forEach(post => {
+                        const sideArticle = document.createElement('article');
+                        sideArticle.className = 'article-card side-article';
+                        sideArticle.innerHTML = `
+                            <a href="${post.href}" class="article-link">
+                                <div class="article-image">
+                                    <img src="${post.image}" alt="${post.title}">
+                                </div>
+                                <div class="article-content">
+                                    <span class="article-category">${post.category.toUpperCase().replace('-', ' ')}</span>
+                                    <h3 class="article-title">${post.title}</h3>
+                                    <div class="article-meta">
+                                        <span class="article-date">${post.date}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        `;
+                        sideArticlesContainer.appendChild(sideArticle);
+                    });
+                    
+                    articlesGrid.appendChild(sideArticlesContainer);
+                }
+            }
+
+            // Initialize articles
+            generateArticles();
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    currentFilter = filter;
+                    
+                    // Filter posts based on category
+                    let filteredPosts = allPosts;
+                    if (filter !== 'all') {
+                        filteredPosts = allPosts.filter(post => post.category === filter);
+                    }
+                    
+                    // Generate filtered articles
+                    generateArticles(filteredPosts);
+                });
+            });
+
+            // Newsletter form
+            const newsletterForm = document.querySelector('.newsletter-form');
+            const newsletterInput = document.querySelector('.newsletter-input');
+            const newsletterBtn = document.querySelector('.newsletter-btn');
+
+            newsletterBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const email = newsletterInput.value;
+                if (email && email.includes('@')) {
+                    alert('Thank you for subscribing!');
+                    newsletterInput.value = '';
+                } else {
+                    alert('Please enter a valid email address.');
+                }
+            });
+
+            // Editor's Picks Carousel
+            const editorsPicksContainer = document.getElementById('editors-picks-container');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentPickIndex = 0;
+            let autoScrollInterval;
+
+            function generateEditorsPicks() {
+                editorsPicksContainer.innerHTML = '';
+                
+                // Create two sets of posts for seamless infinite scroll (32 total cards)
+                const postsToShow = [...allPosts, ...allPosts];
+                
+                console.log('Total posts to show:', postsToShow.length);
+                console.log('All posts:', allPosts.length);
+                
+                postsToShow.forEach((post, index) => {
+                    const pickCard = document.createElement('article');
+                    pickCard.className = 'pick-card';
+                    pickCard.style.flexShrink = '0'; // Ensure cards don't shrink
+                    pickCard.innerHTML = `
+                        <a href="${post.href}" class="pick-link">
+                            <div class="pick-image">
+                                <img src="${post.image}" alt="${post.title}">
+                            </div>
+                            <div class="pick-content">
+                                <h3 class="pick-title">${post.title}</h3>
+                                <div class="pick-meta">
+                                    <span class="pick-author">${post.author}</span>
+                                    <span class="pick-date">${post.date}</span>
+                                    <span class="pick-read-time">5 min read</span>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    editorsPicksContainer.appendChild(pickCard);
+                });
+                
+                // Force a reflow to ensure all cards are rendered
+                editorsPicksContainer.offsetHeight;
+            }
+
+            // Initialize Editor's Picks
+            generateEditorsPicks();
+            updateScrollIndicator();
+            
+            // Debug: Log the actual number of cards created
+            setTimeout(() => {
+                const cards = editorsPicksContainer.querySelectorAll('.pick-card');
+                console.log('Cards actually created:', cards.length);
+                console.log('Container width:', editorsPicksContainer.scrollWidth);
+                console.log('Viewport width:', editorsPicksContainer.clientWidth);
+                console.log('All posts data:', allPosts);
+                
+                // If not enough cards, regenerate
+                if (cards.length < 16) {
+                    console.log('Regenerating posts...');
+                    generateEditorsPicks();
+                }
+            }, 100);
+
+            // Manual navigation with scroll functionality
+            let isPaused = false;
+            let currentScrollPosition = 0;
+            let currentPostIndex = 1;
+            const cardWidth = 280 + 24; // 280px card + 24px gap (1.5rem)
+            const totalPosts = allPosts.length;
+            
+            function updateScrollIndicator() {
+                document.getElementById('current-post').textContent = currentPostIndex;
+                document.getElementById('total-posts').textContent = totalPosts;
+            }
+            
+            function scrollToNext() {
+                currentScrollPosition += cardWidth;
+                const maxScroll = editorsPicksContainer.scrollWidth - editorsPicksContainer.clientWidth;
+                if (currentScrollPosition >= maxScroll) {
+                    currentScrollPosition = 0;
+                    currentPostIndex = 1;
+                } else {
+                    currentPostIndex = Math.min(currentPostIndex + 1, totalPosts);
+                }
+                editorsPicksContainer.scrollTo({
+                    left: currentScrollPosition,
+                    behavior: 'smooth'
+                });
+                updateScrollIndicator();
+            }
+            
+            function scrollToPrev() {
+                currentScrollPosition -= cardWidth;
+                if (currentScrollPosition < 0) {
+                    const maxScroll = editorsPicksContainer.scrollWidth - editorsPicksContainer.clientWidth;
+                    currentScrollPosition = maxScroll;
+                    currentPostIndex = totalPosts;
+                } else {
+                    currentPostIndex = Math.max(currentPostIndex - 1, 1);
+                }
+                editorsPicksContainer.scrollTo({
+                    left: currentScrollPosition,
+                    behavior: 'smooth'
+                });
+                updateScrollIndicator();
+            }
+            
+            nextBtn.addEventListener('click', () => {
+                editorsPicksContainer.style.animationPlayState = 'paused';
+                isPaused = true;
+                scrollToNext();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                editorsPicksContainer.style.animationPlayState = 'paused';
+                isPaused = true;
+                scrollToPrev();
+            });
+
+            // Pause on hover, resume on mouse leave
+            editorsPicksContainer.addEventListener('mouseenter', () => {
+                editorsPicksContainer.style.animationPlayState = 'paused';
+            });
+
+            editorsPicksContainer.addEventListener('mouseleave', () => {
+                if (!isPaused) {
+                    editorsPicksContainer.style.animationPlayState = 'running';
+                }
+            });
+
+            // Add double-click to resume animation
+            editorsPicksContainer.addEventListener('dblclick', () => {
+                editorsPicksContainer.style.animationPlayState = 'running';
+                isPaused = false;
+            });
+        });
+    </script>
+</body>
+</html>
+

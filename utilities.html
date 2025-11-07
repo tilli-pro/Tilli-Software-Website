@@ -12,11 +12,13 @@
 <body>
     <div data-include="partials/header.html"></div>
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Utilities</h1>
-                <p class="hero-subtitle">Modernizing Utilities with Digital-First Engagement &amp; Payments</p>
+    <section class="hero" style="background-image: url('Industries Page/UTILITIES.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; min-height: 100vh; margin-top: 80px; padding: 0; width: 100%; display: flex; align-items: center; overflow: hidden; background-color: #000;">
+        <div style="position: absolute; inset: 0; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0); z-index: 0;"></div>
+        <div class="hero-container" style="position: relative; z-index: 1; width: 100%; padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <div style="grid-column: 1;"></div>
+            <div class="hero-content" style="grid-column: 2;">
+                <h1 class="hero-title" style="color: #fff;">Utilities</h1>
+                <p class="hero-subtitle" style="color: #fff;">Modernizing Utilities with Digital-First Engagement &amp; Payments</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn-primary">Talk to Sales</a>
                     <a href="#use-cases" class="btn-secondary">Explore Use Cases</a>
@@ -234,16 +236,7 @@
                             <input type="text" name="lastName" placeholder="Last Name" required>
                         </div>
                         <div class="form-row">
-                            <select name="industry" required>
-                                <option value="Utilities" selected>Utilities</option>
-                                <option value="Banking &amp; Finance">Banking &amp; Finance</option>
-                                <option value="Public Sector">Public Sector</option>
-                                <option value="Education &amp; Universities">Education &amp; Universities</option>
-                                <option value="Telecommunications">Telecommunications</option>
-                                <option value="Insurance">Insurance</option>
-                                <option value="Retailers &amp; Merchants">Retailers &amp; Merchants</option>
-                                <option value="SaaS Billing">SaaS Billing</option>
-                            </select>
+                            <input type="text" name="industry" value="Utilities" readonly style="background-color: #f8fafc; cursor: not-allowed; color: #60A5FA;">
                             <input type="text" name="organization" placeholder="Organization Name" required>
                         </div>
                         <div class="form-row">

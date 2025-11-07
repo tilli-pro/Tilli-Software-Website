@@ -11,7 +11,22 @@
 </head>
 <body>
     <div data-include="partials/header.html"></div>
-    <section class="hero"><div class="hero-container"><div class="hero-content"><h1 class="hero-title">Telecommunications</h1><p class="hero-subtitle">Powering Intelligent Engagement &amp; Billing for Telecom Providers</p><p style="margin-top:.5rem; color: var(--medium-gray); font-weight:600;">Connect. Notify. Collect.</p><div class="hero-buttons"><a href="#contact" class="btn-primary">Download Brochure</a><a href="contact.html" class="btn-secondary">Book a Demo</a></div></div></div></section>
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('Industries Page/TELECOMMUNICATIONS.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; min-height: 100vh; margin-top: 80px; padding: 0; width: 100%; display: flex; align-items: center; overflow: hidden; background-color: #000;">
+        <div style="position: absolute; inset: 0; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0); z-index: 0;"></div>
+        <div class="hero-container" style="position: relative; z-index: 1; width: 100%; padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <div style="grid-column: 1;"></div>
+            <div class="hero-content" style="grid-column: 2;">
+                <h1 class="hero-title" style="color: #fff;">Telecommunications</h1>
+                <p class="hero-subtitle" style="color: #fff;">Powering Intelligent Engagement &amp; Billing for Telecom Providers</p>
+                <p style="margin-top:.5rem; color: #fff; font-weight:600;">Connect. Notify. Collect.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Download Brochure</a>
+                    <a href="book-demo.html" class="btn-secondary">Book a Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Overview -->
     <section class="service-delivery"><div class="container"><div class="section-content"><div class="content-text"><h2>Modernize Engagement, Service, and Billing</h2><p>Tilli helps telecommunications providers in mobile, broadband, and fiber modernize customer engagement, service management, and billing. With tilliX, Nudge, and tilliPay, telcos can deliver proactive, personalized, digital-first communication and payment workflows.</p></div></div></div></section>
@@ -46,14 +61,7 @@
                             <input type="text" name="lastName" placeholder="Last Name" required>
                         </div>
                         <div class="form-row">
-                            <select name="industry" required>
-                                <option value="Telecommunications" selected>Telecommunications</option>
-                                <option value="Banking &amp; Finance">Banking &amp; Finance</option>
-                                <option value="Utilities">Utilities</option>
-                                <option value="Public Sector">Public Sector</option>
-                                <option value="Education">Education</option>
-                                <option value="Insurance">Insurance</option>
-                            </select>
+                            <input type="text" name="industry" value="Telecommunications" readonly style="background-color: #f8fafc; cursor: not-allowed; color: #60A5FA;">
                             <input type="text" name="organization" placeholder="Organization Name" required>
                         </div>
                         <div class="form-row">

@@ -307,13 +307,27 @@
             white-space: nowrap;
         }
 
-        .industry-btn:hover,
-        .industry-btn.active {
+        .industry-btn:hover {
             background-color: #dbeafe;
             border-color: #3b82f6;
             color: #2563eb;
             transform: translateY(-1px);
             box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+        }
+
+        .industry-btn.active {
+            background: linear-gradient(90deg, #7dd3fc 0%, #3b82f6 100%) !important;
+            border-color: #3b82f6 !important;
+            color: white !important;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
+            font-weight: 600 !important;
+        }
+
+        .industry-btn.active:hover {
+            background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%) !important;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+            transform: translateY(-2px);
         }
 
         /* Company Size */
@@ -627,6 +641,22 @@
             align-items: center;
             gap: 12px;
             color: #1e293b;
+        }
+
+        /* Gradient text for industry name */
+        .industry-name-gradient {
+            background: linear-gradient(90deg, #7dd3fc 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+            font-size: inherit;
+        }
+
+        #selected-industry-display h5 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.5;
         }
 
         .results-content {
@@ -1005,7 +1035,7 @@
 
                         <div class="hero-buttons-calculator">
                             <a href="index.html#nudge" class="btn-primary-calculator">View our Products <i class="fas fa-arrow-right"></i></a>
-                            <a href="contact.html" class="btn-secondary-calculator">Book a Demo <i class="fas fa-arrow-right"></i></a>
+                            <a href="book-demo.html" class="btn-secondary-calculator">Book a Demo <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     
@@ -1072,27 +1102,30 @@
 
                         <!-- Step 2: Customer Base -->
                         <div class="form-step" data-step="2">
-                            <h3>Step 2: Understaning your customer base</h3>
+                            <h3>Step 2: Understanding your customer base</h3>
                             
                             <div class="form-group">
                                 <label>Total Number of Current Customer Accounts <i class="fas fa-info-circle info-icon"></i></label>
                                 <div class="radio-group">
                                     <div class="radio-option">
-                                        <input type="radio" id="accounts-100" name="customer-accounts" value="100">
-                                        <label for="accounts-100">&lt;100</label>
+                                        <input type="radio" id="accounts-50k" name="customer-accounts" value="50000">
+                                        <label for="accounts-50k">50K</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" id="accounts-900" name="customer-accounts" value="900">
-                                        <label for="accounts-900">100-900</label>
+                                        <input type="radio" id="accounts-1m" name="customer-accounts" value="1000000">
+                                        <label for="accounts-1m">1M</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" id="accounts-3000" name="customer-accounts" value="3000" checked>
-                                        <label for="accounts-3000">900-3,000</label>
+                                        <input type="radio" id="accounts-5m" name="customer-accounts" value="5000000">
+                                        <label for="accounts-5m">5M</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" id="accounts-3000plus" name="customer-accounts" value="3000+">
-                                        <label for="accounts-3000plus">3,000&gt;</label>
+                                        <input type="radio" id="accounts-manual" name="customer-accounts" value="manual">
+                                        <label for="accounts-manual">Enter Manually</label>
                                     </div>
+                                </div>
+                                <div class="form-group" id="accounts-manual-input" style="display: none; margin-top: 12px;">
+                                    <input type="number" id="customer-accounts-manual" placeholder="Enter number of customer accounts" style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem;">
                                 </div>
                             </div>
 
@@ -1100,21 +1133,24 @@
                                 <label>Number of Emails Available <i class="fas fa-info-circle info-icon"></i></label>
                                 <div class="radio-group">
                                     <div class="radio-option">
-                                        <input type="radio" id="emails-100" name="emails-available" value="100">
-                                        <label for="emails-100">&lt;100</label>
+                                        <input type="radio" id="emails-50k" name="emails-available" value="50000">
+                                        <label for="emails-50k">50K</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" id="emails-900" name="emails-available" value="900">
-                                        <label for="emails-900">100-900</label>
+                                        <input type="radio" id="emails-2l" name="emails-available" value="200000">
+                                        <label for="emails-2l">2L</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" id="emails-3000" name="emails-available" value="3000" checked>
-                                        <label for="emails-3000">900-3,000</label>
+                                        <input type="radio" id="emails-5l" name="emails-available" value="500000">
+                                        <label for="emails-5l">5L</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" id="emails-3000plus" name="emails-available" value="3000+">
-                                        <label for="emails-3000plus">3,000&gt;</label>
+                                        <input type="radio" id="emails-manual" name="emails-available" value="manual">
+                                        <label for="emails-manual">Enter Manually</label>
                                     </div>
+                                </div>
+                                <div class="form-group" id="emails-manual-input" style="display: none; margin-top: 12px;">
+                                    <input type="number" id="emails-available-manual" placeholder="Enter number of emails available" style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem;">
                                 </div>
                             </div>
 
@@ -1158,24 +1194,7 @@
 
                             <div class="form-group">
                                 <label>Monthly Payments <i class="fas fa-info-circle info-icon"></i></label>
-                                <div class="radio-group">
-                                    <div class="radio-option">
-                                        <input type="radio" id="payments-100" name="monthly-payments" value="100">
-                                        <label for="payments-100">&lt;100</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="payments-900" name="monthly-payments" value="900">
-                                        <label for="payments-900">100-900</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="payments-3000" name="monthly-payments" value="3000" checked>
-                                        <label for="payments-3000">900-3,000</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="payments-3000plus" name="monthly-payments" value="3000+">
-                                        <label for="payments-3000plus">3,000&gt;</label>
-                                    </div>
-                                </div>
+                                <input type="number" id="monthly-payments" placeholder="Enter Your Monthly Payments" style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem;">
                             </div>
 
                             <div class="form-group">
@@ -1248,6 +1267,10 @@
                             <i class="fas fa-file-alt"></i>
                             Total Savings
                         </h3>
+                        <div id="selected-industry-display" style="margin-top: 12px; display: none;">
+                            <i class="fas fa-building" style="margin-right: 6px; color: #64748b;"></i>
+                            <h5 id="selected-industry-name" class="industry-name-gradient" style="margin: 0; display: inline-block;">No industry selected</h5>
+                        </div>
                     </div>
                     
                     <div class="results-content">
@@ -1359,12 +1382,145 @@
             const calculateBtn = document.getElementById('calculate-savings');
             let currentStep = 1;
 
-            // Industry selection
+            // Industry selection and storage
+            let selectedIndustry = null;
+            const industryDisplay = document.getElementById('selected-industry-display');
+            const industryName = document.getElementById('selected-industry-name');
+            
+            // Industry name mapping
+            const industryNames = {
+                'insurance': 'Insurance',
+                'banking': 'Banking and Finance',
+                'saas-billing': 'SaaS Billing',
+                'public-sector': 'Public Sector',
+                'utilities': 'Utilities',
+                'telecom': 'Telecommunications',
+                'gaming': 'Gaming Developers',
+                'rentals': 'Rentals and Leases',
+                'media': 'Media and Entertainment',
+                'education': 'Education and Universities',
+                'memberships': 'Memberships'
+            };
+
+            // Industry-specific calculation parameters
+            const industryParams = {
+                'insurance': {
+                    callReduction: 0.65,      // 65% reduction
+                    printReduction: 0.85,     // 85% reduction
+                    checkReduction: 0.92,     // 92% reduction
+                    badDebtReduction: 0.35,   // 35% reduction
+                    dsoReduction: 0.45,        // 45% reduction
+                    platformCostMultiplier: 0.55 // $0.55 per account per month
+                },
+                'banking': {
+                    callReduction: 0.60,
+                    printReduction: 0.80,
+                    checkReduction: 0.90,
+                    badDebtReduction: 0.30,
+                    dsoReduction: 0.40,
+                    platformCostMultiplier: 0.50
+                },
+                'saas-billing': {
+                    callReduction: 0.70,
+                    printReduction: 0.75,
+                    checkReduction: 0.85,
+                    badDebtReduction: 0.40,
+                    dsoReduction: 0.50,
+                    platformCostMultiplier: 0.45
+                },
+                'public-sector': {
+                    callReduction: 0.55,
+                    printReduction: 0.90,
+                    checkReduction: 0.95,
+                    badDebtReduction: 0.25,
+                    dsoReduction: 0.35,
+                    platformCostMultiplier: 0.60
+                },
+                'utilities': {
+                    callReduction: 0.65,
+                    printReduction: 0.85,
+                    checkReduction: 0.92,
+                    badDebtReduction: 0.35,
+                    dsoReduction: 0.45,
+                    platformCostMultiplier: 0.55
+                },
+                'telecom': {
+                    callReduction: 0.70,
+                    printReduction: 0.80,
+                    checkReduction: 0.88,
+                    badDebtReduction: 0.38,
+                    dsoReduction: 0.48,
+                    platformCostMultiplier: 0.48
+                },
+                'gaming': {
+                    callReduction: 0.75,
+                    printReduction: 0.70,
+                    checkReduction: 0.80,
+                    badDebtReduction: 0.45,
+                    dsoReduction: 0.55,
+                    platformCostMultiplier: 0.42
+                },
+                'rentals': {
+                    callReduction: 0.60,
+                    printReduction: 0.85,
+                    checkReduction: 0.90,
+                    badDebtReduction: 0.32,
+                    dsoReduction: 0.42,
+                    platformCostMultiplier: 0.52
+                },
+                'media': {
+                    callReduction: 0.68,
+                    printReduction: 0.78,
+                    checkReduction: 0.86,
+                    badDebtReduction: 0.36,
+                    dsoReduction: 0.46,
+                    platformCostMultiplier: 0.50
+                },
+                'education': {
+                    callReduction: 0.58,
+                    printReduction: 0.88,
+                    checkReduction: 0.93,
+                    badDebtReduction: 0.28,
+                    dsoReduction: 0.38,
+                    platformCostMultiplier: 0.58
+                },
+                'memberships': {
+                    callReduction: 0.72,
+                    printReduction: 0.82,
+                    checkReduction: 0.87,
+                    badDebtReduction: 0.40,
+                    dsoReduction: 0.50,
+                    platformCostMultiplier: 0.47
+                }
+            };
+
+            // Default parameters (when no industry is selected)
+            const defaultParams = {
+                callReduction: 0.60,
+                printReduction: 0.80,
+                checkReduction: 0.90,
+                badDebtReduction: 0.30,
+                dsoReduction: 0.40,
+                platformCostMultiplier: 0.50
+            };
+
             const industryBtns = document.querySelectorAll('.industry-btn');
             industryBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     industryBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
+                    selectedIndustry = this.getAttribute('data-industry');
+                    
+                    // Update industry display
+                    if (selectedIndustry && industryNames[selectedIndustry]) {
+                        industryName.textContent = industryNames[selectedIndustry];
+                        industryDisplay.style.display = 'block';
+                    } else {
+                        industryDisplay.style.display = 'none';
+                    }
+                    
+                    // Recalculate with new industry
+                    calculateSavings();
                 });
             });
 
@@ -1437,7 +1593,7 @@
             // Real-time calculation updates
             function addCalculationListeners() {
                 // Radio button listeners
-                const radioGroups = ['customer-accounts', 'emails-available', 'monthly-payments'];
+                const radioGroups = ['customer-accounts', 'emails-available'];
                 radioGroups.forEach(groupName => {
                     const radios = document.querySelectorAll(`input[name="${groupName}"]`);
                     radios.forEach(radio => {
@@ -1454,8 +1610,8 @@
                     }
                 });
 
-                // Input field listeners
-                const inputFields = ['call-handling-cost', 'print-mail-cost', 'checks-mailed', 'current-dso', 'bad-debt-percentage'];
+                // Input field listeners (including manual inputs and monthly payments)
+                const inputFields = ['call-handling-cost', 'print-mail-cost', 'checks-mailed', 'current-dso', 'bad-debt-percentage', 'customer-accounts-manual', 'emails-available-manual', 'monthly-payments'];
                 inputFields.forEach(fieldId => {
                     const field = document.getElementById(fieldId);
                     if (field) {
@@ -1467,39 +1623,89 @@
             // Initialize calculation listeners
             addCalculationListeners();
 
-            // Set default values and calculate initial results
-            function setDefaultValues() {
-                // Set default input values
-                document.getElementById('call-handling-cost').value = '15';
-                document.getElementById('print-mail-cost').value = '0.75';
-                document.getElementById('checks-mailed').value = '500';
-                document.getElementById('current-dso').value = '45';
-                document.getElementById('bad-debt-percentage').value = '2.5';
-                
-                // Calculate initial results
-                calculateSavings();
+            // Handle manual input toggle for customer accounts
+            const accountsManualRadio = document.getElementById('accounts-manual');
+            const accountsManualInput = document.getElementById('accounts-manual-input');
+            const accountsManualField = document.getElementById('customer-accounts-manual');
+            
+            const accountsRadios = document.querySelectorAll('input[name="customer-accounts"]');
+            accountsRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'manual') {
+                        accountsManualInput.style.display = 'block';
+                    } else {
+                        accountsManualInput.style.display = 'none';
+                        accountsManualField.value = '';
+                    }
+                    calculateSavings();
+                });
+            });
+            
+            if (accountsManualField) {
+                accountsManualField.addEventListener('input', calculateSavings);
             }
 
-            // Initialize with default values
-            setDefaultValues();
+            // Handle manual input toggle for emails available
+            const emailsManualRadio = document.getElementById('emails-manual');
+            const emailsManualInput = document.getElementById('emails-manual-input');
+            const emailsManualField = document.getElementById('emails-available-manual');
+            
+            const emailsRadios = document.querySelectorAll('input[name="emails-available"]');
+            emailsRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'manual') {
+                        emailsManualInput.style.display = 'block';
+                    } else {
+                        emailsManualInput.style.display = 'none';
+                        emailsManualField.value = '';
+                    }
+                    calculateSavings();
+                });
+            });
+            
+            if (emailsManualField) {
+                emailsManualField.addEventListener('input', calculateSavings);
+            }
 
             function calculateSavings() {
                 // Get form values
                 const customerAccounts = getRadioValue('customer-accounts');
                 const emailsAvailable = getRadioValue('emails-available');
-                const billAdoption = parseInt(document.getElementById('bill-adoption').value);
-                const monthlyPayments = getRadioValue('monthly-payments');
-                const csrPayments = parseInt(document.getElementById('csr-payments').value);
+                const billAdoption = parseInt(document.getElementById('bill-adoption').value) || 0;
+                const monthlyPayments = parseInt(document.getElementById('monthly-payments').value) || 0;
+                const csrPayments = parseInt(document.getElementById('csr-payments').value) || 0;
                 const callHandlingCost = parseFloat(document.getElementById('call-handling-cost').value) || 0;
                 const printMailCost = parseFloat(document.getElementById('print-mail-cost').value) || 0;
                 const checksMailed = parseInt(document.getElementById('checks-mailed').value) || 0;
                 const currentDso = parseInt(document.getElementById('current-dso').value) || 0;
                 const badDebtPercentage = parseFloat(document.getElementById('bad-debt-percentage').value) || 0;
 
-                // Convert string values to numbers
-                const accountsNum = customerAccounts === '3000+' ? 5000 : parseInt(customerAccounts);
-                const emailsNum = emailsAvailable === '3000+' ? 5000 : parseInt(emailsAvailable);
-                const paymentsNum = monthlyPayments === '3000+' ? 5000 : parseInt(monthlyPayments);
+                // Convert customer accounts to numbers
+                let accountsNum = 0;
+                if (customerAccounts === 'manual') {
+                    accountsNum = parseInt(document.getElementById('customer-accounts-manual').value) || 0;
+                } else if (customerAccounts) {
+                    accountsNum = parseInt(customerAccounts) || 0;
+                }
+
+                // Convert emails available to numbers
+                let emailsNum = 0;
+                if (emailsAvailable === 'manual') {
+                    emailsNum = parseInt(document.getElementById('emails-available-manual').value) || 0;
+                } else if (emailsAvailable) {
+                    emailsNum = parseInt(emailsAvailable) || 0;
+                }
+
+                // Monthly payments is now a direct input field
+                const paymentsNum = monthlyPayments;
+                
+                // If no customer accounts selected, show zero
+                if (accountsNum === 0) {
+                    document.getElementById('estimated-savings').textContent = '$0.00';
+                    document.getElementById('current-cost').textContent = '$0.00';
+                    document.getElementById('new-cost').textContent = '$0.00';
+                    return;
+                }
 
                 // Calculate current costs
                 const currentCallCost = callHandlingCost * csrPayments * 12; // Annual call handling cost
@@ -1510,21 +1716,24 @@
 
                 const totalCurrentCost = currentCallCost + currentPrintCost + currentCheckCost + currentBadDebtCost + currentDsoCost;
 
-                // Calculate savings with tilli
+                // Get industry-specific parameters
+                const params = selectedIndustry && industryParams[selectedIndustry] ? industryParams[selectedIndustry] : defaultParams;
+                
+                // Calculate savings with tilli using industry-specific parameters
                 const eBillAdoptionRate = billAdoption / 100;
                 const eBillCustomers = accountsNum * eBillAdoptionRate;
                 
-                // Cost reductions
-                const callReduction = currentCallCost * 0.6; // 60% reduction in call volume
-                const printReduction = currentPrintCost * 0.8; // 80% reduction in print/mail
-                const checkReduction = currentCheckCost * 0.9; // 90% reduction in check processing
-                const badDebtReduction = currentBadDebtCost * 0.3; // 30% reduction in bad debt
-                const dsoReduction = currentDsoCost * 0.4; // 40% reduction in DSO
+                // Cost reductions using industry-specific percentages
+                const callReduction = currentCallCost * params.callReduction;
+                const printReduction = currentPrintCost * params.printReduction;
+                const checkReduction = currentCheckCost * params.checkReduction;
+                const badDebtReduction = currentBadDebtCost * params.badDebtReduction;
+                const dsoReduction = currentDsoCost * params.dsoReduction;
 
                 const totalSavings = callReduction + printReduction + checkReduction + badDebtReduction + dsoReduction;
                 
-                // tilli platform cost (estimated)
-                const tilliCost = accountsNum * 0.5 * 12; // $0.50 per account per month
+                // tilli platform cost (estimated) using industry-specific multiplier
+                const tilliCost = accountsNum * params.platformCostMultiplier * 12; // Per account per month
 
                 const newCost = tilliCost;
                 const netSavings = totalSavings - tilliCost;
@@ -1562,6 +1771,9 @@
                 // In a real implementation, this would generate and download a PDF
                 alert('Download feature would generate a detailed PDF report of your savings estimate.');
             });
+
+            // Initialize with zero values
+            calculateSavings();
         });
     </script>
 </body>
