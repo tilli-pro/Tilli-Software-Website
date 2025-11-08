@@ -101,6 +101,167 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Modern Hero with Gradient Background */
+        .tillix-modern-hero {
+            background: linear-gradient(135deg, #7B9FE8 0%, #A8C5F5 50%, #C5D9F8 100%);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tillix-modern-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 173, 233, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .tillix-hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tillix-hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: white;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .tillix-hero-content p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .tillix-hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tillix-hero-buttons .btn-primary-white {
+            background: white;
+            color: #4099FF;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .tillix-hero-buttons .btn-primary-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .tillix-hero-buttons .btn-secondary-outline {
+            background: transparent;
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .tillix-hero-buttons .btn-secondary-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+        }
+
+        .tillix-mockup-container {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .tillix-mockup {
+            background: #1a1a1a;
+            border-radius: 16px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transform: rotateY(-5deg) rotateX(2deg);
+            transition: transform 0.6s ease;
+        }
+
+        .tillix-mockup:hover {
+            transform: rotateY(0deg) rotateX(0deg);
+        }
+
+        .tillix-mockup-header {
+            background: #2a2a2a;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid #3a3a3a;
+        }
+
+        .tillix-mockup-dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .tillix-mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .tillix-mockup-dot.red { background: #ff5f56; }
+        .tillix-mockup-dot.yellow { background: #ffbd2e; }
+        .tillix-mockup-dot.green { background: #27c93f; }
+
+        .tillix-mockup-content {
+            background: white;
+            padding: 2rem;
+        }
+
+        @media (max-width: 968px) {
+            .tillix-hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .tillix-hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .tillix-hero-buttons {
+                justify-content: center;
+            }
+
+            .tillix-mockup {
+                transform: none;
+            }
+        }
+    </style>
     <!-- RB2B Tracking -->
     <script type="text/plain" data-cookiecategory="analytics">!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://b2bjsstore.s3.us-west-2.amazonaws.com/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("VN080HX77V6J");</script>
     <!-- Vercel Analytics -->
@@ -149,78 +310,27 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero tillix-hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">The Better Way to Pay Invoices</h1>
-                <p class="hero-subtitle">Simplify invoicing, reduce missed payments, and support flexible collections—all in one platform with tilliX.</p>
-                <div class="hero-buttons">
-                    <button class="btn-primary" onclick="window.openBookingModal()">Book a Demo</button>
-                    <button class="btn-secondary" onclick="window.location.href='contact.html'">Get Started Free</button>
+    <section class="tillix-modern-hero">
+        <div class="tillix-hero-container">
+            <div class="tillix-hero-content">
+                <h1>Modern tools for how money flows today.</h1>
+                <p>From invoicing to instant payments, our ecosystem makes managing transactions smoother, faster, and smarter.</p>
+                <div class="tillix-hero-buttons">
+                    <button class="btn-primary-white" onclick="window.location.href='tillix.html#features'">See more about tilliX</button>
+                    <button class="btn-secondary-outline" onclick="window.openBookingModal()">Get a Demo</button>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="tillix-dashboard-preview">
-                    <div class="dashboard-header">
-                        <h3>tilliX Dashboard</h3>
-                        <div class="dashboard-controls">
-                            <span class="status-indicator">
-                                <span class="status-dot active"></span>
-                                <span>Live</span>
-                            </span>
+            <div class="tillix-mockup-container">
+                <div class="tillix-mockup">
+                    <div class="tillix-mockup-header">
+                        <div class="tillix-mockup-dots">
+                            <div class="tillix-mockup-dot red"></div>
+                            <div class="tillix-mockup-dot yellow"></div>
+                            <div class="tillix-mockup-dot green"></div>
                         </div>
                     </div>
-                    <div class="dashboard-content">
-                        <div class="dashboard-stats" style="grid-column: 1 / -1;">
-                            <div class="stat-card">
-                                <span class="stat-value">$1.2M</span>
-                                <span class="stat-label">Total Revenue</span>
-                            </div>
-                            <div class="stat-card">
-                                <span class="stat-value">$2.7M</span>
-                                <span class="stat-label">Pending</span>
-                            </div>
-                            <div class="stat-card">
-                                <span class="stat-value">98%</span>
-                                <span class="stat-label">Success Rate</span>
-                            </div>
-                        </div>
-                        <div class="invoice-table" style="width: 100%; overflow-x: auto;">
-                            <table style="width: 100%; min-width: 500px;">
-                                <thead>
-                                    <tr>
-                                        <th>Invoice ID</th>
-                                        <th>Customer</th>
-                                        <th>Amount</th>
-                                        <th>Due Date</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>#INV-001</td>
-                                        <td>Acme Corp</td>
-                                        <td>$2,500</td>
-                                        <td>2024-01-15</td>
-                                        <td><span class="status paid">Paid</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>#INV-002</td>
-                                        <td>Tech Solutions</td>
-                                        <td>$1,800</td>
-                                        <td>2024-01-20</td>
-                                        <td><span class="status pending">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>#INV-003</td>
-                                        <td>Global Inc</td>
-                                        <td>$3,200</td>
-                                        <td>2024-01-18</td>
-                                        <td><span class="status overdue">Overdue</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="tillix-mockup-content">
+                        <img src="https://via.placeholder.com/800x500/f8f9fa/6c757d?text=tilliX+Invoice+Dashboard" alt="tilliX Invoice Dashboard" style="width: 100%; display: block; border-radius: 8px;">
                     </div>
                 </div>
             </div>
