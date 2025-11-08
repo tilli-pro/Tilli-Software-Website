@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli TCO Calculator - See the REAL Cost</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Service Card with TCO Breakdown */
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .service-title h2 {
+            font-size: 2rem;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-title .subtitle {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-unique {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+        }
+
+        /* Slider Section */
+        .volume-section {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .volume-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .volume-label h3 {
+            font-size: 1.125rem;
+            color: #111827;
+        }
+
+        .volume-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #667eea;
+        }
+
+        .slider {
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #667eea 0%, #667eea 0%, #e5e7eb 0%, #e5e7eb 100%);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+        }
+
+        /* TCO Comparison Grid */
+        .tco-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .tco-column {
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .tco-column.tilli {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 3px solid #10b981;
+        }
+
+        .tco-column.competitor {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 3px solid #ef4444;
+        }
+
+        .tco-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tco-column.tilli h3 {
+            color: #065f46;
+        }
+
+        .tco-column.competitor h3 {
+            color: #991b1b;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .cost-item:last-child {
+            border-bottom: none;
+        }
+
+        .cost-label {
+            font-size: 0.875rem;
+            color: #374151;
+            flex: 1;
+        }
+
+        .cost-label .detail {
+            font-size: 0.75rem;
+            color: #6b7280;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        .cost-value {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .tco-column.tilli .cost-value {
+            color: #047857;
+        }
+
+        .tco-column.competitor .cost-value {
+            color: #dc2626;
+        }
+
+        .cost-value.included {
+            color: #10b981;
+            font-size: 0.875rem;
+        }
+
+        .total-line {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 3px solid rgba(0,0,0,0.2);
+        }
+
+        .total-label {
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .total-value {
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .tco-column.tilli .total-value {
+            color: #065f46;
+        }
+
+        .tco-column.competitor .total-value {
+            color: #991b1b;
+        }
+
+        .per-message {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        /* Savings Banner */
+        .savings-banner {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .savings-banner h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .savings-amount {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .savings-percent {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+
+        .savings-breakdown {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .savings-stat {
+            text-align: center;
+        }
+
+        .savings-stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .savings-stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.25rem 4rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>💎 Total Cost of Ownership Calculator</h1>
+            <p class="subtitle">See the REAL cost of messaging - not just the per-message rate</p>
+            <p class="tagline">"Twilio's low per-SMS rate hides operational costs"</p>
+        </div>
+
+        <!-- SMS Service -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-title">
+                    <h2><i class="fas fa-comment"></i> SMS Messaging</h2>
+                    <p class="subtitle">Including all development, maintenance, and operational costs</p>
+                </div>
+            </div>
+
+            <!-- Volume Slider -->
+            <div class="volume-section">
+                <div class="volume-label">
+                    <h3>Monthly SMS Volume</h3>
+                    <span class="volume-value" id="sms-volume-value">100,000</span>
+                </div>
+                <input type="range" class="slider" id="sms-volume" min="10000" max="1000000" step="10000" value="100000">
+            </div>
+
+            <!-- TCO Comparison -->
+            <div class="tco-comparison">
+                <!-- Twilio Column -->
+                <div class="tco-column competitor">
+                    <h3>❌ Twilio Total Cost</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            SMS Carrier Cost
+                            <span class="detail">$0.0079 per message</span>
+                        </div>
+                        <div class="cost-value" id="twilio-carrier">$790</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Developer Setup Cost
+                            <span class="detail">API integration, templates, scheduling</span>
+                        </div>
+                        <div class="cost-value">$1,500</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Template Management
+                            <span class="detail">Dev edits for every content change</span>
+                        </div>
+                        <div class="cost-value">$500</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Scheduling & Automation
+                            <span class="detail">Cron jobs, workflow logic</span>
+                        </div>
+                        <div class="cost-value">$300</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            URL Shortening & Tracking
+                            <span class="detail">Bitly/Rebrandly integration</span>
+                        </div>
+                        <div class="cost-value">$150</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Analytics & Reporting
+                            <span class="detail">External BI dashboard</span>
+                        </div>
+                        <div class="cost-value">$300</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Compliance Management
+                            <span class="detail">DLT, opt-in/opt-out, TCPA</span>
+                        </div>
+                        <div class="cost-value">$200</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Support & Monitoring
+                            <span class="detail">Error handling, retries, SLA</span>
+                        </div>
+                        <div class="cost-value">$500</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Multi-channel Extension
+                            <span class="detail">WhatsApp, Email separate APIs</span>
+                        </div>
+                        <div class="cost-value">$1,000</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="twilio-total">$5,240</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>Effective per-message:</strong> <span id="twilio-per-msg">$0.0524</span>
+                    </div>
+                </div>
+
+                <!-- Tilli Column -->
+                <div class="tco-column tilli">
+                    <h3>✅ Tilli Total Cost</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            SMS Carrier Cost (3 tokens)
+                            <span class="detail">Token-based pricing</span>
+                        </div>
+                        <div class="cost-value" id="tilli-carrier">$1,758</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Developer Setup Cost
+                            <span class="detail">No-code UI, pre-built templates</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Template Management
+                            <span class="detail">Business users edit via UI</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Scheduling & Automation
+                            <span class="detail">Built-in one-time, recurring, real-time</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            URL Shortening & Tracking
+                            <span class="detail">Built-in with analytics</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Analytics & Reporting
+                            <span class="detail">Message-level insights dashboard</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Compliance Management
+                            <span class="detail">Automated DLT, opt-in/opt-out</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Support & Monitoring
+                            <span class="detail">Managed service with SLA</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Multi-channel Extension
+                            <span class="detail">WhatsApp, Email, Push unified</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="tilli-total">$1,758</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>Effective per-message:</strong> <span id="tilli-per-msg">$0.0176</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Savings Banner -->
+            <div class="savings-banner">
+                <h3>💰 Your Monthly Savings with Tilli</h3>
+                <div class="savings-amount" id="savings-amount">$3,482</div>
+                <div class="savings-percent" id="savings-percent">66% cheaper in Total Cost of Ownership</div>
+
+                <div class="savings-breakdown">
+                    <div class="savings-stat">
+                        <div class="savings-stat-value" id="annual-savings">$41,784</div>
+                        <div class="savings-stat-label">Annual Savings</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value" id="dev-time-saved">40+ hrs</div>
+                        <div class="savings-stat-label">Dev Time Saved/Month</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value">0</div>
+                        <div class="savings-stat-label">Vendor Integrations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email Service -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-title">
+                    <h2><i class="fas fa-envelope"></i> Email Messaging</h2>
+                    <p class="subtitle">Including all development, maintenance, and operational costs</p>
+                </div>
+            </div>
+
+            <!-- Volume Slider -->
+            <div class="volume-section">
+                <div class="volume-label">
+                    <h3>Monthly Email Volume</h3>
+                    <span class="volume-value" id="email-volume-value">100,000</span>
+                </div>
+                <input type="range" class="slider" id="email-volume" min="10000" max="1000000" step="10000" value="100000">
+            </div>
+
+            <!-- TCO Comparison -->
+            <div class="tco-comparison">
+                <!-- SendGrid Column -->
+                <div class="tco-column competitor">
+                    <h3>❌ SendGrid + Dev Total Cost</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Email Carrier Cost
+                            <span class="detail">$0.00095 per email</span>
+                        </div>
+                        <div class="cost-value" id="sendgrid-carrier">$95</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Template Development
+                            <span class="detail">HTML/CSS for each campaign</span>
+                        </div>
+                        <div class="cost-value">$800</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            List Management
+                            <span class="detail">Segmentation, tagging logic</span>
+                        </div>
+                        <div class="cost-value">$400</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            A/B Testing Setup
+                            <span class="detail">Custom implementation</span>
+                        </div>
+                        <div class="cost-value">$300</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Personalization Engine
+                            <span class="detail">Dynamic content logic</span>
+                        </div>
+                        <div class="cost-value">$500</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Deliverability Monitoring
+                            <span class="detail">Separate tools needed</span>
+                        </div>
+                        <div class="cost-value">$200</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Compliance & Unsubscribes
+                            <span class="detail">CAN-SPAM, GDPR management</span>
+                        </div>
+                        <div class="cost-value">$200</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Analytics Integration
+                            <span class="detail">Custom dashboard development</span>
+                        </div>
+                        <div class="cost-value">$300</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="sendgrid-total">$2,795</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>Effective per-email:</strong> <span id="sendgrid-per-msg">$0.0280</span>
+                    </div>
+                </div>
+
+                <!-- Tilli Column -->
+                <div class="tco-column tilli">
+                    <h3>✅ Tilli Total Cost</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Email Carrier Cost (1 token)
+                            <span class="detail">Token-based pricing</span>
+                        </div>
+                        <div class="cost-value" id="tilli-email-carrier">$586</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Template Development
+                            <span class="detail">Drag-and-drop builder</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            List Management
+                            <span class="detail">Built-in segmentation</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            A/B Testing Setup
+                            <span class="detail">Native A/B testing</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Personalization Engine
+                            <span class="detail">Dynamic fields built-in</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Deliverability Monitoring
+                            <span class="detail">Real-time delivery insights</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Compliance & Unsubscribes
+                            <span class="detail">Automated preference center</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Analytics Integration
+                            <span class="detail">Unified analytics dashboard</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="tilli-email-total">$586</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>Effective per-email:</strong> <span id="tilli-email-per-msg">$0.0059</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Savings Banner -->
+            <div class="savings-banner">
+                <h3>💰 Your Monthly Savings with Tilli</h3>
+                <div class="savings-amount" id="email-savings-amount">$2,209</div>
+                <div class="savings-percent" id="email-savings-percent">79% cheaper in Total Cost of Ownership</div>
+
+                <div class="savings-breakdown">
+                    <div class="savings-stat">
+                        <div class="savings-stat-value" id="email-annual-savings">$26,508</div>
+                        <div class="savings-stat-label">Annual Savings</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value">25+ hrs</div>
+                        <div class="savings-stat-label">Dev Time Saved/Month</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value">100%</div>
+                        <div class="savings-stat-label">Faster Campaigns</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Service -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-title">
+                    <h2><i class="fab fa-whatsapp"></i> WhatsApp Business</h2>
+                    <p class="subtitle">Including all development, maintenance, and operational costs</p>
+                </div>
+            </div>
+
+            <!-- Volume Slider -->
+            <div class="volume-section">
+                <div class="volume-label">
+                    <h3>Monthly WhatsApp Conversations</h3>
+                    <span class="volume-value" id="whatsapp-volume-value">50,000</span>
+                </div>
+                <input type="range" class="slider" id="whatsapp-volume" min="5000" max="500000" step="5000" value="50000">
+            </div>
+
+            <!-- TCO Comparison -->
+            <div class="tco-comparison">
+                <!-- Twilio WhatsApp Column -->
+                <div class="tco-column competitor">
+                    <h3>❌ Twilio WhatsApp Total Cost</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            WhatsApp Carrier Cost
+                            <span class="detail">$0.0157 per marketing message</span>
+                        </div>
+                        <div class="cost-value" id="whatsapp-carrier">$785</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Business API Setup
+                            <span class="detail">Meta approval, integration</span>
+                        </div>
+                        <div class="cost-value">$2,000</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Template Approval Workflow
+                            <span class="detail">Meta submission process</span>
+                        </div>
+                        <div class="cost-value">$600</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Message Template Management
+                            <span class="detail">Dev needed for each template</span>
+                        </div>
+                        <div class="cost-value">$500</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Opt-in Management
+                            <span class="detail">Custom compliance logic</span>
+                        </div>
+                        <div class="cost-value">$400</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Analytics Integration
+                            <span class="detail">Separate BI tool needed</span>
+                        </div>
+                        <div class="cost-value">$300</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Multi-language Support
+                            <span class="detail">Template translation management</span>
+                        </div>
+                        <div class="cost-value">$400</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Rich Media Handling
+                            <span class="detail">Image/video CDN integration</span>
+                        </div>
+                        <div class="cost-value">$300</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="whatsapp-total">$5,285</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>Effective per-message:</strong> <span id="whatsapp-per-msg">$0.1057</span>
+                    </div>
+                </div>
+
+                <!-- Tilli Column -->
+                <div class="tco-column tilli">
+                    <h3>✅ Tilli Total Cost</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            WhatsApp Carrier Cost (6 tokens)
+                            <span class="detail">Token-based pricing</span>
+                        </div>
+                        <div class="cost-value" id="tilli-whatsapp-carrier">$1,758</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Business API Setup
+                            <span class="detail">Pre-integrated, instant activation</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Template Approval Workflow
+                            <span class="detail">Managed submission service</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Message Template Management
+                            <span class="detail">No-code template builder</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Opt-in Management
+                            <span class="detail">Automated compliance</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Analytics Integration
+                            <span class="detail">Built-in insights dashboard</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Multi-language Support
+                            <span class="detail">UI-based translation workflow</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Rich Media Handling
+                            <span class="detail">Built-in CDN for images/videos</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="tilli-whatsapp-total">$1,758</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>Effective per-message:</strong> <span id="tilli-whatsapp-per-msg">$0.0352</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Savings Banner -->
+            <div class="savings-banner">
+                <h3>💰 Your Monthly Savings with Tilli</h3>
+                <div class="savings-amount" id="whatsapp-savings-amount">$3,527</div>
+                <div class="savings-percent" id="whatsapp-savings-percent">67% cheaper in Total Cost of Ownership</div>
+
+                <div class="savings-breakdown">
+                    <div class="savings-stat">
+                        <div class="savings-stat-value" id="whatsapp-annual-savings">$42,324</div>
+                        <div class="savings-stat-label">Annual Savings</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value">50+ hrs</div>
+                        <div class="savings-stat-label">Dev Time Saved/Month</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value">0</div>
+                        <div class="savings-stat-label">Templates to Code</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Digital Signatures Service -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-title">
+                    <h2><i class="fas fa-file-signature"></i> Digital Signatures</h2>
+                    <p class="subtitle">Including all development, maintenance, and operational costs</p>
+                </div>
+                <span class="badge badge-unique">⭐ Own Technology - 91% Cheaper!</span>
+            </div>
+
+            <!-- Volume Slider -->
+            <div class="volume-section">
+                <div class="volume-label">
+                    <h3>Monthly Signature Requests</h3>
+                    <span class="volume-value" id="signature-volume-value">1,000</span>
+                </div>
+                <input type="range" class="slider" id="signature-volume" min="100" max="10000" step="100" value="1000">
+            </div>
+
+            <!-- TCO Comparison -->
+            <div class="tco-comparison">
+                <!-- DocuSign Column -->
+                <div class="tco-column competitor">
+                    <h3>❌ DocuSign Total Cost</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Signature Cost
+                            <span class="detail">$4.50 per signature envelope</span>
+                        </div>
+                        <div class="cost-value" id="docusign-carrier">$4,500</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Template Customization
+                            <span class="detail">Design & field placement</span>
+                        </div>
+                        <div class="cost-value">$1,000</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            API Integration Development
+                            <span class="detail">Custom workflows</span>
+                        </div>
+                        <div class="cost-value">$1,500</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Workflow Automation
+                            <span class="detail">Routing rules, reminders</span>
+                        </div>
+                        <div class="cost-value">$800</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Legal Compliance
+                            <span class="detail">eIDAS, ESIGN Act verification</span>
+                        </div>
+                        <div class="cost-value">$500</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Storage & Archiving
+                            <span class="detail">Long-term document retention</span>
+                        </div>
+                        <div class="cost-value">$400</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Audit Trail Management
+                            <span class="detail">Tracking & reporting</span>
+                        </div>
+                        <div class="cost-value">$300</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="docusign-total">$9,000</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>Effective per-signature:</strong> <span id="docusign-per-msg">$9.00</span>
+                    </div>
+                </div>
+
+                <!-- Tilli Column -->
+                <div class="tco-column tilli">
+                    <h3>✅ Tilli Total Cost (Own Tech!)</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Signature Cost (7 tokens)
+                            <span class="detail">91% cheaper - we built it!</span>
+                        </div>
+                        <div class="cost-value" id="tilli-signature-carrier">$410</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Template Customization
+                            <span class="detail">Drag-and-drop designer</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            API Integration Development
+                            <span class="detail">RESTful API built-in</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Workflow Automation
+                            <span class="detail">Built-in routing & reminders</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Legal Compliance
+                            <span class="detail">Compliant by default</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Storage & Archiving
+                            <span class="detail">Unlimited retention</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Audit Trail Management
+                            <span class="detail">Automated audit logs</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="tilli-signature-total">$410</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>Effective per-signature:</strong> <span id="tilli-signature-per-msg">$0.41</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Savings Banner -->
+            <div class="savings-banner">
+                <h3>💰 Your Monthly Savings with Tilli</h3>
+                <div class="savings-amount" id="signature-savings-amount">$8,590</div>
+                <div class="savings-percent" id="signature-savings-percent">95% cheaper in Total Cost of Ownership</div>
+
+                <div class="savings-breakdown">
+                    <div class="savings-stat">
+                        <div class="savings-stat-value" id="signature-annual-savings">$103,080</div>
+                        <div class="savings-stat-label">Annual Savings</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value">100%</div>
+                        <div class="savings-stat-label">Own Technology</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value">0</div>
+                        <div class="savings-stat-label">3rd Party Fees</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IVR Service -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-title">
+                    <h2><i class="fas fa-phone-volume"></i> IVR (Interactive Voice Response)</h2>
+                    <p class="subtitle">Including all development, maintenance, and operational costs</p>
+                </div>
+            </div>
+
+            <!-- Volume Slider -->
+            <div class="volume-section">
+                <div class="volume-label">
+                    <h3>Monthly IVR Minutes</h3>
+                    <span class="volume-value" id="ivr-volume-value">10,000</span>
+                </div>
+                <input type="range" class="slider" id="ivr-volume" min="1000" max="100000" step="1000" value="10000">
+            </div>
+
+            <!-- TCO Comparison -->
+            <div class="tco-comparison">
+                <!-- Five9 Column -->
+                <div class="tco-column competitor">
+                    <h3>❌ Five9 Total Cost</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            IVR Carrier Cost
+                            <span class="detail">$125/agent/mo (avg 1000 min)</span>
+                        </div>
+                        <div class="cost-value" id="five9-carrier">$1,250</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Per-Agent Licensing
+                            <span class="detail">10 agents minimum</span>
+                        </div>
+                        <div class="cost-value">$1,250</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Call Flow Development
+                            <span class="detail">IVR tree design & testing</span>
+                        </div>
+                        <div class="cost-value">$1,500</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            CRM Integration
+                            <span class="detail">Salesforce/custom connector</span>
+                        </div>
+                        <div class="cost-value">$800</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Recording Storage
+                            <span class="detail">Compliance & quality monitoring</span>
+                        </div>
+                        <div class="cost-value">$400</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Reporting Tools
+                            <span class="detail">Custom dashboards</span>
+                        </div>
+                        <div class="cost-value">$500</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Training & Support
+                            <span class="detail">Agent training & ongoing support</span>
+                        </div>
+                        <div class="cost-value">$600</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="five9-total">$6,300</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>Effective per-minute:</strong> <span id="five9-per-msg">$0.63</span>
+                    </div>
+                </div>
+
+                <!-- Tilli Column -->
+                <div class="tco-column tilli">
+                    <h3>✅ Tilli Total Cost</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            IVR Carrier Cost (11 tokens)
+                            <span class="detail">Token-based pricing</span>
+                        </div>
+                        <div class="cost-value" id="tilli-ivr-carrier">$645</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Per-Agent Licensing
+                            <span class="detail">Pay per usage, not per agent</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Call Flow Development
+                            <span class="detail">Visual flow builder</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            CRM Integration
+                            <span class="detail">Built-in CRM connectors</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Recording Storage
+                            <span class="detail">Unlimited retention</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Reporting Tools
+                            <span class="detail">Real-time analytics dashboard</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Training & Support
+                            <span class="detail">Self-service platform</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="tilli-ivr-total">$645</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>Effective per-minute:</strong> <span id="tilli-ivr-per-msg">$0.06</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Savings Banner -->
+            <div class="savings-banner">
+                <h3>💰 Your Monthly Savings with Tilli</h3>
+                <div class="savings-amount" id="ivr-savings-amount">$5,655</div>
+                <div class="savings-percent" id="ivr-savings-percent">90% cheaper in Total Cost of Ownership</div>
+
+                <div class="savings-breakdown">
+                    <div class="savings-stat">
+                        <div class="savings-stat-value" id="ivr-annual-savings">$67,860</div>
+                        <div class="savings-stat-label">Annual Savings</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value">0</div>
+                        <div class="savings-stat-label">Per-Agent Fees</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value">100%</div>
+                        <div class="savings-stat-label">Usage-Based</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Processing Service -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-title">
+                    <h2><i class="fas fa-credit-card"></i> Payment Processing (ACH + Cards)</h2>
+                    <p class="subtitle">Including all communication, reminders, and reconciliation</p>
+                </div>
+                <span class="badge badge-unique">⭐ FREE Payment Communication Credits!</span>
+            </div>
+
+            <!-- Volume Slider -->
+            <div class="volume-section">
+                <div class="volume-label">
+                    <h3>Monthly Transactions</h3>
+                    <span class="volume-value" id="payment-volume-value">1,000</span>
+                </div>
+                <input type="range" class="slider" id="payment-volume" min="100" max="10000" step="100" value="1000">
+            </div>
+
+            <!-- TCO Comparison -->
+            <div class="tco-comparison">
+                <!-- Stripe + Twilio + SendGrid Column -->
+                <div class="tco-column competitor">
+                    <h3>❌ Stripe + Twilio + SendGrid Cost</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Payment Processing Fees
+                            <span class="detail">ACH $0.80 + Cards 2.9%+$0.30</span>
+                        </div>
+                        <div class="cost-value" id="stripe-carrier">$800</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Payment Reminder SMS
+                            <span class="detail">Twilio $0.0079 per SMS (3 per payment)</span>
+                        </div>
+                        <div class="cost-value" id="stripe-sms">$24</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Payment Reminder Emails
+                            <span class="detail">SendGrid $0.00095 per email (2 per payment)</span>
+                        </div>
+                        <div class="cost-value" id="stripe-email">$2</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Payment Link Generation
+                            <span class="detail">Custom development</span>
+                        </div>
+                        <div class="cost-value">$500</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Integration Development
+                            <span class="detail">3 separate APIs to manage</span>
+                        </div>
+                        <div class="cost-value">$1,200</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Reconciliation Tools
+                            <span class="detail">Match payments to invoices</span>
+                        </div>
+                        <div class="cost-value">$600</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Failed Payment Handling
+                            <span class="detail">Retry logic & notifications</span>
+                        </div>
+                        <div class="cost-value">$400</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Compliance & PCI
+                            <span class="detail">Security audits & certification</span>
+                        </div>
+                        <div class="cost-value">$500</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="stripe-total">$4,026</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>3 separate vendors to manage</strong>
+                    </div>
+                </div>
+
+                <!-- Tilli Column -->
+                <div class="tco-column tilli">
+                    <h3>✅ Tilli Total Cost (One Platform!)</h3>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Payment Processing Fees
+                            <span class="detail">ACH $0.20 + Cards 2.7%+$0.20</span>
+                        </div>
+                        <div class="cost-value" id="tilli-payment-carrier">$200</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Payment Reminder SMS
+                            <span class="detail">FREE credits for payment flows!</span>
+                        </div>
+                        <div class="cost-value included">✓ FREE</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Payment Reminder Emails
+                            <span class="detail">FREE credits for payment flows!</span>
+                        </div>
+                        <div class="cost-value included">✓ FREE</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Payment Link Generation
+                            <span class="detail">Automatic payment links</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Integration Development
+                            <span class="detail">One unified API</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Reconciliation Tools
+                            <span class="detail">Automated matching dashboard</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Failed Payment Handling
+                            <span class="detail">Auto-retry with smart notifications</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item">
+                        <div class="cost-label">
+                            Compliance & PCI
+                            <span class="detail">Enterprise-grade security</span>
+                        </div>
+                        <div class="cost-value included">✓ Included</div>
+                    </div>
+
+                    <div class="cost-item total-line">
+                        <div class="cost-label total-label">Total Monthly Cost</div>
+                        <div class="cost-value total-value" id="tilli-payment-total">$200</div>
+                    </div>
+
+                    <div class="per-message">
+                        <strong>One vendor - Everything included</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Savings Banner -->
+            <div class="savings-banner">
+                <h3>💰 Your Monthly Savings with Tilli</h3>
+                <div class="savings-amount" id="payment-savings-amount">$3,826</div>
+                <div class="savings-percent" id="payment-savings-percent">95% cheaper in Total Cost of Ownership</div>
+
+                <div class="savings-breakdown">
+                    <div class="savings-stat">
+                        <div class="savings-stat-value" id="payment-annual-savings">$45,912</div>
+                        <div class="savings-stat-label">Annual Savings</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value">FREE</div>
+                        <div class="savings-stat-label">Payment Reminders</div>
+                    </div>
+                    <div class="savings-stat">
+                        <div class="savings-stat-value">1</div>
+                        <div class="savings-stat-label">Vendor (vs 3)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>See Your Total Savings Across All Services</h2>
+            <p style="color: #6b7280; font-size: 1.125rem; margin-bottom: 2rem;">
+                Stop paying hidden costs. Get everything included with Tilli.
+            </p>
+            <button class="cta-button" onclick="window.location.href='signup.html'">
+                Start Free Trial - 10,000 Tokens FREE →
+            </button>
+            <p style="margin-top: 1.5rem; color: #9ca3af;">
+                <strong>Combined Savings:</strong> <span id="combined-savings" style="color: #10b981; font-size: 1.25rem; font-weight: 700;">$25,000+/month</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Pricing tiers
+        const TIERS = [
+            { min: 0, max: 10000, rate: 0 },
+            { min: 10001, max: 50000, rate: 0.00586 },
+            { min: 50001, max: 100000, rate: 0.00528 },
+            { min: 100001, max: 500000, rate: 0.00469 },
+            { min: 500001, max: 1000000, rate: 0.00410 },
+            { min: 1000001, max: Infinity, rate: 0.00352 }
+        ];
+
+        function calculateTokenCost(tokens) {
+            if (tokens === 0) return 0;
+            let cost = 0;
+            let remaining = tokens;
+            for (const tier of TIERS) {
+                if (remaining <= 0) break;
+                const tierTokens = Math.min(remaining, tier.max - tier.min + 1);
+                cost += tierTokens * tier.rate;
+                remaining -= tierTokens;
+            }
+            return cost;
+        }
+
+        function updateSliderGradient(slider) {
+            const percent = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+            slider.style.background = `linear-gradient(to right, #667eea 0%, #667eea ${percent}%, #e5e7eb ${percent}%, #e5e7eb 100%)`;
+        }
+
+        function updateSMS() {
+            const volume = parseInt(document.getElementById('sms-volume').value);
+            document.getElementById('sms-volume-value').textContent = volume.toLocaleString();
+
+            // Twilio costs
+            const twilioCarrier = volume * 0.0079;
+            const twilioDev = 1500;
+            const twilioTemplate = 500;
+            const twilioScheduling = 300;
+            const twilioURL = 150;
+            const twilioAnalytics = 300;
+            const twilioCompliance = 200;
+            const twilioSupport = 500;
+            const twilioMultichannel = 1000;
+            const twilioTotal = twilioCarrier + twilioDev + twilioTemplate + twilioScheduling +
+                               twilioURL + twilioAnalytics + twilioCompliance + twilioSupport + twilioMultichannel;
+
+            // Tilli costs (3 tokens per SMS)
+            const tilliTokens = volume * 3;
+            const tilliCost = calculateTokenCost(tilliTokens);
+
+            // Update display
+            document.getElementById('twilio-carrier').textContent = `$${twilioCarrier.toFixed(0)}`;
+            document.getElementById('twilio-total').textContent = `$${twilioTotal.toFixed(0)}`;
+            document.getElementById('twilio-per-msg').textContent = `$${(twilioTotal / volume).toFixed(4)}`;
+
+            document.getElementById('tilli-carrier').textContent = `$${tilliCost.toFixed(0)}`;
+            document.getElementById('tilli-total').textContent = `$${tilliCost.toFixed(0)}`;
+            document.getElementById('tilli-per-msg').textContent = `$${(tilliCost / volume).toFixed(4)}`;
+
+            const savings = twilioTotal - tilliCost;
+            const savingsPercent = (savings / twilioTotal * 100).toFixed(0);
+
+            document.getElementById('savings-amount').textContent = `$${savings.toFixed(0)}`;
+            document.getElementById('savings-percent').textContent = `${savingsPercent}% cheaper in Total Cost of Ownership`;
+            document.getElementById('annual-savings').textContent = `$${(savings * 12).toLocaleString()}`;
+
+            updateCombinedSavings();
+        }
+
+        function updateEmail() {
+            const volume = parseInt(document.getElementById('email-volume').value);
+            document.getElementById('email-volume-value').textContent = volume.toLocaleString();
+
+            // SendGrid + Dev costs
+            const sendgridCarrier = volume * 0.00095;
+            const sendgridTemplate = 800;
+            const sendgridList = 400;
+            const sendgridAB = 300;
+            const sendgridPersonalization = 500;
+            const sendgridDeliverability = 200;
+            const sendgridCompliance = 200;
+            const sendgridAnalytics = 300;
+            const sendgridTotal = sendgridCarrier + sendgridTemplate + sendgridList + sendgridAB +
+                                 sendgridPersonalization + sendgridDeliverability + sendgridCompliance + sendgridAnalytics;
+
+            // Tilli costs (1 token per email)
+            const tilliTokens = volume * 1;
+            const tilliCost = calculateTokenCost(tilliTokens);
+
+            // Update display
+            document.getElementById('sendgrid-carrier').textContent = `$${sendgridCarrier.toFixed(0)}`;
+            document.getElementById('sendgrid-total').textContent = `$${sendgridTotal.toFixed(0)}`;
+            document.getElementById('sendgrid-per-msg').textContent = `$${(sendgridTotal / volume).toFixed(4)}`;
+
+            document.getElementById('tilli-email-carrier').textContent = `$${tilliCost.toFixed(0)}`;
+            document.getElementById('tilli-email-total').textContent = `$${tilliCost.toFixed(0)}`;
+            document.getElementById('tilli-email-per-msg').textContent = `$${(tilliCost / volume).toFixed(4)}`;
+
+            const savings = sendgridTotal - tilliCost;
+            const savingsPercent = (savings / sendgridTotal * 100).toFixed(0);
+
+            document.getElementById('email-savings-amount').textContent = `$${savings.toFixed(0)}`;
+            document.getElementById('email-savings-percent').textContent = `${savingsPercent}% cheaper in Total Cost of Ownership`;
+            document.getElementById('email-annual-savings').textContent = `$${(savings * 12).toLocaleString()}`;
+
+            updateCombinedSavings();
+        }
+
+        function updateWhatsApp() {
+            const volume = parseInt(document.getElementById('whatsapp-volume').value);
+            document.getElementById('whatsapp-volume-value').textContent = volume.toLocaleString();
+
+            // Twilio WhatsApp costs
+            const whatsappCarrier = volume * 0.0157;
+            const whatsappSetup = 2000;
+            const whatsappTemplate = 600;
+            const whatsappMgmt = 500;
+            const whatsappOptin = 400;
+            const whatsappAnalytics = 300;
+            const whatsappLang = 400;
+            const whatsappMedia = 300;
+            const whatsappTotal = whatsappCarrier + whatsappSetup + whatsappTemplate +
+                                 whatsappMgmt + whatsappOptin + whatsappAnalytics +
+                                 whatsappLang + whatsappMedia;
+
+            // Tilli costs (6 tokens per WhatsApp message)
+            const tilliTokens = volume * 6;
+            const tilliCost = calculateTokenCost(tilliTokens);
+
+            // Update display
+            document.getElementById('whatsapp-carrier').textContent = `$${whatsappCarrier.toFixed(0)}`;
+            document.getElementById('whatsapp-total').textContent = `$${whatsappTotal.toFixed(0)}`;
+            document.getElementById('whatsapp-per-msg').textContent = `$${(whatsappTotal / volume).toFixed(4)}`;
+
+            document.getElementById('tilli-whatsapp-carrier').textContent = `$${tilliCost.toFixed(0)}`;
+            document.getElementById('tilli-whatsapp-total').textContent = `$${tilliCost.toFixed(0)}`;
+            document.getElementById('tilli-whatsapp-per-msg').textContent = `$${(tilliCost / volume).toFixed(4)}`;
+
+            const savings = whatsappTotal - tilliCost;
+            const savingsPercent = (savings / whatsappTotal * 100).toFixed(0);
+
+            document.getElementById('whatsapp-savings-amount').textContent = `$${savings.toFixed(0)}`;
+            document.getElementById('whatsapp-savings-percent').textContent = `${savingsPercent}% cheaper in Total Cost of Ownership`;
+            document.getElementById('whatsapp-annual-savings').textContent = `$${(savings * 12).toLocaleString()}`;
+
+            updateCombinedSavings();
+        }
+
+        function updateSignature() {
+            const volume = parseInt(document.getElementById('signature-volume').value);
+            document.getElementById('signature-volume-value').textContent = volume.toLocaleString();
+
+            // DocuSign costs
+            const docusignCarrier = volume * 4.50;
+            const docusignTemplate = 1000;
+            const docusignIntegration = 1500;
+            const docusignWorkflow = 800;
+            const docusignCompliance = 500;
+            const docusignStorage = 400;
+            const docusignAudit = 300;
+            const docusignTotal = docusignCarrier + docusignTemplate + docusignIntegration +
+                                 docusignWorkflow + docusignCompliance + docusignStorage + docusignAudit;
+
+            // Tilli costs (7 tokens per signature)
+            const tilliTokens = volume * 7;
+            const tilliCost = calculateTokenCost(tilliTokens);
+
+            // Update display
+            document.getElementById('docusign-carrier').textContent = `$${docusignCarrier.toFixed(0)}`;
+            document.getElementById('docusign-total').textContent = `$${docusignTotal.toFixed(0)}`;
+            document.getElementById('docusign-per-msg').textContent = `$${(docusignTotal / volume).toFixed(2)}`;
+
+            document.getElementById('tilli-signature-carrier').textContent = `$${tilliCost.toFixed(0)}`;
+            document.getElementById('tilli-signature-total').textContent = `$${tilliCost.toFixed(0)}`;
+            document.getElementById('tilli-signature-per-msg').textContent = `$${(tilliCost / volume).toFixed(2)}`;
+
+            const savings = docusignTotal - tilliCost;
+            const savingsPercent = (savings / docusignTotal * 100).toFixed(0);
+
+            document.getElementById('signature-savings-amount').textContent = `$${savings.toFixed(0)}`;
+            document.getElementById('signature-savings-percent').textContent = `${savingsPercent}% cheaper in Total Cost of Ownership`;
+            document.getElementById('signature-annual-savings').textContent = `$${(savings * 12).toLocaleString()}`;
+
+            updateCombinedSavings();
+        }
+
+        function updateIVR() {
+            const volume = parseInt(document.getElementById('ivr-volume').value);
+            document.getElementById('ivr-volume-value').textContent = volume.toLocaleString();
+
+            // Five9 costs
+            const five9Carrier = 1250;
+            const five9Licensing = 1250;
+            const five9CallFlow = 1500;
+            const five9CRM = 800;
+            const five9Recording = 400;
+            const five9Reporting = 500;
+            const five9Training = 600;
+            const five9Total = five9Carrier + five9Licensing + five9CallFlow +
+                              five9CRM + five9Recording + five9Reporting + five9Training;
+
+            // Tilli costs (11 tokens per IVR minute)
+            const tilliTokens = volume * 11;
+            const tilliCost = calculateTokenCost(tilliTokens);
+
+            // Update display
+            document.getElementById('five9-carrier').textContent = `$${five9Carrier.toFixed(0)}`;
+            document.getElementById('five9-total').textContent = `$${five9Total.toFixed(0)}`;
+            document.getElementById('five9-per-msg').textContent = `$${(five9Total / volume).toFixed(2)}`;
+
+            document.getElementById('tilli-ivr-carrier').textContent = `$${tilliCost.toFixed(0)}`;
+            document.getElementById('tilli-ivr-total').textContent = `$${tilliCost.toFixed(0)}`;
+            document.getElementById('tilli-ivr-per-msg').textContent = `$${(tilliCost / volume).toFixed(2)}`;
+
+            const savings = five9Total - tilliCost;
+            const savingsPercent = (savings / five9Total * 100).toFixed(0);
+
+            document.getElementById('ivr-savings-amount').textContent = `$${savings.toFixed(0)}`;
+            document.getElementById('ivr-savings-percent').textContent = `${savingsPercent}% cheaper in Total Cost of Ownership`;
+            document.getElementById('ivr-annual-savings').textContent = `$${(savings * 12).toLocaleString()}`;
+
+            updateCombinedSavings();
+        }
+
+        function updatePayment() {
+            const volume = parseInt(document.getElementById('payment-volume').value);
+            document.getElementById('payment-volume-value').textContent = volume.toLocaleString();
+
+            // Stripe + Twilio + SendGrid costs
+            const stripeCarrier = volume * 0.80; // ACH cost
+            const stripeSMS = volume * 3 * 0.0079; // 3 SMS per payment
+            const stripeEmail = volume * 2 * 0.00095; // 2 emails per payment
+            const stripeLink = 500;
+            const stripeIntegration = 1200;
+            const stripeReconciliation = 600;
+            const stripeFailed = 400;
+            const stripeCompliance = 500;
+            const stripeTotal = stripeCarrier + stripeSMS + stripeEmail + stripeLink +
+                               stripeIntegration + stripeReconciliation + stripeFailed + stripeCompliance;
+
+            // Tilli costs (just payment processing - communications are FREE)
+            const tilliCost = volume * 0.20; // ACH cost
+
+            // Update display
+            document.getElementById('stripe-carrier').textContent = `$${stripeCarrier.toFixed(0)}`;
+            document.getElementById('stripe-sms').textContent = `$${stripeSMS.toFixed(0)}`;
+            document.getElementById('stripe-email').textContent = `$${stripeEmail.toFixed(0)}`;
+            document.getElementById('stripe-total').textContent = `$${stripeTotal.toFixed(0)}`;
+
+            document.getElementById('tilli-payment-carrier').textContent = `$${tilliCost.toFixed(0)}`;
+            document.getElementById('tilli-payment-total').textContent = `$${tilliCost.toFixed(0)}`;
+
+            const savings = stripeTotal - tilliCost;
+            const savingsPercent = (savings / stripeTotal * 100).toFixed(0);
+
+            document.getElementById('payment-savings-amount').textContent = `$${savings.toFixed(0)}`;
+            document.getElementById('payment-savings-percent').textContent = `${savingsPercent}% cheaper in Total Cost of Ownership`;
+            document.getElementById('payment-annual-savings').textContent = `$${(savings * 12).toLocaleString()}`;
+
+            updateCombinedSavings();
+        }
+
+        function updateCombinedSavings() {
+            const smsVolume = parseInt(document.getElementById('sms-volume').value);
+            const emailVolume = parseInt(document.getElementById('email-volume').value);
+            const whatsappVolume = parseInt(document.getElementById('whatsapp-volume').value);
+            const signatureVolume = parseInt(document.getElementById('signature-volume').value);
+            const ivrVolume = parseInt(document.getElementById('ivr-volume').value);
+            const paymentVolume = parseInt(document.getElementById('payment-volume').value);
+
+            // Competitor totals
+            const twilioTotal = (smsVolume * 0.0079) + 4450;
+            const sendgridTotal = (emailVolume * 0.00095) + 2700;
+            const whatsappTotal = (whatsappVolume * 0.0157) + 4500;
+            const docusignTotal = (signatureVolume * 4.50) + 4500;
+            const five9Total = 6300;
+            const stripeTotal = (paymentVolume * 0.80) + (paymentVolume * 3 * 0.0079) + (paymentVolume * 2 * 0.00095) + 3200;
+
+            const competitorGrandTotal = twilioTotal + sendgridTotal + whatsappTotal +
+                                        docusignTotal + five9Total + stripeTotal;
+
+            // Tilli totals
+            const tilliSMSTokens = smsVolume * 3;
+            const tilliEmailTokens = emailVolume * 1;
+            const tilliWhatsAppTokens = whatsappVolume * 6;
+            const tilliSignatureTokens = signatureVolume * 7;
+            const tilliIVRTokens = ivrVolume * 11;
+            const tilliTotalTokens = tilliSMSTokens + tilliEmailTokens + tilliWhatsAppTokens +
+                                    tilliSignatureTokens + tilliIVRTokens;
+            const tilliTokenCost = calculateTokenCost(tilliTotalTokens);
+            const tilliPaymentCost = paymentVolume * 0.20;
+            const tilliGrandTotal = tilliTokenCost + tilliPaymentCost;
+
+            const combinedSavings = competitorGrandTotal - tilliGrandTotal;
+            document.getElementById('combined-savings').textContent =
+                `$${combinedSavings.toFixed(0)}/month = $${(combinedSavings * 12).toLocaleString()}/year`;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            const smsSlider = document.getElementById('sms-volume');
+            const emailSlider = document.getElementById('email-volume');
+            const whatsappSlider = document.getElementById('whatsapp-volume');
+            const signatureSlider = document.getElementById('signature-volume');
+            const ivrSlider = document.getElementById('ivr-volume');
+            const paymentSlider = document.getElementById('payment-volume');
+
+            smsSlider.addEventListener('input', function() {
+                updateSliderGradient(this);
+                updateSMS();
+            });
+
+            emailSlider.addEventListener('input', function() {
+                updateSliderGradient(this);
+                updateEmail();
+            });
+
+            whatsappSlider.addEventListener('input', function() {
+                updateSliderGradient(this);
+                updateWhatsApp();
+            });
+
+            signatureSlider.addEventListener('input', function() {
+                updateSliderGradient(this);
+                updateSignature();
+            });
+
+            ivrSlider.addEventListener('input', function() {
+                updateSliderGradient(this);
+                updateIVR();
+            });
+
+            paymentSlider.addEventListener('input', function() {
+                updateSliderGradient(this);
+                updatePayment();
+            });
+
+            updateSliderGradient(smsSlider);
+            updateSliderGradient(emailSlider);
+            updateSliderGradient(whatsappSlider);
+            updateSliderGradient(signatureSlider);
+            updateSliderGradient(ivrSlider);
+            updateSliderGradient(paymentSlider);
+
+            updateSMS();
+            updateEmail();
+            updateWhatsApp();
+            updateSignature();
+            updateIVR();
+            updatePayment();
+        });
+    </script>
+</body>
+</html>

@@ -70,6 +70,177 @@
             background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #F093FB 100%);
         }
 
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            margin-bottom: 2rem;
+            padding: 0 0 2rem 0;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .step.completed .step-number {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .step.active .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .step-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .step.active .step-label {
+            color: #667eea;
+        }
+
+        .step.completed .step-label {
+            color: #10b981;
+        }
+
+        .step-connector {
+            width: 60px;
+            height: 2px;
+            background: #e5e7eb;
+            margin: 0 1rem;
+        }
+
+        .step.completed .step-connector {
+            background: linear-gradient(90deg, #10b981 0%, #e5e7eb 100%);
+        }
+
+        .step:last-child .step-connector {
+            display: none;
+        }
+
+        /* Plan Summary Card */
+        .plan-summary {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+            border: 2px solid #667eea;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .plan-summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .plan-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .plan-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .plan-details {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .plan-detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .plan-detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .plan-detail-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .plan-detail-value {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .free-trial-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+        .benefit-item svg {
+            width: 16px;
+            height: 16px;
+            color: #10b981;
+        }
+
         .signup-header {
             text-align: center;
             margin-bottom: 2.5rem;
@@ -212,7 +383,8 @@
             position: relative;
         }
 
-        .product-checkbox input[type="checkbox"] {
+        .product-checkbox input[type="checkbox"],
+        .product-checkbox input[type="radio"] {
             position: absolute;
             opacity: 0;
             width: 0;
@@ -252,13 +424,15 @@
             box-shadow: 0 8px 16px rgba(102, 126, 234, 0.15);
         }
 
-        .product-checkbox input[type="checkbox"]:checked + .product-label {
+        .product-checkbox input[type="checkbox"]:checked + .product-label,
+        .product-checkbox input[type="radio"]:checked + .product-label {
             border-color: #667eea;
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
         }
 
-        .product-checkbox input[type="checkbox"]:checked + .product-label::before {
+        .product-checkbox input[type="checkbox"]:checked + .product-label::before,
+        .product-checkbox input[type="radio"]:checked + .product-label::before {
             transform: scaleX(1);
         }
 
@@ -283,7 +457,8 @@
             text-align: center;
         }
 
-        .product-checkbox input[type="checkbox"]:checked + .product-label .checkmark {
+        .product-checkbox input[type="checkbox"]:checked + .product-label .checkmark,
+        .product-checkbox input[type="radio"]:checked + .product-label .checkmark {
             display: block;
         }
 
@@ -438,7 +613,7 @@
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#products">Products</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="valuebasedpricing.html">Pricing</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <div class="nav-cta">
@@ -450,10 +625,33 @@
 
     <div class="signup-container">
         <div class="signup-card">
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb">
+                <div class="steps">
+                    <div class="step completed">
+                        <div class="step-number">✓</div>
+                        <div class="step-label">Configure</div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="step completed">
+                        <div class="step-number">✓</div>
+                        <div class="step-label">Review Plan</div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Sign Up</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="signup-header">
                 <h1>Start Your Free Trial</h1>
                 <p>Sign up for Tilli products and transform your billing and payment operations</p>
             </div>
+
+            <!-- Plan Summary Card (from wizard) -->
+            <div id="plan-summary-container"></div>
 
             <div id="alert-container"></div>
 
@@ -587,6 +785,146 @@
                     </div>
                 </div>
 
+                <!-- Connector/Integration Selection -->
+                <div class="form-section">
+                    <h3><i class="fas fa-plug"></i> System Integrations (Optional)</h3>
+                    <p class="helper-text" style="margin-top: -0.5rem; margin-bottom: 1rem;">Select the systems you'd like to integrate with Tilli</p>
+
+                    <div style="display: grid; gap: 1.5rem;">
+                        <!-- CRM Connectors -->
+                        <div>
+                            <label style="display: block; font-weight: 600; color: #1f2937; margin-bottom: 0.75rem; font-size: 0.9rem;">
+                                CRM System <span style="font-weight: 400; color: #6b7280; font-size: 0.8rem;">(Select one)</span>
+                            </label>
+                            <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-crm-none" name="connector-crm" value="" checked>
+                                    <label for="connector-crm-none" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">None</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-salesforce" name="connector-crm" value="salesforce">
+                                    <label for="connector-salesforce" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Salesforce</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-hubspot" name="connector-crm" value="hubspot">
+                                    <label for="connector-hubspot" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">HubSpot</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-zoho" name="connector-crm" value="zoho">
+                                    <label for="connector-zoho" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Zoho CRM</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-dynamics" name="connector-crm" value="dynamics">
+                                    <label for="connector-dynamics" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">MS Dynamics</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ERP Connectors -->
+                        <div>
+                            <label style="display: block; font-weight: 600; color: #1f2937; margin-bottom: 0.75rem; font-size: 0.9rem;">
+                                ERP System <span style="font-weight: 400; color: #6b7280; font-size: 0.8rem;">(Select one)</span>
+                            </label>
+                            <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-erp-none" name="connector-erp" value="" checked>
+                                    <label for="connector-erp-none" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">None</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-sap" name="connector-erp" value="sap">
+                                    <label for="connector-sap" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">SAP</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-oracle" name="connector-erp" value="oracle">
+                                    <label for="connector-oracle" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Oracle ERP</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-netsuite" name="connector-erp" value="netsuite">
+                                    <label for="connector-netsuite" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">NetSuite</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-dynamics365" name="connector-erp" value="dynamics365">
+                                    <label for="connector-dynamics365" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Dynamics 365</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accounting Connectors -->
+                        <div>
+                            <label style="display: block; font-weight: 600; color: #1f2937; margin-bottom: 0.75rem; font-size: 0.9rem;">
+                                Accounting System <span style="font-weight: 400; color: #6b7280; font-size: 0.8rem;">(Select one)</span>
+                            </label>
+                            <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-accounting-none" name="connector-accounting" value="" checked>
+                                    <label for="connector-accounting-none" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">None</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-quickbooks" name="connector-accounting" value="quickbooks">
+                                    <label for="connector-quickbooks" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">QuickBooks</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-xero" name="connector-accounting" value="xero">
+                                    <label for="connector-xero" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Xero</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-sage" name="connector-accounting" value="sage">
+                                    <label for="connector-sage" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Sage</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-freshbooks" name="connector-accounting" value="freshbooks">
+                                    <label for="connector-freshbooks" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">FreshBooks</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Product Selection -->
                 <div class="form-section">
                     <h3><i class="fas fa-check-square"></i> Select Products</h3>
@@ -661,8 +999,100 @@
             'icloud.com', 'mail.com', 'protonmail.com', 'yandex.com', 'zoho.com'
         ];
 
+        // Plan definitions (matching wizard)
+        const PLANS = {
+            trial: { name: 'Trial', price: 0, tokens: 10000, description: 'First month only' },
+            starter29: { name: 'Starter', price: 29, tokens: 5000, description: '~1,500 SMS or 5,000 emails' },
+            starter49: { name: 'Growth', price: 49, tokens: 10000, description: '~3,000 SMS or 10,000 emails' },
+            professional: { name: 'Professional', price: 199, tokens: 50000, description: '~15,000 SMS or 50,000 emails' },
+            enterprise: { name: 'Enterprise', price: 499, tokens: 150000, description: '~50,000 SMS or 150,000 emails' },
+            platinum: { name: 'Platinum', price: 1000, tokens: 300000, description: '~100,000 SMS or 300,000 emails' }
+        };
+
+        function recommendPlan(totalTokens) {
+            if (totalTokens <= 5000) return 'starter29';
+            if (totalTokens <= 10000) return 'starter49';
+            if (totalTokens <= 50000) return 'professional';
+            if (totalTokens <= 150000) return 'enterprise';
+            return 'platinum';
+        }
+
         // All DOM-dependent code wrapped in DOMContentLoaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Load wizard configuration if available
+            const config = JSON.parse(sessionStorage.getItem('tilliConfig') || '{}');
+
+            if (config.totalTokens && config.totalTokens > 0) {
+                // Display plan summary from wizard
+                // Use manually selected plan if available, otherwise calculate based on tokens
+                const recommendedPlanKey = config.recommendedPlan || recommendPlan(config.totalTokens);
+                const recommendedPlan = PLANS[recommendedPlanKey];
+
+                const planSummaryHTML = `
+                    <div class="plan-summary">
+                        <div class="plan-summary-header">
+                            <div class="plan-name">${recommendedPlan.name} Plan</div>
+                            <div class="plan-price">$${recommendedPlan.price}<span style="font-size: 1rem; font-weight: 600;">/mo</span></div>
+                        </div>
+
+                        <div class="plan-details">
+                            <div class="plan-detail-row">
+                                <span class="plan-detail-label">Monthly Tokens</span>
+                                <span class="plan-detail-value">${config.totalTokens.toLocaleString()} tokens needed</span>
+                            </div>
+                            <div class="plan-detail-row">
+                                <span class="plan-detail-label">Services Selected</span>
+                                <span class="plan-detail-value">${config.services.length} services</span>
+                            </div>
+                            <div class="plan-detail-row">
+                                <span class="plan-detail-label">Monthly Savings</span>
+                                <span class="plan-detail-value" style="color: #10b981;">$${Math.round(config.totalSavings)}/mo</span>
+                            </div>
+                            <div class="plan-detail-row">
+                                <span class="plan-detail-label">Annual Savings</span>
+                                <span class="plan-detail-value" style="color: #10b981;">$${Math.round(config.totalSavings * 12).toLocaleString()}/year</span>
+                            </div>
+                        </div>
+
+                        <div class="free-trial-badge">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            First 10,000 Tokens FREE This Month
+                        </div>
+
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                No credit card required
+                            </div>
+                            <div class="benefit-item">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Cancel anytime
+                            </div>
+                            <div class="benefit-item">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Setup in minutes
+                            </div>
+                            <div class="benefit-item">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                24/7 support
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('plan-summary-container').innerHTML = planSummaryHTML;
+            }
+
             // Pre-fill from URL parameters (highest priority)
             const urlParams = new URLSearchParams(window.location.search);
             const urlEmail = urlParams.get('email');
@@ -828,6 +1258,34 @@
                 return;
             }
 
+            // Get selected connectors (optional) - one per category
+            const selectedConnectors = {
+                crm: document.querySelector('input[name="connector-crm"]:checked')?.value || null,
+                erp: document.querySelector('input[name="connector-erp"]:checked')?.value || null,
+                accounting: document.querySelector('input[name="connector-accounting"]:checked')?.value || null
+            };
+            // Filter out empty values
+            const connectors = Object.entries(selectedConnectors)
+                .filter(([key, value]) => value && value !== '')
+                .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {});
+            console.log('[SIGNUP] Selected connectors:', connectors);
+
+            // Get wizard configuration if available
+            const wizardConfig = JSON.parse(sessionStorage.getItem('tilliConfig') || '{}');
+            let recommendedPlan = null;
+            if (wizardConfig.totalTokens && wizardConfig.totalTokens > 0) {
+                const planKey = recommendPlan(wizardConfig.totalTokens);
+                recommendedPlan = {
+                    planKey: planKey,
+                    planName: PLANS[planKey].name,
+                    planPrice: PLANS[planKey].price,
+                    totalTokens: wizardConfig.totalTokens,
+                    services: wizardConfig.services,
+                    monthlySavings: wizardConfig.totalSavings,
+                    annualSavings: wizardConfig.totalSavings * 12
+                };
+            }
+
             // Collect form data
             const formData = {
                 firstName: document.getElementById('firstName').value,
@@ -839,7 +1297,9 @@
                 companySize: document.getElementById('companySize').value,
                 password: password,
                 products: selectedProducts,
-                source: 'website_signup',
+                connectors: connectors,
+                recommendedPlan: recommendedPlan,
+                source: recommendedPlan ? 'pricing_wizard' : 'website_signup',
                 timestamp: new Date().toISOString()
             };
 

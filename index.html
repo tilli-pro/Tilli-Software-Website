@@ -454,9 +454,6 @@
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
         }
     </style>
-
-    <!-- Dark Mode Script -->
-    <script src="dark-mode.js"></script>
 </head>
 <body>
     <!-- Radnom comment -->
@@ -464,7 +461,7 @@
     <header class="header">
         <nav class="nav">
             <div class="nav-container">
-                <div class="tilli-logo.png">
+                <div class="logo">
                     <a href="index.html" aria-label="Tilli Home">
                         <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
                     </a>
@@ -473,7 +470,7 @@
                     <li><a href="#products">Products</a></li>
                     <li><a href="industries.html">Industries</a></li>
                     <li><a href="about.html">Company</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="valuebasedpricing.html">Pricing</a></li>
                     <li><a href="press.html">Press</a></li>
                 </ul>
                 <a class="cta-button" href="signup.html">Sign Up</a>
@@ -644,9 +641,7 @@
                         <img src="https://www.resolutionlife.com/media/jppbpst5/logo-colour-default.png" alt="Resolution Life" style="height: 60px; width: auto; object-fit: contain;">
                     </div>
                     <div class="logo-carousel-item">
-                        <div style="background: #1a1a1a; padding: 10px 20px; border-radius: 8px;">
-                            <img src="https://www.howardcountymd.gov/themes/hoco/logo.svg" alt="Howard County" style="height: 60px; width: auto; object-fit: contain; filter: brightness(0) invert(1);">
-                        </div>
+                        <img src="Images/howard-county-logo.png" alt="Howard County" style="height: 60px; width: auto; object-fit: contain;">
                     </div>
                     <div class="logo-carousel-item">
                         <img src="Images/caresource-logo.svg" alt="CareSource" style="height: 60px; width: auto; object-fit: contain;">
@@ -671,9 +666,7 @@
                         <img src="https://www.resolutionlife.com/media/jppbpst5/logo-colour-default.png" alt="Resolution Life" style="height: 60px; width: auto; object-fit: contain;">
                     </div>
                     <div class="logo-carousel-item">
-                        <div style="background: #1a1a1a; padding: 10px 20px; border-radius: 8px;">
-                            <img src="https://www.howardcountymd.gov/themes/hoco/logo.svg" alt="Howard County" style="height: 60px; width: auto; object-fit: contain; filter: brightness(0) invert(1);">
-                        </div>
+                        <img src="Images/howard-county-logo.png" alt="Howard County" style="height: 60px; width: auto; object-fit: contain;">
                     </div>
                     <div class="logo-carousel-item">
                         <img src="Images/caresource-logo.svg" alt="CareSource" style="height: 60px; width: auto; object-fit: contain;">
@@ -987,7 +980,7 @@
                 </div>
 
                 <!-- Common Features Summary -->
-                <div style="background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%); border-radius: 16px; padding: 2.5rem; margin-bottom: 3rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                <div class="platform-capabilities glow-panel" style="background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%); border-radius: 16px; padding: 2.5rem; margin-bottom: 3rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
                     <h3 style="color: #1a1a1a; margin-bottom: 1.5rem; font-size: 1.5rem;">Platform-Wide Capabilities</h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: left;">
                         <div style="padding: 1rem;">
@@ -1036,12 +1029,12 @@
                 </div>
 
                 <!-- Product Comparison Table -->
-                <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 250, 251, 0.95) 100%); border-radius: 16px; padding: 2rem; margin-bottom: 3rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); overflow-x: auto; border: 1px solid rgba(147, 51, 234, 0.08);">
+                <div class="product-comparison glow-panel" style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 250, 251, 0.95) 100%); border-radius: 16px; padding: 2rem; margin-bottom: 3rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); overflow-x: auto; border: 1px solid rgba(147, 51, 234, 0.08);">
                     <h3 style="color: #1a1a1a; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 600; display: flex; align-items: center;">
                         <svg class="icon-inline icon-lg" style="margin-right: 0.75rem; color: #6366f1;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                         Product Comparison
                     </h3>
-                    <table style="width: 100%; border-collapse: separate; border-spacing: 0; min-width: 700px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);">
+                    <table class="comparison-table" style="width: 100%; border-collapse: separate; border-spacing: 0; min-width: 700px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);">
                         <thead>
                             <tr style="background: linear-gradient(135deg, #f8f7ff 0%, #f0f7ff 100%);">
                                 <th style="padding: 1.25rem 1rem; text-align: left; color: #1f2937; font-weight: 600; font-size: 0.95rem; border-bottom: 2px solid #e5e7eb; width: 30%;">Feature</th>
@@ -1226,7 +1219,7 @@
                     </div>
                 </div>
                 <div class="tillix-visual">
-                    <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(91, 158, 255, 0.15);">
+                    <div class="product-highlight glow-panel" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(91, 158, 255, 0.15);">
                         <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #5B9EFF, #4080E0); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
                             <i class="fas fa-laptop" style="font-size: 2rem; color: white;"></i>
                         </div>
@@ -1856,7 +1849,7 @@
                         <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 10px;"></i> <strong>80% digital adoption</strong> - Proven strategies from 500+ enterprise deployments</li>
                         <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 10px;"></i> <strong>Zero IT burden</strong> - Deploy in weeks, not months, with our low-code platform</li>
                     </ul>
-                    <div style="background: linear-gradient(135deg, #fef3c7, #fed7aa); padding: 16px; border-radius: 8px; margin-bottom: 1rem;">
+                    <div class="cta-highlight glow-outline" style="background: linear-gradient(135deg, #fef3c7, #fed7aa); padding: 16px; border-radius: 8px; margin-bottom: 1rem;">
                         <p style="margin: 0; font-weight: 600; color: #92400e;"><i data-lucide="gift" style="display: inline-block; width: 18px; height: 18px; vertical-align: middle; margin-right: 6px;"></i> Book Today & Get:</p>
                         <p style="margin: 8px 0 0 0; color: #78350f;">Free ROI analysis + Custom implementation roadmap + Priority onboarding</p>
                     </div>
@@ -2005,41 +1998,63 @@
                         <div class="footer-column">
                             <h4>About</h4>
                             <ul>
-                                <li><a href="#">About Us</a></li>
+                                <li><a href="about.html">About Us</a></li>
                                 <li><a href="careers.html">Careers</a></li>
-                                <li><a href="#">Newsroom</a></li>
-                                <li><a href="https://www.tillisoftware.com/contact.html">Contact</a></li>
+                                <li><a href="press.html">Press</a></li>
+                                <li><a href="contact.html">Contact</a></li>
                             </ul>
                         </div>
-                        
+
                         <div class="footer-column">
-                            <h4>Company</h4>
+                            <h4>Products</h4>
                             <ul>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Partners</a></li>
-                                <li><a href="#">Security</a></li>
-                                <li><a href="#">Trust Center</a></li>
+                                <li><a href="nudge.html">Nudge</a></li>
+                                <li><a href="tillix.html">tilliX</a></li>
+                                <li><a href="tillipay.html">tilliPay</a></li>
+                                <li><a href="tilliarc.html">tilliArc</a></li>
                             </ul>
                         </div>
-                        
+
+                        <div class="footer-column">
+                            <h4>Solutions</h4>
+                            <ul>
+                                <li><a href="industries.html">Utilities</a></li>
+                                <li><a href="industries.html">Healthcare</a></li>
+                                <li><a href="industries.html">Financial Services</a></li>
+                                <li><a href="industries.html">Education</a></li>
+                            </ul>
+                        </div>
+
                         <div class="footer-column">
                             <h4>Developers</h4>
                             <ul>
-                                <li><a href="#">Documentation</a></li>
-                                <li><a href="#">API Reference</a></li>
-                                <li><a href="#">SDKs</a></li>
-                                <li><a href="#">Community</a></li>
+                                <li><a href="developer.html">Documentation</a></li>
+                                <li><a href="developer.html">API Reference</a></li>
+                                <li><a href="developer.html">SDKs</a></li>
+                                <li><a href="developer.html">Community</a></li>
                             </ul>
                         </div>
-                        
+
                         <div class="footer-column">
                             <h4>Resources</h4>
                             <ul>
-                                <li><a href="#">Support</a></li>
-                                <li><a href="#">FAQs</a></li>
-                                <li><a href="#">Webinars</a></li>
+                                <li><a href="calculator.html">ROI Calculator</a></li>
+                                <li><a href="demos.html">Demos</a></li>
+                                <li><a href="case-studies.html">Case Studies</a></li>
+                                <li><a href="blog.html">Blog</a></li>
                             </ul>
                         </div>
+
+                        <div class="footer-column">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="about.html">Our Story</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li><a href="#">Partners</a></li>
+                                <li><a href="#">Security</a></li>
+                            </ul>
+                        </div>
+
                         <div class="footer-column">
                             <h4>Legal</h4>
                             <ul>
