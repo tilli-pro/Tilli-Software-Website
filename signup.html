@@ -399,23 +399,23 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: #4099FF;
             transform: scaleX(0);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .product-label:hover {
-            border-color: #cbd5e1;
+            border-color: #93c5fd;
             background: white;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(64, 153, 255, 0.15);
         }
 
         .product-checkbox input[type="checkbox"]:checked + .product-label,
         .product-checkbox input[type="radio"]:checked + .product-label {
-            border-color: #667eea;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+            border-color: #4099FF;
+            background: #eff6ff;
+            box-shadow: 0 0 0 3px rgba(64, 153, 255, 0.1);
         }
 
         .product-checkbox input[type="checkbox"]:checked + .product-label::before,
@@ -426,8 +426,8 @@
         .product-label i {
             font-size: 1.75rem;
             margin-bottom: 0.75rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
+            color: #4099FF;
+            
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
