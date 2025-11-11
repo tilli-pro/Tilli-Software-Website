@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign Up for Tilli Products | Nudge, tilliPay, tilliX, tilliArc, XDEX</title>
+<meta content="Sign up for Tilli products - Nudge communications, tilliPay payments, tilliX portal, tilliArc archiving, XDEX data exchange. Start your free trial today." name="description"/>
+<link href="styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: #FFFFFF;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .signup-container {
+            max-width: 900px;
+            margin: 60px auto 40px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signup-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            animation: cardFadeIn 0.6s ease-out;
+        }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .signup-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #4099FF;
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            margin-bottom: 2rem;
+            padding: 0 0 2rem 0;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .step.completed .step-number {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .step.active .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .step-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .step.active .step-label {
+            color: #667eea;
+        }
+
+        .step.completed .step-label {
+            color: #10b981;
+        }
+
+        .step-connector {
+            width: 60px;
+            height: 2px;
+            background: #e5e7eb;
+            margin: 0 1rem;
+        }
+
+        .step.completed .step-connector {
+            background: linear-gradient(90deg, #10b981 0%, #e5e7eb 100%);
+        }
+
+        .step:last-child .step-connector {
+            display: none;
+        }
+
+        /* Plan Summary Card */
+        .plan-summary {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+            border: 2px solid #667eea;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .plan-summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .plan-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .plan-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .plan-details {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .plan-detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .plan-detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .plan-detail-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .plan-detail-value {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .free-trial-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+        .benefit-item svg {
+            width: 16px;
+            height: 16px;
+            color: #10b981;
+        }
+
+        .signup-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .signup-header h1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .signup-header p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            color: #1f2937;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .form-section h3 i {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1f2937;
+            font-weight: 600;
+            margin-bottom: 0.625rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.01em;
+        }
+
+        .form-group label .required {
+            color: #ef4444;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1.125rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #fafbfc;
+            font-family: inherit;
+        }
+
+        .form-group input:hover,
+        .form-group select:hover {
+            border-color: #cbd5e1;
+            background: #ffffff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            background: #ffffff;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group input.error {
+            border-color: #ef4444;
+        }
+
+        .form-group .helper-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        .form-group .error-text {
+            font-size: 0.875rem;
+            color: #ef4444;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group input.error + .error-text {
+            display: block;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .product-checkbox {
+            position: relative;
+        }
+
+        .product-checkbox input[type="checkbox"],
+        .product-checkbox input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .product-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.75rem 1.25rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #fafbfc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #4099FF;
+            transform: scaleX(0);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-label:hover {
+            border-color: #93c5fd;
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(64, 153, 255, 0.15);
+        }
+
+        .product-checkbox input[type="checkbox"]:checked + .product-label,
+        .product-checkbox input[type="radio"]:checked + .product-label {
+            border-color: #4099FF;
+            background: #eff6ff;
+            box-shadow: 0 0 0 3px rgba(64, 153, 255, 0.1);
+        }
+
+        .product-checkbox input[type="checkbox"]:checked + .product-label::before,
+        .product-checkbox input[type="radio"]:checked + .product-label::before {
+            transform: scaleX(1);
+        }
+
+        .product-label i {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: #4099FF;
+            
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .product-label .product-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-label .product-desc {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        .product-checkbox input[type="checkbox"]:checked + .product-label .checkmark,
+        .product-checkbox input[type="radio"]:checked + .product-label .checkmark {
+            display: block;
+        }
+
+        .checkmark {
+            display: none;
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #5B9EFF;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.75rem;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: #d4edda;
+            color: #155724;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .verified-badge i {
+            font-size: 0.875rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .alert {
+            padding: 1.25rem 1.5rem;
+            border-radius: 14px;
+            margin-bottom: 1.5rem;
+            display: none;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert.success {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #10b981;
+            color: #155724;
+        }
+
+        .alert.success i {
+            color: #10b981;
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .alert.error {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 2px solid #ef4444;
+            color: #991b1b;
+        }
+
+        .alert.error i {
+            color: #ef4444;
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .alert.show {
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .signup-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<header class="header">
+<nav class="nav">
+<div class="nav-container">
+<div class="tilli-logo">
+<a aria-label="Tilli Home" href="index.html">
+<img alt="Tilli Logo" src="Images/22_tilli_logo_color.png" style="height: 40px; width: auto;"/>
+</a>
+</div>
+<ul class="nav-menu">
+<li><a href="#products">Products</a></li>
+<li><a href="industries.html">Industries</a></li>
+<li><a href="use-cases.html">Use Cases</a></li> <li><a href="about.html">Company</a></li>
+<li><a href="valuebasedpricing.html">Pricing</a></li>
+<li><a href="press.html">Press</a></li>
+</ul>
+<div class="nav-cta">
+<a class="btn-secondary" href="calculator.html">Calculate ROI</a>
+</div>
+<div class="nav-actions"><a class="btn-outline" href="signin.html">Sign In</a> <a class="cta-button" href="signup.html">Sign Up</a></div></div>
+</nav>
+</header>
+<div class="signup-container">
+<div class="signup-card">
+<!-- Breadcrumb Navigation -->
+<div class="breadcrumb">
+<div class="steps">
+<div class="step completed">
+<div class="step-number">✓</div>
+<div class="step-label">Configure</div>
+<div class="step-connector"></div>
+</div>
+<div class="step completed">
+<div class="step-number">✓</div>
+<div class="step-label">Review Plan</div>
+<div class="step-connector"></div>
+</div>
+<div class="step active">
+<div class="step-number">3</div>
+<div class="step-label">Sign Up</div>
+</div>
+</div>
+</div>
+<div class="signup-header">
+<h1>Start Your Free Trial</h1>
+<p>Sign up for Tilli products and transform your billing and payment operations</p>
+</div>
+<!-- Plan Summary Card (from wizard) -->
+<div id="plan-summary-container"></div>
+<div id="alert-container"></div>
+<form id="signup-form">
+<!-- OAuth Sign Up Options -->
+<div class="form-section" style="text-align: center;">
+<h3 style="margin-bottom: 1.5rem;"><i class="fas fa-bolt"></i> Quick Sign Up</h3>
+<p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1.5rem;">Sign up in seconds - no password required!</p>
+<!-- OAuth Buttons (Google, Microsoft, GitHub) -->
+<div style="margin-bottom: 1.5rem;">
+<p style="font-weight: 600; font-size: 0.9rem; color: #1f2937; margin-bottom: 1rem;">Sign up with:</p>
+<div style="display: flex; flex-direction: column; gap: 0.75rem; max-width: 400px; margin: 0 auto;">
+<button class="oauth-btn" id="oauth-google" onclick="signUpWithGoogle()" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 2px solid #e5e7eb; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 1rem; transition: all 0.2s;" type="button">
+<i class="fab fa-google" style="color: #EA4335; font-size: 1.25rem;"></i> Continue with Google
+                            </button>
+<button class="oauth-btn" id="oauth-microsoft" onclick="signUpWithMicrosoft()" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 2px solid #e5e7eb; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 1rem; transition: all 0.2s;" type="button">
+<i class="fab fa-microsoft" style="color: #00A4EF; font-size: 1.25rem;"></i> Continue with Microsoft
+                            </button>
+<button class="oauth-btn" id="oauth-github" onclick="signUpWithGitHub()" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 2px solid #e5e7eb; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 1rem; transition: all 0.2s;" type="button">
+<i class="fab fa-github" style="color: #181717; font-size: 1.25rem;"></i> Continue with GitHub
+                            </button>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; max-width: 400px; margin-left: auto; margin-right: auto;">
+<div style="flex: 1; height: 1px; background: #e5e7eb;"></div>
+<span style="font-size: 0.875rem; color: #6b7280;">or continue with email</span>
+<div style="flex: 1; height: 1px; background: #e5e7eb;"></div>
+</div>
+<!-- Passwordless Magic Link -->
+<div style="margin-bottom: 1.5rem; max-width: 400px; margin: 0 auto;">
+<div style="display: flex; gap: 0.5rem;">
+<input id="magic-link-email" placeholder="Enter your email" required="" style="flex: 1; padding: 1rem; border: 2px solid #e5e7eb; border-radius: 10px; font-size: 1rem;" type="email"/>
+<button id="magic-link-btn" onclick="sendMagicLink()" style="padding: 1rem 1.5rem; border: none; border-radius: 10px; background: #4099FF; color: white; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s; white-space: nowrap;" type="button">
+<i class="fas fa-envelope"></i> Send Link
+                            </button>
+</div>
+<p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem;">We'll email you a magic link for instant sign-in. No password needed!</p>
+<!-- Message container (fixed height to prevent layout shift) -->
+<div style="min-height: 48px; margin-top: 0.75rem;">
+<div id="auth-message" style="padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.875rem; opacity: 0; transition: opacity 0.3s;"></div>
+</div>
+</div>
+<!-- Trust Badge -->
+<div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem; background: #f9fafb; border-radius: 8px; font-size: 0.875rem; color: #6b7280; margin-top: 1.5rem;">
+<i class="fas fa-shield-alt" style="color: #10b981;"></i>
+<span>Secure authentication powered by industry leaders</span>
+</div>
+</div>
+</form>
+</div>
+</div>
+<!-- Website Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-main">
+<div class="footer-brand">
+<div class="footer-logo">
+<img alt="Tilli Logo" src="Images/22_Utilli_logo_white.png"/>
+</div>
+<p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
+<div class="newsletter">
+<input placeholder="Your email address" type="email"/>
+<button class="btn-primary">Subscribe</button>
+</div>
+</div>
+<div class="footer-links">
+<div class="footer-column">
+<h4>About</h4>
+<ul>
+<li><a href="about.html">About Us</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="press.html">Press</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Products</h4>
+<ul>
+<li><a href="nudge.html">Nudge</a></li>
+<li><a href="tillix.html">tilliX</a></li>
+<li><a href="tillipay.html">tilliPay</a></li>
+<li><a href="tilliarc.html">tilliArc</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Solutions</h4>
+<ul>
+<li><a href="industries.html">Utilities</a></li>
+<li><a href="industries.html">Healthcare</a></li>
+<li><a href="industries.html">Financial Services</a></li>
+<li><a href="industries.html">Education</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Developers</h4>
+<ul>
+<li><a href="developer.html">Documentation</a></li>
+<li><a href="developer.html">API Reference</a></li>
+<li><a href="developer.html">SDKs</a></li>
+<li><a href="developer.html">Community</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Resources</h4>
+<ul>
+<li><a href="calculator.html">ROI Calculator</a></li>
+<li><a href="demos.html">Demos</a></li>
+<li><a href="case-studies.html">Case Studies</a></li>
+<li><a href="blog.html">Blog</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Company</h4>
+<ul>
+<li><a href="about.html">Our Story</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="#">Partners</a></li>
+<li><a href="#">Security</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Legal</h4>
+<ul>
+<li><a href="privacy-policy/">Privacy Policy</a></li>
+<li><a href="terms-and-conditions/">Terms &amp; Conditions</a></li>
+<li><a href="anti-slavery-policy.html">Anti-Slavery Policy</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="social-links">
+<a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://x.com/tillisoftware" target="_blank"><i class="fab fa-x-twitter"></i></a>
+<a href="https://www.facebook.com/tillisoftware"><i class="fab fa-facebook"></i></a>
+<a href="https://www.youtube.com/@tillisoftware"><i class="fab fa-youtube"></i></a>
+</div>
+<div class="footer-legal">
+<p>© 2025 Tilli. All rights reserved.</p>
+<div class="legal-links">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
+</div>
+<div class="footer-contact">
+<h5>Headquarters</h5>
+<p>123 Business District<br/>Financial Center, FC 12345</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- Tilli OAuth Integration -->
+<script src="tilli-oauth.js" type="module"></script>
+<!-- Vercel Analytics -->
+<script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+</body>
+</html>

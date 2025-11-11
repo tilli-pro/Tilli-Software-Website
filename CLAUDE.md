@@ -54,14 +54,18 @@ The server should serve the Tilli enterprise payment platform website.
 
 ## Icon Usage Policy
 
-### ALWAYS Use Inline SVGs for Icons
-- **DO NOT** load external icon libraries (Lucide, Font Awesome, etc.)
+### ALWAYS Use Lucide Icons with Inline SVGs
+- **USE:** Lucide Icons (https://lucide.dev) - download SVG code and use inline
+- **DO NOT** load external icon libraries via CDN (Font Awesome, Material Icons, etc.)
 - **DO NOT** use `<script src="https://unpkg.com/lucide@latest"></script>`
 - **DO NOT** use `lucide.createIcons()` or similar library initialization
+- **DO:** Copy SVG code directly from lucide.dev and embed it inline in HTML
 
-### How to Use Icons
+### How to Use Lucide Icons
 
-1. **Always use inline SVG icons** for better performance and to avoid external dependencies
+1. **Go to https://lucide.dev** and find the icon you need
+2. **Copy the SVG code** (click "Copy SVG" button)
+3. **Paste inline** into your HTML with proper classes for styling
 2. **Use the following CSS classes** for consistent icon styling:
 
 ```css

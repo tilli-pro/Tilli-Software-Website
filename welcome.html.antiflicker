@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Tilli Software - Let's Get You Started!</title>
+    <meta name="description" content="Complete your Tilli setup in under 5 minutes with J.A.R.V.I.S., your intelligent setup assistant.">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Tilli OAuth Integration -->
+    <script type="module" src="tilli-oauth.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 16px;
+            color: #6b7280;
+        }
+
+        /* User Info Bar */
+        .user-info {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .user-info .user-details {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-info .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #4099FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .user-info .user-name {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .user-info .user-email {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .btn-logout {
+            padding: 8px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            background: white;
+            color: #374151;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-logout:hover {
+            background: #f9fafb;
+            border-color: #d1d5db;
+        }
+
+        /* J.A.R.V.I.S. Assistant */
+        .jarvis-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .jarvis-header {
+            background: linear-gradient(135deg, #4099FF 0%, #3182ce 100%);
+            color: white;
+            padding: 32px 40px;
+            text-align: center;
+        }
+
+        .jarvis-header .jarvis-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.9;
+            }
+        }
+
+        .jarvis-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .jarvis-header .subtitle {
+            font-size: 14px;
+            opacity: 0.95;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .jarvis-header p {
+            font-size: 16px;
+            margin-top: 12px;
+            opacity: 0.9;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            background: #f3f4f6;
+            padding: 24px 40px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .progress-bar .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .progress-bar .progress-track {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4099FF 0%, #3182ce 100%);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-bar .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+        }
+
+        .progress-bar .step {
+            flex: 1;
+            text-align: center;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .progress-bar .step.active {
+            color: #4099FF;
+            font-weight: 600;
+        }
+
+        .progress-bar .step.completed {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        /* Wizard Content */
+        .wizard-content {
+            padding: 48px 40px;
+        }
+
+        .wizard-step {
+            display: none;
+        }
+
+        .wizard-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .step-header .step-number {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .step-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .step-header p {
+            font-size: 16px;
+            color: #6b7280;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4099FF;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 640px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Integration Cards */
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .integration-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .integration-card:hover {
+            border-color: #4099FF;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(64, 153, 255, 0.15);
+        }
+
+        .integration-card.selected {
+            border-color: #4099FF;
+            background: #eff6ff;
+        }
+
+        .integration-card .icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .integration-card .name {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .integration-card .badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* Action Buttons */
+        .wizard-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #4099FF;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(64, 153, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #374151;
+            border: 2px solid #e5e7eb;
+        }
+
+        .btn-secondary:hover {
+            background: #f9fafb;
+            border-color: #d1d5db;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Success Celebration */
+        .success-container {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .success-container .celebration-icon {
+            font-size: 96px;
+            margin-bottom: 24px;
+            animation: bounce 1s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .success-container h3 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .success-container p {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 32px;
+        }
+
+        .success-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .success-stat {
+            background: #f9fafb;
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        .success-stat .value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #4099FF;
+            margin-bottom: 8px;
+        }
+
+        .success-stat .label {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /* Message Box */
+        .message-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+
+        .message-box.success {
+            background: #d1fae5;
+            border-color: #6ee7b7;
+        }
+
+        .message-box.warning {
+            background: #fef3c7;
+            border-color: #fcd34d;
+        }
+
+        .message-box .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .message-box .content {
+            flex: 1;
+        }
+
+        .message-box .title {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .message-box .text {
+            font-size: 14px;
+            color: #374151;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4099FF;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Hidden */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Tilli Software</h1>
+            <p>Enterprise Communications and Payment Platform</p>
+        </div>
+
+        <!-- User Info Bar -->
+        <div class="user-info" id="user-info">
+            <div class="user-details">
+                <div class="user-avatar" id="user-avatar">U</div>
+                <div>
+                    <div class="user-name" id="user-name">Loading...</div>
+                    <div class="user-email" id="user-email"></div>
+                </div>
+            </div>
+            <button class="btn-logout" onclick="signOut()">Sign Out</button>
+        </div>
+
+        <!-- J.A.R.V.I.S. Container -->
+        <div class="jarvis-container">
+            <!-- Header -->
+            <div class="jarvis-header">
+                <div class="jarvis-icon">🤖</div>
+                <h2>Hi! I'm J.A.R.V.I.S.</h2>
+                <p class="subtitle">Just A Rather Very Intelligent System</p>
+                <p>Let's get you set up in under 5 minutes!</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="progress-label">
+                    <span>Setup Progress</span>
+                    <span id="progress-percentage">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="steps">
+                    <div class="step active" id="step-indicator-1">1. Verify Info</div>
+                    <div class="step" id="step-indicator-2">2. Connect Systems</div>
+                    <div class="step" id="step-indicator-3">3. Import Contacts</div>
+                    <div class="step" id="step-indicator-4">4. Review Invoices</div>
+                    <div class="step" id="step-indicator-5">5. Payment Setup</div>
+                    <div class="step" id="step-indicator-6">6. Send Nudges</div>
+                    <div class="step" id="step-indicator-7">7. Complete</div>
+                </div>
+            </div>
+
+            <!-- Wizard Content -->
+            <div class="wizard-content">
+                <!-- Step 1: Verify Information -->
+                <div class="wizard-step active" id="step-1">
+                    <div class="step-header">
+                        <div class="step-number">Step 2 of 7</div>
+                        <h3>Verify Your Information</h3>
+                        <p>Let's confirm your details and learn about your business</p>
+                    </div>
+
+                    <div class="message-box">
+                        <span class="icon">💡</span>
+                        <div class="content">
+                            <div class="title">Quick Setup</div>
+                            <div class="text">This should only take about 30 seconds!</div>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="first-name">First Name *</label>
+                            <input type="text" id="first-name" placeholder="John" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name *</label>
+                            <input type="text" id="last-name" placeholder="Doe" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company-name">Company Name *</label>
+                        <input type="text" id="company-name" placeholder="Acme Corporation" required />
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" placeholder="john@acme.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" placeholder="+1 (555) 123-4567" required />
+                        </div>
+                    </div>
+
+                    <div class="wizard-actions">
+                        <button class="btn btn-secondary" disabled>← Back</button>
+                        <button class="btn btn-primary" onclick="nextStep(2)">
+                            Continue
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Connect Systems -->
+                <div class="wizard-step" id="step-2">
+                    <div class="step-header">
+                        <div class="step-number">Step 2 of 7</div>
+                        <h3>Connect Your Business Systems</h3>
+                        <p>Choose the systems you use (you can skip and add later)</p>
+                    </div>
+
+                    <div class="message-box">
+                        <span class="icon">🔗</span>
+                        <div class="content">
+                            <div class="title">Integrations Made Easy</div>
+                            <div class="text">Connect your CRM, ERP, Accounting, or eCommerce systems to automatically import invoices and contacts.</div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin: 32px 0 16px 0; font-weight: 600; color: #374151;">CRM System</h4>
+                    <div class="integration-grid">
+                        <div class="integration-card" onclick="selectIntegration('crm', 'none')">
+                            <div class="icon">⊘</div>
+                            <div class="name">None</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('crm', 'salesforce')">
+                            <div class="icon">☁️</div>
+                            <div class="name">Salesforce</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('crm', 'hubspot')">
+                            <div class="icon">🟠</div>
+                            <div class="name">HubSpot</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('crm', 'zoho')">
+                            <div class="icon">🔵</div>
+                            <div class="name">Zoho CRM</div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin: 32px 0 16px 0; font-weight: 600; color: #374151;">Accounting System</h4>
+                    <div class="integration-grid">
+                        <div class="integration-card" onclick="selectIntegration('accounting', 'none')">
+                            <div class="icon">⊘</div>
+                            <div class="name">None</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('accounting', 'quickbooks')">
+                            <div class="icon">💚</div>
+                            <div class="name">QuickBooks</div>
+                            <div class="badge">Popular</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('accounting', 'xero')">
+                            <div class="icon">💙</div>
+                            <div class="name">Xero</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('accounting', 'sage')">
+                            <div class="icon">🟢</div>
+                            <div class="name">Sage</div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin: 32px 0 16px 0; font-weight: 600; color: #374151;">eCommerce Platform</h4>
+                    <div class="integration-grid">
+                        <div class="integration-card" onclick="selectIntegration('ecommerce', 'none')">
+                            <div class="icon">⊘</div>
+                            <div class="name">None</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('ecommerce', 'shopify')">
+                            <div class="icon">🛍️</div>
+                            <div class="name">Shopify</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('ecommerce', 'woocommerce')">
+                            <div class="icon">🔷</div>
+                            <div class="name">WooCommerce</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('ecommerce', 'magento')">
+                            <div class="icon">🟠</div>
+                            <div class="name">Magento</div>
+                        </div>
+                    </div>
+
+                    <div class="wizard-actions">
+                        <button class="btn btn-secondary" onclick="prevStep(1)">← Back</button>
+                        <button class="btn btn-primary" onclick="nextStep(3)">
+                            Continue
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Import Contacts -->
+                <div class="wizard-step" id="step-3">
+                    <div class="step-header">
+                        <div class="step-number">Step 3 of 7</div>
+                        <h3>Import Your Contacts</h3>
+                        <p>With your permission, we'll import contacts from your connected systems</p>
+                    </div>
+
+                    <div class="message-box warning">
+                        <span class="icon">🔒</span>
+                        <div class="content">
+                            <div class="title">Privacy First</div>
+                            <div class="text">We respect your data. Contacts will only be imported with your explicit permission, and you can review them before we proceed.</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <p style="font-size: 16px; color: #6b7280; margin-bottom: 24px;">
+                            Click the button below to authorize importing contacts from your connected systems.
+                        </p>
+                        <button class="btn btn-primary" onclick="importContacts()" style="margin: 0 auto;">
+                            <span>📥</span>
+                            Authorize Contact Import
+                        </button>
+                    </div>
+
+                    <div id="contacts-preview" class="hidden">
+                        <div class="message-box success">
+                            <span class="icon">✅</span>
+                            <div class="content">
+                                <div class="title">Contacts Imported Successfully!</div>
+                                <div class="text">We found <strong id="contact-count">0</strong> contacts in your connected systems.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wizard-actions">
+                        <button class="btn btn-secondary" onclick="prevStep(2)">← Back</button>
+                        <button class="btn btn-primary" onclick="nextStep(4)">
+                            Continue
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Review Invoices -->
+                <div class="wizard-step" id="step-4">
+                    <div class="step-header">
+                        <div class="step-number">Step 4 of 7</div>
+                        <h3>Review Open Invoices</h3>
+                        <p>We found outstanding invoices that need attention</p>
+                    </div>
+
+                    <div class="message-box">
+                        <span class="icon">📊</span>
+                        <div class="content">
+                            <div class="title">Invoice Summary</div>
+                            <div class="text">Here's a snapshot of your receivables. You can send payment reminders in the next step!</div>
+                        </div>
+                    </div>
+
+                    <div style="background: #f9fafb; border-radius: 12px; padding: 32px; margin: 24px 0;">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center;">
+                            <div>
+                                <div style="font-size: 32px; font-weight: 700; color: #4099FF;">12</div>
+                                <div style="font-size: 14px; color: #6b7280; margin-top: 8px;">Open Invoices</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 32px; font-weight: 700; color: #ef4444;">$15,430</div>
+                                <div style="font-size: 14px; color: #6b7280; margin-top: 8px;">Total Outstanding</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 32px; font-weight: 700; color: #f59e0b;">28 days</div>
+                                <div style="font-size: 14px; color: #6b7280; margin-top: 8px;">Average Age</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wizard-actions">
+                        <button class="btn btn-secondary" onclick="prevStep(3)">← Back</button>
+                        <button class="btn btn-primary" onclick="nextStep(5)">
+                            Let's Send Reminders
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Payment Setup -->
+                <div class="wizard-step" id="step-5">
+                    <div class="step-header">
+                        <div class="step-number">Step 5 of 7</div>
+                        <h3>Payment Provider Setup</h3>
+                        <p>How would you like customers to pay their invoices?</p>
+                    </div>
+
+                    <div class="message-box">
+                        <span class="icon">💳</span>
+                        <div class="content">
+                            <div class="title">Accept Payments Online</div>
+                            <div class="text">Choose between TilliPay (our integrated solution) or connect your existing payment provider.</div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin: 32px 0 16px 0; font-weight: 600; color: #374151;">Select Payment Provider</h4>
+                    <div class="integration-grid">
+                        <div class="integration-card" onclick="selectIntegration('payment', 'tillipay')">
+                            <div class="icon">💎</div>
+                            <div class="name">TilliPay</div>
+                            <div class="badge">Recommended</div>
+                            <p style="font-size: 12px; color: #6b7280; margin-top: 8px;">Lowest fees, instant setup</p>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('payment', 'stripe')">
+                            <div class="icon">💳</div>
+                            <div class="name">Stripe</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('payment', 'paypal')">
+                            <div class="icon">💙</div>
+                            <div class="name">PayPal</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('payment', 'square')">
+                            <div class="icon">⬛</div>
+                            <div class="name">Square</div>
+                        </div>
+                    </div>
+
+                    <div id="tillipay-benefits" class="hidden" style="margin-top: 32px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 24px;">
+                        <h4 style="color: #1e40af; margin-bottom: 16px;">💎 TilliPay Advantages</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 8px 0; color: #374151;">✅ <strong>1.9% + $0.30</strong> per transaction (vs 2.9% + $0.30 competitors)</li>
+                            <li style="padding: 8px 0; color: #374151;">✅ <strong>Instant setup</strong> - No application process</li>
+                            <li style="padding: 8px 0; color: #374151;">✅ <strong>Next-day deposits</strong> to your bank account</li>
+                            <li style="padding: 8px 0; color: #374151;">✅ <strong>Seamless integration</strong> with Tilli nudges</li>
+                        </ul>
+                        <p style="margin-top: 16px; color: #6b7280; font-size: 14px;">
+                            💰 Based on your $15,430 in open invoices, you'd save <strong style="color: #10b981;">$154.30</strong> using TilliPay!
+                        </p>
+                    </div>
+
+                    <div class="wizard-actions">
+                        <button class="btn btn-secondary" onclick="prevStep(4)">← Back</button>
+                        <button class="btn btn-primary" onclick="nextStep(6)">
+                            Continue
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 6: Send First Nudge (AHA MOMENT!) -->
+                <div class="wizard-step" id="step-6">
+                    <div class="step-header">
+                        <div class="step-number">Step 6 of 7</div>
+                        <h3>🎉 Send Your First Payment Nudges!</h3>
+                        <p>This is where the magic happens - send 12 reminders worth $15,430</p>
+                    </div>
+
+                    <div class="message-box success">
+                        <span class="icon">🚀</span>
+                        <div class="content">
+                            <div class="title">Ready to Go!</div>
+                            <div class="text">We've prepared personalized payment reminders for all 12 open invoices. Choose your channels below.</div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin: 32px 0 16px 0; font-weight: 600; color: #374151;">Select Communication Channels</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 32px;">
+                        <label style="display: flex; align-items: center; padding: 16px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
+                            <input type="checkbox" id="channel-email" checked style="margin-right: 12px; width: 20px; height: 20px;" />
+                            <div>
+                                <div style="font-weight: 600; color: #111827;">📧 Email</div>
+                                <div style="font-size: 12px; color: #6b7280;">Professional email reminders</div>
+                            </div>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 16px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
+                            <input type="checkbox" id="channel-sms" style="margin-right: 12px; width: 20px; height: 20px;" />
+                            <div>
+                                <div style="font-weight: 600; color: #111827;">📱 SMS</div>
+                                <div style="font-size: 12px; color: #6b7280;">Quick text message nudges</div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #4099FF 0%, #3182ce 100%); border-radius: 12px; color: white;">
+                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 16px;">Send 12 Payment Reminders</h3>
+                        <p style="font-size: 18px; margin-bottom: 32px; opacity: 0.9;">Total value: $15,430</p>
+                        <button class="btn" onclick="sendNudges()" style="background: white; color: #4099FF; margin: 0 auto; font-size: 18px; padding: 16px 48px;">
+                            <span>🚀</span>
+                            Send Nudges Now!
+                        </button>
+                    </div>
+
+                    <div id="nudge-sending" class="hidden" style="margin-top: 24px; text-align: center;">
+                        <div class="spinner" style="margin: 0 auto 16px auto; width: 40px; height: 40px; border-width: 4px;"></div>
+                        <p style="color: #6b7280;">Sending your nudges...</p>
+                    </div>
+
+                    <div class="wizard-actions">
+                        <button class="btn btn-secondary" onclick="prevStep(5)">← Back</button>
+                        <button class="btn btn-primary hidden" id="btn-to-success" onclick="nextStep(7)">
+                            Complete Setup
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 7: Success! -->
+                <div class="wizard-step" id="step-7">
+                    <div class="success-container">
+                        <div class="celebration-icon">🎉</div>
+                        <h3>Setup Complete!</h3>
+                        <p>Congratulations! You're now ready to supercharge your payment collections.</p>
+
+                        <div class="success-stats">
+                            <div class="success-stat">
+                                <div class="value">12</div>
+                                <div class="label">Nudges Sent</div>
+                            </div>
+                            <div class="success-stat">
+                                <div class="value">$15,430</div>
+                                <div class="label">In Reminders</div>
+                            </div>
+                            <div class="success-stat">
+                                <div class="value">< 5 min</div>
+                                <div class="label">Setup Time</div>
+                            </div>
+                        </div>
+
+                        <div class="message-box success" style="text-align: left;">
+                            <span class="icon">📈</span>
+                            <div class="content">
+                                <div class="title">What to Expect</div>
+                                <div class="text">
+                                    Your customers will receive friendly payment reminders via the channels you selected.
+                                    On average, Tilli users collect payments <strong>3x faster</strong> and reduce late payments by <strong>67%</strong>.
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="goToDashboard()" style="margin: 40px auto 0 auto; font-size: 18px; padding: 16px 48px;">
+                            Go to Dashboard
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Wizard state
+        let currentStep = 1;
+        let wizardData = {
+            user: {},
+            integrations: {
+                crm: 'none',
+                accounting: 'none',
+                ecommerce: 'none',
+                payment: null
+            },
+            contacts: 0,
+            invoices: 12,
+            totalOutstanding: 15430
+        };
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadUserInfo();
+        });
+
+        async function loadUserInfo() {
+            try {
+                const session = await window.tilliAuth.getSession();
+
+                if (!session.data) {
+                    window.location.href = '/signup-v2.html';
+                    return;
+                }
+
+                const user = session.data.user;
+                wizardData.user = user;
+
+                // Update user info bar
+                document.getElementById('user-name').textContent = user.name || 'User';
+                document.getElementById('user-email').textContent = user.email || '';
+                document.getElementById('user-avatar').textContent = (user.name || 'U').charAt(0).toUpperCase();
+
+                // Pre-fill form fields
+                if (user.name) {
+                    const names = user.name.split(' ');
+                    document.getElementById('first-name').value = names[0] || '';
+                    document.getElementById('last-name').value = names.slice(1).join(' ') || '';
+                }
+                document.getElementById('email').value = user.email || '';
+            } catch (error) {
+                console.error('Failed to load user info:', error);
+                window.location.href = '/signup-v2.html';
+            }
+        }
+
+        function nextStep(step) {
+            // Validate current step before proceeding
+            if (!validateCurrentStep()) {
+                return;
+            }
+
+            // Hide current step
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            document.getElementById(`step-indicator-${currentStep}`).classList.remove('active');
+            document.getElementById(`step-indicator-${currentStep}`).classList.add('completed');
+
+            // Show next step
+            currentStep = step;
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            document.getElementById(`step-indicator-${currentStep}`).classList.add('active');
+
+            // Update progress
+            updateProgress();
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function prevStep(step) {
+            // Hide current step
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            document.getElementById(`step-indicator-${currentStep}`).classList.remove('active');
+
+            // Show previous step
+            currentStep = step;
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            document.getElementById(`step-indicator-${currentStep}`).classList.add('active');
+            document.getElementById(`step-indicator-${currentStep}`).classList.remove('completed');
+
+            // Update progress
+            updateProgress();
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateProgress() {
+            const percentage = ((currentStep - 1) / 6) * 100;
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+            document.getElementById('progress-percentage').textContent = `${Math.round(percentage)}%`;
+        }
+
+        function validateCurrentStep() {
+            if (currentStep === 1) {
+                const firstName = document.getElementById('first-name').value.trim();
+                const lastName = document.getElementById('last-name').value.trim();
+                const company = document.getElementById('company-name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+
+                if (!firstName || !lastName || !company || !email || !phone) {
+                    alert('Please fill in all required fields');
+                    return false;
+                }
+
+                wizardData.user.firstName = firstName;
+                wizardData.user.lastName = lastName;
+                wizardData.user.company = company;
+                wizardData.user.email = email;
+                wizardData.user.phone = phone;
+            }
+
+            return true;
+        }
+
+        function selectIntegration(type, name) {
+            // Remove selected class from all cards in this category
+            const category = type === 'payment' ? 'payment' : type;
+            const cards = document.querySelectorAll(`[onclick*="'${category}'"]`);
+            cards.forEach(card => card.classList.remove('selected'));
+
+            // Add selected class to clicked card
+            event.currentTarget.classList.add('selected');
+
+            // Update wizard data
+            wizardData.integrations[type] = name;
+
+            // Show TilliPay benefits if selected
+            if (type === 'payment') {
+                const benefits = document.getElementById('tillipay-benefits');
+                if (name === 'tillipay') {
+                    benefits.classList.remove('hidden');
+                } else {
+                    benefits.classList.add('hidden');
+                }
+            }
+
+            console.log('Selected integration:', { type, name });
+        }
+
+        function importContacts() {
+            // Simulate contact import
+            const button = event.currentTarget;
+            button.disabled = true;
+            button.innerHTML = '<span class="spinner"></span> Importing...';
+
+            setTimeout(() => {
+                wizardData.contacts = 247;
+                document.getElementById('contact-count').textContent = wizardData.contacts;
+                document.getElementById('contacts-preview').classList.remove('hidden');
+
+                button.innerHTML = '<span>✅</span> Contacts Imported!';
+                button.style.background = '#10b981';
+
+                console.log('Imported contacts:', wizardData.contacts);
+            }, 2000);
+        }
+
+        function sendNudges() {
+            // Show sending state
+            document.getElementById('nudge-sending').classList.remove('hidden');
+            event.currentTarget.disabled = true;
+
+            // Get selected channels
+            const channels = [];
+            if (document.getElementById('channel-email').checked) channels.push('email');
+            if (document.getElementById('channel-sms').checked) channels.push('sms');
+
+            wizardData.channels = channels;
+
+            // Simulate sending nudges
+            setTimeout(() => {
+                document.getElementById('nudge-sending').classList.add('hidden');
+                document.getElementById('btn-to-success').classList.remove('hidden');
+
+                alert(`🎉 Success! Sent ${wizardData.invoices} payment reminders via ${channels.join(' and ')}!`);
+
+                console.log('Sent nudges:', {
+                    invoices: wizardData.invoices,
+                    channels,
+                    total: wizardData.totalOutstanding
+                });
+
+                // Auto-advance to success after 2 seconds
+                setTimeout(() => {
+                    nextStep(7);
+                }, 2000);
+            }, 3000);
+        }
+
+        function goToDashboard() {
+            // TODO: Redirect to actual Tilli dashboard
+            window.location.href = 'http://localhost:4200';
+        }
+
+        // Log wizard data for debugging
+        console.log('J.A.R.V.I.S. Onboarding Wizard initialized');
+        console.log('Wizard data:', wizardData);
+    </script>
+</body>
+</html>

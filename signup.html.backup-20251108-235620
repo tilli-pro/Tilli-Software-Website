@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up for Tilli Products | Nudge, tilliPay, tilliX, tilliArc, XDEX</title>
+    <meta name="description" content="Sign up for Tilli products - Nudge communications, tilliPay payments, tilliX portal, tilliArc archiving, XDEX data exchange. Start your free trial today.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: #FFFFFF;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .signup-container {
+            max-width: 900px;
+            margin: 60px auto 40px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signup-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            animation: cardFadeIn 0.6s ease-out;
+        }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .signup-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #4099FF;
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            margin-bottom: 2rem;
+            padding: 0 0 2rem 0;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .step.completed .step-number {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .step.active .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .step-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .step.active .step-label {
+            color: #667eea;
+        }
+
+        .step.completed .step-label {
+            color: #10b981;
+        }
+
+        .step-connector {
+            width: 60px;
+            height: 2px;
+            background: #e5e7eb;
+            margin: 0 1rem;
+        }
+
+        .step.completed .step-connector {
+            background: linear-gradient(90deg, #10b981 0%, #e5e7eb 100%);
+        }
+
+        .step:last-child .step-connector {
+            display: none;
+        }
+
+        /* Plan Summary Card */
+        .plan-summary {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+            border: 2px solid #667eea;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .plan-summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .plan-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .plan-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .plan-details {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .plan-detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .plan-detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .plan-detail-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .plan-detail-value {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .free-trial-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+        .benefit-item svg {
+            width: 16px;
+            height: 16px;
+            color: #10b981;
+        }
+
+        .signup-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .signup-header h1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .signup-header p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            color: #1f2937;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .form-section h3 i {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1f2937;
+            font-weight: 600;
+            margin-bottom: 0.625rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.01em;
+        }
+
+        .form-group label .required {
+            color: #ef4444;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1.125rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #fafbfc;
+            font-family: inherit;
+        }
+
+        .form-group input:hover,
+        .form-group select:hover {
+            border-color: #cbd5e1;
+            background: #ffffff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            background: #ffffff;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group input.error {
+            border-color: #ef4444;
+        }
+
+        .form-group .helper-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        .form-group .error-text {
+            font-size: 0.875rem;
+            color: #ef4444;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group input.error + .error-text {
+            display: block;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .product-checkbox {
+            position: relative;
+        }
+
+        .product-checkbox input[type="checkbox"],
+        .product-checkbox input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .product-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.75rem 1.25rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #fafbfc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #4099FF;
+            transform: scaleX(0);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-label:hover {
+            border-color: #93c5fd;
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(64, 153, 255, 0.15);
+        }
+
+        .product-checkbox input[type="checkbox"]:checked + .product-label,
+        .product-checkbox input[type="radio"]:checked + .product-label {
+            border-color: #4099FF;
+            background: #eff6ff;
+            box-shadow: 0 0 0 3px rgba(64, 153, 255, 0.1);
+        }
+
+        .product-checkbox input[type="checkbox"]:checked + .product-label::before,
+        .product-checkbox input[type="radio"]:checked + .product-label::before {
+            transform: scaleX(1);
+        }
+
+        .product-label i {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: #4099FF;
+            
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .product-label .product-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-label .product-desc {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        .product-checkbox input[type="checkbox"]:checked + .product-label .checkmark,
+        .product-checkbox input[type="radio"]:checked + .product-label .checkmark {
+            display: block;
+        }
+
+        .checkmark {
+            display: none;
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #5B9EFF;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.75rem;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: #d4edda;
+            color: #155724;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .verified-badge i {
+            font-size: 0.875rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .alert {
+            padding: 1.25rem 1.5rem;
+            border-radius: 14px;
+            margin-bottom: 1.5rem;
+            display: none;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert.success {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #10b981;
+            color: #155724;
+        }
+
+        .alert.success i {
+            color: #10b981;
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .alert.error {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 2px solid #ef4444;
+            color: #991b1b;
+        }
+
+        .alert.error i {
+            color: #ef4444;
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .alert.show {
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .signup-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="tilli-logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="valuebasedpricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="calculator.html" class="btn-secondary">Calculate ROI</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="signup-container">
+        <div class="signup-card">
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb">
+                <div class="steps">
+                    <div class="step completed">
+                        <div class="step-number">✓</div>
+                        <div class="step-label">Configure</div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="step completed">
+                        <div class="step-number">✓</div>
+                        <div class="step-label">Review Plan</div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Sign Up</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="signup-header">
+                <h1>Start Your Free Trial</h1>
+                <p>Sign up for Tilli products and transform your billing and payment operations</p>
+            </div>
+
+            <!-- Plan Summary Card (from wizard) -->
+            <div id="plan-summary-container"></div>
+
+            <div id="alert-container"></div>
+
+            <form id="signup-form">
+                <!-- OAuth Sign Up Options -->
+                <div class="form-section" style="text-align: center;">
+                    <h3 style="margin-bottom: 1.5rem;"><i class="fas fa-bolt"></i> Quick Sign Up</h3>
+
+                    <!-- Business OAuth Buttons -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <p style="font-weight: 600; font-size: 0.9rem; color: #1f2937; margin-bottom: 1rem;">Sign up with your business tools:</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 1rem;">
+                            <button type="button" id="oauth-quickbooks" class="oauth-btn" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1rem; border: 2px solid #e5e7eb; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 0.875rem; transition: all 0.2s;">
+                                <i class="fas fa-book" style="color: #2CA01C;"></i> QuickBooks
+                            </button>
+                            <button type="button" id="oauth-salesforce" class="oauth-btn" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1rem; border: 2px solid #e5e7eb; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 0.875rem; transition: all 0.2s;">
+                                <i class="fab fa-salesforce" style="color: #00A1E0;"></i> Salesforce
+                            </button>
+                            <button type="button" id="oauth-hubspot" class="oauth-btn" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1rem; border: 2px solid #e5e7eb; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 0.875rem; transition: all 0.2s;">
+                                <i class="fas fa-hubspot" style="color: #FF7A59;"></i> HubSpot
+                            </button>
+                            <button type="button" id="oauth-shopify" class="oauth-btn" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1rem; border: 2px solid #e5e7eb; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 0.875rem; transition: all 0.2s;">
+                                <i class="fab fa-shopify" style="color: #96BF48;"></i> Shopify
+                            </button>
+                        </div>
+                        <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem;">
+                            <i class="fas fa-info-circle"></i> Automatically import your customers and get started faster
+                        </p>
+                    </div>
+
+                    <!-- Social OAuth Buttons -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <p style="font-weight: 600; font-size: 0.9rem; color: #1f2937; margin-bottom: 1rem;">Or sign up with:</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem;">
+                            <button type="button" id="oauth-google" class="oauth-btn" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1rem; border: 2px solid #e5e7eb; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 0.875rem; transition: all 0.2s;">
+                                <i class="fab fa-google" style="color: #EA4335;"></i> Google
+                            </button>
+                            <button type="button" id="oauth-microsoft" class="oauth-btn" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1rem; border: 2px solid #e5e7eb; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 0.875rem; transition: all 0.2s;">
+                                <i class="fab fa-microsoft" style="color: #00A4EF;"></i> Microsoft
+                            </button>
+                            <button type="button" id="oauth-github" class="oauth-btn" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1rem; border: 2px solid #e5e7eb; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 0.875rem; transition: all 0.2s;">
+                                <i class="fab fa-github" style="color: #181717;"></i> GitHub
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Passwordless Option -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <p style="font-weight: 600; font-size: 0.9rem; color: #1f2937; margin-bottom: 1rem;">Prefer no password?</p>
+                        <button type="button" id="passwordless-btn" class="oauth-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border: 2px solid #4099FF; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 0.875rem; color: #4099FF; transition: all 0.2s;">
+                            <i class="fas fa-envelope"></i> Sign up with email (no password)
+                        </button>
+                        <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem;">
+                            We'll send you a magic link to sign in
+                        </p>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0;">
+                        <div style="flex: 1; height: 1px; background: #e5e7eb;"></div>
+                        <span style="font-size: 0.875rem; color: #6b7280; font-weight: 500;">Or fill out the form below</span>
+                        <div style="flex: 1; height: 1px; background: #e5e7eb;"></div>
+                    </div>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Your Information</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="John">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">
+                                Work Email Address <span class="required">*</span>
+                                <span id="email-verified-badge" class="verified-badge" style="display: none;">
+                                    <i class="fas fa-check-circle"></i> Verified
+                                </span>
+                            </label>
+                            <input type="email" id="email" name="email" required placeholder="john.doe@company.com">
+                            <span class="helper-text">Use your company email (not gmail, yahoo, etc.)</span>
+                            <span class="error-text">Please use a company email address</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">
+                                Phone Number <span class="required">*</span>
+                                <span id="phone-verified-badge" class="verified-badge" style="display: none;">
+                                    <i class="fas fa-check-circle"></i> Verified
+                                </span>
+                            </label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-building"></i> Company Information</h3>
+
+                    <div class="form-group">
+                        <label for="companyName">Company Name <span class="required">*</span></label>
+                        <input type="text" id="companyName" name="companyName" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="industry">Industry <span class="required">*</span></label>
+                            <select id="industry" name="industry" required>
+                                <option value="">Select your industry</option>
+                                <option value="banking">Banking and Finance</option>
+                                <option value="education">Education and Universities</option>
+                                <option value="gaming">Gaming Developers</option>
+                                <option value="information-technology">Information Technology</option>
+                                <option value="insurance">Insurance</option>
+                                <option value="media">Media and Entertainment</option>
+                                <option value="memberships">Memberships</option>
+                                <option value="public-sector">Public Sector</option>
+                                <option value="rentals">Rentals and Leases</option>
+                                <option value="saas-billing">SaaS Billing</option>
+                                <option value="telecom">Telecommunications</option>
+                                <option value="utilities">Utilities</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="companySize">Company Size <span class="required">*</span></label>
+                            <select id="companySize" name="companySize" required>
+                                <option value="">Select company size</option>
+                                <option value="1-10">1-10 employees</option>
+                                <option value="11-50">11-50 employees</option>
+                                <option value="51-200">51-200 employees</option>
+                                <option value="201-500">201-500 employees</option>
+                                <option value="501-1000">501-1,000 employees</option>
+                                <option value="1001+">1,001+ employees</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password Section -->
+                <div class="form-section">
+                    <h3><i class="fas fa-lock"></i> Create Password</h3>
+                    <p class="helper-text" style="margin-top: -0.5rem; margin-bottom: 1rem;">Choose a strong password for your Tilli accounts</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password <span class="required">*</span></label>
+                            <input type="password" id="password" name="password" required
+                                   minlength="8" placeholder="Enter password">
+                            <div class="password-requirements" style="margin-top: 0.75rem; padding: 1rem; background: #f9fafb; border-radius: 10px; border: 1px solid #e5e7eb;">
+                                <p style="margin: 0 0 0.5rem 0; font-weight: 600; font-size: 0.8rem; color: #374151;">Password must contain:</p>
+                                <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 0.375rem;">
+                                    <li id="req-length" style="font-size: 0.8rem; transition: all 0.2s; display: flex; align-items: center; gap: 0.375rem;">
+                                        <span style="font-weight: 700;">✓</span> 8+ characters
+                                    </li>
+                                    <li id="req-uppercase" style="font-size: 0.8rem; transition: all 0.2s; display: flex; align-items: center; gap: 0.375rem;">
+                                        <span style="font-weight: 700;">✓</span> Uppercase letter
+                                    </li>
+                                    <li id="req-lowercase" style="font-size: 0.8rem; transition: all 0.2s; display: flex; align-items: center; gap: 0.375rem;">
+                                        <span style="font-weight: 700;">✓</span> Lowercase letter
+                                    </li>
+                                    <li id="req-number" style="font-size: 0.8rem; transition: all 0.2s; display: flex; align-items: center; gap: 0.375rem;">
+                                        <span style="font-weight: 700;">✓</span> Number
+                                    </li>
+                                    <li id="req-special" style="font-size: 0.8rem; transition: all 0.2s; display: flex; align-items: center; gap: 0.375rem;">
+                                        <span style="font-weight: 700;">✓</span> Special character (!@#$)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required
+                                   placeholder="Re-enter password">
+                            <div id="password-match-error" style="display: none; margin-top: 0.5rem; color: #ef4444; font-size: 0.875rem;">
+                                <i class="fas fa-exclamation-circle"></i> Passwords do not match
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connector/Integration Selection -->
+                <div class="form-section">
+                    <h3><i class="fas fa-plug"></i> System Integrations (Optional)</h3>
+                    <p class="helper-text" style="margin-top: -0.5rem; margin-bottom: 1rem;">Select the systems you'd like to integrate with Tilli</p>
+
+                    <div style="display: grid; gap: 1.5rem;">
+                        <!-- CRM Connectors -->
+                        <div>
+                            <label style="display: block; font-weight: 600; color: #1f2937; margin-bottom: 0.75rem; font-size: 0.9rem;">
+                                CRM System <span style="font-weight: 400; color: #6b7280; font-size: 0.8rem;">(Select one)</span>
+                            </label>
+                            <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-crm-none" name="connector-crm" value="" checked>
+                                    <label for="connector-crm-none" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">None</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-salesforce" name="connector-crm" value="salesforce">
+                                    <label for="connector-salesforce" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Salesforce</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-hubspot" name="connector-crm" value="hubspot">
+                                    <label for="connector-hubspot" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">HubSpot</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-zoho" name="connector-crm" value="zoho">
+                                    <label for="connector-zoho" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Zoho CRM</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-dynamics" name="connector-crm" value="dynamics">
+                                    <label for="connector-dynamics" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">MS Dynamics</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ERP Connectors -->
+                        <div>
+                            <label style="display: block; font-weight: 600; color: #1f2937; margin-bottom: 0.75rem; font-size: 0.9rem;">
+                                ERP System <span style="font-weight: 400; color: #6b7280; font-size: 0.8rem;">(Select one)</span>
+                            </label>
+                            <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-erp-none" name="connector-erp" value="" checked>
+                                    <label for="connector-erp-none" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">None</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-sap" name="connector-erp" value="sap">
+                                    <label for="connector-sap" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">SAP</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-oracle" name="connector-erp" value="oracle">
+                                    <label for="connector-oracle" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Oracle ERP</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-netsuite" name="connector-erp" value="netsuite">
+                                    <label for="connector-netsuite" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">NetSuite</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-dynamics365" name="connector-erp" value="dynamics365">
+                                    <label for="connector-dynamics365" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Dynamics 365</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accounting Connectors -->
+                        <div>
+                            <label style="display: block; font-weight: 600; color: #1f2937; margin-bottom: 0.75rem; font-size: 0.9rem;">
+                                Accounting System <span style="font-weight: 400; color: #6b7280; font-size: 0.8rem;">(Select one)</span>
+                            </label>
+                            <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-accounting-none" name="connector-accounting" value="" checked>
+                                    <label for="connector-accounting-none" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">None</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-quickbooks" name="connector-accounting" value="quickbooks">
+                                    <label for="connector-quickbooks" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">QuickBooks</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-xero" name="connector-accounting" value="xero">
+                                    <label for="connector-xero" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Xero</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-sage" name="connector-accounting" value="sage">
+                                    <label for="connector-sage" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">Sage</div>
+                                    </label>
+                                </div>
+                                <div class="product-checkbox">
+                                    <input type="radio" id="connector-freshbooks" name="connector-accounting" value="freshbooks">
+                                    <label for="connector-freshbooks" class="product-label" style="padding: 1.25rem 1rem;">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        <div class="product-name" style="font-size: 0.875rem;">FreshBooks</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Selection -->
+                <div class="form-section">
+                    <h3><i class="fas fa-check-square"></i> Select Products</h3>
+                    <p class="helper-text" style="margin-top: -0.5rem; margin-bottom: 1rem;">Choose one or more products to get started</p>
+
+                    <div class="product-grid">
+                        <div class="product-checkbox">
+                            <input type="checkbox" id="product-nudge" name="products" value="nudge">
+                            <label for="product-nudge" class="product-label">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                                <i class="fas fa-comment-dots"></i>
+                                <div class="product-name">Nudge</div>
+                                <div class="product-desc">Communications Platform</div>
+                            </label>
+                        </div>
+
+                        <div class="product-checkbox">
+                            <input type="checkbox" id="product-tillipay" name="products" value="tillipay">
+                            <label for="product-tillipay" class="product-label">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                                <i class="fas fa-credit-card"></i>
+                                <div class="product-name">tilliPay</div>
+                                <div class="product-desc">Payment Processing</div>
+                            </label>
+                        </div>
+
+                        <div class="product-checkbox">
+                            <input type="checkbox" id="product-tillix" name="products" value="tillix">
+                            <label for="product-tillix" class="product-label">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                                <i class="fas fa-desktop"></i>
+                                <div class="product-name">tilliX</div>
+                                <div class="product-desc">Customer Portal</div>
+                            </label>
+                        </div>
+
+                        <div class="product-checkbox">
+                            <input type="checkbox" id="product-tilliarc" name="products" value="tilliarc">
+                            <label for="product-tilliarc" class="product-label">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                                <i class="fas fa-archive"></i>
+                                <div class="product-name">tilliArc</div>
+                                <div class="product-desc">Document Archiving</div>
+                            </label>
+                        </div>
+
+                        <div class="product-checkbox">
+                            <input type="checkbox" id="product-xdex" name="products" value="xdex">
+                            <label for="product-xdex" class="product-label">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                                <i class="fas fa-network-wired"></i>
+                                <div class="product-name">XDEX</div>
+                                <div class="product-desc">Data Exchange Platform</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-rocket" style="margin-right: 0.5rem;"></i>
+                    Start Free Trial
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Commercial email domains to block
+        const CONSUMER_EMAIL_DOMAINS = [
+            'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com',
+            'icloud.com', 'mail.com', 'protonmail.com', 'yandex.com', 'zoho.com'
+        ];
+
+        // Plan definitions (matching wizard)
+        const PLANS = {
+            trial: { name: 'Trial', price: 0, tokens: 10000, description: 'First month only' },
+            starter29: { name: 'Starter', price: 29, tokens: 5000, description: '~1,500 SMS or 5,000 emails' },
+            starter49: { name: 'Growth', price: 49, tokens: 10000, description: '~3,000 SMS or 10,000 emails' },
+            professional: { name: 'Professional', price: 199, tokens: 50000, description: '~15,000 SMS or 50,000 emails' },
+            enterprise: { name: 'Enterprise', price: 499, tokens: 150000, description: '~50,000 SMS or 150,000 emails' },
+            platinum: { name: 'Platinum', price: 1000, tokens: 300000, description: '~100,000 SMS or 300,000 emails' }
+        };
+
+        function recommendPlan(totalTokens) {
+            if (totalTokens <= 5000) return 'starter29';
+            if (totalTokens <= 10000) return 'starter49';
+            if (totalTokens <= 50000) return 'professional';
+            if (totalTokens <= 150000) return 'enterprise';
+            return 'platinum';
+        }
+
+        // All DOM-dependent code wrapped in DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load wizard configuration if available
+            const config = JSON.parse(sessionStorage.getItem('tilliConfig') || '{}');
+
+            if (config.totalTokens && config.totalTokens > 0) {
+                // Display plan summary from wizard
+                // Use manually selected plan if available, otherwise calculate based on tokens
+                const recommendedPlanKey = config.recommendedPlan || recommendPlan(config.totalTokens);
+                const recommendedPlan = PLANS[recommendedPlanKey];
+
+                const planSummaryHTML = `
+                    <div class="plan-summary">
+                        <div class="plan-summary-header">
+                            <div class="plan-name">${recommendedPlan.name} Plan</div>
+                            <div class="plan-price">$${recommendedPlan.price}<span style="font-size: 1rem; font-weight: 600;">/mo</span></div>
+                        </div>
+
+                        <div class="plan-details">
+                            <div class="plan-detail-row">
+                                <span class="plan-detail-label">Monthly Tokens</span>
+                                <span class="plan-detail-value">${config.totalTokens.toLocaleString()} tokens needed</span>
+                            </div>
+                            <div class="plan-detail-row">
+                                <span class="plan-detail-label">Services Selected</span>
+                                <span class="plan-detail-value">${config.services.length} services</span>
+                            </div>
+                            <div class="plan-detail-row">
+                                <span class="plan-detail-label">Monthly Savings</span>
+                                <span class="plan-detail-value" style="color: #10b981;">$${Math.round(config.totalSavings)}/mo</span>
+                            </div>
+                            <div class="plan-detail-row">
+                                <span class="plan-detail-label">Annual Savings</span>
+                                <span class="plan-detail-value" style="color: #10b981;">$${Math.round(config.totalSavings * 12).toLocaleString()}/year</span>
+                            </div>
+                        </div>
+
+                        <div class="free-trial-badge">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            First 10,000 Tokens FREE This Month
+                        </div>
+
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                No credit card required
+                            </div>
+                            <div class="benefit-item">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Cancel anytime
+                            </div>
+                            <div class="benefit-item">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Setup in minutes
+                            </div>
+                            <div class="benefit-item">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                24/7 support
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('plan-summary-container').innerHTML = planSummaryHTML;
+            }
+
+            // Pre-fill from URL parameters (highest priority)
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlEmail = urlParams.get('email');
+            const urlPhone = urlParams.get('phone');
+            const urlFirstName = urlParams.get('firstName') || urlParams.get('firstname');
+            const urlLastName = urlParams.get('lastName') || urlParams.get('lastname');
+            const urlCompany = urlParams.get('company') || urlParams.get('companyName');
+
+            // Pre-fill from localStorage (medium priority - from demos/calculators)
+            const storedEmail = localStorage.getItem('demo_email');
+            const storedPhone = localStorage.getItem('demo_phone');
+            const storedFirstName = localStorage.getItem('demo_firstName');
+            const storedLastName = localStorage.getItem('demo_lastName');
+            const storedCompany = localStorage.getItem('demo_company');
+
+            // Pre-fill from session storage (lowest priority - from OTP verification)
+            const verifiedEmail = sessionStorage.getItem('verified_email');
+            const verifiedPhone = sessionStorage.getItem('verified_phone');
+
+            // Email - URL params take precedence over localStorage over sessionStorage
+            const emailValue = urlEmail || storedEmail || verifiedEmail;
+            if (emailValue) {
+                document.getElementById('email').value = emailValue;
+                if (verifiedEmail && emailValue === verifiedEmail) {
+                    document.getElementById('email-verified-badge').style.display = 'inline-flex';
+                }
+            }
+
+            // Phone - URL params take precedence over localStorage over sessionStorage
+            const phoneValue = urlPhone || storedPhone || verifiedPhone;
+            if (phoneValue) {
+                document.getElementById('phone').value = phoneValue;
+                if (verifiedPhone && phoneValue === verifiedPhone) {
+                    document.getElementById('phone-verified-badge').style.display = 'inline-flex';
+                }
+            }
+
+            // First Name
+            const firstNameValue = urlFirstName || storedFirstName;
+            if (firstNameValue) {
+                document.getElementById('firstName').value = firstNameValue;
+            }
+
+            // Last Name
+            const lastNameValue = urlLastName || storedLastName;
+            if (lastNameValue) {
+                document.getElementById('lastName').value = lastNameValue;
+            }
+
+            // Company Name
+            const companyValue = urlCompany || storedCompany;
+            if (companyValue) {
+                document.getElementById('companyName').value = companyValue;
+            }
+
+            // Clear localStorage after pre-filling (one-time use)
+            if (storedEmail || storedPhone || storedFirstName || storedLastName || storedCompany) {
+                localStorage.removeItem('demo_email');
+                localStorage.removeItem('demo_phone');
+                localStorage.removeItem('demo_firstName');
+                localStorage.removeItem('demo_lastName');
+                localStorage.removeItem('demo_company');
+            }
+
+            // Validate commercial email
+            document.getElementById('email').addEventListener('blur', function() {
+                const email = this.value.toLowerCase();
+                const domain = email.split('@')[1];
+
+                if (domain && CONSUMER_EMAIL_DOMAINS.includes(domain)) {
+                    this.classList.add('error');
+                    return false;
+                } else {
+                    this.classList.remove('error');
+                    return true;
+                }
+            });
+
+            // Password validation with real-time feedback
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+
+            function validatePassword(password) {
+                const requirements = {
+                    length: password.length >= 8,
+                    uppercase: /[A-Z]/.test(password),
+                    lowercase: /[a-z]/.test(password),
+                    number: /[0-9]/.test(password),
+                    special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)
+                };
+
+                // Update UI for each requirement
+                document.getElementById('req-length').style.color = requirements.length ? '#10b981' : '#6b7280';
+                document.getElementById('req-uppercase').style.color = requirements.uppercase ? '#10b981' : '#6b7280';
+                document.getElementById('req-lowercase').style.color = requirements.lowercase ? '#10b981' : '#6b7280';
+                document.getElementById('req-number').style.color = requirements.number ? '#10b981' : '#6b7280';
+                document.getElementById('req-special').style.color = requirements.special ? '#10b981' : '#6b7280';
+
+                return Object.values(requirements).every(Boolean);
+            }
+
+            passwordInput.addEventListener('input', function() {
+                validatePassword(this.value);
+            });
+
+            confirmPasswordInput.addEventListener('input', function() {
+                const matchError = document.getElementById('password-match-error');
+                if (this.value && this.value !== passwordInput.value) {
+                    matchError.style.display = 'block';
+                } else {
+                    matchError.style.display = 'none';
+                }
+            });
+
+            // OAuth button handlers
+            const AUTH_SERVICE_URL = 'http://localhost:3100';
+
+            // QuickBooks OAuth
+            document.getElementById('oauth-quickbooks').addEventListener('click', function() {
+                console.log('[OAUTH] QuickBooks login initiated');
+                window.location.href = `${AUTH_SERVICE_URL}/api/auth/quickbooks/signin`;
+            });
+
+            // Salesforce OAuth
+            document.getElementById('oauth-salesforce').addEventListener('click', function() {
+                console.log('[OAUTH] Salesforce login initiated');
+                window.location.href = `${AUTH_SERVICE_URL}/api/auth/salesforce/signin`;
+            });
+
+            // HubSpot OAuth
+            document.getElementById('oauth-hubspot').addEventListener('click', function() {
+                console.log('[OAUTH] HubSpot login initiated');
+                window.location.href = `${AUTH_SERVICE_URL}/api/auth/hubspot/signin`;
+            });
+
+            // Shopify OAuth
+            document.getElementById('oauth-shopify').addEventListener('click', function() {
+                const shopDomain = prompt('Enter your Shopify store domain (e.g., mystore.myshopify.com):');
+                if (shopDomain) {
+                    console.log('[OAUTH] Shopify login initiated for:', shopDomain);
+                    window.location.href = `${AUTH_SERVICE_URL}/api/auth/shopify/signin?shop=${encodeURIComponent(shopDomain)}`;
+                }
+            });
+
+            // Google OAuth
+            document.getElementById('oauth-google').addEventListener('click', function() {
+                console.log('[OAUTH] Google login initiated');
+                window.location.href = `${AUTH_SERVICE_URL}/api/auth/sign-in/social/google`;
+            });
+
+            // Microsoft OAuth
+            document.getElementById('oauth-microsoft').addEventListener('click', function() {
+                console.log('[OAUTH] Microsoft login initiated');
+                window.location.href = `${AUTH_SERVICE_URL}/api/auth/sign-in/social/microsoft`;
+            });
+
+            // GitHub OAuth
+            document.getElementById('oauth-github').addEventListener('click', function() {
+                console.log('[OAUTH] GitHub login initiated');
+                window.location.href = `${AUTH_SERVICE_URL}/api/auth/sign-in/social/github`;
+            });
+
+            // Passwordless signup
+            document.getElementById('passwordless-btn').addEventListener('click', async function() {
+                const email = prompt('Enter your email address:');
+
+                if (!email || !email.includes('@')) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+
+                console.log('[PASSWORDLESS] Initiating passwordless signup for:', email);
+
+                try {
+                    const response = await fetch(`${AUTH_SERVICE_URL}/api/auth/signup/passwordless`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            email: email,
+                            firstName: email.split('@')[0] || 'User',
+                            lastName: '',
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        showAlert('Check your email! We sent you a magic link to sign in.', 'success');
+
+                        // In development, show the magic link
+                        if (result.devMagicLink) {
+                            console.log('Magic Link:', result.devMagicLink);
+                            if (confirm('Development mode: Would you like to open the magic link now?')) {
+                                window.location.href = result.devMagicLink;
+                            }
+                        }
+                    } else {
+                        showAlert(result.error || 'Failed to send magic link', 'error');
+                    }
+                } catch (error) {
+                    console.error('[PASSWORDLESS] Error:', error);
+                    showAlert('Failed to send magic link. Please try again.', 'error');
+                }
+            });
+
+            // OAuth button hover effects
+            document.querySelectorAll('.oauth-btn').forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.borderColor = '#4099FF';
+                    this.style.boxShadow = '0 4px 6px rgba(64, 153, 255, 0.15)';
+                    this.style.transform = 'translateY(-2px)';
+                });
+                btn.addEventListener('mouseleave', function() {
+                    this.style.borderColor = '#e5e7eb';
+                    this.style.boxShadow = 'none';
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Form submission
+            document.getElementById('signup-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            console.log('[SIGNUP] Form submission started');
+
+            const submitBtn = this.querySelector('.submit-btn');
+            const alertContainer = document.getElementById('alert-container');
+
+            // Validate email
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.toLowerCase();
+            const domain = email.split('@')[1];
+            console.log('[SIGNUP] Validating email:', email, 'domain:', domain);
+
+            if (domain && CONSUMER_EMAIL_DOMAINS.includes(domain)) {
+                console.log('[SIGNUP] Email validation failed - consumer domain');
+                emailInput.classList.add('error');
+                showAlert('Please use your company email address, not a personal email.', 'error');
+                return;
+            }
+
+            // Validate password
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            console.log('[SIGNUP] Validating password requirements');
+
+            if (!validatePassword(password)) {
+                console.log('[SIGNUP] Password validation failed');
+                showAlert('Please ensure your password meets all requirements.', 'error');
+                document.getElementById('password').focus();
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                console.log('[SIGNUP] Password mismatch');
+                showAlert('Passwords do not match. Please re-enter your password.', 'error');
+                document.getElementById('confirmPassword').focus();
+                return;
+            }
+
+            // Get selected products
+            const selectedProducts = Array.from(document.querySelectorAll('input[name="products"]:checked'))
+                .map(cb => cb.value);
+            console.log('[SIGNUP] Selected products:', selectedProducts);
+
+            if (selectedProducts.length === 0) {
+                console.log('[SIGNUP] No products selected');
+                showAlert('Please select at least one product to sign up for.', 'error');
+                return;
+            }
+
+            // Get selected connectors (optional) - one per category
+            const selectedConnectors = {
+                crm: document.querySelector('input[name="connector-crm"]:checked')?.value || null,
+                erp: document.querySelector('input[name="connector-erp"]:checked')?.value || null,
+                accounting: document.querySelector('input[name="connector-accounting"]:checked')?.value || null
+            };
+            // Filter out empty values
+            const connectors = Object.entries(selectedConnectors)
+                .filter(([key, value]) => value && value !== '')
+                .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {});
+            console.log('[SIGNUP] Selected connectors:', connectors);
+
+            // Get wizard configuration if available
+            const wizardConfig = JSON.parse(sessionStorage.getItem('tilliConfig') || '{}');
+            let recommendedPlan = null;
+            if (wizardConfig.totalTokens && wizardConfig.totalTokens > 0) {
+                const planKey = recommendPlan(wizardConfig.totalTokens);
+                recommendedPlan = {
+                    planKey: planKey,
+                    planName: PLANS[planKey].name,
+                    planPrice: PLANS[planKey].price,
+                    totalTokens: wizardConfig.totalTokens,
+                    services: wizardConfig.services,
+                    monthlySavings: wizardConfig.totalSavings,
+                    annualSavings: wizardConfig.totalSavings * 12
+                };
+            }
+
+            // Collect form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                companyName: document.getElementById('companyName').value,
+                industry: document.getElementById('industry').value,
+                companySize: document.getElementById('companySize').value,
+                password: password,
+                products: selectedProducts,
+                connectors: connectors,
+                recommendedPlan: recommendedPlan,
+                source: recommendedPlan ? 'pricing_wizard' : 'website_signup',
+                timestamp: new Date().toISOString()
+            };
+
+            console.log('[SIGNUP] Form data collected:', { ...formData, password: '***' });
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i> Processing...';
+
+            try {
+                console.log('[SIGNUP] Sending to /api/signup...');
+
+                // Send to CRM (existing functionality)
+                const crmResponse = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                console.log('[SIGNUP] CRM Response status:', crmResponse.status);
+                const crmResult = await crmResponse.json();
+                console.log('[SIGNUP] CRM Response data:', crmResult);
+
+                if (!crmResult.success) {
+                    console.log('[SIGNUP] CRM signup failed:', crmResult.error);
+                    showAlert(crmResult.error || 'Something went wrong. Please try again.', 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-rocket" style="margin-right: 0.5rem;"></i> Start Free Trial';
+                    return;
+                }
+
+                // Store automation results for success page
+                if (crmResult.automations) {
+                    sessionStorage.setItem('signup_automations', JSON.stringify(crmResult.automations));
+                }
+
+                // Now create account in Nudge/tilliPay (if those products are selected)
+                const shouldCreateNudgeAccount = selectedProducts.some(p =>
+                    ['nudge', 'tillipay', 'tillix'].includes(p.toLowerCase())
+                );
+
+                if (shouldCreateNudgeAccount) {
+                    console.log('[SIGNUP] Creating unified Tilli account...');
+
+                    // Prepare data for Nudge onboarding API
+                    const nudgeSignupData = {
+                        email: formData.email,
+                        password: formData.password,
+                        firstName: formData.firstName,
+                        lastName: formData.lastName,
+                        phoneNumber: formData.phone,
+                        companyName: formData.companyName,
+                        industry: formData.industry,
+                        companySize: formData.companySize,
+                        selectedProducts: formData.products,
+                        monthlyVolume: recommendedPlan?.totalTokens || 5000,
+                        referralSource: 'tillisoftware.com',
+                        whiteLabel: 'tillisoftware.com'
+                    };
+
+                    try {
+                        // Call Nudge unified onboarding API
+                        // For local development: http://localhost:5000/api/v2/Onboarding/CreateAccount
+                        // For production: https://api.tillisoftware.com/api/v2/Onboarding/CreateAccount
+                        const nudgeApiUrl = window.location.hostname === 'localhost'
+                            ? 'http://localhost:5000/api/v2/Onboarding/CreateAccount'
+                            : 'https://api.tillisoftware.com/api/v2/Onboarding/CreateAccount';
+
+                        console.log('[SIGNUP] Calling Nudge API:', nudgeApiUrl);
+
+                        const nudgeResponse = await fetch(nudgeApiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            credentials: 'include', // Important for cookies
+                            body: JSON.stringify(nudgeSignupData)
+                        });
+
+                        console.log('[SIGNUP] Nudge API Response status:', nudgeResponse.status);
+                        const nudgeResult = await nudgeResponse.json();
+                        console.log('[SIGNUP] Nudge API Response data:', nudgeResult);
+
+                        if (nudgeResult.data && nudgeResult.data.success) {
+                            console.log('[SIGNUP] Nudge account created successfully!');
+                            console.log('[SIGNUP] Redirecting to:', nudgeResult.data.redirectUrl);
+
+                            // Show success message
+                            showAlert('Success! Your account has been created. Redirecting to your dashboard...', 'success');
+
+                            // Redirect to Nudge welcome page (auto-login)
+                            // The redirectUrl includes the JWT token for auto-login
+                            setTimeout(() => {
+                                window.location.href = nudgeResult.data.redirectUrl;
+                            }, 2000);
+                            return; // Exit here, no need to redirect to success page
+                        } else {
+                            console.log('[SIGNUP] Nudge account creation failed, using fallback');
+                            // Fallback: still redirect to success page if Nudge creation fails
+                        }
+                    } catch (nudgeError) {
+                        console.error('[SIGNUP] Nudge API error:', nudgeError);
+                        // Fallback: continue to success page even if Nudge fails
+                    }
+                }
+
+                // Default fallback: redirect to success page
+                console.log('[SIGNUP] Success! Redirecting to success page...');
+                showAlert('Success! Your account is being created. Check your email for next steps.', 'success');
+
+                setTimeout(() => {
+                    console.log('[SIGNUP] Redirecting now...');
+                    window.location.href = '/signup-success.html';
+                }, 2000);
+
+            } catch (error) {
+                console.error('[SIGNUP] Network error:', error);
+                showAlert('Network error. Please check your connection and try again.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-rocket" style="margin-right: 0.5rem;"></i> Start Free Trial';
+            }
+            });
+
+            function showAlert(message, type) {
+                const alertContainer = document.getElementById('alert-container');
+                alertContainer.innerHTML = `
+                    <div class="alert ${type} show">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                        ${message}
+                    </div>
+                `;
+
+                // Scroll to alert
+                alertContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+    </script>
+
+    <!-- Vercel Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

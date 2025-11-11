@@ -191,6 +191,12 @@ img, svg, video, canvas {
 
 .nav-menu a:hover {
     color: var(--primary-blue);
+
+.nav-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
 }
 
 .cta-button {

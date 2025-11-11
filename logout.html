@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - Till Software</title>
+</head>
+<body>
+    <h1>Logging out...</h1>
+    <script>
+        // Clear all cookies
+        document.cookie.split(";").forEach(function(c) {
+            document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+
+        // Clear localStorage
+        localStorage.clear();
+
+        // Clear sessionStorage
+        sessionStorage.clear();
+
+        // Sign out of Google
+        if (window.google && google.accounts && google.accounts.id) {
+            google.accounts.id.disableAutoSelect();
+        }
+
+        // Redirect to signup page after 1 second
+        setTimeout(() => {
+            window.location.href = '/signup.html';
+        }, 1000);
+    </script>
+</body>
+</html>

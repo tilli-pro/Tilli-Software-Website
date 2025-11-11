@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>Use Cases - Industry Solutions | Tilli</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        .hero { background: linear-gradient(135deg, #5B9EFF 0%, #4099FF 100%); color: white; padding: 100px 0; text-align: center; }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; }
+        .filter-bar { background: white; padding: 30px; border-radius: 12px; margin: 40px auto; box-shadow: 0 4px 20px rgba(0,0,0,0.1); max-width: 1200px; }
+        .filter-tabs { display: flex; gap: 20px; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; }
+        .filter-tab { padding: 12px 24px; cursor: pointer; border-bottom: 3px solid transparent; font-weight: 600; color: #64748b; }
+        .filter-tab.active { color: #5B9EFF; border-bottom-color: #5B9EFF; }
+        .use-case-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; padding: 40px 0; }
+        .use-case-card { background: white; padding: 24px; border-radius: 12px; border-left: 4px solid #5B9EFF; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.2s; }
+        .use-case-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+        .featured-card { background: linear-gradient(135deg, #fee2e2 0%, #fef2f2 100%); border-left-color: #dc2626; padding: 32px; }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-right: 8px; }
+        .tag-industry { background: #dbeafe; color: #1e40af; }
+        .tag-product { background: #d1fae5; color: #065f46; }
+        .search-box { width: 100%; padding: 12px 20px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+<header class="header">
+<nav class="nav">
+<div class="nav-container">
+<div class="logo">
+<a href="index.html"><img alt="Tilli" src="Images/22_tilli_logo_color.png" style="height: 40px;"/></a>
+</div>
+<ul class="nav-menu">
+<li><a href="index.html#products">Products</a></li>
+<li><a href="industries.html">Industries</a></li>
+<li><a href="use-cases.html">Use Cases</a></li>
+<li><a href="about.html">Company</a></li>
+<li><a href="valuebasedpricing.html">Pricing</a></li>
+<li><a href="press.html">Press</a></li>
+</ul>
+
+<div class="nav-actions"><a class="btn-outline" href="signin.html">Sign In</a> <a class="cta-button" href="signup.html">Sign Up</a></div></div>
+</nav>
+</header>
+<main style="margin-top: 80px;">
+<section class="hero">
+<div class="container">
+<h1>Explore Real-World Solutions</h1>
+<p style="font-size: 20px; opacity: 0.95;">Discover how Tilli powers billing, payments, and communications across industries</p>
+<div style="display: flex; gap: 40px; justify-content: center; margin-top: 40px;">
+<div><div style="font-size: 42px; font-weight: 700;">29</div><div>Use Cases</div></div>
+<div><div style="font-size: 42px; font-weight: 700;">5</div><div>Products</div></div>
+<div><div style="font-size: 42px; font-weight: 700;">8+</div><div>Industries</div></div>
+</div>
+</div>
+</section>
+<section style="padding: 60px 0; background: #f8fafc;">
+<div class="container">
+<div class="filter-bar">
+<input class="search-box" id="searchBox" placeholder="Search use cases..." type="text"/>
+<div id="filterStatus" style="color: #64748b; margin-top: 10px;"><span id="visibleCount">29</span> use cases available</div>
+</div>
+<div class="use-case-grid"><div class="use-case-card featured-card" style="grid-column: 1 / -1;">
+<div style="display: inline-block; background: #dc2626; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; margin-bottom: 12px;">FEATURED</div>
+<h3 style="font-size: 24px; margin-bottom: 12px;">Cyber Resilience &amp; Emergency Billing</h3>
+<p style="color: #475569; line-height: 1.7; margin-bottom: 16px;">
+                            Maintain customer billing operations during cyber incidents with Nudge's resilient customer intelligence engine. Ensures business continuity for critical infrastructure.
+                        </p>
+<div style="margin-bottom: 16px;">
+<span class="tag tag-industry">Utilities</span>
+<span class="tag tag-product">Nudge</span>
+<span class="tag tag-product">tilliArc</span>
+</div>
+<a href="cyber-resilience.html" style="color: #dc2626; font-weight: 600; text-decoration: none;">Explore Full Details →</a>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Account Changes</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Security alerts for changes to account details like name, billing address, email, or phone number for fraud prevention.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Appointment Scheduling</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Appointment confirmations and reminders for service visits with options to reschedule or cancel online.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">AutoPay Management</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Enrollment and management of automatic payments with optional cancel/modify options. Reduce payment friction.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">tilliPay</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">AutoPay Scheduled</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Confirmation messages when automatic payments are scheduled, with amount and date details for customer records.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Collections &amp; Dunning</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Automated escalation workflows for overdue accounts. Reduce DSO by 35% with personalized messaging.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Customer Surveys (CSAT/NPS)</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Post-interaction surveys to gather customer feedback on satisfaction and service quality with analytics dashboard.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Emergency Alerts</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Urgent notifications about emergency situations with multi-channel delivery for maximum reach.
+                        </p>
+<span class="tag tag-industry">Utilities</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">KYC Verification</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Customer identity verification requests for regulatory compliance with secure document upload and status tracking.
+                        </p>
+<span class="tag tag-industry">Financial Services</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Loyalty Programs</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Rewards points updates, special offers, and exclusive benefits for loyal customers with redemption options.
+                        </p>
+<span class="tag tag-industry">Retail</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Marketing Campaigns</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Targeted marketing and promotional campaigns with personalized offers based on customer usage patterns and preferences.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Move In / Move Out</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Welcome messages for new service addresses and final bill notifications for customers moving locations.
+                        </p>
+<span class="tag tag-industry">Utilities</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">New Invoice Notification</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Automated notifications when new invoices are generated, with bill presentment and 1-click payment options.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">On-Demand Payment URLs</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Secure, expirable URLs with customizable payment flows. Perfect for mobile field payments and e-signatures.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">tilliPay</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">One-Time Password (OTP)</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Secure one-time codes for transaction authentication and account changes with time-limited validity.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Outage Notifications</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Real-time alerts for service interruptions with expected resolution times. Segment by geography and service zone.
+                        </p>
+<span class="tag tag-industry">Utilities</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Paperless Billing</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Digital bill delivery with secure online access, reducing paper waste and enabling faster payment processing.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Payment Arrangements</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Self-service setup of payment plans for customers unable to pay bills in full with automated tracking.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">tilliX</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Payment Confirmation</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Instant receipt confirmation when payments are received and processed with transaction details and updated balance.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">tilliPay</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Payment Failed / Chargeback</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Immediate alerts when payments fail or chargebacks occur, with clear resolution steps and alternative payment options.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Payment Reminders</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Proactive reminders before invoice due dates with account summary and payment options to improve on-time payment rates.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Rate Change Alerts</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Advance notification of pricing changes with detailed explanations and projected impact on future bills.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Refund Notifications</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Confirmation of refund processing via electronic check or credit/debit card with transaction details and expected timing.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">tilliPay</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Regulatory Updates</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Important notifications about regulatory changes affecting service terms, privacy policies, or compliance requirements.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Service Order Management</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Real-time updates on service orders with options to cancel, confirm, or reschedule appointments.
+                        </p>
+<span class="tag tag-industry">Utilities</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Service Renewals</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Proactive reminders about service contract renewals with 1-click renewal options and updated terms review.
+                        </p>
+<span class="tag tag-industry">All Industries</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Turn-Off Notification</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Notification informing customers of impending service disconnection due to non-payment with payment options to avoid disruption.
+                        </p>
+<span class="tag tag-industry">Utilities</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Turn-On Confirmation</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Service activation confirmation with welcome messaging and account setup information for newly restored services.
+                        </p>
+<span class="tag tag-industry">Utilities</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Usage Alerts</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Real-time notifications when usage thresholds are reached to help customers manage consumption and costs.
+                        </p>
+<span class="tag tag-industry">Utilities</span>
+<span class="tag tag-product">Nudge</span>
+</div><div class="use-case-card">
+<h3 style="font-size: 18px; margin-bottom: 12px;">Weather &amp; Safety Alerts</h3>
+<p style="color: #64748b; line-height: 1.6; font-size: 14px; margin-bottom: 12px;">
+                            Severe weather warnings and safety advisories that could impact service delivery with preparation tips.
+                        </p>
+<span class="tag tag-industry">Utilities</span>
+<span class="tag tag-product">Nudge</span>
+</div></div>
+<div style="text-align: center; padding: 48px 0;">
+<p style="color: #64748b; font-size: 18px; margin-bottom: 24px;">Don't see your use case? We can build custom solutions.</p>
+<a href="contact.html" style="display: inline-flex; background: #5B9EFF; color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+                        Contact Us About Your Use Case
+                    </a>
+</div>
+</div>
+</section>
+</main><footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-main">
+<div class="footer-brand">
+<div class="footer-logo">
+<img alt="Tilli Logo" src="Images/22_Utilli_logo_white.png"/>
+</div>
+<p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
+<div class="newsletter">
+<input placeholder="Your email address" type="email"/>
+<button class="btn-primary">Subscribe</button>
+</div>
+</div>
+<div class="footer-links">
+<div class="footer-column">
+<h4>About</h4>
+<ul>
+<li><a href="about.html">About Us</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="press.html">Press</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Products</h4>
+<ul>
+<li><a href="nudge.html">Nudge</a></li>
+<li><a href="tillix.html">tilliX</a></li>
+<li><a href="tillipay.html">tilliPay</a></li>
+<li><a href="tilliarc.html">tilliArc</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Solutions</h4>
+<ul>
+<li><a href="industries.html">Utilities</a></li>
+<li><a href="industries.html">Healthcare</a></li>
+<li><a href="industries.html">Financial Services</a></li>
+<li><a href="industries.html">Education</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Developers</h4>
+<ul>
+<li><a href="developer.html">Documentation</a></li>
+<li><a href="developer.html">API Reference</a></li>
+<li><a href="developer.html">SDKs</a></li>
+<li><a href="developer.html">Community</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Resources</h4>
+<ul>
+<li><a href="calculator.html">ROI Calculator</a></li>
+<li><a href="demos.html">Demos</a></li>
+<li><a href="case-studies.html">Case Studies</a></li>
+<li><a href="blog.html">Blog</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Company</h4>
+<ul>
+<li><a href="about.html">Our Story</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="#">Partners</a></li>
+<li><a href="#">Security</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Legal</h4>
+<ul>
+<li><a href="privacy-policy/">Privacy Policy</a></li>
+<li><a href="terms-and-conditions/">Terms &amp; Conditions</a></li>
+<li><a href="anti-slavery-policy.html">Anti-Slavery Policy</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="social-links">
+<a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://x.com/tillisoftware" target="_blank"><i class="fab fa-x-twitter"></i></a>
+<a href="https://www.facebook.com/tillisoftware"><i class="fab fa-facebook"></i></a>
+<a href="https://www.youtube.com/@tillisoftware"><i class="fab fa-youtube"></i></a>
+</div>
+<div class="footer-legal">
+<p>© 2025 Tilli. All rights reserved.</p>
+<div class="legal-links">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
+</div>
+<div class="footer-contact">
+<h5>Headquarters</h5>
+<p>123 Business District<br/>Financial Center, FC 12345</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Real-time search functionality
+        const searchBox = document.getElementById('searchBox');
+        const useCaseCards = document.querySelectorAll('.use-case-card');
+        const visibleCount = document.getElementById('visibleCount');
+        
+        searchBox.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            let visibleCards = 0;
+            
+            useCaseCards.forEach(card => {
+                const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+                const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+                
+                const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm);
+                
+                if (matchesSearch) {
+                    card.style.display = 'block';
+                    visibleCards++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            visibleCount.textContent = visibleCards;
+        });
+    </script>
+<script src="script.js"></script>
+</body>
+</html>

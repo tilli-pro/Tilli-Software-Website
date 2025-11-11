@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Recommended Plan - Tilli</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Your Recommended Plan - Tilli</title>
+<link href="styles.css" rel="stylesheet"/>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -417,210 +418,231 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div class="logo">
-                    <a href="index.html" aria-label="Tilli Home">
-                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
-                    </a>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html#products">Products</a></li>
-                    <li><a href="industries.html">Industries</a></li>
-                    <li><a href="about.html">Company</a></li>
-                    <li><a href="valuebasedpricing.html">Pricing</a></li>
-                    <li><a href="press.html">Press</a></li>
-                </ul>
-                <a class="cta-button" href="signup.html">Sign Up</a>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
+<!-- Header -->
+<header class="header">
+<nav class="nav">
+<div class="nav-container">
+<div class="logo">
+<a aria-label="Tilli Home" href="index.html">
+<img alt="Tilli Logo" src="Images/22_tilli_logo_color.png" style="height: 40px; width: auto;"/>
+</a>
+</div>
+<ul class="nav-menu">
+<li><a href="#products">Products</a></li>
+<li><a href="industries.html">Industries</a></li>
+<li><a href="use-cases.html">Use Cases</a></li> <li><a href="about.html">Company</a></li>
+<li><a href="valuebasedpricing.html">Pricing</a></li>
+<li><a href="press.html">Press</a></li>
+</ul>
 
-    <div class="page-container">
-        <div class="container">
-        <!-- Breadcrumb -->
-        <div class="breadcrumb">
-            <div class="steps">
-                <div class="step completed">
-                    <div class="step-number">✓</div>
-                    <div class="step-label">Configure</div>
-                    <div class="step-connector"></div>
-                </div>
-                <div class="step active">
-                    <div class="step-number">2</div>
-                    <div class="step-label">Review & Plan</div>
-                    <div class="step-connector"></div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-label">Sign Up</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Content -->
-        <div class="content">
-            <h1>Your Personalized Plan</h1>
-            <p class="subtitle">Based on your selections, we recommend the perfect plan for you</p>
-
-            <!-- Configuration Summary -->
-            <div class="summary-section">
-                <h2>Your Configuration Summary</h2>
-                <div class="service-list" id="service-list"></div>
-
-                <div class="total-tokens">
-                    <div class="total-tokens-label">Total Monthly Tokens Needed</div>
-                    <div class="total-tokens-value" id="total-tokens">0</div>
-                </div>
-            </div>
-
-            <!-- Recommended Plan -->
-            <div class="recommended-plan" id="recommended-plan">
-                <div class="recommended-badge">✨ RECOMMENDED FOR YOU</div>
-
-                <div class="plan-name" id="plan-name">Professional Plan</div>
-                <div class="plan-price" id="plan-price">$199<span style="font-size: 1.5rem;">/mo</span></div>
-                <div class="plan-period">After free trial • Cancel anytime</div>
-
-                <div class="plan-features">
-                    <div class="feature">
-                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span id="feature-first-month"><strong>First Month:</strong> 10,000 FREE tokens</span>
-                    </div>
-                    <div class="feature">
-                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span id="feature-included"><strong>Then:</strong> 50,000 tokens/month included</span>
-                    </div>
-                    <div class="feature">
-                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span id="feature-coverage">Covers your <strong id="coverage-tokens">31,700</strong> tokens/month usage</span>
-                    </div>
-                    <div class="feature">
-                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span id="feature-buffer"><strong id="buffer-tokens">18,300</strong> tokens buffer for growth</span>
-                    </div>
-                    <div class="feature">
-                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>All services included (no hidden TCO costs!)</span>
-                    </div>
-                </div>
-
-                <div class="savings-highlight">
-                    <div class="savings-label">Your Monthly Savings vs Competitors</div>
-                    <div class="savings-amount" id="savings-amount">$3,001</div>
-                    <div class="savings-detail">That's <strong id="annual-savings">$36,012</strong> saved per year</div>
-                </div>
-
-                <button class="cta-button-large" onclick="proceedToSignup()">
+<div class="nav-actions"><a class="btn-outline" href="signin.html">Sign In</a> <a class="cta-button" href="signup.html">Sign Up</a></div><div class="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</nav>
+</header>
+<div class="page-container">
+<div class="container">
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+<div class="steps">
+<div class="step completed">
+<div class="step-number">✓</div>
+<div class="step-label">Configure</div>
+<div class="step-connector"></div>
+</div>
+<div class="step active">
+<div class="step-number">2</div>
+<div class="step-label">Review &amp; Plan</div>
+<div class="step-connector"></div>
+</div>
+<div class="step">
+<div class="step-number">3</div>
+<div class="step-label">Sign Up</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="content">
+<h1>Your Personalized Plan</h1>
+<p class="subtitle">Based on your selections, we recommend the perfect plan for you</p>
+<!-- Configuration Summary -->
+<div class="summary-section">
+<h2>Your Configuration Summary</h2>
+<div class="service-list" id="service-list"></div>
+<div class="total-tokens">
+<div class="total-tokens-label">Total Monthly Tokens Needed</div>
+<div class="total-tokens-value" id="total-tokens">0</div>
+</div>
+</div>
+<!-- Recommended Plan -->
+<div class="recommended-plan" id="recommended-plan">
+<div class="recommended-badge">✨ RECOMMENDED FOR YOU</div>
+<div class="plan-name" id="plan-name">Professional Plan</div>
+<div class="plan-price" id="plan-price">$199<span style="font-size: 1.5rem;">/mo</span></div>
+<div class="plan-period">After free trial • Cancel anytime</div>
+<div class="plan-features">
+<div class="feature">
+<svg class="check-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span id="feature-first-month"><strong>First Month:</strong> 10,000 FREE tokens</span>
+</div>
+<div class="feature">
+<svg class="check-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span id="feature-included"><strong>Then:</strong> 50,000 tokens/month included</span>
+</div>
+<div class="feature">
+<svg class="check-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span id="feature-coverage">Covers your <strong id="coverage-tokens">31,700</strong> tokens/month usage</span>
+</div>
+<div class="feature">
+<svg class="check-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span id="feature-buffer"><strong id="buffer-tokens">18,300</strong> tokens buffer for growth</span>
+</div>
+<div class="feature">
+<svg class="check-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>All services included (no hidden TCO costs!)</span>
+</div>
+</div>
+<div class="savings-highlight">
+<div class="savings-label">Your Monthly Savings vs Competitors</div>
+<div class="savings-amount" id="savings-amount">$3,001</div>
+<div class="savings-detail">That's <strong id="annual-savings">$36,012</strong> saved per year</div>
+</div>
+<button class="cta-button-large" onclick="proceedToSignup()">
                     Start Free Trial →
                 </button>
-
-                <div class="back-link">
-                    <a href="valuebasedpricing.html">← Back to configuration</a>
-                </div>
-            </div>
-
-            <!-- Alternative Plans -->
-            <div class="alternative-plans">
-                <h3>Not sure? Compare other plans:</h3>
-                <div class="plans-grid" id="plans-grid"></div>
-            </div>
-        </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-main">
-                    <div class="footer-brand">
-                        <div class="footer-logo">
-                            <img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo">
-                        </div>
-                        <p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
-                    </div>
-
-                    <div class="footer-links">
-                        <div class="footer-column">
-                            <h4>Products</h4>
-                            <ul>
-                                <li><a href="nudge.html">Nudge</a></li>
-                                <li><a href="tillix.html">tilliX</a></li>
-                                <li><a href="tillipay.html">tilliPay</a></li>
-                                <li><a href="tilliarc.html">tilliArc</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-column">
-                            <h4>Solutions</h4>
-                            <ul>
-                                <li><a href="industries.html">Utilities</a></li>
-                                <li><a href="industries.html">Healthcare</a></li>
-                                <li><a href="industries.html">Financial Services</a></li>
-                                <li><a href="industries.html">Education</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-column">
-                            <h4>Resources</h4>
-                            <ul>
-                                <li><a href="calculator.html">ROI Calculator</a></li>
-                                <li><a href="demos.html">Demos</a></li>
-                                <li><a href="valuebasedpricing.html">Pricing</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-column">
-                            <h4>Company</h4>
-                            <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="careers.html">Careers</a></li>
-                                <li><a href="press.html">Press</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <div class="footer-legal">
-                        <p>&copy; 2025 Tilli. All rights reserved.</p>
-                        <div class="footer-legal-links">
-                            <a href="privacy-policy/">Privacy Policy</a>
-                            <a href="terms-of-service/">Terms of Service</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Vercel Analytics -->
-    <script>
+<div class="back-link">
+<a href="valuebasedpricing.html">← Back to configuration</a>
+</div>
+</div>
+<!-- Alternative Plans -->
+<div class="alternative-plans">
+<h3>Not sure? Compare other plans:</h3>
+<div class="plans-grid" id="plans-grid"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-main">
+<div class="footer-brand">
+<div class="footer-logo">
+<img alt="Tilli Logo" src="Images/22_Utilli_logo_white.png"/>
+</div>
+<p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
+<div class="newsletter">
+<input placeholder="Your email address" type="email"/>
+<button class="btn-primary">Subscribe</button>
+</div>
+</div>
+<div class="footer-links">
+<div class="footer-column">
+<h4>About</h4>
+<ul>
+<li><a href="about.html">About Us</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="press.html">Press</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Products</h4>
+<ul>
+<li><a href="nudge.html">Nudge</a></li>
+<li><a href="tillix.html">tilliX</a></li>
+<li><a href="tillipay.html">tilliPay</a></li>
+<li><a href="tilliarc.html">tilliArc</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Solutions</h4>
+<ul>
+<li><a href="industries.html">Utilities</a></li>
+<li><a href="industries.html">Healthcare</a></li>
+<li><a href="industries.html">Financial Services</a></li>
+<li><a href="industries.html">Education</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Developers</h4>
+<ul>
+<li><a href="developer.html">Documentation</a></li>
+<li><a href="developer.html">API Reference</a></li>
+<li><a href="developer.html">SDKs</a></li>
+<li><a href="developer.html">Community</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Resources</h4>
+<ul>
+<li><a href="calculator.html">ROI Calculator</a></li>
+<li><a href="demos.html">Demos</a></li>
+<li><a href="case-studies.html">Case Studies</a></li>
+<li><a href="blog.html">Blog</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Company</h4>
+<ul>
+<li><a href="about.html">Our Story</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="#">Partners</a></li>
+<li><a href="#">Security</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Legal</h4>
+<ul>
+<li><a href="privacy-policy/">Privacy Policy</a></li>
+<li><a href="terms-and-conditions/">Terms &amp; Conditions</a></li>
+<li><a href="anti-slavery-policy.html">Anti-Slavery Policy</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="social-links">
+<a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://x.com/tillisoftware" target="_blank"><i class="fab fa-x-twitter"></i></a>
+<a href="https://www.facebook.com/tillisoftware"><i class="fab fa-facebook"></i></a>
+<a href="https://www.youtube.com/@tillisoftware"><i class="fab fa-youtube"></i></a>
+</div>
+<div class="footer-legal">
+<p>© 2025 Tilli. All rights reserved.</p>
+<div class="legal-links">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
+</div>
+<div class="footer-contact">
+<h5>Headquarters</h5>
+<p>123 Business District<br/>Financial Center, FC 12345</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- Vercel Analytics -->
+<script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-
-    <script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<script>
         // Pricing tiers
         const PLANS = {
             trial: { name: 'Trial', price: 0, tokens: 10000, description: 'First month only' },

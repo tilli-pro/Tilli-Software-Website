@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Sign In - Tilli Software</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333333;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            max-width: 500px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e0e0e0;
+            border-top-color: #333333;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        p {
+            font-size: 16px;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        .error {
+            background: #fff5f5;
+            border: 1px solid #ff0000;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .error h3 {
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        .error p {
+            color: #333333;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #333333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loading">
+            <h2>Completing GitHub sign in...</h2>
+            <div class="spinner"></div>
+            <p>Please wait while we complete your sign in with GitHub.</p>
+        </div>
+
+        <div id="error" style="display: none;">
+            <div class="error">
+                <h3>Sign In Failed</h3>
+                <p id="error-message">Unable to complete GitHub sign in. Please try again.</p>
+                <a href="/signup.html" class="btn">Return to Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE_URL = window.location.hostname === 'localhost'
+            ? 'http://localhost:5001'
+            : 'https://api.tillisoftware.com';
+
+        // Get authorization code from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const error = urlParams.get('error');
+        const errorDescription = urlParams.get('error_description');
+
+        if (error) {
+            // GitHub returned an error
+            showError(`GitHub OAuth error: ${errorDescription || error}`);
+        } else if (!code) {
+            // No code in URL
+            showError('Missing authorization code from GitHub');
+        } else {
+            // Exchange code for access token and sign in
+            exchangeCodeAndSignIn(code);
+        }
+
+        async function exchangeCodeAndSignIn(code) {
+            try {
+                console.log('Exchanging GitHub authorization code for access token...');
+
+                const response = await fetch(`${API_BASE_URL}/api/v2/OAuth/GitHub/Exchange`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ code: code })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log('GitHub OAuth response:', data);
+
+                if (data.data && data.data.success) {
+                    console.log('GitHub sign-in successful, redirecting to:', data.data.redirectUrl);
+                    // Redirect to welcome page with JWT token
+                    window.location.href = data.data.redirectUrl;
+                } else {
+                    const errorMsg = data.errors && data.errors.length > 0
+                        ? data.errors.join(', ')
+                        : 'Unknown error';
+                    throw new Error(errorMsg);
+                }
+            } catch (error) {
+                console.error('GitHub OAuth error:', error);
+                showError(error.message || 'Failed to complete GitHub sign in');
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error-message').textContent = message;
+        }
+    </script>
+</body>
+</html>

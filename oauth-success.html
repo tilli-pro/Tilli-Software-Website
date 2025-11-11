@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completing Sign Up - Tilli Software</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            padding: 48px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .message {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 32px;
+        }
+
+        .spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #4099FF;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 24px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            display: none;
+            padding: 16px;
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            color: #991b1b;
+            margin-top: 24px;
+            font-size: 14px;
+        }
+
+        .error-message.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#4099FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+            </svg>
+        </div>
+
+        <div id="loading">
+            <div class="spinner"></div>
+            <h1>Setting up your account...</h1>
+            <p class="message">Just a moment while we complete your registration</p>
+        </div>
+
+        <div id="error-message" class="error-message"></div>
+    </div>
+
+    <script type="module">
+        const AUTH_BASE_URL = window.location.hostname === 'localhost'
+            ? 'http://localhost:3100'
+            : 'https://auth.tillisoftware.com';
+
+        const NUDGE_API_URL = window.location.hostname === 'localhost'
+            ? 'http://localhost:5000'
+            : 'https://api.tillisoftware.com';
+
+        const PORTAL_URL = window.location.hostname === 'localhost'
+            ? 'http://localhost:4200'
+            : 'https://nudge.tillisoftware.com';
+
+        async function handleOAuthSuccess() {
+            try {
+                // Get session from better-auth (stored in httpOnly cookies)
+                const sessionResponse = await fetch(`${AUTH_BASE_URL}/api/auth/get-session`, {
+                    method: 'GET',
+                    credentials: 'include', // Include cookies
+                });
+
+                if (!sessionResponse.ok) {
+                    throw new Error('No active session found');
+                }
+
+                const sessionData = await sessionResponse.json();
+                const user = sessionData.user;
+
+                if (!user || !user.email) {
+                    throw new Error('Invalid session data');
+                }
+
+                console.log('✅ OAuth session found for:', user.email);
+
+                // Check if Nudge account exists
+                const checkResponse = await fetch(`${NUDGE_API_URL}/api/v2/Onboarding/CheckAccount`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-API-Key': 'tilli_web_dev_secure_key_2025' // TODO: Move to secure proxy
+                    },
+                    body: JSON.stringify({ email: user.email })
+                });
+
+                const checkResult = await checkResponse.json();
+                const accountExists = checkResult.data?.exists || checkResult.data?.Exists || false;
+
+                console.log(`📊 Nudge account exists: ${accountExists}`);
+
+                // Create Nudge account if it doesn't exist
+                if (!accountExists) {
+                    const createResponse = await fetch(`${NUDGE_API_URL}/api/v2/Onboarding/CreateMinimalAccount`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-API-Key': 'tilli_web_dev_secure_key_2025'
+                        },
+                        body: JSON.stringify({
+                            email: user.email,
+                            firstName: user.name?.split(' ')[0] || 'User',
+                            lastName: user.name?.split(' ').slice(1).join(' ') || '',
+                            password: 'TilliTemp@' + Math.random().toString(36).substring(2, 15)
+                        })
+                    });
+
+                    if (!createResponse.ok) {
+                        throw new Error('Failed to create Nudge account');
+                    }
+
+                    console.log('✅ Created Nudge account for:', user.email);
+                }
+
+                // Generate SSO token (simple JWT with email)
+                const ssoTokenResponse = await fetch(`${AUTH_BASE_URL}/api/auth/generate-sso-token`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ email: user.email })
+                });
+
+                let ssoToken;
+                if (ssoTokenResponse.ok) {
+                    const tokenData = await ssoTokenResponse.json();
+                    ssoToken = tokenData.token;
+                } else {
+                    // Fallback: use session token
+                    ssoToken = sessionData.session?.token || '';
+                }
+
+                // Redirect to welcome page with token
+                const redirectUrl = `${PORTAL_URL}/welcome?token=${ssoToken}&new_user=${!accountExists}`;
+                console.log('🚀 Redirecting to:', redirectUrl);
+
+                window.location.href = redirectUrl;
+
+            } catch (error) {
+                console.error('❌ OAuth success handler error:', error);
+                const errorEl = document.getElementById('error-message');
+                errorEl.textContent = `Authentication failed: ${error.message}. Redirecting to sign up...`;
+                errorEl.classList.add('active');
+
+                setTimeout(() => {
+                    window.location.href = '/signup.html';
+                }, 3000);
+            }
+        }
+
+        // Run on page load
+        handleOAuthSuccess();
+    </script>
+</body>
+</html>

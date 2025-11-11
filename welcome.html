@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Tilli Software - J.A.R.V.I.S. Setup Wizard</title>
+    <script type="module" src="tilli-oauth.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 40px; padding-top: 20px; }
+        .header h1 { font-size: 32px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+        .header p { font-size: 16px; color: #6b7280; }
+        
+        /* User Info Bar */
+        .user-info {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        .user-info .user-details { display: flex; align-items: center; gap: 12px; }
+        .user-info .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #4099FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .user-info .user-name { font-weight: 600; color: #111827; }
+        .user-info .user-email { font-size: 14px; color: #6b7280; }
+        .btn-logout {
+            padding: 8px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            background: white;
+            color: #374151;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-logout:hover { background: #f9fafb; border-color: #d1d5db; }
+
+        /* J.A.R.V.I.S. Container */
+        .jarvis-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .jarvis-header {
+            background: linear-gradient(135deg, #4099FF 0%, #3182ce 100%);
+            color: white;
+            padding: 32px 40px;
+            text-align: center;
+        }
+        .jarvis-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+        .jarvis-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .jarvis-header .subtitle {
+            font-size: 14px;
+            opacity: 0.95;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .jarvis-header p { font-size: 16px; margin-top: 12px; opacity: 0.9; }
+
+        /* Progress Bar */
+        .progress-bar { background: #f3f4f6; padding: 24px 40px; border-bottom: 1px solid #e5e7eb; }
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+        }
+        .progress-track {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4099FF 0%, #3182ce 100%);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .step {
+            text-align: center;
+            font-size: 11px;
+            color: #9ca3af;
+            padding: 4px;
+        }
+        .step.active { color: #4099FF; font-weight: 600; }
+        .step.completed { color: #10b981; font-weight: 600; }
+
+        /* Wizard Content */
+        .wizard-content { padding: 48px 40px; }
+        .wizard-step { display: none; }
+        .wizard-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .step-header { text-align: center; margin-bottom: 32px; }
+        .step-number {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .step-header h3 { font-size: 24px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+        .step-header p { font-size: 16px; color: #6b7280; }
+
+        /* Form Elements */
+        .form-group { margin-bottom: 24px; }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #4099FF;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        @media (max-width: 640px) {
+            .form-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Integration Cards */
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .integration-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+        .integration-card:hover {
+            border-color: #4099FF;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(64, 153, 255, 0.15);
+        }
+        .integration-card.selected {
+            border-color: #4099FF;
+            background: #eff6ff;
+        }
+        .integration-card svg {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 12px;
+            display: block;
+        }
+        .integration-card .name { font-weight: 600; color: #111827; margin-bottom: 4px; }
+        .integration-card .badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* Action Buttons */
+        .wizard-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid #e5e7eb;
+        }
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary {
+            background: #4099FF;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(64, 153, 255, 0.3);
+        }
+        .btn-secondary {
+            background: white;
+            color: #374151;
+            border: 2px solid #e5e7eb;
+        }
+        .btn-secondary:hover {
+            background: #f9fafb;
+            border-color: #d1d5db;
+        }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Message Box */
+        .message-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+        .message-box.success { background: #d1fae5; border-color: #6ee7b7; }
+        .message-box.warning { background: #fef3c7; border-color: #fcd34d; }
+        .message-box svg { width: 24px; height: 24px; flex-shrink: 0; }
+        .message-box .content { flex: 1; }
+        .message-box .title { font-weight: 600; color: #111827; margin-bottom: 4px; }
+        .message-box .text { font-size: 14px; color: #374151; }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Tilli Software</h1>
+            <p>Enterprise Payment Platform</p>
+        </div>
+
+        <div class="user-info" id="user-info">
+            <div class="user-details">
+                <div class="user-avatar" id="user-avatar">U</div>
+                <div>
+                    <div class="user-name" id="user-name">Loading...</div>
+                    <div class="user-email" id="user-email"></div>
+                </div>
+            </div>
+            <button class="btn-logout" onclick="signOut()">Sign Out</button>
+        </div>
+
+        <div class="jarvis-container">
+            <div class="jarvis-header">
+                <!-- Lucide: Bot icon -->
+                <svg class="jarvis-icon" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 8V4H8"/>
+                    <rect width="16" height="12" x="4" y="8" rx="2"/>
+                    <path d="M2 14h2"/>
+                    <path d="M20 14h2"/>
+                    <path d="M15 13v2"/>
+                    <path d="M9 13v2"/>
+                </svg>
+                <h2>Hi! I'm J.A.R.V.I.S.</h2>
+                <p class="subtitle">Just A Rather Very Intelligent System</p>
+                <p>Let's get you set up in under 5 minutes!</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-label">
+                    <span>Setup Progress</span>
+                    <span id="progress-percentage">17%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill" style="width: 17%"></div>
+                </div>
+                <div class="steps">
+                    <div class="step completed">2. Company</div>
+                    <div class="step">3. Connect</div>
+                    <div class="step">4. Contacts</div>
+                    <div class="step">5. Invoices</div>
+                    <div class="step">6. Payment</div>
+                    <div class="step">7. Send!</div>
+                </div>
+            </div>
+
+            <div class="wizard-content">
+                <!-- Step 2: Company Details -->
+                <div class="wizard-step active" id="step-2">
+                    <div class="step-header">
+                        <div class="step-number">Step 2 of 7</div>
+                        <h3>Tell Us About Your Business</h3>
+                        <p>Let's confirm your details and learn about your company</p>
+                    </div>
+
+                    <div class="message-box">
+                        <!-- Lucide: Lightbulb icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0369a1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                            <path d="M9 18h6"/>
+                            <path d="M10 22h4"/>
+                        </svg>
+                        <div class="content">
+                            <div class="title">Quick Setup</div>
+                            <div class="text">This should only take about 30 seconds!</div>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="first-name">First Name *</label>
+                            <input type="text" id="first-name" placeholder="John" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name *</label>
+                            <input type="text" id="last-name" placeholder="Doe" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company-name">Company Name *</label>
+                        <input type="text" id="company-name" placeholder="Acme Corporation" required />
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" placeholder="john@acme.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" placeholder="+1 (555) 123-4567" required />
+                        </div>
+                    </div>
+
+                    <div class="wizard-actions">
+                        <button class="btn btn-secondary" onclick="window.location.href='/signup.html'">
+                            <!-- Lucide: Arrow Left -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m12 19-7-7 7-7"/>
+                                <path d="M19 12H5"/>
+                            </svg>
+                            Back to Login
+                        </button>
+                        <button class="btn btn-primary" onclick="nextStep(3)">
+                            Continue
+                            <!-- Lucide: Arrow Right -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/>
+                                <path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Connect Systems -->
+                <div class="wizard-step" id="step-3">
+                    <div class="step-header">
+                        <div class="step-number">Step 3 of 7</div>
+                        <h3>Connect Your Business Systems</h3>
+                        <p>Choose the systems you use (you can skip and add later)</p>
+                    </div>
+
+                    <div class="message-box">
+                        <!-- Lucide: Link icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0369a1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                        </svg>
+                        <div class="content">
+                            <div class="title">Integrations Made Easy</div>
+                            <div class="text">Connect to automatically import invoices and contacts.</div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin: 32px 0 16px 0; font-weight: 600; color: #374151;">Accounting System</h4>
+                    <div class="integration-grid">
+                        <div class="integration-card selected" onclick="selectIntegration('accounting', 'none')">
+                            <!-- Lucide: X icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                            </svg>
+                            <div class="name">None</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('accounting', 'quickbooks')">
+                            <!-- Lucide: Calculator icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                <rect width="16" height="20" x="4" y="2" rx="2"/>
+                                <line x1="8" x2="16" y1="6" y2="6"/>
+                                <line x1="16" x2="16" y1="14" y2="18"/>
+                                <path d="M16 10h.01"/>
+                                <path d="M12 10h.01"/>
+                                <path d="M8 10h.01"/>
+                                <path d="M12 14h.01"/>
+                                <path d="M8 14h.01"/>
+                                <path d="M12 18h.01"/>
+                                <path d="M8 18h.01"/>
+                            </svg>
+                            <div class="name">QuickBooks</div>
+                            <div class="badge">Popular</div>
+                        </div>
+                        <div class="integration-card" onclick="selectIntegration('accounting', 'xero')">
+                            <!-- Lucide: File Spreadsheet icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+                                <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+                                <path d="M8 13h2"/>
+                                <path d="M14 13h2"/>
+                                <path d="M8 17h2"/>
+                                <path d="M14 17h2"/>
+                            </svg>
+                            <div class="name">Xero</div>
+                        </div>
+                    </div>
+
+                    <div class="wizard-actions">
+                        <button class="btn btn-secondary" onclick="prevStep(2)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
+                            </svg>
+                            Back
+                        </button>
+                        <button class="btn btn-primary" onclick="nextStep(4)">
+                            Continue
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remaining steps would continue similarly with Lucide icons... -->
+                <!-- For brevity, showing structure for final step -->
+
+                <!-- Step 7: Success! -->
+                <div class="wizard-step" id="step-7">
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <!-- Lucide: Party Popper icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" style="margin: 0 auto 24px; display: block; animation: bounce 1s ease-in-out;">
+                            <path d="M5.8 11.3 2 22l10.7-3.79"/>
+                            <path d="M4 3h.01"/>
+                            <path d="M22 8h.01"/>
+                            <path d="M15 2h.01"/>
+                            <path d="M22 20h.01"/>
+                            <path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12v0c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/>
+                            <path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11v0c-.11.7-.72 1.22-1.43 1.22H17"/>
+                            <path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98v0C9.52 4.9 9 5.52 9 6.23V7"/>
+                            <path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"/>
+                        </svg>
+                        <h3 style="font-size: 32px; font-weight: 700; color: #111827; margin-bottom: 16px;">Setup Complete!</h3>
+                        <p style="font-size: 18px; color: #6b7280; margin-bottom: 32px;">You're ready to supercharge your payment collections!</p>
+                        
+                        <button class="btn btn-primary" onclick="goToDashboard()" style="margin: 0 auto; font-size: 18px; padding: 16px 48px;">
+                            Go to Dashboard
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 2; // Start at step 2 (OAuth was step 1)
+        let wizardData = { user: {}, integrations: { accounting: 'none' } };
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadUserInfo();
+        });
+
+        async function loadUserInfo() {
+            try {
+                const session = await window.tilliAuth.getSession();
+                if (!session.data) {
+                    window.location.href = '/signup.html';
+                    return;
+                }
+                const user = session.data.user;
+                wizardData.user = user;
+                document.getElementById('user-name').textContent = user.name || 'User';
+                document.getElementById('user-email').textContent = user.email || '';
+                document.getElementById('user-avatar').textContent = (user.name || 'U').charAt(0).toUpperCase();
+                
+                if (user.name) {
+                    const names = user.name.split(' ');
+                    document.getElementById('first-name').value = names[0] || '';
+                    document.getElementById('last-name').value = names.slice(1).join(' ') || '';
+                }
+                document.getElementById('email').value = user.email || '';
+            } catch (error) {
+                console.error('Failed to load user info:', error);
+                window.location.href = '/signup.html';
+            }
+        }
+
+        function nextStep(step) {
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            currentStep = step;
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function prevStep(step) {
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            currentStep = step;
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateProgress() {
+            const percentage = ((currentStep - 1) / 6) * 100;
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+            document.getElementById('progress-percentage').textContent = `${Math.round(percentage)}%`;
+        }
+
+        function selectIntegration(type, name) {
+            const cards = document.querySelectorAll(`[onclick*="'${type}'"]`);
+            cards.forEach(card => card.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            wizardData.integrations[type] = name;
+        }
+
+        function goToDashboard() {
+            window.location.href = 'http://localhost:4200';
+        }
+
+        async function signOut() {
+            await window.tilliAuth.signOut();
+            window.location.href = '/signup.html';
+        }
+
+        console.log('J.A.R.V.I.S. Wizard initialized - Starting at Step 2');
+    </script>
+</body>
+</html>

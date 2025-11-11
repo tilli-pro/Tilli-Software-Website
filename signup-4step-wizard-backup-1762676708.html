@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Tilli Software | Frictionless Onboarding</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- reCAPTCHA v3 (Invisible) - TODO: Replace with your own site key -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></script>
+
+    <script type="module" src="tilli-oauth.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Prevent flickering - hide until loaded */
+        .wizard-container {
+            max-width: 700px;
+            margin: 40px auto;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .wizard-container.loaded {
+            opacity: 1;
+        }
+
+        /* Loading spinner */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .loading-screen.hidden {
+            display: none;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #4099FF;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Card */
+        .wizard-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            padding: 40px;
+            position: relative;
+        }
+
+        /* Logout button */
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            background: white;
+            color: #374151;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: none;
+        }
+        
+        .logout-btn.show {
+            display: block;
+        }
+        
+        .logout-btn:hover {
+            background: #f9fafb;
+            border-color: #d1d5db;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .breadcrumb-step {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #9ca3af;
+        }
+        
+        .breadcrumb-step.active {
+            color: #4099FF;
+            font-weight: 600;
+        }
+        
+        .breadcrumb-step.completed {
+            color: #10b981;
+        }
+        
+        .breadcrumb-separator {
+            margin: 0 12px;
+            color: #d1d5db;
+        }
+
+        /* Steps */
+        .wizard-step {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .wizard-step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* OAuth buttons */
+        .oauth-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            background: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 12px;
+        }
+        
+        .oauth-btn:hover {
+            border-color: #4099FF;
+            background: #f9fafb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(64, 153, 255, 0.15);
+        }
+
+        .oauth-btn.selected {
+            border-color: #4099FF !important;
+            background: #eff6ff !important;
+            box-shadow: 0 0 0 3px rgba(64, 153, 255, 0.1);
+        }
+
+        /* J.A.R.V.I.S. styles */
+        .jarvis-welcome {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .jarvis-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .jarvis-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+        
+        .jarvis-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+        
+        .jarvis-message {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: left;
+        }
+        
+        .jarvis-message h4 {
+            color: #1e40af;
+            margin-bottom: 16px;
+        }
+        
+        .jarvis-message ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .jarvis-message li {
+            padding: 8px 0;
+            color: #374151;
+        }
+
+        .btn-primary {
+            background: #4099FF;
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(64, 153, 255, 0.3);
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            margin: 24px 0;
+        }
+        
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+        
+        .separator span {
+            padding: 0 16px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .magic-link-form {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        
+        .magic-link-form input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .magic-link-form input:focus {
+            outline: none;
+            border-color: #4099FF;
+        }
+        
+        .magic-link-form button {
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            background: #4099FF;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .help-text {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 8px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div style="text-align: center;">
+            <div class="spinner"></div>
+            <p style="margin-top: 16px; color: #6b7280;">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Wizard Container -->
+    <div class="wizard-container" id="wizard-container">
+        <div class="wizard-card">
+            <!-- Logout Button -->
+            <button class="logout-btn" id="logout-btn" onclick="handleLogout()">
+                <i class="fas fa-sign-out-alt"></i> Sign Out
+            </button>
+
+            <!-- Logo/Header -->
+            <div style="text-align: center; margin-bottom: 32px;">
+                <h1 style="font-size: 32px; font-weight: 700; color: #111827;">Tilli Software</h1>
+                <p style="font-size: 14px; color: #6b7280; margin-top: 8px;">Enterprise Communications and Payment Platform</p>
+            </div>
+
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb">
+                <div class="breadcrumb-step active" id="breadcrumb-1">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span style="margin-left: 6px;">Sign In</span>
+                </div>
+                <div class="breadcrumb-separator">→</div>
+                <div class="breadcrumb-step" id="breadcrumb-2">
+                    <i class="fas fa-robot"></i>
+                    <span style="margin-left: 6px;">Welcome</span>
+                </div>
+                <div class="breadcrumb-separator">→</div>
+                <div class="breadcrumb-step" id="breadcrumb-3">
+                    <i class="fas fa-building"></i>
+                    <span style="margin-left: 6px;">Company</span>
+                </div>
+                <div class="breadcrumb-separator">→</div>
+                <div class="breadcrumb-step" id="breadcrumb-4">
+                    <i class="fas fa-plug"></i>
+                    <span style="margin-left: 6px;">Integrations</span>
+                </div>
+                <div class="breadcrumb-separator">→</div>
+                <div class="breadcrumb-step" id="breadcrumb-5">
+                    <i class="fas fa-rocket"></i>
+                    <span style="margin-left: 6px;">Launch</span>
+                </div>
+            </div>
+
+            <!-- Step 1: OAuth/Passwordless Sign In -->
+            <div class="wizard-step active" id="step-1">
+                <div style="text-align: center;">
+                    <h3 style="margin-bottom: 8px;"><i class="fas fa-bolt"></i> Quick Sign Up</h3>
+                    <p style="font-size: 14px; color: #6b7280; margin-bottom: 24px;">Sign up in seconds - no password required!</p>
+
+                    <div style="margin-bottom: 20px;">
+                        <p style="font-weight: 600; font-size: 14px; color: #1f2937; margin-bottom: 12px;">Sign up with:</p>
+                        <button class="oauth-btn" onclick="signUpWithGoogle()">
+                            <i class="fab fa-google" style="color: #EA4335; font-size: 20px;"></i>
+                            Continue with Google
+                        </button>
+                        <button class="oauth-btn" onclick="signUpWithMicrosoft()">
+                            <i class="fab fa-microsoft" style="color: #00A4EF; font-size: 20px;"></i>
+                            Continue with Microsoft
+                        </button>
+                        <button class="oauth-btn" onclick="signUpWithGitHub()">
+                            <i class="fab fa-github" style="color: #181717; font-size: 20px;"></i>
+                            Continue with GitHub
+                        </button>
+                    </div>
+
+                    <div class="separator">
+                        <span>or continue with email</span>
+                    </div>
+
+                    <div class="magic-link-form">
+                        <input type="email" id="magic-link-email" placeholder="Enter your email" />
+                        <button onclick="sendMagicLink()">
+                            <i class="fas fa-envelope"></i> Send Link
+                        </button>
+                    </div>
+                    <p class="help-text">We'll email you a magic link for instant sign-in!</p>
+
+                    <!-- Message container (fixed height to prevent layout shift) -->
+                    <div style="min-height: 60px; margin-top: 16px;">
+                        <div id="auth-message" style="padding: 12px 16px; border-radius: 8px; font-size: 14px; opacity: 0; transition: opacity 0.3s;"></div>
+                    </div>
+
+                    <div class="trust-badge">
+                        <i class="fas fa-shield-alt" style="color: #10b981;"></i>
+                        <span>Secure authentication powered by industry leaders</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: J.A.R.V.I.S. Welcome -->
+            <div class="wizard-step" id="step-2">
+                <div class="jarvis-welcome">
+                    <svg class="jarvis-icon" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4099FF;"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+                    <h2 class="jarvis-title">Welcome, <span id="user-name">there</span>!</h2>
+                    <p class="jarvis-subtitle">I'm J.A.R.V.I.S. - Just A Rather Very Intelligent System</p>
+                    
+                    <div class="jarvis-message">
+                        <h4><i class="fas fa-rocket"></i> Great choice! Here's what you'll unlock:</h4>
+                        <ul>
+                            <li>💰 <strong>Save thousands</strong> on payment processing fees with TilliPay</li>
+                            <li>📊 <strong>See exactly</strong> who owes you money at a glance</li>
+                            <li>⚡ <strong>Send payment reminders</strong> in seconds, not hours</li>
+                            <li>🎉 <strong>Your first AHA moment</strong> - Send 12 nudges worth $15,430!</li>
+                        </ul>
+                    </div>
+
+                    <p style="font-size: 16px; color: #374151; margin: 24px 0;">
+                        Just <strong>3 more quick steps</strong> and you'll be ready to supercharge your payment collections. Let's do this! 💪
+                    </p>
+
+                    <button class="btn-primary" onclick="goToStep(3)">
+                        Continue to Company Info <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Company Info (Placeholder) -->
+            <div class="wizard-step" id="step-3">
+                <div style="max-width: 500px; margin: 0 auto; padding: 20px;">
+                    <h3 style="text-align: center; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4099FF;">
+                            <path d="m11 17 2 2a1 1 0 1 0 3-3"/>
+                            <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/>
+                            <path d="m21 3 1 11h-2"/>
+                            <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/>
+                            <path d="M3 4h8"/>
+                        </svg>
+                        Company Information
+                    </h3>
+                    <p style="text-align: center; color: #6b7280; margin-bottom: 32px;">Tell us about your business</p>
+
+                    <!-- J.A.R.V.I.S. Encouragement -->
+                    <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 16px; margin: 24px 0; text-align: left;">
+                        <div style="display: flex; align-items: start; gap: 12px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4099FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+                                <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>
+                            </svg>
+                            <div>
+                                <p style="font-weight: 600; color: #1e40af; margin-bottom: 8px;">J.A.R.V.I.S. here! 👋</p>
+                                <p style="color: #374151; font-size: 14px; line-height: 1.5;">Almost there! Just need a few quick details about your business. This helps us tailor Tilli to your needs and unlock those money-saving features I mentioned!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- First Name and Last Name -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+                        <div>
+                            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px; font-size: 14px;">First Name *</label>
+                            <input type="text" id="first-name" placeholder="John" required style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;" />
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px; font-size: 14px;">Last Name *</label>
+                            <input type="text" id="last-name" placeholder="Doe" required style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;" />
+                        </div>
+                    </div>
+
+                    <!-- Company Name -->
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px; font-size: 14px;">Company Name *</label>
+                        <input type="text" id="company-name" placeholder="Acme Corporation" required style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;" />
+                    </div>
+
+                    <!-- Email -->
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px; font-size: 14px;">Work Email *</label>
+                        <input type="email" id="company-email" placeholder="john@acme.com" required style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;" />
+                    </div>
+
+                    <!-- Phone -->
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px; font-size: 14px;">Phone Number *</label>
+                        <input type="tel" id="company-phone" placeholder="+1 (555) 123-4567" required style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;" />
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div style="display: flex; gap: 12px; margin-top: 32px;">
+                        <button type="button" class="btn-primary" onclick="goToStep(2)" style="flex: 1; background: white; color: #374151; border: 2px solid #e5e7eb; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m12 19-7-7 7-7"/>
+                                <path d="M19 12H5"/>
+                            </svg>
+                            Back
+                        </button>
+                        <button type="button" class="btn-primary" onclick="validateAndSubmitStep3()" style="flex: 2; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            Continue
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/>
+                                <path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Integrations -->
+            <div class="wizard-step" id="step-4">
+                <div style="max-width: 700px; margin: 0 auto; padding: 20px;">
+                    <h3 style="text-align: center; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4099FF;">
+                            <path d="M6 3h12l4 6-10 13L2 9Z"/>
+                            <path d="M11 3 8 9l4 13 4-13-3-6"/>
+                            <path d="M2 9h20"/>
+                        </svg>
+                        Connect Your Business Systems
+                    </h3>
+                    <p style="text-align: center; color: #6b7280; margin-bottom: 32px;">Select the systems you use to unlock powerful automations</p>
+
+                    <!-- J.A.R.V.I.S. Encouragement -->
+                    <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 16px; margin: 24px 0; text-align: left;">
+                        <div style="display: flex; align-items: start; gap: 12px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4099FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+                                <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>
+                            </svg>
+                            <div>
+                                <p style="font-weight: 600; color: #1e40af; margin-bottom: 8px;">J.A.R.V.I.S. here! 🚀</p>
+                                <p style="color: #374151; font-size: 14px; line-height: 1.5;">This is where the magic happens! Connect your existing systems and I'll help you automate payment reminders, customer communications, and so much more. Don't worry - you can always add more integrations later!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CRM System -->
+                    <div style="margin-bottom: 32px;">
+                        <h4 style="font-weight: 600; color: #374151; margin-bottom: 16px; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4099FF;">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            CRM System
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('crm', '')" data-integration-type="crm" data-integration-value="">
+                                <span>None</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('crm', 'salesforce')" data-integration-type="crm" data-integration-value="salesforce">
+                                <span>Salesforce</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('crm', 'hubspot')" data-integration-type="crm" data-integration-value="hubspot">
+                                <span>HubSpot</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('crm', 'zoho')" data-integration-type="crm" data-integration-value="zoho">
+                                <span>Zoho CRM</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('crm', 'dynamics')" data-integration-type="crm" data-integration-value="dynamics">
+                                <span>MS Dynamics</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ERP System -->
+                    <div style="margin-bottom: 32px;">
+                        <h4 style="font-weight: 600; color: #374151; margin-bottom: 16px; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4099FF;">
+                                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                                <path d="M7 7h.01"/>
+                                <path d="M17 7h.01"/>
+                                <path d="M7 17h.01"/>
+                                <path d="M17 17h.01"/>
+                            </svg>
+                            ERP System
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('erp', '')" data-integration-type="erp" data-integration-value="">
+                                <span>None</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('erp', 'sap')" data-integration-type="erp" data-integration-value="sap">
+                                <span>SAP</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('erp', 'oracle')" data-integration-type="erp" data-integration-value="oracle">
+                                <span>Oracle ERP</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('erp', 'netsuite')" data-integration-type="erp" data-integration-value="netsuite">
+                                <span>NetSuite</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('erp', 'dynamics365')" data-integration-type="erp" data-integration-value="dynamics365">
+                                <span>Dynamics 365</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Accounting System -->
+                    <div style="margin-bottom: 32px;">
+                        <h4 style="font-weight: 600; color: #374151; margin-bottom: 16px; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4099FF;">
+                                <line x1="12" x2="12" y1="2" y2="22"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                            Accounting System
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('accounting', '')" data-integration-type="accounting" data-integration-value="">
+                                <span>None</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('accounting', 'quickbooks')" data-integration-type="accounting" data-integration-value="quickbooks">
+                                <span>QuickBooks</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('accounting', 'xero')" data-integration-type="accounting" data-integration-value="xero">
+                                <span>Xero</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('accounting', 'sage')" data-integration-type="accounting" data-integration-value="sage">
+                                <span>Sage</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('accounting', 'freshbooks')" data-integration-type="accounting" data-integration-value="freshbooks">
+                                <span>FreshBooks</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- E-Commerce Platform -->
+                    <div style="margin-bottom: 32px;">
+                        <h4 style="font-weight: 600; color: #374151; margin-bottom: 16px; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4099FF;">
+                                <circle cx="8" cy="21" r="1"/>
+                                <circle cx="19" cy="21" r="1"/>
+                                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+                            </svg>
+                            E-Commerce Platform
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('ecommerce', '')" data-integration-type="ecommerce" data-integration-value="">
+                                <span>None</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('ecommerce', 'shopify')" data-integration-type="ecommerce" data-integration-value="shopify">
+                                <span>Shopify</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('ecommerce', 'woocommerce')" data-integration-type="ecommerce" data-integration-value="woocommerce">
+                                <span>WooCommerce</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('ecommerce', 'magento')" data-integration-type="ecommerce" data-integration-value="magento">
+                                <span>Magento</span>
+                            </button>
+                            <button type="button" class="oauth-btn" onclick="selectIntegration('ecommerce', 'bigcommerce')" data-integration-type="ecommerce" data-integration-value="bigcommerce">
+                                <span>BigCommerce</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div style="display: flex; gap: 12px; margin-top: 32px;">
+                        <button type="button" class="btn-primary" onclick="goToStep(3)" style="flex: 1; background: white; color: #374151; border: 2px solid #e5e7eb; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m12 19-7-7 7-7"/>
+                                <path d="M19 12H5"/>
+                            </svg>
+                            Back
+                        </button>
+                        <button type="button" class="btn-primary" onclick="validateAndSubmitStep4()" style="flex: 2; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            Continue to Launch
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/>
+                                <path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Launch Dashboard (Placeholder) -->
+            <div class="wizard-step" id="step-5">
+                <div style="text-align: center; padding: 40px;">
+                    <div style="font-size: 64px; margin-bottom: 16px;">🚀</div>
+                    <h3>Launching Your Dashboard!</h3>
+                    <p style="color: #6b7280; margin: 16px 0;">Preparing your personalized experience...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let userData = null;
+
+        // Initialize wizard on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            await checkAuthAndLoadWizard();
+        });
+
+        async function checkAuthAndLoadWizard() {
+            try {
+                // Check if user is authenticated
+                const session = await window.tilliAuth.getSession();
+                
+                if (session.data && session.data.user) {
+                    // User is authenticated - show Step 2 (J.A.R.V.I.S. welcome)
+                    userData = session.data.user;
+                    document.getElementById('user-name').textContent = userData.name || 'there';
+                    document.getElementById('logout-btn').classList.add('show');
+                    goToStep(2);
+                } else {
+                    // User not authenticated - show Step 1 (OAuth)
+                    goToStep(1);
+                }
+            } catch (error) {
+                console.error('Auth check error:', error);
+                // On error, show Step 1
+                goToStep(1);
+            } finally {
+                // Hide loading screen, show wizard
+                document.getElementById('loading-screen').classList.add('hidden');
+                document.getElementById('wizard-container').classList.add('loaded');
+            }
+        }
+
+        function goToStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.wizard-step').forEach(step => {
+                step.classList.remove('active');
+            });
+
+            // Show target step
+            document.getElementById(`step-${stepNumber}`).classList.add('active');
+
+            // Update breadcrumb
+            updateBreadcrumb(stepNumber);
+
+            currentStep = stepNumber;
+        }
+
+        function updateBreadcrumb(stepNumber) {
+            // Reset all breadcrumb steps
+            document.querySelectorAll('.breadcrumb-step').forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index + 1 < stepNumber) {
+                    step.classList.add('completed');
+                } else if (index + 1 === stepNumber) {
+                    step.classList.add('active');
+                }
+            });
+        }
+
+        async function handleLogout() {
+            try {
+                await window.tilliAuth.signOut();
+                userData = null;
+                document.getElementById('logout-btn').classList.remove('show');
+                goToStep(1);
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        }
+
+
+        function validateAndSubmitStep3() {
+            const firstName = document.getElementById("first-name").value.trim();
+            const lastName = document.getElementById("last-name").value.trim();
+            const companyName = document.getElementById("company-name").value.trim();
+            const email = document.getElementById("company-email").value.trim();
+            const phone = document.getElementById("company-phone").value.trim();
+
+            if (!firstName || !lastName || !companyName || !email || !phone) {
+                alert("Please fill in all required fields");
+                return;
+            }
+
+            // Store company data
+            if (!userData) userData = {};
+            userData.firstName = firstName;
+            userData.lastName = lastName;
+            userData.companyName = companyName;
+            userData.companyEmail = email;
+            userData.companyPhone = phone;
+
+            console.log("Company info submitted:", userData);
+
+            // Go to Step 4
+            goToStep(4);
+        }
+
+        // Track selected integrations
+        const selectedIntegrations = {
+            crm: '',
+            erp: '',
+            accounting: '',
+            ecommerce: ''
+        };
+
+        function selectIntegration(type, value) {
+            // Update selection
+            selectedIntegrations[type] = value;
+
+            // Remove 'selected' class from all buttons of this type
+            document.querySelectorAll(`[data-integration-type="${type}"]`).forEach(btn => {
+                btn.classList.remove('selected');
+                btn.style.borderColor = '#e5e7eb';
+                btn.style.background = 'white';
+            });
+
+            // Add 'selected' class to clicked button
+            const clickedBtn = document.querySelector(`[data-integration-type="${type}"][data-integration-value="${value}"]`);
+            if (clickedBtn) {
+                clickedBtn.classList.add('selected');
+                clickedBtn.style.borderColor = '#4099FF';
+                clickedBtn.style.background = '#eff6ff';
+            }
+
+            console.log('Selected integrations:', selectedIntegrations);
+        }
+
+        async function validateAndSubmitStep4() {
+            // Store integration preferences
+            if (!userData) userData = {};
+            userData.integrations = { ...selectedIntegrations };
+
+            console.log("Integrations selected:", userData.integrations);
+
+            try {
+                // Get reCAPTCHA token (invisible - no user interaction)
+                const recaptchaToken = await grecaptcha.execute('6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI', { action: 'signup' });
+                console.log('✅ reCAPTCHA token obtained');
+
+                // Call Better-Auth proxy endpoint (NOT Nudge API directly)
+                const response = await fetch('http://localhost:3100/api/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        recaptchaToken: recaptchaToken,
+                        email: userData.companyEmail || userData.email,
+                        // Generate secure password that meets Nudge API requirements:
+                        // - At least 8 characters
+                        // - At least one uppercase letter
+                        // - At least one lowercase letter
+                        // - At least one number
+                        // - At least one special character
+                        password: 'TilliTemp@' + crypto.randomUUID().substring(0, 20),
+                        firstName: userData.firstName || userData.name?.split(' ')[0] || 'User',
+                        lastName: userData.lastName || userData.name?.split(' ')[1] || '',
+                        companyName: userData.companyName,
+                        phoneNumber: userData.companyPhone,
+                        selectedProducts: ['nudge-lite'], // Default product
+                        integrations: userData.integrations
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    console.log('✅ Nudge account created successfully:', result);
+                    userData.nudgeAccount = result.data;
+
+                    // Go to Step 5 (Dashboard/Launch)
+                    goToStep(5);
+                } else {
+                    console.error('❌ Failed to create Nudge account:', result);
+                    alert(result.error || 'We encountered an issue creating your account. Please try again.');
+                }
+            } catch (error) {
+                console.error('❌ Error creating Nudge account:', error);
+                alert('Unable to connect to the server. Please check your connection and try again.');
+            }
+        }
+
+        console.log('✅ Tilli Wizard initialized');
+    </script>
+
+    <!-- Vercel Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

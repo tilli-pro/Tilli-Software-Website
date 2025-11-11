@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup Successful | Tilli Software</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Signup Successful | Tilli Software</title>
+<link href="styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
         .success-container {
             max-width: 700px;
             margin: 100px auto;
@@ -172,69 +173,62 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div class="tilli-logo">
-                    <a href="index.html" aria-label="Tilli Home">
-                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <div class="success-container">
-        <div class="success-card">
-            <div class="success-icon">
-                <i class="fas fa-check"></i>
-            </div>
-
-            <h1>Welcome to Tilli!</h1>
-            <p>Your signup request has been received successfully. Our team will review your information and reach out to you shortly to set up your account.</p>
-
-            <!-- Automation Results (shown if accounts were auto-created) -->
-            <div id="automation-results" class="automation-results">
-                <h3>Your Accounts Have Been Created!</h3>
-                <div id="automation-list"></div>
-            </div>
-
-            <div class="next-steps">
-                <h2>What Happens Next?</h2>
-                <ul>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <span>You'll receive a confirmation email with your signup details</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-user-check"></i>
-                        <span>Our team will review your request within 1 business day</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone"></i>
-                        <span>We'll contact you to schedule an onboarding call</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-rocket"></i>
-                        <span>Get your account set up and start your free trial</span>
-                    </li>
-                </ul>
-            </div>
-
-            <a href="index.html" class="btn-home">
-                <i class="fas fa-home" style="margin-right: 0.5rem;"></i>
+<header class="header">
+<nav class="nav">
+<div class="nav-container">
+<div class="tilli-logo">
+<a aria-label="Tilli Home" href="index.html">
+<img alt="Tilli Logo" src="Images/22_tilli_logo_color.png" style="height: 40px; width: auto;"/>
+</a>
+</div>
+<div class="nav-actions"><a class="btn-outline" href="signin.html">Sign In</a> <a class="cta-button" href="signup.html">Sign Up</a></div></div>
+</nav>
+</header>
+<div class="success-container">
+<div class="success-card">
+<div class="success-icon">
+<i class="fas fa-check"></i>
+</div>
+<h1>Welcome to Tilli!</h1>
+<p>Your signup request has been received successfully. Our team will review your information and reach out to you shortly to set up your account.</p>
+<!-- Automation Results (shown if accounts were auto-created) -->
+<div class="automation-results" id="automation-results">
+<h3>Your Accounts Have Been Created!</h3>
+<div id="automation-list"></div>
+</div>
+<div class="next-steps">
+<h2>What Happens Next?</h2>
+<ul>
+<li>
+<i class="fas fa-envelope"></i>
+<span>You'll receive a confirmation email with your signup details</span>
+</li>
+<li>
+<i class="fas fa-user-check"></i>
+<span>Our team will review your request within 1 business day</span>
+</li>
+<li>
+<i class="fas fa-phone"></i>
+<span>We'll contact you to schedule an onboarding call</span>
+</li>
+<li>
+<i class="fas fa-rocket"></i>
+<span>Get your account set up and start your free trial</span>
+</li>
+</ul>
+</div>
+<a class="btn-home" href="index.html">
+<i class="fas fa-home" style="margin-right: 0.5rem;"></i>
                 Return to Homepage
             </a>
-        </div>
-    </div>
-
-    <!-- Vercel Analytics -->
-    <script>
+</div>
+</div>
+<!-- Vercel Analytics -->
+<script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-
-    <script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<script>
         // Check if automation results were passed via URL parameters
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);

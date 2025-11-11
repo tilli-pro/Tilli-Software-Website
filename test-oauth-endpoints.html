@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test OAuth Endpoints</title></head>
+<body>
+<h1>Test Better-Auth OAuth Endpoints</h1>
+<p>Click buttons to test different endpoint patterns:</p>
+
+<button onclick="test('/api/auth/sign-in/google')">Pattern 1: /api/auth/sign-in/google</button><br><br>
+<button onclick="test('/api/auth/signin/google')">Pattern 2: /api/auth/signin/google</button><br><br>
+<button onclick="test('/api/auth/google')">Pattern 3: /api/auth/google</button><br><br>
+<button onclick="test('/oauth/google')">Pattern 4: /oauth/google</button><br><br>
+
+<h2>Result:</h2>
+<pre id="result"></pre>
+
+<script>
+async function test(path) {
+    const url = 'http://localhost:3100' + path;
+    document.getElementById('result').textContent = 'Testing: ' + url + '\n\nRedirecting...';
+    window.location.href = url;
+}
+</script>
+</body>
+</html>

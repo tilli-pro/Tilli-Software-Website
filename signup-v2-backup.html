@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Tilli Software | Frictionless Onboarding</title>
+    <meta name="description" content="Sign up for Tilli in seconds - no password required! Use Google, Microsoft, GitHub, or magic link authentication.">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Tilli OAuth Integration -->
+    <script type="module" src="tilli-oauth.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .signup-container {
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .signup-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            padding: 48px 40px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin: 0;
+        }
+
+        .logo p {
+            font-size: 14px;
+            color: #6b7280;
+            margin: 8px 0 0 0;
+        }
+
+        .signup-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .signup-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0 0 8px 0;
+        }
+
+        .signup-header p {
+            font-size: 15px;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        /* OAuth Buttons */
+        .oauth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .oauth-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .oauth-btn:hover {
+            border-color: #4099FF;
+            background: #f9fafb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(64, 153, 255, 0.15);
+        }
+
+        .oauth-btn:active {
+            transform: translateY(0);
+        }
+
+        .oauth-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .oauth-btn svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Loading State */
+        .oauth-btn.loading {
+            pointer-events: none;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #4099FF;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Separator */
+        .separator {
+            display: flex;
+            align-items: center;
+            margin: 24px 0;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        .separator span {
+            padding: 0 16px;
+        }
+
+        /* Magic Link Section */
+        .magic-link-section {
+            margin-bottom: 24px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #4099FF;
+        }
+
+        .btn-magic-link {
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            background: #4099FF;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-magic-link:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(64, 153, 255, 0.3);
+        }
+
+        .btn-magic-link:active {
+            transform: translateY(0);
+        }
+
+        .help-text {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        /* Messages */
+        .message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .message.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+            display: block;
+        }
+
+        .message.error {
+            background: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
+            display: block;
+        }
+
+        /* Trust Badge */
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 24px;
+        }
+
+        .trust-badge svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 640px) {
+            .signup-card {
+                padding: 32px 24px;
+            }
+
+            .logo h1 {
+                font-size: 28px;
+            }
+
+            .signup-header h2 {
+                font-size: 20px;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            .btn-magic-link {
+                width: 100%;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .footer a {
+            color: #4099FF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-card">
+            <!-- Logo -->
+            <div class="logo">
+                <h1>Tilli Software</h1>
+                <p>Enterprise Payment Platform</p>
+            </div>
+
+            <!-- Header -->
+            <div class="signup-header">
+                <h2>Start your free trial</h2>
+                <p>Sign up in seconds - no password required</p>
+            </div>
+
+            <!-- OAuth Buttons -->
+            <div class="oauth-buttons">
+                <!-- Google -->
+                <button
+                    data-provider="google"
+                    class="oauth-btn"
+                    onclick="signUpWithGoogle()"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    <span>Continue with Google</span>
+                </button>
+
+                <!-- Microsoft -->
+                <button
+                    data-provider="microsoft"
+                    class="oauth-btn"
+                    onclick="signUpWithMicrosoft()"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path fill="#f25022" d="M1 1h10v10H1z"/>
+                        <path fill="#00a4ef" d="M13 1h10v10H13z"/>
+                        <path fill="#7fba00" d="M1 13h10v10H1z"/>
+                        <path fill="#ffb900" d="M13 13h10v10H13z"/>
+                    </svg>
+                    <span>Continue with Microsoft</span>
+                </button>
+
+                <!-- GitHub -->
+                <button
+                    data-provider="github"
+                    class="oauth-btn"
+                    onclick="signUpWithGitHub()"
+                >
+                    <svg viewBox="0 0 24 24" fill="#181717">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>Continue with GitHub</span>
+                </button>
+            </div>
+
+            <!-- Separator -->
+            <div class="separator">
+                <span>or continue with email</span>
+            </div>
+
+            <!-- Magic Link (Passwordless) -->
+            <div class="magic-link-section">
+                <form id="magic-link-form" onsubmit="event.preventDefault(); sendMagicLink();">
+                    <div class="input-group">
+                        <input
+                            type="email"
+                            id="magic-link-email"
+                            placeholder="Enter your email"
+                            required
+                            autocomplete="email"
+                        />
+                        <button
+                            type="submit"
+                            data-provider="magic-link"
+                            class="btn-magic-link"
+                        >
+                            Send Link
+                        </button>
+                    </div>
+                    <p class="help-text">
+                        We'll email you a magic link for instant sign-in. No password needed!
+                    </p>
+                </form>
+
+                <!-- Success/Error Messages -->
+                <div id="magic-link-success" class="message success"></div>
+                <div id="magic-link-error" class="message error"></div>
+                <div id="magic-link-instructions"></div>
+            </div>
+
+            <!-- Error Messages for OAuth -->
+            <div id="google-error" class="message error"></div>
+            <div id="microsoft-error" class="message error"></div>
+            <div id="github-error" class="message error"></div>
+
+            <!-- Trust Badge -->
+            <div class="trust-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                    <path d="m9 12 2 2 4-4"/>
+                </svg>
+                <span>Secure authentication powered by industry leaders</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                By signing up, you agree to our
+                <a href="/terms-conditions.html">Terms</a> and
+                <a href="/privacy-policy.html">Privacy Policy</a>
+            </p>
+            <p style="margin-top: 12px;">
+                Already have an account? <a href="/login.html">Sign in</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Track page view
+        console.log('📊 Signup page loaded');
+
+        // Auto-focus email input after 1 second
+        setTimeout(() => {
+            document.getElementById('magic-link-email')?.focus();
+        }, 1000);
+    </script>
+</body>
+</html>

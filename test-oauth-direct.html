@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Direct OAuth Test</title>
+    <style>
+        body { font-family: Arial; padding: 40px; background: #f5f5f5; }
+        .container { background: white; padding: 30px; border-radius: 8px; max-width: 600px; margin: 0 auto; }
+        button { padding: 15px 30px; margin: 10px; font-size: 16px; cursor: pointer; border-radius: 6px; }
+        .google { background: #4285f4; color: white; border: none; }
+        .microsoft { background: #2f2f2f; color: white; border: none; }
+        .github { background: #24292e; color: white; border: none; }
+        pre { background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 12px; }
+        .status { margin: 20px 0; padding: 15px; border-radius: 4px; }
+        .error { background: #fee; color: #c33; }
+        .success { background: #efe; color: #363; }
+        .info { background: #eef; color: #336; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>OAuth Direct Test</h1>
+        <p>This page tests OAuth by directly calling better-auth endpoints.</p>
+        
+        <h3>Test Buttons:</h3>
+        <button class="google" onclick="testOAuth('google')">Test Google OAuth</button>
+        <button class="microsoft" onclick="testOAuth('microsoft')">Test Microsoft OAuth</button>
+        <button class="github" onclick="testOAuth('github')">Test GitHub OAuth</button>
+        
+        <div id="status"></div>
+        
+        <h3>Configuration Check:</h3>
+        <pre id="config"></pre>
+        
+        <h3>URL Parameters (if returned from OAuth):</h3>
+        <pre id="params"></pre>
+    </div>
+
+    <script type="module">
+        const AUTH_URL = 'http://localhost:3100';
+        const status = document.getElementById('status');
+        const config = document.getElementById('config');
+        const params = document.getElementById('params');
+        
+        // Display configuration
+        config.textContent = `Auth Service URL: ${AUTH_URL}
+Callback URL: ${window.location.origin}${window.location.pathname}
+Current URL: ${window.location.href}
+
+Expected redirect URIs configured:
+- ${AUTH_URL}/api/auth/callback/google
+- ${AUTH_URL}/api/auth/callback/microsoft  
+- ${AUTH_URL}/api/auth/callback/github`;
+
+        // Check URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.toString()) {
+            params.textContent = JSON.stringify(Object.fromEntries(urlParams), null, 2);
+            status.innerHTML = '<div class="status success">✅ Returned from OAuth! Check parameters above.</div>';
+        } else {
+            params.textContent = 'No parameters (not returned from OAuth yet)';
+        }
+        
+        // Import better-auth client
+        import { createAuthClient } from 'https://esm.sh/better-auth@1.3.34/client';
+        
+        const authClient = createAuthClient({
+            baseURL: AUTH_URL
+        });
+        
+        window.testOAuth = async (provider) => {
+            status.innerHTML = `<div class="status info">🔄 Testing ${provider} OAuth...</div>`;
+            
+            try {
+                console.log(`Calling authClient.signIn.social with provider: ${provider}`);
+                
+                const result = await authClient.signIn.social({
+                    provider: provider,
+                    callbackURL: window.location.href
+                });
+                
+                status.innerHTML = `<div class="status success">✅ OAuth call succeeded! Result: ${JSON.stringify(result)}</div>`;
+                console.log('OAuth result:', result);
+                
+            } catch (error) {
+                status.innerHTML = `<div class="status error">❌ Error: ${error.message}<br><br>Stack: <pre>${error.stack}</pre></div>`;
+                console.error('OAuth error:', error);
+            }
+        };
+        
+        // Log better-auth client info
+        console.log('Better-auth client initialized:', authClient);
+    </script>
+</body>
+</html>

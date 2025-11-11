@@ -1,15 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing Configurator - Token-Based Usage Pricing | Tilli</title>
-    <meta name="description" content="Configure your perfect plan with token-based usage pricing. Only pay for what you use - no contact limits, no hidden fees.">
-
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pricing Configurator - Token-Based Usage Pricing | Tilli</title>
+<meta content="Configure your perfect plan with token-based usage pricing. Only pay for what you use - no contact limits, no hidden fees." name="description"/>
+<link href="styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
         /* Pricing Configurator Styles */
         .pricing-hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -526,525 +525,520 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div class="logo">
-                    <a href="index.html" aria-label="Tilli Home">
-                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
-                    </a>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html#products">Products</a></li>
-                    <li><a href="industries.html">Industries</a></li>
-                    <li><a href="about.html">Company</a></li>
-                    <li><a href="valuebasedpricing.html">Pricing</a></li>
-                    <li><a href="press.html">Press</a></li>
-                </ul>
-                <a class="cta-button" href="signup.html">Sign Up</a>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
+<!-- Header -->
+<header class="header">
+<nav class="nav">
+<div class="nav-container">
+<div class="logo">
+<a aria-label="Tilli Home" href="index.html">
+<img alt="Tilli Logo" src="Images/22_tilli_logo_color.png" style="height: 40px; width: auto;"/>
+</a>
+</div>
+<ul class="nav-menu">
+<li><a href="#products">Products</a></li>
+<li><a href="industries.html">Industries</a></li>
+<li><a href="use-cases.html">Use Cases</a></li> <li><a href="about.html">Company</a></li>
+<li><a href="valuebasedpricing.html">Pricing</a></li>
+<li><a href="press.html">Press</a></li>
+</ul>
 
-    <!-- Hero Section -->
-    <section class="pricing-hero">
-        <div class="container">
-            <h1>Token-Based Usage Pricing</h1>
-            <p>Only pay for what you use. No contact limits. No hidden fees. Configure your perfect plan below.</p>
-        </div>
-    </section>
-
-    <!-- Pricing Configurator -->
-    <section class="configurator-section">
-        <div class="configurator-container">
-            <!-- Configuration Panel -->
-            <div class="config-panel">
-                <!-- Communications Section -->
-                <div class="config-section">
-                    <h3><i class="fas fa-paper-plane"></i> Communications Channels</h3>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>Email Messages</span>
-                            <span class="channel-meta">0.1 tokens each</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="email-slider" min="0" max="500000" step="5000" value="0">
-                            <div class="channel-value" id="email-value">0</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>SMS Segments</span>
-                            <span class="channel-meta">1 token each</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="sms-slider" min="0" max="100000" step="1000" value="0">
-                            <div class="channel-value" id="sms-value">0</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>WhatsApp Messages</span>
-                            <span class="channel-meta">2 tokens each</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="whatsapp-slider" min="0" max="50000" step="500" value="0">
-                            <div class="channel-value" id="whatsapp-value">0</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>Push Notifications</span>
-                            <span class="channel-meta">0.05 tokens each</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="push-slider" min="0" max="1000000" step="10000" value="0">
-                            <div class="channel-value" id="push-value">0</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>IVR Minutes</span>
-                            <span class="channel-meta">3 tokens per minute</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="ivr-slider" min="0" max="10000" step="100" value="0">
-                            <div class="channel-value" id="ivr-value">0</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Campaigns Section -->
-                <div class="config-section">
-                    <h3><i class="fas fa-bullhorn"></i> Campaigns</h3>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>Payment Requests</span>
-                            <span class="channel-meta">0.1 tokens each</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="campaign-slider" min="0" max="10000" step="100" value="0">
-                            <div class="channel-value" id="campaign-value">0</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>Surveys (Responses Only)</span>
-                            <span class="channel-meta">0.1 tokens each</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="survey-slider" min="0" max="10000" step="100" value="0">
-                            <div class="channel-value" id="survey-value">0</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Digital Documents & Signatures Section -->
-                <div class="config-section">
-                    <h3><i class="fas fa-file-signature"></i> Digital Documents & Signatures</h3>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>Digital Documents (PDF)</span>
-                            <span class="channel-meta">1 token each</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="pdf-slider" min="0" max="10000" step="100" value="0">
-                            <div class="channel-value" id="pdf-value">0</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>Digital Signatures</span>
-                            <span class="channel-meta">7 tokens each</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="signature-slider" min="0" max="5000" step="50" value="0">
-                            <div class="channel-value" id="signature-value">0</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>Archived Documents</span>
-                            <span class="channel-meta">4 tokens each</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="archive-slider" min="0" max="50000" step="500" value="0">
-                            <div class="channel-value" id="archive-value">0</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Payments Section -->
-                <div class="config-section">
-                    <h3><i class="fas fa-credit-card"></i> Payment Processing</h3>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>ACH Transactions</span>
-                            <span class="channel-meta">67 tokens + $0.20</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="ach-slider" min="0" max="10000" step="100" value="0">
-                            <div class="channel-value" id="ach-value">0</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-input">
-                        <div class="channel-label">
-                            <span>Card Transactions</span>
-                            <span class="channel-meta">2.7% + $0.20 + 67 tokens</span>
-                        </div>
-                        <div class="channel-slider-container">
-                            <input type="range" class="channel-slider" id="card-slider" min="0" max="10000" step="100" value="0">
-                            <div class="channel-value" id="card-value">0</div>
-                        </div>
-                    </div>
-
-                    <div style="background: #ecfdf5; border: 2px solid #10b981; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
-                        <strong style="color: #065f46; display: flex; align-items: center; gap: 0.5rem;">
-                            <i class="fas fa-gift"></i> Payment Link Communications are FREE!
+<div class="nav-actions"><a class="btn-outline" href="signin.html">Sign In</a> <a class="cta-button" href="signup.html">Sign Up</a></div><div class="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="pricing-hero">
+<div class="container">
+<h1>Token-Based Usage Pricing</h1>
+<p>Only pay for what you use. No contact limits. No hidden fees. Configure your perfect plan below.</p>
+</div>
+</section>
+<!-- Pricing Configurator -->
+<section class="configurator-section">
+<div class="configurator-container">
+<!-- Configuration Panel -->
+<div class="config-panel">
+<!-- Communications Section -->
+<div class="config-section">
+<h3><i class="fas fa-paper-plane"></i> Communications Channels</h3>
+<div class="channel-input">
+<div class="channel-label">
+<span>Email Messages</span>
+<span class="channel-meta">0.1 tokens each</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="email-slider" max="500000" min="0" step="5000" type="range" value="0"/>
+<div class="channel-value" id="email-value">0</div>
+</div>
+</div>
+<div class="channel-input">
+<div class="channel-label">
+<span>SMS Segments</span>
+<span class="channel-meta">1 token each</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="sms-slider" max="100000" min="0" step="1000" type="range" value="0"/>
+<div class="channel-value" id="sms-value">0</div>
+</div>
+</div>
+<div class="channel-input">
+<div class="channel-label">
+<span>WhatsApp Messages</span>
+<span class="channel-meta">2 tokens each</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="whatsapp-slider" max="50000" min="0" step="500" type="range" value="0"/>
+<div class="channel-value" id="whatsapp-value">0</div>
+</div>
+</div>
+<div class="channel-input">
+<div class="channel-label">
+<span>Push Notifications</span>
+<span class="channel-meta">0.05 tokens each</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="push-slider" max="1000000" min="0" step="10000" type="range" value="0"/>
+<div class="channel-value" id="push-value">0</div>
+</div>
+</div>
+<div class="channel-input">
+<div class="channel-label">
+<span>IVR Minutes</span>
+<span class="channel-meta">3 tokens per minute</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="ivr-slider" max="10000" min="0" step="100" type="range" value="0"/>
+<div class="channel-value" id="ivr-value">0</div>
+</div>
+</div>
+</div>
+<!-- Campaigns Section -->
+<div class="config-section">
+<h3><i class="fas fa-bullhorn"></i> Campaigns</h3>
+<div class="channel-input">
+<div class="channel-label">
+<span>Payment Requests</span>
+<span class="channel-meta">0.1 tokens each</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="campaign-slider" max="10000" min="0" step="100" type="range" value="0"/>
+<div class="channel-value" id="campaign-value">0</div>
+</div>
+</div>
+<div class="channel-input">
+<div class="channel-label">
+<span>Surveys (Responses Only)</span>
+<span class="channel-meta">0.1 tokens each</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="survey-slider" max="10000" min="0" step="100" type="range" value="0"/>
+<div class="channel-value" id="survey-value">0</div>
+</div>
+</div>
+</div>
+<!-- Digital Documents & Signatures Section -->
+<div class="config-section">
+<h3><i class="fas fa-file-signature"></i> Digital Documents &amp; Signatures</h3>
+<div class="channel-input">
+<div class="channel-label">
+<span>Digital Documents (PDF)</span>
+<span class="channel-meta">1 token each</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="pdf-slider" max="10000" min="0" step="100" type="range" value="0"/>
+<div class="channel-value" id="pdf-value">0</div>
+</div>
+</div>
+<div class="channel-input">
+<div class="channel-label">
+<span>Digital Signatures</span>
+<span class="channel-meta">7 tokens each</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="signature-slider" max="5000" min="0" step="50" type="range" value="0"/>
+<div class="channel-value" id="signature-value">0</div>
+</div>
+</div>
+<div class="channel-input">
+<div class="channel-label">
+<span>Archived Documents</span>
+<span class="channel-meta">4 tokens each</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="archive-slider" max="50000" min="0" step="500" type="range" value="0"/>
+<div class="channel-value" id="archive-value">0</div>
+</div>
+</div>
+</div>
+<!-- Payments Section -->
+<div class="config-section">
+<h3><i class="fas fa-credit-card"></i> Payment Processing</h3>
+<div class="channel-input">
+<div class="channel-label">
+<span>ACH Transactions</span>
+<span class="channel-meta">67 tokens + $0.20</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="ach-slider" max="10000" min="0" step="100" type="range" value="0"/>
+<div class="channel-value" id="ach-value">0</div>
+</div>
+</div>
+<div class="channel-input">
+<div class="channel-label">
+<span>Card Transactions</span>
+<span class="channel-meta">2.7% + $0.20 + 67 tokens</span>
+</div>
+<div class="channel-slider-container">
+<input class="channel-slider" id="card-slider" max="10000" min="0" step="100" type="range" value="0"/>
+<div class="channel-value" id="card-value">0</div>
+</div>
+</div>
+<div style="background: #ecfdf5; border: 2px solid #10b981; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+<strong style="color: #065f46; display: flex; align-items: center; gap: 0.5rem;">
+<i class="fas fa-gift"></i> Payment Link Communications are FREE!
                         </strong>
-                        <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: #047857;">Payment reminders and links don't use any tokens.</p>
-                    </div>
-                </div>
-
-                <!-- Add-Ons Section -->
-                <div class="config-section">
-                    <h3><i class="fas fa-puzzle-piece"></i> Add-Ons & Integrations</h3>
-
-                    <label class="addon-checkbox">
-                        <input type="checkbox" id="addon-ip">
-                        <div class="addon-info">
-                            <div class="addon-name">Dedicated Email IP</div>
-                            <div class="addon-desc">Protect your sender reputation with a dedicated IP address</div>
-                        </div>
-                        <div class="addon-price">$29/mo</div>
-                    </label>
-
-                    <label class="addon-checkbox">
-                        <input type="checkbox" id="addon-crm">
-                        <div class="addon-info">
-                            <div class="addon-name">CRM Connectors</div>
-                            <div class="addon-desc">Salesforce, Monday.com integrations</div>
-                        </div>
-                        <div class="addon-price">$99/mo</div>
-                    </label>
-
-                    <label class="addon-checkbox">
-                        <input type="checkbox" id="addon-erp">
-                        <div class="addon-info">
-                            <div class="addon-name">ERP Connectors</div>
-                            <div class="addon-desc">SAP, NetSuite, JD Edwards, Oracle, Zoho</div>
-                        </div>
-                        <div class="addon-price">$299/mo</div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- Summary Panel -->
-            <div class="summary-panel">
-                <div class="summary-card">
-                    <h3>Your Plan Summary</h3>
-                    <div class="tier-badge" id="tier-name">Free Forever</div>
-
-                    <div class="total-tokens">
-                        <div class="total-tokens-label">Total Monthly Tokens</div>
-                        <div class="total-tokens-value" id="total-tokens">0</div>
-                    </div>
-
-                    <div class="usage-breakdown" id="usage-breakdown">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-
-                    <div class="competitor-comparison" id="competitor-comparison" style="display: none;">
-                        <div style="text-align: center; margin-bottom: 1rem;">
-                            <strong style="font-size: 1.125rem;">💰 Tilli vs Competitors - Side by Side</strong>
-                        </div>
-                        <div class="comparison-grid">
-                            <div class="comparison-column tilli">
-                                <h4>✅ Tilli All-In-One Platform</h4>
-                                <div id="tilli-breakdown"></div>
-                                <div class="comparison-total">
-                                    <span>Monthly Total:</span>
-                                    <span id="tilli-total">$0.00</span>
-                                </div>
-                            </div>
-                            <div class="comparison-column competitors">
-                                <h4>❌ Competitor Stack (Multiple Vendors)</h4>
-                                <div id="competitor-breakdown"></div>
-                                <div class="comparison-total">
-                                    <span>Monthly Total:</span>
-                                    <span id="competitor-total">$0.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comparison-savings" id="savings-box">
-                            <div style="font-size: 0.875rem; color: #047857;">You Save with Tilli</div>
-                            <div class="savings-amount" id="savings-amount">$0.00/month</div>
-                            <div class="savings-percent" id="savings-percent">0% cheaper than competitors</div>
-                            <div style="margin-top: 0.75rem; font-size: 0.875rem; color: #065f46;">
+<p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: #047857;">Payment reminders and links don't use any tokens.</p>
+</div>
+</div>
+<!-- Add-Ons Section -->
+<div class="config-section">
+<h3><i class="fas fa-puzzle-piece"></i> Add-Ons &amp; Integrations</h3>
+<label class="addon-checkbox">
+<input id="addon-ip" type="checkbox"/>
+<div class="addon-info">
+<div class="addon-name">Dedicated Email IP</div>
+<div class="addon-desc">Protect your sender reputation with a dedicated IP address</div>
+</div>
+<div class="addon-price">$29/mo</div>
+</label>
+<label class="addon-checkbox">
+<input id="addon-crm" type="checkbox"/>
+<div class="addon-info">
+<div class="addon-name">CRM Connectors</div>
+<div class="addon-desc">Salesforce, Monday.com integrations</div>
+</div>
+<div class="addon-price">$99/mo</div>
+</label>
+<label class="addon-checkbox">
+<input id="addon-erp" type="checkbox"/>
+<div class="addon-info">
+<div class="addon-name">ERP Connectors</div>
+<div class="addon-desc">SAP, NetSuite, JD Edwards, Oracle, Zoho</div>
+</div>
+<div class="addon-price">$299/mo</div>
+</label>
+</div>
+</div>
+<!-- Summary Panel -->
+<div class="summary-panel">
+<div class="summary-card">
+<h3>Your Plan Summary</h3>
+<div class="tier-badge" id="tier-name">Free Forever</div>
+<div class="total-tokens">
+<div class="total-tokens-label">Total Monthly Tokens</div>
+<div class="total-tokens-value" id="total-tokens">0</div>
+</div>
+<div class="usage-breakdown" id="usage-breakdown">
+<!-- Will be populated by JavaScript -->
+</div>
+<div class="competitor-comparison" id="competitor-comparison" style="display: none;">
+<div style="text-align: center; margin-bottom: 1rem;">
+<strong style="font-size: 1.125rem;">💰 Tilli vs Competitors - Side by Side</strong>
+</div>
+<div class="comparison-grid">
+<div class="comparison-column tilli">
+<h4>✅ Tilli All-In-One Platform</h4>
+<div id="tilli-breakdown"></div>
+<div class="comparison-total">
+<span>Monthly Total:</span>
+<span id="tilli-total">$0.00</span>
+</div>
+</div>
+<div class="comparison-column competitors">
+<h4>❌ Competitor Stack (Multiple Vendors)</h4>
+<div id="competitor-breakdown"></div>
+<div class="comparison-total">
+<span>Monthly Total:</span>
+<span id="competitor-total">$0.00</span>
+</div>
+</div>
+</div>
+<div class="comparison-savings" id="savings-box">
+<div style="font-size: 0.875rem; color: #047857;">You Save with Tilli</div>
+<div class="savings-amount" id="savings-amount">$0.00/month</div>
+<div class="savings-percent" id="savings-percent">0% cheaper than competitors</div>
+<div style="margin-top: 0.75rem; font-size: 0.875rem; color: #065f46;">
                                 ✓ One platform • One bill • One integration
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="pricing-summary">
-                        <div class="price-line">
-                            <span>Token Usage</span>
-                            <span id="token-cost">$0</span>
-                        </div>
-                        <div class="price-line">
-                            <span>ACH Fees</span>
-                            <span id="ach-fees">$0</span>
-                        </div>
-                        <div class="price-line">
-                            <span>Card Processing</span>
-                            <span id="card-fees">$0</span>
-                        </div>
-                        <div class="price-line">
-                            <span>Add-Ons</span>
-                            <span id="addon-cost">$0</span>
-                        </div>
-                        <div class="price-line total">
-                            <span>Total Monthly</span>
-                            <span id="total-cost">$0</span>
-                        </div>
-                    </div>
-
-                    <button class="cta-button-large" onclick="startTrial()">
-                        <i class="fas fa-rocket"></i> Start Free Trial
+</div>
+</div>
+<div class="pricing-summary">
+<div class="price-line">
+<span>Token Usage</span>
+<span id="token-cost">$0</span>
+</div>
+<div class="price-line">
+<span>ACH Fees</span>
+<span id="ach-fees">$0</span>
+</div>
+<div class="price-line">
+<span>Card Processing</span>
+<span id="card-fees">$0</span>
+</div>
+<div class="price-line">
+<span>Add-Ons</span>
+<span id="addon-cost">$0</span>
+</div>
+<div class="price-line total">
+<span>Total Monthly</span>
+<span id="total-cost">$0</span>
+</div>
+</div>
+<button class="cta-button-large" onclick="startTrial()">
+<i class="fas fa-rocket"></i> Start Free Trial
                     </button>
-
-                    <div class="features-included">
-                        <h4>What's Included - Complete Value Proposition</h4>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span><strong>All Communication Channels</strong> - Email, SMS, WhatsApp, Push, IVR in one platform</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span><strong>Built-in Payment Orchestration</strong> - ACH & Card processing with no separate payment gateway needed</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span><strong>Payment Links FREE</strong> - Send payment reminders and links without consuming tokens</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span><strong>Digital Document Management</strong> - PDF generation, digital signatures, and document archiving</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span><strong>Complete API Access</strong> - RESTful APIs, webhooks, and SDKs for custom integrations</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span><strong>Real-time Analytics & Reporting</strong> - Track campaign performance, payment status, and customer engagement</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span><strong>Enterprise CRM/ERP Connectors</strong> - Pre-built integrations with Salesforce, SAP, Oracle, and more</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span><strong>24/7 Customer Support</strong> - Email, phone, and chat support with dedicated account managers for enterprise</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span><strong>No Setup Fees or Long-term Contracts</strong> - Pay only for what you use with transparent pricing</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span><strong>SOC 2 Type II & GDPR Compliant</strong> - Enterprise-grade security and compliance built-in</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tier Comparison Section -->
-    <section class="tiers-section">
-        <div class="container" style="text-align: center;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Compare All Tiers</h2>
-            <p style="color: #6b7280; font-size: 1.125rem; margin-bottom: 3rem;">Choose the right tier or use the configurator above for custom pricing</p>
-        </div>
-
-        <div class="tiers-grid">
-            <!-- Free Tier -->
-            <div class="tier-card">
-                <div class="tier-name">Free Forever</div>
-                <div class="tier-price">$0<span>/month</span></div>
-                <div class="tier-tokens">Up to 10,000 tokens/month</div>
-                <ul class="tier-features">
-                    <li><i class="fas fa-check"></i> All channels</li>
-                    <li><i class="fas fa-check"></i> Payment links FREE</li>
-                    <li><i class="fas fa-check"></i> API access</li>
-                    <li><i class="fas fa-check"></i> Basic analytics</li>
-                    <li><i class="fas fa-check"></i> Email support</li>
-                </ul>
-            </div>
-
-            <!-- Starter Tier -->
-            <div class="tier-card">
-                <div class="tier-name">Starter</div>
-                <div class="tier-price">Starts at $234<span>/month</span></div>
-                <div class="tier-tokens">10K-50K tokens ($0.00586/token)</div>
-                <ul class="tier-features">
-                    <li><i class="fas fa-check"></i> Everything in Free</li>
-                    <li><i class="fas fa-check"></i> Advanced analytics</li>
-                    <li><i class="fas fa-check"></i> Phone support</li>
-                    <li><i class="fas fa-check"></i> Custom branding</li>
-                    <li><i class="fas fa-check"></i> Webhooks</li>
-                </ul>
-            </div>
-
-            <!-- Growth Tier (Featured) -->
-            <div class="tier-card featured">
-                <div class="tier-name">Growth</div>
-                <div class="tier-price">Starts at $498<span>/month</span></div>
-                <div class="tier-tokens">50K-100K tokens ($0.00528/token)</div>
-                <ul class="tier-features">
-                    <li><i class="fas fa-check"></i> Everything in Starter</li>
-                    <li><i class="fas fa-check"></i> Priority support</li>
-                    <li><i class="fas fa-check"></i> Advanced integrations</li>
-                    <li><i class="fas fa-check"></i> Custom workflows</li>
-                    <li><i class="fas fa-check"></i> Team collaboration</li>
-                </ul>
-            </div>
-
-            <!-- Professional Tier -->
-            <div class="tier-card">
-                <div class="tier-name">Professional</div>
-                <div class="tier-price">Starts at $2,374<span>/month</span></div>
-                <div class="tier-tokens">100K-500K tokens ($0.00469/token)</div>
-                <ul class="tier-features">
-                    <li><i class="fas fa-check"></i> Everything in Growth</li>
-                    <li><i class="fas fa-check"></i> Dedicated IP included</li>
-                    <li><i class="fas fa-check"></i> Custom integrations</li>
-                    <li><i class="fas fa-check"></i> SLA guarantee</li>
-                    <li><i class="fas fa-check"></i> Priority onboarding</li>
-                </ul>
-            </div>
-
-            <!-- Enterprise Tier -->
-            <div class="tier-card">
-                <div class="tier-name">Enterprise</div>
-                <div class="tier-price">Starts at $4,424<span>/month</span></div>
-                <div class="tier-tokens">500K-1M tokens ($0.00410/token)</div>
-                <ul class="tier-features">
-                    <li><i class="fas fa-check"></i> Everything in Professional</li>
-                    <li><i class="fas fa-check"></i> Account manager</li>
-                    <li><i class="fas fa-check"></i> Custom SLA</li>
-                    <li><i class="fas fa-check"></i> Advanced security</li>
-                    <li><i class="fas fa-check"></i> Compliance support</li>
-                </ul>
-            </div>
-
-            <!-- Scale Tier -->
-            <div class="tier-card">
-                <div class="tier-name">Scale</div>
-                <div class="tier-price">Custom<span></span></div>
-                <div class="tier-tokens">1M+ tokens ($0.00352/token)</div>
-                <ul class="tier-features">
-                    <li><i class="fas fa-check"></i> Everything in Enterprise</li>
-                    <li><i class="fas fa-check"></i> Dedicated infrastructure</li>
-                    <li><i class="fas fa-check"></i> Volume discounts</li>
-                    <li><i class="fas fa-check"></i> White-label options</li>
-                    <li><i class="fas fa-check"></i> Custom development</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-main">
-                    <div class="footer-brand">
-                        <div class="footer-logo">
-                            <img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo">
-                        </div>
-                        <p>Token-based usage pricing that scales with your business. Only pay for what you use.</p>
-                    </div>
-
-                    <div class="footer-links">
-                        <div class="footer-column">
-                            <h4>About</h4>
-                            <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="careers.html">Careers</a></li>
-                                <li><a href="press.html">Press</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-column">
-                            <h4>Products</h4>
-                            <ul>
-                                <li><a href="nudge.html">Nudge</a></li>
-                                <li><a href="tillix.html">tilliX</a></li>
-                                <li><a href="tillipay.html">tilliPay</a></li>
-                                <li><a href="tilliarc.html">tilliArc</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-column">
-                            <h4>Solutions</h4>
-                            <ul>
-                                <li><a href="industries.html">Utilities</a></li>
-                                <li><a href="industries.html">Healthcare</a></li>
-                                <li><a href="industries.html">Financial Services</a></li>
-                                <li><a href="industries.html">Education</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-column">
-                            <h4>Legal</h4>
-                            <ul>
-                                <li><a href="privacy-policy/">Privacy Policy</a></li>
-                                <li><a href="terms-and-conditions/">Terms & Conditions</a></li>
-                                <li><a href="anti-slavery-policy.html">Anti-Slavery Policy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://x.com/tillisoftware" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                        <a href="https://www.facebook.com/tillisoftware"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.youtube.com/@tillisoftware"><i class="fab fa-youtube"></i></a>
-                    </div>
-
-                    <div class="footer-legal">
-                        <p>&copy; 2025 Tilli. All rights reserved.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-    <script>
+<div class="features-included">
+<h4>What's Included - Complete Value Proposition</h4>
+<div class="feature-item">
+<i class="fas fa-check-circle"></i>
+<span><strong>All Communication Channels</strong> - Email, SMS, WhatsApp, Push, IVR in one platform</span>
+</div>
+<div class="feature-item">
+<i class="fas fa-check-circle"></i>
+<span><strong>Built-in Payment Orchestration</strong> - ACH &amp; Card processing with no separate payment gateway needed</span>
+</div>
+<div class="feature-item">
+<i class="fas fa-check-circle"></i>
+<span><strong>Payment Links FREE</strong> - Send payment reminders and links without consuming tokens</span>
+</div>
+<div class="feature-item">
+<i class="fas fa-check-circle"></i>
+<span><strong>Digital Document Management</strong> - PDF generation, digital signatures, and document archiving</span>
+</div>
+<div class="feature-item">
+<i class="fas fa-check-circle"></i>
+<span><strong>Complete API Access</strong> - RESTful APIs, webhooks, and SDKs for custom integrations</span>
+</div>
+<div class="feature-item">
+<i class="fas fa-check-circle"></i>
+<span><strong>Real-time Analytics &amp; Reporting</strong> - Track campaign performance, payment status, and customer engagement</span>
+</div>
+<div class="feature-item">
+<i class="fas fa-check-circle"></i>
+<span><strong>Enterprise CRM/ERP Connectors</strong> - Pre-built integrations with Salesforce, SAP, Oracle, and more</span>
+</div>
+<div class="feature-item">
+<i class="fas fa-check-circle"></i>
+<span><strong>24/7 Customer Support</strong> - Email, phone, and chat support with dedicated account managers for enterprise</span>
+</div>
+<div class="feature-item">
+<i class="fas fa-check-circle"></i>
+<span><strong>No Setup Fees or Long-term Contracts</strong> - Pay only for what you use with transparent pricing</span>
+</div>
+<div class="feature-item">
+<i class="fas fa-check-circle"></i>
+<span><strong>SOC 2 Type II &amp; GDPR Compliant</strong> - Enterprise-grade security and compliance built-in</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tier Comparison Section -->
+<section class="tiers-section">
+<div class="container" style="text-align: center;">
+<h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Compare All Tiers</h2>
+<p style="color: #6b7280; font-size: 1.125rem; margin-bottom: 3rem;">Choose the right tier or use the configurator above for custom pricing</p>
+</div>
+<div class="tiers-grid">
+<!-- Free Tier -->
+<div class="tier-card">
+<div class="tier-name">Free Forever</div>
+<div class="tier-price">$0<span>/month</span></div>
+<div class="tier-tokens">Up to 10,000 tokens/month</div>
+<ul class="tier-features">
+<li><i class="fas fa-check"></i> All channels</li>
+<li><i class="fas fa-check"></i> Payment links FREE</li>
+<li><i class="fas fa-check"></i> API access</li>
+<li><i class="fas fa-check"></i> Basic analytics</li>
+<li><i class="fas fa-check"></i> Email support</li>
+</ul>
+</div>
+<!-- Starter Tier -->
+<div class="tier-card">
+<div class="tier-name">Starter</div>
+<div class="tier-price">Starts at $234<span>/month</span></div>
+<div class="tier-tokens">10K-50K tokens ($0.00586/token)</div>
+<ul class="tier-features">
+<li><i class="fas fa-check"></i> Everything in Free</li>
+<li><i class="fas fa-check"></i> Advanced analytics</li>
+<li><i class="fas fa-check"></i> Phone support</li>
+<li><i class="fas fa-check"></i> Custom branding</li>
+<li><i class="fas fa-check"></i> Webhooks</li>
+</ul>
+</div>
+<!-- Growth Tier (Featured) -->
+<div class="tier-card featured">
+<div class="tier-name">Growth</div>
+<div class="tier-price">Starts at $498<span>/month</span></div>
+<div class="tier-tokens">50K-100K tokens ($0.00528/token)</div>
+<ul class="tier-features">
+<li><i class="fas fa-check"></i> Everything in Starter</li>
+<li><i class="fas fa-check"></i> Priority support</li>
+<li><i class="fas fa-check"></i> Advanced integrations</li>
+<li><i class="fas fa-check"></i> Custom workflows</li>
+<li><i class="fas fa-check"></i> Team collaboration</li>
+</ul>
+</div>
+<!-- Professional Tier -->
+<div class="tier-card">
+<div class="tier-name">Professional</div>
+<div class="tier-price">Starts at $2,374<span>/month</span></div>
+<div class="tier-tokens">100K-500K tokens ($0.00469/token)</div>
+<ul class="tier-features">
+<li><i class="fas fa-check"></i> Everything in Growth</li>
+<li><i class="fas fa-check"></i> Dedicated IP included</li>
+<li><i class="fas fa-check"></i> Custom integrations</li>
+<li><i class="fas fa-check"></i> SLA guarantee</li>
+<li><i class="fas fa-check"></i> Priority onboarding</li>
+</ul>
+</div>
+<!-- Enterprise Tier -->
+<div class="tier-card">
+<div class="tier-name">Enterprise</div>
+<div class="tier-price">Starts at $4,424<span>/month</span></div>
+<div class="tier-tokens">500K-1M tokens ($0.00410/token)</div>
+<ul class="tier-features">
+<li><i class="fas fa-check"></i> Everything in Professional</li>
+<li><i class="fas fa-check"></i> Account manager</li>
+<li><i class="fas fa-check"></i> Custom SLA</li>
+<li><i class="fas fa-check"></i> Advanced security</li>
+<li><i class="fas fa-check"></i> Compliance support</li>
+</ul>
+</div>
+<!-- Scale Tier -->
+<div class="tier-card">
+<div class="tier-name">Scale</div>
+<div class="tier-price">Custom<span></span></div>
+<div class="tier-tokens">1M+ tokens ($0.00352/token)</div>
+<ul class="tier-features">
+<li><i class="fas fa-check"></i> Everything in Enterprise</li>
+<li><i class="fas fa-check"></i> Dedicated infrastructure</li>
+<li><i class="fas fa-check"></i> Volume discounts</li>
+<li><i class="fas fa-check"></i> White-label options</li>
+<li><i class="fas fa-check"></i> Custom development</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-main">
+<div class="footer-brand">
+<div class="footer-logo">
+<img alt="Tilli Logo" src="Images/22_Utilli_logo_white.png"/>
+</div>
+<p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
+<div class="newsletter">
+<input placeholder="Your email address" type="email"/>
+<button class="btn-primary">Subscribe</button>
+</div>
+</div>
+<div class="footer-links">
+<div class="footer-column">
+<h4>About</h4>
+<ul>
+<li><a href="about.html">About Us</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="press.html">Press</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Products</h4>
+<ul>
+<li><a href="nudge.html">Nudge</a></li>
+<li><a href="tillix.html">tilliX</a></li>
+<li><a href="tillipay.html">tilliPay</a></li>
+<li><a href="tilliarc.html">tilliArc</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Solutions</h4>
+<ul>
+<li><a href="industries.html">Utilities</a></li>
+<li><a href="industries.html">Healthcare</a></li>
+<li><a href="industries.html">Financial Services</a></li>
+<li><a href="industries.html">Education</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Developers</h4>
+<ul>
+<li><a href="developer.html">Documentation</a></li>
+<li><a href="developer.html">API Reference</a></li>
+<li><a href="developer.html">SDKs</a></li>
+<li><a href="developer.html">Community</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Resources</h4>
+<ul>
+<li><a href="calculator.html">ROI Calculator</a></li>
+<li><a href="demos.html">Demos</a></li>
+<li><a href="case-studies.html">Case Studies</a></li>
+<li><a href="blog.html">Blog</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Company</h4>
+<ul>
+<li><a href="about.html">Our Story</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="#">Partners</a></li>
+<li><a href="#">Security</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Legal</h4>
+<ul>
+<li><a href="privacy-policy/">Privacy Policy</a></li>
+<li><a href="terms-and-conditions/">Terms &amp; Conditions</a></li>
+<li><a href="anti-slavery-policy.html">Anti-Slavery Policy</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="social-links">
+<a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://x.com/tillisoftware" target="_blank"><i class="fab fa-x-twitter"></i></a>
+<a href="https://www.facebook.com/tillisoftware"><i class="fab fa-facebook"></i></a>
+<a href="https://www.youtube.com/@tillisoftware"><i class="fab fa-youtube"></i></a>
+</div>
+<div class="footer-legal">
+<p>© 2025 Tilli. All rights reserved.</p>
+<div class="legal-links">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
+</div>
+<div class="footer-contact">
+<h5>Headquarters</h5>
+<p>123 Business District<br/>Financial Center, FC 12345</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="script.js"></script>
+<script>
         // Token weights configuration
         const TOKEN_WEIGHTS = {
             email: 0.1,      // Cheapest communication

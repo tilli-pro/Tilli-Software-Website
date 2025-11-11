@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Debug</title>
+    <style>
+        body { font-family: Arial; padding: 40px; background: #f5f5f5; }
+        .container { background: white; padding: 30px; border-radius: 8px; max-width: 800px; margin: 0 auto; }
+        button { padding: 15px 30px; margin: 10px; font-size: 16px; cursor: pointer; border-radius: 6px; background: #4285f4; color: white; border: none; }
+        pre { background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 12px; white-space: pre-wrap; }
+        .info { background: #e3f2fd; padding: 15px; border-radius: 4px; margin: 10px 0; }
+        .success { background: #e8f5e9; padding: 15px; border-radius: 4px; margin: 10px 0; }
+        .error { background: #ffebee; padding: 15px; border-radius: 4px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Sign In Debug Tool</h1>
+        
+        <div class="info">
+            <strong>Current URL:</strong><br>
+            <pre id="currentUrl"></pre>
+        </div>
+
+        <div class="info">
+            <strong>URL Parameters:</strong><br>
+            <pre id="urlParams"></pre>
+        </div>
+
+        <div class="info">
+            <strong>Cookies:</strong><br>
+            <pre id="cookies"></pre>
+        </div>
+
+        <div class="info">
+            <strong>Session Check:</strong><br>
+            <pre id="session"></pre>
+        </div>
+
+        <h2>Test OAuth Flow:</h2>
+        <button onclick="testGoogleOAuth()">🔵 Test Google OAuth</button>
+        <button onclick="checkSession()">✅ Check Session</button>
+        <button onclick="logout()">🚪 Logout</button>
+
+        <div id="output"></div>
+    </div>
+
+    <script type="module">
+        const output = document.getElementById('output');
+        
+        // Display current state
+        document.getElementById('currentUrl').textContent = window.location.href;
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('urlParams').textContent = urlParams.toString() || 'None';
+        
+        document.getElementById('cookies').textContent = document.cookie || 'None';
+
+        // Import better-auth client
+        import { createAuthClient } from 'https://esm.sh/better-auth@1.3.34/client';
+        
+        const authClient = createAuthClient({
+            baseURL: 'http://localhost:3100'
+        });
+
+        // Check session on load
+        async function checkSessionStatus() {
+            try {
+                const session = await authClient.session.get();
+                if (session && session.data) {
+                    document.getElementById('session').innerHTML = `<div class="success">✅ Logged in as: ${session.data.user?.email || 'Unknown'}</div>`;
+                    return session;
+                } else {
+                    document.getElementById('session').innerHTML = '<div class="error">❌ No active session</div>';
+                    return null;
+                }
+            } catch (error) {
+                document.getElementById('session').innerHTML = `<div class="error">❌ Error: ${error.message}</div>`;
+                return null;
+            }
+        }
+
+        checkSessionStatus();
+
+        window.testGoogleOAuth = async () => {
+            output.innerHTML = '<div class="info">🔄 Initiating Google OAuth...</div>';
+            try {
+                await authClient.signIn.social({
+                    provider: 'google',
+                    callbackURL: window.location.href
+                });
+            } catch (error) {
+                output.innerHTML = `<div class="error">❌ Error: ${error.message}<br><pre>${error.stack}</pre></div>`;
+            }
+        };
+
+        window.checkSession = checkSessionStatus;
+
+        window.logout = async () => {
+            try {
+                await authClient.signOut();
+                output.innerHTML = '<div class="success">✅ Logged out successfully</div>';
+                setTimeout(() => window.location.reload(), 1000);
+            } catch (error) {
+                output.innerHTML = `<div class="error">❌ Logout error: ${error.message}</div>`;
+            }
+        };
+
+        // If we have URL params, we might have just returned from OAuth
+        if (urlParams.toString()) {
+            output.innerHTML = '<div class="info">📥 Detected URL parameters - checking if OAuth callback...</div>';
+            setTimeout(async () => {
+                const session = await checkSessionStatus();
+                if (session && session.data) {
+                    output.innerHTML += '<div class="success">✅ OAuth successful! You are now logged in.<br><br>Redirect to dashboard in 3 seconds...</div>';
+                    setTimeout(() => {
+                        window.location.href = 'http://localhost:4200/dashboard';
+                    }, 3000);
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
