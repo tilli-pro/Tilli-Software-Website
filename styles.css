@@ -254,7 +254,22 @@ img, svg, video, canvas {
     background-clip: padding-box, border-box;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    box-shadow:
+        0px 1px 2px 0px rgba(0, 0, 0, 0.05),
+        inset 0px -1px 0px 0px #5593F5,
+        inset 0px -1px 8px 0px rgba(85, 147, 245, 0.9);
+    position: relative;
+}
+
+.hero-banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #5593F5 50%, transparent 100%);
+    border-radius: 0 0 999px 999px;
 }
 
 .hero-banner-text {
