@@ -380,7 +380,7 @@ img, svg, video, canvas {
     max-width: 980px;
     height: auto;
     border-radius: 16px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+    box-shadow: none;
 }
 
 /* Laptop Mockup */
