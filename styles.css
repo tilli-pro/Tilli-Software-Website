@@ -319,7 +319,7 @@ img, svg, video, canvas {
 
 .btn-secondary {
     background: var(--white);
-    color: var(--primary-blue);
+    color: #000000;
     border: 2px solid transparent;
     background-image: linear-gradient(white, white), linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
     background-origin: border-box;
