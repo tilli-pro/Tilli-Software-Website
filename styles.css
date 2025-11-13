@@ -194,7 +194,7 @@ img, svg, video, canvas {
 }
 
 .cta-button {
-    background: var(--primary-blue);
+    background: linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
     color: var(--white);
     border: none;
     padding: 0.75rem 1.5rem;
@@ -205,7 +205,7 @@ img, svg, video, canvas {
 }
 
 .cta-button:hover {
-    background: #3B82F6;
+    background: linear-gradient(90deg, #7BDCF3 0%, #6BA5F6 65%, #4277FA 100%);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -1453,6 +1453,30 @@ img, svg, video, canvas {
     background: var(--black);
     color: var(--white);
     padding: 3rem 0 1rem;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        transparent calc(var(--mouse-x, 50%) - 10%),
+        #6CD3EF calc(var(--mouse-x, 50%) - 5%),
+        #5C9BF4 var(--mouse-x, 50%),
+        #2E67F8 calc(var(--mouse-x, 50%) + 5%),
+        transparent calc(var(--mouse-x, 50%) + 10%),
+        transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.footer:hover::before {
+    opacity: 1;
 }
 
 .footer-content {

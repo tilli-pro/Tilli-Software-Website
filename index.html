@@ -2066,6 +2066,16 @@
     </footer>
 
     <script>
+        // Footer gradient border mouse tracking
+        const footer = document.querySelector('.footer');
+        if (footer) {
+            footer.addEventListener('mousemove', (e) => {
+                const rect = footer.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                footer.style.setProperty('--mouse-x', `${x}%`);
+            });
+        }
+
         // Define Booking Modal Functions FIRST
         console.log('Defining openBookingModal function...');
         window.openBookingModal = function() {
