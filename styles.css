@@ -1529,7 +1529,15 @@ img, svg, video, canvas {
     color: #9CA3AF;
     text-decoration: none;
     font-size: 0.875rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.footer-links:hover .footer-column a {
+    opacity: 0.7;
+}
+
+.footer-links:hover .footer-column a:hover {
+    opacity: 1;
 }
 
 .footer-column a:hover {
