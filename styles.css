@@ -1550,6 +1550,31 @@ img, svg, video, canvas {
     color: var(--white);
 }
 
+.footer-column a.gradient-link {
+    background: linear-gradient(90deg, #3B82F6 0%, #60A5FA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 500;
+}
+
+.footer-column a.gradient-link:hover {
+    background: linear-gradient(90deg, #60A5FA 0%, #93C5FD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-column a.gradient-link .arrow {
+    display: inline-block;
+    margin-left: 4px;
+    transition: transform 0.3s ease;
+}
+
+.footer-column a.gradient-link:hover .arrow {
+    transform: translateX(4px);
+}
+
 .footer-bottom {
     display: flex;
     justify-content: space-between;
