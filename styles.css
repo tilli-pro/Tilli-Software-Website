@@ -1584,7 +1584,7 @@ img, svg, video, canvas {
 .footer-status {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 12px;
     color: #9CA3AF;
     font-size: 0.875rem;
     padding: 0.5rem 1rem;
@@ -1595,7 +1595,7 @@ img, svg, video, canvas {
 .footer-status .status-indicator {
     width: 10px;
     height: 10px;
-    background: #10B981;
+    background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #10B981 100%);
     border-radius: 50%;
     display: inline-block;
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2),
@@ -1608,7 +1608,7 @@ img, svg, video, canvas {
     content: '';
     position: absolute;
     inset: 0;
-    background: #10B981;
+    background: linear-gradient(135deg, #6CD3EF 0%, #5C9BF4 65%, #10B981 100%);
     border-radius: 50%;
     filter: blur(2px);
     z-index: -1;
