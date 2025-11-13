@@ -253,7 +253,7 @@ img, svg, video, canvas {
     box-shadow:
         0px 1px 2px 0px rgba(0, 0, 0, 0.05),
         inset 0px -1px 0px 0px #5593F5,
-        inset 0px -1px 8px 0px rgba(85, 147, 245, 0.9);
+        inset 0px -1px 8px 0px rgba(85, 147, 245, 0.3);
     position: relative;
 }
 
