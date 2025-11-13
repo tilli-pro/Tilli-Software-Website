@@ -309,6 +309,7 @@ img, svg, video, canvas {
     align-items: center;
     justify-content: center;
     white-space: nowrap;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
 }
 
 .btn-primary:hover {
@@ -337,6 +338,7 @@ img, svg, video, canvas {
     align-items: center;
     justify-content: center;
     white-space: nowrap;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
 }
 
 .btn-secondary:hover {
