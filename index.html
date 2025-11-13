@@ -485,17 +485,26 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Transform Billing Into Engagement.</h1>
-                <p class="hero-subtitle">Go 100% Digital. Save 40% on Costs. Get Paid Faster.</p>
-                <div class="hero-buttons" style="display: flex; gap: 0.75rem; flex-wrap: nowrap;">
-                    <button type="button" class="btn-primary" onclick="event.preventDefault(); event.stopPropagation(); window.openBookingModal(); return false;" style="padding: 0.75rem 1.5rem; font-size: 1rem; white-space: nowrap;">Book a Demo</button>
-                    <a href="calculator.html" class="btn-secondary" style="text-decoration: none; display: inline-flex; align-items: center; padding: 0.65rem 1.25rem; font-size: 0.9rem; white-space: nowrap;">Calculate ROI</a>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-banner">
+                    Check out what's new with tilliX
+                    <span style="background:#e5ecff;color:var(--primary-blue);padding:2px 8px;border-radius:999px;margin-left:8px;font-size:12px;">X</span>
+                </div>
+
+                <h1>Transform Billing Into Engagement.</h1>
+                <p>Go 100% Digital. Save 40% on Costs. Get Paid Faster.</p>
+
+                <div class="hero-actions">
+                    <button type="button" class="btn btn-primary btn-large btn-icon" onclick="event.preventDefault(); event.stopPropagation(); window.openBookingModal(); return false;">
+                        Book a Demo <span class="arrow-circle">→</span>
+                    </button>
+                    <a href="calculator.html" class="btn btn-secondary btn-large">Calculate ROI</a>
                 </div>
             </div>
-            <div class="hero-visual" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 1rem;">
-                <img src="Images/Section.png" alt="Tilli Billing Platform" style="display:block;width:100%;max-width:100%;height:auto;object-fit:contain;border-radius:0;box-shadow:none;">
+
+            <div class="hero-visual">
+                <img class="hero-image" src="Images/Section.png" alt="Tilli Billing Platform" />
             </div>
         </div>
     </section>
