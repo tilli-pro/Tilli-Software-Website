@@ -1579,6 +1579,7 @@ img, svg, video, canvas {
     align-items: flex-start;
     padding: 2.5rem 0 1rem;
     gap: 4rem;
+    border-top: none;
 }
 
 .footer-copyright {
