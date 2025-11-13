@@ -247,11 +247,7 @@ img, svg, video, canvas {
     font-weight: 400;
     font-family: 'Inter', sans-serif;
     border: 1px solid transparent;
-    background-image:
-        linear-gradient(#FFFFFF, #FFFFFF),
-        linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+    border-image: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%) 1;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow:
@@ -259,6 +255,19 @@ img, svg, video, canvas {
         inset 0px -1px 0px 0px #5593F5,
         inset 0px -1px 8px 0px rgba(85, 147, 245, 0.9);
     position: relative;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 999px;
+    padding: 1px;
+    background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
 }
 
 .hero-banner::after {
