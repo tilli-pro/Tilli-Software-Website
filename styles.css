@@ -342,9 +342,10 @@ img, svg, video, canvas {
     font-size: 4rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
-    line-height: 1.1;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     color: var(--dark-gray);
+    overflow: visible;
 }
 
 .hero-text p {
