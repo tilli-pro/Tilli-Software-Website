@@ -1490,7 +1490,6 @@ img, svg, video, canvas {
     grid-template-columns: repeat(5, 1fr);
     gap: 3rem;
     padding-bottom: 3rem;
-    border-bottom: 1px solid #1F2937;
 }
 
 .footer-brand {
