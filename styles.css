@@ -1510,10 +1510,11 @@ img, svg, video, canvas {
 }
 
 .footer-column h4 {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
     margin-bottom: 1rem;
-    color: var(--white);
+    color: #FFFFFF;
 }
 
 .footer-column ul {
