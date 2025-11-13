@@ -236,7 +236,7 @@ img, svg, video, canvas {
 }
 
 .hero-banner {
-    background: rgba(255, 255, 255, 0.9);
+    background: #FFFFFF;
     padding: 8px 16px;
     border-radius: 999px;
     margin-bottom: 2rem;
@@ -248,7 +248,7 @@ img, svg, video, canvas {
     font-family: 'Inter', sans-serif;
     border: 1px solid transparent;
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+        linear-gradient(#FFFFFF, #FFFFFF),
         linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
     background-origin: border-box;
     background-clip: padding-box, border-box;
