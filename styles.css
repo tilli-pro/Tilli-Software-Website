@@ -360,11 +360,8 @@ img, svg, video, canvas {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
-    background: rgba(255, 255, 255, 0.15);
+    background: none;
     border: none;
-    border-radius: 999px;
     font-size: 14px;
 }
 
