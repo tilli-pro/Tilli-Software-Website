@@ -236,17 +236,20 @@ img, svg, video, canvas {
 }
 
 .hero-banner {
-    background: rgba(50, 94, 246, 0.1);
-    color: var(--primary-blue);
-    padding: 0.5rem 1rem;
+    background: #FFFFFF;
+    color: #3B82F6;
+    padding: 8px 16px;
     border-radius: 999px;
     margin-bottom: 2rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: 1px solid rgba(50, 94, 246, 0.2);
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #E5E7EB;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .hero-content {
