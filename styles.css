@@ -293,37 +293,42 @@ img, svg, video, canvas {
 }
 
 .btn-primary {
-    background: var(--primary-blue);
+    background: linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
     color: var(--white);
     border: none;
     padding: 1rem 2rem;
-    border-radius: var(--border-radius);
+    border-radius: 50px;
+    width: 230px;
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .btn-primary:hover {
-    background: #3B82F6;
+    background: linear-gradient(90deg, #7BDCF3 0%, #6BA5F6 65%, #4277FA 100%);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
     background: var(--white);
-    color: var(--dark-gray);
-    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    border: 2px solid;
+    border-image: linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%) 1;
+    border-radius: 50px;
+    width: 230px;
     padding: 1rem 2rem;
-    border-radius: var(--border-radius);
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .btn-secondary:hover {
-    background: var(--primary-blue);
+    background: linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
     color: var(--white);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
