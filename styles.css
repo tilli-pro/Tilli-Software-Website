@@ -285,8 +285,11 @@ img, svg, video, canvas {
 .highlight-word {
     position: relative;
     display: inline-block;
-    color: var(--dark-gray);
-    animation: gradient-shine 2s ease-in-out forwards;
+    background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shine 2.5s ease-in-out forwards;
 }
 
 @keyframes gradient-shine {
@@ -296,18 +299,17 @@ img, svg, video, canvas {
         -webkit-text-fill-color: transparent;
         background-clip: text;
     }
-    50% {
+    70% {
         background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
     }
     100% {
-        background: none;
-        -webkit-background-clip: initial;
-        -webkit-text-fill-color: initial;
-        background-clip: initial;
-        color: var(--dark-gray);
+        background: var(--dark-gray);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 }
 
