@@ -285,27 +285,33 @@ img, svg, video, canvas {
 .highlight-word {
     position: relative;
     display: inline-block;
-    background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+    color: var(--dark-gray);
+    background: linear-gradient(
+        90deg,
+        var(--dark-gray) 0%,
+        var(--dark-gray) 40%,
+        #448DE6 50%,
+        #98B2E9 55%,
+        var(--dark-gray) 60%,
+        var(--dark-gray) 100%
+    );
+    background-size: 200% 100%;
+    background-position: 100% 0;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: gradient-shine 2.5s ease-in-out forwards;
+    animation: shine-through 2s ease-in-out forwards;
 }
 
-@keyframes gradient-shine {
+@keyframes shine-through {
     0% {
-        background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        background-position: 100% 0;
     }
-    70% {
-        background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+    50% {
+        background-position: -100% 0;
     }
     100% {
+        background-position: -100% 0;
         background: var(--dark-gray);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
