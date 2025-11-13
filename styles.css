@@ -236,20 +236,40 @@ img, svg, video, canvas {
 }
 
 .hero-banner {
-    background: #FFFFFF;
-    color: #3B82F6;
+    background: rgba(255, 255, 255, 0.6);
     padding: 8px 16px;
     border-radius: 999px;
     margin-bottom: 2rem;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     font-size: 14px;
     font-weight: 400;
     font-family: 'Inter', sans-serif;
-    border: 1px solid #E5E7EB;
+    border: 1px solid transparent;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+        linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.hero-banner-text {
+    background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-banner-x {
+    background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 500;
 }
 
 .hero-content {
