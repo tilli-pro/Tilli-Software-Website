@@ -1515,6 +1515,7 @@ img, svg, video, canvas {
     font-family: 'Inter', sans-serif;
     margin-bottom: 1rem;
     color: #FFFFFF;
+    opacity: 0.7;
 }
 
 .footer-column ul {
@@ -1550,6 +1551,7 @@ img, svg, video, canvas {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-weight: 500;
+    opacity: 0.7;
 }
 
 .footer-column a.gradient-link:hover {
