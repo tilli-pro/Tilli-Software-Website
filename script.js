@@ -18,12 +18,17 @@ function initNavigation() {
     // Header scroll effect
     if (header) {
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
+            if (window.scrollY > 10) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         });
+
+        // Ensure transparent on page load
+        if (window.scrollY <= 10) {
+            header.classList.remove('scrolled');
+        }
     }
     
     // Smooth scrolling for navigation links
