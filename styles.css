@@ -5391,6 +5391,7 @@ a:focus {
     border-radius: 16px;
     padding: 2.5rem;
     box-shadow: none;
+    border: none;
 }
 
 .testimonial-image {
