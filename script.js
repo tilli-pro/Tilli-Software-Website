@@ -14,15 +14,17 @@ document.addEventListener('DOMContentLoaded', function() {
 function initNavigation() {
     const header = document.querySelector('.header');
     const navLinks = document.querySelectorAll('.nav-menu a');
-    
+
     // Header scroll effect
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (header) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
     
     // Smooth scrolling for navigation links
     navLinks.forEach(link => {
