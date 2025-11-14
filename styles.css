@@ -583,7 +583,7 @@ img, svg, video, canvas {
     color: var(--medium-gray);
     font-size: 0.875rem;
     margin-bottom: 2rem;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0.05em;
 }
 
