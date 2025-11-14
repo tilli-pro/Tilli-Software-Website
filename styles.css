@@ -5390,7 +5390,7 @@ a:focus {
     background: white;
     border-radius: 16px;
     padding: 2.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: none;
 }
 
 .testimonial-image {
