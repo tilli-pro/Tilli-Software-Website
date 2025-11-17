@@ -9,7 +9,7 @@
 .site-header .header-cta{display:flex;gap:12px;align-items:center}
 .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;border:1px solid transparent;padding:10px 14px;font-weight:600;text-decoration:none}
 .btn-primary{background:#2563eb;color:#fff}
-.btn-secondary{background:#f3f4f6;color:#111827}
+.btn-secondary{background:#FFFFFF;color:#111827}
 .btn-link{color:#2563eb;text-decoration:none;font-weight:600}
 .link-muted{color:#64748b;text-decoration:none}
 
@@ -586,7 +586,7 @@ img, svg, video, canvas {
 /* Trusted By Section */
 .trusted-by {
     padding: 3rem 0;
-    background: var(--light-gray);
+    background: #FFFFFF;
     text-align: center;
 }
 
@@ -691,7 +691,7 @@ img, svg, video, canvas {
 .progress-card {
     flex: 1;
     min-width: 200px;
-    background: var(--light-gray);
+    background: #FFFFFF;
     padding: 1.5rem;
     border-radius: var(--border-radius);
     text-align: center;
@@ -818,7 +818,7 @@ img, svg, video, canvas {
 }
 
 .chat-interface {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius);
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -870,7 +870,7 @@ img, svg, video, canvas {
 }
 
 .nudge-interface {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius);
     padding: 1.5rem;
 }
@@ -973,7 +973,7 @@ img, svg, video, canvas {
 }
 
 .payment-card {
-    background: var(--light-gray);
+    background: #FFFFFF;
     padding: 1.5rem;
     border-radius: var(--border-radius);
     text-align: center;
@@ -1000,7 +1000,7 @@ img, svg, video, canvas {
 /* Industry Solutions */
 .industry-solutions {
     padding: 6rem 0;
-    background: var(--light-gray);
+    background: #FFFFFF;
 }
 
 .solutions-header {
@@ -1080,7 +1080,7 @@ img, svg, video, canvas {
 
 .industry-image {
     height: 200px;
-    background: var(--light-gray);
+    background: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1146,7 +1146,7 @@ img, svg, video, canvas {
 /* Why Tilli Section */
 .why-tilli {
     padding: 6rem 0;
-    background: linear-gradient(135deg, #f8fafb 0%, #f0f4f8 100%);
+    background: #FFFFFF;
 }
 
 .why-tilli h2 {
@@ -1345,7 +1345,7 @@ img, svg, video, canvas {
 /* Fraud Protection */
 .fraud-protection {
     padding: 6rem 0;
-    background: var(--light-gray);
+    background: #FFFFFF;
 }
 
 .fraud-protection h2 {
@@ -1536,7 +1536,7 @@ img, svg, video, canvas {
 }
 
 .contact-form {
-    background: var(--light-gray);
+    background: #FFFFFF;
     padding: 2.5rem;
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-md);
@@ -2131,7 +2131,7 @@ a:focus {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius);
 }
 
@@ -2190,7 +2190,7 @@ a:focus {
 }
 
 .tool-card {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius-lg);
     padding: 2rem;
     transition: all 0.3s ease;
@@ -2398,7 +2398,7 @@ a:focus {
 /* Smarter Delivery Section */
 .smarter-delivery {
     padding: 6rem 0;
-    background: var(--light-gray);
+    background: #FFFFFF;
 }
 
 .delivery-features {
@@ -2464,7 +2464,7 @@ a:focus {
 }
 
 .integration-item {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius);
     padding: 1rem;
     text-align: center;
@@ -2517,7 +2517,7 @@ a:focus {
 }
 
 .capability-card {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius-lg);
     padding: 2rem;
     text-align: center;
@@ -2564,7 +2564,7 @@ a:focus {
 /* Data & Insights Section */
 .data-insights {
     padding: 6rem 0;
-    background: var(--light-gray);
+    background: #FFFFFF;
 }
 
 .use-cases-grid {
@@ -2669,7 +2669,7 @@ a:focus {
 }
 
 .invoice-preview {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius);
     padding: 1.5rem;
     border: 1px solid #E5E7EB;
@@ -2733,7 +2733,7 @@ a:focus {
 }
 
 .collections-dashboard {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius);
     padding: 1.5rem;
     border: 1px solid #E5E7EB;
@@ -2786,7 +2786,7 @@ a:focus {
 }
 
 .proactive-engagement {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius);
     padding: 1.5rem;
     border: 1px solid #E5E7EB;
@@ -3023,7 +3023,7 @@ a:focus {
 .invoice-table th {
     font-weight: 600;
     color: var(--medium-gray);
-    background: var(--light-gray);
+    background: #FFFFFF;
     position: sticky;
     top: 0;
 }
@@ -3034,7 +3034,7 @@ a:focus {
 }
 
 .payment-sidebar {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius);
     padding: 1rem;
 }
@@ -3215,7 +3215,7 @@ a:focus {
 /* Comparison Section */
 .comparison-section {
     padding: 6rem 0;
-    background: var(--light-gray);
+    background: #FFFFFF;
 }
 
 .comparison-content {
@@ -3374,7 +3374,7 @@ a:focus {
 }
 
 .bubble-content {
-    background: var(--light-gray);
+    background: #FFFFFF;
     padding: 0.5rem 0.75rem;
     border-radius: var(--border-radius);
     max-width: 200px;
@@ -3399,7 +3399,7 @@ a:focus {
 }
 
 .email-snippet {
-    background: var(--light-gray);
+    background: #FFFFFF;
     padding: 0.5rem;
     border-radius: var(--border-radius);
     border-left: 3px solid var(--primary-blue);
@@ -3486,7 +3486,7 @@ a:focus {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem;
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius);
     font-size: 0.75rem;
 }
@@ -3635,7 +3635,7 @@ a:focus {
 }
 
 .payment-dashboard {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius-lg);
     padding: 2rem;
     box-shadow: var(--shadow-md);
@@ -3687,7 +3687,7 @@ a:focus {
 /* Impact Metrics */
 .impact-metrics {
     padding: 6rem 0;
-    background: var(--light-gray);
+    background: #FFFFFF;
 }
 
 .metrics-content {
@@ -3794,7 +3794,7 @@ a:focus {
 }
 
 .book-demo-btn:hover {
-    background: var(--light-gray);
+    background: #FFFFFF;
     transform: translateY(-2px);
 }
 
@@ -3932,7 +3932,7 @@ a:focus {
 }
 
 .payment-method-card {
-    background: var(--light-gray);
+    background: #FFFFFF;
     padding: 1rem;
     border-radius: var(--border-radius);
     text-align: center;
@@ -4028,7 +4028,7 @@ a:focus {
 }
 
 .highlight-card {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius-lg);
     padding: 2rem;
     text-align: center;
@@ -4074,7 +4074,7 @@ a:focus {
 /* Checkout Experience Section */
 .checkout-experience {
     padding: 6rem 0;
-    background: var(--light-gray);
+    background: #FFFFFF;
 }
 
 .mobile-checkout {
@@ -4147,7 +4147,7 @@ a:focus {
 }
 
 .use-case-card {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius-lg);
     padding: 2rem;
     text-align: center;
@@ -4246,7 +4246,7 @@ a:focus {
 /* Why Choose tilliPay Section */
 .why-choose-tillipay {
     padding: 6rem 0;
-    background: var(--light-gray);
+    background: #FFFFFF;
 }
 
 .why-choose-tillipay .features-grid {
@@ -4419,7 +4419,7 @@ a:focus {
 }
 
 .pillar-card {
-    background: var(--light-gray);
+    background: #FFFFFF;
     border-radius: var(--border-radius-lg);
     padding: 1.75rem;
 }
@@ -4427,7 +4427,7 @@ a:focus {
 .pillar-card h3 { font-size: 1.25rem; margin-bottom: .5rem; }
 .pillar-card p { color: var(--medium-gray); }
 
-.about-split { padding: 6rem 0; background: var(--light-gray); }
+.about-split { padding: 6rem 0; background: #FFFFFF; }
 .about-mission { padding: 4rem 0; background: var(--white); }
 .about-mission .narrow { max-width: 900px; margin: 0 auto; text-align: center; }
 
@@ -4439,7 +4439,7 @@ a:focus {
 .story-content { max-width: 900px; color: var(--medium-gray); line-height: 1.8; }
 .story-content p { margin-bottom: 1rem; }
 
-.about-leadership { padding: 6rem 0; background: var(--light-gray); }
+.about-leadership { padding: 6rem 0; background: #FFFFFF; }
 .section-title { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
 .leaders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
 .leader-card { background: var(--white); border-radius: var(--border-radius-lg); padding: 1.5rem; text-align: center; box-shadow: var(--shadow-sm); }
@@ -4449,7 +4449,7 @@ a:focus {
 
 .about-timeline { padding: 6rem 0; background: var(--white); }
 .timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-.timeline-item { background: var(--light-gray); border-radius: var(--border-radius-lg); padding: 1.5rem; }
+.timeline-item { background: #FFFFFF; border-radius: var(--border-radius-lg); padding: 1.5rem; }
 .timeline-item .year { font-weight: 700; color: var(--primary-blue); display: block; margin-bottom: .5rem; }
 
 .about-careers { padding: 6rem 0; background: var(--primary-blue); color: var(--white); }
@@ -4457,7 +4457,7 @@ a:focus {
 
 .about-engagement { padding: 6rem 0; background: var(--white); }
 .engagement-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.engage-card { background: var(--light-gray); border-radius: var(--border-radius-lg); padding: 2rem; }
+.engage-card { background: #FFFFFF; border-radius: var(--border-radius-lg); padding: 2rem; }
 .engage-card h3 { margin-bottom: .5rem; }
 .engage-card p { color: var(--medium-gray); margin-bottom: 1rem; }
 
@@ -4466,7 +4466,7 @@ a:focus {
 }
 
 /* Pricing Page */
-.pricing-hero { padding: 8rem 0 4rem; background: var(--light-gray); }
+.pricing-hero { padding: 8rem 0 4rem; background: #FFFFFF; }
 .pricing-hero-content { max-width: 800px; margin: 0 auto; text-align: center; }
 .pricing-hero-title { font-size: 2rem; font-weight: 700; color: var(--dark-gray); margin-bottom: 0.75rem; }
 .pricing-hero-subtitle { color: var(--medium-gray); font-size: 1.125rem; line-height: 1.7; }
@@ -4485,19 +4485,19 @@ a:focus {
 .pricing-card-features { margin: 1.25rem 0 1rem; }
 .pricing-card-features h4 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--dark-gray); }
 .features-list { list-style: none; display: grid; gap: 0.5rem; }
-.features-list li { display: flex; align-items: center; gap: 0.5rem; background: var(--light-gray); padding: 0.5rem 0.75rem; border-radius: var(--border-radius); }
+.features-list li { display: flex; align-items: center; gap: 0.5rem; background: #FFFFFF; padding: 0.5rem 0.75rem; border-radius: var(--border-radius); }
 .feature-included i { color: var(--success-green); }
 .feature-not-included i { color: var(--error-red); }
 .pricing-card-form { margin-top: auto; display: grid; gap: 0.5rem; }
 .pricing-input { width: 100%; padding: 0.75rem; border: 1px solid #D1D5DB; border-radius: var(--border-radius); font-size: 0.875rem; }
 
 /* Comparison table */
-.pricing-comparison { padding: 4rem 0; background: var(--light-gray); }
+.pricing-comparison { padding: 4rem 0; background: #FFFFFF; }
 .comparison-title { font-size: 1.75rem; font-weight: 700; color: var(--dark-gray); text-align: center; }
 .comparison-table-wrapper { margin-top: 1.5rem; background: var(--white); border: 1px solid #E5E7EB; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm); overflow: auto; }
 .comparison-table { width: 100%; border-collapse: collapse; }
 .comparison-table th, .comparison-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #E5E7EB; text-align: left; font-size: 0.9rem; }
-.comparison-table thead th { background: var(--light-gray); font-weight: 700; }
+.comparison-table thead th { background: #FFFFFF; font-weight: 700; }
 .comparison-cta { text-align: center; margin-top: 1.5rem; }
 .comparison-buttons { display: inline-flex; gap: 0.75rem; flex-wrap: wrap; }
 
@@ -4507,14 +4507,14 @@ a:focus {
 .savings-features { display: grid; gap: 0.5rem; margin: 1rem 0 1.25rem; }
 .savings-feature { display: flex; align-items: center; gap: 0.5rem; color: var(--medium-gray); }
 .savings-feature i { color: var(--primary-blue); }
-.savings-card { background: var(--light-gray); border: 1px solid #E5E7EB; border-radius: var(--border-radius-lg); padding: 1.5rem; }
+.savings-card { background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: var(--border-radius-lg); padding: 1.5rem; }
 .savings-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
 .metric { text-align: center; background: var(--white); border-radius: var(--border-radius); padding: 1rem; box-shadow: var(--shadow-sm); }
 .metric-value { display: block; font-weight: 700; font-size: 1.25rem; color: var(--primary-blue); }
 .metric-label { display: block; color: var(--medium-gray); font-size: 0.85rem; }
 
 /* Customer centric */
-.customer-centric { padding: 4rem 0; background: var(--light-gray); }
+.customer-centric { padding: 4rem 0; background: #FFFFFF; }
 .customer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 .customer-card { background: var(--white); border: 1px solid #E5E7EB; border-radius: var(--border-radius-lg); padding: 1.25rem; text-align: center; box-shadow: var(--shadow-sm); }
 .customer-icon { width: 48px; height: 48px; border-radius: 50%; background: var(--light-blue); display: flex; align-items: center; justify-content: center; color: var(--primary-blue); margin: 0 auto 0.75rem; }
@@ -4523,7 +4523,7 @@ a:focus {
 /* Assurance */
 .assurance-section { padding: 4rem 0; background: var(--white); }
 .assurance-content { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
-.support-preview { background: var(--light-gray); border: 1px solid #E5E7EB; border-radius: var(--border-radius-lg); padding: 1.25rem; }
+.support-preview { background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: var(--border-radius-lg); padding: 1.25rem; }
 .support-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .support-status { background: var(--success-green); color: var(--white); border-radius: 999px; padding: 0.125rem 0.5rem; font-size: 0.75rem; font-weight: 700; }
 .support-feature { display: flex; align-items: center; gap: 0.5rem; color: var(--medium-gray); }
@@ -4552,7 +4552,7 @@ a:focus {
 /* Free Trial Page Styles */
 .free-trial-hero {
     padding: 120px 0 80px;
-    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 50%, #f0f7ff 100%);
+    background: #FFFFFF;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -4688,7 +4688,7 @@ a:focus {
 .stat-item {
     text-align: center;
     padding: 1rem;
-    background: #f8f9fa;
+    background: #FFFFFF;
     border-radius: 8px;
 }
 
@@ -4762,7 +4762,7 @@ a:focus {
 }
 
 .dashboard-card {
-    background: #f8f9fa;
+    background: #FFFFFF;
     border-radius: 12px;
     padding: 1.5rem;
 }
@@ -4878,7 +4878,7 @@ a:focus {
 }
 
 .action-btn.secondary {
-    background: #f3f4f6;
+    background: #FFFFFF;
     color: var(--dark-gray);
 }
 
@@ -4948,7 +4948,7 @@ a:focus {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background: #f8f9fa;
+    background: #FFFFFF;
     border-radius: 8px;
 }
 
@@ -5021,7 +5021,7 @@ a:focus {
 
 .chart-period .period {
     padding: 0.5rem 1rem;
-    background: #f3f4f6;
+    background: #FFFFFF;
     border-radius: 6px;
     font-size: 0.875rem;
     cursor: pointer;
@@ -5088,7 +5088,7 @@ a:focus {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background: #f8f9fa;
+    background: #FFFFFF;
     border-radius: 8px;
 }
 
@@ -5129,7 +5129,7 @@ a:focus {
 
 .products-highlight {
     padding: 80px 0;
-    background: #f8f9fa;
+    background: #FFFFFF;
 }
 
 .products-grid {
@@ -5190,7 +5190,7 @@ a:focus {
     flex-direction: column;
     align-items: center;
     padding: 0.75rem;
-    background: #f8f9fa;
+    background: #FFFFFF;
     border-radius: 8px;
     transition: all 0.3s ease;
 }
@@ -5211,7 +5211,7 @@ a:focus {
 }
 
 .dashboard-panel {
-    background: #f8f9fa;
+    background: #FFFFFF;
     border-radius: 12px;
     padding: 1rem;
 }
@@ -5310,7 +5310,7 @@ a:focus {
 
 .payment-option {
     padding: 0.75rem;
-    background: #f8f9fa;
+    background: #FFFFFF;
     border: 2px solid transparent;
     border-radius: 8px;
     cursor: pointer;
@@ -5338,7 +5338,7 @@ a:focus {
 
 .dashboard-preview {
     padding: 1.5rem;
-    background: #f8f9fa;
+    background: #FFFFFF;
     border-radius: 12px;
 }
 
@@ -5373,7 +5373,7 @@ a:focus {
 
 .client-logo {
     padding: 1.5rem;
-    background: #f8f9fa;
+    background: #FFFFFF;
     border-radius: 12px;
     font-weight: 600;
     color: var(--medium-gray);
@@ -5387,7 +5387,7 @@ a:focus {
 
 .testimonials-benefits {
     padding: 80px 0;
-    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+    background: #FFFFFF;
 }
 
 .testimonials-content {
@@ -5635,7 +5635,7 @@ a:focus {
 
 /* SMS Conversation Styles for tilliX */
 .sms-conversation {
-    background: #f8f9fa;
+    background: #FFFFFF;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -5804,7 +5804,7 @@ a:focus {
 }
 
 .sms-messages::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #FFFFFF;
     border-radius: 3px;
 }
 
@@ -5898,7 +5898,7 @@ a:focus {
 
 .sms-chat {
     flex: 1;
-    background: linear-gradient(to bottom, #f0f4f8, #ffffff);
+    background: #FFFFFF;
     padding: 1rem;
     overflow-y: auto;
     display: flex;
@@ -6067,7 +6067,7 @@ a:focus {
 
 /* SMS input bar */
 .sms-input-bar {
-    background: #f8f9fa;
+    background: #FFFFFF;
     padding: 0.75rem;
     display: flex;
     align-items: center;
