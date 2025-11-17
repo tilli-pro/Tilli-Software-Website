@@ -757,7 +757,7 @@ img, svg, video, canvas {
 /* Products Section */
 .products {
     padding: 6rem 0;
-    background: var(--light-gray);
+    background: #FFFFFF;
 }
 
 .products-grid {
