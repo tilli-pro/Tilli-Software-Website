@@ -238,7 +238,7 @@ img, svg, video, canvas {
 /* Hero Section */
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+    background: #FFFFFF;
     color: var(--dark-gray);
     padding: 6rem 0 4rem;
     margin-top: 134px;
