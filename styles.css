@@ -150,8 +150,8 @@ img, svg, video, canvas {
 
 /* Header Styles */
 .header {
-    position: fixed;
-    top: 62px;
+    position: sticky;
+    top: 0px;
     left: 0;
     right: 0;
     background-color: transparent !important;
@@ -6148,6 +6148,3 @@ a:focus {
 /* ===================================
    DARK MODE TOGGLE BUTTON
    =================================== */
-
-
-
