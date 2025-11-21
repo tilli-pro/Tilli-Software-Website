@@ -34,29 +34,28 @@
             padding: 0;
         }
 
-        /* Override for header navigation */
+        /* Override for header navigation to match home page */
         .header {
-            background: #FFFFFF;
-            border-bottom: 1px solid #E5E7EB;
-        }
-
-        .header .cta-button {
-            background: #4099FF;
-            color: white;
-            padding: 0.5rem 1.25rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: transparent !important;
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-bottom: 1px solid transparent !important;
+            box-shadow: none !important;
+            z-index: 1000;
             transition: all 0.3s ease;
         }
 
-        .header .cta-button:hover {
-            background: #3182CE;
-            transform: none;
-            box-shadow: 0 4px 12px rgba(64, 153, 255, 0.3);
+        .header.scrolled {
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+            backdrop-filter: blur(70px) !important;
+            -webkit-backdrop-filter: blur(70px) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
         }
 
         .container {
@@ -72,6 +71,7 @@
             margin: 0 auto;
             padding: 2rem 1rem 3rem;
             background: #FFFFFF;
+            overflow: visible;
         }
 
         .main-layout {
@@ -92,20 +92,82 @@
 
         .hero {
             background: #FFFFFF;
-            border-radius: 16px;
             padding: 3.5rem 2rem 4rem;
             text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border: 1px solid #E5E7EB;
             margin-bottom: 3rem;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Gradient blob animation */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(68, 141, 230, 0.25) 0%, rgba(152, 178, 233, 0.15) 40%, rgba(152, 178, 233, 0.05) 60%, transparent 80%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: blobFloat 20s ease-in-out infinite;
+            z-index: 0;
+            filter: blur(80px);
+        }
+
+        @keyframes blobFloat {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            33% {
+                transform: translate(-45%, -50%) scale(1.05);
+            }
+            66% {
+                transform: translate(-55%, -50%) scale(0.95);
+            }
+        }
+
+        /* Floating dots */
+        .floating-dot {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(156, 163, 175, 0.4);
+            border-radius: 50%;
+            z-index: 0;
+            animation: floatDot linear infinite;
+        }
+
+        @keyframes floatDot {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(var(--drift));
+                opacity: 0;
+            }
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-family: 'Sora', sans-serif;
+            font-size: 48px;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
-            font-weight: 800;
-            color: #1F2937;
+            font-weight: 400;
+            color: #000000;
+            line-height: 1.2;
         }
 
         .hero .subtitle {
@@ -118,26 +180,31 @@
         }
 
         .section {
-            background: #FFFFFF;
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid #E5E7EB;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            margin-bottom: 3rem;
+            border: none;
+            box-shadow: none;
         }
 
         .section-header {
             margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #F3F4F6;
+            padding-bottom: 0;
+            padding-left: 1.5rem;
+            border-bottom: none;
         }
 
         .section-header h2 {
+            font-family: 'Sora', sans-serif;
             font-size: 1.3rem;
+            font-weight: 400;
             display: flex;
             align-items: center;
             gap: 0.6rem;
             letter-spacing: -0.01em;
+            text-align: left;
+            margin-left: 0;
         }
 
         .section-header h2 svg { color: var(--accent-2); }
@@ -150,8 +217,8 @@
         }
 
         .service-card {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
+            background: linear-gradient(135deg, #F8F9FA 0%, #F3F4F6 100%);
+            border: 1px solid rgba(229, 231, 235, 0.8);
             border-radius: 12px;
             padding: 1.5rem;
             transition: all 0.2s ease;
@@ -161,28 +228,29 @@
             gap: 1rem;
             cursor: pointer;
             align-self: start;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .service-card:hover {
             border-color: #93c5fd;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
             transform: translateY(-2px);
         }
 
         .service-card.selected {
             border-color: #3b82f6;
-            background: #eff6ff;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .service-card.unique {
             border-color: rgba(250, 204, 21, 0.45);
-            box-shadow: 0 15px 30px rgba(250, 204, 21, 0.15);
+            box-shadow: 0 2px 6px rgba(250, 204, 21, 0.12);
         }
 
         .service-card.free {
             border-color: rgba(52, 211, 153, 0.45);
-            box-shadow: 0 15px 30px rgba(52, 211, 153, 0.15);
+            box-shadow: 0 2px 6px rgba(52, 211, 153, 0.12);
         }
 
         .card-header {
@@ -398,16 +466,17 @@
         .tco-value.included { color: #10b981; }
 
         .summary-cta {
-            background: #FFFFFF;
+            background: linear-gradient(135deg, #F8F9FA 0%, #F3F4F6 100%);
             border-radius: 16px;
             padding: 2rem;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .summary-title {
+            font-family: 'Sora', sans-serif;
             font-size: 1.25rem;
-            font-weight: 600;
+            font-weight: 400;
             color: #111827;
             margin-bottom: 1.5rem;
         }
@@ -538,20 +607,88 @@
             <h1>Transparent Pricing, Real Savings</h1>
             <p class="subtitle">Compare Tilli's all-inclusive pricing with traditional solutions.<br>See exactly what you pay and how much you save.</p>
 
+            <style>
+                @keyframes shimmer {
+                    0% {
+                        background-position: -500px 0;
+                    }
+                    100% {
+                        background-position: 500px 0;
+                    }
+                }
+
+                .stat-number {
+                    font-family: 'Sora', sans-serif;
+                    font-size: 29px;
+                    font-weight: 400;
+                    color: #000000;
+                    margin-bottom: 0.5rem;
+                    background: linear-gradient(90deg, #000000 0%, #000000 40%, #448DE6 50%, #98B2E9 55%, #000000 60%, #000000 100%);
+                    background-size: 500px 100%;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    animation: shimmer 2s ease-in-out;
+                    animation-fill-mode: forwards;
+                }
+            </style>
+
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
                 <div style="text-align: center;">
-                    <div style="font-size: 3rem; font-weight: 800; color: #4099FF; margin-bottom: 0.5rem;">85%</div>
+                    <div class="stat-number" style="animation-delay: 0s;">85%</div>
                     <div style="font-size: 0.95rem; color: #6B7280;">Average Savings</div>
                 </div>
                 <div style="text-align: center;">
-                    <div style="font-size: 3rem; font-weight: 800; color: #4099FF; margin-bottom: 0.5rem;">1 Platform</div>
+                    <div class="stat-number" style="animation-delay: 0.3s;">1 Platform</div>
                     <div style="font-size: 0.95rem; color: #6B7280;">vs 15+ Tools</div>
                 </div>
                 <div style="text-align: center;">
-                    <div style="font-size: 3rem; font-weight: 800; color: #4099FF; margin-bottom: 0.5rem;">24/7</div>
+                    <div class="stat-number" style="animation-delay: 0.6s;">24/7</div>
                     <div style="font-size: 0.95rem; color: #6B7280;">Expert Support</div>
                 </div>
             </div>
+
+            <script>
+                // Create floating dots in hero section
+                const hero = document.querySelector('.hero');
+                const dotCount = 15;
+
+                function createDot() {
+                    const dot = document.createElement('div');
+                    dot.className = 'floating-dot';
+
+                    // Random horizontal position
+                    const leftPosition = Math.random() * 100;
+                    dot.style.left = leftPosition + '%';
+
+                    // Random animation duration (15-30 seconds)
+                    const duration = 15 + Math.random() * 15;
+                    dot.style.animationDuration = duration + 's';
+
+                    // Random horizontal drift
+                    const drift = (Math.random() - 0.5) * 100;
+                    dot.style.setProperty('--drift', drift + 'px');
+
+                    // Random delay
+                    const delay = Math.random() * 10;
+                    dot.style.animationDelay = delay + 's';
+
+                    // Random size (2-5px)
+                    const size = 2 + Math.random() * 3;
+                    dot.style.width = size + 'px';
+                    dot.style.height = size + 'px';
+
+                    // Start from bottom
+                    dot.style.bottom = '0';
+
+                    hero.appendChild(dot);
+                }
+
+                // Create dots
+                for (let i = 0; i < dotCount; i++) {
+                    createDot();
+                }
+            </script>
         </div>
 
         <!-- Main Layout with Sticky Summary -->
@@ -1466,72 +1603,107 @@
     </script>
 
     <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-main">
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Products</h4>
+                        <ul>
+                            <li><a href="nudge.html">Nudge</a></li>
+                            <li><a href="tillix.html">tilliX</a></li>
+                            <li><a href="tillipay.html">Money</a></li>
+                            <li><a href="#">Compare Products</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="industries.html">Industries</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="#">FAQS</a></li>
+                            <li><a href="#">Webinars</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Developers</h4>
+                        <ul>
+                            <li><a href="developer.html">Documentation</a></li>
+                            <li><a href="developer.html">API Reference</a></li>
+                            <li><a href="developer.html">SDKs</a></li>
+                            <li><a href="#">Help Center</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="#">Security</a></li>
+                            <li><a href="#">Trust Center</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Get Started Today</h4>
+                        <ul>
+                            <li><a href="free-trial.html" class="gradient-link">Start a Free Trial <span class="arrow">→</span></a></li>
+                            <li><a href="contact.html" class="gradient-link">Request a Demo <span class="arrow">→</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
                     <div class="footer-brand">
                         <div class="footer-logo">
                             <img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo">
                         </div>
                         <p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
+                        <p class="footer-copyright">&copy; 2024 — Copyright All Rights reserved</p>
                     </div>
 
-                    <div class="footer-links">
-                        <div class="footer-column">
-                            <h4>Products</h4>
-                            <ul>
-                                <li><a href="nudge.html">Nudge</a></li>
-                                <li><a href="tillix.html">tilliX</a></li>
-                                <li><a href="tillipay.html">tilliPay</a></li>
-                                <li><a href="tilliarc.html">tilliArc</a></li>
-                            </ul>
+                    <div class="footer-right">
+                        <div class="footer-status">
+                            <span class="status-indicator"></span>
+                            <span>Platform status</span>
                         </div>
-
-                        <div class="footer-column">
-                            <h4>Solutions</h4>
-                            <ul>
-                                <li><a href="industries.html">Utilities</a></li>
-                                <li><a href="industries.html">Healthcare</a></li>
-                                <li><a href="industries.html">Financial Services</a></li>
-                                <li><a href="industries.html">Education</a></li>
-                            </ul>
+                        <div class="footer-social">
+                            <a href="https://x.com/tillisoftware" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/tillisoftware" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.youtube.com/@tillisoftware" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         </div>
-
-                        <div class="footer-column">
-                            <h4>Resources</h4>
-                            <ul>
-                                <li><a href="calculator.html">ROI Calculator</a></li>
-                                <li><a href="demos.html">Demos</a></li>
-                                <li><a href="valuebasedpricing.html">Pricing</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-column">
-                            <h4>Company</h4>
-                            <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="careers.html">Careers</a></li>
-                                <li><a href="press.html">Press</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <div class="footer-legal">
-                        <p>&copy; 2025 Tilli. All rights reserved.</p>
                         <div class="footer-legal-links">
-                            <a href="privacy-policy/">Privacy Policy</a>
-                            <a href="terms-of-service/">Terms of Service</a>
+                            <a href="#">Terms</a>
+                            <a href="privacy-policy/">Privacy</a>
+                            <a href="anti-slavery-policy.html">Anti-Slavery Policy</a>
+                            <a href="#">Cookies</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Main script for header scroll effect -->
+    <script src="script.js"></script>
+
+    <script>
+        // Footer gradient border mouse tracking
+        const footer = document.querySelector('.footer');
+        if (footer) {
+            footer.addEventListener('mousemove', (e) => {
+                const rect = footer.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                footer.style.setProperty('--mouse-x', `${x}%`);
+            });
+        }
+    </script>
 
     <!-- Vercel Analytics -->
     <script>
