@@ -63,7 +63,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- RB2B Tracking -->
@@ -84,6 +84,188 @@
         #cc-main .cc-toggle { background: #e2e8f0 !important; }
         #cc-main .cc-toggle:checked ~ .cc-toggle__slider { background: #5B9EFF !important; }
         #cc-main.cc-window.cc-banner { padding: 1.5rem !important; box-shadow: 0 -4px 20px rgba(0,0,0,0.1) !important; }
+    </style>
+
+    <!-- About Hero Section Styles -->
+    <style>
+        /* Override for About/Company Hero Section */
+        .about-hero {
+            padding: 140px 0 4rem 0;
+            background: linear-gradient(135deg, rgba(219, 234, 254, 0.3) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(243, 232, 255, 0.3) 100%);
+            position: relative;
+            overflow: visible;
+            min-height: auto;
+        }
+
+        .about-hero .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .about-hero .gradient-blob {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .about-hero .blob-1 {
+            top: -20%;
+            left: -10%;
+            width: 35%;
+            height: auto;
+            opacity: 0.4;
+        }
+
+        .about-hero .blob-2 {
+            bottom: -20%;
+            right: -10%;
+            width: 40%;
+            height: auto;
+            opacity: 0.4;
+        }
+
+        .about-hero .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-hero .hero-content {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .about-hero .hero-title {
+            font-size: 3.5rem;
+            font-weight: 400;
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .about-hero .hero-subtitle {
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            text-align: left;
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 400;
+        }
+
+        .about-hero .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: nowrap;
+        }
+
+        .about-hero .hero-buttons .btn-primary {
+            background: #60a5fa;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-hero .hero-buttons .btn-primary:hover {
+            background: #3b82f6;
+        }
+
+        .about-hero .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .about-hero .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            z-index: 2;
+        }
+
+        .about-hero .hero-single-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-hero .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .about-hero .hero-title {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+
+            .about-hero .hero-subtitle {
+                text-align: center;
+            }
+
+            .about-hero .hero-buttons {
+                justify-content: center;
+            }
+
+            .about-hero .hero-visual {
+                justify-content: center;
+            }
+
+            .about-hero .blob-1,
+            .about-hero .blob-2 {
+                width: 60%;
+                opacity: 0.3;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-hero .hero-title {
+                font-size: 2rem;
+            }
+
+            .about-hero .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .about-hero .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -115,6 +297,10 @@
     <main>
         <!-- Hero -->
         <section class="hero about-hero">
+            <div class="hero-background">
+                <img src="Industries Home page/Figma/Ellipse 6 (1).png" alt="" class="gradient-blob blob-1">
+                <img src="Industries Home page/Figma/Ellipse 7.png" alt="" class="gradient-blob blob-2">
+            </div>
             <div class="hero-container">
                 <div class="hero-content">
                     <h1 class="hero-title">Powering the Future of Customer Communication</h1>
@@ -124,25 +310,8 @@
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <div class="laptop-mockup">
-                        <div class="laptop-screen">
-                            <div class="dashboard-header">
-                                <h3>Collaborative Workspace</h3>
-                                <div class="dashboard-stats">
-                                    <div class="stat-card"><span class="stat-value">98%</span><span class="stat-label">CSAT</span></div>
-                                    <div class="stat-card"><span class="stat-value">2M+</span><span class="stat-label">Msgs/mo</span></div>
-                                </div>
-                            </div>
-                            <div class="dashboard-table">
-                                <table>
-                                    <thead><tr><th>Team</th><th>Focus</th><th>Status</th></tr></thead>
-                                    <tbody>
-                                        <tr><td>Product</td><td>Messaging UX</td><td><span class="status paid">Active</span></td></tr>
-                                        <tr><td>Payments</td><td>Security & PCI</td><td><span class="status pending">Rolling out</span></td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <div class="hero-image-container">
+                        <img src="Industries Home page/Figma/company-hero-image.jpg" alt="Team collaboration" class="hero-single-image">
                     </div>
                 </div>
             </div>
