@@ -860,18 +860,32 @@
                             Learn more <span style="font-size: 14px;">→</span>
                         </a>
                         <!-- Visual Element -->
-                        <div style="width: 100%; height: 240px; background: linear-gradient(135deg, #E0E7FF 0%, #DBEAFE 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                            <div style="width: 80%; height: 80%; background: white; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-direction: column; padding: 1.5rem;">
-                                <div style="display: flex; gap: 6px; margin-bottom: 1rem;">
-                                    <div style="width: 8px; height: 8px; background: #EF4444; border-radius: 50%;"></div>
-                                    <div style="width: 8px; height: 8px; background: #F59E0B; border-radius: 50%;"></div>
-                                    <div style="width: 8px; height: 8px; background: #10B981; border-radius: 50%;"></div>
+                        <div style="width: 100%; height: 240px; background: #F3F4F6; border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 1.5rem; position: relative; overflow: hidden;">
+                            <style>
+                                @keyframes amountSlide {
+                                    0%, 30% { width: 20%; }
+                                    60%, 100% { width: 65%; }
+                                }
+                                @keyframes successPop {
+                                    0%, 70% { opacity: 0; transform: scale(0); }
+                                    80% { opacity: 1; transform: scale(1.1); }
+                                    100% { opacity: 1; transform: scale(1); }
+                                }
+                                .tillix-slider { animation: amountSlide 4s ease-in-out infinite; }
+                                .tillix-badge { animation: successPop 4s ease-in-out infinite; }
+                            </style>
+                            <div style="width: 100%; max-width: 400px; background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                                <div style="font-size: 14px; color: #6B7280; margin-bottom: 1rem; font-weight: 500;">Bill Amount</div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <div style="font-size: 28px; font-weight: 600; color: #111827;">$245</div>
+                                    <div style="font-size: 18px; color: #9CA3AF;">$500</div>
                                 </div>
-                                <div style="flex: 1; display: flex; flex-direction: column; gap: 0.75rem;">
-                                    <div style="height: 12px; background: #E5E7EB; border-radius: 4px; width: 60%;"></div>
-                                    <div style="height: 12px; background: #E5E7EB; border-radius: 4px; width: 80%;"></div>
-                                    <div style="height: 12px; background: #E5E7EB; border-radius: 4px; width: 50%;"></div>
-                                    <div style="height: 40px; background: linear-gradient(135deg, #5B9EFF, #4080E0); border-radius: 6px; width: 100%; margin-top: 0.5rem;"></div>
+                                <div style="width: 100%; height: 8px; background: #E5E7EB; border-radius: 999px; position: relative; overflow: hidden;">
+                                    <div class="tillix-slider" style="height: 100%; background: linear-gradient(90deg, #5B9EFF, #4080E0); border-radius: 999px; width: 20%;"></div>
+                                </div>
+                                <div class="tillix-badge" style="margin-top: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem; background: #D1FAE5; color: #065F46; padding: 0.5rem 1rem; border-radius: 999px; font-size: 14px; font-weight: 600; opacity: 0;">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3334 4L6.00002 11.3333L2.66669 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    Payment confirmed
                                 </div>
                             </div>
                         </div>
@@ -885,24 +899,35 @@
                             Learn more <span style="font-size: 14px;">→</span>
                         </a>
                         <!-- Visual Element -->
-                        <div style="width: 100%; height: 240px; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative;">
-                            <div style="width: 100%; display: flex; flex-direction: column; gap: 1rem;">
-                                <div style="background: white; border-radius: 12px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-left: auto; max-width: 80%;">
-                                    <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 0.5rem;">
-                                        <div style="width: 32px; height: 32px; background: #FBBF24; border-radius: 50%;"></div>
-                                        <div style="flex: 1;">
-                                            <div style="height: 8px; background: #E5E7EB; border-radius: 4px; width: 70%; margin-bottom: 4px;"></div>
-                                            <div style="height: 6px; background: #F3F4F6; border-radius: 4px; width: 50%;"></div>
-                                        </div>
-                                    </div>
+                        <div style="width: 100%; height: 240px; background: #F3F4F6; border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+                            <style>
+                                @keyframes channelPulse {
+                                    0%, 100% { transform: scale(1); opacity: 1; }
+                                    50% { transform: scale(1.05); opacity: 0.8; }
+                                }
+                                @keyframes engagementGrow {
+                                    0%, 30% { width: 30%; }
+                                    70%, 100% { width: 85%; }
+                                }
+                                .nudge-channel { animation: channelPulse 3s ease-in-out infinite; }
+                                .nudge-channel:nth-child(2) { animation-delay: 0.5s; }
+                                .nudge-channel:nth-child(3) { animation-delay: 1s; }
+                                .nudge-bar { animation: engagementGrow 4s ease-in-out infinite; }
+                            </style>
+                            <div style="width: 100%; max-width: 400px; background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                                <div style="font-size: 14px; color: #6B7280; margin-bottom: 1.5rem; font-weight: 500;">Campaign Engagement</div>
+                                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; justify-content: space-around;">
+                                    <div class="nudge-channel" style="width: 48px; height: 48px; background: #FBBF24; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">📧</div>
+                                    <div class="nudge-channel" style="width: 48px; height: 48px; background: #10B981; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">💬</div>
+                                    <div class="nudge-channel" style="width: 48px; height: 48px; background: #8B5CF6; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">📱</div>
                                 </div>
-                                <div style="background: white; border-radius: 12px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-right: auto; max-width: 75%;">
-                                    <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 0.5rem;">
-                                        <div style="width: 32px; height: 32px; background: #F59E0B; border-radius: 50%;"></div>
-                                        <div style="flex: 1;">
-                                            <div style="height: 8px; background: #E5E7EB; border-radius: 4px; width: 80%; margin-bottom: 4px;"></div>
-                                            <div style="height: 6px; background: #F3F4F6; border-radius: 4px; width: 60%;"></div>
-                                        </div>
+                                <div style="margin-bottom: 0.5rem;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span style="font-size: 24px; font-weight: 600; color: #111827;">95%</span>
+                                        <span style="font-size: 14px; color: #10B981; font-weight: 600;">+42%</span>
+                                    </div>
+                                    <div style="width: 100%; height: 10px; background: #E5E7EB; border-radius: 999px; overflow: hidden;">
+                                        <div class="nudge-bar" style="height: 100%; background: linear-gradient(90deg, #FBBF24, #F59E0B); border-radius: 999px; width: 30%;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -918,14 +943,45 @@
                         </a>
                         <!-- Visual Element -->
                         <div style="width: 100%; height: 240px; background: linear-gradient(135deg, #E9D5FF 0%, #DDD6FE 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 2rem;">
-                            <div style="width: 85%; height: 75%; background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
-                                <div style="display: flex; gap: 1rem;">
-                                    <div style="flex: 1; height: 50px; background: linear-gradient(135deg, #8B5CF6, #7C3AED); border-radius: 8px;"></div>
-                                    <div style="flex: 1; height: 50px; background: #F3F4F6; border-radius: 8px;"></div>
+                            <style>
+                                @keyframes cardProcess {
+                                    0%, 20% { transform: translateX(0) rotate(0deg); opacity: 1; }
+                                    40% { transform: translateX(-100px) rotate(-10deg); opacity: 0; }
+                                    60% { transform: translateX(100px) rotate(10deg); opacity: 0; }
+                                    80%, 100% { transform: translateX(0) rotate(0deg); opacity: 1; }
+                                }
+                                @keyframes progressFill {
+                                    0%, 40% { width: 0%; }
+                                    60% { width: 100%; }
+                                    100% { width: 100%; }
+                                }
+                                @keyframes successCheck {
+                                    0%, 65% { opacity: 0; transform: scale(0) rotate(0deg); }
+                                    75% { opacity: 1; transform: scale(1.2) rotate(360deg); }
+                                    100% { opacity: 1; transform: scale(1) rotate(360deg); }
+                                }
+                                .tillipay-card { animation: cardProcess 4s ease-in-out infinite; }
+                                .tillipay-progress { animation: progressFill 4s ease-in-out infinite; }
+                                .tillipay-check { animation: successCheck 4s ease-in-out infinite; }
+                            </style>
+                            <div style="width: 85%; height: 75%; background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; position: relative;">
+                                <div class="tillipay-card" style="display: flex; gap: 1rem;">
+                                    <div style="flex: 1; height: 50px; background: linear-gradient(135deg, #8B5CF6, #7C3AED); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem;">
+                                        <div style="width: 30px; height: 24px; background: rgba(255,255,255,0.3); border-radius: 4px;"></div>
+                                        <div style="display: flex; gap: 3px;">
+                                            <div style="width: 6px; height: 6px; background: white; border-radius: 50%;"></div>
+                                            <div style="width: 6px; height: 6px; background: white; border-radius: 50%;"></div>
+                                            <div style="width: 6px; height: 6px; background: white; border-radius: 50%;"></div>
+                                            <div style="width: 6px; height: 6px; background: white; border-radius: 50%;"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div style="height: 8px; background: #E5E7EB; border-radius: 4px; width: 70%;"></div>
-                                <div style="height: 8px; background: #E5E7EB; border-radius: 4px; width: 90%;"></div>
-                                <div style="height: 8px; background: #E5E7EB; border-radius: 4px; width: 50%;"></div>
+                                <div style="height: 12px; background: #F3F4F6; border-radius: 6px; width: 100%; overflow: hidden;">
+                                    <div class="tillipay-progress" style="height: 100%; background: linear-gradient(90deg, #8B5CF6, #7C3AED); border-radius: 6px; width: 0%;"></div>
+                                </div>
+                                <div class="tillipay-check" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: #10B981; border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0;">
+                                    <div style="width: 24px; height: 24px; border: 4px solid white; border-left: none; border-top: none; transform: rotate(45deg) translate(-2px, -2px);"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -939,15 +995,34 @@
                         </a>
                         <!-- Visual Element -->
                         <div style="width: 100%; height: 240px; background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative;">
-                            <div style="width: 70%; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
-                                <div style="width: 100%; height: 100px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <style>
+                                @keyframes docFloat {
+                                    0% { transform: translateY(0) scale(1); opacity: 0; }
+                                    20% { opacity: 1; }
+                                    50% { transform: translateY(-80px) scale(0.6); opacity: 1; }
+                                    70% { transform: translateY(-80px) scale(0.4); opacity: 0.5; }
+                                    100% { transform: translateY(-80px) scale(0.2); opacity: 0; }
+                                }
+                                @keyframes archiveGlow {
+                                    0%, 45% { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+                                    55%, 75% { box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4); }
+                                    100% { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+                                }
+                                .arc-doc { animation: docFloat 4s ease-in-out infinite; }
+                                .arc-box { animation: archiveGlow 4s ease-in-out infinite; }
+                            </style>
+                            <div style="width: 70%; display: flex; flex-direction: column; gap: 1rem; align-items: center; position: relative;">
+                                <div class="arc-box" style="width: 100%; height: 100px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; position: relative;">
                                     <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #10B981, #059669); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
                                         <div style="width: 24px; height: 24px; border: 3px solid white; border-radius: 4px;"></div>
                                     </div>
                                 </div>
-                                <div style="width: 100%; display: flex; gap: 0.5rem;">
-                                    <div style="flex: 1; height: 60px; background: white; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
-                                    <div style="flex: 1; height: 60px; background: white; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
+                                <div style="width: 100%; display: flex; gap: 0.5rem; position: relative;">
+                                    <div class="arc-doc" style="position: absolute; bottom: 0; left: 25%; width: 50%; height: 70px; background: white; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); display: flex; flex-direction: column; padding: 0.5rem; gap: 4px;">
+                                        <div style="height: 6px; background: #10B981; border-radius: 2px; width: 70%;"></div>
+                                        <div style="height: 4px; background: #E5E7EB; border-radius: 2px; width: 90%;"></div>
+                                        <div style="height: 4px; background: #E5E7EB; border-radius: 2px; width: 60%;"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -964,17 +1039,35 @@
                                 </a>
                             </div>
                             <!-- Visual Element -->
-                            <div style="height: 200px; background: linear-gradient(135deg, #FCE7F3 0%, #FBD5E5 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
-                                <div style="width: 100%; height: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
-                                    <div style="background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center;">
+                            <div style="height: 200px; background: linear-gradient(135deg, #FCE7F3 0%, #FBD5E5 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 1.5rem; position: relative;">
+                                <style>
+                                    @keyframes dataFlow {
+                                        0%, 10% { transform: translateX(-150%) scale(0); opacity: 0; }
+                                        20% { transform: translateX(-50%) scale(1); opacity: 1; }
+                                        50% { transform: translateX(50%) scale(1); opacity: 1; }
+                                        60% { opacity: 1; }
+                                        70%, 100% { transform: translateX(150%) scale(0); opacity: 0; }
+                                    }
+                                    @keyframes nodePulse {
+                                        0%, 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+                                        15%, 65% { transform: scale(1.1); box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3); }
+                                    }
+                                    .xdex-node-1 { animation: nodePulse 5s ease-in-out infinite; }
+                                    .xdex-node-2 { animation: nodePulse 5s ease-in-out 0.8s infinite; }
+                                    .xdex-node-3 { animation: nodePulse 5s ease-in-out 1.6s infinite; }
+                                    .xdex-data { animation: dataFlow 5s ease-in-out infinite; }
+                                </style>
+                                <div style="width: 100%; height: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; position: relative;">
+                                    <div class="xdex-node-1" style="background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center;">
                                         <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #EC4899, #DB2777); border-radius: 50%;"></div>
                                     </div>
-                                    <div style="background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center;">
+                                    <div class="xdex-node-2" style="background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center;">
                                         <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #F97316, #EA580C); border-radius: 50%;"></div>
                                     </div>
-                                    <div style="background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center;">
+                                    <div class="xdex-node-3" style="background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center;">
                                         <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #8B5CF6, #7C3AED); border-radius: 50%;"></div>
                                     </div>
+                                    <div class="xdex-data" style="position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 20px; height: 20px; background: linear-gradient(135deg, #EC4899, #8B5CF6); border-radius: 50%; box-shadow: 0 4px 12px rgba(236, 72, 153, 0.6);"></div>
                                 </div>
                             </div>
                         </div>
@@ -1487,168 +1580,193 @@
             }
         </style>
         <div class="container">
-            <div class="solutions-header">
-                <h2 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 48px; line-height: 1.2; color: #000000;">Solutions for <span style="background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Every Industry</span></h2>
-                <div class="solution-nav">
-                    <a href="#" class="active">Banking & Finance</a>
-                    <a href="#">Retail & eCommerce</a>
-                    <a href="#">Utilities</a>
-                    <a href="#">Healthcare</a>
-                </div>
-            </div>
-            <p class="solutions-description">Tilli adapts to the unique needs of multiple industries, from utilities and finance to education and retail, helping organizations streamline communication and payments.</p>
+            <!-- Industry Showcase -->
+            <div style="display: grid; grid-template-columns: 45% 55%; gap: 4rem; align-items: start; margin-bottom: 3rem;">
+                <!-- Left Side - Active Industry Info -->
+                <div style="max-width: 500px;">
+                    <p style="font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #6B7280; margin-bottom: 1rem;">SOLUTIONS BY INDUSTRY</p>
 
-            <div class="solutions-carousel-wrapper">
-                <div class="solutions-carousel-track" id="solutionsCarousel">
-                    <!-- Banking & Finance -->
-                    <div class="solutions-card">
-                        <div class="solutions-icon">
-                            <i class="fas fa-university"></i>
+                    <h3 id="activeIndustryTitle" style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 32px; line-height: 1.4; color: #000000; margin-bottom: 1rem; min-height: 90px;">
+                        Solutions for <span style="background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Banking and Finance</span> <span style="color: #448DE6;">›</span>
+                    </h3>
+
+                    <p id="activeIndustryDesc" style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #6B7280; margin-bottom: 2rem; min-height: 75px;">
+                        Transform your company's financial solutions. Improve AML and KYC compliance and reduce operating costs while increasing customer satisfaction.
+                    </p>
+                </div>
+
+                <!-- Right Side - Industry Cards -->
+                <div style="position: relative; height: 350px; overflow: visible; padding-left: 1rem;">
+                    <div id="industryCardsContainer" style="display: flex; gap: 1rem; position: relative; height: 100%;"
+                        <!-- Active Card - Banking & Finance -->
+                        <div class="industry-showcase-card active" data-industry="0" style="flex: 0 0 280px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative; opacity: 1; transform: scale(1);">
+                            <img src="industries/banking and fincance.png" alt="Banking & Finance" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Banking and Finance</h4>
+                            </div>
                         </div>
-                        <h3>Banking & Finance</h3>
-                        <p>Streamline loan payments, credit card billing, and account statements with secure, PCI-compliant solutions that increase digital adoption and reduce operational costs.</p>
-                    </div>
-                    <!-- Retail & eCommerce -->
-                    <div class="solutions-card">
-                        <div class="solutions-icon">
-                            <i class="fas fa-shopping-cart"></i>
+
+                        <!-- Faded Card - Education -->
+                        <div class="industry-showcase-card" data-industry="1" style="flex: 0 0 240px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative; opacity: 0.5; transform: scale(0.9);">
+                            <img src="industries/education.png" alt="Education" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Education and Universities</h4>
+                            </div>
                         </div>
-                        <h3>Retail & eCommerce</h3>
-                        <p>Transform checkout experiences with seamless payment flows, dynamic invoicing, and personalized communication that drives conversion and customer loyalty.</p>
-                    </div>
-                    <!-- Utilities -->
-                    <div class="solutions-card">
-                        <div class="solutions-icon">
-                            <i class="fas fa-bolt"></i>
+
+                        <!-- Most Faded Card - Gaming -->
+                        <div class="industry-showcase-card" data-industry="2" style="flex: 0 0 200px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative; opacity: 0.3; transform: scale(0.85);">
+                            <img src="industries/gaming.png" alt="Gaming" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Gaming</h4>
+                            </div>
                         </div>
-                        <h3>Utilities</h3>
-                        <p>Modernize utility billing with automated meter reading integration, usage analytics, and proactive outage notifications that improve customer satisfaction.</p>
-                    </div>
-                    <!-- Healthcare -->
-                    <div class="solutions-card">
-                        <div class="solutions-icon">
-                            <i class="fas fa-heartbeat"></i>
+
+                        <!-- Hidden Cards -->
+                        <div class="industry-showcase-card" data-industry="3" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
+                            <img src="industries/healthcare.jpg" alt="Healthcare" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Healthcare</h4>
+                            </div>
                         </div>
-                        <h3>Healthcare</h3>
-                        <p>Simplify medical billing with HIPAA-compliant payment processing, insurance claim management, and patient-friendly payment plans.</p>
-                    </div>
-                    <!-- Government -->
-                    <div class="solutions-card">
-                        <div class="solutions-icon">
-                            <i class="fas fa-landmark"></i>
+                        <div class="industry-showcase-card" data-industry="4" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
+                            <img src="industries/insurance.jpg" alt="Insurance" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Insurance</h4>
+                            </div>
                         </div>
-                        <h3>Government</h3>
-                        <p>Enable citizens to pay taxes, fines, and fees online with secure, accessible payment solutions that reduce administrative burden.</p>
-                    </div>
-                    <!-- Telecommunications -->
-                    <div class="solutions-card">
-                        <div class="solutions-icon">
-                            <i class="fas fa-wifi"></i>
+                        <div class="industry-showcase-card" data-industry="5" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
+                            <img src="industries/retail.jpg" alt="Retail" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Retail</h4>
+                            </div>
                         </div>
-                        <h3>Telecommunications</h3>
-                        <p>Enhance subscriber experiences with real-time usage alerts, flexible billing options, and omnichannel payment support.</p>
-                    </div>
-                    <!-- Media & Conferences -->
-                    <div class="solutions-card">
-                        <div class="solutions-icon">
-                            <i class="fas fa-video"></i>
+                        <div class="industry-showcase-card" data-industry="6" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
+                            <img src="industries/telecom.jpg" alt="Telecommunications" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Telecommunications</h4>
+                            </div>
                         </div>
-                        <h3>Media & Conferences</h3>
-                        <p>Manage event registrations, sponsorship payments, and media subscriptions with flexible payment plans and automated invoicing.</p>
-                    </div>
-                    <!-- Insurance -->
-                    <div class="solutions-card">
-                        <div class="solutions-icon">
-                            <i class="fas fa-shield-alt"></i>
+                        <div class="industry-showcase-card" data-industry="7" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
+                            <img src="industries/utilities.jpg" alt="Utilities" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Utilities</h4>
+                            </div>
                         </div>
-                        <h3>Insurance</h3>
-                        <p>Simplify premium collections, claim payouts, and policy renewals with automated payment schedules and regulatory compliance.</p>
-                    </div>
-                    <!-- Subscription Services -->
-                    <div class="solutions-card">
-                        <div class="solutions-icon">
-                            <i class="fas fa-sync-alt"></i>
-                        </div>
-                        <h3>Subscription Services</h3>
-                        <p>Optimize recurring billing, reduce churn with smart retry logic, and offer flexible subscription management for SaaS and membership businesses.</p>
                     </div>
                 </div>
             </div>
 
+            <script>
+                const industries = [
+                    {
+                        name: 'Banking and Finance',
+                        desc: 'Transform your company\'s financial solutions. Improve AML and KYC compliance and reduce operating costs while increasing customer satisfaction.',
+                        image: 'industries/banking and fincance.png'
+                    },
+                    {
+                        name: 'Education and Universities',
+                        desc: 'Streamline tuition payments, financial aid processing, and campus services with secure, student-friendly payment solutions.',
+                        image: 'industries/education.png'
+                    },
+                    {
+                        name: 'Gaming',
+                        desc: 'Power seamless in-game purchases, subscription management, and player rewards with fast, secure payment infrastructure.',
+                        image: 'industries/gaming.png'
+                    },
+                    {
+                        name: 'Healthcare',
+                        desc: 'Simplify medical billing with HIPAA-compliant payment processing, insurance claim management, and patient-friendly payment plans.',
+                        image: 'industries/healthcare.jpg'
+                    },
+                    {
+                        name: 'Insurance',
+                        desc: 'Simplify premium collections, claim payouts, and policy renewals with automated payment schedules and regulatory compliance.',
+                        image: 'industries/insurance.jpg'
+                    },
+                    {
+                        name: 'Retail',
+                        desc: 'Transform checkout experiences with seamless payment flows, dynamic invoicing, and personalized communication that drives conversion.',
+                        image: 'industries/retail.jpg'
+                    },
+                    {
+                        name: 'Telecommunications',
+                        desc: 'Enhance subscriber experiences with real-time usage alerts, flexible billing options, and omnichannel payment support.',
+                        image: 'industries/telecom.jpg'
+                    },
+                    {
+                        name: 'Utilities',
+                        desc: 'Modernize utility billing with automated meter reading integration, usage analytics, and proactive outage notifications.',
+                        image: 'industries/utilities.jpg'
+                    }
+                ];
+
+                let currentIndex = 0;
+
+                function updateIndustryShowcase() {
+                    const titleEl = document.getElementById('activeIndustryTitle');
+                    const descEl = document.getElementById('activeIndustryDesc');
+                    const cards = document.querySelectorAll('.industry-showcase-card');
+
+                    // Update text
+                    const industry = industries[currentIndex];
+                    titleEl.innerHTML = `Solutions for <span style="background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">${industry.name}</span> <span style="color: #448DE6;">›</span>`;
+                    descEl.textContent = industry.desc;
+
+                    // Update cards visibility and styling
+                    cards.forEach((card, index) => {
+                        const dataIndex = parseInt(card.getAttribute('data-industry'));
+
+                        if (dataIndex === currentIndex) {
+                            // Active card
+                            card.style.display = 'block';
+                            card.style.flex = '0 0 280px';
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                            card.classList.add('active');
+                        } else if (dataIndex === (currentIndex + 1) % industries.length) {
+                            // Next card (faded)
+                            card.style.display = 'block';
+                            card.style.flex = '0 0 240px';
+                            card.style.opacity = '0.5';
+                            card.style.transform = 'scale(0.9)';
+                            card.classList.remove('active');
+                        } else if (dataIndex === (currentIndex + 2) % industries.length) {
+                            // Third card (most faded)
+                            card.style.display = 'block';
+                            card.style.flex = '0 0 200px';
+                            card.style.opacity = '0.3';
+                            card.style.transform = 'scale(0.85)';
+                            card.classList.remove('active');
+                        } else {
+                            // Hidden cards
+                            card.style.display = 'none';
+                            card.classList.remove('active');
+                        }
+                    });
+                }
+
+                // Click handlers for cards
+                document.querySelectorAll('.industry-showcase-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const index = parseInt(card.getAttribute('data-industry'));
+                        currentIndex = index;
+                        updateIndustryShowcase();
+                    });
+                });
+
+                // Auto-advance every 5 seconds
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % industries.length;
+                    updateIndustryShowcase();
+                }, 5000);
+            </script>
 
             <div class="solutions-cta" style="text-align: center; margin-top: 3rem;">
                 <a href="#" class="btn-outline">Explore Industry Use Cases</a>
             </div>
         </div>
     </section>
-
-    <script>
-        let currentSolutionIndex = 0;
-        const solutionsCarousel = document.getElementById('solutionsCarousel');
-        const solutionCards = document.querySelectorAll('.solutions-card');
-
-        // Calculate card width dynamically based on screen size
-        function getCardWidth() {
-            if (window.innerWidth <= 768) {
-                return window.innerWidth * 0.85 + 16; // 85vw + margins
-            }
-            return 350 + 32; // desktop: card width + margins
-        }
-
-        // Touch/swipe support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        solutionsCarousel.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        solutionsCarousel.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const cardWidth = getCardWidth();
-            const maxIndex = Math.max(0, solutionCards.length - Math.floor(window.innerWidth / cardWidth));
-
-            if (touchEndX < touchStartX - 50) {
-                // Swiped left
-                currentSolutionIndex = Math.min(currentSolutionIndex + 1, maxIndex);
-            }
-            if (touchEndX > touchStartX + 50) {
-                // Swiped right
-                currentSolutionIndex = Math.max(currentSolutionIndex - 1, 0);
-            }
-            updateCarousel();
-        }
-
-        function updateCarousel() {
-            const cardWidth = getCardWidth();
-            solutionsCarousel.style.transform = `translateX(-${currentSolutionIndex * cardWidth}px)`;
-        }
-
-        // Auto-scroll every 3 seconds
-        setInterval(() => {
-            const cardWidth = getCardWidth();
-            const maxIndex = Math.max(0, solutionCards.length - Math.floor(window.innerWidth / cardWidth));
-            currentSolutionIndex = (currentSolutionIndex + 1) % (maxIndex + 1);
-            if (currentSolutionIndex === 0) {
-                solutionsCarousel.style.transition = 'none';
-                solutionsCarousel.style.transform = 'translateX(0)';
-                setTimeout(() => {
-                    solutionsCarousel.style.transition = 'transform 0.3s ease';
-                }, 50);
-            } else {
-                updateCarousel();
-            }
-        }, 3000);
-
-        // Update on window resize
-        window.addEventListener('resize', () => {
-            updateCarousel();
-        });
-    </script>
 
     <!-- Why Tilli Section -->
     <section class="why-tilli" id="features">
