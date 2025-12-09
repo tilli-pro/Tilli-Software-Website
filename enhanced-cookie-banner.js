@@ -149,13 +149,13 @@
                 bottom: 0;
                 left: 0;
                 right: 0;
-                background: linear-gradient(to bottom, #ffffff, #fafbfc);
-                border-top: 3px solid #2563eb;
-                box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+                background: #ffffff;
+                border-top: 1px solid #e5e7eb;
+                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
                 z-index: 999999;
-                padding: 30px;
-                animation: slideInUp 0.5s ease;
-                font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+                padding: 24px 32px;
+                animation: slideInUp 0.4s ease;
+                font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
             ">
                 <div style="
                     max-width: 1200px;
@@ -163,7 +163,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    gap: 30px;
+                    gap: 32px;
                     flex-wrap: wrap;
                 ">
                     <div style="flex: 1; min-width: 300px;">
@@ -171,19 +171,19 @@
                             display: flex;
                             align-items: center;
                             gap: 12px;
-                            margin-bottom: 12px;
+                            margin-bottom: 8px;
                         ">
                             <div style="
-                                width: 40px;
-                                height: 40px;
-                                background: linear-gradient(135deg, #2563eb, #1d4ed8);
-                                border-radius: 10px;
+                                width: 36px;
+                                height: 36px;
+                                background: #325ef6;
+                                border-radius: 8px;
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
                                 flex-shrink: 0;
                             ">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path>
                                     <path d="M8.5 8.5v.01"></path>
                                     <path d="M16 15.5v.01"></path>
@@ -194,70 +194,73 @@
                             </div>
                             <h3 style="
                                 margin: 0;
-                                font-size: 24px;
-                                font-weight: 700;
-                                color: #111827;
+                                font-size: 20px;
+                                font-weight: 400;
+                                color: #000000;
+                                font-family: 'Sora', sans-serif;
                             ">We use cookies</h3>
                         </div>
                         <p style="
                             margin: 0;
-                            color: #4b5563;
-                            font-size: 15px;
+                            color: #64748b;
+                            font-size: 14px;
                             line-height: 1.6;
                         ">
                             We use cookies and similar technologies to enhance your browsing experience,
                             analyze site traffic, and personalize content. You can customize your preferences below.
-                            <a href="/privacy-policy.html" style="color: #2563eb; text-decoration: none; font-weight: 500;">Learn more</a>
+                            <a href="/privacy-policy.html" style="color: #325ef6; text-decoration: none; font-weight: 500;">Learn more</a>
                         </p>
                     </div>
 
                     <div style="
                         display: flex;
-                        gap: 12px;
+                        gap: 10px;
                         align-items: center;
                         flex-shrink: 0;
                         flex-wrap: wrap;
                     ">
                         <button onclick="window.tilliCookieBanner.showPreferences()" style="
-                            background: white;
-                            color: #374151;
-                            border: 2px solid #d1d5db;
-                            padding: 12px 20px;
-                            border-radius: 10px;
+                            background: #ffffff;
+                            color: #000000;
+                            border: 1px solid #e5e7eb;
+                            padding: 10px 18px;
+                            border-radius: 8px;
                             font-size: 14px;
-                            font-weight: 600;
+                            font-weight: 500;
                             cursor: pointer;
                             transition: all 0.2s;
                             display: flex;
                             align-items: center;
-                            gap: 8px;
+                            gap: 6px;
                             white-space: nowrap;
-                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'"
-                           onmouseout="this.style.transform=''; this.style.boxShadow=''">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            font-family: 'Lato', sans-serif;
+                        " onmouseover="this.style.borderColor='#325ef6'; this.style.color='#325ef6'"
+                           onmouseout="this.style.borderColor='#e5e7eb'; this.style.color='#000000'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="3"></circle>
-                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
                             </svg>
                             Preferences
                         </button>
 
                         <button onclick="window.tilliCookieBanner.rejectAll()" style="
-                            background: white;
-                            color: #374151;
-                            border: 2px solid #d1d5db;
-                            padding: 12px 20px;
-                            border-radius: 10px;
+                            background: #ffffff;
+                            color: #000000;
+                            border: 1px solid #e5e7eb;
+                            padding: 10px 18px;
+                            border-radius: 8px;
                             font-size: 14px;
-                            font-weight: 600;
+                            font-weight: 500;
                             cursor: pointer;
                             transition: all 0.2s;
                             display: flex;
                             align-items: center;
-                            gap: 8px;
+                            gap: 6px;
                             white-space: nowrap;
-                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'"
-                           onmouseout="this.style.transform=''; this.style.boxShadow=''">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            font-family: 'Lato', sans-serif;
+                        " onmouseover="this.style.borderColor='#325ef6'; this.style.color='#325ef6'"
+                           onmouseout="this.style.borderColor='#e5e7eb'; this.style.color='#000000'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <line x1="15" y1="9" x2="9" y2="15"></line>
                                 <line x1="9" y1="9" x2="15" y2="15"></line>
@@ -266,23 +269,23 @@
                         </button>
 
                         <button onclick="window.tilliCookieBanner.acceptAll()" style="
-                            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                            background: #325ef6;
                             color: white;
                             border: none;
-                            padding: 14px 24px;
-                            border-radius: 10px;
+                            padding: 10px 20px;
+                            border-radius: 8px;
                             font-size: 14px;
-                            font-weight: 600;
+                            font-weight: 500;
                             cursor: pointer;
                             transition: all 0.2s;
-                            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
                             display: flex;
                             align-items: center;
-                            gap: 8px;
+                            gap: 6px;
                             white-space: nowrap;
-                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(37, 99, 235, 0.4)'"
-                           onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 14px rgba(37, 99, 235, 0.3)'">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            font-family: 'Lato', sans-serif;
+                        " onmouseover="this.style.background='#2a4fd4'"
+                           onmouseout="this.style.background='#325ef6'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                             Accept All
