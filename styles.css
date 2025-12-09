@@ -165,17 +165,17 @@ img, svg, video, canvas {
 
 /* Header Styles */
 .header {
-    position: fixed;
-    top: 0;
+    position: sticky;
+    top: 0px;
     left: 0;
     right: 0;
-    background-color: #ffffff !important;
-    background: #ffffff !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
-    z-index: 9999;
+    background-color: transparent !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: 1px solid transparent !important;
+    box-shadow: none !important;
+    z-index: 1000;
     transition: all 0.3s ease;
 }
 
@@ -6164,164 +6164,3 @@ a:focus {
 /* ===================================
    DARK MODE TOGGLE BUTTON
    =================================== */
-
-/* Top Banner - Homepage Only */
-.top-banner {
-    position: fixed;
-    top: 72px; /* Below the navbar */
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: linear-gradient(90deg, #4169E1 0%, #00BFFF 100%);
-    padding: 14px 20px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    z-index: 999;
-    transform: translateY(0);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    box-sizing: border-box;
-}
-
-.top-banner.hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.top-banner .banner-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    color: #FFFFFF;
-}
-
-.top-banner .banner-cta {
-    background: rgba(245, 245, 245, 0.3);
-    color: #FFFFFF;
-    padding: 8px 14px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.3s ease;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.06);
-}
-
-.top-banner .banner-cta:hover {
-    background: rgba(245, 245, 245, 0.5);
-}
-
-/* Adjust body padding when banner is visible on homepage */
-body.has-banner {
-    padding-top: 50px;
-}
-
-body.has-banner .hero {
-    padding-top: 20px;
-}
-
-@media (max-width: 768px) {
-    .top-banner {
-        flex-direction: column;
-        gap: 10px;
-        padding: 12px 16px;
-        top: 60px;
-    }
-    
-    .top-banner .banner-text {
-        font-size: 13px;
-    }
-}
-
-/* ===================================
-   TOP BANNER - HOMEPAGE ONLY
-   =================================== */
-.top-banner {
-    position: fixed;
-    top: 72px;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: linear-gradient(90deg, #4169E1 0%, #00BFFF 100%);
-    padding: 12px 20px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    z-index: 999;
-    transform: translateY(0);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    box-sizing: border-box;
-}
-
-.top-banner.hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.top-banner .banner-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: #FFFFFF;
-}
-
-.top-banner .banner-cta {
-    background: rgba(255, 255, 255, 0.2);
-    color: #FFFFFF;
-    padding: 8px 14px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.3s ease;
-}
-
-.top-banner .banner-cta:hover {
-    background: rgba(255, 255, 255, 0.35);
-}
-
-/* Add padding to body when banner is visible */
-body.has-banner main {
-    padding-top: 48px;
-}
-
-@media (max-width: 768px) {
-    .top-banner {
-        flex-direction: column;
-        gap: 8px;
-        padding: 10px 16px;
-        top: 60px;
-    }
-    
-    .top-banner .banner-text {
-        font-size: 12px;
-    }
-    
-    body.has-banner main {
-        padding-top: 80px;
-    }
-}
-
-/* Ensure main content doesn't hide under fixed header */
-main {
-    padding-top: 80px;
-}
-
-/* Hero section specific adjustment */
-.hero {
-    padding-top: 0;
-}
