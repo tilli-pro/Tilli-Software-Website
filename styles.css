@@ -6164,3 +6164,78 @@ a:focus {
 /* ===================================
    DARK MODE TOGGLE BUTTON
    =================================== */
+
+/* Top Banner - Homepage Only */
+.top-banner {
+    position: fixed;
+    top: 72px; /* Below the navbar */
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #4169E1 0%, #00BFFF 100%);
+    padding: 14px 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 999;
+    transform: translateY(0);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-sizing: border-box;
+}
+
+.top-banner.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.top-banner .banner-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+.top-banner .banner-cta {
+    background: rgba(245, 245, 245, 0.3);
+    color: #FFFFFF;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.3s ease;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.06);
+}
+
+.top-banner .banner-cta:hover {
+    background: rgba(245, 245, 245, 0.5);
+}
+
+/* Adjust body padding when banner is visible on homepage */
+body.has-banner {
+    padding-top: 50px;
+}
+
+body.has-banner .hero {
+    padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .top-banner {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 16px;
+        top: 60px;
+    }
+    
+    .top-banner .banner-text {
+        font-size: 13px;
+    }
+}

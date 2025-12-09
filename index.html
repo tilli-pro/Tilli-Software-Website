@@ -457,16 +457,16 @@
 </head>
 <body>
 
-    <!-- Radnom comment -->
-    <!-- Header -->
-    <header class="header">
-        <!-- Top Banner -->
-        <div style="width: 100%; background: linear-gradient(90deg, #4169E1 0%, #00BFFF 100%); padding: 18px 20px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 1001; height: 62px; box-sizing: border-box;">
-        <span style="font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; color: #FFFFFF;">✨Join us for our upcoming webinar on the future of digital payments.</span>
-        <a href="#" style="background: rgba(245, 245, 245, 0.3); color: #FFFFFF; padding: 8px 14px; border-radius: 6px; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; transition: background 0.3s ease; box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.06);">
-            Register now <span style="font-size: 16px;">→</span>
+    <!-- Top Banner - Homepage Only (sits below fixed navbar) -->
+    <div id="top-banner" class="top-banner">
+        <span class="banner-text">✨Join us for our upcoming webinar on the future of digital payments.</span>
+        <a href="#" class="banner-cta">
+            Register now <span>→</span>
         </a>
     </div>
+
+    <!-- Header -->
+    <header class="header">
         <nav class="nav">
             <div class="nav-container">
                 <div class="logo">
@@ -3282,6 +3282,26 @@
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+
+<!-- Top Banner Scroll Behavior -->
+<script>
+    (function() {
+        const topBanner = document.getElementById('top-banner');
+        if (topBanner) {
+            document.body.classList.add('has-banner');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    topBanner.classList.add('hidden');
+                    document.body.classList.remove('has-banner');
+                } else {
+                    topBanner.classList.remove('hidden');
+                    document.body.classList.add('has-banner');
+                }
+            });
+        }
+    })();
+</script>
 
 </body>
 </html>
