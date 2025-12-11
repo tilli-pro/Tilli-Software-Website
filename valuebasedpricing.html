@@ -269,11 +269,38 @@
         }
 
         .service-checkbox {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             cursor: pointer;
-            accent-color: #3b82f6;
+            accent-color: #325ef6;
             flex-shrink: 0;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            appearance: none;
+            -webkit-appearance: none;
+            background: #fff;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .service-checkbox:checked {
+            background: #325ef6;
+            border-color: #325ef6;
+        }
+
+        .service-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .service-checkbox:hover {
+            border-color: #325ef6;
         }
 
         .card-title {
@@ -1589,7 +1616,15 @@
                         // Regular services with volume sliders
                         const slider = document.getElementById(`${service.id}-volume`);
                         if (slider) {
-                            slider.addEventListener('input', () => updateService(service));
+                            slider.addEventListener('input', () => {
+                                // Auto-check the checkbox when user moves the slider
+                                const checkbox = document.getElementById(`${service.id}-checkbox`);
+                                if (checkbox && !checkbox.checked && parseInt(slider.value) > 0) {
+                                    checkbox.checked = true;
+                                    toggleService(service.id, true);
+                                }
+                                updateService(service);
+                            });
                         }
                         updateService(service);
                     } else {
