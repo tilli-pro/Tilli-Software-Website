@@ -132,10 +132,50 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
+/* Desktop font sizes */
 h1 { font-size: 3.5rem; }
 h2 { font-size: 2.5rem; }
 h3 { font-size: 1.75rem; }
 h4 { font-size: 1.25rem; }
+
+/* Mobile Typography - Design System */
+@media (max-width: 768px) {
+    /* H1: 18px / 24px line height */
+    h1 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    /* H2: 16px / 20px line height */
+    h2 {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    /* H3: 14px / 21px line height */
+    h3 {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    /* Text 1 (body large): 12px / 16px line height */
+    .text-1, .hero-text p, .subtitle {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    /* Text 2 (body): 11px / 14.4px line height */
+    body, p, .text-2 {
+        font-size: 11px;
+        line-height: 14.4px;
+    }
+
+    /* Text 3 (small): 10px / 12px line height */
+    .text-3, small, .caption, .meta {
+        font-size: 10px;
+        line-height: 12px;
+    }
+}
 
 body {
     font-family: var(--font-family);
