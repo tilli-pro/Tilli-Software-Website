@@ -14,7 +14,7 @@
 .link-muted{color:#64748b;text-decoration:none}
 
 .blog-hero{padding:32px 0 8px}
-.page-title{font-size:48px;line-height:1.1;margin:12px 0 24px}
+.page-title{font-size:48px;line-height:1.35;margin:12px 0 24px}
 .featured-post{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;background:#fff;border:1px solid rgba(15,23,42,.06);border-radius:16px;padding:16px}
 .featured-media img{width:100%;height:100%;object-fit:cover;border-radius:12px}
 .badge{display:inline-block;background:#eef2ff;color:#4338ca;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;letter-spacing:.02em}
@@ -129,7 +129,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display), sans-serif;
     font-weight: 400;
     color: var(--text-primary);
-    line-height: 1.2;
+    line-height: 1.35;
 }
 
 /* Desktop font sizes */
@@ -138,42 +138,42 @@ h2 { font-size: 2.5rem; }
 h3 { font-size: 1.75rem; }
 h4 { font-size: 1.25rem; }
 
-/* Mobile Typography - Design System */
+/* Mobile Typography - Ramp-inspired sizing */
 @media (max-width: 768px) {
-    /* H1: 18px / 24px line height */
+    /* H1: Primary headlines */
     h1 {
-        font-size: 18px;
-        line-height: 24px;
+        font-size: 28px;
+        line-height: 1.25;
     }
 
-    /* H2: 16px / 20px line height */
+    /* H2: Section headlines */
     h2 {
-        font-size: 16px;
-        line-height: 20px;
+        font-size: 22px;
+        line-height: 1.3;
     }
 
-    /* H3: 14px / 21px line height */
+    /* H3: Subsection headlines */
     h3 {
-        font-size: 14px;
-        line-height: 21px;
+        font-size: 18px;
+        line-height: 1.35;
     }
 
-    /* Text 1 (body large): 12px / 16px line height */
+    /* Text 1 (body large): 16px */
     .text-1, .hero-text p, .subtitle {
-        font-size: 12px;
-        line-height: 16px;
+        font-size: 16px;
+        line-height: 1.5;
     }
 
-    /* Text 2 (body): 11px / 14.4px line height */
+    /* Text 2 (body): 14px */
     body, p, .text-2 {
-        font-size: 11px;
-        line-height: 14.4px;
+        font-size: 14px;
+        line-height: 1.5;
     }
 
-    /* Text 3 (small): 10px / 12px line height */
+    /* Text 3 (small): 12px */
     .text-3, small, .caption, .meta {
-        font-size: 10px;
-        line-height: 12px;
+        font-size: 12px;
+        line-height: 1.4;
     }
 }
 
@@ -415,7 +415,7 @@ main {
     font-size: 4rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
-    line-height: 1.2;
+    line-height: 1.3;
     letter-spacing: -0.02em;
     color: var(--dark-gray);
     overflow: visible;
