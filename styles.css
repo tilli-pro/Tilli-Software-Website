@@ -176,17 +176,27 @@ h4 { font-size: 1.25rem; }
         line-height: 1.4;
     }
 
-    /* Stack service delivery grid on mobile - title above text */
+    /* Stack service delivery grid on mobile - title above text (Ramp-style) */
     .service-delivery-grid {
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
-        text-align: center;
+        text-align: left;
     }
 
     /* Override inline 48px section headings on mobile - Ramp-style sizing */
     .section-heading {
         font-size: 24px !important;
         line-height: 1.3 !important;
+    }
+
+    /* Reduce section padding on mobile */
+    .service-delivery {
+        padding: 3rem 0 !important;
+    }
+
+    /* Tighter container padding on mobile */
+    .service-delivery .container {
+        padding: 0 1.25rem !important;
     }
 }
 
