@@ -122,68 +122,47 @@
             line-height: 1.7;
         }
 
-        /* Aave-style FAQ accordion for features */
-        .hero-features-accordion {
+        /* Aave-style feature list with checkmarks */
+        .hero-features-list {
             width: 100%;
             max-width: 700px;
             margin: 0 auto;
         }
 
-        .feature-accordion-item {
-            border-bottom: 1px solid #f3f4f6;
+        .feature-list-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             padding: 1.25rem 0;
+            border-bottom: 1px solid #f3f4f6;
         }
 
-        .feature-accordion-item:first-child {
+        .feature-list-item:first-child {
             border-top: 1px solid #f3f4f6;
         }
 
-        .feature-accordion-header {
+        .feature-check-icon {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            background: #325ef6;
+            border-radius: 50%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            cursor: pointer;
-            width: 100%;
-            background: none;
-            border: none;
-            text-align: left;
-            padding: 0;
+            justify-content: center;
         }
 
-        .feature-accordion-title {
+        .feature-check-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke: white;
+        }
+
+        .feature-list-title {
             font-family: 'Inter', sans-serif;
             font-size: 18px;
             font-weight: 400;
             color: #1a1a1a;
-        }
-
-        .feature-accordion-icon {
-            color: #325ef6;
-            font-size: 24px;
-            font-weight: 300;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-accordion-item.active .feature-accordion-icon {
-            transform: rotate(45deg);
-        }
-
-        .feature-accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .feature-accordion-item.active .feature-accordion-content {
-            max-height: 200px;
-        }
-
-        .feature-accordion-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: #6b7280;
-            line-height: 1.6;
-            padding-top: 1rem;
         }
 
         .calculator-section {
@@ -1135,42 +1114,38 @@
                     <h1 class="hero-title-centered">See How Much You Could Save With <span class="highlight-blue">tilli</span></h1>
                     <p class="hero-subtitle-centered">Whether you're handling one invoice or hundreds, our calculator reveals how much you could be saving with tilli—through automation, smarter workflows, and fewer fees.</p>
 
-                    <div class="hero-features-accordion">
-                        <div class="feature-accordion-item">
-                            <button class="feature-accordion-header">
-                                <span class="feature-accordion-title">Works for SMBs & Enterprises</span>
-                                <span class="feature-accordion-icon">+</span>
-                            </button>
-                            <div class="feature-accordion-content">
-                                <p class="feature-accordion-text">Whether you're a small business processing a few invoices or an enterprise handling thousands, our platform scales to meet your needs with flexible pricing and features.</p>
+                    <div class="hero-features-list">
+                        <div class="feature-list-item">
+                            <div class="feature-check-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
                             </div>
+                            <span class="feature-list-title">Works for SMBs & Enterprises</span>
                         </div>
-                        <div class="feature-accordion-item">
-                            <button class="feature-accordion-header">
-                                <span class="feature-accordion-title">Secure, automated invoicing</span>
-                                <span class="feature-accordion-icon">+</span>
-                            </button>
-                            <div class="feature-accordion-content">
-                                <p class="feature-accordion-text">Enterprise-grade security with PCI DSS compliance. Automate your entire invoicing workflow from creation to payment collection.</p>
+                        <div class="feature-list-item">
+                            <div class="feature-check-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
                             </div>
+                            <span class="feature-list-title">Secure, automated invoicing</span>
                         </div>
-                        <div class="feature-accordion-item">
-                            <button class="feature-accordion-header">
-                                <span class="feature-accordion-title">Easy-to-use calculator</span>
-                                <span class="feature-accordion-icon">+</span>
-                            </button>
-                            <div class="feature-accordion-content">
-                                <p class="feature-accordion-text">Simply input your current costs and volumes. Our calculator instantly shows your potential savings across paper, postage, processing, and more.</p>
+                        <div class="feature-list-item">
+                            <div class="feature-check-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
                             </div>
+                            <span class="feature-list-title">Easy-to-use calculator</span>
                         </div>
-                        <div class="feature-accordion-item">
-                            <button class="feature-accordion-header">
-                                <span class="feature-accordion-title">No hidden fees</span>
-                                <span class="feature-accordion-icon">+</span>
-                            </button>
-                            <div class="feature-accordion-content">
-                                <p class="feature-accordion-text">Transparent pricing with no surprises. What you see is what you pay—no setup fees, no monthly minimums, no hidden charges.</p>
+                        <div class="feature-list-item">
+                            <div class="feature-check-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
                             </div>
+                            <span class="feature-list-title">No hidden fees</span>
                         </div>
                     </div>
                 </div>
@@ -3944,23 +3919,6 @@
             }
         }
 
-        // Accordion functionality for hero features
-        document.querySelectorAll('.feature-accordion-header').forEach(button => {
-            button.addEventListener('click', () => {
-                const item = button.parentElement;
-                const isActive = item.classList.contains('active');
-
-                // Close all other items
-                document.querySelectorAll('.feature-accordion-item').forEach(i => {
-                    i.classList.remove('active');
-                });
-
-                // Toggle current item
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
     </script>
 
     <!-- CookieConsent Scripts -->
