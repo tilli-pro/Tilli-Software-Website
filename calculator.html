@@ -122,47 +122,33 @@
             line-height: 1.7;
         }
 
-        /* Aave-style feature list with checkmarks */
-        .hero-features-list {
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .feature-list-item {
+        /* Inline checkmark features */
+        .hero-features-inline {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 0;
-            border-bottom: 1px solid #f3f4f6;
-        }
-
-        .feature-list-item:first-child {
-            border-top: 1px solid #f3f4f6;
-        }
-
-        .feature-check-icon {
-            width: 24px;
-            height: 24px;
-            min-width: 24px;
-            background: #325ef6;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             justify-content: center;
+            gap: 1.5rem 2.5rem;
+            margin-top: 0.5rem;
         }
 
-        .feature-check-icon svg {
-            width: 14px;
-            height: 14px;
-            stroke: white;
+        .feature-inline-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .feature-list-title {
+        .feature-inline-item svg {
+            width: 18px;
+            height: 18px;
+            color: #325ef6;
+            flex-shrink: 0;
+        }
+
+        .feature-inline-item span {
             font-family: 'Inter', sans-serif;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 400;
-            color: #1a1a1a;
+            color: #6b7280;
         }
 
         .calculator-section {
@@ -1114,38 +1100,30 @@
                     <h1 class="hero-title-centered">See How Much You Could Save With <span class="highlight-blue">tilli</span></h1>
                     <p class="hero-subtitle-centered">Whether you're handling one invoice or hundreds, our calculator reveals how much you could be saving with tilli—through automation, smarter workflows, and fewer fees.</p>
 
-                    <div class="hero-features-list">
-                        <div class="feature-list-item">
-                            <div class="feature-check-icon">
-                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <span class="feature-list-title">Works for SMBs & Enterprises</span>
+                    <div class="hero-features-inline">
+                        <div class="feature-inline-item">
+                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Works for SMBs & Enterprises</span>
                         </div>
-                        <div class="feature-list-item">
-                            <div class="feature-check-icon">
-                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <span class="feature-list-title">Secure, automated invoicing</span>
+                        <div class="feature-inline-item">
+                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Secure, automated invoicing</span>
                         </div>
-                        <div class="feature-list-item">
-                            <div class="feature-check-icon">
-                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <span class="feature-list-title">Easy-to-use calculator</span>
+                        <div class="feature-inline-item">
+                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Easy-to-use calculator</span>
                         </div>
-                        <div class="feature-list-item">
-                            <div class="feature-check-icon">
-                                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <span class="feature-list-title">No hidden fees</span>
+                        <div class="feature-inline-item">
+                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>No hidden fees</span>
                         </div>
                     </div>
                 </div>
