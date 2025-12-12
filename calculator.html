@@ -68,11 +68,10 @@
     <!-- RB2B Tracking -->
     <script type="text/plain" data-cookiecategory="analytics">!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://b2bjsstore.s3.us-west-2.amazonaws.com/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("VN080HX77V6J");</script>
     <style>
-        /* Calculator Page Specific Styles */
+        /* Calculator Page Specific Styles - Design System */
         .calculator-hero {
-            background: linear-gradient(135deg, #f8fafb 0%, #e8f0ff 100%);
-            padding: 2rem 0;
-            margin-top: 80px;
+            background: #ffffff;
+            padding: 4rem 0 3rem;
         }
 
         .hero-content-centered {
@@ -81,96 +80,79 @@
             align-items: center;
             text-align: center;
             gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: #4099FF;
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            margin-bottom: 0.5rem;
+            background: rgba(50, 94, 246, 0.1);
+            color: #325ef6;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
         }
 
         .hero-title-centered {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: #1a1a1a;
+            font-family: 'Sora', sans-serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: #000000;
             margin-bottom: 0.5rem;
             line-height: 1.2;
         }
 
         .highlight-blue {
-            color: #4099FF;
+            background: linear-gradient(90deg, #325ef6 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-subtitle-centered {
-            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 400;
             color: #6b7280;
-            max-width: 700px;
-            margin: 0 auto 1rem;
-            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
         }
 
         .hero-highlights-centered {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 0;
         }
 
         .highlight-item-centered {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
-            font-size: 0.875rem;
+            gap: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #374151;
         }
 
         .highlight-icon {
-            color: #10b981;
-            font-size: 1rem;
-        }
-
-        .hero-buttons-centered {
+            width: 24px;
+            height: 24px;
+            background: #325ef6;
+            border-radius: 50%;
             display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary-large, .btn-secondary-large {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary-large {
-            background: #4099FF;
+            justify-content: center;
             color: white;
+            font-size: 0.75rem;
         }
 
-        .btn-primary-large:hover {
-            background: #3080e0;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary-large {
-            background: white;
-            color: #4099FF;
-            border: 2px solid #4099FF;
-        }
-
-        .btn-secondary-large:hover {
-            background: #f0f7ff;
+        .hero-visual-centered {
+            display: none;
         }
 
         .calculator-section {
@@ -1116,63 +1098,51 @@
         <section class="calculator-hero">
             <div class="container">
                 <div class="hero-content-centered">
-                    <div class="hero-text-centered">
-                        <div class="hero-badge">
-                            <i class="fas fa-calculator"></i>
-                            <span>Savings Calculator</span>
-                        </div>
-                        <h1 class="hero-title-centered">See How Much You Could Save With <span class="highlight-blue">tilli</span></h1>
-                        <p class="hero-subtitle-centered">Whether you're handling one invoice or hundreds, our calculator reveals how much you could be saving with tilli—through automation, smarter workflows, and fewer fees.</p>
-                        
-                        <div class="hero-highlights-centered">
-                            <div class="highlight-item-centered">
-                                <div class="highlight-icon">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                                <span>Works for SMBs & Enterprises</span>
-                            </div>
-                            <div class="highlight-item-centered">
-                                <div class="highlight-icon">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                                <span>Secure, automated invoicing</span>
-                            </div>
-                            <div class="highlight-item-centered">
-                                <div class="highlight-icon">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                                <span>Easy-to-use calculator</span>
-                            </div>
-                            <div class="highlight-item-centered">
-                                <div class="highlight-icon">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                                <span>No hidden fees</span>
-                            </div>
-                        </div>
-
+                    <div class="hero-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="4" y="2" width="16" height="20" rx="2"/>
+                            <line x1="8" y1="6" x2="16" y2="6"/>
+                            <line x1="8" y1="10" x2="16" y2="10"/>
+                            <line x1="8" y1="14" x2="12" y2="14"/>
+                            <line x1="8" y1="18" x2="12" y2="18"/>
+                        </svg>
+                        <span>Savings Calculator</span>
                     </div>
-                    
-                    <div class="hero-visual-centered">
-                        <div class="hero-images-stacked">
-                            <div class="hero-image-main">
-                                <div class="image-placeholder-enhanced">
-                                    <div class="image-icon">
-                                        <i class="fas fa-chart-line"></i>
-                                    </div>
-                                    <h4>Growth Analytics</h4>
-                                    <p>Track your savings progress</p>
-                                </div>
+                    <h1 class="hero-title-centered">See How Much You Could Save With <span class="highlight-blue">tilli</span></h1>
+                    <p class="hero-subtitle-centered">Whether you're handling one invoice or hundreds, our calculator reveals how much you could be saving with tilli—through automation, smarter workflows, and fewer fees.</p>
+
+                    <div class="hero-highlights-centered">
+                        <div class="highlight-item-centered">
+                            <div class="highlight-icon">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M5 13l4 4L19 7"/>
+                                </svg>
                             </div>
-                            <div class="hero-image-secondary">
-                                <div class="image-placeholder-enhanced">
-                                    <div class="image-icon">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                    <h4>Professional Team</h4>
-                                    <p>Expert support available</p>
-                                </div>
+                            <span>Works for SMBs & Enterprises</span>
+                        </div>
+                        <div class="highlight-item-centered">
+                            <div class="highlight-icon">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M5 13l4 4L19 7"/>
+                                </svg>
                             </div>
+                            <span>Secure, automated invoicing</span>
+                        </div>
+                        <div class="highlight-item-centered">
+                            <div class="highlight-icon">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span>Easy-to-use calculator</span>
+                        </div>
+                        <div class="highlight-item-centered">
+                            <div class="highlight-icon">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span>No hidden fees</span>
                         </div>
                     </div>
                 </div>
