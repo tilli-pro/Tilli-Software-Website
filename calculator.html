@@ -1086,7 +1086,7 @@
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header scrolled">
         <nav class="nav">
             <div class="nav-container">
                 <div class="logo">
@@ -3928,6 +3928,24 @@
             <div class="demo-otp-success" style="display:none;"></div>
         </div>
     </div>
+
+    <!-- Header scroll effect -->
+    <script>
+        const header = document.querySelector('.header');
+        if (header) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 10) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            // Ensure correct state on page load
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            }
+        }
+    </script>
 
     <!-- CookieConsent Scripts -->
     <script src="enhanced-cookie-banner.js"></script>
