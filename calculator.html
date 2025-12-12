@@ -166,23 +166,30 @@
             margin: 0 auto;
         }
 
+        .calculator-section-header {
+            margin-bottom: 2rem;
+        }
+
+        .calculator-section-header h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .calculator-section-header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #6b7280;
+        }
+
         .calculator-form {
             background: white;
             border: 1px solid #e5e7eb;
             border-radius: 12px;
             padding: 2rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .form-header h2 {
-            font-size: 2rem;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-header p {
-            color: #6b7280;
-            margin-bottom: 2rem;
         }
 
         .form-step {
@@ -1147,13 +1154,12 @@
         <!-- Calculator Section -->
         <section class="calculator-section">
             <div class="container">
+                <div class="calculator-section-header">
+                    <h2>Savings Calculator</h2>
+                    <p>Get a personalized estimate of your potential savings with tilli</p>
+                </div>
                 <div class="calculator-container">
                     <div class="calculator-form">
-                        <div class="form-header">
-                            <h2>Savings Calculator</h2>
-                            <p>Get a personalized estimate of your potential savings with tilli</p>
-                        </div>
-
                         <form id="savings-calculator" class="calculator-form-content">
                             <!-- Step 1: Industry -->
                             <div class="form-step active" data-step="1">
