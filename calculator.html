@@ -596,13 +596,17 @@
         }
 
         .calculator-results {
-            background: linear-gradient(135deg, #4099FF, #325ef6);
+            background: rgba(50, 94, 246, 0.3);
+            border: 2px solid transparent;
             border-radius: 12px;
             padding: 2rem;
-            color: white;
+            color: #1a1a1a;
             position: sticky;
             top: 100px;
             height: fit-content;
+            background-image: linear-gradient(rgba(50, 94, 246, 0.1), rgba(96, 165, 250, 0.1)), linear-gradient(135deg, #325ef6, #60a5fa);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
         }
 
         .results-header {
@@ -611,28 +615,29 @@
 
         .results-title-white {
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 400;
             margin-bottom: 0.5rem;
+            color: #1a1a1a;
         }
 
         .result-item {
             padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(50, 94, 246, 0.15);
         }
 
         .result-item.highlight {
-            border-bottom: 2px solid white;
+            border-bottom: 2px solid #325ef6;
         }
 
         .result-label {
             display: block;
             font-size: 0.875rem;
-            opacity: 0.9;
             margin-bottom: 0.5rem;
+            color: #6b7280;
         }
 
         .result-label-white {
-            color: white;
+            color: #6b7280;
         }
 
         .result-value {
@@ -642,7 +647,10 @@
         }
 
         .result-value-white {
-            color: white;
+            background: linear-gradient(90deg, #325ef6 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .results-actions {
@@ -651,12 +659,12 @@
 
         .results-actions .btn-primary {
             width: 100%;
-            background: white;
-            color: #4099FF;
+            background: linear-gradient(135deg, #325ef6, #60a5fa);
+            color: white;
         }
 
         .results-actions .btn-primary:hover {
-            background: #f0f7ff;
+            background: linear-gradient(135deg, #2a4fd4, #4099ff);
         }
 
         .info-sections {
@@ -1367,25 +1375,25 @@
                         <div class="results-content">
                             <div class="result-item">
                                 <span class="result-label">Current Annual Cost</span>
-                                <span class="result-value" id="current-cost" style="color: #fca5a5;">$8,000,493.00</span>
-                                <span class="result-monthly" id="current-cost-monthly" style="color: #fecaca; font-size: 0.85rem; display: block; margin-top: 4px;">$666,708/month</span>
+                                <span class="result-value" id="current-cost" style="color: #ef4444;">$8,000,493.00</span>
+                                <span class="result-monthly" id="current-cost-monthly" style="color: #f87171; font-size: 0.85rem; display: block; margin-top: 4px;">$666,708/month</span>
                             </div>
 
                             <div class="result-item">
                                 <span class="result-label">New Annual Cost</span>
-                                <span class="result-value" id="new-cost" style="color: #fdba74;">$3,884,493.00</span>
-                                <span class="result-monthly" id="new-cost-monthly" style="color: #fed7aa; font-size: 0.85rem; display: block; margin-top: 4px;">$323,708/month</span>
+                                <span class="result-value" id="new-cost" style="color: #f97316;">$3,884,493.00</span>
+                                <span class="result-monthly" id="new-cost-monthly" style="color: #fb923c; font-size: 0.85rem; display: block; margin-top: 4px;">$323,708/month</span>
                             </div>
 
                             <div class="result-item highlight">
                                 <span class="result-label result-label-white">Annual Savings</span>
-                                <span class="result-value result-value-white" id="estimated-savings" style="color: #86efac; font-weight: bold; font-size: 2rem;">$4,116,000.00</span>
-                                <span class="result-monthly" id="monthly-savings" style="color: #bbf7d0; font-size: 0.9rem; display: block; margin-top: 4px; font-weight: 600;">$343,000/month</span>
+                                <span class="result-value result-value-white" id="estimated-savings" style="color: #22c55e; font-weight: bold; font-size: 2rem;">$4,116,000.00</span>
+                                <span class="result-monthly" id="monthly-savings" style="color: #4ade80; font-size: 0.9rem; display: block; margin-top: 4px; font-weight: 600;">$343,000/month</span>
                             </div>
 
                             <div class="savings-breakdown">
-                                <h4 style="margin-bottom: 0.75rem; color: #f8fafc; letter-spacing: 0.02em;">Where the savings come from</h4>
-                                <ul style="list-style: none; padding: 0; margin: 0 0 1rem 0; color: #e2e8f0; display: grid; gap: 0.35rem;">
+                                <h4 style="margin-bottom: 0.75rem; color: #1a1a1a; letter-spacing: 0.02em;">Where the savings come from</h4>
+                                <ul style="list-style: none; padding: 0; margin: 0 0 1rem 0; color: #4b5563; display: grid; gap: 0.35rem;">
                                     <li style="display: flex; justify-content: space-between;"><span>Papers, print & postage</span><span id="paper-savings" class="blurred-value">$0</span></li>
                                     <li style="display: flex; justify-content: space-between;"><span>Notices & reminder letters</span><span id="letters-savings" class="blurred-value">$0</span></li>
                                     <li style="display: flex; justify-content: space-between;"><span>CSR assisted payments</span><span id="csr-savings" class="blurred-value">$0</span></li>
@@ -1393,13 +1401,13 @@
                                     <li style="display: flex; justify-content: space-between;"><span>Processing efficiency</span><span id="processing-savings" class="blurred-value">$0</span></li>
                                     <li style="display: flex; justify-content: space-between;"><span>Bad debt & DSO</span><span id="risk-savings" class="blurred-value">$0</span></li>
                                 </ul>
-                                <p style="font-size: 0.75rem; color: #cbd5f5; opacity: 0.85;">
+                                <p style="font-size: 0.75rem; color: #6b7280; opacity: 0.85;">
                                     Benchmarks reference the <em>Edison Electric Institute Financial Review 2024</em>, the <em>NAIC Insurance Department Resources Report 2023</em>, and the <em>FCC Communications Marketplace Report 2023</em>, layered with anonymized tilli portfolio performance. Adjust any lever above to mirror your operating reality.
                                 </p>
                             </div>
-                            <div id="behavior-insights-container" style="margin-top: 1.25rem; padding: 1rem 1.25rem; background: rgba(15, 23, 42, 0.35); border-radius: 12px; border: 1px solid rgba(148, 163, 184, 0.2);">
-                                <h4 style="margin: 0 0 0.75rem 0; color: #e0f2fe; letter-spacing: 0.02em;">Behavior shifts shaping ROI</h4>
-                                <ul id="behavior-insights-list" style="list-style: none; padding: 0; margin: 0; color: #cbd5f5; display: grid; gap: 0.5rem; font-size: 0.9rem;">
+                            <div id="behavior-insights-container" style="margin-top: 1.25rem; padding: 1rem 1.25rem; background: rgba(50, 94, 246, 0.08); border-radius: 12px; border: 1px solid rgba(50, 94, 246, 0.15);">
+                                <h4 style="margin: 0 0 0.75rem 0; color: #1a1a1a; letter-spacing: 0.02em;">Behavior shifts shaping ROI</h4>
+                                <ul id="behavior-insights-list" style="list-style: none; padding: 0; margin: 0; color: #4b5563; display: grid; gap: 0.5rem; font-size: 0.9rem;">
                                     <li>Adjust Step 3 to see how ACH adoption and payment plans influence savings, cash flow, and collections assurance.</li>
                                 </ul>
                             </div>
