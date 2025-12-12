@@ -1,3 +1,9 @@
+/* Global Sora font weight - always regular */
+[style*="Sora"],
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400 !important;
+}
+
 /* Blog page scoped styles */
 .blog-page{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#0d0d12;background:#fff}
 .blog-page .container{max-width:1140px;margin:0 auto;padding:0 20px}
