@@ -2177,6 +2177,46 @@
                 });
             }
 
+            // Smooth counting animation for numbers
+            const animationState = {};
+
+            function animateValue(element, newValue) {
+                if (!element) return;
+
+                const elementId = element.id;
+                const previousValue = animationState[elementId] || 0;
+
+                // Cancel any existing animation
+                if (animationState[elementId + '_frame']) {
+                    cancelAnimationFrame(animationState[elementId + '_frame']);
+                }
+
+                // Store new target
+                animationState[elementId] = newValue;
+
+                const duration = 500;
+                const startTime = performance.now();
+                const startValue = previousValue;
+                const endValue = newValue;
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+                    // Ease out cubic for smooth deceleration
+                    const eased = 1 - Math.pow(1 - progress, 3);
+
+                    const current = Math.round(startValue + (endValue - startValue) * eased);
+                    element.textContent = '$' + current.toLocaleString('en-US');
+
+                    if (progress < 1) {
+                        animationState[elementId + '_frame'] = requestAnimationFrame(update);
+                    }
+                }
+
+                requestAnimationFrame(update);
+            }
+
             function clamp(value, min, max) {
                 return Math.min(Math.max(value, min), max);
             }
@@ -2353,11 +2393,11 @@
                 const monthlyNew = newCost / 12;
 
                 const savingsEl = document.getElementById('estimated-savings');
-                if (savingsEl) savingsEl.textContent = formatCompactCurrency(annualSavings);
+                animateValue(savingsEl, Math.round(annualSavings));
                 const currentCostEl = document.getElementById('current-cost');
-                if (currentCostEl) currentCostEl.textContent = formatCompactCurrency(baselineCost);
+                animateValue(currentCostEl, Math.round(baselineCost));
                 const newCostEl = document.getElementById('new-cost');
-                if (newCostEl) newCostEl.textContent = formatCompactCurrency(newCost);
+                animateValue(newCostEl, Math.round(newCost));
 
                 const monthlySavingsEl = document.getElementById('monthly-savings');
                 if (monthlySavingsEl) monthlySavingsEl.textContent = formatCompactCurrency(monthlySavings) + '/month';
