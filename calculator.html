@@ -2177,58 +2177,6 @@
                 });
             }
 
-            // Odometer animation function
-            const previousValues = {};
-
-            function animateValue(element, newValue, prefix = '$') {
-                if (!element) return;
-
-                const formattedValue = Number(newValue || 0).toLocaleString('en-US', {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0
-                });
-
-                const fullText = prefix + formattedValue;
-                const elementId = element.id || 'unknown';
-                const previousValue = previousValues[elementId];
-
-                // Store current value
-                previousValues[elementId] = newValue;
-
-                // If same value, just set text directly
-                if (previousValue === newValue) {
-                    if (element.textContent !== fullText) {
-                        element.textContent = fullText;
-                    }
-                    return;
-                }
-
-                // Animate from previous to new value
-                const startValue = previousValue || 0;
-                const endValue = newValue || 0;
-                const duration = 600;
-                const startTime = performance.now();
-
-                function updateValue(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-
-                    // Ease out cubic
-                    const easeProgress = 1 - Math.pow(1 - progress, 3);
-
-                    const currentValue = startValue + (endValue - startValue) * easeProgress;
-                    const displayValue = prefix + Math.round(currentValue).toLocaleString('en-US');
-
-                    element.textContent = displayValue;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateValue);
-                    }
-                }
-
-                requestAnimationFrame(updateValue);
-            }
-
             function clamp(value, min, max) {
                 return Math.min(Math.max(value, min), max);
             }
@@ -2405,11 +2353,11 @@
                 const monthlyNew = newCost / 12;
 
                 const savingsEl = document.getElementById('estimated-savings');
-                animateValue(savingsEl, annualSavings);
+                if (savingsEl) savingsEl.textContent = formatCompactCurrency(annualSavings);
                 const currentCostEl = document.getElementById('current-cost');
-                animateValue(currentCostEl, baselineCost);
+                if (currentCostEl) currentCostEl.textContent = formatCompactCurrency(baselineCost);
                 const newCostEl = document.getElementById('new-cost');
-                animateValue(newCostEl, newCost);
+                if (newCostEl) newCostEl.textContent = formatCompactCurrency(newCost);
 
                 const monthlySavingsEl = document.getElementById('monthly-savings');
                 if (monthlySavingsEl) monthlySavingsEl.textContent = formatCompactCurrency(monthlySavings) + '/month';
