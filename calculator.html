@@ -721,44 +721,6 @@
             background-clip: text;
         }
 
-        /* Odometer-style number animation */
-        .odometer-value {
-            display: inline-flex;
-            overflow: hidden;
-        }
-
-        .odometer-digit {
-            display: inline-block;
-            position: relative;
-            height: 1.2em;
-            line-height: 1.2em;
-            overflow: hidden;
-        }
-
-        .odometer-digit-inner {
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .odometer-digit span {
-            height: 1.2em;
-            line-height: 1.2em;
-        }
-
-        .odometer-static {
-            display: inline-block;
-        }
-
-        /* Gradient text for animated values */
-        .result-value-white.odometer-value,
-        .result-value-white.odometer-value .odometer-digit-inner,
-        .result-value-white.odometer-value .odometer-static {
-            background: linear-gradient(90deg, #325ef6 0%, #60a5fa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
 
         .results-actions {
             margin-top: 2rem;
@@ -2216,6 +2178,8 @@
             }
 
             // Odometer animation function
+            const previousValues = {};
+
             function animateValue(element, newValue, prefix = '$') {
                 if (!element) return;
 
@@ -2225,49 +2189,44 @@
                 });
 
                 const fullText = prefix + formattedValue;
-                const currentText = element.textContent || '$0';
+                const elementId = element.id || 'unknown';
+                const previousValue = previousValues[elementId];
 
-                // If same value, don't animate
-                if (currentText === fullText) return;
+                // Store current value
+                previousValues[elementId] = newValue;
 
-                // Clear and build odometer structure
-                element.innerHTML = '';
-                element.classList.add('odometer-value');
+                // If same value, just set text directly
+                if (previousValue === newValue) {
+                    if (element.textContent !== fullText) {
+                        element.textContent = fullText;
+                    }
+                    return;
+                }
 
-                for (let i = 0; i < fullText.length; i++) {
-                    const char = fullText[i];
+                // Animate from previous to new value
+                const startValue = previousValue || 0;
+                const endValue = newValue || 0;
+                const duration = 600;
+                const startTime = performance.now();
 
-                    if (/[0-9]/.test(char)) {
-                        // Create animated digit
-                        const digitWrapper = document.createElement('span');
-                        digitWrapper.className = 'odometer-digit';
+                function updateValue(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
 
-                        const digitInner = document.createElement('span');
-                        digitInner.className = 'odometer-digit-inner';
+                    // Ease out cubic
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
 
-                        // Add all digits 0-9 for rolling effect
-                        for (let d = 0; d <= 9; d++) {
-                            const digitSpan = document.createElement('span');
-                            digitSpan.textContent = d;
-                            digitInner.appendChild(digitSpan);
-                        }
+                    const currentValue = startValue + (endValue - startValue) * easeProgress;
+                    const displayValue = prefix + Math.round(currentValue).toLocaleString('en-US');
 
-                        digitWrapper.appendChild(digitInner);
-                        element.appendChild(digitWrapper);
+                    element.textContent = displayValue;
 
-                        // Animate to target digit with slight delay for cascade effect
-                        const targetDigit = parseInt(char);
-                        setTimeout(() => {
-                            digitInner.style.transform = `translateY(-${targetDigit * 1.2}em)`;
-                        }, i * 30);
-                    } else {
-                        // Static character ($, comma, etc)
-                        const staticChar = document.createElement('span');
-                        staticChar.className = 'odometer-static';
-                        staticChar.textContent = char;
-                        element.appendChild(staticChar);
+                    if (progress < 1) {
+                        requestAnimationFrame(updateValue);
                     }
                 }
+
+                requestAnimationFrame(updateValue);
             }
 
             function clamp(value, min, max) {
