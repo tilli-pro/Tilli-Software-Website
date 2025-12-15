@@ -721,6 +721,43 @@
             background-clip: text;
         }
 
+        /* Digital clock style rolling digits */
+        .digit-roller {
+            display: inline-flex;
+            align-items: baseline;
+        }
+
+        .digit-slot {
+            display: inline-block;
+            height: 1em;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .digit-slot-inner {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .digit-slot-inner span {
+            height: 1em;
+            line-height: 1em;
+            display: block;
+        }
+
+        .digit-static {
+            display: inline;
+        }
+
+        /* Preserve gradient for savings value */
+        .result-value-white .digit-slot-inner span,
+        .result-value-white .digit-static {
+            background: linear-gradient(90deg, #325ef6 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
         .results-actions {
             margin-top: 2rem;
@@ -2177,44 +2214,65 @@
                 });
             }
 
-            // Smooth counting animation for numbers
-            const animationState = {};
+            // Digital clock style rolling digits animation
+            const digitState = {};
 
             function animateValue(element, newValue) {
                 if (!element) return;
 
+                const formatted = '$' + Math.round(newValue).toLocaleString('en-US');
                 const elementId = element.id;
-                const previousValue = animationState[elementId] || 0;
+                const prevFormatted = digitState[elementId] || '$0';
 
-                // Cancel any existing animation
-                if (animationState[elementId + '_frame']) {
-                    cancelAnimationFrame(animationState[elementId + '_frame']);
-                }
+                // Store for next comparison
+                digitState[elementId] = formatted;
 
-                // Store new target
-                animationState[elementId] = newValue;
+                // Build the roller structure
+                element.innerHTML = '';
+                element.classList.add('digit-roller');
 
-                const duration = 500;
-                const startTime = performance.now();
-                const startValue = previousValue;
-                const endValue = newValue;
+                for (let i = 0; i < formatted.length; i++) {
+                    const char = formatted[i];
+                    const prevChar = prevFormatted[i] || '0';
 
-                function update(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
+                    if (/[0-9]/.test(char)) {
+                        const slot = document.createElement('span');
+                        slot.className = 'digit-slot';
 
-                    // Ease out cubic for smooth deceleration
-                    const eased = 1 - Math.pow(1 - progress, 3);
+                        const inner = document.createElement('span');
+                        inner.className = 'digit-slot-inner';
 
-                    const current = Math.round(startValue + (endValue - startValue) * eased);
-                    element.textContent = '$' + current.toLocaleString('en-US');
+                        // Create digits 0-9
+                        for (let d = 0; d <= 9; d++) {
+                            const digitSpan = document.createElement('span');
+                            digitSpan.textContent = d;
+                            inner.appendChild(digitSpan);
+                        }
 
-                    if (progress < 1) {
-                        animationState[elementId + '_frame'] = requestAnimationFrame(update);
+                        slot.appendChild(inner);
+                        element.appendChild(slot);
+
+                        // Start from previous digit position, animate to new
+                        const startDigit = /[0-9]/.test(prevChar) ? parseInt(prevChar) : 0;
+                        const endDigit = parseInt(char);
+
+                        // Set initial position
+                        inner.style.transition = 'none';
+                        inner.style.transform = `translateY(-${startDigit}em)`;
+
+                        // Animate to target with staggered delay
+                        setTimeout(() => {
+                            inner.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                            inner.style.transform = `translateY(-${endDigit}em)`;
+                        }, i * 20);
+                    } else {
+                        // Static character ($, comma)
+                        const staticSpan = document.createElement('span');
+                        staticSpan.className = 'digit-static';
+                        staticSpan.textContent = char;
+                        element.appendChild(staticSpan);
                     }
                 }
-
-                requestAnimationFrame(update);
             }
 
             function clamp(value, min, max) {
