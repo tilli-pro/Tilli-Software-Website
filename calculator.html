@@ -631,6 +631,31 @@
             transform: translateX(3px);
         }
 
+        .info-link {
+            display: inline-flex;
+            align-items: center;
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-top: 1.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .info-link:hover {
+            color: #325ef6;
+        }
+
+        .info-link i {
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+
+        .info-link:hover i {
+            transform: translateX(3px);
+        }
+
         #download-savings-spreadsheet {
             font-size: 0.85rem;
             padding: 0.75rem 1.25rem;
@@ -1481,10 +1506,9 @@
                             <span class="section-badge">SAVE WITH tilli</span>
                             <h2>How we calculate your savings</h2>
                             <p>Our estimates are based on real customer data, platform usage, and industry research. We compare your current operations with benchmarks from successful tilli adopters who've saved costs—in both cash and time. This insight lets you understand and forecast to guide smarter decisions.</p>
-                            <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.5rem;">
+                            <p style="font-size: 0.95rem; color: #475569;">
                                 Data references include the <a href="https://www.eei.org/issues-and-policy/finance-and-tax/perspectives" target="_blank" rel="noopener noreferrer">Edison Electric Institute Financial Review 2024</a>, the <a href="https://content.naic.org/research" target="_blank" rel="noopener noreferrer">NAIC Insurance Department Resources Report 2023</a>, and the <a href="https://www.fcc.gov/reports-research/reports" target="_blank" rel="noopener noreferrer">FCC Communications Marketplace Report 2023</a>, combined with anonymized tilli deployment metrics.
                             </p>
-                            <a href="index.html#products" class="btn-secondary">Our Products <i class="fas fa-arrow-right"></i></a>
                         </div>
                         <div class="info-visual">
                             <div class="calculation-visual">
@@ -1522,7 +1546,6 @@
                                 <li>Improved collection rates (due to digital-first workflows).</li>
                                 <li>Reduced support overhead (fewer CSR-assisted payments).</li>
                             </ul>
-                            <a href="index.html#products" class="btn-secondary">Our Products <i class="fas fa-arrow-right"></i></a>
                         </div>
                         <div class="info-visual">
                             <div class="savings-visual">
@@ -1551,7 +1574,7 @@
                                 <li>Customer and Support: Fewer tickets with digital-first workflows.</li>
                                 <li>Admin & IT: Fewer tools by consolidating operations into tilli dashboards.</li>
                             </ul>
-                            <a href="index.html#products" class="btn-secondary">Our Products <i class="fas fa-arrow-right"></i></a>
+                            <a href="index.html#products" class="info-link">Explore Our Products <i class="fas fa-arrow-right"></i></a>
                         </div>
                         <div class="info-visual">
                             <div class="calculation-visual">
