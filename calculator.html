@@ -721,6 +721,45 @@
             background-clip: text;
         }
 
+        /* Odometer-style number animation */
+        .odometer-value {
+            display: inline-flex;
+            overflow: hidden;
+        }
+
+        .odometer-digit {
+            display: inline-block;
+            position: relative;
+            height: 1.2em;
+            line-height: 1.2em;
+            overflow: hidden;
+        }
+
+        .odometer-digit-inner {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .odometer-digit span {
+            height: 1.2em;
+            line-height: 1.2em;
+        }
+
+        .odometer-static {
+            display: inline-block;
+        }
+
+        /* Gradient text for animated values */
+        .result-value-white.odometer-value,
+        .result-value-white.odometer-value .odometer-digit-inner,
+        .result-value-white.odometer-value .odometer-static {
+            background: linear-gradient(90deg, #325ef6 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .results-actions {
             margin-top: 2rem;
         }
@@ -2176,6 +2215,61 @@
                 });
             }
 
+            // Odometer animation function
+            function animateValue(element, newValue, prefix = '$') {
+                if (!element) return;
+
+                const formattedValue = Number(newValue || 0).toLocaleString('en-US', {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                });
+
+                const fullText = prefix + formattedValue;
+                const currentText = element.textContent || '$0';
+
+                // If same value, don't animate
+                if (currentText === fullText) return;
+
+                // Clear and build odometer structure
+                element.innerHTML = '';
+                element.classList.add('odometer-value');
+
+                for (let i = 0; i < fullText.length; i++) {
+                    const char = fullText[i];
+
+                    if (/[0-9]/.test(char)) {
+                        // Create animated digit
+                        const digitWrapper = document.createElement('span');
+                        digitWrapper.className = 'odometer-digit';
+
+                        const digitInner = document.createElement('span');
+                        digitInner.className = 'odometer-digit-inner';
+
+                        // Add all digits 0-9 for rolling effect
+                        for (let d = 0; d <= 9; d++) {
+                            const digitSpan = document.createElement('span');
+                            digitSpan.textContent = d;
+                            digitInner.appendChild(digitSpan);
+                        }
+
+                        digitWrapper.appendChild(digitInner);
+                        element.appendChild(digitWrapper);
+
+                        // Animate to target digit with slight delay for cascade effect
+                        const targetDigit = parseInt(char);
+                        setTimeout(() => {
+                            digitInner.style.transform = `translateY(-${targetDigit * 1.2}em)`;
+                        }, i * 30);
+                    } else {
+                        // Static character ($, comma, etc)
+                        const staticChar = document.createElement('span');
+                        staticChar.className = 'odometer-static';
+                        staticChar.textContent = char;
+                        element.appendChild(staticChar);
+                    }
+                }
+            }
+
             function clamp(value, min, max) {
                 return Math.min(Math.max(value, min), max);
             }
@@ -2352,11 +2446,11 @@
                 const monthlyNew = newCost / 12;
 
                 const savingsEl = document.getElementById('estimated-savings');
-                if (savingsEl) savingsEl.textContent = formatCompactCurrency(annualSavings);
+                animateValue(savingsEl, annualSavings);
                 const currentCostEl = document.getElementById('current-cost');
-                if (currentCostEl) currentCostEl.textContent = formatCompactCurrency(baselineCost);
+                animateValue(currentCostEl, baselineCost);
                 const newCostEl = document.getElementById('new-cost');
-                if (newCostEl) newCostEl.textContent = formatCompactCurrency(newCost);
+                animateValue(newCostEl, newCost);
 
                 const monthlySavingsEl = document.getElementById('monthly-savings');
                 if (monthlySavingsEl) monthlySavingsEl.textContent = formatCompactCurrency(monthlySavings) + '/month';
