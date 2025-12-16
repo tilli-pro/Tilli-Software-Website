@@ -735,7 +735,7 @@ main {
 
 .content-text h2 {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 1.5rem;
     color: var(--dark-gray);
 }
@@ -1110,7 +1110,7 @@ main {
 
 .solutions-header h2 {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--dark-gray);
 }
 
@@ -1247,7 +1247,7 @@ main {
 
 .why-tilli h2 {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 400;
     text-align: center;
     margin-bottom: 1.5rem;
     color: #1a1a2e;
@@ -1446,7 +1446,7 @@ main {
 
 .fraud-protection h2 {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 400;
     text-align: center;
     margin-bottom: 1.5rem;
     color: var(--dark-gray);
@@ -1538,7 +1538,7 @@ main {
 
 .impact-metrics h2 {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 400;
     text-align: center;
     margin-bottom: 1.5rem;
 }
@@ -1620,7 +1620,7 @@ main {
 
 .lead-text h2 {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 1.5rem;
     color: var(--dark-gray);
 }
