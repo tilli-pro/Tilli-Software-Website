@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5, h6 {
 .featured-actions{display:flex;gap:16px;align-items:center}
 .featured-actions .meta{color:#64748b;font-size:14px}
 
-.section-title{font-size:28px;margin:28px 0 14px}
+.section-title{font-size:28px;margin:28px 0 14px;font-weight:400 !important}
 .articles .filters{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
 .tag-list{display:flex;flex-wrap:wrap;gap:10px}
 .tag{border:1px solid #e5e7eb;background:#fff;color:#111827;border-radius:999px;padding:8px 12px;font-weight:600;cursor:pointer}
@@ -4536,7 +4536,7 @@ a:focus {
 .story-content p { margin-bottom: 1rem; }
 
 .about-leadership { padding: 6rem 0; background: #FFFFFF; }
-.section-title { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
+.section-title { text-align: center; font-size: 2rem; margin-bottom: 2rem; font-weight: 400 !important; font-family: 'Sora', sans-serif !important; }
 .leaders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
 .leader-card { background: var(--white); border-radius: var(--border-radius-lg); padding: 1.5rem; text-align: center; box-shadow: var(--shadow-sm); }
 .leader-card .avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--primary-blue); margin: 0 auto 1rem; }
