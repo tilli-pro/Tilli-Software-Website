@@ -2,38 +2,34 @@
 (function() {
     'use strict';
 
-    // Cookie management functions
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-        return null;
-    }
-
-    function setCookie(name, value, days) {
-        const expires = new Date(Date.now() + days * 864e5).toUTCString();
-        document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
-    }
-
+    // Storage management functions (using localStorage for reliability)
     function hasConsent() {
-        return getCookie('tilli_cookie_consent') !== null;
+        try {
+            return localStorage.getItem('tilli_cookie_consent') !== null;
+        } catch (e) {
+            return false;
+        }
     }
 
     function getPreferences() {
-        const prefs = getCookie('tilli_cookie_preferences');
-        if (prefs) {
-            try {
-                return JSON.parse(decodeURIComponent(prefs));
-            } catch (e) {
-                return { strictly_necessary: true, performance: true, marketing: true };
+        try {
+            const prefs = localStorage.getItem('tilli_cookie_preferences');
+            if (prefs) {
+                return JSON.parse(prefs);
             }
+        } catch (e) {
+            // Fall through to default
         }
         return { strictly_necessary: true, performance: true, marketing: true };
     }
 
     function savePreferences(preferences) {
-        setCookie('tilli_cookie_preferences', encodeURIComponent(JSON.stringify(preferences)), 365);
-        setCookie('tilli_cookie_consent', 'custom', 365);
+        try {
+            localStorage.setItem('tilli_cookie_preferences', JSON.stringify(preferences));
+            localStorage.setItem('tilli_cookie_consent', 'given');
+        } catch (e) {
+            console.warn('Could not save cookie preferences to localStorage');
+        }
         enableCookies(preferences);
     }
 
