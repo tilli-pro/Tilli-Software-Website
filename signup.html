@@ -50,26 +50,37 @@
             overflow: hidden;
         }
 
-        /* Left Column Styles */
-        .signup-left .signup-header {
-            text-align: left;
-            margin-bottom: 1.5rem;
+        /* Page Header - Centered above columns */
+        .signup-page-header {
+            text-align: center;
+            margin-bottom: 2rem;
         }
 
-        .signup-left .signup-header h1 {
-            font-size: 1.75rem;
+        .signup-page-header h1 {
+            font-family: 'Sora', sans-serif;
+            color: #1a1a1a;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .signup-page-header p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            font-weight: 400;
         }
 
         /* Breadcrumb Navigation */
         .breadcrumb {
-            margin-bottom: 1.5rem;
-            padding: 0 0 1.5rem 0;
-            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 2rem;
+            padding: 0;
+            border-bottom: none;
         }
 
         .steps {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             gap: 0;
             flex-wrap: wrap;
@@ -121,10 +132,10 @@
         }
 
         .step-connector {
-            width: 30px;
+            width: 60px;
             height: 1px;
             background: #e5e7eb;
-            margin: 0 0.5rem;
+            margin: 0 1rem;
         }
 
         .step.completed .step-connector {
@@ -534,7 +545,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .signup-left .signup-header h1 {
+            .signup-page-header h1 {
                 font-size: 1.5rem;
             }
         }
@@ -564,35 +575,36 @@
     </header>
 
     <div class="signup-container">
+        <!-- Centered Header Section -->
+        <div class="breadcrumb">
+            <div class="steps">
+                <div class="step completed">
+                    <div class="step-number">✓</div>
+                    <div class="step-label">Configure</div>
+                    <div class="step-connector"></div>
+                </div>
+                <div class="step completed">
+                    <div class="step-number">✓</div>
+                    <div class="step-label">Review Plan</div>
+                    <div class="step-connector"></div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Sign Up</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="signup-page-header">
+            <h1>Start Your Free Trial</h1>
+            <p>Sign up for Tilli products and transform your billing and payment operations</p>
+        </div>
+
+        <!-- Two Column Layout -->
         <div class="signup-layout">
             <!-- Left Column - Plan Summary -->
             <div class="signup-left">
                 <div class="signup-card">
-                    <!-- Breadcrumb Navigation -->
-                    <div class="breadcrumb">
-                        <div class="steps">
-                            <div class="step completed">
-                                <div class="step-number">✓</div>
-                                <div class="step-label">Configure</div>
-                                <div class="step-connector"></div>
-                            </div>
-                            <div class="step completed">
-                                <div class="step-number">✓</div>
-                                <div class="step-label">Review Plan</div>
-                                <div class="step-connector"></div>
-                            </div>
-                            <div class="step active">
-                                <div class="step-number">3</div>
-                                <div class="step-label">Sign Up</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="signup-header">
-                        <h1>Start Your Free Trial</h1>
-                        <p>Sign up for Tilli products and transform your billing and payment operations</p>
-                    </div>
-
                     <!-- Plan Summary Card (from wizard) -->
                     <div id="plan-summary-container"></div>
                 </div>
