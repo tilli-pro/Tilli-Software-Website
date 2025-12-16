@@ -4527,8 +4527,9 @@ a:focus {
 .about-mission { padding: 4rem 0; background: var(--white); }
 .about-mission .narrow { max-width: 900px; margin: 0 auto; text-align: center; }
 
-.about-quote { padding: 4rem 0; background: var(--primary-blue); color: var(--white); text-align: center; }
-.about-quote blockquote { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+.about-quote { padding: 4rem 0; background: #FFFFFF; text-align: center; }
+.about-quote blockquote { font-size: 2rem; font-weight: 400; font-style: italic; color: #60a5fa; margin-bottom: 1rem; }
+.about-quote p { color: #4b5563; font-size: 1rem; font-weight: 400; }
 
 .about-story { padding: 6rem 0; background: var(--white); }
 .story-header h2 { font-size: 2rem; margin-bottom: 1rem; }
