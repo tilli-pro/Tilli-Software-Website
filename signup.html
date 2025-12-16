@@ -17,34 +17,62 @@
         }
 
         .signup-container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 100px auto 40px;
             padding: 2rem;
             position: relative;
             z-index: 1;
         }
 
+        .signup-layout {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .signup-left {
+            flex: 0 0 380px;
+            position: sticky;
+            top: 120px;
+        }
+
+        .signup-right {
+            flex: 1;
+            min-width: 0;
+        }
+
         .signup-card {
             background: #FFFFFF;
             border-radius: 16px;
             border: 1px solid #e5e7eb;
-            padding: 3rem;
+            padding: 2rem;
             position: relative;
             overflow: hidden;
         }
 
+        /* Left Column Styles */
+        .signup-left .signup-header {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .signup-left .signup-header h1 {
+            font-size: 1.75rem;
+        }
+
         /* Breadcrumb Navigation */
         .breadcrumb {
-            margin-bottom: 2rem;
-            padding: 0 0 2rem 0;
+            margin-bottom: 1.5rem;
+            padding: 0 0 1.5rem 0;
             border-bottom: 1px solid #e5e7eb;
         }
 
         .steps {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             gap: 0;
+            flex-wrap: wrap;
         }
 
         .step {
@@ -93,10 +121,10 @@
         }
 
         .step-connector {
-            width: 60px;
+            width: 30px;
             height: 1px;
             background: #e5e7eb;
-            margin: 0 1rem;
+            margin: 0 0.5rem;
         }
 
         .step.completed .step-connector {
@@ -112,8 +140,8 @@
             background: #f9fafb;
             border: 1px solid #e5e7eb;
             border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
+            padding: 1.25rem;
+            margin-bottom: 0;
         }
 
         .plan-summary-header {
@@ -480,13 +508,34 @@
             align-items: center;
         }
 
+        @media (max-width: 1024px) {
+            .signup-layout {
+                flex-direction: column;
+            }
+
+            .signup-left {
+                flex: none;
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
+
+            .signup-right {
+                width: 100%;
+            }
+        }
+
         @media (max-width: 768px) {
             .signup-card {
-                padding: 2rem 1.5rem;
+                padding: 1.5rem;
             }
 
             .product-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .signup-left .signup-header h1 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -515,38 +564,46 @@
     </header>
 
     <div class="signup-container">
-        <div class="signup-card">
-            <!-- Breadcrumb Navigation -->
-            <div class="breadcrumb">
-                <div class="steps">
-                    <div class="step completed">
-                        <div class="step-number">✓</div>
-                        <div class="step-label">Configure</div>
-                        <div class="step-connector"></div>
+        <div class="signup-layout">
+            <!-- Left Column - Plan Summary -->
+            <div class="signup-left">
+                <div class="signup-card">
+                    <!-- Breadcrumb Navigation -->
+                    <div class="breadcrumb">
+                        <div class="steps">
+                            <div class="step completed">
+                                <div class="step-number">✓</div>
+                                <div class="step-label">Configure</div>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step completed">
+                                <div class="step-number">✓</div>
+                                <div class="step-label">Review Plan</div>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step active">
+                                <div class="step-number">3</div>
+                                <div class="step-label">Sign Up</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="step completed">
-                        <div class="step-number">✓</div>
-                        <div class="step-label">Review Plan</div>
-                        <div class="step-connector"></div>
+
+                    <div class="signup-header">
+                        <h1>Start Your Free Trial</h1>
+                        <p>Sign up for Tilli products and transform your billing and payment operations</p>
                     </div>
-                    <div class="step active">
-                        <div class="step-number">3</div>
-                        <div class="step-label">Sign Up</div>
-                    </div>
+
+                    <!-- Plan Summary Card (from wizard) -->
+                    <div id="plan-summary-container"></div>
                 </div>
             </div>
 
-            <div class="signup-header">
-                <h1>Start Your Free Trial</h1>
-                <p>Sign up for Tilli products and transform your billing and payment operations</p>
-            </div>
+            <!-- Right Column - Form -->
+            <div class="signup-right">
+                <div class="signup-card">
+                    <div id="alert-container"></div>
 
-            <!-- Plan Summary Card (from wizard) -->
-            <div id="plan-summary-container"></div>
-
-            <div id="alert-container"></div>
-
-            <form id="signup-form">
+                    <form id="signup-form">
                 <!-- Personal Information -->
                 <div class="form-section">
                     <h3><i class="fas fa-user"></i> Your Information</h3>
@@ -874,11 +931,13 @@
                     </div>
                 </div>
 
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-rocket" style="margin-right: 0.5rem;"></i>
-                    Start Free Trial
-                </button>
-            </form>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-rocket" style="margin-right: 0.5rem;"></i>
+                            Start Free Trial
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
