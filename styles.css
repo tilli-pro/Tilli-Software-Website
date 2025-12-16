@@ -4545,7 +4545,7 @@ a:focus {
 
 .about-careers { padding: 4rem 0; background: #FFFFFF; }
 .about-careers h2 { text-align: left; margin-bottom: 0; color: #000000 !important; font-size: 2.5rem !important; line-height: 1.2 !important; max-width: 500px; }
-.careers-cta-row { display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+.careers-cta-row { display: flex; justify-content: flex-start; align-items: center; gap: 4rem; }
 .careers-cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #FFFFFF; color: #1f2937; border: 1px solid #60a5fa; border-radius: 50px; font-size: 0.9rem; font-weight: 400; text-decoration: none; transition: all 0.2s ease; white-space: nowrap; }
 .careers-cta-btn:hover { border-color: #3b82f6; }
 .careers-cta-btn svg { flex-shrink: 0; }
