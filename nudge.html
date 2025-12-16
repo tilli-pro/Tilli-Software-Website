@@ -152,65 +152,69 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero nudge-hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Smarter customer communication, powered by automation</h1>
-                <p class="hero-subtitle">Nudge gives your business a powerful, automated communication platform to deliver personalized, timely, and effective messages across multiple channels.</p>
-                <div class="hero-buttons">
-                    <button class="btn-primary" onclick="window.openBookingModal()">Book a Demo</button>
-                    <button class="btn-secondary" onclick="window.location.href='https://app.nudge.net/smart/sign-up'">Get Started Free</button>
+    <section style="background: linear-gradient(180deg, #f0f5ff 0%, #e8f0fe 50%, #f5f7fa 100%); padding: 80px 0 60px; position: relative; overflow: hidden;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+            <!-- Left Content -->
+            <div>
+                <h1 style="font-family: 'Sora', sans-serif; font-size: 52px; font-weight: 400; line-height: 1.15; color: #000000; margin-bottom: 24px;">Smarter customer communication, powered by automation</h1>
+
+                <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+                    <a href="index.html#products" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(90deg, #60a5fa, #3b82f6); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-size: 14px; font-weight: 500;">View our Products</a>
+                    <a href="#" onclick="window.openBookingModal(); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: white; color: #000; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-size: 14px; font-weight: 500; border: 1px solid #e5e7eb;">Book a Demo <span style="font-size: 16px;">›</span></a>
+                </div>
+
+                <p style="font-family: 'Lato', sans-serif; font-size: 16px; color: #374151; line-height: 1.6; max-width: 480px;">Nudge helps you deliver personalized reminders, alerts, and updates across SMS, email, and WhatsApp—so customers never miss what matters.</p>
+
+                <!-- Comment UI Preview -->
+                <div style="margin-top: 40px; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 16px; max-width: 460px;">
+                    <div style="display: flex; align-items: center; gap: 8px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0;">
+                        <input type="text" placeholder="Add comment..." style="flex: 1; border: none; font-size: 14px; color: #9ca3af; outline: none;">
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 12px;">
+                        <div style="display: flex; gap: 12px; color: #9ca3af;">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                            <span style="font-weight: 600;">B</span>
+                            <span style="font-style: italic;">I</span>
+                        </div>
+                        <button style="background: #3b82f6; color: white; border: none; padding: 6px 16px; border-radius: 6px; font-size: 13px; cursor: pointer;">Submit</button>
+                    </div>
+                    <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid #f0f0f0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <span style="font-size: 13px; color: #6b7280;">Comments <span style="background: #f3f4f6; padding: 2px 8px; border-radius: 10px; font-size: 12px;">3</span></span>
+                            <span style="font-size: 12px; color: #9ca3af;">↑ Most Recent</span>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <div style="width: 32px; height: 32px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: 600;">RN</div>
+                            <div>
+                                <div style="font-size: 13px; font-weight: 600; color: #111827;">Raldon Noran <span style="font-weight: 400; color: #9ca3af; font-size: 12px;">Yesterday at 3:04pm</span></div>
+                                <p style="font-size: 13px; color: #4b5563; margin-top: 4px; line-height: 1.5;">Need an update on the status of the booth setup. Procurement handoff was slated for next Tuesday, we are running out of time and need to make sure everything is ready for the event.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="nudge-hero-visual">
-                    <div class="communication-channels">
-                        <div class="channel-item">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>WhatsApp</span>
-                        </div>
-                        <div class="channel-item">
-                            <i class="fas fa-sms"></i>
-                            <span>SMS</span>
-                        </div>
-                        <div class="channel-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>Email</span>
-                        </div>
-                        <div class="channel-item">
-                            <i class="fas fa-phone"></i>
-                            <span>IVR</span>
-                        </div>
-                    </div>
-                    <div class="nudge-dashboard-preview">
-                        <div class="dashboard-header">
-                            <h3>Nudge Dashboard</h3>
-                            <div class="status-indicator">
-                                <span class="status-dot active"></span>
-                                <span>Active Campaigns</span>
-                            </div>
-                        </div>
-                        <div class="campaign-list">
-                            <div class="campaign-item">
-                                <div class="campaign-info">
-                                    <h4>Payment Reminder</h4>
-                                    <p>2,450 messages sent</p>
-                                </div>
-                                <div class="campaign-stats">
-                                    <span class="success-rate">94%</span>
-                                </div>
-                            </div>
-                            <div class="campaign-item">
-                                <div class="campaign-info">
-                                    <h4>Appointment Confirmation</h4>
-                                    <p>1,200 messages sent</p>
-                                </div>
-                                <div class="campaign-stats">
-                                    <span class="success-rate">98%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+            <!-- Right Visual - People with dotted connections -->
+            <div style="position: relative; height: 500px;">
+                <!-- Dotted circle path -->
+                <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;" viewBox="0 0 400 500">
+                    <ellipse cx="250" cy="250" rx="180" ry="220" fill="none" stroke="#60a5fa" stroke-width="2" stroke-dasharray="8 8" opacity="0.5"/>
+                </svg>
+
+                <!-- Person 1 - Top right -->
+                <div style="position: absolute; top: 20px; right: 40px; width: 160px; height: 160px; border-radius: 50%; overflow: hidden; border: 4px solid white; box-shadow: 0 8px 30px rgba(0,0,0,0.12);">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face" alt="Customer" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+
+                <!-- Person 2 - Middle -->
+                <div style="position: absolute; top: 180px; left: 60px; width: 180px; height: 180px; border-radius: 50%; overflow: hidden; border: 4px solid white; box-shadow: 0 8px 30px rgba(0,0,0,0.12);">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" alt="Customer" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+
+                <!-- Person 3 - Bottom right -->
+                <div style="position: absolute; bottom: 40px; right: 20px; width: 150px; height: 150px; border-radius: 50%; overflow: hidden; border: 4px solid white; box-shadow: 0 8px 30px rgba(0,0,0,0.12);">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face" alt="Customer" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             </div>
         </div>
