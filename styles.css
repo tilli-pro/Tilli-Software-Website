@@ -4633,6 +4633,20 @@ a:focus {
 .newsletter-input { padding: 0.75rem; border: 1px solid #D1D5DB; border-radius: var(--border-radius); }
 .newsletter-btn { padding: 0.75rem 1.25rem; }
 
+/* Footer newsletter button - override btn-primary fixed width */
+.footer-brand .newsletter .btn-primary {
+    width: auto;
+    padding: 0.75rem 1.5rem;
+    background: #3B82F6;
+    border-radius: 8px;
+    box-shadow: none;
+}
+.footer-brand .newsletter .btn-primary:hover {
+    background: #2563EB;
+    transform: none;
+    box-shadow: none;
+}
+
 /* Pricing responsive */
 @media (max-width: 1024px) {
     .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
