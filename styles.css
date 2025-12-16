@@ -4543,8 +4543,12 @@ a:focus {
 .timeline-item { background: #FFFFFF; border-radius: var(--border-radius-lg); padding: 1.5rem; }
 .timeline-item .year { font-weight: 700; color: var(--primary-blue); display: block; margin-bottom: .5rem; }
 
-.about-careers { padding: 6rem 0; background: var(--primary-blue); color: var(--white); }
-.about-careers h2 { text-align: center; margin-bottom: 1.5rem; }
+.about-careers { padding: 4rem 0; background: #FFFFFF; }
+.about-careers h2 { text-align: left; margin-bottom: 0; color: #000000 !important; font-size: 2.5rem !important; line-height: 1.2 !important; max-width: 500px; }
+.careers-cta-row { display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+.careers-cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: #FFFFFF; color: #1f2937; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 0.875rem; font-weight: 400; text-decoration: none; transition: all 0.2s ease; white-space: nowrap; }
+.careers-cta-btn:hover { border-color: #325ef6; color: #325ef6; }
+.careers-cta-btn svg { flex-shrink: 0; }
 
 .about-engagement { padding: 6rem 0; background: var(--white); }
 .engagement-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -4554,6 +4558,8 @@ a:focus {
 
 @media (max-width: 768px) {
     .engagement-grid { grid-template-columns: 1fr; }
+    .careers-cta-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .about-careers h2 { max-width: 100%; font-size: 2rem !important; }
 }
 
 /* Pricing Page */
