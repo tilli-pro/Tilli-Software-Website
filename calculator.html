@@ -449,6 +449,49 @@
             box-shadow: 0 0 0 3px rgba(64, 153, 255, 0.1);
         }
 
+        /* Search input wrapper with clear button */
+        .search-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input-wrapper input {
+            padding-right: 40px;
+        }
+
+        .search-clear-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: none;
+            background: #e5e7eb;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            transition: background-color 0.2s;
+        }
+
+        .search-clear-btn:hover {
+            background: #d1d5db;
+        }
+
+        .search-clear-btn svg {
+            width: 12px;
+            height: 12px;
+            color: #6b7280;
+        }
+
+        .search-clear-btn.visible {
+            display: flex;
+        }
+
         .form-group select:focus {
             outline: none;
             border-color: #4099FF;
@@ -1283,7 +1326,14 @@
                                 <div class="step-summary"><strong>Benchmark setup.</strong> Your industry and size map to tilli's benchmark pack (EEI Financial Review, NAIC Insurance Department Resources Report, FCC Marketplace Report, plus anonymized tilli portfolio data) to preload billing frequency, cost curves, and digital ceilings used in the calculations.</div>
                                 <div class="form-group">
                                     <label>Search industry...</label>
-                                    <input type="text" id="industry-search" placeholder="Search industry...">
+                                    <div class="search-input-wrapper">
+                                        <input type="text" id="industry-search" placeholder="Search industry...">
+                                        <button type="button" id="industry-search-clear" class="search-clear-btn" aria-label="Clear search">
+                                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
                                     <a href="#" class="skip-link">Continue without Industry</a>
                                 </div>
                                 
@@ -1708,6 +1758,8 @@
 
             // Industry search functionality
             const industrySearch = document.getElementById('industry-search');
+            const industrySearchClear = document.getElementById('industry-search-clear');
+
             if (industrySearch) {
                 industrySearch.addEventListener('input', function(e) {
                     const searchTerm = e.target.value.toLowerCase();
@@ -1719,6 +1771,28 @@
                             btn.style.display = 'none';
                         }
                     });
+
+                    // Show/hide clear button based on input value
+                    if (industrySearchClear) {
+                        if (e.target.value.length > 0) {
+                            industrySearchClear.classList.add('visible');
+                        } else {
+                            industrySearchClear.classList.remove('visible');
+                        }
+                    }
+                });
+            }
+
+            // Clear button functionality
+            if (industrySearchClear) {
+                industrySearchClear.addEventListener('click', function() {
+                    industrySearch.value = '';
+                    industrySearchClear.classList.remove('visible');
+                    // Show all industry buttons again
+                    industryBtns.forEach(btn => {
+                        btn.style.display = 'block';
+                    });
+                    industrySearch.focus();
                 });
             }
 
