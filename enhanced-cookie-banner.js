@@ -142,151 +142,61 @@
         const bannerHTML = `
             <div id="tilli-cookie-banner" style="
                 position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
+                bottom: 20px;
+                left: 20px;
                 background: #ffffff;
-                border-top: 1px solid #e5e7eb;
-                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+                border-radius: 12px;
+                box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
                 z-index: 999999;
-                padding: 24px 32px;
+                padding: 24px;
+                max-width: 380px;
                 animation: slideInUp 0.4s ease;
                 font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
             ">
-                <div style="
-                    max-width: 1200px;
-                    margin: 0 auto;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 32px;
-                    flex-wrap: wrap;
+                <h3 style="
+                    margin: 0 0 12px 0;
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: #1f2937;
+                    font-family: 'Lato', sans-serif;
+                ">We use cookies</h3>
+
+                <p style="
+                    margin: 0 0 16px 0;
+                    color: #4b5563;
+                    font-size: 14px;
+                    line-height: 1.5;
                 ">
-                    <div style="flex: 1; min-width: 300px;">
-                        <div style="
-                            display: flex;
-                            align-items: center;
-                            gap: 12px;
-                            margin-bottom: 8px;
-                        ">
-                            <div style="
-                                width: 36px;
-                                height: 36px;
-                                background: #325ef6;
-                                border-radius: 8px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                flex-shrink: 0;
-                            ">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path>
-                                    <path d="M8.5 8.5v.01"></path>
-                                    <path d="M16 15.5v.01"></path>
-                                    <path d="M12 12v.01"></path>
-                                    <path d="M11 17v.01"></path>
-                                    <path d="M7 14v.01"></path>
-                                </svg>
-                            </div>
-                            <h3 style="
-                                margin: 0;
-                                font-size: 20px;
-                                font-weight: 400;
-                                color: #000000;
-                                font-family: 'Sora', sans-serif;
-                            ">We use cookies</h3>
-                        </div>
-                        <p style="
-                            margin: 0;
-                            color: #64748b;
-                            font-size: 14px;
-                            line-height: 1.6;
-                        ">
-                            We use cookies and similar technologies to enhance your browsing experience,
-                            analyze site traffic, and personalize content. You can customize your preferences below.
-                            <a href="/privacy-policy.html" style="color: #325ef6; text-decoration: none; font-weight: 500;">Learn more</a>
-                        </p>
-                    </div>
+                    We use cookies to enhance your experience, analyze site traffic, and improve our services.<br>
+                    <a href="#" onclick="window.tilliCookieBanner.showPreferences(); return false;" style="color: #1f2937; text-decoration: underline; font-weight: 500;">Manage preferences</a>
+                </p>
 
-                    <div style="
-                        display: flex;
-                        gap: 10px;
-                        align-items: center;
-                        flex-shrink: 0;
-                        flex-wrap: wrap;
-                    ">
-                        <button onclick="window.tilliCookieBanner.showPreferences()" style="
-                            background: #ffffff;
-                            color: #000000;
-                            border: 1px solid #e5e7eb;
-                            padding: 10px 18px;
-                            border-radius: 8px;
-                            font-size: 14px;
-                            font-weight: 500;
-                            cursor: pointer;
-                            transition: all 0.2s;
-                            display: flex;
-                            align-items: center;
-                            gap: 6px;
-                            white-space: nowrap;
-                            font-family: 'Lato', sans-serif;
-                        " onmouseover="this.style.borderColor='#325ef6'; this.style.color='#325ef6'"
-                           onmouseout="this.style.borderColor='#e5e7eb'; this.style.color='#000000'">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-                            </svg>
-                            Preferences
-                        </button>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="window.tilliCookieBanner.acceptAll()" style="
+                        background: #1f2937;
+                        color: white;
+                        border: none;
+                        padding: 12px 20px;
+                        border-radius: 8px;
+                        font-size: 14px;
+                        font-weight: 500;
+                        cursor: pointer;
+                        flex: 1;
+                        font-family: 'Lato', sans-serif;
+                    ">Accept all</button>
 
-                        <button onclick="window.tilliCookieBanner.rejectAll()" style="
-                            background: #ffffff;
-                            color: #000000;
-                            border: 1px solid #e5e7eb;
-                            padding: 10px 18px;
-                            border-radius: 8px;
-                            font-size: 14px;
-                            font-weight: 500;
-                            cursor: pointer;
-                            transition: all 0.2s;
-                            display: flex;
-                            align-items: center;
-                            gap: 6px;
-                            white-space: nowrap;
-                            font-family: 'Lato', sans-serif;
-                        " onmouseover="this.style.borderColor='#325ef6'; this.style.color='#325ef6'"
-                           onmouseout="this.style.borderColor='#e5e7eb'; this.style.color='#000000'">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="15" y1="9" x2="9" y2="15"></line>
-                                <line x1="9" y1="9" x2="15" y2="15"></line>
-                            </svg>
-                            Reject All
-                        </button>
-
-                        <button onclick="window.tilliCookieBanner.acceptAll()" style="
-                            background: #325ef6;
-                            color: white;
-                            border: none;
-                            padding: 10px 20px;
-                            border-radius: 8px;
-                            font-size: 14px;
-                            font-weight: 500;
-                            cursor: pointer;
-                            transition: all 0.2s;
-                            display: flex;
-                            align-items: center;
-                            gap: 6px;
-                            white-space: nowrap;
-                            font-family: 'Lato', sans-serif;
-                        " onmouseover="this.style.background='#2a4fd4'"
-                           onmouseout="this.style.background='#325ef6'">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Accept All
-                        </button>
-                    </div>
+                    <button onclick="window.tilliCookieBanner.rejectAll()" style="
+                        background: #f3f4f6;
+                        color: #1f2937;
+                        border: none;
+                        padding: 12px 20px;
+                        border-radius: 8px;
+                        font-size: 14px;
+                        font-weight: 500;
+                        cursor: pointer;
+                        flex: 1;
+                        font-family: 'Lato', sans-serif;
+                    ">Reject all</button>
                 </div>
             </div>
         `;
