@@ -16,50 +16,10 @@
             position: relative;
         }
 
-        /* Gradient background section */
-        .signup-gradient-bg {
-            position: relative;
-            background: linear-gradient(180deg,
-                rgba(239, 246, 255, 0.6) 0%,
-                rgba(219, 234, 254, 0.8) 25%,
-                rgba(191, 219, 254, 0.6) 50%,
-                rgba(224, 231, 255, 0.7) 75%,
-                rgba(245, 243, 255, 0.5) 100%
-            );
-            min-height: calc(100vh - 80px);
-            padding-bottom: 60px;
-        }
-
-        .signup-gradient-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            opacity: 0.5;
-        }
-
-        .signup-gradient-bg::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.8) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
         .signup-container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 120px 2rem 2rem;
+            margin: 100px auto 40px;
+            padding: 2rem;
             position: relative;
             z-index: 1;
         }
@@ -84,11 +44,10 @@
         .signup-card {
             background: #FFFFFF;
             border-radius: 16px;
-            border: 1px solid rgba(229, 231, 235, 0.5);
+            border: 1px solid #e5e7eb;
             padding: 2rem;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
         }
 
         /* Page Header - Centered above columns */
@@ -619,7 +578,6 @@
         </nav>
     </header>
 
-    <div class="signup-gradient-bg">
     <div class="signup-container">
         <!-- Centered Header Section -->
         <div class="breadcrumb">
@@ -998,7 +956,6 @@
                 </button>
             </div>
         </div>
-    </div>
     </div>
 
     <script src="script.js"></script>
