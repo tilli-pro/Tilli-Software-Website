@@ -1923,10 +1923,13 @@
                 const percentage = ((value - min) / (max - min)) * 100;
                 slider.style.background = `linear-gradient(to right, #4099FF 0%, #4099FF ${percentage}%, #E5E7EB ${percentage}%, #E5E7EB 100%)`;
 
-                // Update value label position
+                // Update value label position (adjusted for thumb width)
                 const valueLabel = document.getElementById(slider.id + '-value');
                 if (valueLabel) {
-                    valueLabel.style.left = percentage + '%';
+                    // Thumb is 20px wide, so we need to offset the label position
+                    // At 0%: thumb center is at 10px, at 100%: thumb center is at (width - 10px)
+                    const thumbOffset = 10 - (percentage * 0.2);
+                    valueLabel.style.left = `calc(${percentage}% + ${thumbOffset}px)`;
                 }
             }
 
