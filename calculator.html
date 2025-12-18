@@ -582,14 +582,13 @@
         .slider-wrapper {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .slider-track-container {
             flex: 1;
             position: relative;
-            padding: 0 10px;
-            margin: 0 -10px;
+            overflow: visible;
         }
 
         .slider-min-label,
@@ -600,10 +599,12 @@
         }
 
         .slider {
-            width: 100%;
+            width: calc(100% + 20px);
+            margin-left: -10px;
+            margin-right: -10px;
             height: 20px;
             background: linear-gradient(to right, #E5E7EB, #E5E7EB);
-            background-size: 100% 3px;
+            background-size: calc(100% - 20px) 3px;
             background-position: center;
             background-repeat: no-repeat;
             border-radius: 1.5px;
@@ -1948,7 +1949,7 @@
                 const value = parseFloat(slider.value);
                 const percentage = ((value - min) / (max - min)) * 100;
                 slider.style.background = `linear-gradient(to right, #4099FF 0%, #4099FF ${percentage}%, #E5E7EB ${percentage}%, #E5E7EB 100%)`;
-                slider.style.backgroundSize = '100% 3px';
+                slider.style.backgroundSize = 'calc(100% - 20px) 3px';
                 slider.style.backgroundPosition = 'center';
                 slider.style.backgroundRepeat = 'no-repeat';
 
