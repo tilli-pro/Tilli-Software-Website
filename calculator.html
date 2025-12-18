@@ -580,9 +580,9 @@
 
         .slider {
             width: 100%;
-            height: 6px;
-            border-radius: 3px;
-            background: #e5e7eb;
+            height: 3px;
+            border-radius: 1.5px;
+            background: #E5E7EB;
             outline: none;
             -webkit-appearance: none;
         }
@@ -594,6 +594,7 @@
             height: 20px;
             border-radius: 50%;
             background: #4099FF;
+            border: 0.5px solid #4099FF;
             cursor: pointer;
         }
 
@@ -602,8 +603,8 @@
             height: 20px;
             border-radius: 50%;
             background: #4099FF;
+            border: 0.5px solid #4099FF;
             cursor: pointer;
-            border: none;
         }
 
         .slider-labels {
@@ -1851,10 +1852,21 @@
                 });
             });
 
+            // Function to update slider track gradient
+            function updateSliderTrack(slider) {
+                const min = parseFloat(slider.min) || 0;
+                const max = parseFloat(slider.max) || 100;
+                const value = parseFloat(slider.value);
+                const percentage = ((value - min) / (max - min)) * 100;
+                slider.style.background = `linear-gradient(to right, #4099FF 0%, #4099FF ${percentage}%, #E5E7EB ${percentage}%, #E5E7EB 100%)`;
+            }
+
             // Slider updates
             const sliders = document.querySelectorAll('.slider');
             sliders.forEach(slider => {
+                updateSliderTrack(slider);
                 slider.addEventListener('input', function() {
+                    updateSliderTrack(this);
                     const valueSpan = document.getElementById(this.id + '-value');
                     if (valueSpan) {
                         if (this.id === 'customer-accounts') {
@@ -1864,6 +1876,7 @@
                             const invoicesSlider = document.getElementById('invoices-mailed');
                             if (invoicesSlider) {
                                 invoicesSlider.max = this.value;
+                                updateSliderTrack(invoicesSlider);
                                 document.getElementById('invoices-max-label').textContent = parseInt(this.value).toLocaleString();
                             }
                         } else if (this.id === 'emails-available' || this.id === 'bill-adoption' || this.id === 'csr-payments') {
@@ -1888,6 +1901,7 @@
                         // If bill adoption exceeds emails available, increase emails to match
                         if (emailsValue < billAdoptionValue) {
                             emailsSlider.value = billAdoptionValue;
+                            updateSliderTrack(emailsSlider);
                             const emailsSpan = document.getElementById('emails-available-value');
                             if (emailsSpan) {
                                 emailsSpan.textContent = billAdoptionValue + '%';
@@ -1901,6 +1915,7 @@
                         // If emails available drops below bill adoption, reduce bill adoption to match
                         if (emailsValue < billAdoptionValue) {
                             billAdoptionSlider.value = emailsValue;
+                            updateSliderTrack(billAdoptionSlider);
                             const billSpan = document.getElementById('bill-adoption-value');
                             if (billSpan) {
                                 billSpan.textContent = emailsValue + '%';
