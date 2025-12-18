@@ -582,12 +582,14 @@
         .slider-wrapper {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 20px;
         }
 
         .slider-track-container {
             flex: 1;
             position: relative;
+            padding: 0 10px;
+            margin: 0 -10px;
         }
 
         .slider-min-label,
@@ -1950,13 +1952,10 @@
                 slider.style.backgroundPosition = 'center';
                 slider.style.backgroundRepeat = 'no-repeat';
 
-                // Update value label position (adjusted for thumb width)
+                // Update value label position
                 const valueLabel = document.getElementById(slider.id + '-value');
                 if (valueLabel) {
-                    // Thumb is 20px wide, so we need to offset the label position
-                    // At 0%: thumb center is at 10px, at 100%: thumb center is at (width - 10px)
-                    const thumbOffset = 10 - (percentage * 0.2);
-                    valueLabel.style.left = `calc(${percentage}% + ${thumbOffset}px)`;
+                    valueLabel.style.left = percentage + '%';
                 }
             }
 
