@@ -589,6 +589,7 @@
             flex: 1;
             position: relative;
             overflow: visible;
+            min-height: 70px;
         }
 
         .slider-min-label,
@@ -1953,10 +1954,11 @@
                 slider.style.backgroundPosition = 'center';
                 slider.style.backgroundRepeat = 'no-repeat';
 
-                // Update value label position
+                // Update value label position to center it under the thumb
                 const valueLabel = document.getElementById(slider.id + '-value');
                 if (valueLabel) {
                     valueLabel.style.left = percentage + '%';
+                    valueLabel.style.transform = 'translateX(-50%)';
                 }
             }
 
