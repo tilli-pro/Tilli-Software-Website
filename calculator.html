@@ -580,40 +580,30 @@
 
         .slider {
             width: 100%;
-            height: 2px;
-            border-radius: 1px;
-            background: linear-gradient(to right, #5B6AD0 0%, #5B6AD0 50%, #d1d5db 50%, #d1d5db 100%);
+            height: 6px;
+            border-radius: 3px;
+            background: #e5e7eb;
             outline: none;
             -webkit-appearance: none;
-            cursor: pointer;
         }
 
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid #d1d5db;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            background: #4099FF;
             cursor: pointer;
         }
 
         .slider::-moz-range-thumb {
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid #d1d5db;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            background: #4099FF;
             cursor: pointer;
-        }
-
-        .slider::-moz-range-track {
-            height: 2px;
-            border-radius: 1px;
-            background: #d1d5db;
+            border: none;
         }
 
         .slider-labels {
@@ -1861,24 +1851,10 @@
                 });
             });
 
-            // Function to update slider track gradient based on value
-            function updateSliderTrack(slider) {
-                const min = parseFloat(slider.min) || 0;
-                const max = parseFloat(slider.max) || 100;
-                const value = parseFloat(slider.value);
-                const percentage = ((value - min) / (max - min)) * 100;
-                slider.style.background = `linear-gradient(to right, #5B6AD0 0%, #5B6AD0 ${percentage}%, #d1d5db ${percentage}%, #d1d5db 100%)`;
-            }
-
             // Slider updates
             const sliders = document.querySelectorAll('.slider');
             sliders.forEach(slider => {
-                // Initialize track color
-                updateSliderTrack(slider);
-
                 slider.addEventListener('input', function() {
-                    // Update track color
-                    updateSliderTrack(this);
                     const valueSpan = document.getElementById(this.id + '-value');
                     if (valueSpan) {
                         if (this.id === 'customer-accounts') {
@@ -1888,7 +1864,6 @@
                             const invoicesSlider = document.getElementById('invoices-mailed');
                             if (invoicesSlider) {
                                 invoicesSlider.max = this.value;
-                                updateSliderTrack(invoicesSlider);
                                 document.getElementById('invoices-max-label').textContent = parseInt(this.value).toLocaleString();
                             }
                         } else if (this.id === 'emails-available' || this.id === 'bill-adoption' || this.id === 'csr-payments') {
@@ -1913,7 +1888,6 @@
                         // If bill adoption exceeds emails available, increase emails to match
                         if (emailsValue < billAdoptionValue) {
                             emailsSlider.value = billAdoptionValue;
-                            updateSliderTrack(emailsSlider);
                             const emailsSpan = document.getElementById('emails-available-value');
                             if (emailsSpan) {
                                 emailsSpan.textContent = billAdoptionValue + '%';
@@ -1927,7 +1901,6 @@
                         // If emails available drops below bill adoption, reduce bill adoption to match
                         if (emailsValue < billAdoptionValue) {
                             billAdoptionSlider.value = emailsValue;
-                            updateSliderTrack(billAdoptionSlider);
                             const billSpan = document.getElementById('bill-adoption-value');
                             if (billSpan) {
                                 billSpan.textContent = emailsValue + '%';
