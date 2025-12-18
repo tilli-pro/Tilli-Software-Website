@@ -577,6 +577,8 @@
         .slider-container {
             margin-top: 1rem;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .slider-wrapper {
@@ -589,7 +591,8 @@
             flex: 1;
             position: relative;
             overflow: visible;
-            min-height: 70px;
+            height: 70px;
+            isolation: isolate;
         }
 
         .slider-min-label,
@@ -600,9 +603,10 @@
         }
 
         .slider {
+            position: absolute;
+            top: 0;
+            left: -10px;
             width: calc(100% + 20px);
-            margin-left: -10px;
-            margin-right: -10px;
             height: 20px;
             background: linear-gradient(to right, #E5E7EB, #E5E7EB);
             background-size: calc(100% - 20px) 3px;
@@ -615,6 +619,7 @@
             -webkit-appearance: none;
             appearance: none;
             cursor: pointer;
+            z-index: 2;
         }
 
         .slider:focus {
@@ -680,7 +685,7 @@
 
         .slider-value-label {
             position: absolute;
-            top: 40px;
+            top: 30px;
             left: 0%;
             transform: translateX(-50%);
             background: #4099FF;
@@ -690,6 +695,8 @@
             font-weight: 600;
             font-size: 0.85rem;
             white-space: nowrap;
+            z-index: 1;
+            pointer-events: none;
         }
 
         .slider-value-label::after {
