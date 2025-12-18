@@ -576,6 +576,25 @@
 
         .slider-container {
             margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .slider-track-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .slider-min-label,
+        .slider-max-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            white-space: nowrap;
         }
 
         .slider {
@@ -631,18 +650,9 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        .slider-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1.5rem;
-            font-size: 0.875rem;
-            color: #6b7280;
-            position: relative;
-        }
-
-        .slider-labels span:nth-child(2) {
+        .slider-value-label {
             position: absolute;
-            top: -1.75rem;
+            top: 20px;
             left: 0%;
             transform: translateX(-50%);
             background: #4099FF;
@@ -654,7 +664,7 @@
             white-space: nowrap;
         }
 
-        .slider-labels span:nth-child(2)::after {
+        .slider-value-label::after {
             content: '';
             position: absolute;
             bottom: 100%;
@@ -1420,11 +1430,13 @@
                                 <div class="form-group">
                                     <label>Total Number of Current Customer Accounts</label>
                                     <div class="slider-container">
-                                        <input type="range" id="customer-accounts" min="0" max="25000000" value="100000" class="slider">
-                                        <div class="slider-labels">
-                                            <span>0</span>
-                                            <span id="customer-accounts-value">100,000</span>
-                                            <span>25M</span>
+                                        <div class="slider-wrapper">
+                                            <span class="slider-min-label">0</span>
+                                            <div class="slider-track-container">
+                                                <input type="range" id="customer-accounts" min="0" max="25000000" value="100000" class="slider">
+                                                <span id="customer-accounts-value" class="slider-value-label">100,000</span>
+                                            </div>
+                                            <span class="slider-max-label">25M</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1432,11 +1444,13 @@
                                 <div class="form-group">
                                     <label>Percentage of Emails Available in ERP/CIS/CRM</label>
                                     <div class="slider-container">
-                                        <input type="range" id="emails-available" min="0" max="100" value="60" class="slider">
-                                        <div class="slider-labels">
-                                            <span>0%</span>
-                                            <span id="emails-available-value">60%</span>
-                                            <span>100%</span>
+                                        <div class="slider-wrapper">
+                                            <span class="slider-min-label">0%</span>
+                                            <div class="slider-track-container">
+                                                <input type="range" id="emails-available" min="0" max="100" value="60" class="slider">
+                                                <span id="emails-available-value" class="slider-value-label">60%</span>
+                                            </div>
+                                            <span class="slider-max-label">100%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1444,11 +1458,13 @@
                                 <div class="form-group">
                                     <label>Current Bill Adoption % Rate</label>
                                     <div class="slider-container">
-                                        <input type="range" id="bill-adoption" min="0" max="100" value="50" class="slider">
-                                        <div class="slider-labels">
-                                            <span>0%</span>
-                                            <span id="bill-adoption-value">50%</span>
-                                            <span>100%</span>
+                                        <div class="slider-wrapper">
+                                            <span class="slider-min-label">0%</span>
+                                            <div class="slider-track-container">
+                                                <input type="range" id="bill-adoption" min="0" max="100" value="50" class="slider">
+                                                <span id="bill-adoption-value" class="slider-value-label">50%</span>
+                                            </div>
+                                            <span class="slider-max-label">100%</span>
                                         </div>
                                     </div>
                                     <small>Cannot exceed percentage of emails available</small>
@@ -1492,11 +1508,13 @@
                                 <div class="form-group">
                                     <label>Average Bill Amount (per billing cycle)</label>
                                     <div class="slider-container">
-                                        <input type="range" id="average-bill" min="30" max="1500" value="150" class="slider">
-                                        <div class="slider-labels">
-                                            <span>$30</span>
-                                            <span id="average-bill-value">$150</span>
-                                            <span>$1,500+</span>
+                                        <div class="slider-wrapper">
+                                            <span class="slider-min-label">$30</span>
+                                            <div class="slider-track-container">
+                                                <input type="range" id="average-bill" min="30" max="1500" value="150" class="slider">
+                                                <span id="average-bill-value" class="slider-value-label">$150</span>
+                                            </div>
+                                            <span class="slider-max-label">$1,500+</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1504,11 +1522,13 @@
                                 <div class="form-group">
                                     <label>Monthly CSR-assisted Payments</label>
                                     <div class="slider-container">
-                                        <input type="range" id="csr-payments" min="0" max="100" value="5" class="slider">
-                                        <div class="slider-labels">
-                                            <span>0%</span>
-                                            <span id="csr-payments-value">5%</span>
-                                            <span>100%</span>
+                                        <div class="slider-wrapper">
+                                            <span class="slider-min-label">0%</span>
+                                            <div class="slider-track-container">
+                                                <input type="range" id="csr-payments" min="0" max="100" value="5" class="slider">
+                                                <span id="csr-payments-value" class="slider-value-label">5%</span>
+                                            </div>
+                                            <span class="slider-max-label">100%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1522,11 +1542,13 @@
                                 <div class="form-group">
                                     <label>CSR Fully-loaded Hourly Cost</label>
                                     <div class="slider-container">
-                                        <input type="range" id="csr-hourly-rate" min="18" max="75" value="32" class="slider">
-                                        <div class="slider-labels">
-                                            <span>$18</span>
-                                            <span id="csr-hourly-rate-value">$32</span>
-                                            <span>$75+</span>
+                                        <div class="slider-wrapper">
+                                            <span class="slider-min-label">$18</span>
+                                            <div class="slider-track-container">
+                                                <input type="range" id="csr-hourly-rate" min="18" max="75" value="32" class="slider">
+                                                <span id="csr-hourly-rate-value" class="slider-value-label">$32</span>
+                                            </div>
+                                            <span class="slider-max-label">$75+</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1534,11 +1556,13 @@
                                 <div class="form-group">
                                     <label>Average CSR Handle Time (minutes)</label>
                                     <div class="slider-container">
-                                        <input type="range" id="csr-handle-time" min="3" max="18" value="7" class="slider">
-                                        <div class="slider-labels">
-                                            <span>3</span>
-                                            <span id="csr-handle-time-value">7</span>
-                                            <span>18</span>
+                                        <div class="slider-wrapper">
+                                            <span class="slider-min-label">3 min</span>
+                                            <div class="slider-track-container">
+                                                <input type="range" id="csr-handle-time" min="3" max="18" value="7" class="slider">
+                                                <span id="csr-handle-time-value" class="slider-value-label">7 min</span>
+                                            </div>
+                                            <span class="slider-max-label">18 min</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1552,11 +1576,13 @@
                                 <div class="form-group">
                                     <label>Invoices Mailed (per month) @ <span id="invoice-cost-hint">$0.78</span> each</label>
                                     <div class="slider-container">
-                                        <input type="range" id="invoices-mailed" min="0" max="100000" value="5000" class="slider">
-                                        <div class="slider-labels">
-                                            <span>0</span>
-                                            <span id="invoices-mailed-value">5,000</span>
-                                            <span id="invoices-max-label">100,000</span>
+                                        <div class="slider-wrapper">
+                                            <span class="slider-min-label">0</span>
+                                            <div class="slider-track-container">
+                                                <input type="range" id="invoices-mailed" min="0" max="100000" value="5000" class="slider">
+                                                <span id="invoices-mailed-value" class="slider-value-label">5,000</span>
+                                            </div>
+                                            <span id="invoices-max-label" class="slider-max-label">100,000</span>
                                         </div>
                                     </div>
                                 </div>
