@@ -623,7 +623,7 @@
         .slider-labels {
             display: flex;
             justify-content: space-between;
-            margin-top: 0.5rem;
+            margin-top: 1.5rem;
             font-size: 0.875rem;
             color: #6b7280;
             position: relative;
@@ -631,14 +631,27 @@
 
         .slider-labels span:nth-child(2) {
             position: absolute;
-            left: 50%;
+            top: -1.75rem;
+            left: 0%;
             transform: translateX(-50%);
             background: #4099FF;
             color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
+            padding: 4px 10px;
+            border-radius: 6px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .slider-labels span:nth-child(2)::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: #4099FF transparent transparent transparent;
         }
 
         .form-navigation {
@@ -1865,13 +1878,19 @@
                 });
             });
 
-            // Function to update slider track gradient
+            // Function to update slider track gradient and label position
             function updateSliderTrack(slider) {
                 const min = parseFloat(slider.min) || 0;
                 const max = parseFloat(slider.max) || 100;
                 const value = parseFloat(slider.value);
                 const percentage = ((value - min) / (max - min)) * 100;
                 slider.style.background = `linear-gradient(to right, #4099FF 0%, #4099FF ${percentage}%, #E5E7EB ${percentage}%, #E5E7EB 100%)`;
+
+                // Update value label position
+                const valueLabel = document.getElementById(slider.id + '-value');
+                if (valueLabel) {
+                    valueLabel.style.left = percentage + '%';
+                }
             }
 
             // Slider updates
