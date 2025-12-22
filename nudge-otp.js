@@ -289,11 +289,62 @@
     function setChannel(channel) {
         state.channel = channel;
         const overlay = document.getElementById(OTP_MODAL_ID);
+
+        // Update channel button states
         overlay.querySelectorAll(".demo-otp-channel button").forEach(btn => {
             btn.classList.toggle("active", btn.dataset.channel === channel);
         });
+
+        // Show/hide email or phone input
         overlay.querySelector('[data-input="email"]').style.display = channel === "email" ? "flex" : "none";
         overlay.querySelector('[data-input="phone"]').style.display = channel === "sms" ? "flex" : "none";
+
+        // Clear countdown timer when switching channels
+        if (state.resendTimer) {
+            clearInterval(state.resendTimer);
+            state.resendTimer = null;
+        }
+        state.resendCountdown = 0;
+
+        // Reset UI to initial state (before OTP was sent)
+        const otpField = overlay.querySelector('[data-input="otp"]');
+        const sendBtn = overlay.querySelector('[data-action="send"]');
+        const verifyBtn = overlay.querySelector('[data-action="verify"]');
+        const resendLink = overlay.querySelector('[data-resend]');
+        const resendAnchor = overlay.querySelector('[data-action="resend"]');
+        const errorEl = overlay.querySelector(".demo-otp-error");
+        const successEl = overlay.querySelector(".demo-otp-success");
+
+        // Hide OTP field, verify button, and resend link
+        otpField.style.display = "none";
+        verifyBtn.style.display = "none";
+        resendLink.style.display = "none";
+
+        // Show Send OTP button
+        sendBtn.style.display = "block";
+        sendBtn.disabled = false;
+        sendBtn.textContent = "Send OTP";
+
+        // Reset resend link state
+        resendAnchor.classList.remove('disabled');
+        resendAnchor.textContent = 'Resend OTP';
+
+        // Clear OTP input
+        document.getElementById("demoOtpCode").value = "";
+
+        // Clear any error/success messages
+        errorEl.style.display = "none";
+        successEl.style.display = "none";
+
+        // Reset session (user needs to send new OTP for new channel)
+        state.sessionId = null;
+
+        // Focus the appropriate input
+        if (channel === "sms") {
+            document.getElementById("demoOtpPhone").focus();
+        } else {
+            document.getElementById("demoOtpEmail").focus();
+        }
     }
 
     function startResendCountdown() {
