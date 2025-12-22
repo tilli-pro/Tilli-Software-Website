@@ -8,7 +8,9 @@
         targetUrl: null,
         channel: "email",
         sending: false,
-        verifying: false
+        verifying: false,
+        resendCountdown: 0,
+        resendTimer: null
     };
 
     function createModal() {
@@ -142,6 +144,14 @@
         .demo-otp-resend-link a:hover {
             text-decoration: underline;
         }
+        .demo-otp-resend-link a.disabled {
+            color: #94a3b8;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+        .demo-otp-resend-link a.disabled:hover {
+            text-decoration: none;
+        }
         .demo-otp-error {
             background: #fee2e2;
             color: #b91c1c;
@@ -220,6 +230,11 @@
         state.targetUrl = targetUrl || null;
         state.sending = false;
         state.verifying = false;
+        state.resendCountdown = 0;
+        if (state.resendTimer) {
+            clearInterval(state.resendTimer);
+            state.resendTimer = null;
+        }
 
         const overlay = document.getElementById(OTP_MODAL_ID);
         const emailInput = document.getElementById("demoOtpEmail");
@@ -262,6 +277,13 @@
             overlay.style.display = "none";
         }
         document.body.classList.remove(LOCK_CLASS);
+
+        // Clear resend countdown timer
+        if (state.resendTimer) {
+            clearInterval(state.resendTimer);
+            state.resendTimer = null;
+        }
+        state.resendCountdown = 0;
     }
 
     function setChannel(channel) {
@@ -272,6 +294,32 @@
         });
         overlay.querySelector('[data-input="email"]').style.display = channel === "email" ? "flex" : "none";
         overlay.querySelector('[data-input="phone"]').style.display = channel === "sms" ? "flex" : "none";
+    }
+
+    function startResendCountdown() {
+        const overlay = document.getElementById(OTP_MODAL_ID);
+        const resendLink = overlay.querySelector('[data-action="resend"]');
+
+        // Clear any existing timer
+        if (state.resendTimer) {
+            clearInterval(state.resendTimer);
+        }
+
+        state.resendCountdown = 30;
+        resendLink.classList.add('disabled');
+        resendLink.textContent = `Resend OTP (${state.resendCountdown}s)`;
+
+        state.resendTimer = setInterval(() => {
+            state.resendCountdown--;
+            if (state.resendCountdown > 0) {
+                resendLink.textContent = `Resend OTP (${state.resendCountdown}s)`;
+            } else {
+                clearInterval(state.resendTimer);
+                state.resendTimer = null;
+                resendLink.classList.remove('disabled');
+                resendLink.textContent = 'Resend OTP';
+            }
+        }, 1000);
     }
 
     async function sendOtp() {
@@ -330,6 +378,9 @@
                 sendBtn.style.display = "none";
                 document.getElementById("demoOtpCode").focus();
 
+                // Start 30-second countdown for resend
+                startResendCountdown();
+
                 state.sending = false;
                 return;
             }
@@ -360,6 +411,9 @@
             verifyBtn.disabled = true; // Start disabled until 6 digits entered
             sendBtn.style.display = "none";
             document.getElementById("demoOtpCode").focus();
+
+            // Start 30-second countdown for resend
+            startResendCountdown();
         } catch (error) {
             const details = error && error.details ? JSON.stringify(error.details) : "";
             errorEl.textContent = error.error
@@ -491,6 +545,8 @@
         overlay.querySelector('[data-action="verify"]').addEventListener("click", verifyOtp);
         overlay.querySelector('[data-action="resend"]').addEventListener("click", (e) => {
             e.preventDefault();
+            // Don't allow resend if countdown is active
+            if (state.resendCountdown > 0) return;
             sendOtp();
         });
         overlay.querySelector('[data-action="cancel"]').addEventListener("click", () => {
