@@ -107,3 +107,385 @@ The server should serve the Tilli enterprise payment platform website.
 When you need a Lucide icon, convert it to inline SVG format. Common icons:
 - check-circle, arrow-right, credit-card, users, shield-check, clock, trending-up, quote, bell, user-plus, smartphone, dollar-sign, cpu, activity, message-circle, star, zap, x-circle, cookie
 - tilli Arch is a mistake - it should be tilliArc
+
+---
+
+## Recent Implementation Changes Log
+
+### Hero Sections
+
+#### Homepage Hero (index.html)
+- Gradient background blends smoothly from white nav
+- Button: Gradient blue pill style
+- Text updated to match design
+
+#### Nudge Hero (nudge.html)
+- Images displayed in original shape (not circles)
+- Proper headshots added (not placeholders)
+- Top padding added for navbar spacing
+- Button styling matches design
+- Original subtitle verbiage restored
+
+---
+
+### Navigation / Navbar
+
+#### Top Banner
+- Gradient blue banner (linear-gradient 90deg, #4169E1 to #00BFFF)
+- Text: "✨Join us for our upcoming webinar on the future of digital payments."
+- "Register now →" button with translucent white background
+- Height: 62px, padding: 18px 20px
+- All pages should include this banner to match homepage
+
+#### Logo
+- Use colored version of logo (not white): `Images/22_tilli_logo_color.png`
+- Calculator page: Fixed invisible logo issue
+- Consistent logo path across all pages
+
+#### Scroll Behavior
+- Navbar is FIXED on all pages
+- Consistent scroll behavior across all pages
+- On scroll: Adds `.scrolled` class for solid white background
+- Background: Transparent at top, solid white when scrolled
+- Z-index: Stays on top of all content
+- script.js added to pages for scroll effect
+
+#### Pages with Navbar Fixes
+- Calculator page: Scroll effect and white background added
+- Press page: Scroll behavior fixed
+- Privacy policy page: Navbar fixed
+- Terms and conditions page: Navbar fixed
+
+#### Signup Button
+- Underline removed from nav signup button
+
+---
+
+### Footer
+
+#### Standard Footer Design
+- All pages should use the footer from index.html as reference
+- Logo: White version
+- Background: Dark (#1f2937)
+- Newsletter button: Solid blue (not gradient), auto width
+- Product name: "Monay" (not "Money")
+- Press page footer: Fixed to match standard footer
+
+#### Footer Links
+- Social icons: X (Twitter), Instagram, Facebook, YouTube, LinkedIn
+- Legal links: Terms, Privacy, Anti-Slavery Policy, Cookies
+- Platform status indicator
+
+---
+
+### About Page (about.html)
+
+#### Hero Section
+- Updated hero image
+
+#### Our Mission & What We Do Sections
+- Redesigned layout
+
+#### Quote Section
+- White background
+- Light blue italic text
+- Sora font family
+- No italic on certain elements
+
+#### Section Titles
+- Font-weight: 400 (regular, not bold)
+- All h2 elements use weight 400
+
+#### Leadership Team
+- Headshots added and made bigger
+- "More" button removed
+
+#### Careers CTA Section
+- Redesigned layout
+- Space-between layout
+- Heading wraps to exactly 2 lines
+- 2rem font size for heading
+- Reduced gap between text and button
+- Button padding matches other buttons
+- Font-weight: 400 for heading
+
+#### Footer
+- Replaced with correct design from index.html
+
+---
+
+### Signup Page (signup.html)
+
+#### Layout
+- Two-column design
+- Breadcrumbs and header centered above columns
+- Submit button outside form card border
+- Left plan summary section: No borders/backgrounds
+
+#### Default Content
+- "Start Your Free Trial" heading when visiting directly
+- "First 10,000 Tokens FREE" badge
+- Benefits list: No credit card required, Cancel anytime, Setup in minutes, 24/7 support, Enterprise-grade security
+- Link to pricing calculator
+
+#### Form
+- Checkmark circles removed from selection buttons
+- Styling matches design system
+- Pre-fill support via URL params and session storage
+
+#### Background
+- No gradient background (removed)
+
+---
+
+### Calculator Page (calculator.html)
+
+#### Info Sections
+- Background: White
+- Text width constrained for consistent left alignment
+- Decorative visual elements removed
+- Duplicate buttons removed
+- One sleek link at end (no fill, text with hover arrow animation)
+- First section badge matches others
+
+#### Number Animation
+- Digital clock style rolling digit animation
+- Smooth counting animation for values
+
+#### Results Section
+- Fixed uneven spacing
+- No border or fill (clean like Ramp)
+
+#### Calculator Hero Section
+- Thin Sora font, regular weight
+- Badge style elements
+- Aave-style checkmark list (horizontal, small gradient checks, no circles)
+- Gradient text elements
+- Cleaner layout
+
+#### Savings Card
+- Clean white card with subtle shadow
+- Gradient border (1px)
+- Regular weight title with Sora font
+
+#### Download Button
+- Shorter text to fit
+- nowrap and smaller font
+
+---
+
+### Pricing Page (pricing.html)
+
+#### Auto-check Feature
+- Card auto-checks when slider is moved
+
+---
+
+### Mobile Layout
+
+#### Typography (Ramp-style)
+- Section headings: 28px on mobile (48px on desktop)
+- Larger, more readable sizes
+- Text 3 size for smaller elements
+
+#### Layout
+- Stacked, left-aligned on mobile
+- Tighter padding
+- Service delivery section: Title above text on mobile
+
+---
+
+### OTP Verification Modal (nudge-otp.js)
+
+The OTP verification modal is used to gate demo access on the homepage.
+
+#### Features Implemented
+1. **Verify button validation**:
+   - The "Verify & continue" button starts DISABLED
+   - Only enables when EXACTLY 6 digits are entered in the OTP field
+   - Input field only allows numeric digits (non-digits are filtered out)
+   - CSS styles for disabled state: gray background (#cbd5e1), cursor: not-allowed, opacity: 0.7
+
+2. **Resend OTP link**:
+   - A "Resend OTP" link appears BELOW the OTP input field and ABOVE the buttons
+   - Link is hidden initially, only shows after OTP has been sent
+   - Blue link color (#5B9EFF), underlines on hover
+   - Clicking calls the sendOtp() function
+
+3. **Dev mode bypass**:
+   - On localhost (127.0.0.1 or localhost), the system bypasses the real API
+   - Use code `123456` for testing
+   - No actual email is sent in dev mode
+   - Console logs show "[DEV MODE]" messages
+
+#### Dev Mode Testing
+When running on localhost:
+- Enter any email address and click "Send OTP"
+- Use code `123456` to verify
+- No actual email is sent in dev mode
+
+#### Production Mode
+- OTP is sent via the Nudge API (`/api/nudge/send-otp`)
+- Email comes from `tilli@nudge.net` with subject "Your Tilli Demo OTP"
+- OTP expires in 5 minutes
+- Requires `NUDGE_API_KEY` environment variable in Vercel
+- OTP stored in Vercel KV (Upstash) with 5-minute expiry
+
+---
+
+### Calculator Page Sliders (calculator.html)
+
+#### Slider Design Specifications
+- **Track height**: 3px (using background-size: 100% 3px)
+- **Track colors**: Blue (#4099FF) on left of thumb, gray (#E5E7EB) on right
+- **Thumb size**: 20px diameter
+- **Thumb style**: White background with 0.5px blue border (#4099FF)
+- **No outline/glow**: Removed all blue borders, outlines, box-shadows from focus states
+
+#### Value Label Specifications
+- **Position**: Below the thumb (not above)
+- **Arrow direction**: Points UP toward the thumb
+- **Gap**: 40px between thumb and value label tag
+- **Color**: Blue tag (#4099FF) with white text
+- **Border radius**: 6px
+- **Padding**: 4px 10px
+
+#### Min/Max Labels
+- **Position**: On LEFT and RIGHT sides of the slider track (not above/below)
+- **Alignment**: Aligned with center of track (flex-start with margin-top: 2px)
+- **Font**: 0.875rem, color #6b7280
+
+#### Track Centering
+- Track is CENTERED in the middle of the thumb
+- Achieved using: height: 20px, background-size: 100% 3px, background-position: center
+
+#### Thumb Offset Calculation
+```javascript
+const thumbOffset = 10 - (percentage * 0.2);
+valueLabel.style.left = `calc(${percentage}% + ${thumbOffset}px)`;
+```
+This keeps the label centered on the thumb at all positions.
+
+#### Linked Sliders (Business Logic - DO NOT CHANGE)
+Some sliders are intentionally linked:
+- `emails-available` ↔ `bill-adoption`: When one changes, the other updates proportionally
+- This is intentional business logic, not a bug
+
+---
+
+### Cookie Banner (enhanced-cookie-banner.js)
+
+#### Features
+- Compact design positioned bottom-left (20px from edges)
+- Max-width: 380px
+- Border-radius: 12px
+- Box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12)
+
+#### Buttons
+- "Accept all": Dark background (#1f2937), white text
+- "Reject all": Light gray background (#f3f4f6), dark text
+- "Manage preferences": Underlined link
+
+#### Storage
+- Uses localStorage (not cookies) for reliability
+- Keys: `tilli_cookie_consent`, `tilli_cookie_preferences`
+- Categories: Strictly Necessary (always on), Performance, Marketing
+
+---
+
+### Press Page (press.html)
+
+#### Layout
+- Redesigned to match blog card layout
+
+#### Images
+- Image containers show full images (not cropped)
+- Correct blog title images added
+- Placeholder images replaced with blog graphics
+
+#### Typography
+- Press release text uses Inter font
+
+#### Footer
+- Fixed to match standard footer from index.html
+- Font Awesome icons replaced with inline SVGs
+- Media contact buttons: Broken Lucide icons removed
+
+---
+
+### ROI Calculator Links
+
+- Added to footer across site
+- Added to industries pages with "Learn More" style
+
+---
+
+### Industry Search
+
+#### Features
+- Clear (X) button added to search input
+- "No match" message displays when search has no results
+
+---
+
+### Value-Based Pricing Page (valuebasedpricing.html)
+
+#### Footer
+- Fixed container background
+- Fixed footer background
+
+---
+
+### Design System (styles.css)
+
+#### Typography
+- Section titles: font-weight 400 (regular)
+- All h2 elements: font-weight 400
+- Sora font for headings
+- Inter font for body text
+- Lato font for certain UI elements
+
+#### Buttons
+- Button text: font-weight 400 (regular)
+- Gradient blue buttons: linear-gradient(135deg, #5B9EFF, #4080E0)
+- Solid blue buttons: #2563eb or #325ef6
+- Pill style: border-radius 9999px
+
+#### Colors
+- Primary blue: #4099FF, #5B9EFF, #2563eb, #325ef6
+- Gray text: #6b7280, #4b5563
+- Dark background: #1f2937
+- Light gray: #E5E7EB, #f3f4f6
+
+#### Layout
+- overflow-x: hidden on html/body (prevents horizontal scroll)
+- white-space: nowrap removed (was causing page overflow)
+
+---
+
+### Signup Page (signup.html) - Additional Details
+
+#### Default Plan Summary
+When visiting signup.html directly (without wizard configuration):
+- Shows "Start Your Free Trial" heading
+- "First 10,000 Tokens FREE" badge
+- Benefits list: No credit card required, Cancel anytime, Setup in minutes, 24/7 support, Enterprise-grade security
+- Link to pricing calculator at bottom
+
+#### Pre-fill Support
+- URL parameters: email, phone, firstName, lastName
+- Session storage: verified_email, verified_phone (from OTP verification)
+
+---
+
+## Environment Variables (Vercel)
+
+Required environment variables for production:
+- `NUDGE_API_KEY`: API key for Nudge OTP service
+- `VTIGER_ACCESS_KEY`: VTiger CRM access key
+- `VTIGER_USER`: VTiger username
+- `VTIGER_URL`: VTiger instance URL
+- `KV_URL`: Vercel KV (Upstash) connection URL
+- `KV_REST_API_URL`: Upstash REST API URL
+- `KV_REST_API_TOKEN`: Upstash REST API token
+- `KV_REST_API_READ_ONLY_TOKEN`: Upstash read-only token

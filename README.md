@@ -255,4 +255,115 @@ For each item, “Status” reflects the live code; “Action” is content-only
 - Assets: `Images/` and various per-page folders
 - Pages: see Top-level pages list above
 
+---
+
+## Recent Implementation Changes
+
+### Hero Sections
+- **Homepage**: Gradient background blends from white nav, gradient blue pill button
+- **Nudge page**: Original shape images (not circles), proper headshots, top padding for navbar
+
+### Navigation / Navbar
+- **Top Banner**: Gradient blue banner with webinar announcement + "Register now" button
+- Colored logo (not white) across all pages
+- Calculator page: Fixed invisible logo
+- Consistent logo path
+- **Scroll behavior**: Fixed navbar on all pages, transparent → solid white on scroll
+- `.scrolled` class added via script.js
+- Z-index stays on top of content
+- Signup button: Underline removed
+- All pages should match homepage navbar (banner + nav structure)
+
+### Footer
+- Standard design from index.html used across all pages
+- White logo, dark background (#1f2937)
+- Newsletter button: Solid blue, auto width
+- Product name: "Monay" (not "Money")
+- Social icons: X, Instagram, Facebook, YouTube, LinkedIn
+- Press page footer fixed to match standard
+
+### About Page
+- Updated hero image
+- Redesigned Our Mission & What We Do sections
+- Quote section: White background, light blue italic text, Sora font
+- Section titles: font-weight 400 (regular)
+- Leadership headshots: Bigger, "More" button removed
+- Careers CTA: Redesigned, space-between layout, 2-line heading
+
+### Signup Page
+- Two-column layout
+- No borders/backgrounds on left plan summary
+- Default "Start Your Free Trial" content
+- Pre-fill via URL params and session storage
+- Checkmark circles removed from selection buttons
+
+### Calculator Page
+- **Sliders**: 3px track, blue left/gray right, 20px white thumb with 0.5px blue border
+- **Value label**: Below thumb, arrow points UP, 40px gap
+- **Min/max labels**: Left and right of track
+- **Info sections**: White background, sleek links, no decorative elements
+- **Numbers**: Digital clock rolling animation
+- **Hero**: Badge style, Aave-style horizontal checkmarks, gradient text
+- **Savings card**: White card, gradient border, Sora font regular weight
+- **Results**: Clean, no border/fill (Ramp-style)
+
+### Pricing Page
+- Auto-check card when slider is moved
+
+### Mobile Layout (Ramp-style)
+- Section headings: 28px on mobile
+- Stacked, left-aligned layout
+- Tighter padding
+- Service delivery: Title above text
+
+### Press Page
+- Redesigned to match blog card layout
+- Full images (not cropped)
+- Inter font for press release text
+- Footer matches standard, inline SVGs (no Lucide)
+
+### ROI Calculator Links
+- Added to footer
+- Added to industries pages with "Learn More" style
+
+### Cookie Banner
+- Bottom-left compact design
+- Accept all / Reject all buttons
+- localStorage for storage
+
+### OTP Modal
+- Verify button disabled until 6 digits entered
+- Resend OTP link below input
+- Dev mode: Use code `123456` on localhost
+
+### Industry Search
+- Clear (X) button on search input
+- "No match" message when no results
+
+### Design System
+- Section titles: font-weight 400
+- Sora font for headings, Inter for body
+- Primary blues: #4099FF, #5B9EFF, #2563eb
+- overflow-x: hidden on html/body
+
+---
+
+### Key Files Reference
+| File | Purpose |
+|------|---------|
+| `nudge-otp.js` | OTP verification modal for demo gating |
+| `calculator.html` | ROI calculator with custom sliders |
+| `enhanced-cookie-banner.js` | Cookie consent banner |
+| `simple-cookie-banner.js` | Lightweight alternative cookie banner |
+| `signup.html` | User registration page |
+| `about.html` | Company about page |
+| `press.html` | Press releases page |
+| `valuebasedpricing.html` | Pricing calculator |
+| `/api/nudge/send-otp.js` | Vercel serverless function for OTP |
+| `/api/nudge/verify-otp.js` | Vercel serverless function for verification |
+
+---
+
+For detailed specifications, see `CLAUDE.md`.
+
 If you want, I can open PR-ready edits to standardize the nav, logo, address, and links while keeping the current design intact.
