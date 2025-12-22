@@ -112,13 +112,35 @@
             background: linear-gradient(135deg, #5B9EFF, #4080E0);
             color: #fff;
         }
-        .demo-otp-btn-primary:hover {
+        .demo-otp-btn-primary:hover:not(:disabled) {
             transform: translateY(-1px);
             box-shadow: 0 10px 20px rgba(91, 158, 255, 0.25);
+        }
+        .demo-otp-btn-primary:disabled {
+            background: #94a3b8 !important;
+            cursor: not-allowed;
+            opacity: 1;
+            box-shadow: none !important;
+            transform: none !important;
         }
         .demo-otp-btn-secondary {
             background: #e2e8f0;
             color: #0f172a;
+        }
+        .demo-otp-resend-link {
+            text-align: left;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        .demo-otp-resend-link a {
+            color: #5B9EFF;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .demo-otp-resend-link a:hover {
+            text-decoration: underline;
         }
         .demo-otp-error {
             background: #fee2e2;
@@ -177,6 +199,9 @@
                     <label for="demoOtpCode">Enter OTP</label>
                     <input type="text" id="demoOtpCode" inputmode="numeric" maxlength="6" placeholder="6-digit code">
                 </div>
+                <div class="demo-otp-resend-link" data-resend>
+                    <a href="#" data-action="resend">Resend OTP</a>
+                </div>
                 <div class="demo-otp-actions">
                     <button type="button" class="demo-otp-btn-primary" data-action="send">Send OTP</button>
                     <button type="button" class="demo-otp-btn-primary" data-action="verify" style="display:none;">Verify &amp; continue</button>
@@ -205,6 +230,7 @@
         const sendBtn = overlay.querySelector('[data-action="send"]');
         const verifyBtn = overlay.querySelector('[data-action="verify"]');
         const otpField = overlay.querySelector('[data-input="otp"]');
+        const resendLink = overlay.querySelector('[data-resend]');
 
         emailInput.value = "";
         phoneInput.value = "";
@@ -215,9 +241,11 @@
 
         otpField.style.display = "none";
         verifyBtn.style.display = "none";
+        resendLink.style.display = "none";
         sendBtn.style.display = "block";
         sendBtn.disabled = false;
-        verifyBtn.disabled = false;
+        sendBtn.textContent = "Send OTP";
+        verifyBtn.disabled = true; // Start disabled, enable only when 6 digits entered
 
         document.body.classList.add(LOCK_CLASS);
         overlay.style.display = "flex";
@@ -256,6 +284,7 @@
         const sendBtn = overlay.querySelector('[data-action="send"]');
         const verifyBtn = overlay.querySelector('[data-action="verify"]');
         const otpField = overlay.querySelector('[data-input="otp"]');
+        const resendLink = overlay.querySelector('[data-resend]');
 
         errorEl.style.display = "none";
         successEl.style.display = "none";
@@ -295,7 +324,9 @@
                 successEl.style.display = "block";
 
                 otpField.style.display = "flex";
+                resendLink.style.display = "block";
                 verifyBtn.style.display = "block";
+                verifyBtn.disabled = true; // Start disabled until 6 digits entered
                 sendBtn.style.display = "none";
                 document.getElementById("demoOtpCode").focus();
 
@@ -324,7 +355,10 @@
             successEl.style.display = "block";
 
             otpField.style.display = "flex";
+            resendLink.style.display = "block";
             verifyBtn.style.display = "block";
+            verifyBtn.disabled = true; // Start disabled until 6 digits entered
+            sendBtn.style.display = "none";
             document.getElementById("demoOtpCode").focus();
         } catch (error) {
             const details = error && error.details ? JSON.stringify(error.details) : "";
@@ -332,9 +366,9 @@
                 ? `${error.error}${details ? ` (${details})` : ""}`
                 : "Unable to send OTP right now. Please try again later.";
             errorEl.style.display = "block";
-        } finally {
+            // Re-enable send button on error
             sendBtn.disabled = false;
-            sendBtn.textContent = "Resend OTP";
+        } finally {
             state.sending = false;
         }
     }
@@ -437,7 +471,9 @@
             errorEl.textContent = error.error || "OTP verification failed. Please try again.";
             errorEl.style.display = "block";
         } finally {
-            verifyBtn.disabled = false;
+            // Re-enable button only if 6 digits are entered
+            const otpValue = document.getElementById("demoOtpCode").value.replace(/\D/g, '');
+            verifyBtn.disabled = otpValue.length !== 6;
             verifyBtn.textContent = "Verify & continue";
             state.verifying = false;
         }
@@ -453,9 +489,22 @@
 
         overlay.querySelector('[data-action="send"]').addEventListener("click", sendOtp);
         overlay.querySelector('[data-action="verify"]').addEventListener("click", verifyOtp);
+        overlay.querySelector('[data-action="resend"]').addEventListener("click", (e) => {
+            e.preventDefault();
+            sendOtp();
+        });
         overlay.querySelector('[data-action="cancel"]').addEventListener("click", () => {
             closeModal();
             state.targetUrl = null;
+        });
+
+        // Enable verify button only when 6 digits are entered
+        const otpCodeInput = document.getElementById("demoOtpCode");
+        const verifyBtn = overlay.querySelector('[data-action="verify"]');
+        otpCodeInput.addEventListener("input", () => {
+            const digits = otpCodeInput.value.replace(/\D/g, '');
+            otpCodeInput.value = digits; // Only allow digits
+            verifyBtn.disabled = digits.length !== 6;
         });
 
         overlay.addEventListener("click", event => {
