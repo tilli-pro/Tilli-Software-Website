@@ -116,6 +116,31 @@ export default async function handler(req, res) {
             };
         } else {
             // Email channel (default)
+            const htmlMessage = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+    <div style="background: linear-gradient(135deg, #4169E1, #00BFFF); padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+        <h1 style="color: white; margin: 0; font-size: 24px;">Tilli Demo Verification</h1>
+    </div>
+    <div style="background: #f9fafb; padding: 30px; border-radius: 0 0 8px 8px;">
+        <p style="margin-bottom: 20px;">Hello ${name},</p>
+        <p style="margin-bottom: 20px;">Your Tilli demo verification code is:</p>
+        <div style="background: white; border: 2px solid #4169E1; border-radius: 8px; padding: 20px; text-align: center; margin: 20px 0;">
+            <span style="font-size: 32px; font-weight: bold; letter-spacing: 8px; color: #4169E1;">${otpCode}</span>
+        </div>
+        <p style="margin-bottom: 20px; color: #666;">This code expires in <strong>5 minutes</strong>.</p>
+        ${company ? `<p style="margin-bottom: 20px; color: #666;">Requested by ${company}.</p>` : ''}
+        <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
+        <p style="color: #888; font-size: 14px;">Thank you,<br>The Tilli Team</p>
+    </div>
+</body>
+</html>`;
+
             nudgePayload = {
                 recipientId: recipientId,
                 toEmailAddress: email,
@@ -124,7 +149,7 @@ export default async function handler(req, res) {
                 replyTo: "tilli@nudge.net",
                 template: {
                     subject: "Your Tilli Demo OTP",
-                    bodyHtml: "",
+                    bodyHtml: htmlMessage,
                     bodyPlain: message
                 },
                 channel: 0
