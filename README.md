@@ -335,6 +335,15 @@ For each item, “Status” reflects the live code; “Action” is content-only
 - Verify button disabled until 6 digits entered
 - Resend OTP link below input
 - Dev mode: Use code `123456` on localhost
+- 30-second countdown on Resend OTP (starts only when clicked)
+- Channel switching resets UI to initial state
+
+### Demos Page (demos.html)
+- Interactive product demos for tilliX, Nudge, and tilliPay
+- Demo tabs with margin-top: 134px for fixed header spacing
+- Sticky tabs at top: 134px when scrolling
+- No scroll behavior when switching between demo tabs
+- OTP gate temporarily disabled (will be restored)
 
 ### Industry Search
 - Clear (X) button on search input

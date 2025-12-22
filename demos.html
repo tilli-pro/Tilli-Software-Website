@@ -80,8 +80,9 @@
             background: white;
             border-bottom: 1px solid #e5e7eb;
             padding: 0;
+            margin-top: 134px; /* Account for fixed header: 62px banner + 72px nav */
             position: sticky;
-            top: 80px;
+            top: 134px;
             z-index: 99;
         }
 
@@ -205,7 +206,7 @@
         }
     </style>
 </head>
-<body data-requires-demo-otp="true">
+<body>
     <!-- Header -->
     <header class="header">
         <!-- Top Banner -->
@@ -465,9 +466,6 @@
                 demoSection.classList.add('active');
                 demoSection.style.display = 'block';
             }
-
-            // Scroll to top of demo
-            window.scrollTo({ top: 140, behavior: 'smooth' });
         }
 
         // Toggle between Pre-Login and Post-Login views within tilliX demo

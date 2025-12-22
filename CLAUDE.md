@@ -428,6 +428,46 @@ Some sliders are intentionally linked:
 
 ---
 
+### Demos Page (demos.html)
+
+Interactive product demos showcasing tilliX, Nudge, and tilliPay.
+
+#### Layout
+- Demo tabs bar with product selector (tilliX Portal, Nudge Communications, tilliPay Payments)
+- Content sections for each product demo
+- Pre-Login Portal / Customer Dashboard toggle within tilliX demo
+
+#### Header Spacing
+- Demo tabs have `margin-top: 134px` to account for fixed header (62px banner + 72px nav)
+- Sticky positioning with `top: 134px` when scrolling
+- z-index: 99 to stay below navbar
+
+#### Tab Behavior
+- No scroll behavior when switching between demo tabs
+- Content switches instantly without page movement
+- `showDemo()` function handles tab switching
+
+#### OTP Gating
+- Page can be gated with `data-requires-demo-otp="true"` on body tag
+- Currently DISABLED temporarily for testing
+- When enabled, requires email/SMS OTP verification before viewing demos
+- Uses `data-demo-guard` attribute on content sections
+
+#### CSS Styles (in-page)
+```css
+.demo-tabs {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0;
+    margin-top: 134px;
+    position: sticky;
+    top: 134px;
+    z-index: 99;
+}
+```
+
+---
+
 ### Value-Based Pricing Page (valuebasedpricing.html)
 
 #### Footer
