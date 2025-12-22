@@ -378,9 +378,6 @@
                 sendBtn.style.display = "none";
                 document.getElementById("demoOtpCode").focus();
 
-                // Start 30-second countdown for resend
-                startResendCountdown();
-
                 state.sending = false;
                 return;
             }
@@ -411,9 +408,6 @@
             verifyBtn.disabled = true; // Start disabled until 6 digits entered
             sendBtn.style.display = "none";
             document.getElementById("demoOtpCode").focus();
-
-            // Start 30-second countdown for resend
-            startResendCountdown();
         } catch (error) {
             const details = error && error.details ? JSON.stringify(error.details) : "";
             errorEl.textContent = error.error
@@ -547,6 +541,8 @@
             e.preventDefault();
             // Don't allow resend if countdown is active
             if (state.resendCountdown > 0) return;
+            // Start countdown immediately when resend is clicked
+            startResendCountdown();
             sendOtp();
         });
         overlay.querySelector('[data-action="cancel"]').addEventListener("click", () => {
