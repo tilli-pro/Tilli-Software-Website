@@ -453,6 +453,16 @@
         .testimonial-card:hover > div[style*="background: #f9fafb"] {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
         }
+
+        /* Responsive styles for How is Tilli Different cards */
+        @media (max-width: 768px) {
+            .why-tilli .container > div > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            .why-tilli h2 {
+                font-size: 32px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1769,99 +1779,136 @@
     </section>
 
     <!-- Why Tilli Section -->
-    <section class="why-tilli" id="features">
+    <section class="why-tilli" id="features" style="padding: 80px 0;">
         <div class="container">
-            <h2 class="section-heading" style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 48px; line-height: 1.2; color: #000000;">How is Tilli Different?</h2>
-            <p>Tilli powers financial ecosystems with a unique combination of communication and payments. Built with security and scalability in mind, we help businesses transform their digital experience.</p>
+            <h2 style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 48px; line-height: 1.2; color: #000000; margin-bottom: 12px;">How is Tilli Different?</h2>
+            <p style="color: #6b7280; font-size: 1.125rem; margin-bottom: 60px;">One platform. Unified digital engagement.</p>
 
-            <div class="features-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin: 3rem 0;">
-                <!-- Card 1: OneVendor -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(147, 51, 234, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.15)'; this.style.background='linear-gradient(135deg, rgba(147, 51, 234, 0.08) 0%, rgba(96, 165, 250, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">#OneVendor, end-to-end</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">Tilli unifies Nudge (CPaaS) + tilliX (experience & self-service portal) + tilliPay (payments), so you get outbound comms, digital bill/statement presentation, and payment acceptance in one stack—no multi-vendor projects or glue code.</p>
+            <!-- Feature Cards - Modern Layout -->
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+
+                <!-- Card 1: One Vendor - Image Left, Text Right -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; background: #f8f9fa; border-radius: 20px; overflow: hidden; min-height: 320px;">
+                    <!-- Graphic Side -->
+                    <div style="background: #f1f5f9; padding: 40px; display: flex; align-items: center; justify-content: center;">
+                        <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 380px;">
+                            <!-- Row 1 -->
+                            <div style="display: flex; gap: 8px; align-items: center;">
+                                <div style="width: 180px; height: 32px; background: #0d9488; border-radius: 16px;"></div>
+                                <div style="width: 32px; height: 32px; background: #0d9488; border-radius: 50%;"></div>
+                                <div style="width: 48px; height: 32px; background: #0d9488; border-radius: 16px;"></div>
+                                <div style="width: 48px; height: 32px; background: #14b8a6; border-radius: 16px;"></div>
+                            </div>
+                            <!-- Row 2 -->
+                            <div style="display: flex; gap: 8px; align-items: center; padding-left: 20px;">
+                                <div style="width: 48px; height: 32px; background: #5eead4; border-radius: 16px;"></div>
+                                <div style="width: 120px; height: 32px; background: #0d9488; border-radius: 16px;"></div>
+                                <div style="width: 32px; height: 32px; background: #14b8a6; border-radius: 50%;"></div>
+                                <div style="width: 48px; height: 32px; background: #0d9488; border-radius: 16px;"></div>
+                            </div>
+                            <!-- Row 3 -->
+                            <div style="display: flex; gap: 8px; align-items: center; padding-left: 40px;">
+                                <div style="width: 32px; height: 32px; background: #14b8a6; border-radius: 50%;"></div>
+                                <div style="width: 140px; height: 32px; background: #5eead4; border-radius: 16px;"></div>
+                                <div style="width: 64px; height: 32px; background: #0d9488; border-radius: 16px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text Side -->
+                    <div style="padding: 48px; display: flex; flex-direction: column; justify-content: center;">
+                        <h3 style="font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb;">#OneVendor, End-to-End</h3>
+                        <p style="color: #4b5563; line-height: 1.7; font-size: 1rem; margin-bottom: 24px;">Tilli unifies Nudge (CPaaS) + tilliX (self-service portal) + tilliPay (payments) in one stack. No multi-vendor projects or glue code needed.</p>
+                        <a href="about.html" style="color: #1a1a1a; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.95rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 2px; width: fit-content;">Learn More <span style="transition: transform 0.2s;">→</span></a>
                     </div>
                 </div>
 
-                <!-- Card 2: Deep ERP/CIS integrations -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(139, 92, 246, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.15)'; this.style.background='linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(59, 130, 246, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(236, 72, 153, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">Deep ERP/CIS integrations, out of the box</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">Prebuilt connectors for SAP, Oracle, and leading CIS platforms plus event/webhook adapters slash integration effort. Data models and ID mapping are standardized so deployments plug into existing billing, CRM, and collections with minimal IT lift.</p>
+                <!-- Card 2: Integrations - Text Left, Image Right -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; background: #f8f9fa; border-radius: 20px; overflow: hidden; min-height: 320px;">
+                    <!-- Text Side -->
+                    <div style="padding: 48px; display: flex; flex-direction: column; justify-content: center;">
+                        <h3 style="font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb;">Deep ERP/CIS Integrations</h3>
+                        <p style="color: #4b5563; line-height: 1.7; font-size: 1rem; margin-bottom: 24px;">Prebuilt connectors for SAP, Oracle, and leading CIS platforms. Standardized data models plug into existing billing, CRM, and collections with minimal IT lift.</p>
+                        <a href="developer.html" style="color: #1a1a1a; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.95rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 2px; width: fit-content;">Learn More <span style="transition: transform 0.2s;">→</span></a>
+                    </div>
+                    <!-- Graphic Side - Pyramid of circles -->
+                    <div style="background: #f1f5f9; padding: 40px; display: flex; align-items: center; justify-content: center;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <!-- Row 1: 1 circle -->
+                            <div style="display: flex; gap: 8px;">
+                                <div style="width: 40px; height: 40px; background: #0d9488; border-radius: 50%;"></div>
+                            </div>
+                            <!-- Row 2: 2 circles -->
+                            <div style="display: flex; gap: 8px;">
+                                <div style="width: 40px; height: 40px; background: #14b8a6; border-radius: 50%;"></div>
+                                <div style="width: 40px; height: 40px; background: #0d9488; border-radius: 50%;"></div>
+                            </div>
+                            <!-- Row 3: 3 circles -->
+                            <div style="display: flex; gap: 8px;">
+                                <div style="width: 40px; height: 40px; background: #0d9488; border-radius: 50%;"></div>
+                                <div style="width: 40px; height: 40px; background: #5eead4; border-radius: 50%;"></div>
+                                <div style="width: 40px; height: 40px; background: #14b8a6; border-radius: 50%;"></div>
+                            </div>
+                            <!-- Row 4: 4 circles -->
+                            <div style="display: flex; gap: 8px;">
+                                <div style="width: 40px; height: 40px; background: #14b8a6; border-radius: 50%;"></div>
+                                <div style="width: 40px; height: 40px; background: #0d9488; border-radius: 50%;"></div>
+                                <div style="width: 40px; height: 40px; background: #0d9488; border-radius: 50%;"></div>
+                                <div style="width: 40px; height: 40px; background: #5eead4; border-radius: 50%;"></div>
+                            </div>
+                            <!-- Row 5: 5 circles -->
+                            <div style="display: flex; gap: 8px;">
+                                <div style="width: 40px; height: 40px; background: #0d9488; border-radius: 50%;"></div>
+                                <div style="width: 40px; height: 40px; background: #5eead4; border-radius: 50%;"></div>
+                                <div style="width: 40px; height: 40px; background: #14b8a6; border-radius: 50%;"></div>
+                                <div style="width: 40px; height: 40px; background: #0d9488; border-radius: 50%;"></div>
+                                <div style="width: 40px; height: 40px; background: #14b8a6; border-radius: 50%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Card 3: Invoice-first journeys -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(167, 139, 250, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(167, 139, 250, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(139, 92, 246, 0.15)'; this.style.background='linear-gradient(135deg, rgba(167, 139, 250, 0.08) 0%, rgba(96, 165, 250, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(167, 139, 250, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">"Invoice-first" journeys with 100s of packaged use cases</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">From eBill, autopay, reminders, and collections to claims, renewals, move-in/move-out, outages, and policy updates—ready-made templates let teams launch quickly and tailor flows without re-inventing the wheel.</p>
+                <!-- Card 3: Enterprise Security - Image Left, Text Right -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; background: #f8f9fa; border-radius: 20px; overflow: hidden; min-height: 320px;">
+                    <!-- Graphic Side - Shield pattern -->
+                    <div style="background: #f1f5f9; padding: 40px; display: flex; align-items: center; justify-content: center;">
+                        <div style="position: relative; width: 200px; height: 200px;">
+                            <!-- Shield outline -->
+                            <svg viewBox="0 0 100 120" style="width: 100%; height: 100%;">
+                                <path d="M50 10 L90 30 L90 70 Q90 100 50 115 Q10 100 10 70 L10 30 Z" fill="none" stroke="#0d9488" stroke-width="3"/>
+                                <path d="M50 25 L75 40 L75 65 Q75 85 50 95 Q25 85 25 65 L25 40 Z" fill="#14b8a6" opacity="0.3"/>
+                                <circle cx="50" cy="60" r="15" fill="#0d9488"/>
+                                <path d="M43 60 L48 65 L58 55" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Text Side -->
+                    <div style="padding: 48px; display: flex; flex-direction: column; justify-content: center;">
+                        <h3 style="font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb;">Enterprise-Grade Security</h3>
+                        <p style="color: #4b5563; line-height: 1.7; font-size: 1rem; margin-bottom: 24px;">Built-in consent management, role-based access, and audit trails. PCI/SOC/ISO compliant with HIPAA-supporting deployments available.</p>
+                        <a href="about.html" style="color: #1a1a1a; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.95rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 2px; width: fit-content;">Learn More <span style="transition: transform 0.2s;">→</span></a>
                     </div>
                 </div>
 
-                <!-- Card 4: Low-code rules -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(99, 102, 241, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.15)'; this.style.background='linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(59, 130, 246, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">Low-code rules ≫ fast customization</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">tilliX ships a low-code Business Rule Framework for eligibility, fees, waivers, dunning steps, payment options, and channel logic. Pair it with Nudge segmentation, real-time triggers, and A/B testing to optimize outcomes continually.</p>
+                <!-- Card 4: Fast ROI - Text Left, Image Right -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; background: #f8f9fa; border-radius: 20px; overflow: hidden; min-height: 320px;">
+                    <!-- Text Side -->
+                    <div style="padding: 48px; display: flex; flex-direction: column; justify-content: center;">
+                        <h3 style="font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb;">Fast Time-to-Value</h3>
+                        <p style="color: #4b5563; line-height: 1.7; font-size: 1rem; margin-bottom: 24px;">Launch pilots in days, not months. Cut paper/postage costs while boosting self-service completion and on-time payments—tracked with built-in ROI dashboards.</p>
+                        <a href="calculator.html" style="color: #1a1a1a; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.95rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 2px; width: fit-content;">Calculate Savings <span style="transition: transform 0.2s;">→</span></a>
+                    </div>
+                    <!-- Graphic Side - Chart bars -->
+                    <div style="background: #f1f5f9; padding: 40px; display: flex; align-items: flex-end; justify-content: center;">
+                        <div style="display: flex; align-items: flex-end; gap: 16px; height: 180px;">
+                            <div style="width: 40px; height: 60px; background: #5eead4; border-radius: 8px 8px 0 0;"></div>
+                            <div style="width: 40px; height: 100px; background: #14b8a6; border-radius: 8px 8px 0 0;"></div>
+                            <div style="width: 40px; height: 80px; background: #0d9488; border-radius: 8px 8px 0 0;"></div>
+                            <div style="width: 40px; height: 140px; background: #0d9488; border-radius: 8px 8px 0 0;"></div>
+                            <div style="width: 40px; height: 180px; background: linear-gradient(180deg, #0d9488 0%, #14b8a6 100%); border-radius: 8px 8px 0 0;"></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Card 5: Fast time-to-value -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, rgba(79, 70, 229, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(124, 58, 237, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(124, 58, 237, 0.15)'; this.style.background='linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(79, 70, 229, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, rgba(79, 70, 229, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">Fast time-to-value, measurable savings</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">Spin up pilots in days/weeks (not months). Digitize mail-heavy workflows to cut paper/postage and inbound call volume, while boosting self-service completion and on-time payments—tracked with built-in ROI dashboards.</p>
-                    </div>
-                </div>
-
-                <!-- Card 6: Enterprise-grade compliance -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(79, 70, 229, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(79, 70, 229, 0.15)'; this.style.background='linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(59, 130, 246, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">Enterprise-grade compliance, accessibility, and control</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">Built-in consent/opt-out, role-based access, audit trails, and WCAG-friendly templates. Designed for enterprise security and compliance (PCI/SOC/ISO posture) with HIPAA-supporting deployments when required—plus observability across channels, templates, and payment outcomes.</p>
-                    </div>
-                </div>
-
-                <!-- Card 7: Assured adoption -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(59, 130, 246, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(59, 130, 246, 0.15)'; this.style.background='linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(96, 165, 250, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">Assured adoption: paperless • checkless • cardless</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">Tilli makes digital the default. Nudge + tilliX drive opt-in with one-tap eBill enrollment, QR-to-pay, and multi-channel nudges (email/SMS/WhatsApp) while tilliPay supports stored payment tokens and wallet rails—so paper invoices, paper checks, and plastic cards naturally phase out. Built-in A/B testing and segmentation keep pushing adoption until paper is statistically negligible.</p>
-                    </div>
-                </div>
-
-                <!-- Card 8: Structural cost takeout -->
-                <div class="feature-card" style="position: relative; background: linear-gradient(135deg, rgba(96, 165, 250, 0.05) 0%, rgba(147, 51, 234, 0.03) 100%); border-radius: 16px; padding: 2rem; border: 1px solid rgba(96, 165, 250, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(96, 165, 250, 0.15)'; this.style.background='linear-gradient(135deg, rgba(96, 165, 250, 0.08) 0%, rgba(147, 51, 234, 0.05) 100%)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, rgba(96, 165, 250, 0.05) 0%, rgba(147, 51, 234, 0.03) 100%)'">
-                    <div style="position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(96, 165, 250, 0.15), transparent); border-radius: 0 16px 0 0;"></div>
-                    <div style="position: relative; z-index: 1;">
-                        <h3 style="color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600;">Structural cost takeout with real analytics</h3>
-                        <p style="color: #4b5563; line-height: 1.6;">Out-of-the-box journeys and low-code rules automate collections, payment plans, reminders, disputes, and exceptions, slashing call-center volume, postage/printing, manual reporting, and reconciliation effort. Centralized reporting & analytics track eBill enrollment lift, agreement uptake, payment success, and IVR/web containment—turning operational efficiency and ROI into visible, provable metrics.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
