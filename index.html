@@ -715,101 +715,143 @@
         </div>
     </section>
 
-    <!-- Client Testimonials -->
-    <section class="testimonials" style="background: #FFFFFF !important; background-color: #FFFFFF !important; padding: 4rem 0;">
-        <div class="container">
-            <h2 class="section-heading" style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 48px; line-height: 1.2; color: #000000; text-align: center; margin-bottom: 2rem;">Trusted by Industry Leaders</h2>
-            <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto;">
+    <!-- Client Testimonials - Aave Style -->
+    <section class="testimonials-aave" style="background: #f8f9fa; padding: 5rem 0;">
+        <style>
+            .testimonials-aave {
+                background: #f8f9fa;
+            }
+            .aave-testimonial-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+            .aave-testimonial-card {
+                background: white;
+                border-radius: 16px;
+                padding: 2.5rem;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-height: 320px;
+            }
+            .aave-quote {
+                font-family: 'Inter', sans-serif;
+                font-size: 1.0625rem;
+                line-height: 1.7;
+                color: #1f2937;
+                margin-bottom: 2rem;
+                flex-grow: 1;
+            }
+            .aave-author {
+                margin-top: auto;
+            }
+            .aave-author-name {
+                font-family: 'Sora', sans-serif;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #000000;
+                margin-bottom: 0.25rem;
+            }
+            .aave-author-title {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.875rem;
+                color: #6b7280;
+                margin-bottom: 1rem;
+            }
+            .aave-logo {
+                height: 28px;
+                width: auto;
+                opacity: 0.8;
+            }
+            .aave-carousel-dots {
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-top: 3rem;
+            }
+            .aave-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #d1d5db;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+            .aave-dot.active {
+                background: #6366f1;
+            }
+            @media (max-width: 768px) {
+                .aave-testimonial-grid {
+                    grid-template-columns: 1fr;
+                    padding: 0 1rem;
+                }
+                .aave-testimonial-card {
+                    padding: 1.75rem;
+                    min-height: auto;
+                }
+                .aave-quote {
+                    font-size: 1rem;
+                }
+            }
+        </style>
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <h2 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 48px; line-height: 1.2; color: #000000; text-align: center; margin-bottom: 3rem;">Trusted by Industry Leaders</h2>
 
+            <div class="aave-testimonial-grid">
                 <!-- Con Edison Testimonial -->
-                <div class="testimonial-card" style="background: white; border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e5e7eb;">
-                    <div style="padding: 1.5rem; background: white;">
-                        <!-- Logo -->
-                        <div style="margin-bottom: 1rem; height: 36px; display: flex; align-items: center;">
-                            <img src="Images/consolidated-edison-logo.png" alt="Con Edison" style="height: 32px; width: auto;">
-                        </div>
-
-                        <!-- Industry -->
-                        <h3 style="font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 400; color: #000000; margin-bottom: 0.75rem;">Energy & Utilities</h3>
-
-                        <!-- Quote -->
-                        <p style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; color: #374151; line-height: 1.5; margin-bottom: 1rem;">
-                            "Tilli's Nudge platform deployed in record time, saving weeks of effort while delivering unmatched value compared to other providers. Our customers love the improved experience, with 99.38% delivery rates and exceptional engagement from day one."
-                        </p>
-
-                        <!-- Stats - Horizontal -->
-                        <div style="display: flex; gap: 1.5rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;">
-                            <div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 1.125rem; font-weight: 600; color: #000000;">Weeks</div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #6b7280;">Deployment Time Saved</div>
-                            </div>
-                            <div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 1.125rem; font-weight: 600; color: #000000;">99.38%</div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #6b7280;">Delivery Rate</div>
-                            </div>
-                        </div>
+                <div class="aave-testimonial-card">
+                    <p class="aave-quote">"Tilli's Nudge platform deployed in record time, saving weeks of effort while delivering unmatched value compared to other providers. Our customers love the improved experience, with 99.38% delivery rates and exceptional engagement from day one."</p>
+                    <div class="aave-author">
+                        <div class="aave-author-name">Energy & Utilities</div>
+                        <div class="aave-author-title">99.38% Delivery Rate • Weeks of Deployment Time Saved</div>
+                        <img src="Images/consolidated-edison-logo.png" alt="Con Edison" class="aave-logo">
                     </div>
                 </div>
 
                 <!-- Howard County MD Testimonial -->
-                <div class="testimonial-card" style="background: white; border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e5e7eb;">
-                    <div style="padding: 1.5rem; background: white;">
-                        <!-- Logo -->
-                        <div style="margin-bottom: 1rem; height: 36px; display: flex; align-items: center;">
-                            <img src="Images/howard-county-logo-new.png?v=3" alt="Howard County MD" style="height: 32px; width: auto;">
-                        </div>
-
-                        <!-- Industry -->
-                        <h3 style="font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 400; color: #000000; margin-bottom: 0.75rem;">Government Services</h3>
-
-                        <!-- Quote -->
-                        <p style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; color: #374151; line-height: 1.5; margin-bottom: 1rem;">
-                            "Partnering with Tilli since 2010, we won the 2019 NACo Award for Innovation for best Utility Billing Mobile Application. Their solutions have streamlined our billing, reduced costs significantly, and driven exceptional digital adoption for our community."
-                        </p>
-
-                        <!-- Stats - Horizontal -->
-                        <div style="display: flex; gap: 1.5rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;">
-                            <div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 1.125rem; font-weight: 600; color: #000000;">2019</div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #6b7280;">NACo Innovation Award</div>
-                            </div>
-                            <div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 1.125rem; font-weight: 600; color: #000000;">14+ Years</div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #6b7280;">Partnership</div>
-                            </div>
-                        </div>
+                <div class="aave-testimonial-card">
+                    <p class="aave-quote">"Partnering with Tilli since 2010, we won the 2019 NACo Award for Innovation for best Utility Billing Mobile Application. Their solutions have streamlined our billing, reduced costs significantly, and driven exceptional digital adoption for our community."</p>
+                    <div class="aave-author">
+                        <div class="aave-author-name">Government Services</div>
+                        <div class="aave-author-title">2019 NACo Innovation Award • 14+ Years Partnership</div>
+                        <img src="Images/howard-county-logo-new.png?v=3" alt="Howard County MD" class="aave-logo">
                     </div>
                 </div>
 
                 <!-- Washington Gas Testimonial -->
-                <div class="testimonial-card" style="background: white; border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e5e7eb;">
-                    <div style="padding: 1.5rem; background: white;">
-                        <!-- Logo -->
-                        <div style="margin-bottom: 1rem; height: 36px; display: flex; align-items: center;">
-                            <img src="Images/washington-gas-logo-new.png?v=3" alt="Washington Gas" style="height: 32px; width: auto;">
-                        </div>
-
-                        <!-- Industry -->
-                        <h3 style="font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 400; color: #000000; margin-bottom: 0.75rem;">Utilities</h3>
-
-                        <!-- Quote -->
-                        <p style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; color: #374151; line-height: 1.5; margin-bottom: 1rem;">
-                            "Tilli transformed our customer engagement with 72% eBill open rates and 200% growth in IP enrollments. Nudge accelerated payments by 42% within 10 days, reducing bad debt while cutting costs and delivering an exceptional customer experience."
-                        </p>
-
-                        <!-- Stats - Horizontal -->
-                        <div style="display: flex; gap: 1.5rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;">
-                            <div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 1.125rem; font-weight: 600; color: #000000;">72%</div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #6b7280;">eBill Open Rate</div>
-                            </div>
-                            <div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 1.125rem; font-weight: 600; color: #000000;">200%</div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #6b7280;">IP Enrollment Growth</div>
-                            </div>
-                        </div>
+                <div class="aave-testimonial-card">
+                    <p class="aave-quote">"Tilli transformed our customer engagement with 72% eBill open rates and 200% growth in IP enrollments. Nudge accelerated payments by 42% within 10 days, reducing bad debt while cutting costs and delivering an exceptional customer experience."</p>
+                    <div class="aave-author">
+                        <div class="aave-author-name">Utilities</div>
+                        <div class="aave-author-title">72% eBill Open Rate • 200% IP Enrollment Growth</div>
+                        <img src="Images/washington-gas-logo-new.png?v=3" alt="Washington Gas" class="aave-logo">
                     </div>
                 </div>
+
+                <!-- Additional card slot for balance -->
+                <div class="aave-testimonial-card" style="background: linear-gradient(135deg, #f8f9fa 0%, #f3f4f6 100%); border: 1px dashed #d1d5db;">
+                    <p class="aave-quote" style="color: #6b7280;">"Join the growing number of industry leaders who trust Tilli to transform their customer engagement and payment experiences."</p>
+                    <div class="aave-author">
+                        <div class="aave-author-name" style="color: #6b7280;">Your Success Story</div>
+                        <div class="aave-author-title">Could be next</div>
+                        <a href="signup.html" style="display: inline-flex; align-items: center; gap: 6px; color: #6366f1; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-top: 0.5rem;">
+                            Get Started <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Dots -->
+            <div class="aave-carousel-dots">
+                <div class="aave-dot active"></div>
+                <div class="aave-dot"></div>
+                <div class="aave-dot"></div>
+                <div class="aave-dot"></div>
+                <div class="aave-dot"></div>
             </div>
         </div>
     </section>
@@ -837,6 +879,338 @@
                         View Products <span style="font-size: 16px;">→</span>
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform-Wide Capabilities Section -->
+    <section style="padding: 6rem 0; background: #FFFFFF;">
+        <div class="container">
+            <div class="platform-capabilities" style="background: #FFFFFF; text-align: center;">
+                    <h3 class="section-heading" style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 48px; line-height: 1.2; color: #000000; margin-bottom: 1.5rem;">Platform-Wide Capabilities</h3>
+                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; text-align: center;">
+                        <div style="padding: 1rem; flex: 0 1 250px;">
+                            <h4 style="color: #6366f1; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #6366f1;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                Enterprise Compliance
+                            </h4>
+                            <p style="color: #6b7280; font-size: 0.95rem;">PCI DSS, SOC 2 Type II, and HIPAA certified across all products</p>
+                        </div>
+                        <div style="padding: 1rem; flex: 0 1 250px;">
+                            <h4 style="color: #7c3aed; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #7c3aed;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                Cost Savings & ROI
+                            </h4>
+                            <p style="color: #6b7280; font-size: 0.95rem;">40% reduction in billing costs, 3X faster payments</p>
+                        </div>
+                        <div style="padding: 1rem; flex: 0 1 250px;">
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #8b5cf6;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                240+ Integrations
+                            </h4>
+                            <p style="color: #6b7280; font-size: 0.95rem;">Connect with existing CRMs, ERPs, and billing systems</p>
+                        </div>
+                        <div style="padding: 1rem; flex: 0 1 250px;">
+                            <h4 style="color: #a78bfa; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #a78bfa;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke-width="2"/><circle cx="12" cy="12" r="6" stroke-width="2"/><circle cx="12" cy="12" r="2" stroke-width="2"/></svg>
+                                Data-Driven Personalization
+                            </h4>
+                            <p style="color: #6b7280; font-size: 0.95rem;">AI-powered insights for targeted customer engagement</p>
+                        </div>
+                        <div style="padding: 1rem; flex: 0 1 250px;">
+                            <h4 style="color: #6366f1; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #6366f1;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                                Proven Outcomes
+                            </h4>
+                            <p style="color: #6b7280; font-size: 0.95rem;">72% eBill open rates, 200% enrollment growth</p>
+                        </div>
+                        <div style="padding: 1rem; flex: 0 1 250px;">
+                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #3b82f6;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                Rapid Deployment
+                            </h4>
+                            <p style="color: #6b7280; font-size: 0.95rem;">Go live in days, not months with low-code configuration</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- Industries Grid Section -->
+    <section class="industries-grid-section" style="padding: 4rem 0; background: #FFFFFF;">
+        <style>
+            /* Industries Grid Styles */
+            .industries-products-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+            @media (max-width: 1024px) {
+                .industries-products-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            @media (max-width: 768px) {
+                .industries-products-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .industries-product-card {
+                position: relative;
+                background: linear-gradient(135deg, rgba(253, 253, 253, 0.5) 0%, rgba(252, 252, 252, 0.5) 100%);
+                backdrop-filter: blur(10px);
+                padding: 1.5rem;
+                border-radius: 8px;
+                border: 1px solid #e5e7eb;
+                text-align: left;
+                transition: all 0.3s ease;
+            }
+            .industries-product-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0px 12px 56px rgba(6, 28, 61, 0.12);
+            }
+            .industries-product-card.with-image {
+                display: flex;
+                flex-direction: column;
+            }
+            .industries-industry-image {
+                margin: 1rem 0;
+                height: 150px;
+                border-radius: 6px;
+                overflow: hidden;
+            }
+            .industries-industry-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+            .industries-industry-tag {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                background: #FFFFFF;
+                color: #A6A6A6;
+                border: 1px solid rgba(166, 166, 166, 0.5);
+                font-size: 0.75rem;
+                font-weight: 500;
+                padding: 0.25rem 0.75rem;
+                border-radius: 12px;
+                margin-bottom: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+            .industries-industry-tag .tag-icon {
+                width: 16px;
+                height: 16px;
+                object-fit: contain;
+            }
+            .industries-card-banner {
+                background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+                color: white;
+                padding: 9px 42px;
+                border-radius: 8px 8px 0 0;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.875rem;
+                font-weight: 400;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                position: absolute;
+                z-index: 20;
+                gap: 0.5rem;
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+                white-space: nowrap;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) translateY(-100%);
+                text-decoration: none;
+            }
+            .industries-product-card:hover .industries-card-banner {
+                display: flex;
+            }
+            .industries-card-banner:hover span {
+                text-decoration: underline;
+            }
+            .industries-product-card h3 {
+                color: #1f2937;
+                margin-bottom: 0.75rem;
+                font-size: 1.25rem;
+                font-family: 'Sora', sans-serif;
+                font-weight: 400;
+            }
+            .industries-product-card p {
+                color: #4b5563;
+                line-height: 1.5;
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+                font-family: 'Inter', sans-serif;
+            }
+        </style>
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <p style="font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #6B7280; margin-bottom: 1rem;">INDUSTRIES WE SERVE</p>
+                <h2 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 36px; color: #000000;">Smarter Solutions for Every Industry</h2>
+            </div>
+            <div class="industries-products-grid">
+                <div class="industries-product-card">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Banking and Finance.png" alt="Banking" class="tag-icon">
+                        Finance and Business Services
+                    </div>
+                    <h3>Banking and Finance</h3>
+                    <p>Power secure, scalable payment experiences for banks and financial institutions. Automate compliance, reduce friction, and deliver seamless customer journeys across every channel.</p>
+                </div>
+                <div class="industries-product-card">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Saas Billing.png" alt="SaaS Billing" class="tag-icon">
+                        Software as a Service
+                    </div>
+                    <h3>SaaS Billing</h3>
+                    <p>Recurring payment plans and communication methods are easily scaled for any type of billing, including billing for your SaaS company.</p>
+                </div>
+                <div class="industries-product-card with-image">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Utilities.png" alt="Utilities" class="tag-icon">
+                        Energy and Infrastructure
+                    </div>
+                    <h3>Utilities</h3>
+                    <p>Talk to customers and collect payments faster. Our two-way platform helps utilities upgrade legacy systems and manage billing and communication in one simple place—without the complexity.</p>
+                    <div class="industries-industry-image">
+                        <img src="Industries Home page/Figma/UTILITIES.jpg" alt="Utilities">
+                    </div>
+                </div>
+                <div class="industries-product-card with-image">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Usage-Based Subscriptions.png" alt="Usage-Based Subscriptions" class="tag-icon">
+                        Finance and Business Services
+                    </div>
+                    <h3>Usage-Based Subscriptions</h3>
+                    <p>Easily send payment requests and subscription bills via SMS, email, or push—built for small online businesses with recurring payments.</p>
+                    <div class="industries-industry-image">
+                        <img src="Industries Home page/Figma/SUBSCRIPTION-01.jpg" alt="Subscriptions">
+                    </div>
+                </div>
+                <div class="industries-product-card">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Rentals and Leases.png" alt="Rentals and Leases" class="tag-icon">
+                        Property Management
+                    </div>
+                    <h3>Rentals and Leases</h3>
+                    <p>Create landing pages for your tenants to pay quickly through a portal online at little cost to you so you can get paid on time with no stress.</p>
+                </div>
+                <div class="industries-product-card">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Insurance.png" alt="Insurance" class="tag-icon">
+                        Financial Services
+                    </div>
+                    <h3>Insurance</h3>
+                    <p>Recurring payments, paperless billing, and scalable communications on our platform keep your customers informed and engaged with monthly updates and more.</p>
+                </div>
+                <div class="industries-product-card with-image">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Public Sector.png" alt="Public Sector" class="tag-icon">
+                        Government Services
+                    </div>
+                    <h3>Public Sector</h3>
+                    <p>Seamlessly bring your customer communications online. Effortlessly integrate with legacy systems and migrate data for smooth transitions and better conversations. Meet your customers where they are on the channels they prefer.</p>
+                    <div class="industries-industry-image">
+                        <img src="Industries Home page/Figma/PUBLIC SECTOR.jpg" alt="Public Sector">
+                    </div>
+                </div>
+                <div class="industries-product-card">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Information Technology.png" alt="Information Technology" class="tag-icon">
+                        Technology Services
+                    </div>
+                    <h3>Information Technology</h3>
+                    <p>Our ERP-integrated system makes set-up simple and seamless to bring communication outside the confines of your internal systems. Reduce time to deploy, scale with the cloud, and save on costs using our plug-and-play communication cloud.</p>
+                </div>
+                <div class="industries-product-card">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Telecommunications.png" alt="Telecommunications" class="tag-icon">
+                        Communications
+                    </div>
+                    <h3>Telecommunications</h3>
+                    <p>Streamline your telecommunications business with multiple communication services at costs that don't make your head spin. Our scalable system allows for instant reach, easily customizable messaging, and simple launch steps, so you're saving time while keeping customers smiling.</p>
+                </div>
+                <div class="industries-product-card">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Education.png" alt="Education" class="tag-icon">
+                        Education
+                    </div>
+                    <h3>Education and Universities</h3>
+                    <p>Keep students engaged and informed with vast communication channels via SMS, WhatsApp, IVR, smart speakers, and more.</p>
+                </div>
+                <div class="industries-product-card">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Memberships.png" alt="Memberships" class="tag-icon">
+                        Subscription Services
+                    </div>
+                    <h3>Memberships</h3>
+                    <p>Customizable smart pages allow easy enrollment and payment gateways for people in your group, club, subscription company, and more.</p>
+                </div>
+                <div class="industries-product-card">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Gaming Developers.png" alt="Gaming Developers" class="tag-icon">
+                        Gaming and Entertainment
+                    </div>
+                    <h3>Gaming Developers</h3>
+                    <p>Seamlessly set up a subscription payment option. Making platform enrollment a breeze for your gaming platform participants with our powerful and adaptable smart pages for multiple channels.</p>
+                </div>
+                <div class="industries-product-card">
+                    <a href="calculator.html" class="industries-card-banner">
+                        <span>View how much you save →</span>
+                    </a>
+                    <div class="industries-industry-tag">
+                        <img src="Industries Home page/Figma/Media and Entertainment.png" alt="Media and Entertainment" class="tag-icon">
+                        Media and Entertainment
+                    </div>
+                    <h3>Media and Entertainment</h3>
+                    <p>Seamlessly set up subscription payment options. Make platform enrollment a breeze for your media platform participants with our powerful and adaptable smart pages for multiple channels.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="industries.html" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%); color: #FFFFFF; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; transition: all 0.3s ease;">
+                    View All Industries <span style="font-size: 16px;">→</span>
+                </a>
             </div>
         </div>
     </section>
@@ -1389,59 +1763,6 @@
                 </div>
 
             </div>
-        </div>
-    </section>
-
-    <!-- Platform-Wide Capabilities Section -->
-    <section style="padding: 6rem 0; background: #FFFFFF;">
-        <div class="container">
-            <div class="platform-capabilities" style="background: #FFFFFF; text-align: center;">
-                    <h3 class="section-heading" style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 48px; line-height: 1.2; color: #000000; margin-bottom: 1.5rem;">Platform-Wide Capabilities</h3>
-                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; text-align: center;">
-                        <div style="padding: 1rem; flex: 0 1 250px;">
-                            <h4 style="color: #6366f1; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #6366f1;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                                Enterprise Compliance
-                            </h4>
-                            <p style="color: #6b7280; font-size: 0.95rem;">PCI DSS, SOC 2 Type II, and HIPAA certified across all products</p>
-                        </div>
-                        <div style="padding: 1rem; flex: 0 1 250px;">
-                            <h4 style="color: #7c3aed; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #7c3aed;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                                Cost Savings & ROI
-                            </h4>
-                            <p style="color: #6b7280; font-size: 0.95rem;">40% reduction in billing costs, 3X faster payments</p>
-                        </div>
-                        <div style="padding: 1rem; flex: 0 1 250px;">
-                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #8b5cf6;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                240+ Integrations
-                            </h4>
-                            <p style="color: #6b7280; font-size: 0.95rem;">Connect with existing CRMs, ERPs, and billing systems</p>
-                        </div>
-                        <div style="padding: 1rem; flex: 0 1 250px;">
-                            <h4 style="color: #a78bfa; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #a78bfa;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke-width="2"/><circle cx="12" cy="12" r="6" stroke-width="2"/><circle cx="12" cy="12" r="2" stroke-width="2"/></svg>
-                                Data-Driven Personalization
-                            </h4>
-                            <p style="color: #6b7280; font-size: 0.95rem;">AI-powered insights for targeted customer engagement</p>
-                        </div>
-                        <div style="padding: 1rem; flex: 0 1 250px;">
-                            <h4 style="color: #6366f1; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #6366f1;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                                Proven Outcomes
-                            </h4>
-                            <p style="color: #6b7280; font-size: 0.95rem;">72% eBill open rates, 200% enrollment growth</p>
-                        </div>
-                        <div style="padding: 1rem; flex: 0 1 250px;">
-                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
-                                <svg class="icon-inline" style="margin-right: 0.5rem; color: #3b82f6;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                                Rapid Deployment
-                            </h4>
-                            <p style="color: #6b7280; font-size: 0.95rem;">Go live in days, not months with low-code configuration</p>
-                        </div>
-                    </div>
-                </div>
         </div>
     </section>
 
