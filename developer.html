@@ -83,6 +83,150 @@
         #cc-main .cc-toggle { background: #e2e8f0 !important; }
         #cc-main .cc-toggle:checked ~ .cc-toggle__slider { background: #325ef6 !important; }
         #cc-main.cc-window.cc-banner { padding: 1.5rem !important; box-shadow: 0 -4px 20px rgba(0,0,0,0.1) !important; }
+
+        /* Developer Page Design System Overrides */
+        .developer-hero .hero-title-centered {
+            font-family: 'Sora', sans-serif;
+            font-weight: 400;
+            font-size: 3.5rem;
+            color: #1e293b;
+            line-height: 1.1;
+        }
+        .developer-hero .hero-subtitle-centered {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.125rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+        .developer-hero .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(50, 94, 246, 0.1);
+            color: #325ef6;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        .section-header h2,
+        .building-blocks h2,
+        .key-features h2,
+        .helpful-links h3 {
+            font-family: 'Sora', sans-serif !important;
+            font-weight: 400 !important;
+            font-size: 2.5rem !important;
+            color: #1e293b !important;
+        }
+        .section-header p {
+            font-family: 'Inter', sans-serif;
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .why-choose-card h3,
+        .access-card h3,
+        .feature-card-large h3,
+        .links-section h3 {
+            font-family: 'Sora', sans-serif !important;
+            font-weight: 400 !important;
+            font-size: 1.25rem !important;
+            color: #1e293b !important;
+        }
+        .why-choose-card p,
+        .access-card p,
+        .feature-card-large p {
+            font-family: 'Inter', sans-serif;
+            color: #6b7280;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+        /* Link styling to match design system */
+        .access-links li a,
+        .links-list li a {
+            font-family: 'Inter', sans-serif;
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.9375rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+        }
+        .access-links li a:hover,
+        .links-list li a:hover {
+            color: #325ef6;
+        }
+        .access-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #325ef6;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+        .access-cta:hover {
+            color: #2a4fd4;
+        }
+        /* Button styling */
+        .btn-primary-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #5B9EFF, #4080E0);
+            color: white;
+            padding: 0.875rem 1.75rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+        .btn-primary-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(91, 158, 255, 0.4);
+        }
+        .btn-secondary-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: #1e293b;
+            padding: 0.875rem 1.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            transition: all 0.2s ease;
+        }
+        .btn-secondary-large:hover {
+            border-color: #325ef6;
+            color: #325ef6;
+        }
+        /* Card icon styling */
+        .card-icon,
+        .access-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(50, 94, 246, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #325ef6;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -126,15 +270,15 @@
                 <div class="hero-content-centered">
                     <div class="hero-text-centered">
                         <div class="hero-badge">
-                            <i class="fas fa-code"></i>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                             <span>Developer Resources</span>
                         </div>
                         <h1 class="hero-title-centered">Build with <span class="highlight-blue">tilli</span></h1>
                         <p class="hero-subtitle-centered">The tools you need to integrate billing, payments, and messaging—fast.</p>
-                        
+
                         <div class="hero-buttons-centered">
-                            <a href="#quick-start" class="btn-primary-large">Get Started <i class="fas fa-arrow-right"></i></a>
-                            <a href="#documentation" class="btn-secondary-large">View Documentation <i class="fas fa-arrow-right"></i></a>
+                            <a href="#quick-start" class="btn-primary-large">Get Started <span style="font-size: 14px;">→</span></a>
+                            <a href="#documentation" class="btn-secondary-large">View Documentation <span style="font-size: 14px;">→</span></a>
                         </div>
                     </div>
                     
@@ -200,31 +344,31 @@
                 <div class="why-choose-grid">
                     <div class="why-choose-card">
                         <div class="card-icon">
-                            <i class="fas fa-cogs"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
                         </div>
                         <h3>Purpose-Built for Billing</h3>
                         <p>Designed specifically for complex billing cycles, customer notifications, and payment collection—no Frankenstein systems.</p>
                     </div>
-                    
+
                     <div class="why-choose-card">
                         <div class="card-icon">
-                            <i class="fas fa-user-check"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
                         </div>
                         <h3>Frictionless Customer Experience</h3>
                         <p>Every product is built to make payments effortless for your users—across web, mobile, and QuickPay.</p>
                     </div>
-                    
+
                     <div class="why-choose-card">
                         <div class="card-icon">
-                            <i class="fas fa-shield-alt"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
                         </div>
                         <h3>Secure by Design</h3>
-                        <p>Every product is built to make payments effortless for your users—across web, mobile, and QuickPay.</p>
+                        <p>PCI DSS Level 1 compliant with enterprise-grade encryption and tokenization built into every transaction.</p>
                     </div>
-                    
+
                     <div class="why-choose-card">
                         <div class="card-icon">
-                            <i class="fas fa-puzzle-piece"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
                         </div>
                         <h3>Tailored to You</h3>
                         <p>Utilities, municipalities, service providers—we don't believe in one-size-fits-all. tilli adapts to your workflows.</p>
@@ -240,48 +384,48 @@
                     <!-- Quick Start -->
                     <div class="access-card">
                         <div class="access-icon">
-                            <i class="fas fa-rocket"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
                         </div>
-                        <h3>🚀 Quick Start</h3>
+                        <h3>Quick Start</h3>
                         <p>Launch your first integration in minutes.</p>
                         <ul class="access-links">
-                            <li><a href="#documentation">User Guide <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#partners">Technology Partners <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#guide">Developers Guide <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#auth">Authentication overview <i class="fas fa-external-link-alt"></i></a></li>
+                            <li><a href="#documentation"><span style="text-decoration: underline;">User Guide</span> →</a></li>
+                            <li><a href="#partners"><span style="text-decoration: underline;">Technology Partners</span> →</a></li>
+                            <li><a href="#guide"><span style="text-decoration: underline;">Developers Guide</span> →</a></li>
+                            <li><a href="#auth"><span style="text-decoration: underline;">Authentication overview</span> →</a></li>
                         </ul>
-                        <a href="#get-started" class="access-cta">Get Started</a>
+                        <a href="#get-started" class="access-cta">Get Started →</a>
                     </div>
 
                     <!-- FAQs -->
                     <div class="access-card">
                         <div class="access-icon">
-                            <i class="fas fa-question-circle"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                         </div>
-                        <h3>❓ FAQs</h3>
-                        <p>Launch your first integration in minutes.</p>
+                        <h3>FAQs</h3>
+                        <p>Common questions answered quickly.</p>
                         <ul class="access-links">
-                            <li><a href="#troubleshooting">Troubleshooting failed payments <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#billers">Managing billers in tilliX <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#channels">Supported channels in Nudge <i class="fas fa-external-link-alt"></i></a></li>
+                            <li><a href="#troubleshooting"><span style="text-decoration: underline;">Troubleshooting failed payments</span> →</a></li>
+                            <li><a href="#billers"><span style="text-decoration: underline;">Managing billers in tilliX</span> →</a></li>
+                            <li><a href="#channels"><span style="text-decoration: underline;">Supported channels in Nudge</span> →</a></li>
                         </ul>
-                        <a href="#faqs" class="access-cta">View FAQs</a>
+                        <a href="#faqs" class="access-cta">View FAQs →</a>
                     </div>
 
                     <!-- Learn -->
                     <div class="access-card">
                         <div class="access-icon">
-                            <i class="fas fa-book"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                         </div>
-                        <h3>📘 Learn</h3>
-                        <p>Launch your first integration in minutes.</p>
+                        <h3>Learn</h3>
+                        <p>Deep dive into core concepts and best practices.</p>
                         <ul class="access-links">
-                            <li><a href="#patterns">Design patterns and usage guidelines <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#errors">Handling errors and retries <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#limits">Rate limits and pagination <i class="fas fa-external-link-alt"></i></a></li>
-                            <li><a href="#structure">API structure and object models <i class="fas fa-external-link-alt"></i></a></li>
+                            <li><a href="#patterns"><span style="text-decoration: underline;">Design patterns and guidelines</span> →</a></li>
+                            <li><a href="#errors"><span style="text-decoration: underline;">Handling errors and retries</span> →</a></li>
+                            <li><a href="#limits"><span style="text-decoration: underline;">Rate limits and pagination</span> →</a></li>
+                            <li><a href="#structure"><span style="text-decoration: underline;">API structure and object models</span> →</a></li>
                         </ul>
-                        <a href="#concepts" class="access-cta">Explore Concepts</a>
+                        <a href="#concepts" class="access-cta">Explore Concepts →</a>
                     </div>
                 </div>
             </div>
@@ -306,15 +450,15 @@
                             <div class="feature-visual">
                                 <div class="payment-methods-visual">
                                     <div class="payment-card">
-                                        <i class="fas fa-credit-card"></i>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
                                         <span>Cards</span>
                                     </div>
                                     <div class="payment-card">
-                                        <i class="fas fa-mobile-alt"></i>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
                                         <span>Wallets</span>
                                     </div>
                                     <div class="payment-card">
-                                        <i class="fas fa-university"></i>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l8-4 8 4v14"></path><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"></path></svg>
                                         <span>Banking</span>
                                     </div>
                                 </div>
@@ -336,19 +480,19 @@
                             <div class="feature-visual">
                                 <div class="messaging-channels">
                                     <div class="channel">
-                                        <i class="fas fa-sms"></i>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                                         <span>SMS</span>
                                     </div>
                                     <div class="channel">
-                                        <i class="fab fa-whatsapp"></i>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                                         <span>WhatsApp</span>
                                     </div>
                                     <div class="channel">
-                                        <i class="fas fa-envelope"></i>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                                         <span>Email</span>
                                     </div>
                                     <div class="channel">
-                                        <i class="fas fa-bell"></i>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
                                         <span>Push</span>
                                     </div>
                                 </div>
@@ -389,26 +533,26 @@
         </section>
 
         <!-- Helpful Links Section -->
-        <section class="helpful-links">
+        <section class="helpful-links" style="background: #f9fafb; padding: 4rem 0;">
             <div class="container">
-                <div class="links-content">
+                <div class="links-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
                     <div class="links-section">
-                        <h3>Helpful Links</h3>
-                        <ul class="links-list">
-                            <li><a href="#deploy">Learn How to Deploy</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                        <h3 style="margin-bottom: 1.5rem;">Helpful Links</h3>
+                        <ul class="links-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                            <li><a href="#deploy"><span style="text-decoration: underline;">Learn How to Deploy</span> →</a></li>
+                            <li><a href="contact.html"><span style="text-decoration: underline;">Contact Us</span> →</a></li>
                         </ul>
                     </div>
-                    
+
                     <div class="links-section">
-                        <h3>Popular Guides</h3>
-                        <ul class="links-list">
-                            <li><a href="#billing">Building smarter billing with tilliX</a></li>
-                            <li><a href="#dashboard">Create a custom dashboard with tilliX APIs</a></li>
-                            <li><a href="#retry">Retry a failed payment</a></li>
-                            <li><a href="#links">Simplified payment links</a></li>
-                            <li><a href="#portal">Build a billing portal using Monay</a></li>
-                            <li><a href="#invoices">Multiple invoices in one transaction</a></li>
+                        <h3 style="margin-bottom: 1.5rem;">Popular Guides</h3>
+                        <ul class="links-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                            <li><a href="#billing"><span style="text-decoration: underline;">Building smarter billing with tilliX</span> →</a></li>
+                            <li><a href="#dashboard"><span style="text-decoration: underline;">Create a custom dashboard with tilliX APIs</span> →</a></li>
+                            <li><a href="#retry"><span style="text-decoration: underline;">Retry a failed payment</span> →</a></li>
+                            <li><a href="#links"><span style="text-decoration: underline;">Simplified payment links</span> →</a></li>
+                            <li><a href="#portal"><span style="text-decoration: underline;">Build a billing portal using tilliPay</span> →</a></li>
+                            <li><a href="#invoices"><span style="text-decoration: underline;">Multiple invoices in one transaction</span> →</a></li>
                         </ul>
                     </div>
                 </div>
