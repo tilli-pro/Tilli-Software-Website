@@ -718,99 +718,97 @@
     <!-- Client Testimonials -->
     <section class="testimonials-section" style="background: #FFFFFF; padding: 5rem 0;">
         <style>
-            .testimonials-grid-clean {
+            .testimonials-grid-minimal {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-                max-width: 1200px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                max-width: 1000px;
                 margin: 0 auto;
             }
-            .testimonial-card-clean {
-                background: white;
-                border-radius: 16px;
-                padding: 2rem;
-                border: 1px solid #e5e7eb;
+            .testimonial-card-minimal {
+                background: #f9fafb;
+                border-radius: 12px;
+                padding: 2.5rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                min-height: 300px;
+                min-height: 280px;
             }
-            .testimonial-quote-clean {
+            .testimonial-quote-minimal {
                 font-family: 'Inter', sans-serif;
-                font-size: 1rem;
-                line-height: 1.7;
-                color: #1f2937;
-                margin-bottom: 1.5rem;
+                font-size: 1.0625rem;
+                line-height: 1.75;
+                color: #4b5563;
+                margin-bottom: 2rem;
                 flex-grow: 1;
             }
-            .testimonial-author-clean {
+            .testimonial-author-minimal {
                 margin-top: auto;
             }
-            .testimonial-author-name-clean {
-                font-family: 'Sora', sans-serif;
+            .testimonial-author-name-minimal {
+                font-family: 'Inter', sans-serif;
                 font-size: 1rem;
-                font-weight: 500;
+                font-weight: 600;
                 color: #000000;
-                margin-bottom: 0.25rem;
+                margin-bottom: 0.125rem;
             }
-            .testimonial-author-title-clean {
+            .testimonial-author-title-minimal {
                 font-family: 'Inter', sans-serif;
                 font-size: 0.875rem;
-                color: #6b7280;
-                margin-bottom: 1rem;
+                color: #9ca3af;
+                margin-bottom: 0.75rem;
             }
-            .testimonial-logo-clean {
-                height: 28px;
+            .testimonial-logo-minimal {
+                height: 22px;
                 width: auto;
-                opacity: 0.8;
-            }
-            @media (max-width: 1024px) {
-                .testimonials-grid-clean {
-                    grid-template-columns: repeat(2, 1fr);
-                }
+                filter: grayscale(100%);
+                opacity: 0.5;
             }
             @media (max-width: 768px) {
-                .testimonials-grid-clean {
+                .testimonials-grid-minimal {
                     grid-template-columns: 1fr;
                     padding: 0 1rem;
                 }
-                .testimonial-card-clean {
-                    padding: 1.5rem;
+                .testimonial-card-minimal {
+                    padding: 2rem;
                     min-height: auto;
+                }
+                .testimonial-quote-minimal {
+                    font-size: 1rem;
                 }
             }
         </style>
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
             <h2 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 48px; line-height: 1.2; color: #000000; text-align: center; margin-bottom: 3rem;">Trusted by Industry Leaders</h2>
 
-            <div class="testimonials-grid-clean">
+            <div class="testimonials-grid-minimal">
                 <!-- Con Edison Testimonial -->
-                <div class="testimonial-card-clean">
-                    <p class="testimonial-quote-clean">"Tilli's Nudge platform deployed in record time, saving weeks of effort while delivering unmatched value compared to other providers. Our customers love the improved experience, with 99.38% delivery rates and exceptional engagement from day one."</p>
-                    <div class="testimonial-author-clean">
-                        <div class="testimonial-author-name-clean">Energy & Utilities</div>
-                        <div class="testimonial-author-title-clean">99.38% Delivery Rate • Weeks of Deployment Time Saved</div>
-                        <img src="Images/consolidated-edison-logo.png" alt="Con Edison" class="testimonial-logo-clean">
+                <div class="testimonial-card-minimal">
+                    <p class="testimonial-quote-minimal">"Tilli's Nudge platform deployed in record time, saving weeks of effort while delivering unmatched value compared to other providers. Our customers love the improved experience, with 99.38% delivery rates and exceptional engagement from day one."</p>
+                    <div class="testimonial-author-minimal">
+                        <div class="testimonial-author-name-minimal">Con Edison</div>
+                        <div class="testimonial-author-title-minimal">Energy & Utilities</div>
+                        <img src="Images/consolidated-edison-logo.png" alt="Con Edison" class="testimonial-logo-minimal">
                     </div>
                 </div>
 
                 <!-- Howard County MD Testimonial -->
-                <div class="testimonial-card-clean">
-                    <p class="testimonial-quote-clean">"Partnering with Tilli since 2010, we won the 2019 NACo Award for Innovation for best Utility Billing Mobile Application. Their solutions have streamlined our billing, reduced costs significantly, and driven exceptional digital adoption for our community."</p>
-                    <div class="testimonial-author-clean">
-                        <div class="testimonial-author-name-clean">Government Services</div>
-                        <div class="testimonial-author-title-clean">2019 NACo Innovation Award • 14+ Years Partnership</div>
-                        <img src="Images/howard-county-logo-new.png?v=3" alt="Howard County MD" class="testimonial-logo-clean">
+                <div class="testimonial-card-minimal">
+                    <p class="testimonial-quote-minimal">"Partnering with Tilli since 2010, we won the 2019 NACo Award for Innovation for best Utility Billing Mobile Application. Their solutions have streamlined our billing, reduced costs significantly, and driven exceptional digital adoption for our community."</p>
+                    <div class="testimonial-author-minimal">
+                        <div class="testimonial-author-name-minimal">Howard County, MD</div>
+                        <div class="testimonial-author-title-minimal">Government Services</div>
+                        <img src="Images/howard-county-logo-new.png?v=3" alt="Howard County MD" class="testimonial-logo-minimal">
                     </div>
                 </div>
 
                 <!-- Washington Gas Testimonial -->
-                <div class="testimonial-card-clean">
-                    <p class="testimonial-quote-clean">"Tilli transformed our customer engagement with 72% eBill open rates and 200% growth in IP enrollments. Nudge accelerated payments by 42% within 10 days, reducing bad debt while cutting costs and delivering an exceptional customer experience."</p>
-                    <div class="testimonial-author-clean">
-                        <div class="testimonial-author-name-clean">Utilities</div>
-                        <div class="testimonial-author-title-clean">72% eBill Open Rate • 200% IP Enrollment Growth</div>
-                        <img src="Images/washington-gas-logo-new.png?v=3" alt="Washington Gas" class="testimonial-logo-clean">
+                <div class="testimonial-card-minimal">
+                    <p class="testimonial-quote-minimal">"Tilli transformed our customer engagement with 72% eBill open rates and 200% growth in IP enrollments. Nudge accelerated payments by 42% within 10 days, reducing bad debt while cutting costs and delivering an exceptional customer experience."</p>
+                    <div class="testimonial-author-minimal">
+                        <div class="testimonial-author-name-minimal">Washington Gas</div>
+                        <div class="testimonial-author-title-minimal">Utilities</div>
+                        <img src="Images/washington-gas-logo-new.png?v=3" alt="Washington Gas" class="testimonial-logo-minimal">
                     </div>
                 </div>
             </div>
