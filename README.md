@@ -283,8 +283,21 @@ For each item, “Status” reflects the live code; “Action” is content-only
 ## Recent Implementation Changes
 
 ### Hero Sections
-- **Homepage**: Gradient background blends from white nav, gradient blue pill button
-- **Nudge page**: Original shape images (not circles), proper headshots, top padding for navbar
+
+#### Homepage Hero - Aave-style Centered Layout
+- **Layout**: Centered text on top, image below (NOT side-by-side)
+- **Structure**:
+  - CTA pill: Links to tillix.html, "Check out whats new with tilliX"
+  - Title: 3rem font-size, 0.5rem margin-bottom
+  - Subtitle: 1rem margin-bottom
+  - Two buttons: "Book a Demo" (primary) + "Calculate ROI" (secondary), both font-weight: 400
+  - Image: Uses `hero-visual` and `hero-image` classes with `margin-top: 1rem`
+- **Container**: `max-width: 900px`, centered, `padding-top: 60px`
+- **DO NOT**: Change image size with inline styles - use the CSS classes
+- **DO NOT**: Make text bold - always use font-weight: 400
+
+#### Nudge Hero
+- Original shape images (not circles), proper headshots, top padding for navbar
 
 ### Navigation / Navbar
 - **Top Banner**: Gradient blue banner with webinar announcement + "Register now" button

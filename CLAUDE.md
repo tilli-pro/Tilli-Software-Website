@@ -114,10 +114,18 @@ When you need a Lucide icon, convert it to inline SVG format. Common icons:
 
 ### Hero Sections
 
-#### Homepage Hero (index.html)
-- Gradient background blends smoothly from white nav
+#### Homepage Hero (index.html) - Aave-style Centered Layout
+- **Layout**: Centered text on top, image below (NOT side-by-side)
+- **Structure**:
+  - CTA pill: Links to tillix.html, "Check out whats new with tilliX"
+  - Title: 3rem font-size, 0.5rem margin-bottom
+  - Subtitle: 1rem margin-bottom
+  - Two buttons: "Book a Demo" (`btn btn-primary btn-icon`) + "Calculate ROI" (`btn btn-secondary`), both with `font-weight: 400`
+  - Image: Uses `hero-visual` and `hero-image` classes with `margin-top: 1rem`
+- **Container**: `max-width: 900px`, centered, `padding-top: 60px`
+- **DO NOT**: Change image size with inline styles - use the CSS classes
+- **DO NOT**: Make text bold - always use font-weight: 400
 - Button: Gradient blue pill style
-- Text updated to match design
 
 #### Homepage Product Cards (index.html)
 Product cards have Ramp.com-style CTAs with underlined text (arrow not underlined):
