@@ -20,6 +20,29 @@ python3 -m http.server 9000
 
 ---
 
+### Recent Updates (December 2024)
+
+#### Top Banner
+- Updated across all 32 pages
+- Text: "✨ See how much you could save with Tilli — calculate your ROI in 2 minutes."
+- CTA: "Calculate now →" linking to `calculator.html`
+- Gradient blue background (#4169E1 to #00BFFF)
+
+#### Homepage Product Cards
+Product cards now have Ramp.com-style CTAs with underlined text (arrow not underlined):
+- **tilliX**: "See self-service in action →" → `demos.html#tillix`
+- **Nudge**: "Engage customers smarter — view the demo →" → `demos.html#nudge`
+- **tilliPay**: "See intelligent routing →" → `demos.html#tillipay`
+- **tilliArc**: "Secure archiving, simplified →" → `demos.html#tilliarc`
+- **XDEX**: "See the platform →" → `demos.html#xdex`
+
+#### Demos Page
+- Interactive product demos at `demos.html`
+- Tab-based navigation for tilliX, Nudge, tilliPay
+- Pre-login portal and customer dashboard toggles
+
+---
+
 ### Top-level pages
 - `index.html` (Home)
 - `tillix.html` (Product: tilliX)
