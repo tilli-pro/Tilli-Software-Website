@@ -715,143 +715,104 @@
         </div>
     </section>
 
-    <!-- Client Testimonials - Aave Style -->
-    <section class="testimonials-aave" style="background: #f8f9fa; padding: 5rem 0;">
+    <!-- Client Testimonials -->
+    <section class="testimonials-section" style="background: #FFFFFF; padding: 5rem 0;">
         <style>
-            .testimonials-aave {
-                background: #f8f9fa;
-            }
-            .aave-testimonial-grid {
+            .testimonials-grid-clean {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
                 gap: 2rem;
-                max-width: 1100px;
+                max-width: 1200px;
                 margin: 0 auto;
             }
-            .aave-testimonial-card {
+            .testimonial-card-clean {
                 background: white;
                 border-radius: 16px;
-                padding: 2.5rem;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+                padding: 2rem;
+                border: 1px solid #e5e7eb;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                min-height: 320px;
+                min-height: 300px;
             }
-            .aave-quote {
+            .testimonial-quote-clean {
                 font-family: 'Inter', sans-serif;
-                font-size: 1.0625rem;
+                font-size: 1rem;
                 line-height: 1.7;
                 color: #1f2937;
-                margin-bottom: 2rem;
+                margin-bottom: 1.5rem;
                 flex-grow: 1;
             }
-            .aave-author {
+            .testimonial-author-clean {
                 margin-top: auto;
             }
-            .aave-author-name {
+            .testimonial-author-name-clean {
                 font-family: 'Sora', sans-serif;
                 font-size: 1rem;
                 font-weight: 500;
                 color: #000000;
                 margin-bottom: 0.25rem;
             }
-            .aave-author-title {
+            .testimonial-author-title-clean {
                 font-family: 'Inter', sans-serif;
                 font-size: 0.875rem;
                 color: #6b7280;
                 margin-bottom: 1rem;
             }
-            .aave-logo {
+            .testimonial-logo-clean {
                 height: 28px;
                 width: auto;
                 opacity: 0.8;
             }
-            .aave-carousel-dots {
-                display: flex;
-                justify-content: center;
-                gap: 0.5rem;
-                margin-top: 3rem;
-            }
-            .aave-dot {
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: #d1d5db;
-                cursor: pointer;
-                transition: background 0.3s ease;
-            }
-            .aave-dot.active {
-                background: #6366f1;
+            @media (max-width: 1024px) {
+                .testimonials-grid-clean {
+                    grid-template-columns: repeat(2, 1fr);
+                }
             }
             @media (max-width: 768px) {
-                .aave-testimonial-grid {
+                .testimonials-grid-clean {
                     grid-template-columns: 1fr;
                     padding: 0 1rem;
                 }
-                .aave-testimonial-card {
-                    padding: 1.75rem;
+                .testimonial-card-clean {
+                    padding: 1.5rem;
                     min-height: auto;
-                }
-                .aave-quote {
-                    font-size: 1rem;
                 }
             }
         </style>
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
             <h2 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 48px; line-height: 1.2; color: #000000; text-align: center; margin-bottom: 3rem;">Trusted by Industry Leaders</h2>
 
-            <div class="aave-testimonial-grid">
+            <div class="testimonials-grid-clean">
                 <!-- Con Edison Testimonial -->
-                <div class="aave-testimonial-card">
-                    <p class="aave-quote">"Tilli's Nudge platform deployed in record time, saving weeks of effort while delivering unmatched value compared to other providers. Our customers love the improved experience, with 99.38% delivery rates and exceptional engagement from day one."</p>
-                    <div class="aave-author">
-                        <div class="aave-author-name">Energy & Utilities</div>
-                        <div class="aave-author-title">99.38% Delivery Rate • Weeks of Deployment Time Saved</div>
-                        <img src="Images/consolidated-edison-logo.png" alt="Con Edison" class="aave-logo">
+                <div class="testimonial-card-clean">
+                    <p class="testimonial-quote-clean">"Tilli's Nudge platform deployed in record time, saving weeks of effort while delivering unmatched value compared to other providers. Our customers love the improved experience, with 99.38% delivery rates and exceptional engagement from day one."</p>
+                    <div class="testimonial-author-clean">
+                        <div class="testimonial-author-name-clean">Energy & Utilities</div>
+                        <div class="testimonial-author-title-clean">99.38% Delivery Rate • Weeks of Deployment Time Saved</div>
+                        <img src="Images/consolidated-edison-logo.png" alt="Con Edison" class="testimonial-logo-clean">
                     </div>
                 </div>
 
                 <!-- Howard County MD Testimonial -->
-                <div class="aave-testimonial-card">
-                    <p class="aave-quote">"Partnering with Tilli since 2010, we won the 2019 NACo Award for Innovation for best Utility Billing Mobile Application. Their solutions have streamlined our billing, reduced costs significantly, and driven exceptional digital adoption for our community."</p>
-                    <div class="aave-author">
-                        <div class="aave-author-name">Government Services</div>
-                        <div class="aave-author-title">2019 NACo Innovation Award • 14+ Years Partnership</div>
-                        <img src="Images/howard-county-logo-new.png?v=3" alt="Howard County MD" class="aave-logo">
+                <div class="testimonial-card-clean">
+                    <p class="testimonial-quote-clean">"Partnering with Tilli since 2010, we won the 2019 NACo Award for Innovation for best Utility Billing Mobile Application. Their solutions have streamlined our billing, reduced costs significantly, and driven exceptional digital adoption for our community."</p>
+                    <div class="testimonial-author-clean">
+                        <div class="testimonial-author-name-clean">Government Services</div>
+                        <div class="testimonial-author-title-clean">2019 NACo Innovation Award • 14+ Years Partnership</div>
+                        <img src="Images/howard-county-logo-new.png?v=3" alt="Howard County MD" class="testimonial-logo-clean">
                     </div>
                 </div>
 
                 <!-- Washington Gas Testimonial -->
-                <div class="aave-testimonial-card">
-                    <p class="aave-quote">"Tilli transformed our customer engagement with 72% eBill open rates and 200% growth in IP enrollments. Nudge accelerated payments by 42% within 10 days, reducing bad debt while cutting costs and delivering an exceptional customer experience."</p>
-                    <div class="aave-author">
-                        <div class="aave-author-name">Utilities</div>
-                        <div class="aave-author-title">72% eBill Open Rate • 200% IP Enrollment Growth</div>
-                        <img src="Images/washington-gas-logo-new.png?v=3" alt="Washington Gas" class="aave-logo">
+                <div class="testimonial-card-clean">
+                    <p class="testimonial-quote-clean">"Tilli transformed our customer engagement with 72% eBill open rates and 200% growth in IP enrollments. Nudge accelerated payments by 42% within 10 days, reducing bad debt while cutting costs and delivering an exceptional customer experience."</p>
+                    <div class="testimonial-author-clean">
+                        <div class="testimonial-author-name-clean">Utilities</div>
+                        <div class="testimonial-author-title-clean">72% eBill Open Rate • 200% IP Enrollment Growth</div>
+                        <img src="Images/washington-gas-logo-new.png?v=3" alt="Washington Gas" class="testimonial-logo-clean">
                     </div>
                 </div>
-
-                <!-- Additional card slot for balance -->
-                <div class="aave-testimonial-card" style="background: linear-gradient(135deg, #f8f9fa 0%, #f3f4f6 100%); border: 1px dashed #d1d5db;">
-                    <p class="aave-quote" style="color: #6b7280;">"Join the growing number of industry leaders who trust Tilli to transform their customer engagement and payment experiences."</p>
-                    <div class="aave-author">
-                        <div class="aave-author-name" style="color: #6b7280;">Your Success Story</div>
-                        <div class="aave-author-title">Could be next</div>
-                        <a href="signup.html" style="display: inline-flex; align-items: center; gap: 6px; color: #6366f1; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-top: 0.5rem;">
-                            Get Started <span>→</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Carousel Dots -->
-            <div class="aave-carousel-dots">
-                <div class="aave-dot active"></div>
-                <div class="aave-dot"></div>
-                <div class="aave-dot"></div>
-                <div class="aave-dot"></div>
-                <div class="aave-dot"></div>
             </div>
         </div>
     </section>
