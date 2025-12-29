@@ -119,6 +119,20 @@ When you need a Lucide icon, convert it to inline SVG format. Common icons:
 - Button: Gradient blue pill style
 - Text updated to match design
 
+#### Homepage Product Cards (index.html)
+Product cards have Ramp.com-style CTAs with underlined text (arrow not underlined):
+- **tilliX**: "See self-service in action →" → demos.html#tillix
+- **Nudge**: "Engage customers smarter — view the demo →" → demos.html#nudge
+- **tilliPay**: "See intelligent routing →" → demos.html#tillipay
+- **tilliArc**: "Secure archiving, simplified →" → demos.html#tilliarc
+- **XDEX**: "See the platform →" → demos.html#xdex
+
+CTA styling:
+- Text is underlined, arrow (→) is NOT underlined
+- Color: #6B7280
+- Font: Inter, 14px, weight 400
+- Structure: `<span style="text-decoration: underline;">Text</span> <span>→</span>`
+
 #### Nudge Hero (nudge.html)
 - Images displayed in original shape (not circles)
 - Proper headshots added (not placeholders)
@@ -132,10 +146,11 @@ When you need a Lucide icon, convert it to inline SVG format. Common icons:
 
 #### Top Banner
 - Gradient blue banner (linear-gradient 90deg, #4169E1 to #00BFFF)
-- Text: "✨Join us for our upcoming webinar on the future of digital payments."
-- "Register now →" button with translucent white background
+- Text: "✨ See how much you could save with Tilli — calculate your ROI in 2 minutes."
+- "Calculate now →" button with translucent white background, links to calculator.html
 - Height: 62px, padding: 18px 20px
 - All pages should include this banner to match homepage
+- Updated across all 32 pages (December 2024)
 
 #### Logo
 - Use colored version of logo (not white): `Images/22_tilli_logo_color.png`
