@@ -850,6 +850,319 @@
         </div>
     </section>
 
+    <!-- Industry Solutions -->
+    <section class="industry-solutions" id="solutions">
+        <style>
+            /* Industry showcase card styles */
+            .industry-showcase-card {
+                height: 100%;
+            }
+            .industry-showcase-card img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                object-position: center 20% !important;
+            }
+            .solutions-carousel-wrapper {
+                position: relative;
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
+                margin: 3rem 0;
+            }
+            .solutions-carousel-track {
+                display: flex;
+                transition: transform 0.3s ease;
+            }
+            .solutions-card {
+                min-width: 350px;
+                flex: 0 0 350px;
+                background: white;
+                border-radius: 12px;
+                padding: 2rem;
+                margin: 0 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                text-align: center;
+                transition: transform 0.3s ease;
+            }
+            .solutions-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            }
+            .solutions-icon {
+                width: 80px;
+                height: 80px;
+                background: linear-gradient(135deg, #325ef6, #2a4fd4);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1.5rem;
+            }
+            .solutions-icon i {
+                font-size: 2rem;
+                color: white;
+            }
+            .solutions-card h3 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                color: #1a1a1a;
+            }
+            .solutions-card p {
+                color: #6b7280;
+                line-height: 1.6;
+            }
+            .carousel-nav {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: white;
+                border: 2px solid #e5e7eb;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .carousel-btn:hover {
+                background: #325ef6;
+                border-color: #325ef6;
+                color: white;
+            }
+            @media (max-width: 768px) {
+                .solutions-card {
+                    min-width: 85vw;
+                    flex: 0 0 85vw;
+                    margin: 0 0.5rem;
+                    padding: 1.5rem;
+                }
+                .solutions-carousel-wrapper {
+                    margin: 2rem -1rem;
+                    padding: 0 1rem;
+                }
+                .solutions-icon {
+                    width: 60px;
+                    height: 60px;
+                    margin-bottom: 1rem;
+                }
+                .solutions-icon i {
+                    font-size: 1.5rem;
+                }
+                .solutions-card h3 {
+                    font-size: 1.25rem;
+                }
+                .carousel-nav {
+                    margin-top: 1.5rem;
+                }
+                .solution-nav {
+                    display: flex;
+                    overflow-x: auto;
+                    gap: 0.5rem;
+                    padding: 0.5rem;
+                    -webkit-overflow-scrolling: touch;
+                }
+                .solution-nav a {
+                    white-space: nowrap;
+                    padding: 0.5rem 1rem;
+                    font-size: 0.9rem;
+                }
+            }
+        </style>
+        <div class="container">
+            <!-- Industry Showcase -->
+            <div style="display: grid; grid-template-columns: 45% 55%; gap: 4rem; align-items: start; margin-bottom: 3rem;">
+                <!-- Left Side - Active Industry Info -->
+                <div style="max-width: 500px;">
+                    <p style="font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #6B7280; margin-bottom: 1rem;">SOLUTIONS BY INDUSTRY</p>
+
+                    <h3 id="activeIndustryTitle" style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 32px; line-height: 1.4; color: #000000; margin-bottom: 1rem; min-height: 90px;">
+                        Solutions for <span style="background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Banking and Finance</span> <span style="color: #448DE6;">›</span>
+                    </h3>
+
+                    <p id="activeIndustryDesc" style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #6B7280; margin-bottom: 2rem; min-height: 75px;">
+                        Transform your company's financial solutions. Improve AML and KYC compliance and reduce operating costs while increasing customer satisfaction.
+                    </p>
+                </div>
+
+                <!-- Right Side - Industry Cards -->
+                <div style="position: relative; height: 350px; overflow: visible; padding-left: 1rem;">
+                    <div id="industryCardsContainer" style="display: flex; gap: 1rem; position: relative; height: 100%;">
+                        <!-- Active Card - Banking & Finance -->
+                        <div class="industry-showcase-card active" data-industry="0" style="flex: 0 0 280px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative; opacity: 1; transform: scale(1);">
+                            <img src="industries/banking-and-finance.jpg" alt="Banking & Finance" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Banking and Finance</h4>
+                            </div>
+                        </div>
+
+                        <!-- Faded Card - Education -->
+                        <div class="industry-showcase-card" data-industry="1" style="flex: 0 0 240px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative; opacity: 0.5; transform: scale(0.9);">
+                            <img src="industries/education.jpg" alt="Education" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Education and Universities</h4>
+                            </div>
+                        </div>
+
+                        <!-- Most Faded Card - Gaming -->
+                        <div class="industry-showcase-card" data-industry="2" style="flex: 0 0 200px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative; opacity: 0.3; transform: scale(0.85);">
+                            <img src="industries/gaming.jpg" alt="Gaming" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Gaming</h4>
+                            </div>
+                        </div>
+
+                        <!-- Hidden Cards -->
+                        <div class="industry-showcase-card" data-industry="3" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
+                            <img src="industries/healthcare.jpg" alt="Healthcare" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Healthcare</h4>
+                            </div>
+                        </div>
+                        <div class="industry-showcase-card" data-industry="4" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
+                            <img src="industries/insurance.jpg" alt="Insurance" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Insurance</h4>
+                            </div>
+                        </div>
+                        <div class="industry-showcase-card" data-industry="5" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
+                            <img src="industries/retail.jpg" alt="Retail" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Retail</h4>
+                            </div>
+                        </div>
+                        <div class="industry-showcase-card" data-industry="6" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
+                            <img src="industries/telecom.jpg" alt="Telecommunications" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Telecommunications</h4>
+                            </div>
+                        </div>
+                        <div class="industry-showcase-card" data-industry="7" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
+                            <img src="industries/utilities.jpg" alt="Utilities" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
+                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Utilities</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const industries = [
+                    {
+                        name: 'Banking and Finance',
+                        desc: 'Transform your company\'s financial solutions. Improve AML and KYC compliance and reduce operating costs while increasing customer satisfaction.',
+                        image: 'industries/banking-and-finance.jpg'
+                    },
+                    {
+                        name: 'Education and Universities',
+                        desc: 'Streamline tuition payments, financial aid processing, and campus services with secure, student-friendly payment solutions.',
+                        image: 'industries/education.jpg'
+                    },
+                    {
+                        name: 'Gaming',
+                        desc: 'Power seamless in-game purchases, subscription management, and player rewards with fast, secure payment infrastructure.',
+                        image: 'industries/gaming.jpg'
+                    },
+                    {
+                        name: 'Healthcare',
+                        desc: 'Simplify medical billing with HIPAA-compliant payment processing, insurance claim management, and patient-friendly payment plans.',
+                        image: 'industries/healthcare.jpg'
+                    },
+                    {
+                        name: 'Insurance',
+                        desc: 'Simplify premium collections, claim payouts, and policy renewals with automated payment schedules and regulatory compliance.',
+                        image: 'industries/insurance.jpg'
+                    },
+                    {
+                        name: 'Retail',
+                        desc: 'Transform checkout experiences with seamless payment flows, dynamic invoicing, and personalized communication that drives conversion.',
+                        image: 'industries/retail.jpg'
+                    },
+                    {
+                        name: 'Telecommunications',
+                        desc: 'Enhance subscriber experiences with real-time usage alerts, flexible billing options, and omnichannel payment support.',
+                        image: 'industries/telecom.jpg'
+                    },
+                    {
+                        name: 'Utilities',
+                        desc: 'Modernize utility billing with automated meter reading integration, usage analytics, and proactive outage notifications.',
+                        image: 'industries/utilities.jpg'
+                    }
+                ];
+
+                let currentIndex = 0;
+
+                function updateIndustryShowcase() {
+                    const titleEl = document.getElementById('activeIndustryTitle');
+                    const descEl = document.getElementById('activeIndustryDesc');
+                    const cards = document.querySelectorAll('.industry-showcase-card');
+
+                    // Update text
+                    const industry = industries[currentIndex];
+                    titleEl.innerHTML = `Solutions for <span style="background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">${industry.name}</span> <span style="color: #448DE6;">›</span>`;
+                    descEl.textContent = industry.desc;
+
+                    // Update cards visibility and styling
+                    cards.forEach((card, index) => {
+                        const dataIndex = parseInt(card.getAttribute('data-industry'));
+
+                        if (dataIndex === currentIndex) {
+                            // Active card
+                            card.style.display = 'block';
+                            card.style.flex = '0 0 280px';
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                            card.classList.add('active');
+                        } else if (dataIndex === (currentIndex + 1) % industries.length) {
+                            // Next card (faded)
+                            card.style.display = 'block';
+                            card.style.flex = '0 0 240px';
+                            card.style.opacity = '0.5';
+                            card.style.transform = 'scale(0.9)';
+                            card.classList.remove('active');
+                        } else if (dataIndex === (currentIndex + 2) % industries.length) {
+                            // Third card (most faded)
+                            card.style.display = 'block';
+                            card.style.flex = '0 0 200px';
+                            card.style.opacity = '0.3';
+                            card.style.transform = 'scale(0.85)';
+                            card.classList.remove('active');
+                        } else {
+                            // Hidden cards
+                            card.style.display = 'none';
+                            card.classList.remove('active');
+                        }
+                    });
+                }
+
+                // Click handlers for cards
+                document.querySelectorAll('.industry-showcase-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const index = parseInt(card.getAttribute('data-industry'));
+                        currentIndex = index;
+                        updateIndustryShowcase();
+                    });
+                });
+
+                // Auto-advance every 5 seconds
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % industries.length;
+                    updateIndustryShowcase();
+                }, 5000);
+            </script>
+
+            <div class="solutions-cta" style="text-align: center; margin-top: 3rem;">
+                <a href="industries.html" class="btn-primary" style="text-decoration: none;">Explore Industry Use Cases</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Core Product Highlights -->
     <section class="products" id="products">
         <div class="container">
@@ -1471,319 +1784,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Industry Solutions -->
-    <section class="industry-solutions" id="solutions">
-        <style>
-            /* Industry showcase card styles */
-            .industry-showcase-card {
-                height: 100%;
-            }
-            .industry-showcase-card img {
-                width: 100% !important;
-                height: 100% !important;
-                object-fit: cover !important;
-                object-position: center 20% !important;
-            }
-            .solutions-carousel-wrapper {
-                position: relative;
-                width: 100%;
-                max-width: 100%;
-                overflow: hidden;
-                margin: 3rem 0;
-            }
-            .solutions-carousel-track {
-                display: flex;
-                transition: transform 0.3s ease;
-            }
-            .solutions-card {
-                min-width: 350px;
-                flex: 0 0 350px;
-                background: white;
-                border-radius: 12px;
-                padding: 2rem;
-                margin: 0 1rem;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                text-align: center;
-                transition: transform 0.3s ease;
-            }
-            .solutions-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            }
-            .solutions-icon {
-                width: 80px;
-                height: 80px;
-                background: linear-gradient(135deg, #325ef6, #2a4fd4);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 0 auto 1.5rem;
-            }
-            .solutions-icon i {
-                font-size: 2rem;
-                color: white;
-            }
-            .solutions-card h3 {
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
-                color: #1a1a1a;
-            }
-            .solutions-card p {
-                color: #6b7280;
-                line-height: 1.6;
-            }
-            .carousel-nav {
-                display: flex;
-                justify-content: center;
-                gap: 1rem;
-                margin-top: 2rem;
-            }
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                background: white;
-                border: 2px solid #e5e7eb;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-            .carousel-btn:hover {
-                background: #325ef6;
-                border-color: #325ef6;
-                color: white;
-            }
-            @media (max-width: 768px) {
-                .solutions-card {
-                    min-width: 85vw;
-                    flex: 0 0 85vw;
-                    margin: 0 0.5rem;
-                    padding: 1.5rem;
-                }
-                .solutions-carousel-wrapper {
-                    margin: 2rem -1rem;
-                    padding: 0 1rem;
-                }
-                .solutions-icon {
-                    width: 60px;
-                    height: 60px;
-                    margin-bottom: 1rem;
-                }
-                .solutions-icon i {
-                    font-size: 1.5rem;
-                }
-                .solutions-card h3 {
-                    font-size: 1.25rem;
-                }
-                .carousel-nav {
-                    margin-top: 1.5rem;
-                }
-                .solution-nav {
-                    display: flex;
-                    overflow-x: auto;
-                    gap: 0.5rem;
-                    padding: 0.5rem;
-                    -webkit-overflow-scrolling: touch;
-                }
-                .solution-nav a {
-                    white-space: nowrap;
-                    padding: 0.5rem 1rem;
-                    font-size: 0.9rem;
-                }
-            }
-        </style>
-        <div class="container">
-            <!-- Industry Showcase -->
-            <div style="display: grid; grid-template-columns: 45% 55%; gap: 4rem; align-items: start; margin-bottom: 3rem;">
-                <!-- Left Side - Active Industry Info -->
-                <div style="max-width: 500px;">
-                    <p style="font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #6B7280; margin-bottom: 1rem;">SOLUTIONS BY INDUSTRY</p>
-
-                    <h3 id="activeIndustryTitle" style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 32px; line-height: 1.4; color: #000000; margin-bottom: 1rem; min-height: 90px;">
-                        Solutions for <span style="background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Banking and Finance</span> <span style="color: #448DE6;">›</span>
-                    </h3>
-
-                    <p id="activeIndustryDesc" style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #6B7280; margin-bottom: 2rem; min-height: 75px;">
-                        Transform your company's financial solutions. Improve AML and KYC compliance and reduce operating costs while increasing customer satisfaction.
-                    </p>
-                </div>
-
-                <!-- Right Side - Industry Cards -->
-                <div style="position: relative; height: 350px; overflow: visible; padding-left: 1rem;">
-                    <div id="industryCardsContainer" style="display: flex; gap: 1rem; position: relative; height: 100%;"
-                        <!-- Active Card - Banking & Finance -->
-                        <div class="industry-showcase-card active" data-industry="0" style="flex: 0 0 280px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative; opacity: 1; transform: scale(1);">
-                            <img src="industries/banking-and-finance.jpg" alt="Banking & Finance" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
-                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Banking and Finance</h4>
-                            </div>
-                        </div>
-
-                        <!-- Faded Card - Education -->
-                        <div class="industry-showcase-card" data-industry="1" style="flex: 0 0 240px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative; opacity: 0.5; transform: scale(0.9);">
-                            <img src="industries/education.jpg" alt="Education" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
-                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Education and Universities</h4>
-                            </div>
-                        </div>
-
-                        <!-- Most Faded Card - Gaming -->
-                        <div class="industry-showcase-card" data-industry="2" style="flex: 0 0 200px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative; opacity: 0.3; transform: scale(0.85);">
-                            <img src="industries/gaming.jpg" alt="Gaming" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
-                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Gaming</h4>
-                            </div>
-                        </div>
-
-                        <!-- Hidden Cards -->
-                        <div class="industry-showcase-card" data-industry="3" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
-                            <img src="industries/healthcare.jpg" alt="Healthcare" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
-                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Healthcare</h4>
-                            </div>
-                        </div>
-                        <div class="industry-showcase-card" data-industry="4" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
-                            <img src="industries/insurance.jpg" alt="Insurance" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
-                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Insurance</h4>
-                            </div>
-                        </div>
-                        <div class="industry-showcase-card" data-industry="5" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
-                            <img src="industries/retail.jpg" alt="Retail" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
-                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Retail</h4>
-                            </div>
-                        </div>
-                        <div class="industry-showcase-card" data-industry="6" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
-                            <img src="industries/telecom.jpg" alt="Telecommunications" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
-                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Telecommunications</h4>
-                            </div>
-                        </div>
-                        <div class="industry-showcase-card" data-industry="7" style="display: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative;">
-                            <img src="industries/utilities.jpg" alt="Utilities" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);">
-                                <h4 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 16px; color: #FFFFFF; margin: 0;">Utilities</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-                const industries = [
-                    {
-                        name: 'Banking and Finance',
-                        desc: 'Transform your company\'s financial solutions. Improve AML and KYC compliance and reduce operating costs while increasing customer satisfaction.',
-                        image: 'industries/banking-and-finance.jpg'
-                    },
-                    {
-                        name: 'Education and Universities',
-                        desc: 'Streamline tuition payments, financial aid processing, and campus services with secure, student-friendly payment solutions.',
-                        image: 'industries/education.jpg'
-                    },
-                    {
-                        name: 'Gaming',
-                        desc: 'Power seamless in-game purchases, subscription management, and player rewards with fast, secure payment infrastructure.',
-                        image: 'industries/gaming.jpg'
-                    },
-                    {
-                        name: 'Healthcare',
-                        desc: 'Simplify medical billing with HIPAA-compliant payment processing, insurance claim management, and patient-friendly payment plans.',
-                        image: 'industries/healthcare.jpg'
-                    },
-                    {
-                        name: 'Insurance',
-                        desc: 'Simplify premium collections, claim payouts, and policy renewals with automated payment schedules and regulatory compliance.',
-                        image: 'industries/insurance.jpg'
-                    },
-                    {
-                        name: 'Retail',
-                        desc: 'Transform checkout experiences with seamless payment flows, dynamic invoicing, and personalized communication that drives conversion.',
-                        image: 'industries/retail.jpg'
-                    },
-                    {
-                        name: 'Telecommunications',
-                        desc: 'Enhance subscriber experiences with real-time usage alerts, flexible billing options, and omnichannel payment support.',
-                        image: 'industries/telecom.jpg'
-                    },
-                    {
-                        name: 'Utilities',
-                        desc: 'Modernize utility billing with automated meter reading integration, usage analytics, and proactive outage notifications.',
-                        image: 'industries/utilities.jpg'
-                    }
-                ];
-
-                let currentIndex = 0;
-
-                function updateIndustryShowcase() {
-                    const titleEl = document.getElementById('activeIndustryTitle');
-                    const descEl = document.getElementById('activeIndustryDesc');
-                    const cards = document.querySelectorAll('.industry-showcase-card');
-
-                    // Update text
-                    const industry = industries[currentIndex];
-                    titleEl.innerHTML = `Solutions for <span style="background: linear-gradient(90deg, #448DE6 0%, #98B2E9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">${industry.name}</span> <span style="color: #448DE6;">›</span>`;
-                    descEl.textContent = industry.desc;
-
-                    // Update cards visibility and styling
-                    cards.forEach((card, index) => {
-                        const dataIndex = parseInt(card.getAttribute('data-industry'));
-
-                        if (dataIndex === currentIndex) {
-                            // Active card
-                            card.style.display = 'block';
-                            card.style.flex = '0 0 280px';
-                            card.style.opacity = '1';
-                            card.style.transform = 'scale(1)';
-                            card.classList.add('active');
-                        } else if (dataIndex === (currentIndex + 1) % industries.length) {
-                            // Next card (faded)
-                            card.style.display = 'block';
-                            card.style.flex = '0 0 240px';
-                            card.style.opacity = '0.5';
-                            card.style.transform = 'scale(0.9)';
-                            card.classList.remove('active');
-                        } else if (dataIndex === (currentIndex + 2) % industries.length) {
-                            // Third card (most faded)
-                            card.style.display = 'block';
-                            card.style.flex = '0 0 200px';
-                            card.style.opacity = '0.3';
-                            card.style.transform = 'scale(0.85)';
-                            card.classList.remove('active');
-                        } else {
-                            // Hidden cards
-                            card.style.display = 'none';
-                            card.classList.remove('active');
-                        }
-                    });
-                }
-
-                // Click handlers for cards
-                document.querySelectorAll('.industry-showcase-card').forEach(card => {
-                    card.addEventListener('click', () => {
-                        const index = parseInt(card.getAttribute('data-industry'));
-                        currentIndex = index;
-                        updateIndustryShowcase();
-                    });
-                });
-
-                // Auto-advance every 5 seconds
-                setInterval(() => {
-                    currentIndex = (currentIndex + 1) % industries.length;
-                    updateIndustryShowcase();
-                }, 5000);
-            </script>
-
-            <div class="solutions-cta" style="text-align: center; margin-top: 3rem;">
-                <a href="industries.html" class="btn-primary" style="text-decoration: none;">Explore Industry Use Cases</a>
             </div>
         </div>
     </section>
