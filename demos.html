@@ -204,6 +204,113 @@
         .back-to-main:hover {
             transform: scale(1.1);
         }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .demo-tabs {
+                margin-top: 120px; /* Smaller header on mobile */
+                top: 120px;
+            }
+
+            .tabs-container {
+                padding: 0 1rem;
+                gap: 0;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .tab-button {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .demo-content {
+                padding: 2rem 1rem;
+            }
+
+            .demo-intro {
+                margin-bottom: 2rem;
+            }
+
+            .demo-intro h1 {
+                font-size: 1.75rem;
+                line-height: 1.2;
+            }
+
+            .demo-intro p {
+                font-size: 1rem;
+            }
+
+            /* Toggle buttons stack on mobile */
+            #tillix-demo > div:nth-child(2) > div {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            #prelogin-toggle,
+            #postlogin-toggle {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+                border-radius: 12px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-button-demo {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.9375rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .demo-tabs {
+                margin-top: 110px;
+                top: 110px;
+            }
+
+            .tabs-container {
+                padding: 0 0.5rem;
+            }
+
+            .tab-button {
+                padding: 0.625rem 0.75rem;
+                font-size: 0.8125rem;
+            }
+
+            .demo-content {
+                padding: 1.5rem 0.75rem;
+            }
+
+            .demo-intro h1 {
+                font-size: 1.5rem;
+            }
+
+            .demo-intro p {
+                font-size: 0.9375rem;
+            }
+
+            /* Pre-login/Post-login view headers */
+            #prelogin-view h3,
+            #postlogin-view h3 {
+                font-size: 1.25rem;
+            }
+
+            #prelogin-view p,
+            #postlogin-view p {
+                font-size: 0.875rem;
+            }
+        }
     </style>
 </head>
 <body data-requires-demo-otp="true">
