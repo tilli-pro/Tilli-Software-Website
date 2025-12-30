@@ -314,12 +314,32 @@ For each item, “Status” reflects the live code; “Action” is content-only
 **DO NOT** create custom button styles or use different styles on different pages.
 
 ### Mobile Section Headers (≤768px)
-All section headers use consistent styling on mobile:
+All section headers use consistent styling on mobile. Defined in `styles.css` and auto-overrides ALL inline styles.
+
+| Element Type | Font Size | Font Weight |
+|--------------|-----------|-------------|
+| Section headers (h2) | 24px | 400 |
+| Card titles (h3) | 18px | 400 |
+| Hero titles (h1) | 28px | 400 |
+
+**Section header standard:**
 - **Font**: Sora, 24px, weight 400
 - **Line height**: 1.3
 - **Color**: #000000
 
-Applies to all `.section-heading`, `.section-title`, and `section h2` elements.
+**Applies to (auto-overrides inline styles):**
+- `.section-heading`, `.section-title`, `section h2`, `main h2`, `main h3`
+- `h2[style*="font-size"]`, `h3[style*="font-size"]` (catches all inline sizes)
+- All section-specific classes: `.about-section h2`, `.fraud-protection h2`, etc.
+
+**Card titles (18px):** `.product-card h3`, `.feature-card h3`, `.benefit-card h3`, etc.
+
+**CSS Location:** `styles.css` under "MOBILE SECTION HEADERS" comment
+
+**DO NOT:**
+- Add font-size overrides in inline `<style>` blocks on pages
+- Override section headers with `!important` in page-specific styles
+- Use different mobile sizes on different pages
 
 #### Nudge Hero
 - Original shape images (not circles), proper headshots, top padding for navbar

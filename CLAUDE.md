@@ -191,8 +191,15 @@ All mobile sizes are defined in `styles.css` under "MOBILE SIZING STANDARDS" sec
 | Hero buttons | 13px | width: 180px, height: 40px, stacked |
 
 #### Mobile Section Headers (all breakpoints ≤768px)
-All section headers must use consistent styling on mobile:
+All section headers must use consistent styling on mobile. This is defined in `styles.css` and automatically overrides ALL inline styles.
 
+| Element Type | Font Size | Font Weight |
+|--------------|-----------|-------------|
+| Section headers (h2) | 24px | 400 |
+| Card titles (h3) | 18px | 400 |
+| Hero titles (h1) | 28px | 400 |
+
+**Section header standard (24px):**
 | Property | Value |
 |----------|-------|
 | Font family | Sora |
@@ -201,13 +208,29 @@ All section headers must use consistent styling on mobile:
 | Line height | 1.3 |
 | Color | #000000 |
 
-Applies to: `.section-heading`, `.section-title`, `section h2`, `.platform-capabilities h3`, `.why-tilli h2`, `.testimonials h2`, `.trusted-by .trusted-text`
+**Applies to all of these selectors (auto-overrides inline styles):**
+- `.section-heading`, `.section-title`
+- `section h2`, `section h3.section-heading`
+- `main h2`, `main h3`
+- `h2[style*="font-size"]`, `h3[style*="font-size"]`
+- `h2[style*="48px"]`, `h2[style*="42px"]`, `h2[style*="40px"]`, etc.
+- `.about-section h2`, `.mission-section h2`, `.values-section h2`
+- `.team-section h2`, `.careers-section h2`, `.features-section h2`
+- `.products-section h2`, `.how-it-works h2`, `.fraud-protection h2`
+- `.pricing-section h2`, `.faq-section h2`, `.contact-section h2`
+- `.demo-section h2`, `.industry-section h2`, `.press-section h2`
 
-**DO NOT:**
-- Override these sizes with inline styles
+**Card titles (18px):**
+- `.product-card h3`, `.feature-card h3`, `.benefit-card h3`
+- `.value-card h3`, `.job-card h3`, `.team-card h3`
+
+**CSS Location:** `styles.css` under "MOBILE SECTION HEADERS" comment (around line 197)
+
+**CRITICAL - DO NOT:**
+- Add font-size overrides in inline `<style>` blocks on individual pages
 - Use different mobile sizes on different pages
-- All button sizes must be consistent across the site
-- Use different section header styles on different pages
+- Override section headers with `!important` in page-specific styles
+- The global styles.css already uses `!important` to override inline styles
 
 #### Nudge Hero (nudge.html)
 - Images displayed in original shape (not circles)

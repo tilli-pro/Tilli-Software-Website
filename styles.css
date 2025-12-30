@@ -197,7 +197,7 @@ h4 { font-size: 1.25rem; }
     /* ==============================================
        MOBILE SECTION HEADERS - Consistent styling
        All section headers: Sora, 24px, weight 400, black
-       (preserves gradient text on specific words)
+       This overrides ALL inline styles on section headings
        ============================================== */
     .section-heading,
     .section-title,
@@ -206,7 +206,40 @@ h4 { font-size: 1.25rem; }
     .testimonials h2,
     .trusted-by .trusted-text,
     section h2,
-    section h3.section-heading {
+    section h3.section-heading,
+    main h2,
+    main h3,
+    h2[style*="font-size"],
+    h3[style*="font-size"],
+    h2[style*="48px"],
+    h2[style*="42px"],
+    h2[style*="40px"],
+    h2[style*="36px"],
+    h2[style*="32px"],
+    h3[style*="48px"],
+    h3[style*="42px"],
+    h3[style*="40px"],
+    h3[style*="36px"],
+    h3[style*="32px"],
+    .about-section h2,
+    .about-section h3,
+    .mission-section h2,
+    .values-section h2,
+    .team-section h2,
+    .careers-section h2,
+    .jobs-section h2,
+    .benefits-section h2,
+    .cta-section h2,
+    .features-section h2,
+    .products-section h2,
+    .how-it-works h2,
+    .fraud-protection h2,
+    .pricing-section h2,
+    .faq-section h2,
+    .contact-section h2,
+    .demo-section h2,
+    .industry-section h2,
+    .press-section h2 {
         font-family: 'Sora', sans-serif !important;
         font-size: 24px !important;
         font-weight: 400 !important;
@@ -214,11 +247,26 @@ h4 { font-size: 1.25rem; }
         color: #000000 !important;
     }
 
+    /* Product card titles stay smaller on mobile */
+    .product-card h3,
+    .feature-card h3,
+    .benefit-card h3,
+    .value-card h3,
+    .job-card h3,
+    .team-card h3 {
+        font-family: 'Sora', sans-serif !important;
+        font-size: 18px !important;
+        font-weight: 400 !important;
+        line-height: 1.35 !important;
+    }
+
     /* Preserve gradient text on specific words inside headers */
     .section-heading span[style*="background-clip"],
     .section-title span[style*="background-clip"],
     section h2 span[style*="background-clip"],
     section h3 span[style*="background-clip"],
+    h2 span[style*="background-clip"],
+    h3 span[style*="background-clip"],
     .highlight-word {
         color: transparent !important;
         -webkit-text-fill-color: transparent !important;
