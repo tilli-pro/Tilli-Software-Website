@@ -1776,73 +1776,126 @@
         </div>
     </section>
 
-    <!-- Why Tilli Section - Retool-inspired Design -->
+    <!-- Why Tilli Section - Retool-inspired Table Layout -->
     <section class="why-tilli" id="features" style="padding: 80px 0;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-            <div style="text-align: center; margin-bottom: 60px;">
+        <style>
+            .tilli-feature-row {
+                display: grid;
+                grid-template-columns: 48px 1fr;
+                gap: 24px;
+                padding: 32px 0;
+                border-bottom: 1px solid #e5e7eb;
+                align-items: start;
+            }
+            .tilli-feature-row:last-child {
+                border-bottom: none;
+            }
+            .tilli-feature-title {
+                font-family: 'Sora', sans-serif;
+                font-size: 1.25rem;
+                font-weight: 400;
+                color: #1a1a1a;
+                margin-bottom: 8px;
+                line-height: 1.3;
+                display: inline-block;
+                border-bottom: 1px solid transparent;
+                transition: border-color 0.2s ease;
+                cursor: default;
+            }
+            .tilli-feature-row:hover .tilli-feature-title {
+                border-bottom-color: #1a1a1a;
+            }
+            .tilli-feature-desc {
+                color: #4b5563;
+                line-height: 1.7;
+                font-size: 1rem;
+            }
+            .tilli-feature-desc a {
+                color: #4b5563;
+                text-decoration: underline;
+            }
+            @media (max-width: 768px) {
+                .tilli-feature-row {
+                    grid-template-columns: 1fr;
+                    gap: 16px;
+                }
+            }
+        </style>
+        <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 2rem;">
+            <div style="margin-bottom: 48px;">
                 <h2 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 42px; line-height: 1.2; color: #1a1a1a; margin-bottom: 16px;">How is Tilli Different?</h2>
             </div>
 
-            <!-- 3-Column Grid - Row 1 -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-bottom: 48px;">
-                <!-- Card 1 -->
+            <!-- Feature Row 1 -->
+            <div class="tilli-feature-row">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
                 <div>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                        <path d="M2 17l10 5 10-5"/>
-                        <path d="M2 12l10 5 10-5"/>
-                    </svg>
-                    <h3 style="font-family: 'Sora', sans-serif; font-size: 1.375rem; font-weight: 400; color: #1a1a1a; margin-bottom: 16px; line-height: 1.3;">#OneVendor, end-to-end</h3>
-                    <p style="color: #4b5563; line-height: 1.7; font-size: 1rem;">Tilli unifies Nudge (CPaaS) + tilliX (experience portal) + tilliPay (payments) in one stack—no multi-vendor projects or glue code. <a href="about.html" style="color: #4b5563; text-decoration: underline;">Learn more</a> <span style="text-decoration: none;">↗</span></p>
-                </div>
-                <!-- Card 2 -->
-                <div>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
-                        <circle cx="12" cy="12" r="3"/>
-                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                    </svg>
-                    <h3 style="font-family: 'Sora', sans-serif; font-size: 1.375rem; font-weight: 400; color: #1a1a1a; margin-bottom: 16px; line-height: 1.3;">Deep ERP/CIS integrations</h3>
-                    <p style="color: #4b5563; line-height: 1.7; font-size: 1rem;">Prebuilt connectors for SAP, Oracle, and leading CIS platforms. Data models and ID mapping are standardized so deployments plug in with minimal IT lift. <a href="developer.html" style="color: #4b5563; text-decoration: underline;">See integrations</a> <span style="text-decoration: none;">↗</span></p>
-                </div>
-                <!-- Card 3 -->
-                <div>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
-                        <rect x="3" y="3" width="7" height="7"/>
-                        <rect x="14" y="3" width="7" height="7"/>
-                        <rect x="14" y="14" width="7" height="7"/>
-                        <rect x="3" y="14" width="7" height="7"/>
-                    </svg>
-                    <h3 style="font-family: 'Sora', sans-serif; font-size: 1.375rem; font-weight: 400; color: #1a1a1a; margin-bottom: 16px; line-height: 1.3;">100s of packaged use cases</h3>
-                    <p style="color: #4b5563; line-height: 1.7; font-size: 1rem;">From eBill, autopay, and collections to claims, renewals, and outages—ready-made templates let teams launch quickly without re-inventing the wheel. <a href="industries.html" style="color: #4b5563; text-decoration: underline;">Explore use cases</a> <span style="text-decoration: none;">↗</span></p>
+                    <h3 class="tilli-feature-title">#OneVendor, end-to-end</h3>
+                    <p class="tilli-feature-desc">Tilli unifies Nudge (CPaaS) + tilliX (experience portal) + tilliPay (payments) in one stack—no multi-vendor projects or glue code. <a href="about.html">Learn more</a> ↗</p>
                 </div>
             </div>
 
-            <!-- 3-Column Grid - Row 2 -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;">
-                <!-- Card 4 -->
+            <!-- Feature Row 2 -->
+            <div class="tilli-feature-row">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
                 <div>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
-                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                    </svg>
-                    <h3 style="font-family: 'Sora', sans-serif; font-size: 1.375rem; font-weight: 400; color: #1a1a1a; margin-bottom: 16px; line-height: 1.3;">Fast time-to-value</h3>
-                    <p style="color: #4b5563; line-height: 1.7; font-size: 1rem;">Spin up pilots in days/weeks (not months). Digitize mail-heavy workflows to cut paper/postage and inbound call volume. <a href="calculator.html" style="color: #4b5563; text-decoration: underline;">Calculate savings</a> <span style="text-decoration: none;">↗</span></p>
+                    <h3 class="tilli-feature-title">Deep ERP/CIS integrations</h3>
+                    <p class="tilli-feature-desc">Prebuilt connectors for SAP, Oracle, and leading CIS platforms. Data models and ID mapping are standardized so deployments plug in with minimal IT lift. <a href="developer.html">See integrations</a> ↗</p>
                 </div>
-                <!-- Card 5 -->
+            </div>
+
+            <!-- Feature Row 3 -->
+            <div class="tilli-feature-row">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                </svg>
                 <div>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                    <h3 style="font-family: 'Sora', sans-serif; font-size: 1.375rem; font-weight: 400; color: #1a1a1a; margin-bottom: 16px; line-height: 1.3;">Enterprise-grade compliance</h3>
-                    <p style="color: #4b5563; line-height: 1.7; font-size: 1rem;">Built-in consent/opt-out, role-based access, audit trails, and WCAG-friendly templates. PCI/SOC/ISO compliant with HIPAA-supporting deployments. <a href="about.html" style="color: #4b5563; text-decoration: underline;">Learn more</a> <span style="text-decoration: none;">↗</span></p>
+                    <h3 class="tilli-feature-title">100s of packaged use cases</h3>
+                    <p class="tilli-feature-desc">From eBill, autopay, and collections to claims, renewals, and outages—ready-made templates let teams launch quickly without re-inventing the wheel. <a href="industries.html">Explore use cases</a> ↗</p>
                 </div>
-                <!-- Card 6 -->
+            </div>
+
+            <!-- Feature Row 4 -->
+            <div class="tilli-feature-row">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
                 <div>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
-                        <line x1="12" y1="1" x2="12" y2="23"/>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
-                    <h3 style="font-family: 'Sora', sans-serif; font-size: 1.375rem; font-weight: 400; color: #1a1a1a; margin-bottom: 16px; line-height: 1.3;">Structural cost takeout</h3>
-                    <p style="color: #4b5563; line-height: 1.7; font-size: 1rem;">Automate collections, payment plans, reminders, and exceptions—slashing call-center volume and manual effort. Track ROI with built-in analytics. <a href="tillipay.html" style="color: #4b5563; text-decoration: underline;">See how</a> <span style="text-decoration: none;">↗</span></p>
+                    <h3 class="tilli-feature-title">Fast time-to-value</h3>
+                    <p class="tilli-feature-desc">Spin up pilots in days/weeks (not months). Digitize mail-heavy workflows to cut paper/postage and inbound call volume. <a href="calculator.html">Calculate savings</a> ↗</p>
+                </div>
+            </div>
+
+            <!-- Feature Row 5 -->
+            <div class="tilli-feature-row">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <div>
+                    <h3 class="tilli-feature-title">Enterprise-grade compliance</h3>
+                    <p class="tilli-feature-desc">Built-in consent/opt-out, role-based access, audit trails, and WCAG-friendly templates. PCI/SOC/ISO compliant with HIPAA-supporting deployments. <a href="about.html">Learn more</a> ↗</p>
+                </div>
+            </div>
+
+            <!-- Feature Row 6 -->
+            <div class="tilli-feature-row">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="1" x2="12" y2="23"/>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                <div>
+                    <h3 class="tilli-feature-title">Structural cost takeout</h3>
+                    <p class="tilli-feature-desc">Automate collections, payment plans, reminders, and exceptions—slashing call-center volume and manual effort. Track ROI with built-in analytics. <a href="tillipay.html">See how</a> ↗</p>
                 </div>
             </div>
         </div>
