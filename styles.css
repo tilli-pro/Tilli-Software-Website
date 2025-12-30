@@ -2175,6 +2175,72 @@ main {
         margin-right: 0 !important;
         margin-bottom: 0.25rem !important;
     }
+
+    /* ==============================================
+       INDUSTRY SOLUTIONS CAROUSEL - Mobile Layout
+       Stack vertically, show one card at a time
+       ============================================== */
+    .industry-solutions .container > div[style*="grid-template-columns"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Left side text - full width on mobile */
+    .industry-solutions .container > div > div:first-child {
+        max-width: 100% !important;
+        order: 1 !important;
+    }
+
+    /* Title smaller on mobile to prevent long words wrapping badly */
+    #activeIndustryTitle {
+        font-size: 22px !important;
+        line-height: 1.3 !important;
+        min-height: auto !important;
+    }
+
+    /* Description */
+    #activeIndustryDesc {
+        font-size: 14px !important;
+        min-height: auto !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Right side cards container - full width, below text */
+    .industry-solutions .container > div > div:last-child {
+        width: 100% !important;
+        height: 200px !important;
+        order: 2 !important;
+        padding-left: 0 !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Cards container - horizontal scroll */
+    #industryCardsContainer {
+        display: flex !important;
+        gap: 0.75rem !important;
+        padding: 0 10px !important;
+        scroll-snap-type: x mandatory !important;
+    }
+
+    /* Each card - smaller, visible, snap to center */
+    .industry-showcase-card {
+        flex: 0 0 160px !important;
+        height: 180px !important;
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        scroll-snap-align: center !important;
+    }
+
+    .industry-showcase-card[style*="display: none"] {
+        display: block !important;
+    }
+
+    /* Card title smaller */
+    .industry-showcase-card h4 {
+        font-size: 12px !important;
+    }
 }
 
 /* Extra small mobile: max-width 480px */
