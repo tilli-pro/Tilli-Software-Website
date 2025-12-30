@@ -190,10 +190,24 @@ All mobile sizes are defined in `styles.css` under "MOBILE SIZING STANDARDS" sec
 | Sign Up button | 11px | padding: 0.4rem 0.8rem |
 | Hero buttons | 13px | width: 180px, height: 40px, stacked |
 
+#### Mobile Section Headers (all breakpoints ≤768px)
+All section headers must use consistent styling on mobile:
+
+| Property | Value |
+|----------|-------|
+| Font family | Sora |
+| Font size | 24px |
+| Font weight | 400 |
+| Line height | 1.3 |
+| Color | #000000 |
+
+Applies to: `.section-heading`, `.section-title`, `section h2`, `.platform-capabilities h3`, `.why-tilli h2`, `.testimonials h2`, `.trusted-by .trusted-text`
+
 **DO NOT:**
 - Override these sizes with inline styles
 - Use different mobile sizes on different pages
 - All button sizes must be consistent across the site
+- Use different section header styles on different pages
 
 #### Nudge Hero (nudge.html)
 - Images displayed in original shape (not circles)

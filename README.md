@@ -313,6 +313,14 @@ For each item, “Status” reflects the live code; “Action” is content-only
 
 **DO NOT** create custom button styles or use different styles on different pages.
 
+### Mobile Section Headers (≤768px)
+All section headers use consistent styling on mobile:
+- **Font**: Sora, 24px, weight 400
+- **Line height**: 1.3
+- **Color**: #000000
+
+Applies to all `.section-heading`, `.section-title`, and `section h2` elements.
+
 #### Nudge Hero
 - Original shape images (not circles), proper headshots, top padding for navbar
 
