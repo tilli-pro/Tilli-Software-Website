@@ -2124,8 +2124,24 @@
             }
             @media (max-width: 768px) {
                 .tilli-features-grid {
-                    grid-template-columns: 1fr;
-                    gap: 32px;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 20px 16px;
+                }
+                .tilli-feature-card {
+                    flex-direction: column;
+                    gap: 8px;
+                }
+                .tilli-feature-card svg {
+                    width: 20px;
+                    height: 20px;
+                }
+                .tilli-feature-title {
+                    font-size: 0.875rem;
+                    margin-bottom: 4px;
+                }
+                .tilli-feature-desc {
+                    font-size: 0.8rem;
+                    line-height: 1.5;
                 }
             }
         </style>
