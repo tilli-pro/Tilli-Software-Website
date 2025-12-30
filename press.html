@@ -84,6 +84,52 @@
         #cc-main .cc-toggle { background: #e2e8f0 !important; }
         #cc-main .cc-toggle:checked ~ .cc-toggle__slider { background: #325ef6 !important; }
         #cc-main.cc-window.cc-banner { padding: 1.5rem !important; box-shadow: 0 -4px 20px rgba(0,0,0,0.1) !important; }
+
+        /* Mobile Press Page Styles */
+        @media (max-width: 768px) {
+            .press-releases .container {
+                padding: 0 16px !important;
+            }
+            .press-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 16px !important;
+            }
+            .press-filters {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 8px;
+                width: 100%;
+            }
+            .press-filters span {
+                white-space: nowrap;
+                font-size: 12px !important;
+                padding: 6px 12px !important;
+            }
+            .press-article {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+            .press-article h3 {
+                font-size: 18px !important;
+            }
+            .press-article p {
+                font-size: 14px !important;
+            }
+            .press-releases section {
+                padding: 40px 0 !important;
+            }
+            .media-contact {
+                padding: 40px 20px !important;
+                margin-top: 40px !important;
+            }
+            .media-contact h2 {
+                font-size: 24px !important;
+            }
+            .media-contact p {
+                font-size: 15px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -137,9 +183,9 @@
         <section class="press-releases" style="padding: 80px 0;">
             <div class="container" style="max-width: 1100px;">
                 <!-- Header with filter tags -->
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px;">
+                <div class="press-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px;">
                     <h2 style="font-size: 24px; font-weight: 400; color: #000000; margin: 0;">Recent Posts</h2>
-                    <div style="display: flex; gap: 8px;">
+                    <div class="press-filters" style="display: flex; gap: 8px;">
                         <span style="padding: 8px 16px; border: 1px solid #e2e8f0; border-radius: 20px; font-size: 14px; color: #475569; cursor: pointer;">News</span>
                         <span style="padding: 8px 16px; border: 1px solid #e2e8f0; border-radius: 20px; font-size: 14px; color: #475569; cursor: pointer;">Case Studies</span>
                         <span style="padding: 8px 16px; border: 1px solid #e2e8f0; border-radius: 20px; font-size: 14px; color: #475569; cursor: pointer;">Research</span>
@@ -150,7 +196,7 @@
                 <div style="display: flex; flex-direction: column; gap: 60px;">
 
                     <!-- Press Release 1 -->
-                    <article style="display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: start;">
+                    <article class="press-article" style="display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: start;">
                         <div style="width: 100%; border-radius: 12px; overflow: hidden;">
                             <img src="Images/press/tilli launches revolutionary ai.png" alt="AI Payment Platform" style="width: 100%; height: auto; display: block;">
                         </div>
@@ -167,7 +213,7 @@
                     </article>
 
                     <!-- Press Release 2 -->
-                    <article style="display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: start;">
+                    <article class="press-article" style="display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: start;">
                         <div style="width: 100%; border-radius: 12px; overflow: hidden;">
                             <img src="Images/press/tilli partners with major utlities.png" alt="Utilities Partnership" style="width: 100%; height: auto; display: block;">
                         </div>
@@ -184,7 +230,7 @@
                     </article>
 
                     <!-- Press Release 3 -->
-                    <article style="display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: start;">
+                    <article class="press-article" style="display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: start;">
                         <div style="width: 100%; border-radius: 12px; overflow: hidden;">
                             <img src="Images/press/tilli achieves SOC 2 Type II.png" alt="Security Compliance" style="width: 100%; height: auto; display: block;">
                         </div>
@@ -203,7 +249,7 @@
                 </div>
 
                 <!-- Media Contact Section -->
-                <div style="margin-top: 80px; text-align: center; padding: 60px 40px; background: #f8fafc; border-radius: 16px;">
+                <div class="media-contact" style="margin-top: 80px; text-align: center; padding: 60px 40px; background: #f8fafc; border-radius: 16px;">
                     <h2 style="font-size: 32px; margin-bottom: 16px; color: #000000; font-weight: 400;">Media Contact</h2>
                     <p style="color: #64748b; font-size: 18px; margin-bottom: 32px;">For press inquiries and media requests, please contact our communications team</p>
                     <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;">
