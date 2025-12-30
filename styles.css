@@ -2110,6 +2110,16 @@ main {
     .hero-actions .arrow-circle {
         font-size: 12px !important;
     }
+
+    /* Hero Image - smaller on mobile to prevent cutoff */
+    .hero-visual {
+        padding: 0 15px !important;
+    }
+
+    .hero-image {
+        max-width: 100% !important;
+        width: 90% !important;
+    }
 }
 
 /* Extra small mobile: max-width 480px */
