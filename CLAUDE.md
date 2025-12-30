@@ -208,7 +208,13 @@ All section headers must use consistent styling on mobile. This is defined in `s
 | Line height | 1.3 |
 | Color | #000000 |
 
-**Applies to all of these selectors (auto-overrides inline styles):**
+**Hero titles (h1) - 28px selectors (auto-overrides inline styles):**
+- `h1`, `h1[style*="font-size"]`
+- `h1[style*="3rem"]`, `h1[style*="3.5rem"]`
+- `h1[style*="52px"]`, `h1[style*="56px"]`, `h1[style*="48px"]`, `h1[style*="40px"]`
+- `.hero h1`, `.hero-title`, `section h1`, `main h1`, `.page-title`
+
+**Section headers (h2) - 24px selectors (auto-overrides inline styles):**
 - `.section-heading`, `.section-title`
 - `section h2`, `section h3.section-heading`
 - `main h2`, `main h3`
@@ -220,7 +226,7 @@ All section headers must use consistent styling on mobile. This is defined in `s
 - `.pricing-section h2`, `.faq-section h2`, `.contact-section h2`
 - `.demo-section h2`, `.industry-section h2`, `.press-section h2`
 
-**Card titles (18px):**
+**Card titles (h3) - 18px selectors:**
 - `.product-card h3`, `.feature-card h3`, `.benefit-card h3`
 - `.value-card h3`, `.job-card h3`, `.team-card h3`
 

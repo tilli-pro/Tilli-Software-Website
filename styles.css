@@ -151,10 +151,26 @@ h4 { font-size: 1.25rem; }
 
 /* Mobile Typography - Ramp-inspired sizing */
 @media (max-width: 768px) {
-    /* H1: Primary headlines */
-    h1 {
-        font-size: 28px;
-        line-height: 1.25;
+    /* ==============================================
+       MOBILE HERO TITLES (H1) - 28px standard
+       This overrides ALL inline styles on h1 elements
+       ============================================== */
+    h1,
+    h1[style*="font-size"],
+    h1[style*="3rem"],
+    h1[style*="3.5rem"],
+    h1[style*="52px"],
+    h1[style*="56px"],
+    h1[style*="48px"],
+    h1[style*="40px"],
+    .hero h1,
+    .hero-title,
+    section h1,
+    main h1,
+    .page-title {
+        font-size: 28px !important;
+        line-height: 1.25 !important;
+        font-weight: 400 !important;
     }
 
     /* H2: Section headlines */
