@@ -2244,10 +2244,17 @@ main {
 
     /* ==============================================
        PRODUCT CARDS - Mobile Layout
-       Smaller cards, reduced visual heights
+       Single column, smaller cards
        ============================================== */
+    .products-grid-container {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
     .product-showcase-card {
         padding: 1.25rem !important;
+        width: 100% !important;
     }
 
     .product-showcase-card h3 {
