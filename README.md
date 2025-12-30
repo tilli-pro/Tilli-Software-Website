@@ -337,11 +337,30 @@ Applies to all `.section-heading`, `.section-title`, and `section h2` elements.
 
 ### Footer
 - Standard design from index.html used across all pages
-- White logo, dark background (#1f2937)
-- Newsletter button: Solid blue, auto width
+- White logo (`Images/22_Utilli_logo_white.png`), dark background (#1f2937)
 - Product name: "Monay" (not "Money")
 - Social icons: X, Instagram, Facebook, YouTube, LinkedIn
-- Press page footer fixed to match standard
+
+#### Mobile Footer Layout (≤768px)
+The mobile footer layout is defined in `styles.css` under "MOBILE FOOTER STYLES":
+
+| Order | Element | Description |
+|-------|---------|-------------|
+| 1 | Logo + Description | `.footer-brand.mobile-brand` at top |
+| 2 | Three columns | Products \| Company \| Resources (side by side) |
+| 3 | Social + Copyright | Social icons left, copyright right (same row) |
+| 4 | Headquarters | Centered address section |
+| 5 | Platform status | Under address |
+| 6 | Legal links | Terms \| Privacy \| Cookies (centered) |
+
+**Required classes:**
+- `.footer-brand.mobile-brand` - Mobile-only brand section
+- `.footer-brand.desktop-brand` - Desktop-only brand section
+- `.footer-social-copyright` - Wrapper for social + copyright row
+- `.footer-headquarters` - Address with platform status
+- `.footer-legal-links .separator` - Pipe separators
+
+**Hidden on mobile:** Developers column, Get Started Today column
 
 ### About Page
 - Updated hero image

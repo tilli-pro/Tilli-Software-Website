@@ -256,16 +256,68 @@ Applies to: `.section-heading`, `.section-title`, `section h2`, `.platform-capab
 
 #### Standard Footer Design
 - All pages should use the footer from index.html as reference
-- Logo: White version
+- Logo: White version (`Images/22_Utilli_logo_white.png`)
 - Background: Dark (#1f2937)
-- Newsletter button: Solid blue (not gradient), auto width
 - Product name: "Monay" (not "Money")
-- Press page footer: Fixed to match standard footer
 
-#### Footer Links
-- Social icons: X (Twitter), Instagram, Facebook, YouTube, LinkedIn
-- Legal links: Terms, Privacy, Anti-Slavery Policy, Cookies
-- Platform status indicator
+#### Mobile Footer Layout (≤768px)
+The mobile footer has a specific layout that must be consistent across all pages:
+
+**Order of elements:**
+1. **Logo + Description** (top) - Uses `.footer-brand.mobile-brand`
+2. **Three columns** - Products | Company | Resources (side by side)
+3. **Social icons + Copyright** - Same row, social left, copyright right
+4. **Headquarters** - Centered, with address
+5. **Platform status** - Under address
+6. **Legal links** - Terms | Privacy | Cookies (centered)
+
+**Required HTML structure:**
+```html
+<!-- Mobile: Brand section at top -->
+<div class="footer-brand mobile-brand">
+    <div class="footer-logo">
+        <img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo">
+    </div>
+    <p>Tilli is a comprehensive financial solutions platform...</p>
+</div>
+
+<div class="footer-bottom">
+    <div class="footer-brand desktop-brand">...</div>
+    <div class="footer-right">
+        <div class="footer-social-copyright">
+            <div class="footer-social">...</div>
+            <p class="mobile-copyright">© 2024 — Copyright<br>All Rights reserved</p>
+        </div>
+        <div class="footer-headquarters">
+            <h5>Headquarters</h5>
+            <p>8260 Greensboro Dr,<br>Suite 270, McLean VA, 22102</p>
+            <div class="footer-status">...</div>
+        </div>
+        <div class="footer-legal-links">
+            <a href="#">Terms</a>
+            <span class="separator">|</span>
+            <a href="privacy-policy/">Privacy</a>
+            <span class="separator">|</span>
+            <a href="#">Cookies</a>
+        </div>
+    </div>
+</div>
+```
+
+**CSS Classes:**
+- `.footer-brand.mobile-brand` - Shown on mobile only
+- `.footer-brand.desktop-brand` - Shown on desktop only
+- `.footer-social-copyright` - Wrapper for social + copyright row
+- `.mobile-copyright` - Copyright text for mobile
+- `.footer-headquarters` - Address section with platform status
+- `.footer-legal-links .separator` - Pipe separators between legal links
+
+**Hidden on mobile:**
+- Developers column (3rd)
+- Get Started Today column (5th)
+- Desktop brand section
+
+**CSS location:** `styles.css` under "MOBILE FOOTER STYLES" section
 
 ---
 

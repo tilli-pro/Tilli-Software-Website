@@ -6561,3 +6561,201 @@ a:focus {
 /* ===================================
    DARK MODE TOGGLE BUTTON
    =================================== */
+
+/* ===================================
+   MOBILE FOOTER STYLES
+   =================================== */
+
+/* Desktop: Hide mobile-only footer elements */
+.footer-brand.mobile-brand {
+    display: none;
+}
+.mobile-copyright {
+    display: none;
+}
+.footer-headquarters {
+    display: none;
+}
+.footer-legal-links .separator {
+    display: none;
+}
+
+/* Mobile Footer Layout */
+@media (max-width: 768px) {
+    .footer {
+        padding: 2rem 1rem !important;
+    }
+
+    .footer-content {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* Show mobile brand, hide desktop brand */
+    .footer-brand.mobile-brand {
+        display: block !important;
+        order: 1 !important;
+        margin-bottom: 2rem !important;
+        text-align: left !important;
+    }
+
+    .footer-brand.desktop-brand {
+        display: none !important;
+    }
+
+    .footer-brand .footer-logo img {
+        height: 32px !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .footer-brand p {
+        font-size: 13px !important;
+        line-height: 1.6 !important;
+        color: #9CA3AF !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Three columns in a row */
+    .footer-links {
+        order: 2 !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.5rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    /* Reorder columns: Products(1), Company(4), Resources(2) */
+    .footer-column:nth-child(1) { order: 1 !important; }
+    .footer-column:nth-child(4) { order: 2 !important; }
+    .footer-column:nth-child(2) { order: 3 !important; }
+
+    /* Hide Developers(3) and Get Started(5) */
+    .footer-column:nth-child(3),
+    .footer-column:nth-child(5) {
+        display: none !important;
+    }
+
+    .footer-column h4 {
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        margin-bottom: 0.75rem !important;
+        color: #FFFFFF !important;
+    }
+
+    .footer-column ul {
+        padding: 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+    }
+
+    .footer-column li {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .footer-column a {
+        font-size: 13px !important;
+        color: #9CA3AF !important;
+        text-decoration: none !important;
+    }
+
+    /* Footer bottom section */
+    .footer-bottom {
+        order: 3 !important;
+    }
+
+    .footer-right {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    /* Social icons + Copyright row */
+    .footer-social-copyright {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .footer-social {
+        display: flex !important;
+        gap: 1rem !important;
+    }
+
+    .footer-social a {
+        font-size: 18px !important;
+        color: #9CA3AF !important;
+    }
+
+    .mobile-copyright {
+        display: block !important;
+        font-size: 12px !important;
+        color: #9CA3AF !important;
+        text-align: right !important;
+        margin: 0 !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Headquarters section */
+    .footer-headquarters {
+        display: block !important;
+        text-align: center !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .footer-headquarters h5 {
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        color: #FFFFFF !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .footer-headquarters p {
+        font-size: 13px !important;
+        color: #9CA3AF !important;
+        margin-bottom: 0.75rem !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Platform status under address */
+    .footer-headquarters .footer-status {
+        justify-content: center !important;
+        margin-top: 0.5rem !important;
+    }
+
+    .footer-status {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        font-size: 12px !important;
+        color: #9CA3AF !important;
+    }
+
+    .footer-status .status-indicator {
+        width: 8px !important;
+        height: 8px !important;
+        background: #10B981 !important;
+        border-radius: 50% !important;
+    }
+
+    /* Legal links at bottom */
+    .footer-legal-links {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        margin-top: 1rem !important;
+    }
+
+    .footer-legal-links a {
+        font-size: 12px !important;
+        color: #9CA3AF !important;
+        text-decoration: none !important;
+    }
+
+    .footer-legal-links .separator {
+        display: inline !important;
+        color: #6B7280 !important;
+        font-size: 12px !important;
+    }
+}
