@@ -2241,6 +2241,41 @@ main {
     .industry-showcase-card h4 {
         font-size: 12px !important;
     }
+
+    /* ==============================================
+       PRODUCT CARDS - Mobile Layout
+       Smaller cards, reduced visual heights
+       ============================================== */
+    .product-showcase-card {
+        padding: 1.25rem !important;
+    }
+
+    .product-showcase-card h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .product-showcase-card p {
+        font-size: 12px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .product-showcase-card a {
+        font-size: 12px !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Visual elements - smaller height */
+    .product-showcase-card > div:last-child {
+        height: 180px !important;
+        padding: 1rem !important;
+    }
+
+    /* Inner card content */
+    .product-showcase-card > div:last-child > div {
+        padding: 1rem !important;
+    }
 }
 
 /* Extra small mobile: max-width 480px */
