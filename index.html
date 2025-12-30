@@ -464,9 +464,19 @@
             }
         }
     </style>
+    <!-- Prevent hash-based auto-scrolling on mobile -->
+    <script>
+        (function() {
+            if (window.innerWidth <= 768 && window.location.hash) {
+                // Store the hash
+                var hash = window.location.hash;
+                // Remove hash to prevent browser auto-scroll
+                history.replaceState(null, null, window.location.pathname + window.location.search);
+            }
+        })();
+    </script>
 </head>
 <body>
-
     <!-- Radnom comment -->
     <!-- Header -->
     <header class="header">
@@ -550,9 +560,81 @@
                         padding: 0 1rem;
                     }
 
-                    /* Product cards responsive - single column on mobile */
+                    /* Product cards - SIMPLE single column layout */
                     .products-grid-container {
-                        grid-template-columns: 1fr !important;
+                        display: flex !important;
+                        flex-direction: column !important;
+                        gap: 1rem !important;
+                        overflow: visible !important;
+                        height: auto !important;
+                    }
+
+                    /* FORCE ALL 5 CARDS VISIBLE */
+                    .product-showcase-card {
+                        display: block !important;
+                        visibility: visible !important;
+                        opacity: 1 !important;
+                        width: 100% !important;
+                        padding: 1.25rem !important;
+                        grid-column: auto !important;
+                        height: auto !important;
+                    }
+
+                    .product-showcase-card:nth-child(1),
+                    .product-showcase-card:nth-child(2),
+                    .product-showcase-card:nth-child(3),
+                    .product-showcase-card:nth-child(4),
+                    .product-showcase-card:nth-child(5) {
+                        display: block !important;
+                        visibility: visible !important;
+                    }
+
+                    /* Card title */
+                    .product-showcase-card h3 {
+                        font-size: 1.1rem !important;
+                        margin-bottom: 0.5rem !important;
+                    }
+
+                    /* Card description */
+                    .product-showcase-card p {
+                        font-size: 13px !important;
+                        margin-bottom: 0.75rem !important;
+                    }
+
+                    /* Card CTA link */
+                    .product-showcase-card a {
+                        font-size: 13px !important;
+                        margin-bottom: 1rem !important;
+                        display: block !important;
+                    }
+
+                    /* Visual element - fixed height, centered content */
+                    .product-visual {
+                        width: 100% !important;
+                        height: 200px !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        overflow: hidden !important;
+                    }
+
+                    /* Scale down visual inner content */
+                    .product-visual > div {
+                        transform: scale(0.75) !important;
+                    }
+
+                    /* XDEX card - stack vertically */
+                    .xdex-card {
+                        grid-column: auto !important;
+                    }
+
+                    .xdex-inner {
+                        display: block !important;
+                    }
+
+                    .xdex-inner > div:last-child {
+                        height: 160px !important;
+                        margin-top: 1rem !important;
                     }
 
                     .testimonial-card {
@@ -1161,13 +1243,7 @@
                             card.style.transform = 'scale(1)';
                             card.classList.add('active');
 
-                            // On mobile, scroll to the active card
-                            if (window.innerWidth <= 768) {
-                                const container = document.getElementById('industryCardsContainer');
-                                if (container) {
-                                    card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                                }
-                            }
+                            // Mobile scroll disabled - user manually swipes cards
                         } else if (dataIndex === (currentIndex + 1) % industries.length) {
                             // Next card (faded)
                             card.style.display = 'block';
@@ -1199,11 +1275,13 @@
                     });
                 });
 
-                // Auto-advance every 5 seconds
-                setInterval(() => {
-                    currentIndex = (currentIndex + 1) % industries.length;
-                    updateIndustryShowcase();
-                }, 5000);
+                // Auto-advance every 5 seconds (disabled on mobile to prevent scroll issues)
+                if (window.innerWidth > 768) {
+                    setInterval(() => {
+                        currentIndex = (currentIndex + 1) % industries.length;
+                        updateIndustryShowcase();
+                    }, 5000);
+                }
             </script>
 
             <div class="solutions-cta" style="text-align: center; margin-top: 3rem;">
@@ -1225,14 +1303,14 @@
                 <!-- Modern Product Cards Grid -->
                 <div class="products-grid-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 3rem 0;">
                     <!-- tilliX Card -->
-                    <div class="product-showcase-card" style="background: #F7F7F7; border-radius: 16px; padding: 2rem; border: none; transition: all 0.3s ease; overflow: hidden;">
+                    <div class="product-showcase-card" style="background: #F7F7F7; border-radius: 16px; padding: 2rem; border: none; transition: all 0.3s ease;">
                         <h3 style="font-family: 'Sora', sans-serif; font-weight: 400; color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.5rem;">tilliX</h3>
                         <p style="color: #6B7280; line-height: 1.6; margin-bottom: 1.5rem; font-size: 14px;">Transform customer experiences with intelligent self-service portals that enable frictionless bill pay and account management. Reduce support costs by 60% while improving satisfaction scores.</p>
                         <a href="demos.html#tillix" data-nudge-demo-trigger style="display: inline-flex; align-items: center; gap: 6px; background: none; color: #6B7280; padding: 0; border: none; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; margin-bottom: 2rem;">
                             <span style="text-decoration: underline;">See self-service in action</span> <span style="font-size: 14px;">→</span>
                         </a>
                         <!-- Visual Element -->
-                        <div style="width: 100%; height: 240px; background: #F3F4F6; border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 1.5rem; position: relative; overflow: hidden;">
+                        <div class="product-visual" style="width: 100%; height: 240px; background: #F3F4F6; border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 1.5rem; position: relative;">
                             <style>
                                 @keyframes amountSlide {
                                     0%, 30% { width: 20%; }
@@ -1264,14 +1342,14 @@
                     </div>
 
                     <!-- Nudge Card -->
-                    <div class="product-showcase-card" style="background: #F7F7F7; border-radius: 16px; padding: 2rem; border: none; transition: all 0.3s ease; overflow: hidden;">
+                    <div class="product-showcase-card" style="background: #F7F7F7; border-radius: 16px; padding: 2rem; border: none; transition: all 0.3s ease;">
                         <h3 style="font-family: 'Sora', sans-serif; font-weight: 400; color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.5rem;">Nudge</h3>
                         <p style="color: #6B7280; line-height: 1.6; margin-bottom: 1.5rem; font-size: 14px;">Drive action with intelligent omnichannel messaging that reaches customers at the perfect moment. Increase engagement by 95% with personalized SMS, WhatsApp, and email campaigns.</p>
                         <a href="demos.html#nudge" data-nudge-demo-trigger style="display: inline-flex; align-items: center; gap: 6px; background: none; color: #6B7280; padding: 0; border: none; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; margin-bottom: 2rem;">
                             <span style="text-decoration: underline;">Engage customers smarter — view the demo</span> <span style="font-size: 14px;">→</span>
                         </a>
                         <!-- Visual Element -->
-                        <div style="width: 100%; height: 240px; background: #F3F4F6; border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+                        <div class="product-visual" style="width: 100%; height: 240px; background: #F3F4F6; border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
                             <style>
                                 @keyframes channelPulse {
                                     0%, 100% { transform: scale(1); opacity: 1; }
@@ -1307,14 +1385,14 @@
                     </div>
 
                     <!-- tilliPay Card -->
-                    <div class="product-showcase-card" style="background: #F7F7F7; border-radius: 16px; padding: 2rem; border: none; transition: all 0.3s ease; overflow: hidden;">
+                    <div class="product-showcase-card" style="background: #F7F7F7; border-radius: 16px; padding: 2rem; border: none; transition: all 0.3s ease;">
                         <h3 style="font-family: 'Sora', sans-serif; font-weight: 400; color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.5rem;">tilliPay</h3>
                         <p style="color: #6B7280; line-height: 1.6; margin-bottom: 1.5rem; font-size: 14px;">Orchestrate payments seamlessly across 16+ global processors with intelligent routing and retry logic. Reduce transaction costs by 30% while improving payment success rates.</p>
                         <a href="demos.html#tillipay" data-nudge-demo-trigger style="display: inline-flex; align-items: center; gap: 6px; background: none; color: #6B7280; padding: 0; border: none; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; margin-bottom: 2rem;">
                             <span style="text-decoration: underline;">See intelligent routing</span> <span style="font-size: 14px;">→</span>
                         </a>
                         <!-- Visual Element -->
-                        <div style="width: 100%; height: 240px; background: linear-gradient(135deg, #E9D5FF 0%, #DDD6FE 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+                        <div class="product-visual" style="width: 100%; height: 240px; background: linear-gradient(135deg, #E9D5FF 0%, #DDD6FE 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 2rem;">
                             <style>
                                 @keyframes cardProcess {
                                     0%, 20% { transform: translateX(0) rotate(0deg); opacity: 1; }
@@ -1359,14 +1437,14 @@
                     </div>
 
                     <!-- tilliArc Card -->
-                    <div class="product-showcase-card" style="background: #F7F7F7; border-radius: 16px; padding: 2rem; border: none; transition: all 0.3s ease; overflow: hidden;">
+                    <div class="product-showcase-card" style="background: #F7F7F7; border-radius: 16px; padding: 2rem; border: none; transition: all 0.3s ease;">
                         <h3 style="font-family: 'Sora', sans-serif; font-weight: 400; color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.5rem;">tilliArc</h3>
                         <p style="color: #6B7280; line-height: 1.6; margin-bottom: 1.5rem; font-size: 14px;">Secure and compliant cloud document archiving with intelligent indexing and instant retrieval. Reduce storage costs by 70% while ensuring regulatory compliance and data governance.</p>
                         <a href="demos.html#tilliarc" data-nudge-demo-trigger style="display: inline-flex; align-items: center; gap: 6px; background: none; color: #6B7280; padding: 0; border: none; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; margin-bottom: 2rem;">
                             <span style="text-decoration: underline;">Secure archiving, simplified</span> <span style="font-size: 14px;">→</span>
                         </a>
                         <!-- Visual Element -->
-                        <div style="width: 100%; height: 240px; background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative;">
+                        <div class="product-visual" style="width: 100%; height: 240px; background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative;">
                             <style>
                                 @keyframes docFloat {
                                     0% { transform: translateY(0) scale(1); opacity: 0; }
@@ -1401,8 +1479,8 @@
                     </div>
 
                     <!-- XDEX Card (spans 2 columns) -->
-                    <div class="product-showcase-card" style="background: #F7F7F7; border-radius: 16px; padding: 2rem; border: none; transition: all 0.3s ease; overflow: hidden; grid-column: span 2;">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                    <div class="product-showcase-card xdex-card" style="background: #F7F7F7; border-radius: 16px; padding: 2rem; border: none; transition: all 0.3s ease; grid-column: span 2;">
+                        <div class="xdex-inner" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
                             <div>
                                 <h3 style="font-family: 'Sora', sans-serif; font-weight: 400; color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.5rem;">XDEX</h3>
                                 <p style="color: #6B7280; line-height: 1.6; margin-bottom: 1.5rem; font-size: 14px;">AI-powered payment integration platform that connects your enterprise systems to 100+ payment networks worldwide. Launch new payment methods in weeks, not months.</p>

@@ -1088,16 +1088,17 @@ main {
 
 .payment-methods {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
 }
 
 .payment-card {
     background: #FFFFFF;
-    padding: 1.5rem;
+    padding: 0.75rem 0.5rem;
     border-radius: var(--border-radius);
     text-align: center;
     transition: all 0.3s ease;
+    border: 1px solid #E5E7EB;
 }
 
 .payment-card:hover {
@@ -1106,15 +1107,36 @@ main {
 }
 
 .payment-card i {
-    font-size: 2rem;
+    font-size: 1.25rem;
     color: var(--primary-blue);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .payment-card span {
     display: block;
     font-weight: 500;
+    font-size: 0.7rem;
     color: var(--dark-gray);
+}
+
+/* Mobile: 3 columns */
+@media (max-width: 768px) {
+    .payment-methods {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
+    .payment-card {
+        padding: 0.5rem 0.25rem;
+    }
+
+    .payment-card i {
+        font-size: 1rem;
+    }
+
+    .payment-card span {
+        font-size: 0.6rem;
+    }
 }
 
 /* Industry Solutions */
@@ -2244,44 +2266,63 @@ main {
 
     /* ==============================================
        PRODUCT CARDS - Mobile Layout
-       Single column, smaller cards
+       Single column, clean stacked cards like desktop
        ============================================== */
+
+    /* Product cards - SIMPLE single column */
     .products-grid-container {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
         gap: 1rem !important;
     }
 
     .product-showcase-card {
-        padding: 1.25rem !important;
+        display: block !important;
         width: 100% !important;
+        padding: 1.25rem !important;
+        grid-column: auto !important;
     }
 
     .product-showcase-card h3 {
         font-size: 1.1rem !important;
-        margin-bottom: 0.25rem !important;
+        margin-bottom: 0.5rem !important;
     }
 
     .product-showcase-card p {
-        font-size: 12px !important;
-        line-height: 1.5 !important;
-        margin-bottom: 1rem !important;
+        font-size: 13px !important;
+        margin-bottom: 0.75rem !important;
     }
 
     .product-showcase-card a {
-        font-size: 12px !important;
+        font-size: 13px !important;
         margin-bottom: 1rem !important;
+        display: block !important;
     }
 
-    /* Visual elements - smaller height */
-    .product-showcase-card > div:last-child {
-        height: 180px !important;
-        padding: 1rem !important;
+    .product-visual {
+        width: 100% !important;
+        height: 200px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
     }
 
-    /* Inner card content */
-    .product-showcase-card > div:last-child > div {
-        padding: 1rem !important;
+    .product-visual > div {
+        transform: scale(0.75) !important;
+    }
+
+    .xdex-card {
+        grid-column: auto !important;
+    }
+
+    .xdex-inner {
+        display: block !important;
+    }
+
+    .xdex-inner > div:last-child {
+        height: 160px !important;
+        margin-top: 1rem !important;
     }
 }
 
@@ -2359,9 +2400,15 @@ main {
     animation: fadeInUp 0.6s ease-out;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling - disabled on mobile to prevent auto-scroll issues */
 html {
     scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+    html {
+        scroll-behavior: auto !important;
+    }
 }
 
 /* Focus styles for accessibility */
@@ -3405,12 +3452,7 @@ a:focus {
     color: var(--dark-gray);
 }
 
-.payment-methods {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
+/* payment-methods grid is defined earlier - don't override here */
 
 .payment-method {
     display: flex;
