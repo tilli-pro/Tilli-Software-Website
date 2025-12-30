@@ -127,6 +127,27 @@ When you need a Lucide icon, convert it to inline SVG format. Common icons:
 - **DO NOT**: Make text bold - always use font-weight: 400
 - Button: Gradient blue pill style
 
+### Button Styling Standards (Site-wide)
+
+**ALL buttons across the site must follow these styles:**
+
+#### Primary Button (for hero sections and main CTAs)
+- Class: `btn btn-primary btn-icon`
+- Style: `font-weight: 400`
+- Wrapper: Use `hero-actions` class for hero section buttons
+- Structure: `<a/button class="btn btn-primary btn-icon" style="font-weight: 400;">Text <span class="arrow-circle">→</span></a/button>`
+- Appearance: Gradient blue pill (linear-gradient from cyan to blue)
+
+#### Secondary Button
+- Class: `btn btn-secondary`
+- Style: `font-weight: 400`
+- Appearance: White/transparent with blue outline
+
+**DO NOT:**
+- Create custom button styles with inline gradients
+- Use different button styles on different pages
+- Make button text bold (always font-weight: 400)
+
 #### Homepage Product Cards (index.html)
 Product cards have Ramp.com-style CTAs with underlined text (arrow not underlined):
 - **tilliX**: "See self-service in action →" → demos.html#tillix

@@ -296,6 +296,23 @@ For each item, “Status” reflects the live code; “Action” is content-only
 - **DO NOT**: Change image size with inline styles - use the CSS classes
 - **DO NOT**: Make text bold - always use font-weight: 400
 
+### Button Styling Standards (Site-wide)
+
+**ALL buttons must follow these styles:**
+
+#### Primary Button (hero sections, main CTAs)
+- Class: `btn btn-primary btn-icon`
+- Style: `font-weight: 400`
+- Wrapper: `hero-actions` class for hero buttons
+- Appearance: Gradient blue pill (cyan to blue)
+
+#### Secondary Button
+- Class: `btn btn-secondary`
+- Style: `font-weight: 400`
+- Appearance: White with blue outline
+
+**DO NOT** create custom button styles or use different styles on different pages.
+
 #### Nudge Hero
 - Original shape images (not circles), proper headshots, top padding for navbar
 
