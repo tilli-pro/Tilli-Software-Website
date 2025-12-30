@@ -504,7 +504,28 @@
             }
 
             .hero-visual {
-                display: none;
+                height: auto;
+                margin-top: 1rem;
+            }
+
+            .hero-images {
+                position: relative;
+                display: flex;
+                gap: 12px;
+                justify-content: center;
+                height: auto;
+                max-width: 100%;
+            }
+
+            .hero-img {
+                position: relative;
+                top: auto;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                width: 45%;
+                height: 140px;
+                z-index: 1;
             }
 
             .hero-background {
@@ -520,6 +541,10 @@
             .hero .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .hero-img {
+                height: 120px;
             }
         }
     </style>
