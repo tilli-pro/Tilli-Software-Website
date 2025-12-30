@@ -185,8 +185,8 @@ All mobile sizes are defined in `styles.css` under "MOBILE SIZING STANDARDS" sec
 #### Small Mobile (max-width: 480px)
 | Element | Font Size | Dimensions |
 |---------|-----------|------------|
-| Banner text | 10px | stacked vertically |
-| Banner button | 9px | padding: 4px 8px |
+| Banner text | 9px | single line (nowrap) |
+| Banner button | 8px | padding: 3px 6px |
 | Sign Up button | 11px | padding: 0.4rem 0.8rem |
 | Hero buttons | 13px | width: 180px, height: 40px, stacked |
 

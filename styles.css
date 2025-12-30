@@ -2114,21 +2114,24 @@ main {
 
 /* Extra small mobile: max-width 480px */
 @media (max-width: 480px) {
-    /* Top Banner - even smaller on small phones */
+    /* Top Banner - keep on single line, shrink text */
     .header > div[style*="background: linear-gradient"] {
-        padding: 10px 12px !important;
-        flex-direction: column !important;
-        gap: 8px !important;
+        padding: 8px 10px !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 6px !important;
     }
 
     .header > div[style*="background: linear-gradient"] > span {
-        font-size: 10px !important;
-        text-align: center !important;
+        font-size: 9px !important;
+        text-align: left !important;
+        line-height: 1.2 !important;
     }
 
     .header > div[style*="background: linear-gradient"] > a {
-        font-size: 9px !important;
-        padding: 4px 8px !important;
+        font-size: 8px !important;
+        padding: 3px 6px !important;
+        flex-shrink: 0 !important;
     }
 
     /* Nav Sign Up Button - smaller on small phones */
