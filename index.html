@@ -1160,6 +1160,14 @@
                             card.style.opacity = '1';
                             card.style.transform = 'scale(1)';
                             card.classList.add('active');
+
+                            // On mobile, scroll to the active card
+                            if (window.innerWidth <= 768) {
+                                const container = document.getElementById('industryCardsContainer');
+                                if (container) {
+                                    card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                                }
+                            }
                         } else if (dataIndex === (currentIndex + 1) % industries.length) {
                             // Next card (faded)
                             card.style.display = 'block';
