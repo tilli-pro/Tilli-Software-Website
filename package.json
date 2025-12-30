@@ -1,10 +1,12 @@
 {
   "name": "tilli-software-website",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
-  "description": "Tilli Software Website with Vtiger CRM Integration",
+  "description": "Tilli Software Website with 11ty + Vercel",
   "scripts": {
-    "dev": "echo 'Use vercel dev directly'",
+    "dev": "eleventy --serve --port=8000 --config=.eleventy.cjs",
+    "build": "eleventy --config=.eleventy.cjs",
+    "debug": "DEBUG=Eleventy* eleventy --config=.eleventy.cjs",
     "deploy": "vercel --prod"
   },
   "dependencies": {
@@ -13,6 +15,9 @@
     "node-fetch": "^2.7.0",
     "puppeteer-core": "^21.0.0",
     "@sparticuz/chromium": "^119.0.0"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
   },
   "engines": {
     "node": "22.x"

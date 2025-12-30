@@ -1,0 +1,34 @@
+{# Common scripts for all pages #}
+<script src="/script.js"></script>
+
+{# Conditional scripts based on page needs #}
+{% if hasOtpModal %}
+  <script src="/nudge-otp.js"></script>
+{% endif %}
+
+{% if hasVtigerIntegration %}
+  <script src="/vtiger-integration.js"></script>
+{% endif %}
+
+{# Cookie consent scripts #}
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.js"></script>
+<script src="/cookie-config.js"></script>
+
+{# Enhanced cookie banner #}
+<script src="/enhanced-cookie-banner.js"></script>
+
+{# Calculator specific scripts #}
+{% if hasCalculator %}
+  <script src="/pricing-services-config.js"></script>
+  {# Calculator inline script will be in the calculator page template #}
+{% endif %}
+
+{# Demos page scripts #}
+{% if hasDemos %}
+  <script src="/demos.js"></script>
+{% endif %}
+
+{# Signup form scripts #}
+{% if hasSignupForm %}
+  <script src="/signup-handler.js" defer></script>
+{% endif %}

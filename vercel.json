@@ -1,4 +1,8 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
   "functions": {
     "api/vtiger.js": {
       "maxDuration": 10
@@ -26,10 +30,30 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    }
+  "redirects": [
+    { "source": "/index.html", "destination": "/" },
+    { "source": "/about.html", "destination": "/about/" },
+    { "source": "/pricing.html", "destination": "/pricing/" },
+    { "source": "/signup.html", "destination": "/signup/" },
+    { "source": "/calculator.html", "destination": "/calculator/" },
+    { "source": "/nudge.html", "destination": "/nudge/" },
+    { "source": "/tillix.html", "destination": "/tillix/" },
+    { "source": "/tillipay.html", "destination": "/tillipay/" },
+    { "source": "/demos.html", "destination": "/demos/" },
+    { "source": "/press.html", "destination": "/press/" },
+    { "source": "/contact.html", "destination": "/contact/" },
+    { "source": "/careers.html", "destination": "/careers/" },
+    { "source": "/industries.html", "destination": "/industries/" },
+    { "source": "/blog.html", "destination": "/blog/" },
+    { "source": "/case-studies.html", "destination": "/case-studies/" },
+    { "source": "/valuebasedpricing.html", "destination": "/valuebasedpricing/" },
+    { "source": "/privacy-policy.html", "destination": "/privacy/" },
+    { "source": "/privacy.html", "destination": "/privacy/" },
+    { "source": "/terms-conditions.html", "destination": "/terms/" },
+    { "source": "/terms.html", "destination": "/terms/" },
+    { "source": "/anti-slavery-policy.html", "destination": "/anti-slavery/" },
+    { "source": "/anti-slavery.html", "destination": "/anti-slavery/" },
+    { "source": "/cookies-policy.html", "destination": "/cookies/" },
+    { "source": "/cookies.html", "destination": "/cookies/" }
   ]
 }

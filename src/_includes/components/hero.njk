@@ -1,0 +1,37 @@
+{# Hero Component - Flexible hero section with variants #}
+<section class="hero {% if variant %}hero-{{ variant }}{% endif %}" {% if id %}id="{{ id }}"{% endif %}>
+  <div class="hero-container">
+    <div class="hero-content">
+      {% if badge %}
+        <div class="hero-badge">{{ badge }}</div>
+      {% endif %}
+
+      <h1>{{ heading | safe }}</h1>
+
+      {% if subheading %}
+        <p class="hero-subheading">{{ subheading }}</p>
+      {% endif %}
+
+      {% if cta %}
+        <div class="hero-cta">
+          {% if cta.primary %}
+            <a href="{{ cta.primary.url }}" class="btn btn-{{ cta.primary.style or 'gradient' }}">
+              {{ cta.primary.text }}
+            </a>
+          {% endif %}
+          {% if cta.secondary %}
+            <a href="{{ cta.secondary.url }}" class="btn btn-{{ cta.secondary.style or 'outline' }}">
+              {{ cta.secondary.text }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if image %}
+      <div class="hero-image">
+        <img src="{{ image.src }}" alt="{{ image.alt }}" loading="{% if image.eager %}eager{% else %}lazy{% endif %}">
+      </div>
+    {% endif %}
+  </div>
+</section>

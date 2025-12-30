@@ -1,0 +1,93 @@
+[
+  {
+    "id": "tillix",
+    "name": "tilliX",
+    "fullName": "tilliX Digital Engagement Portal",
+    "tagline": "Self-Service Customer Portal",
+    "description": "Enterprise experience and self-service portal platform that enables digital bill presentment, payment acceptance, and customer self-service.",
+    "url": "/tillix/",
+    "metrics": [
+      "60% cost reduction",
+      "98% customer satisfaction",
+      "WCAG 2.1 AA compliant"
+    ],
+    "features": [
+      "Digital bill presentment (eBill)",
+      "Self-service customer portal",
+      "Payment plan management",
+      "Dispute resolution",
+      "Account management",
+      "Real-time payment processing",
+      "Mobile-responsive design",
+      "White-label customization"
+    ],
+    "icon": "<svg class=\"icon-inline\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z\"></path></svg>"
+  },
+  {
+    "id": "nudge",
+    "name": "Nudge",
+    "fullName": "Nudge CPaaS Platform",
+    "tagline": "Intelligent Communications Platform",
+    "description": "Communication Platform as a Service (CPaaS) that enables automated, personalized outbound communications across SMS, email, WhatsApp, and voice channels.",
+    "url": "/nudge/",
+    "metrics": [
+      "20M+ messages monthly",
+      "95% open rates",
+      "240+ integrations"
+    ],
+    "features": [
+      "Multi-channel messaging (SMS, Email, WhatsApp, Voice)",
+      "Automated campaign management",
+      "A/B testing capabilities",
+      "Customer segmentation",
+      "Real-time event triggers",
+      "Template library with 100+ use cases",
+      "Consent management",
+      "Delivery analytics"
+    ],
+    "icon": "<svg class=\"icon-inline\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z\"></path></svg>"
+  },
+  {
+    "id": "tillipay",
+    "name": "tilliPay",
+    "fullName": "tilliPay Payment Orchestration",
+    "tagline": "Enterprise Payment Processing",
+    "description": "Enterprise payment processing platform that supports ACH, credit/debit cards, digital wallets, and alternative payment methods with PCI DSS Level 1 compliance.",
+    "url": "/tillipay/",
+    "metrics": [
+      "PCI DSS Level 1 certified",
+      "16+ payment processors",
+      "Intelligent routing"
+    ],
+    "features": [
+      "Multi-payment method support (ACH, Cards, Digital Wallets)",
+      "PCI DSS Level 1 compliance",
+      "Real-time fraud detection",
+      "Payment tokenization",
+      "Recurring payment management",
+      "Payment plan automation",
+      "Instant payment verification",
+      "Reconciliation reporting"
+    ],
+    "icon": "<svg class=\"icon-inline\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z\"></path></svg>"
+  },
+  {
+    "id": "tilliarc",
+    "name": "tilliArc",
+    "fullName": "tilliArc Document Archiving",
+    "tagline": "Secure Document Management",
+    "description": "Enterprise document archiving and management platform for compliance, audit trails, and secure storage.",
+    "url": "/tilliarc/",
+    "features": [
+      "Secure document storage",
+      "Compliance management",
+      "Audit trail tracking",
+      "Version control",
+      "Search and retrieval",
+      "Retention policies",
+      "E-signature integration",
+      "Encrypted storage"
+    ],
+    "icon": "<svg class=\"icon-inline\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z\"></path></svg>"
+  }
+]

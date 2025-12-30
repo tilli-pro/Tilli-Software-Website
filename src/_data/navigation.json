@@ -1,0 +1,58 @@
+{
+  "main": [
+    {
+      "label": "Products",
+      "url": "#products"
+    },
+    {
+      "label": "Industries",
+      "url": "/industries/"
+    },
+    {
+      "label": "Company",
+      "url": "/about/"
+    },
+    {
+      "label": "Pricing",
+      "url": "/valuebasedpricing/"
+    },
+    {
+      "label": "Press",
+      "url": "/press/"
+    }
+  ],
+  "footer": {
+    "products": [
+      { "label": "Nudge", "url": "/nudge/" },
+      { "label": "tilliX", "url": "/tillix/" },
+      { "label": "tilliPay", "url": "/tillipay/" },
+      { "label": "Compare Products", "url": "/products/" }
+    ],
+    "resources": [
+      { "label": "Industries", "url": "/industries/" },
+      { "label": "ROI Calculator", "url": "/calculator/" },
+      { "label": "Contact", "url": "/contact/" },
+      { "label": "FAQs", "url": "#faqs" },
+      { "label": "Webinars", "url": "#webinars" }
+    ],
+    "developers": [
+      { "label": "Documentation", "url": "/developer/" },
+      { "label": "API Reference", "url": "/developer/#api" },
+      { "label": "SDKs", "url": "/developer/#sdks" },
+      { "label": "Help Center", "url": "/help/" }
+    ],
+    "company": [
+      { "label": "About Us", "url": "/about/" },
+      { "label": "Blog", "url": "/blog/" },
+      { "label": "Pricing", "url": "/valuebasedpricing/" },
+      { "label": "Security", "url": "/security/" },
+      { "label": "Trust Center", "url": "/trust/" }
+    ],
+    "legal": [
+      { "label": "Terms of Service", "url": "/terms/" },
+      { "label": "Privacy Policy", "url": "/privacy/" },
+      { "label": "Anti-Slavery Policy", "url": "/anti-slavery/" },
+      { "label": "Cookies", "url": "/cookies/" }
+    ]
+  }
+}

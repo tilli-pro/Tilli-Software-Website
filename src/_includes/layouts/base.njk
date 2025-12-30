@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "partials/head.njk" %}
+<body {% if requiresDemoOtp %}data-requires-demo-otp="true"{% endif %}>
+  {% block content %}{% endblock %}
+
+  {% include "partials/scripts.njk" %}
+</body>
+</html>

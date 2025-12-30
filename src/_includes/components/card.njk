@@ -1,0 +1,41 @@
+{# Card Component - Reusable card for products, features, press, etc #}
+<div class="card {% if cardStyle %}card-{{ cardStyle }}{% endif %}" {% if cardId %}id="{{ cardId }}"{% endif %}>
+  {% if image %}
+    <div class="card-image">
+      <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy">
+    </div>
+  {% endif %}
+
+  <div class="card-content">
+    {% if icon %}
+      <div class="card-icon">
+        {{ icon | safe }}
+      </div>
+    {% endif %}
+
+    {% if title %}
+      <h3 class="card-title">{{ title }}</h3>
+    {% endif %}
+
+    {% if description %}
+      <p class="card-description">{{ description }}</p>
+    {% endif %}
+
+    {% if features %}
+      <ul class="card-features">
+        {% for feature in features %}
+          <li>{{ feature }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if link %}
+      <a href="{{ link.url }}" class="card-link">
+        {{ link.text }}
+        <svg class="icon-inline icon-sm" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0l-7-7m7 7l-7 7"></path>
+        </svg>
+      </a>
+    {% endif %}
+  </div>
+</div>

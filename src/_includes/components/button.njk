@@ -1,0 +1,10 @@
+{# Button Component - Reusable button with variants #}
+<a href="{{ url }}"
+   class="btn btn-{{ style or 'gradient' }} {% if size %}btn-{{ size }}{% endif %} {% if classes %}{{ classes }}{% endif %}"
+   {% if target %}target="{{ target }}"{% endif %}
+   {% if ariaLabel %}aria-label="{{ ariaLabel }}"{% endif %}>
+  {{ text }}
+  {% if icon %}
+    {{ icon | safe }}
+  {% endif %}
+</a>

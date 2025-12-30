@@ -1,0 +1,38 @@
+{
+  "title": "Tilli Software - Enterprise Billing & Payment Platform",
+  "description": "Transform your business with Tilli's integrated payment and communication platform. Reduce billing costs by 40%, get paid 3X faster. Trusted by Washington Gas, Con Edison, Howard County MD.",
+  "url": "https://www.tilli.pro",
+  "tagline": "Digital payments, reimagined",
+  "webinarUrl": "#",
+  "defaultOgImage": "https://tillisoftware.com/images/tilli-platform-og.png",
+  "keywords": "tilliX self-service portal, Nudge CPaaS platform, tilliPay payment processing, enterprise billing software, digital bill presentment, eBill platform, payment acceptance",
+  "social": {
+    "twitter": {
+      "url": "https://twitter.com/tilli_software",
+      "handle": "@tilli_software"
+    },
+    "linkedin": {
+      "url": "https://www.linkedin.com/company/tilli-software"
+    },
+    "facebook": {
+      "url": "https://www.facebook.com/tillisoftware"
+    },
+    "instagram": {
+      "url": "https://instagram.com/tillisoftware"
+    },
+    "youtube": {
+      "url": "https://youtube.com/@tillisoftware"
+    }
+  },
+  "contact": {
+    "phone": "+1-888-TILLI-00",
+    "email": "info@tilli.pro"
+  },
+  "address": {
+    "street": "8260 Greensboro Dr, Suite 270",
+    "city": "McLean",
+    "state": "VA",
+    "zip": "22102",
+    "country": "US"
+  }
+}
