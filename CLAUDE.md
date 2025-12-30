@@ -162,6 +162,39 @@ CTA styling:
 - Font: Inter, 14px, weight 400
 - Structure: `<span style="text-decoration: underline;">Text</span> <span>→</span>`
 
+### Mobile Sizing Standards (styles.css)
+
+All mobile sizes are defined in `styles.css` under "MOBILE SIZING STANDARDS" section.
+
+#### Desktop (default)
+| Element | Font Size | Dimensions |
+|---------|-----------|------------|
+| Banner text | 15px | height: 62px |
+| Banner button | 10px | padding: 6px 12px |
+| Sign Up button (.cta-button) | 14px | padding: 0.75rem 1.5rem |
+| Hero buttons (.btn-primary, .btn-secondary) | 14px | width: 230px, height: 44px |
+
+#### Tablet/Mobile (max-width: 768px)
+| Element | Font Size | Dimensions |
+|---------|-----------|------------|
+| Banner text | 11px | min-height: 50px |
+| Banner button | 9px | padding: 5px 10px |
+| Sign Up button | 12px | padding: 0.5rem 1rem |
+| Hero buttons | 12px | width: 160px, height: 38px |
+
+#### Small Mobile (max-width: 480px)
+| Element | Font Size | Dimensions |
+|---------|-----------|------------|
+| Banner text | 10px | stacked vertically |
+| Banner button | 9px | padding: 4px 8px |
+| Sign Up button | 11px | padding: 0.4rem 0.8rem |
+| Hero buttons | 13px | width: 180px, height: 40px, stacked |
+
+**DO NOT:**
+- Override these sizes with inline styles
+- Use different mobile sizes on different pages
+- All button sizes must be consistent across the site
+
 #### Nudge Hero (nudge.html)
 - Images displayed in original shape (not circles)
 - Proper headshots added (not placeholders)
