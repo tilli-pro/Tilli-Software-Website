@@ -18,9 +18,9 @@ h1, h2, h3, h4, h5, h6 {
 .site-header .main-nav{display:flex;gap:20px}
 .site-header .main-nav a{color:#0f172a;text-decoration:none;font-weight:500}
 .site-header .header-cta{display:flex;gap:12px;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;border:1px solid transparent;padding:10px 14px;font-weight:600;text-decoration:none}
-.btn-primary{background:#2563eb;color:#fff}
-.btn-secondary{background:#FFFFFF;color:#111827}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:50px;border:none;padding:0.75rem 1.5rem;font-weight:400;font-size:14px;font-family:'Inter',sans-serif;text-decoration:none;gap:0.5rem;white-space:nowrap;cursor:pointer;transition:all 0.2s ease}
+.btn-primary{background:linear-gradient(90deg,#6CD3EF 0%,#5C9BF4 65%,#2E67F8 100%);color:#FFFFFF}
+.btn-secondary{background:#FFFFFF;color:#1f2937;border:1px solid #60a5fa}
 .btn-link{color:#2563eb;text-decoration:none;font-weight:600}
 .link-muted{color:#64748b;text-decoration:none}
 
@@ -389,20 +389,26 @@ main {
 
 .cta-button {
     background: linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
-    color: var(--white);
+    color: #FFFFFF;
     border: none;
+    border-radius: 50px;
     padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius);
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
     text-decoration: none;
 }
 
 .cta-button:hover {
-    background: linear-gradient(90deg, #7BDCF3 0%, #6BA5F6 65%, #4277FA 100%);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    opacity: 0.9;
+    transform: translateY(-1px);
 }
 
 .hamburger {
@@ -558,32 +564,31 @@ main {
     justify-content: center;
 }
 
+/* Primary Button - Gradient fill, white text */
 .btn-primary {
     background: linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
-    color: var(--white);
+    color: #FFFFFF;
     border: none;
-    width: 230px;
-    height: 44px;
     border-radius: 50px;
+    padding: 0.75rem 1.5rem;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 14px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     white-space: nowrap;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(90deg, #7BDCF3 0%, #6BA5F6 65%, #4277FA 100%);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    opacity: 0.9;
 }
 
+/* Secondary Button - White fill, blue outline */
 .btn-secondary {
     background: #FFFFFF;
     color: #1f2937;
@@ -1316,22 +1321,27 @@ main {
 }
 
 .btn-outline {
-    background: transparent;
-    color: var(--primary-blue);
-    border: 2px solid var(--primary-blue);
-    padding: 1rem 2rem;
-    border-radius: var(--border-radius);
+    background: #FFFFFF;
+    color: #1f2937;
+    border: 1px solid #60a5fa;
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
     text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-    transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
-    background: var(--primary-blue);
-    color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    border-color: #3b82f6;
+    transform: translateY(-1px);
 }
 
 /* Why Tilli Section */
