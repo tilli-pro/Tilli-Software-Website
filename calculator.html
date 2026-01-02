@@ -1408,7 +1408,7 @@
         </section>
 
         <!-- Calculator Section -->
-        <section class="calculator-section">
+        <section id="calculator-form" class="calculator-section">
             <div class="container">
                 <div class="calculator-section-header">
                     <h2>Savings Calculator</h2>
@@ -1885,13 +1885,20 @@
                 });
             });
 
-            // Auto-select industry from URL parameter
+            // Auto-select industry from URL parameter and scroll to calculator
             const urlParams = new URLSearchParams(window.location.search);
             const industryParam = urlParams.get('industry');
             if (industryParam) {
                 const matchingBtn = document.querySelector(`.industry-btn[data-industry="${industryParam}"]`);
                 if (matchingBtn) {
                     matchingBtn.click();
+                }
+                // Scroll to calculator section
+                const calculatorSection = document.getElementById('calculator-form');
+                if (calculatorSection) {
+                    setTimeout(() => {
+                        calculatorSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
                 }
             }
 
