@@ -456,7 +456,6 @@ main {
 }
 
 /* Hero Section */
-/* Hero Section */
 .hero {
     background: #FFFFFF;
     color: var(--dark-gray);
@@ -464,6 +463,7 @@ main {
     margin-top: 134px;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .hero-banner {
