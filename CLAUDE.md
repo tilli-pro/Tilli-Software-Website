@@ -262,6 +262,22 @@ All section headers must use consistent styling on mobile. This is defined in `s
 - Calculator page: Fixed invisible logo issue
 - Consistent logo path across all pages
 
+#### Navbar Menu Links (Site-wide Standard)
+- **Font**: Inter
+- **Size**: 15px
+- **Weight**: 500
+- **Color**: #1F2937 (dark gray)
+- **Hover**: #325ef6 (primary blue)
+- CSS defined in `styles.css` under `.nav-menu a`
+- Reference: about.html navbar style
+
+#### Banner CTA Button ("Calculate now →")
+- Class: `banner-cta-btn`
+- Font: Inter, 13px, weight 500
+- Background: rgba(245, 245, 245, 0.3)
+- Hover: Arrow moves 3px right (no other effect)
+- CSS defined in `styles.css`
+
 #### Scroll Behavior
 - Navbar is FIXED on all pages
 - Consistent scroll behavior across all pages
