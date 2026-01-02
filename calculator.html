@@ -3039,7 +3039,7 @@
 
                 // Get contact info
                 const email = document.getElementById('calculator-email').value.trim();
-                const phone = document.getElementById('calculator-phone').value.trim();
+                // const  phone = document.getElementById('calculator-phone').value.trim();
 
                 if (format === 'excel') {
                     console.log('📊 Excel format selected, calling generateExcelSpreadsheet...');
@@ -3050,7 +3050,7 @@
                             csrHourlyRate, csrHandleTime, lettersIssued, invoicesMailed, aiAgents,
                             estimatedSavings, currentCost, newCost, monthlySavings,
                             paperSavings, lettersSavings, csrSavings, autopaySavings, processingSavings, riskSavings,
-                            benchmarks, email, phone
+                            benchmarks, email,
                         });
                     } catch (error) {
                         console.error('❌ Error in generateSavingsSpreadsheet:', error);
@@ -3062,12 +3062,12 @@
                         csrHourlyRate, csrHandleTime, lettersIssued, invoicesMailed, aiAgents,
                         estimatedSavings, currentCost, newCost, monthlySavings,
                         paperSavings, lettersSavings, csrSavings, autopaySavings, processingSavings, riskSavings,
-                        benchmarks, email, phone
+                        benchmarks, email,
                     });
                 }
 
                 // Create lead in CRM
-                createCRMLead(email, phone, estimatedSavings);
+                createCRMLead(email, null, estimatedSavings);
             }
 
             async function generateExcelSpreadsheet(data) {
@@ -3938,7 +3938,7 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             email: email,
-                            phone: phone,
+                            phone: phone || '',
                             firstname: '',
                             lastname: 'Calculator Lead',
                             company: email.split('@')[1] || 'Unknown',
