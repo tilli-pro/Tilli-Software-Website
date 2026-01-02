@@ -1893,11 +1893,14 @@
                 if (matchingBtn) {
                     matchingBtn.click();
                 }
-                // Scroll to calculator section
+                // Scroll to calculator section with offset for fixed header
                 const calculatorSection = document.getElementById('calculator-form');
                 if (calculatorSection) {
                     setTimeout(() => {
-                        calculatorSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        const headerOffset = 150; // Account for fixed navbar + banner
+                        const elementPosition = calculatorSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                     }, 100);
                 }
             }
