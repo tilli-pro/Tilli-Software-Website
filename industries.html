@@ -329,12 +329,8 @@
             }
         }
 
-        /* Consistent font styling across ALL sections - Sora 400 weight */
-        * {
-            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-            font-weight: 400 !important;
-        }
-
+        /* Consistent font styling across sections - Sora 400 weight */
+        /* Note: Do NOT use * selector with font-family - it overrides navbar */
         h1, h2, h3, h4, h5, h6,
         .hero-title,
         .hero-description,
@@ -346,15 +342,7 @@
         .industry-title,
         .industry-description,
         .product-card h3,
-        .product-card p,
-        body,
-        p,
-        span,
-        a,
-        button,
-        .btn,
-        .btn-primary,
-        .btn-secondary {
+        .product-card p {
             font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
             font-weight: 400 !important;
         }

@@ -268,8 +268,14 @@ All section headers must use consistent styling on mobile. This is defined in `s
 - **Weight**: 500
 - **Color**: #1F2937 (dark gray)
 - **Hover**: #325ef6 (primary blue)
-- CSS defined in `styles.css` under `.nav-menu a`
+- CSS defined in `styles.css` under `.nav-menu a` with `!important`
 - Reference: about.html navbar style
+
+**CRITICAL - DO NOT Override Navbar Fonts:**
+- NEVER use `* { font-family: ... !important }` in inline styles - this overrides the navbar
+- NEVER include `body`, `a`, `span`, or `.btn` in global font-family selectors with Sora
+- Only target specific content elements (h1-h6, .hero-title, .product-card p, etc.)
+- The navbar MUST always use Inter font (defined in styles.css)
 
 #### Banner CTA Button ("Calculate now →")
 - Class: `banner-cta-btn`
