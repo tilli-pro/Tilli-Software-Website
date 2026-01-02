@@ -5969,7 +5969,7 @@ a:focus {
 }
 
 .benefit-label {
-    font-weight: 600;
+    font-weight: 400;
     color: var(--dark-gray);
     margin-bottom: 0.5rem;
 }
