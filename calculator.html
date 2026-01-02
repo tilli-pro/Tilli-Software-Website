@@ -2872,60 +2872,26 @@
             }, 100);
 
             // ============================================
-            // CALCULATOR OTP MODAL FOR SPREADSHEET DOWNLOAD
+            // CALCULATOR DOWNLOAD MODAL FOR SPREADSHEET
             // ============================================
 
-            // Development mode detection
-            const isDevelopmentMode = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-
-            const calculatorOtpState = {
-                sessionId: null,
-                channel: 'email',
-                sending: false,
-                verifying: false,
-                exportFormat: 'excel',
-                devMode: isDevelopmentMode,
-                // Cooldown tracking per channel
-                cooldowns: {
-                    email: { lastSent: 0, attempts: 0 },
-                    sms: { lastSent: 0, attempts: 0 }
-                },
-                maxAttemptsPerChannel: 3,
-                cooldownSeconds: 60
-            };
+            let calculatorExportFormat = 'excel';
 
             function openCalculatorOtpModal() {
                 const modal = document.getElementById('calculator-otp-modal');
                 if (!modal) return;
 
-                // Reset state
-                calculatorOtpState.sessionId = null;
-                calculatorOtpState.sending = false;
-                calculatorOtpState.verifying = false;
-                calculatorOtpState.channel = 'email';
-                calculatorOtpState.exportFormat = 'excel';
-
                 // Reset UI
                 document.getElementById('calculator-email').value = '';
-                document.getElementById('calculator-phone').value = '';
-                document.getElementById('calculator-otp-code').value = '';
-                modal.querySelector('[data-input="otp"]').style.display = 'none';
-                modal.querySelector('[data-input="format"]').style.display = 'none';
-                modal.querySelector('[data-action="send-calc"]').style.display = 'block';
-                modal.querySelector('[data-action="verify-calc"]').style.display = 'none';
                 modal.querySelector('.demo-otp-error').style.display = 'none';
                 modal.querySelector('.demo-otp-success').style.display = 'none';
+                calculatorExportFormat = 'excel';
 
-                // Reset channel toggle to email
-                const toggleOpts = modal.querySelectorAll('.toggle-option');
-                toggleOpts.forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.channel === 'email');
+                // Reset format toggle to excel
+                const formatToggles = modal.querySelectorAll('.export-format-toggle');
+                formatToggles.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.format === 'excel');
                 });
-                modal.querySelector('[data-input="email"]').style.display = 'flex';
-                modal.querySelector('[data-input="phone"]').style.display = 'none';
-
-                // Update send button state based on cooldowns
-                updateSendButtonState();
 
                 // Show modal
                 document.body.classList.add('demo-otp-locked');
@@ -2940,98 +2906,20 @@
                 document.body.classList.remove('demo-otp-locked');
             }
 
-            // Cooldown management functions
-            function getCooldownRemaining(channel) {
-                const cooldown = calculatorOtpState.cooldowns[channel];
-                if (!cooldown || !cooldown.lastSent) return 0;
-                const elapsed = (Date.now() - cooldown.lastSent) / 1000;
-                const remaining = Math.max(0, calculatorOtpState.cooldownSeconds - elapsed);
-                return Math.ceil(remaining);
-            }
-
-            function canSendOtp(channel) {
-                const cooldown = calculatorOtpState.cooldowns[channel];
-
-                // Check if max attempts reached
-                if (cooldown.attempts >= calculatorOtpState.maxAttemptsPerChannel) {
-                    return { allowed: false, reason: `Maximum ${calculatorOtpState.maxAttemptsPerChannel} attempts reached for ${channel}` };
-                }
-
-                // Check if cooldown active
-                const remaining = getCooldownRemaining(channel);
-                if (remaining > 0) {
-                    return { allowed: false, reason: `Please wait ${remaining} seconds before resending to ${channel}` };
-                }
-
-                return { allowed: true };
-            }
-
-            function updateSendButtonState() {
-                const sendBtn = document.querySelector('[data-action="send-calc"]');
-                if (!sendBtn) return;
-
-                const channel = calculatorOtpState.channel;
-                const cooldown = calculatorOtpState.cooldowns[channel];
-                const remaining = getCooldownRemaining(channel);
-
-                if (cooldown.attempts >= calculatorOtpState.maxAttemptsPerChannel) {
-                    sendBtn.disabled = true;
-                    sendBtn.textContent = `Max attempts reached (${channel})`;
-                    return;
-                }
-
-                if (remaining > 0) {
-                    sendBtn.disabled = true;
-                    sendBtn.textContent = `Resend in ${remaining}s`;
-                    // Schedule next update
-                    setTimeout(updateSendButtonState, 1000);
-                } else {
-                    sendBtn.disabled = false;
-                    sendBtn.textContent = cooldown.attempts > 0 ? 'Resend OTP' : 'Send OTP';
-                }
-            }
-
-            function recordOtpSent(channel) {
-                calculatorOtpState.cooldowns[channel].lastSent = Date.now();
-                calculatorOtpState.cooldowns[channel].attempts++;
-                updateSendButtonState();
-            }
-
-            // Channel toggle
-            // Channel toggle event listeners
-            const toggleOptions = document.querySelectorAll('#calculator-otp-modal .toggle-option');
-            toggleOptions.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    toggleOptions.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    calculatorOtpState.channel = this.dataset.channel;
-
-                    // Show/hide appropriate input field
-                    const modal = document.getElementById('calculator-otp-modal');
-                    modal.querySelector('[data-input="email"]').style.display = this.dataset.channel === 'email' ? 'flex' : 'none';
-                    modal.querySelector('[data-input="phone"]').style.display = this.dataset.channel === 'sms' ? 'flex' : 'none';
-
-                    // Update button state for new channel
-                    updateSendButtonState();
-                });
-            });
-
             // Export format toggle
             const formatToggles = document.querySelectorAll('.export-format-toggle');
             formatToggles.forEach(btn => {
                 btn.addEventListener('click', function() {
                     formatToggles.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    calculatorOtpState.exportFormat = this.dataset.format;
+                    calculatorExportFormat = this.dataset.format;
                 });
             });
 
-            // Send OTP
-            const sendCalcBtn = document.querySelector('[data-action="send-calc"]');
-            if (sendCalcBtn) {
-                sendCalcBtn.addEventListener('click', async function() {
-                    if (calculatorOtpState.sending) return;
-
+            // Download button - directly download without OTP
+            const downloadCalcBtn = document.querySelector('[data-action="download-calc"]');
+            if (downloadCalcBtn) {
+                downloadCalcBtn.addEventListener('click', async function() {
                     const modal = document.getElementById('calculator-otp-modal');
                     const errorEl = modal.querySelector('.demo-otp-error');
                     const successEl = modal.querySelector('.demo-otp-success');
@@ -3040,168 +2928,45 @@
                     successEl.style.display = 'none';
 
                     const email = document.getElementById('calculator-email').value.trim();
-                    const phone = document.getElementById('calculator-phone').value.trim();
 
-                    if (calculatorOtpState.channel === 'email' && !email) {
-                        errorEl.textContent = 'Please enter your corporate email address.';
+                    // Validate email
+                    if (!email) {
+                        errorEl.textContent = 'Please enter your email address.';
                         errorEl.style.display = 'block';
                         return;
                     }
 
-                    if (calculatorOtpState.channel === 'sms' && !phone) {
-                        errorEl.textContent = 'Please enter your mobile number.';
+                    // Simple email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        errorEl.textContent = 'Please enter a valid email address.';
                         errorEl.style.display = 'block';
                         return;
                     }
 
-                    // Check cooldown and attempt limits
-                    const cooldownCheck = canSendOtp(calculatorOtpState.channel);
-                    if (!cooldownCheck.allowed) {
-                        errorEl.textContent = cooldownCheck.reason;
-                        errorEl.style.display = 'block';
-                        return;
-                    }
-
-                    calculatorOtpState.sending = true;
                     this.disabled = true;
-                    this.textContent = 'Sending…';
+                    this.textContent = 'Generating...';
 
                     try {
-                        // Development mode bypass
-                        if (calculatorOtpState.devMode) {
-                            // Simulate API delay
-                            await new Promise(resolve => setTimeout(resolve, 500));
+                        // Generate and download the spreadsheet
+                        successEl.textContent = 'Generating your savings report...';
+                        successEl.style.display = 'block';
 
-                            calculatorOtpState.sessionId = 'dev-session-' + Date.now();
-                            successEl.textContent = `[DEV MODE] OTP sent via ${calculatorOtpState.channel === 'email' ? 'email' : 'SMS'}. Use code: 123456`;
-                            successEl.style.display = 'block';
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        generateSavingsSpreadsheet(calculatorExportFormat);
 
-                            modal.querySelector('[data-input="otp"]').style.display = 'flex';
-                            modal.querySelector('[data-input="format"]').style.display = 'block';
-                            modal.querySelector('[data-action="verify-calc"]').style.display = 'block';
-                            document.getElementById('calculator-otp-code').focus();
-                        } else {
-                            // Production mode - actual API call
-                            const response = await fetch('/api/nudge/send-otp', {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({
-                                    email: calculatorOtpState.channel === 'email' ? email : undefined,
-                                    phone: calculatorOtpState.channel === 'sms' ? phone : undefined,
-                                    firstName: '',
-                                    company: '',
-                                    channel: calculatorOtpState.channel
-                                })
-                            });
+                        successEl.textContent = 'Download started!';
 
-                            const result = await response.json();
-                            if (!response.ok || !result.success) {
-                                throw result;
-                            }
-
-                            calculatorOtpState.sessionId = result.sessionId;
-                            successEl.textContent = `OTP sent via ${calculatorOtpState.channel === 'email' ? 'email' : 'SMS'}. Enter the code below.`;
-                            successEl.style.display = 'block';
-
-                            modal.querySelector('[data-input="otp"]').style.display = 'flex';
-                            modal.querySelector('[data-input="format"]').style.display = 'block';
-                            modal.querySelector('[data-action="verify-calc"]').style.display = 'block';
-                            document.getElementById('calculator-otp-code').focus();
-                        }
-
-                        // Record successful send and start cooldown
-                        recordOtpSent(calculatorOtpState.channel);
+                        setTimeout(() => {
+                            closeCalculatorOtpModal();
+                        }, 1000);
 
                     } catch (error) {
-                        errorEl.textContent = error.error || 'Failed to send OTP. Please try again.';
+                        errorEl.textContent = 'Failed to generate report. Please try again.';
                         errorEl.style.display = 'block';
                     } finally {
-                        calculatorOtpState.sending = false;
-                        updateSendButtonState();
-                    }
-                });
-            }
-
-            // Verify OTP and Download
-            const verifyCalcBtn = document.querySelector('[data-action="verify-calc"]');
-            if (verifyCalcBtn) {
-                verifyCalcBtn.addEventListener('click', async function() {
-                    if (calculatorOtpState.verifying) return;
-                    if (!calculatorOtpState.sessionId) {
-                        alert('Please request an OTP first.');
-                        return;
-                    }
-
-                    const modal = document.getElementById('calculator-otp-modal');
-                    const errorEl = modal.querySelector('.demo-otp-error');
-                    const successEl = modal.querySelector('.demo-otp-success');
-                    const code = document.getElementById('calculator-otp-code').value.trim();
-
-                    if (!code || code.length < 4) {
-                        errorEl.textContent = 'Please enter the 6-digit OTP code.';
-                        errorEl.style.display = 'block';
-                        return;
-                    }
-
-                    errorEl.style.display = 'none';
-                    successEl.style.display = 'none';
-
-                    calculatorOtpState.verifying = true;
-                    this.disabled = true;
-                    this.textContent = 'Verifying…';
-
-                    try {
-                        // Development mode bypass
-                        if (calculatorOtpState.devMode) {
-                            // Simulate API delay
-                            await new Promise(resolve => setTimeout(resolve, 500));
-
-                            // Accept any code with 6 digits, or specifically "123456"
-                            if (code === '123456' || code.length === 6) {
-                                successEl.textContent = '[DEV MODE] Verified! Generating your savings spreadsheet...';
-                                successEl.style.display = 'block';
-
-                                // Generate and download the spreadsheet
-                                setTimeout(() => {
-                                    generateSavingsSpreadsheet(calculatorOtpState.exportFormat);
-                                    closeCalculatorOtpModal();
-                                }, 1000);
-                            } else {
-                                throw { error: 'Invalid code. Use 123456 in development mode.' };
-                            }
-                        } else {
-                            // Production mode - actual API call
-                            const response = await fetch('/api/nudge/verify-otp', {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({
-                                    sessionId: calculatorOtpState.sessionId,
-                                    code
-                                })
-                            });
-
-                            const result = await response.json();
-                            if (!response.ok || !result.success) {
-                                throw result;
-                            }
-
-                            successEl.textContent = 'Verified! Generating your savings spreadsheet...';
-                            successEl.style.display = 'block';
-
-                            // Generate and download the spreadsheet
-                            setTimeout(() => {
-                                generateSavingsSpreadsheet(calculatorOtpState.exportFormat);
-                                closeCalculatorOtpModal();
-                            }, 1000);
-                        }
-
-                    } catch (error) {
-                        errorEl.textContent = error.error || 'OTP verification failed. Please try again.';
-                        errorEl.style.display = 'block';
-                    } finally {
-                        calculatorOtpState.verifying = false;
                         this.disabled = false;
-                        this.textContent = 'Verify & Download';
+                        this.textContent = 'Download Report';
                     }
                 });
             }
@@ -4194,44 +3959,16 @@
     <div id="calculator-otp-modal" class="demo-otp-overlay" style="display: none;">
         <div class="demo-otp-container" role="dialog" aria-modal="true" aria-labelledby="calculatorOtpTitle">
             <div class="demo-otp-header">
-                <h2 id="calculatorOtpTitle">Verify to unlock savings detail</h2>
-                <p>Enter your corporate email and mobile number. We'll send a Nudge-powered one-time passcode to your chosen channel. You can try up to 3 times per channel with a 60-second cooldown between attempts.</p>
+                <h2 id="calculatorOtpTitle">Download Your Savings Report</h2>
+                <p>Enter your email address and we'll send you a detailed breakdown of your potential savings.</p>
             </div>
 
             <div class="form-group" data-input="email">
-                <label for="calculator-email">Corporate Email Address</label>
+                <label for="calculator-email">Email Address</label>
                 <input type="email" id="calculator-email" placeholder="name@company.com" autocomplete="email" style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 1rem;">
             </div>
 
-            <div class="form-group" data-input="phone" style="display: none;">
-                <label for="calculator-phone">Mobile Number</label>
-                <input type="tel" id="calculator-phone" placeholder="+1 555 000 0000" autocomplete="tel" style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 1rem;">
-            </div>
-
-            <div class="demo-otp-channel-toggle" style="margin-top: 1rem;">
-                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #1e293b;">Send OTP via:</label>
-                <div class="toggle-switch-container">
-                    <button type="button" class="toggle-option active" data-channel="email">
-                        <svg class="icon-inline icon-sm" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 6px;">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                        Email
-                    </button>
-                    <button type="button" class="toggle-option" data-channel="sms">
-                        <svg class="icon-inline icon-sm" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 6px;">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
-                        </svg>
-                        SMS
-                    </button>
-                </div>
-            </div>
-
-            <div class="demo-otp-field" data-input="otp" style="display:none; margin-top: 1rem;">
-                <label for="calculator-otp-code">Enter OTP</label>
-                <input type="text" id="calculator-otp-code" inputmode="numeric" maxlength="6" placeholder="6-digit code" style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 1rem;">
-            </div>
-
-            <div class="form-group" data-input="format" style="display:none; margin-top: 1rem;">
+            <div class="form-group" data-input="format" style="margin-top: 1rem;">
                 <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #1e293b;">Export Format:</label>
                 <div class="toggle-switch-container">
                     <button type="button" class="toggle-option export-format-toggle active" data-format="excel">
@@ -4250,8 +3987,7 @@
             </div>
 
             <div class="demo-otp-actions" style="margin-top: 1.5rem;">
-                <button type="button" class="demo-otp-btn-primary" data-action="send-calc">Send OTP</button>
-                <button type="button" class="demo-otp-btn-primary" data-action="verify-calc" style="display:none;">Verify & Download</button>
+                <button type="button" class="demo-otp-btn-primary" data-action="download-calc">Download Report</button>
                 <button type="button" class="demo-otp-btn-secondary" data-action="cancel-calc">Cancel</button>
             </div>
 
