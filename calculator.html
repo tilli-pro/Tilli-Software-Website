@@ -2135,11 +2135,10 @@
                 }
             });
 
-            // Download Savings Spreadsheet button
+            // Download Savings Spreadsheet button - show email modal
             if (downloadSpreadsheetBtn) {
                 downloadSpreadsheetBtn.addEventListener('click', function() {
-                    // Download directly without modal
-                    generateSavingsSpreadsheet('excel');
+                    openCalculatorOtpModal();
                 });
             }
 
@@ -2971,7 +2970,7 @@
                         errorEl.style.display = 'block';
                     } finally {
                         this.disabled = false;
-                        this.textContent = 'Download Report';
+                        this.textContent = 'Send Report';
                     }
                 });
             }
@@ -3964,13 +3963,13 @@
     <div id="calculator-otp-modal" class="demo-otp-overlay" style="display: none;">
         <div class="demo-otp-container" role="dialog" aria-modal="true" aria-labelledby="calculatorOtpTitle">
             <div class="demo-otp-header">
-                <h2 id="calculatorOtpTitle">Download Your Savings Report</h2>
+                <h2 id="calculatorOtpTitle">Get Your Savings Report</h2>
                 <p>Enter your email address and we'll send you a detailed breakdown of your potential savings.</p>
             </div>
 
             <div class="form-group" data-input="email">
                 <label for="calculator-email">Email Address</label>
-                <input type="email" id="calculator-email" placeholder="name@company.com" autocomplete="email" style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 1rem;">
+                <input type="email" id="calculator-email" placeholder="name@company.com" autocomplete="email" style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 50px; font-size: 1rem;">
             </div>
 
             <div class="form-group" data-input="format" style="margin-top: 1rem;">
@@ -3992,7 +3991,7 @@
             </div>
 
             <div class="demo-otp-actions" style="margin-top: 1.5rem;">
-                <button type="button" class="demo-otp-btn-primary" data-action="download-calc">Download Report</button>
+                <button type="button" class="demo-otp-btn-primary" data-action="download-calc">Send Report</button>
                 <button type="button" class="demo-otp-btn-secondary" data-action="cancel-calc">Cancel</button>
             </div>
 
