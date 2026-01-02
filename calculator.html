@@ -1885,6 +1885,16 @@
                 });
             });
 
+            // Auto-select industry from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const industryParam = urlParams.get('industry');
+            if (industryParam) {
+                const matchingBtn = document.querySelector(`.industry-btn[data-industry="${industryParam}"]`);
+                if (matchingBtn) {
+                    matchingBtn.click();
+                }
+            }
+
             // Industry search functionality
             const industrySearch = document.getElementById('industry-search');
             const industrySearchClear = document.getElementById('industry-search-clear');
