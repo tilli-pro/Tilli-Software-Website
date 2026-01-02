@@ -539,10 +539,10 @@
         }
 
         .savings-highlight {
-            background: linear-gradient(135deg, #10b981, #059669);
+            background: linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
             color: white;
             padding: 1.5rem;
-            border-radius: 12px;
+            border-radius: 16px;
             text-align: center;
             margin-bottom: 2rem;
         }
@@ -570,24 +570,25 @@
         .summary-cta .cta-button {
             width: 100%;
             border: none;
-            border-radius: 8px;
-            padding: 1rem;
-            background: #4099FF;
+            border-radius: 50px;
+            padding: 0.875rem 1.5rem;
+            background: linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
             color: white;
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 400;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .summary-cta .cta-button:hover:not(:disabled) {
-            background: #3182CE;
+            opacity: 0.9;
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(64, 153, 255, 0.3);
         }
 
         .summary-cta .cta-button:disabled {
-            opacity: 0.5;
+            background: #93c5fd;
             cursor: not-allowed;
         }
 
