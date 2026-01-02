@@ -2128,7 +2128,8 @@
             // Download Savings Spreadsheet button
             if (downloadSpreadsheetBtn) {
                 downloadSpreadsheetBtn.addEventListener('click', function() {
-                    openCalculatorOtpModal();
+                    // Download directly without modal
+                    generateSavingsSpreadsheet('excel');
                 });
             }
 
