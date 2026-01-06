@@ -115,10 +115,25 @@
             font-weight: 400;
         }
 
-        /* Values Section */
+        /* Values Section - Blueprint Grid Style */
+        :root {
+            --values-bg: #ffffff;
+            --values-border: #e5e7eb;
+            --values-border-hover: #c9cdd4;
+            --values-text-primary: #1f2937;
+            --values-text-secondary: #6b7280;
+            --values-icon-stroke: #374151;
+            --values-icon-dashed: #9ca3af;
+            --values-accent: #4099FF;
+            --values-grid-line: rgba(156, 163, 175, 0.15);
+            --values-spacing: 48px;
+            --values-radius: 0;
+        }
+
         .values-section-modern {
-            background: #ffffff;
+            background: var(--values-bg);
             padding: 100px 0;
+            position: relative;
         }
 
         .section-header {
@@ -153,72 +168,141 @@
             margin: 0;
         }
 
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            max-width: 1200px;
+        /* Blueprint Grid Container */
+        .values-grid-blueprint {
+            max-width: 900px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            background:
+                linear-gradient(90deg, var(--values-grid-line) 1px, transparent 1px),
+                linear-gradient(var(--values-grid-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            border: 1px solid var(--values-border);
         }
 
-        @media (max-width: 1024px) {
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* Center dividers */
+        .values-grid-blueprint::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: var(--values-border);
         }
 
-        @media (max-width: 600px) {
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
+        .values-grid-blueprint::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--values-border);
         }
 
-        .value-card-modern {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        /* Value Card - Blueprint Style */
+        .value-card-blueprint {
+            padding: var(--values-spacing);
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            background: transparent;
+            transition: background 0.2s ease;
+            position: relative;
         }
 
-        .value-card-modern:hover {
-            border-color: #4099FF;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(64, 153, 255, 0.1);
+        .value-card-blueprint:hover {
+            background: rgba(64, 153, 255, 0.02);
         }
 
-        .value-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #4099FF 0%, #8B5CF6 100%);
-            border-radius: 12px;
+        /* Construction Icon Container */
+        .value-icon-construct {
+            width: 80px;
+            height: 80px;
+            min-width: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            position: relative;
         }
 
-        .value-icon svg {
-            width: 24px;
-            height: 24px;
-            color: #ffffff;
+        .value-icon-construct svg {
+            width: 80px;
+            height: 80px;
         }
 
-        .value-card-modern h3 {
+        /* Text Content */
+        .value-content-blueprint {
+            flex: 1;
+            padding-top: 8px;
+        }
+
+        .value-content-blueprint h3 {
             font-family: 'Sora', sans-serif;
-            font-size: 20px;
-            font-weight: 500;
-            color: #0a0a0a;
-            margin: 0 0 12px;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--values-text-primary);
+            margin: 0 0 8px;
+            line-height: 1.3;
         }
 
-        .value-card-modern p {
+        .value-content-blueprint p {
             font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            color: #64748b;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--values-text-secondary);
             line-height: 1.6;
             margin: 0;
+        }
+
+        /* Responsive: 2 columns tablet, 1 column mobile */
+        @media (max-width: 768px) {
+            .values-grid-blueprint {
+                grid-template-columns: 1fr;
+                background-size: 30px 30px;
+            }
+
+            .values-grid-blueprint::before {
+                display: none;
+            }
+
+            .values-grid-blueprint::after {
+                display: none;
+            }
+
+            .value-card-blueprint {
+                border-bottom: 1px solid var(--values-border);
+            }
+
+            .value-card-blueprint:last-child {
+                border-bottom: none;
+            }
+
+            .value-icon-construct {
+                width: 64px;
+                height: 64px;
+                min-width: 64px;
+            }
+
+            .value-icon-construct svg {
+                width: 64px;
+                height: 64px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .value-card-blueprint {
+                padding: 32px 24px;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .value-content-blueprint {
+                padding-top: 0;
+            }
         }
 
         /* Jobs Section */
@@ -906,48 +990,88 @@
                     <span class="section-label">What Drives Us</span>
                     <h2 class="section-title-dark">Our Core Values</h2>
                 </div>
-                <div class="values-grid">
-                    <div class="value-card-modern">
-                        <div class="value-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                <div class="values-grid-blueprint">
+                    <!-- Build with love -->
+                    <div class="value-card-blueprint">
+                        <div class="value-icon-construct">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <!-- Dashed outer circle -->
+                                <circle cx="40" cy="40" r="36" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4 4"/>
+                                <!-- Diamond shape rotated -->
+                                <rect x="40" y="12" width="40" height="40" rx="2" transform="rotate(45 40 40)" stroke="#374151" stroke-width="1.5" fill="none"/>
+                                <!-- Inner diamond -->
+                                <rect x="40" y="24" width="22" height="22" transform="rotate(45 40 40)" stroke="#374151" stroke-width="1" fill="none"/>
+                                <!-- Center cross marker -->
+                                <line x1="36" y1="40" x2="44" y2="40" stroke="#9ca3af" stroke-width="1"/>
+                                <line x1="40" y1="36" x2="40" y2="44" stroke="#9ca3af" stroke-width="1"/>
                             </svg>
                         </div>
-                        <h3>Love the Craft</h3>
-                        <p>Passionate about creating exceptional products and experiences</p>
+                        <div class="value-content-blueprint">
+                            <h3>Build with love.</h3>
+                            <p>We believe in building with heart, creating something that not only works but feels thoughtfully crafted.</p>
+                        </div>
                     </div>
-                    <div class="value-card-modern">
-                        <div class="value-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+
+                    <!-- Context over control -->
+                    <div class="value-card-blueprint">
+                        <div class="value-icon-construct">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <!-- Dashed outer square rotated -->
+                                <rect x="40" y="8" width="45" height="45" transform="rotate(45 40 40)" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4 4" fill="none"/>
+                                <!-- Solid square -->
+                                <rect x="20" y="20" width="40" height="40" rx="2" stroke="#374151" stroke-width="1.5" fill="none"/>
+                                <!-- Center cross marker -->
+                                <line x1="36" y1="40" x2="44" y2="40" stroke="#9ca3af" stroke-width="1"/>
+                                <line x1="40" y1="36" x2="40" y2="44" stroke="#9ca3af" stroke-width="1"/>
                             </svg>
                         </div>
-                        <h3>Empower Everyone</h3>
-                        <p>Building tools that enable success for all our users and team members</p>
+                        <div class="value-content-blueprint">
+                            <h3>Context over control.</h3>
+                            <p>We build trust in individuals to make decisions and move forward without rigid hierarchy.</p>
+                        </div>
                     </div>
-                    <div class="value-card-modern">
-                        <div class="value-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <circle cx="12" cy="12" r="6"/>
-                                <circle cx="12" cy="12" r="2"/>
+
+                    <!-- Challenge ideas, not people -->
+                    <div class="value-card-blueprint">
+                        <div class="value-icon-construct">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <!-- Dashed outer circle -->
+                                <circle cx="40" cy="40" r="36" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4 4"/>
+                                <!-- Solid circle -->
+                                <circle cx="40" cy="40" r="24" stroke="#374151" stroke-width="1.5" fill="none"/>
+                                <!-- Center cross marker -->
+                                <line x1="36" y1="40" x2="44" y2="40" stroke="#9ca3af" stroke-width="1"/>
+                                <line x1="40" y1="36" x2="40" y2="44" stroke="#9ca3af" stroke-width="1"/>
                             </svg>
                         </div>
-                        <h3>Trust the Process</h3>
-                        <p>Believing in systematic approaches to achieve extraordinary results</p>
+                        <div class="value-content-blueprint">
+                            <h3>Challenge ideas, not people.</h3>
+                            <p>We always keep the focus on challenging ideas, not the individuals behind them.</p>
+                        </div>
                     </div>
-                    <div class="value-card-modern">
-                        <div class="value-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                                <polyline points="17 6 23 6 23 12"/>
+
+                    <!-- Break it down, amp it up -->
+                    <div class="value-card-blueprint">
+                        <div class="value-icon-construct">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <!-- Dashed diamond corners -->
+                                <path d="M40 4 L40 16" stroke="#d1d5db" stroke-width="1" stroke-dasharray="3 3"/>
+                                <path d="M40 64 L40 76" stroke="#d1d5db" stroke-width="1" stroke-dasharray="3 3"/>
+                                <path d="M4 40 L16 40" stroke="#d1d5db" stroke-width="1" stroke-dasharray="3 3"/>
+                                <path d="M64 40 L76 40" stroke="#d1d5db" stroke-width="1" stroke-dasharray="3 3"/>
+                                <!-- Solid square -->
+                                <rect x="18" y="18" width="44" height="44" rx="2" stroke="#374151" stroke-width="1.5" fill="none"/>
+                                <!-- Inner dashed square -->
+                                <rect x="28" y="28" width="24" height="24" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4 4" fill="none"/>
+                                <!-- Center cross marker -->
+                                <line x1="36" y1="40" x2="44" y2="40" stroke="#9ca3af" stroke-width="1"/>
+                                <line x1="40" y1="36" x2="40" y2="44" stroke="#9ca3af" stroke-width="1"/>
                             </svg>
                         </div>
-                        <h3>Grow as You Go</h3>
-                        <p>Continuous learning and development for personal and professional growth</p>
+                        <div class="value-content-blueprint">
+                            <h3>Break it down, amp it up.</h3>
+                            <p>We encourage bold, creative ideas that go beyond the limits of what's achievable.</p>
+                        </div>
                     </div>
                 </div>
             </div>
