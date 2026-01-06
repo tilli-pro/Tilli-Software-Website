@@ -115,19 +115,12 @@
             font-weight: 400;
         }
 
-        /* Values Section - Blueprint Grid Style */
+        /* Values Section */
         :root {
             --values-bg: #ffffff;
-            --values-border: #e5e7eb;
-            --values-border-hover: #c9cdd4;
             --values-text-primary: #1f2937;
             --values-text-secondary: #6b7280;
-            --values-icon-stroke: #374151;
-            --values-icon-dashed: #9ca3af;
-            --values-accent: #4099FF;
-            --values-grid-line: rgba(156, 163, 175, 0.15);
             --values-spacing: 48px;
-            --values-radius: 0;
         }
 
         .values-section-modern {
@@ -168,39 +161,13 @@
             margin: 0;
         }
 
-        /* Blueprint Grid Container */
+        /* Values Grid Container */
         .values-grid-blueprint {
             max-width: 900px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            position: relative;
-            background:
-                linear-gradient(90deg, var(--values-grid-line) 1px, transparent 1px),
-                linear-gradient(var(--values-grid-line) 1px, transparent 1px);
-            background-size: 40px 40px;
-            border: 1px solid var(--values-border);
-        }
-
-        /* Center dividers */
-        .values-grid-blueprint::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 1px;
-            height: 100%;
-            background: var(--values-border);
-        }
-
-        .values-grid-blueprint::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: var(--values-border);
+            gap: 0;
         }
 
         /* Value Card - Blueprint Style */
@@ -262,23 +229,6 @@
         @media (max-width: 768px) {
             .values-grid-blueprint {
                 grid-template-columns: 1fr;
-                background-size: 30px 30px;
-            }
-
-            .values-grid-blueprint::before {
-                display: none;
-            }
-
-            .values-grid-blueprint::after {
-                display: none;
-            }
-
-            .value-card-blueprint {
-                border-bottom: 1px solid var(--values-border);
-            }
-
-            .value-card-blueprint:last-child {
-                border-bottom: none;
             }
 
             .value-icon-construct {
