@@ -1717,59 +1717,76 @@
 
                 // Update card active states
                 productCards.forEach(card => {
-                    if (card.dataset.product === productName) {
-                        card.classList.add('active');
-                    } else {
-                        card.classList.remove('active');
-                    }
+                    card.classList.toggle('active', card.dataset.product === productName);
                 });
 
                 // Update visual active states with smooth transition
                 productVisuals.forEach(visual => {
-                    if (visual.dataset.visual === productName) {
-                        visual.classList.add('active');
-                        // Auto-play video if present
-                        const video = visual.querySelector('video');
-                        if (video) video.play().catch(() => {});
-                    } else {
-                        visual.classList.remove('active');
-                        // Pause video when not visible
-                        const video = visual.querySelector('video');
-                        if (video) video.pause();
+                    const isActive = visual.dataset.visual === productName;
+                    visual.classList.toggle('active', isActive);
+
+                    // Handle video playback
+                    const video = visual.querySelector('video');
+                    if (video) {
+                        if (isActive) {
+                            video.play().catch(() => {});
+                        } else {
+                            video.pause();
+                        }
                     }
                 });
             }
 
-            // IntersectionObserver to detect which card is in view
-            const observerOptions = {
-                root: null, // viewport
-                rootMargin: '-40% 0px -40% 0px', // Trigger when card is in middle 20% of viewport
-                threshold: 0
-            };
+            // Trigger point: 35% from top of viewport
+            // Visual switches when a card's top crosses this line
+            const TRIGGER_RATIO = 0.35;
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const productName = entry.target.dataset.product;
-                        setActiveProduct(productName);
+            function updateActiveOnScroll() {
+                const triggerY = window.innerHeight * TRIGGER_RATIO;
+                let newActiveProduct = 'tillix'; // Default to first product
+
+                // Find the card that should be active:
+                // The active card is the one whose top has passed the trigger point
+                // but whose content is still visible (bottom hasn't gone too far up)
+                for (const card of productCards) {
+                    const rect = card.getBoundingClientRect();
+
+                    // If this card's top is at or above the trigger point,
+                    // and the card is still partially visible
+                    if (rect.top <= triggerY && rect.bottom > 0) {
+                        newActiveProduct = card.dataset.product;
                     }
-                });
-            }, observerOptions);
+                }
 
-            // Observe all product cards
-            productCards.forEach(card => {
-                observer.observe(card);
-            });
+                setActiveProduct(newActiveProduct);
+            }
 
-            // Handle window resize - disable observer on tablet/mobile
+            // Use requestAnimationFrame for smooth, performant scroll handling
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateActiveOnScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // Initial check on page load
+            updateActiveOnScroll();
+
+            // Handle window resize
             let resizeTimeout;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(() => {
                     if (window.innerWidth <= 1024) {
-                        observer.disconnect();
+                        // On mobile/tablet, just show first visual
+                        productVisuals.forEach((v, i) => v.classList.toggle('active', i === 0));
+                        productCards.forEach((c, i) => c.classList.toggle('active', i === 0));
                     } else {
-                        productCards.forEach(card => observer.observe(card));
+                        updateActiveOnScroll();
                     }
                 }, 250);
             });
