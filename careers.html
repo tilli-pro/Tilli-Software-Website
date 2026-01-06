@@ -624,17 +624,21 @@
             gap: 40px;
         }
 
-        /* Right column: sticky visual container */
+        /* Right column: sticky visual container - Bubble.io style */
         .products-visual-column {
-            position: relative;
-            /* Must stretch to match left column height for sticky to work */
-            align-self: stretch;
+            position: sticky;
+            top: calc(50vh - 200px); /* Center 400px visual vertically in viewport */
+            height: 400px;
+            align-self: start; /* Don't stretch - let grid row height be set by cards column */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .products-visual-sticky {
-            position: sticky;
-            top: 160px; /* Account for header: 62px banner + 72px nav + 26px padding */
-            height: 400px;
+            position: relative;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
