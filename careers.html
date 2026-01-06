@@ -563,12 +563,12 @@
             margin: 0;
         }
 
-        /* Products Section - Refined Dark Theme */
+        /* Products Section - Bubble-style Scroll-Linked */
         .products-section-modern {
             background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
             padding: 120px 0;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .products-section-modern::before {
@@ -605,111 +605,253 @@
             margin: 20px 0 0;
         }
 
-        .products-grid {
+        /* Scroll-linked two-column layout */
+        .products-scroll-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            max-width: 1000px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 48px;
             position: relative;
             z-index: 1;
         }
 
-        @media (max-width: 900px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-            }
+        /* Left column: stacked product cards */
+        .products-cards-column {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
-        .product-card-modern {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            padding: 40px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Right column: sticky visual container */
+        .products-visual-column {
             position: relative;
+            height: fit-content;
+        }
+
+        .products-visual-sticky {
+            position: sticky;
+            top: 180px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Visual container for animations/videos */
+        .product-visual {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            pointer-events: none;
+        }
+
+        .product-visual.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Placeholder visual styling */
+        .product-visual-placeholder {
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 16 / 10;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
             overflow: hidden;
         }
 
-        .product-card-modern::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+        .product-visual-placeholder.tillix-visual {
+            background: linear-gradient(135deg, rgba(64, 153, 255, 0.15) 0%, rgba(64, 153, 255, 0.05) 100%);
+            border: 1px solid rgba(64, 153, 255, 0.2);
         }
 
-        .product-card-modern:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-6px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+        .product-visual-placeholder.nudge-visual {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.15) 0%, rgba(240, 147, 251, 0.05) 100%);
+            border: 1px solid rgba(240, 147, 251, 0.2);
         }
 
-        .product-card-modern:hover::before {
-            opacity: 1;
+        .product-visual-placeholder.tillipay-visual {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.15) 0%, rgba(79, 172, 254, 0.05) 100%);
+            border: 1px solid rgba(79, 172, 254, 0.2);
         }
 
-        .product-card-modern.tillix {
-            border-color: rgba(64, 153, 255, 0.2);
+        /* Video/image inside placeholder */
+        .product-visual-placeholder video,
+        .product-visual-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
         }
 
-        .product-card-modern.tillix:hover {
-            border-color: rgba(64, 153, 255, 0.4);
-            box-shadow: 0 16px 48px rgba(64, 153, 255, 0.15);
-        }
-
-        .product-card-modern.nudge {
-            border-color: rgba(240, 147, 251, 0.2);
-        }
-
-        .product-card-modern.nudge:hover {
-            border-color: rgba(240, 147, 251, 0.4);
-            box-shadow: 0 16px 48px rgba(240, 147, 251, 0.15);
-        }
-
-        .product-card-modern.tillipay {
-            border-color: rgba(79, 172, 254, 0.2);
-        }
-
-        .product-card-modern.tillipay:hover {
-            border-color: rgba(79, 172, 254, 0.4);
-            box-shadow: 0 16px 48px rgba(79, 172, 254, 0.15);
-        }
-
-        .product-icon {
-            width: 52px;
-            height: 52px;
-            margin-bottom: 24px;
+        /* Product cards - scroll-linked style */
+        .product-card-scroll {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 48px 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            z-index: 1;
+            min-height: 200px;
         }
 
-        .product-icon svg {
-            width: 52px;
-            height: 52px;
+        .product-card-scroll.active {
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .product-card-modern h3 {
+        .product-card-scroll.tillix {
+            border-color: rgba(64, 153, 255, 0.15);
+        }
+
+        .product-card-scroll.tillix.active {
+            border-color: rgba(64, 153, 255, 0.3);
+        }
+
+        .product-card-scroll.nudge {
+            border-color: rgba(240, 147, 251, 0.15);
+        }
+
+        .product-card-scroll.nudge.active {
+            border-color: rgba(240, 147, 251, 0.3);
+        }
+
+        .product-card-scroll.tillipay {
+            border-color: rgba(79, 172, 254, 0.15);
+        }
+
+        .product-card-scroll.tillipay.active {
+            border-color: rgba(79, 172, 254, 0.3);
+        }
+
+        .product-card-scroll .product-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 20px;
+        }
+
+        .product-card-scroll .product-icon svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .product-card-scroll h3 {
             font-family: 'Sora', sans-serif;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 500;
             color: #ffffff;
-            margin: 0 0 14px;
-            position: relative;
-            z-index: 1;
+            margin: 0 0 12px;
         }
 
-        .product-card-modern p {
+        .product-card-scroll p {
             font-family: 'Inter', sans-serif;
-            font-size: 15px;
+            font-size: 16px;
             color: rgba(255, 255, 255, 0.55);
-            line-height: 1.65;
+            line-height: 1.7;
             margin: 0;
-            position: relative;
-            z-index: 1;
+        }
+
+        /* Active indicator */
+        .product-card-scroll::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 0;
+            border-radius: 2px;
+            transition: height 0.3s ease, background 0.3s ease;
+        }
+
+        .product-card-scroll.tillix.active::before {
+            height: 60px;
+            background: #4099FF;
+        }
+
+        .product-card-scroll.nudge.active::before {
+            height: 60px;
+            background: #f093fb;
+        }
+
+        .product-card-scroll.tillipay.active::before {
+            height: 60px;
+            background: #4facfe;
+        }
+
+        /* Tablet: disable sticky, show visuals inline */
+        @media (max-width: 1024px) {
+            .products-scroll-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0 24px;
+            }
+
+            .products-visual-column {
+                display: none;
+            }
+
+            .products-cards-column {
+                gap: 32px;
+            }
+
+            .product-card-scroll {
+                padding: 32px;
+            }
+
+            /* Show inline visual on tablet/mobile */
+            .product-card-scroll .inline-visual {
+                display: block;
+                margin-top: 24px;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            .product-card-scroll .inline-visual img,
+            .product-card-scroll .inline-visual video {
+                width: 100%;
+                height: auto;
+                border-radius: 12px;
+            }
+
+            .product-card-scroll::before {
+                display: none;
+            }
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            .products-section-modern {
+                padding: 80px 0;
+            }
+
+            .products-header {
+                margin-bottom: 48px;
+            }
+
+            .product-card-scroll {
+                padding: 28px 24px;
+            }
+
+            .product-card-scroll h3 {
+                font-size: 20px;
+            }
+
+            .product-card-scroll p {
+                font-size: 15px;
+            }
         }
 
         /* CTA Section - Refined Gradient */
@@ -1249,7 +1391,7 @@
             </div>
         </section>
 
-        <!-- Products Section -->
+        <!-- Products Section - Bubble-style Scroll-Linked -->
         <section class="products-section-modern">
             <div class="container">
                 <div class="products-header">
@@ -1257,35 +1399,133 @@
                     <h2 class="section-title-dark">Products We're Building</h2>
                     <p>Join us in creating innovative solutions that transform businesses</p>
                 </div>
-                <div class="products-grid">
-                    <div class="product-card-modern tillix">
-                        <div class="product-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#4099FF" stroke-width="2">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                            </svg>
+
+                <div class="products-scroll-container">
+                    <!-- LEFT COLUMN: Product Cards (stacked) -->
+                    <div class="products-cards-column">
+                        <!-- tilliX Card -->
+                        <div class="product-card-scroll tillix active" data-product="tillix">
+                            <div class="product-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#4099FF" stroke-width="2">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                                </svg>
+                            </div>
+                            <h3>tilliX</h3>
+                            <p>The ultimate digital experience platform - Low-code engine powering seamless customer journeys with drag-and-drop simplicity.</p>
+                            <!-- Inline visual for tablet/mobile (hidden on desktop) -->
+                            <div class="inline-visual" style="display: none;">
+                                <!-- REPLACE: Add your tilliX image/video here for mobile -->
+                                <img src="Images/tillix-placeholder.png" alt="tilliX Demo" onerror="this.style.display='none'">
+                            </div>
                         </div>
-                        <h3>tilliX</h3>
-                        <p>The ultimate digital experience platform - Low-code engine powering seamless customer journeys</p>
+
+                        <!-- Nudge Card -->
+                        <div class="product-card-scroll nudge" data-product="nudge">
+                            <div class="product-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#f093fb" stroke-width="2">
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                </svg>
+                            </div>
+                            <h3>Nudge</h3>
+                            <p>A nudge in time saves nine - Intelligent omnichannel communication platform that reaches customers at the perfect moment.</p>
+                            <!-- Inline visual for tablet/mobile (hidden on desktop) -->
+                            <div class="inline-visual" style="display: none;">
+                                <!-- REPLACE: Add your Nudge image/video here for mobile -->
+                                <img src="Images/nudge-placeholder.png" alt="Nudge Demo" onerror="this.style.display='none'">
+                            </div>
+                        </div>
+
+                        <!-- TilliPay Card -->
+                        <div class="product-card-scroll tillipay" data-product="tillipay">
+                            <div class="product-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#4facfe" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="2" y1="12" x2="22" y2="12"/>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                </svg>
+                            </div>
+                            <h3>TilliPay</h3>
+                            <p>Global payments, Galaxy scale - Powering seamless, secure transactions worldwide with intelligent routing.</p>
+                            <!-- Inline visual for tablet/mobile (hidden on desktop) -->
+                            <div class="inline-visual" style="display: none;">
+                                <!-- REPLACE: Add your TilliPay image/video here for mobile -->
+                                <img src="Images/tillipay-placeholder.png" alt="TilliPay Demo" onerror="this.style.display='none'">
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-card-modern nudge">
-                        <div class="product-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#f093fb" stroke-width="2">
-                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                            </svg>
+
+                    <!-- RIGHT COLUMN: Sticky Visual Container -->
+                    <div class="products-visual-column">
+                        <div class="products-visual-sticky">
+                            <!-- tilliX Visual -->
+                            <div class="product-visual active" data-visual="tillix">
+                                <div class="product-visual-placeholder tillix-visual">
+                                    <!--
+                                    ============================================
+                                    REPLACE THIS PLACEHOLDER WITH YOUR ASSET:
+
+                                    Option 1 - MP4 Video:
+                                    <video autoplay loop muted playsinline>
+                                        <source src="path/to/tillix-demo.mp4" type="video/mp4">
+                                    </video>
+
+                                    Option 2 - GIF:
+                                    <img src="path/to/tillix-demo.gif" alt="tilliX Demo">
+
+                                    Option 3 - Lottie (requires lottie-player):
+                                    <lottie-player src="path/to/tillix.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                                    ============================================
+                                    -->
+                                    <span>tilliX Visual</span>
+                                </div>
+                            </div>
+
+                            <!-- Nudge Visual -->
+                            <div class="product-visual" data-visual="nudge">
+                                <div class="product-visual-placeholder nudge-visual">
+                                    <!--
+                                    ============================================
+                                    REPLACE THIS PLACEHOLDER WITH YOUR ASSET:
+
+                                    Option 1 - MP4 Video:
+                                    <video autoplay loop muted playsinline>
+                                        <source src="path/to/nudge-demo.mp4" type="video/mp4">
+                                    </video>
+
+                                    Option 2 - GIF:
+                                    <img src="path/to/nudge-demo.gif" alt="Nudge Demo">
+
+                                    Option 3 - Lottie (requires lottie-player):
+                                    <lottie-player src="path/to/nudge.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                                    ============================================
+                                    -->
+                                    <span>Nudge Visual</span>
+                                </div>
+                            </div>
+
+                            <!-- TilliPay Visual -->
+                            <div class="product-visual" data-visual="tillipay">
+                                <div class="product-visual-placeholder tillipay-visual">
+                                    <!--
+                                    ============================================
+                                    REPLACE THIS PLACEHOLDER WITH YOUR ASSET:
+
+                                    Option 1 - MP4 Video:
+                                    <video autoplay loop muted playsinline>
+                                        <source src="path/to/tillipay-demo.mp4" type="video/mp4">
+                                    </video>
+
+                                    Option 2 - GIF:
+                                    <img src="path/to/tillipay-demo.gif" alt="TilliPay Demo">
+
+                                    Option 3 - Lottie (requires lottie-player):
+                                    <lottie-player src="path/to/tillipay.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                                    ============================================
+                                    -->
+                                    <span>TilliPay Visual</span>
+                                </div>
+                            </div>
                         </div>
-                        <h3>Nudge</h3>
-                        <p>A nudge in time saves nine - Intelligent omnichannel communication platform</p>
-                    </div>
-                    <div class="product-card-modern tillipay">
-                        <div class="product-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#4facfe" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="2" y1="12" x2="22" y2="12"/>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                            </svg>
-                        </div>
-                        <h3>TilliPay</h3>
-                        <p>Global payments, Galaxy scale - Powering seamless, secure transactions worldwide</p>
                     </div>
                 </div>
             </div>
@@ -1454,6 +1694,88 @@
             });
         });
     </script>
+
+    <!-- Products Section: Scroll-Linked Visual Switching -->
+    <script>
+        (function() {
+            // Only run on desktop (sticky visual column visible)
+            const visualColumn = document.querySelector('.products-visual-column');
+            if (!visualColumn || window.innerWidth <= 1024) return;
+
+            const productCards = document.querySelectorAll('.product-card-scroll[data-product]');
+            const productVisuals = document.querySelectorAll('.product-visual[data-visual]');
+
+            if (productCards.length === 0 || productVisuals.length === 0) return;
+
+            // Track current active product
+            let currentProduct = 'tillix';
+
+            // Function to update active states
+            function setActiveProduct(productName) {
+                if (productName === currentProduct) return;
+                currentProduct = productName;
+
+                // Update card active states
+                productCards.forEach(card => {
+                    if (card.dataset.product === productName) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+
+                // Update visual active states with smooth transition
+                productVisuals.forEach(visual => {
+                    if (visual.dataset.visual === productName) {
+                        visual.classList.add('active');
+                        // Auto-play video if present
+                        const video = visual.querySelector('video');
+                        if (video) video.play().catch(() => {});
+                    } else {
+                        visual.classList.remove('active');
+                        // Pause video when not visible
+                        const video = visual.querySelector('video');
+                        if (video) video.pause();
+                    }
+                });
+            }
+
+            // IntersectionObserver to detect which card is in view
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '-40% 0px -40% 0px', // Trigger when card is in middle 20% of viewport
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const productName = entry.target.dataset.product;
+                        setActiveProduct(productName);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all product cards
+            productCards.forEach(card => {
+                observer.observe(card);
+            });
+
+            // Handle window resize - disable observer on tablet/mobile
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    if (window.innerWidth <= 1024) {
+                        observer.disconnect();
+                    } else {
+                        productCards.forEach(card => observer.observe(card));
+                    }
+                }, 250);
+            });
+        })();
+    </script>
+
     <!-- CookieConsent Scripts -->
     <script src="enhanced-cookie-banner.js"></script>
     <script src="script.js"></script>
