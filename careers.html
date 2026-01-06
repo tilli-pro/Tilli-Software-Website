@@ -68,108 +68,13 @@
     <!-- Vercel Analytics -->
     <script type="text/plain" data-cookiecategory="analytics" defer src="https://cdn.vercel-insights.com/v1.js"></script>
     <style>
-        /* Careers Hero - Neumorphic Embossed Logo Design */
+        /* Careers Hero - Plain Design */
         .careers-hero-modern {
-            background: #f5f5f7;
+            background: #ffffff;
             color: #0a0a0a;
             padding: 80px 0 100px;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        /* Neumorphic logo container - matches reference exactly */
-        .hero-logo-neumorphic {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 50px;
-            position: relative;
-            background: linear-gradient(165deg, #ffffff 0%, #f5f5f7 40%, #e8e8ec 100%);
-            border-radius: 64px;
-            box-shadow:
-                0 50px 100px -20px rgba(0, 0, 0, 0.12),
-                0 30px 60px -30px rgba(0, 0, 0, 0.1),
-                inset 0 -2px 6px rgba(0, 0, 0, 0.02),
-                inset 0 2px 6px rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: perspective(800px) rotateX(8deg);
-        }
-
-        /* Grid texture overlay - subtle like reference */
-        .hero-logo-neumorphic::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                linear-gradient(90deg, rgba(180, 180, 190, 0.08) 1px, transparent 1px),
-                linear-gradient(rgba(180, 180, 190, 0.08) 1px, transparent 1px);
-            background-size: 24px 24px;
-            border-radius: 64px;
-            pointer-events: none;
-        }
-
-        /* Logo wrapper for emboss effect */
-        .logo-emboss {
-            position: relative;
-            width: 160px;
-            height: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Embossed logo - very subtle, pressed into surface */
-        .hero-logo-neumorphic img.logo {
-            width: 140px;
-            height: 140px;
-            object-fit: contain;
-            position: relative;
-            z-index: 2;
-            opacity: 0.08;
-            filter: grayscale(100%) contrast(1.2);
-        }
-
-        /* Highlight layer (white version offset up-left) */
-        .logo-emboss::before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: -1px;
-            width: 140px;
-            height: 140px;
-            background: url('Images/22_Utilli_Icon_color.png') center/contain no-repeat;
-            opacity: 0.15;
-            filter: grayscale(100%) brightness(2);
-            z-index: 1;
-        }
-
-        /* Shadow layer (dark version offset down-right) */
-        .logo-emboss::after {
-            content: '';
-            position: absolute;
-            top: 1px;
-            left: 1px;
-            width: 140px;
-            height: 140px;
-            background: url('Images/22_Utilli_Icon_color.png') center/contain no-repeat;
-            opacity: 0.06;
-            filter: grayscale(100%) brightness(0.3);
-            z-index: 3;
-        }
-
-        /* Bottom blur shadow */
-        .hero-logo-shadow {
-            width: 220px;
-            height: 60px;
-            margin: -30px auto 50px;
-            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.15) 0%, transparent 70%);
-            filter: blur(25px);
-            transform: scaleY(0.4);
         }
 
         .hero-content {
@@ -208,28 +113,6 @@
 
         .hero-cta-neumorphic .btn {
             font-weight: 400;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-logo-neumorphic {
-                width: 220px;
-                height: 220px;
-                border-radius: 48px;
-            }
-            .logo-emboss {
-                width: 120px;
-                height: 120px;
-            }
-            .hero-logo-neumorphic img.logo,
-            .logo-emboss::before,
-            .logo-emboss::after {
-                width: 100px;
-                height: 100px;
-            }
-            .hero-logo-shadow {
-                width: 160px;
-            }
         }
 
         /* Values Section */
@@ -1003,15 +886,6 @@
         <!-- Hero Section -->
         <section class="careers-hero-modern">
             <div class="container">
-                <!-- Neumorphic embossed logo -->
-                <div class="hero-logo-neumorphic">
-                    <div class="logo-emboss">
-                        <img src="Images/22_Utilli_Icon_color.png" alt="Tilli" class="logo">
-                    </div>
-                </div>
-                <div class="hero-logo-shadow"></div>
-
-                <!-- Content -->
                 <div class="hero-content">
                     <h1 class="hero-title-neumorphic">Careers</h1>
                     <p class="hero-subtitle-neumorphic">
