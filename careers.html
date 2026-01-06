@@ -624,24 +624,43 @@
             gap: 40px;
         }
 
-        /* Right column: sticky visual container - Bubble.io style */
+        /* Right column: JS-controlled sticky visual container */
         .products-visual-column {
-            position: sticky;
-            top: calc(50vh - 200px); /* Center 400px visual vertically in viewport */
+            position: relative;
             height: 400px;
-            align-self: start; /* Don't stretch - let grid row height be set by cards column */
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            align-self: start;
         }
 
         .products-visual-sticky {
-            position: relative;
+            position: absolute;
             width: 100%;
-            height: 100%;
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: none; /* Disable transition for smooth scroll */
+        }
+
+        /* JS adds these classes to control sticky behavior */
+        .products-visual-sticky.is-fixed {
+            position: fixed;
+            top: calc(50vh - 200px);
+            width: calc(50% - 78px); /* Match grid column width minus gap/padding */
+            max-width: 552px;
+            right: calc(50% - 600px + 48px); /* Position in right half of max-width container */
+        }
+
+        .products-visual-sticky.is-bottom {
+            position: absolute;
+            bottom: 0;
+            top: auto;
+        }
+
+        @media (max-width: 1200px) {
+            .products-visual-sticky.is-fixed {
+                right: 48px;
+                width: calc(50% - 78px);
+            }
         }
 
         /* Visual container for animations/videos */
@@ -1700,17 +1719,19 @@
         });
     </script>
 
-    <!-- Products Section: Scroll-Linked Visual Switching -->
+    <!-- Products Section: Scroll-Linked Visual Switching + JS Sticky -->
     <script>
         (function() {
-            // Only run on desktop (sticky visual column visible)
-            const visualColumn = document.querySelector('.products-visual-column');
-            if (!visualColumn || window.innerWidth <= 1024) return;
+            // Only run on desktop
+            if (window.innerWidth <= 1024) return;
 
+            const section = document.querySelector('.products-section-modern');
+            const visualColumn = document.querySelector('.products-visual-column');
+            const stickyElement = document.querySelector('.products-visual-sticky');
             const productCards = document.querySelectorAll('.product-card-scroll[data-product]');
             const productVisuals = document.querySelectorAll('.product-visual[data-visual]');
 
-            if (productCards.length === 0 || productVisuals.length === 0) return;
+            if (!section || !visualColumn || !stickyElement || productCards.length === 0) return;
 
             // Track current active product
             let currentProduct = 'tillix';
@@ -1720,44 +1741,59 @@
                 if (productName === currentProduct) return;
                 currentProduct = productName;
 
-                // Update card active states
                 productCards.forEach(card => {
                     card.classList.toggle('active', card.dataset.product === productName);
                 });
 
-                // Update visual active states with smooth transition
                 productVisuals.forEach(visual => {
                     const isActive = visual.dataset.visual === productName;
                     visual.classList.toggle('active', isActive);
 
-                    // Handle video playback
                     const video = visual.querySelector('video');
                     if (video) {
-                        if (isActive) {
-                            video.play().catch(() => {});
-                        } else {
-                            video.pause();
-                        }
+                        if (isActive) video.play().catch(() => {});
+                        else video.pause();
                     }
                 });
             }
 
-            // Trigger point: 35% from top of viewport
-            // Visual switches when a card's top crosses this line
-            const TRIGGER_RATIO = 0.35;
+            // JS-based sticky positioning
+            function updateStickyPosition() {
+                const sectionRect = section.getBoundingClientRect();
+                const columnRect = visualColumn.getBoundingClientRect();
+                const viewportCenter = window.innerHeight / 2;
+                const stickyHeight = 400;
+                const topOffset = viewportCenter - (stickyHeight / 2);
 
-            function updateActiveOnScroll() {
+                // Calculate boundaries
+                const sectionTop = sectionRect.top;
+                const sectionBottom = sectionRect.bottom;
+                const startSticky = topOffset; // When section top reaches this point
+                const endSticky = sectionBottom - stickyHeight - topOffset;
+
+                if (sectionTop > startSticky) {
+                    // Section hasn't reached sticky zone yet - stay at top
+                    stickyElement.classList.remove('is-fixed', 'is-bottom');
+                } else if (sectionTop <= startSticky && endSticky > 0) {
+                    // In sticky zone - fix to viewport
+                    stickyElement.classList.add('is-fixed');
+                    stickyElement.classList.remove('is-bottom');
+                } else {
+                    // Past sticky zone - anchor to bottom
+                    stickyElement.classList.remove('is-fixed');
+                    stickyElement.classList.add('is-bottom');
+                }
+            }
+
+            // Update active product based on scroll position
+            const TRIGGER_RATIO = 0.4;
+
+            function updateActiveProduct() {
                 const triggerY = window.innerHeight * TRIGGER_RATIO;
-                let newActiveProduct = 'tillix'; // Default to first product
+                let newActiveProduct = 'tillix';
 
-                // Find the card that should be active:
-                // The active card is the one whose top has passed the trigger point
-                // but whose content is still visible (bottom hasn't gone too far up)
                 for (const card of productCards) {
                     const rect = card.getBoundingClientRect();
-
-                    // If this card's top is at or above the trigger point,
-                    // and the card is still partially visible
                     if (rect.top <= triggerY && rect.bottom > 0) {
                         newActiveProduct = card.dataset.product;
                     }
@@ -1766,32 +1802,35 @@
                 setActiveProduct(newActiveProduct);
             }
 
-            // Use requestAnimationFrame for smooth, performant scroll handling
+            // Combined scroll handler
             let ticking = false;
             window.addEventListener('scroll', () => {
                 if (!ticking) {
                     window.requestAnimationFrame(() => {
-                        updateActiveOnScroll();
+                        updateStickyPosition();
+                        updateActiveProduct();
                         ticking = false;
                     });
                     ticking = true;
                 }
             }, { passive: true });
 
-            // Initial check on page load
-            updateActiveOnScroll();
+            // Initial setup
+            updateStickyPosition();
+            updateActiveProduct();
 
-            // Handle window resize
+            // Handle resize
             let resizeTimeout;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(() => {
                     if (window.innerWidth <= 1024) {
-                        // On mobile/tablet, just show first visual
+                        stickyElement.classList.remove('is-fixed', 'is-bottom');
                         productVisuals.forEach((v, i) => v.classList.toggle('active', i === 0));
                         productCards.forEach((c, i) => c.classList.toggle('active', i === 0));
                     } else {
-                        updateActiveOnScroll();
+                        updateStickyPosition();
+                        updateActiveProduct();
                     }
                 }, 250);
             });
