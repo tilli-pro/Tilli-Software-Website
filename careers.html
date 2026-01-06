@@ -68,13 +68,32 @@
     <!-- Vercel Analytics -->
     <script type="text/plain" data-cookiecategory="analytics" defer src="https://cdn.vercel-insights.com/v1.js"></script>
     <style>
-        /* Careers Hero - Plain Design */
+        /* =============================================
+           MODERN POLISHED STYLES - Apptics Inspired
+           Keeping: Sora/Inter fonts, #4099FF blue, existing copy
+           Adding: Premium depth, refined spacing, floating cards
+           ============================================= */
+
+        /* Hero Section - Subtle gradient background */
         .careers-hero-modern {
-            background: #ffffff;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
             color: #0a0a0a;
-            padding: 80px 0 100px;
+            padding: 100px 0 120px;
             text-align: center;
             position: relative;
+            overflow: hidden;
+        }
+
+        .careers-hero-modern::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(64, 153, 255, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.02) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .hero-content {
@@ -82,26 +101,27 @@
             z-index: 10;
             max-width: 700px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         .hero-title-neumorphic {
             font-family: 'Sora', sans-serif;
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 400;
-            line-height: 1.2;
-            margin: 0 0 24px;
-            color: #1a1a1a;
+            line-height: 1.15;
+            margin: 0 0 28px;
+            color: #0a0a0a;
+            letter-spacing: -0.02em;
         }
 
         .hero-subtitle-neumorphic {
             font-family: 'Inter', sans-serif;
             font-size: 18px;
             font-weight: 400;
-            color: #6b7280;
-            max-width: 550px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
+            color: #64748b;
+            max-width: 520px;
+            margin: 0 auto 48px;
+            line-height: 1.75;
         }
 
         .hero-cta-neumorphic {
@@ -115,137 +135,147 @@
             font-weight: 400;
         }
 
-        /* Values Section */
-        :root {
-            --values-bg: #ffffff;
-            --values-text-primary: #1f2937;
-            --values-text-secondary: #6b7280;
-            --values-spacing: 48px;
-        }
-
-        .values-section-modern {
-            background: var(--values-bg);
-            padding: 100px 0;
-            position: relative;
-        }
-
+        /* Section Styling - Shared */
         .section-header {
             text-align: center;
-            margin-bottom: 64px;
+            margin-bottom: 72px;
         }
 
         .section-label {
             font-family: 'Inter', sans-serif;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             color: #4099FF;
             margin-bottom: 16px;
-            display: block;
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(64, 153, 255, 0.08);
+            border-radius: 100px;
         }
 
         .section-title-dark {
             font-family: 'Sora', sans-serif;
-            font-size: clamp(32px, 5vw, 48px);
+            font-size: clamp(28px, 4vw, 42px);
             font-weight: 400;
             color: #0a0a0a;
             margin: 0;
+            letter-spacing: -0.02em;
         }
 
         .section-title-light {
             font-family: 'Sora', sans-serif;
-            font-size: clamp(32px, 5vw, 48px);
+            font-size: clamp(28px, 4vw, 42px);
             font-weight: 400;
             color: #0a0a0a;
             margin: 0;
+            letter-spacing: -0.02em;
         }
 
-        /* Values Grid Container */
+        /* Values Section - Floating Cards */
+        .values-section-modern {
+            background: #ffffff;
+            padding: 120px 0;
+            position: relative;
+        }
+
         .values-grid-blueprint {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0;
+            gap: 24px;
+            padding: 0 24px;
         }
 
-        /* Value Card - Blueprint Style */
         .value-card-blueprint {
-            padding: var(--values-spacing);
+            padding: 40px;
             display: flex;
             align-items: flex-start;
             gap: 24px;
-            background: transparent;
-            transition: background 0.2s ease;
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04),
+                        0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
         }
 
         .value-card-blueprint:hover {
-            background: rgba(64, 153, 255, 0.02);
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06),
+                        0 12px 32px rgba(64, 153, 255, 0.08);
+            border-color: rgba(64, 153, 255, 0.15);
         }
 
-        /* Construction Icon Container */
         .value-icon-construct {
-            width: 80px;
-            height: 80px;
-            min-width: 80px;
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4ff 100%);
+            border-radius: 14px;
             position: relative;
+            color: #4099FF;
         }
 
         .value-icon-construct svg {
-            width: 80px;
-            height: 80px;
+            width: 26px;
+            height: 26px;
         }
 
-        /* Text Content */
         .value-content-blueprint {
             flex: 1;
-            padding-top: 8px;
+            padding-top: 4px;
         }
 
         .value-content-blueprint h3 {
             font-family: 'Sora', sans-serif;
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 600;
-            color: var(--values-text-primary);
-            margin: 0 0 8px;
+            color: #0a0a0a;
+            margin: 0 0 10px;
             line-height: 1.3;
         }
 
         .value-content-blueprint p {
             font-family: 'Inter', sans-serif;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 400;
-            color: var(--values-text-secondary);
-            line-height: 1.6;
+            color: #64748b;
+            line-height: 1.65;
             margin: 0;
         }
 
-        /* Responsive: 2 columns tablet, 1 column mobile */
         @media (max-width: 768px) {
             .values-grid-blueprint {
                 grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .value-card-blueprint {
+                padding: 32px;
             }
 
             .value-icon-construct {
-                width: 64px;
-                height: 64px;
-                min-width: 64px;
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
             }
 
             .value-icon-construct svg {
-                width: 64px;
-                height: 64px;
+                width: 24px;
+                height: 24px;
             }
         }
 
         @media (max-width: 480px) {
             .value-card-blueprint {
-                padding: 32px 24px;
+                padding: 28px;
                 flex-direction: column;
                 gap: 16px;
             }
@@ -255,57 +285,61 @@
             }
         }
 
-        /* Jobs Section */
+        /* Jobs Section - Premium Cards */
         .jobs-section-modern {
-            background: #f8f9fa;
-            padding: 100px 0;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 120px 0;
         }
 
         .jobs-container {
             max-width: 900px;
             margin: 0 auto;
+            padding: 0 24px;
         }
 
         .job-card-modern {
             background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 16px;
             margin-bottom: 16px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
         }
 
         .job-card-modern:hover {
-            border-color: #4099FF;
-            box-shadow: 0 8px 32px rgba(64, 153, 255, 0.1);
+            border-color: rgba(64, 153, 255, 0.2);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06),
+                        0 8px 24px rgba(64, 153, 255, 0.06);
+            transform: translateY(-2px);
         }
 
         .job-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 28px 32px;
+            padding: 32px 36px;
             cursor: pointer;
         }
 
         .job-info h3 {
             font-family: 'Sora', sans-serif;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 500;
             color: #0a0a0a;
-            margin: 0 0 12px;
+            margin: 0 0 14px;
         }
 
         .job-meta {
             display: flex;
-            gap: 20px;
+            gap: 24px;
             flex-wrap: wrap;
         }
 
         .job-meta-item {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
             color: #64748b;
@@ -318,10 +352,10 @@
         }
 
         .job-toggle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #f3f4f6;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: #f1f5f9;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -338,6 +372,7 @@
 
         .job-card-modern.active .job-toggle {
             background: #4099FF;
+            border-radius: 12px;
         }
 
         .job-card-modern.active .job-toggle svg {
@@ -347,8 +382,8 @@
 
         .job-details {
             display: none;
-            padding: 0 32px 32px;
-            border-top: 1px solid #e5e7eb;
+            padding: 0 36px 36px;
+            border-top: 1px solid #f1f5f9;
         }
 
         .job-card-modern.active .job-details {
@@ -356,29 +391,31 @@
         }
 
         .job-details-inner {
-            padding-top: 28px;
+            padding-top: 32px;
         }
 
         .job-details h4 {
             font-family: 'Sora', sans-serif;
-            font-size: 16px;
-            font-weight: 500;
+            font-size: 15px;
+            font-weight: 600;
             color: #0a0a0a;
-            margin: 0 0 16px;
+            margin: 0 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .job-details ul {
             list-style: none;
             padding: 0;
-            margin: 0 0 28px;
+            margin: 0 0 32px;
         }
 
         .job-details li {
             font-family: 'Inter', sans-serif;
             font-size: 15px;
             color: #64748b;
-            line-height: 1.8;
-            padding-left: 24px;
+            line-height: 1.85;
+            padding-left: 28px;
             position: relative;
         }
 
@@ -386,10 +423,10 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 11px;
-            width: 6px;
-            height: 6px;
-            background: #4099FF;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #4099FF 0%, #60a5fa 100%);
             border-radius: 50%;
         }
 
@@ -397,20 +434,22 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 14px 28px;
+            padding: 16px 32px;
             background: #0a0a0a;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             font-size: 15px;
             font-weight: 500;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 12px;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .btn-apply:hover {
             background: #1a1a1a;
             transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
 
         .btn-apply svg {
@@ -418,18 +457,19 @@
             height: 18px;
         }
 
-        /* Benefits Section */
+        /* Benefits Section - Bento Grid Style */
         .benefits-section-modern {
             background: #ffffff;
-            padding: 100px 0;
+            padding: 120px 0;
         }
 
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-            max-width: 1200px;
+            gap: 20px;
+            max-width: 1100px;
             margin: 0 auto;
+            padding: 0 24px;
         }
 
         @media (max-width: 1024px) {
@@ -446,32 +486,44 @@
 
         .benefit-card-modern {
             text-align: center;
-            padding: 32px 24px;
+            padding: 40px 28px;
+            background: linear-gradient(180deg, #fafbfc 0%, #f8fafc 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .benefit-card-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            border-color: rgba(64, 153, 255, 0.12);
         }
 
         .benefit-icon {
-            width: 64px;
-            height: 64px;
-            background: #f3f4f6;
-            border-radius: 16px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         .benefit-icon svg {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             color: #4099FF;
         }
 
         .benefit-card-modern h3 {
             font-family: 'Sora', sans-serif;
-            font-size: 18px;
-            font-weight: 500;
+            font-size: 17px;
+            font-weight: 600;
             color: #0a0a0a;
-            margin: 0 0 8px;
+            margin: 0 0 10px;
         }
 
         .benefit-card-modern p {
@@ -482,30 +534,58 @@
             margin: 0;
         }
 
-        /* Products Section */
+        /* Products Section - Refined Dark Theme */
         .products-section-modern {
-            background: #0a0a0a;
-            padding: 100px 0;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products-section-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(64, 153, 255, 0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .products-header {
             text-align: center;
-            margin-bottom: 64px;
+            margin-bottom: 72px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .products-header .section-label {
+            background: rgba(64, 153, 255, 0.15);
+            color: #60a5fa;
+        }
+
+        .products-header .section-title-dark {
+            color: #ffffff;
         }
 
         .products-header p {
             font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.6);
-            margin: 16px 0 0;
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 20px 0 0;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
         }
 
         @media (max-width: 900px) {
@@ -517,82 +597,136 @@
 
         .product-card-modern {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 20px;
-            padding: 36px;
-            transition: all 0.3s ease;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card-modern::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .product-card-modern:hover {
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-card-modern:hover::before {
+            opacity: 1;
         }
 
         .product-card-modern.tillix {
-            border-color: rgba(64, 153, 255, 0.3);
+            border-color: rgba(64, 153, 255, 0.2);
+        }
+
+        .product-card-modern.tillix:hover {
+            border-color: rgba(64, 153, 255, 0.4);
+            box-shadow: 0 16px 48px rgba(64, 153, 255, 0.15);
         }
 
         .product-card-modern.nudge {
-            border-color: rgba(240, 147, 251, 0.3);
+            border-color: rgba(240, 147, 251, 0.2);
+        }
+
+        .product-card-modern.nudge:hover {
+            border-color: rgba(240, 147, 251, 0.4);
+            box-shadow: 0 16px 48px rgba(240, 147, 251, 0.15);
         }
 
         .product-card-modern.tillipay {
-            border-color: rgba(79, 172, 254, 0.3);
+            border-color: rgba(79, 172, 254, 0.2);
+        }
+
+        .product-card-modern.tillipay:hover {
+            border-color: rgba(79, 172, 254, 0.4);
+            box-shadow: 0 16px 48px rgba(79, 172, 254, 0.15);
         }
 
         .product-icon {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 20px;
+            width: 52px;
+            height: 52px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
         }
 
         .product-icon svg {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
         }
 
         .product-card-modern h3 {
             font-family: 'Sora', sans-serif;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 500;
             color: #ffffff;
-            margin: 0 0 12px;
+            margin: 0 0 14px;
+            position: relative;
+            z-index: 1;
         }
 
         .product-card-modern p {
             font-family: 'Inter', sans-serif;
             font-size: 15px;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.65;
             margin: 0;
+            position: relative;
+            z-index: 1;
         }
 
-        /* CTA Section */
+        /* CTA Section - Refined Gradient */
         .cta-section-modern {
-            background: linear-gradient(135deg, #4099FF 0%, #8B5CF6 100%);
-            padding: 100px 0;
+            background: linear-gradient(135deg, #4099FF 0%, #7c3aed 50%, #8B5CF6 100%);
+            padding: 120px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section-modern::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .cta-content {
             max-width: 700px;
             margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-title {
             font-family: 'Sora', sans-serif;
-            font-size: clamp(32px, 5vw, 48px);
+            font-size: clamp(28px, 4vw, 44px);
             font-weight: 400;
             color: #ffffff;
-            margin: 0 0 20px;
+            margin: 0 0 24px;
+            letter-spacing: -0.02em;
         }
 
         .cta-subtitle {
             font-family: 'Inter', sans-serif;
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.9);
-            margin: 0 0 40px;
-            line-height: 1.6;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0 0 48px;
+            line-height: 1.7;
         }
 
         .cta-buttons {
@@ -600,287 +734,61 @@
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
         }
 
         .btn-cta-white {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 16px 32px;
+            padding: 18px 36px;
             background: #ffffff;
             color: #0a0a0a;
             font-family: 'Inter', sans-serif;
             font-size: 15px;
             font-weight: 500;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 12px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
         .btn-cta-white:hover {
-            background: #f0f0f0;
-            transform: translateY(-2px);
+            background: #f8fafc;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         .btn-cta-outline {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 16px 32px;
-            background: transparent;
+            padding: 18px 36px;
+            background: rgba(255, 255, 255, 0.1);
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             font-size: 15px;
             font-weight: 500;
             text-decoration: none;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
         }
 
         .btn-cta-outline:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
         }
 
         .cta-note {
             font-family: 'Inter', sans-serif;
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.65);
             margin: 0;
         }
 
-        /* Interview Process Section - Retool inspired */
-        .interview-section {
-            background: #ffffff;
-            padding: 100px 0;
-        }
-
-        .interview-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 80px;
-            align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 900px) {
-            .interview-grid {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-        }
-
-        .interview-visual {
-            position: relative;
-            height: 400px;
-            background: linear-gradient(135deg, #f0f4ff 0%, #e8f4ff 100%);
-            border-radius: 24px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .interview-visual::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(64, 153, 255, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .interview-shapes {
-            position: relative;
-            width: 200px;
-            height: 200px;
-        }
-
-        .interview-shapes .shape {
-            position: absolute;
-            border-radius: 50%;
-        }
-
-        .interview-shapes .shape-1 {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #4099FF 0%, #7c3aed 100%);
-            top: 0;
-            left: 0;
-            opacity: 0.9;
-        }
-
-        .interview-shapes .shape-2 {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #a78bfa 0%, #4099FF 100%);
-            bottom: 20px;
-            right: 0;
-            opacity: 0.8;
-        }
-
-        .interview-shapes .shape-3 {
-            width: 40px;
-            height: 40px;
-            background: #e0e7ff;
-            top: 60px;
-            right: 40px;
-        }
-
-        .interview-content h2 {
-            font-family: 'Sora', sans-serif;
-            font-size: 36px;
-            font-weight: 400;
-            color: #0a0a0a;
-            margin: 0 0 40px;
-        }
-
-        .interview-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        .interview-step {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            width: 48px;
-            height: 48px;
-            min-width: 48px;
-            background: linear-gradient(135deg, #4099FF 0%, #7c3aed 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Sora', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: #ffffff;
-        }
-
-        .step-content h4 {
-            font-family: 'Sora', sans-serif;
-            font-size: 18px;
-            font-weight: 500;
-            color: #0a0a0a;
-            margin: 0 0 6px;
-        }
-
-        .step-content p {
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            color: #6b7280;
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        /* Office Location Section - Retool inspired */
-        .office-section {
-            background: #f8f9fa;
-            padding: 100px 0;
-        }
-
-        .office-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 768px) {
-            .office-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .office-card {
-            background: #ffffff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-        }
-
-        .office-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .office-image {
-            height: 200px;
-            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .office-image svg {
-            width: 80px;
-            height: 80px;
-            color: #4099FF;
-            opacity: 0.6;
-        }
-
-        .office-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
-            background: linear-gradient(to top, rgba(255,255,255,0.8), transparent);
-        }
-
-        .office-info {
-            padding: 28px;
-        }
-
-        .office-info h3 {
-            font-family: 'Sora', sans-serif;
-            font-size: 22px;
-            font-weight: 500;
-            color: #0a0a0a;
-            margin: 0 0 8px;
-        }
-
-        .office-info p {
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            color: #6b7280;
-            margin: 0 0 16px;
-            line-height: 1.6;
-        }
-
-        .office-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background: #f0f4ff;
-            border-radius: 20px;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            font-weight: 500;
-            color: #4099FF;
-        }
-
-        .office-badge svg {
-            width: 14px;
-            height: 14px;
-        }
     </style>
 </head>
 <body>
@@ -944,8 +852,8 @@
                     <!-- Love the Craft -->
                     <div class="value-card-blueprint">
                         <div class="value-icon-construct">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="#374151" stroke-width="1.5">
-                                <path d="M24 42s-14-8.35-14-17.5A9.5 9.5 0 0 1 24 17a9.5 9.5 0 0 1 14 7.5C38 33.65 24 42 24 42z"/>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                             </svg>
                         </div>
                         <div class="value-content-blueprint">
@@ -957,13 +865,11 @@
                     <!-- Empower Everyone -->
                     <div class="value-card-blueprint">
                         <div class="value-icon-construct">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="#374151" stroke-width="1.5">
-                                <circle cx="24" cy="14" r="6"/>
-                                <path d="M36 42v-4a8 8 0 0 0-8-8H20a8 8 0 0 0-8 8v4"/>
-                                <circle cx="38" cy="16" r="4"/>
-                                <path d="M44 42v-2a6 6 0 0 0-4.5-5.8"/>
-                                <circle cx="10" cy="16" r="4"/>
-                                <path d="M4 42v-2a6 6 0 0 1 4.5-5.8"/>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                             </svg>
                         </div>
                         <div class="value-content-blueprint">
@@ -975,11 +881,10 @@
                     <!-- Trust the Process -->
                     <div class="value-card-blueprint">
                         <div class="value-icon-construct">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="#374151" stroke-width="1.5">
-                                <circle cx="24" cy="24" r="18"/>
-                                <circle cx="24" cy="24" r="12"/>
-                                <circle cx="24" cy="24" r="6"/>
-                                <circle cx="24" cy="24" r="2" fill="#374151"/>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <circle cx="12" cy="12" r="6"/>
+                                <circle cx="12" cy="12" r="2"/>
                             </svg>
                         </div>
                         <div class="value-content-blueprint">
@@ -991,62 +896,14 @@
                     <!-- Grow as You Go -->
                     <div class="value-card-blueprint">
                         <div class="value-icon-construct">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="#374151" stroke-width="1.5">
-                                <polyline points="44 12 28 28 20 20 4 36"/>
-                                <polyline points="32 12 44 12 44 24"/>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                <polyline points="17 6 23 6 23 12"/>
                             </svg>
                         </div>
                         <div class="value-content-blueprint">
                             <h3>Grow as You Go</h3>
                             <p>Continuous learning and development for personal and professional growth</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interview Process Section - Retool inspired -->
-        <section class="interview-section">
-            <div class="container">
-                <div class="interview-grid">
-                    <div class="interview-visual">
-                        <div class="interview-shapes">
-                            <div class="shape shape-1"></div>
-                            <div class="shape shape-2"></div>
-                            <div class="shape shape-3"></div>
-                        </div>
-                    </div>
-                    <div class="interview-content">
-                        <h2>Our Interview Process</h2>
-                        <div class="interview-steps">
-                            <div class="interview-step">
-                                <div class="step-number">1</div>
-                                <div class="step-content">
-                                    <h4>Application Review</h4>
-                                    <p>Submit your resume and we'll review your background within 3-5 business days.</p>
-                                </div>
-                            </div>
-                            <div class="interview-step">
-                                <div class="step-number">2</div>
-                                <div class="step-content">
-                                    <h4>Initial Conversation</h4>
-                                    <p>A 30-minute call with our team to discuss your experience and learn about Tilli.</p>
-                                </div>
-                            </div>
-                            <div class="interview-step">
-                                <div class="step-number">3</div>
-                                <div class="step-content">
-                                    <h4>Technical or Role Interview</h4>
-                                    <p>Deep dive into your skills with relevant team members and a practical exercise.</p>
-                                </div>
-                            </div>
-                            <div class="interview-step">
-                                <div class="step-number">4</div>
-                                <div class="step-content">
-                                    <h4>Final Decision</h4>
-                                    <p>Meet with leadership, then we'll extend an offer within 48 hours of your final interview.</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1346,54 +1203,6 @@
                         </div>
                         <h3>Workspace Stipend</h3>
                         <p>Setup your ideal workspace with our equipment stipend</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Office Location Section - Retool inspired -->
-        <section class="office-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Where We Work</span>
-                    <h2 class="section-title-dark">Our Headquarters</h2>
-                </div>
-                <div class="office-grid">
-                    <div class="office-card">
-                        <div class="office-image">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M3 21h18M5 21V7l8-4v18M13 21V7l6 3v11M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/>
-                            </svg>
-                        </div>
-                        <div class="office-info">
-                            <h3>McLean, Virginia</h3>
-                            <p>Our headquarters is located in the heart of Northern Virginia's tech corridor, minutes from DC.</p>
-                            <span class="office-badge">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                                8260 Greensboro Dr, Suite 270
-                            </span>
-                        </div>
-                    </div>
-                    <div class="office-card">
-                        <div class="office-image" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                            </svg>
-                        </div>
-                        <div class="office-info">
-                            <h3>Remote Friendly</h3>
-                            <p>We support flexible work arrangements with hybrid and remote options for the right roles.</p>
-                            <span class="office-badge">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                                </svg>
-                                U.S. Applicants Only
-                            </span>
-                        </div>
                     </div>
                 </div>
             </div>
