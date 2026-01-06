@@ -627,12 +627,13 @@
         /* Right column: sticky visual container */
         .products-visual-column {
             position: relative;
-            height: fit-content;
+            /* Must stretch to match left column height for sticky to work */
+            align-self: stretch;
         }
 
         .products-visual-sticky {
             position: sticky;
-            top: 180px;
+            top: 160px; /* Account for header: 62px banner + 72px nav + 26px padding */
             height: 400px;
             display: flex;
             align-items: center;
