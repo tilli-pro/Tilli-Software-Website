@@ -68,122 +68,168 @@
     <!-- Vercel Analytics -->
     <script type="text/plain" data-cookiecategory="analytics" defer src="https://cdn.vercel-insights.com/v1.js"></script>
     <style>
-        /* Careers Page Styles - Brex-inspired */
+        /* Careers Hero - Neumorphic Embossed Logo Design */
         .careers-hero-modern {
-            background: #ffffff;
+            background: #f5f5f7;
             color: #0a0a0a;
             padding: 80px 0 100px;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
-        .hero-logo-container {
+        /* Neumorphic logo container - matches reference exactly */
+        .hero-logo-neumorphic {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 50px;
             position: relative;
-            width: 280px;
-            height: 280px;
-            margin: 0 auto 60px;
-            perspective: 1000px;
-        }
-
-        .hero-logo-ingrained {
-            width: 100%;
-            height: 100%;
-            position: relative;
+            background: linear-gradient(165deg, #ffffff 0%, #f5f5f7 40%, #e8e8ec 100%);
+            border-radius: 64px;
+            box-shadow:
+                0 50px 100px -20px rgba(0, 0, 0, 0.12),
+                0 30px 60px -30px rgba(0, 0, 0, 0.1),
+                inset 0 -2px 6px rgba(0, 0, 0, 0.02),
+                inset 0 2px 6px rgba(255, 255, 255, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
-            transform: rotateX(12deg) rotateY(-3deg);
-            transform-style: preserve-3d;
+            transform: perspective(800px) rotateX(8deg);
         }
 
-        .hero-logo-ingrained img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 32px;
-        }
-
-        /* Bottom blur/shadow effect like Cluely */
-        .hero-logo-container::after {
+        /* Grid texture overlay - subtle like reference */
+        .hero-logo-neumorphic::before {
             content: '';
             position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%) rotateX(80deg);
-            width: 200px;
-            height: 100px;
-            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.1) 40%, transparent 70%);
-            filter: blur(20px);
-            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(90deg, rgba(180, 180, 190, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(180, 180, 190, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+            border-radius: 64px;
+            pointer-events: none;
         }
 
-        .hero-label {
-            display: inline-block;
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            color: #6B7280;
-            margin-bottom: 32px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* Logo wrapper for emboss effect */
+        .logo-emboss {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .hero-title-large {
+        /* Embossed logo - very subtle, pressed into surface */
+        .hero-logo-neumorphic img.logo {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            opacity: 0.08;
+            filter: grayscale(100%) contrast(1.2);
+        }
+
+        /* Highlight layer (white version offset up-left) */
+        .logo-emboss::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 140px;
+            height: 140px;
+            background: url('Images/22_Utilli_Icon_color.png') center/contain no-repeat;
+            opacity: 0.15;
+            filter: grayscale(100%) brightness(2);
+            z-index: 1;
+        }
+
+        /* Shadow layer (dark version offset down-right) */
+        .logo-emboss::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 140px;
+            height: 140px;
+            background: url('Images/22_Utilli_Icon_color.png') center/contain no-repeat;
+            opacity: 0.06;
+            filter: grayscale(100%) brightness(0.3);
+            z-index: 3;
+        }
+
+        /* Bottom blur shadow */
+        .hero-logo-shadow {
+            width: 220px;
+            height: 60px;
+            margin: -30px auto 50px;
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.15) 0%, transparent 70%);
+            filter: blur(25px);
+            transform: scaleY(0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-title-neumorphic {
             font-family: 'Sora', sans-serif;
             font-size: 3rem;
             font-weight: 400;
             line-height: 1.2;
             margin: 0 0 24px;
-            letter-spacing: -1px;
-            color: #0a0a0a;
+            color: #1a1a1a;
         }
 
-        .hero-title-large span {
-            display: block;
-        }
-
-        .hero-title-large .accent {
-            background: linear-gradient(135deg, #4099FF 0%, #8B5CF6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle-modern {
+        .hero-subtitle-neumorphic {
             font-family: 'Inter', sans-serif;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 400;
-            color: #4b5563;
-            max-width: 600px;
-            margin: 0 auto 48px;
-            line-height: 1.6;
+            color: #6b7280;
+            max-width: 550px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
         }
 
-        .hero-cta-group {
+        .hero-cta-neumorphic {
             display: flex;
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .hero-cta-group .btn {
+        .hero-cta-neumorphic .btn {
             font-weight: 400;
         }
 
-        .hero-cta-group .arrow-circle {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            margin-left: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .hero-cta-group .btn:hover .arrow-circle {
-            transform: translateX(3px);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-logo-neumorphic {
+                width: 220px;
+                height: 220px;
+                border-radius: 48px;
+            }
+            .logo-emboss {
+                width: 120px;
+                height: 120px;
+            }
+            .hero-logo-neumorphic img.logo,
+            .logo-emboss::before,
+            .logo-emboss::after {
+                width: 100px;
+                height: 100px;
+            }
+            .hero-logo-shadow {
+                width: 160px;
+            }
         }
 
         /* Values Section */
@@ -687,6 +733,237 @@
             color: rgba(255, 255, 255, 0.7);
             margin: 0;
         }
+
+        /* Interview Process Section - Retool inspired */
+        .interview-section {
+            background: #ffffff;
+            padding: 100px 0;
+        }
+
+        .interview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .interview-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        .interview-visual {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f4ff 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .interview-visual::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(64, 153, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .interview-shapes {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .interview-shapes .shape {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .interview-shapes .shape-1 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #4099FF 0%, #7c3aed 100%);
+            top: 0;
+            left: 0;
+            opacity: 0.9;
+        }
+
+        .interview-shapes .shape-2 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #a78bfa 0%, #4099FF 100%);
+            bottom: 20px;
+            right: 0;
+            opacity: 0.8;
+        }
+
+        .interview-shapes .shape-3 {
+            width: 40px;
+            height: 40px;
+            background: #e0e7ff;
+            top: 60px;
+            right: 40px;
+        }
+
+        .interview-content h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 36px;
+            font-weight: 400;
+            color: #0a0a0a;
+            margin: 0 0 40px;
+        }
+
+        .interview-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .interview-step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: linear-gradient(135deg, #4099FF 0%, #7c3aed 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .step-content h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: #0a0a0a;
+            margin: 0 0 6px;
+        }
+
+        .step-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #6b7280;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Office Location Section - Retool inspired */
+        .office-section {
+            background: #f8f9fa;
+            padding: 100px 0;
+        }
+
+        .office-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .office-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .office-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .office-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .office-image {
+            height: 200px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .office-image svg {
+            width: 80px;
+            height: 80px;
+            color: #4099FF;
+            opacity: 0.6;
+        }
+
+        .office-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to top, rgba(255,255,255,0.8), transparent);
+        }
+
+        .office-info {
+            padding: 28px;
+        }
+
+        .office-info h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: #0a0a0a;
+            margin: 0 0 8px;
+        }
+
+        .office-info p {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #6b7280;
+            margin: 0 0 16px;
+            line-height: 1.6;
+        }
+
+        .office-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #f0f4ff;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: #4099FF;
+        }
+
+        .office-badge svg {
+            width: 14px;
+            height: 14px;
+        }
     </style>
 </head>
 <body>
@@ -726,18 +1003,24 @@
         <!-- Hero Section -->
         <section class="careers-hero-modern">
             <div class="container">
-                <div class="hero-logo-container">
-                    <div class="hero-logo-ingrained">
-                        <img src="carrer logo.png" alt="Tilli Careers">
+                <!-- Neumorphic embossed logo -->
+                <div class="hero-logo-neumorphic">
+                    <div class="logo-emboss">
+                        <img src="Images/22_Utilli_Icon_color.png" alt="Tilli" class="logo">
                     </div>
                 </div>
-                <h1 class="hero-title-large">Careers</h1>
-                <p class="hero-subtitle-modern">
-                    At Tilli, we're building products that stand the test of time. Join us in creating innovative software solutions that transform how businesses handle payments and customer engagement.
-                </p>
-                <div class="hero-cta-group">
-                    <a href="#open-positions" class="btn btn-primary btn-icon" style="font-weight: 400;">View Open Positions <span class="arrow-circle">→</span></a>
-                    <a href="mailto:careers@tilli.pro" class="btn btn-secondary" style="font-weight: 400;">Send Your Resume</a>
+                <div class="hero-logo-shadow"></div>
+
+                <!-- Content -->
+                <div class="hero-content">
+                    <h1 class="hero-title-neumorphic">Careers</h1>
+                    <p class="hero-subtitle-neumorphic">
+                        At Tilli, we're building products that stand the test of time. Join us in creating innovative software solutions that transform how businesses handle payments and customer engagement.
+                    </p>
+                    <div class="hero-cta-neumorphic">
+                        <a href="#open-positions" class="btn btn-primary btn-icon" style="font-weight: 400;">View Open Positions <span class="arrow-circle">→</span></a>
+                        <a href="mailto:careers@tilli.pro" class="btn btn-secondary" style="font-weight: 400;">Send Your Resume</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -791,6 +1074,54 @@
                         </div>
                         <h3>Grow as You Go</h3>
                         <p>Continuous learning and development for personal and professional growth</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interview Process Section - Retool inspired -->
+        <section class="interview-section">
+            <div class="container">
+                <div class="interview-grid">
+                    <div class="interview-visual">
+                        <div class="interview-shapes">
+                            <div class="shape shape-1"></div>
+                            <div class="shape shape-2"></div>
+                            <div class="shape shape-3"></div>
+                        </div>
+                    </div>
+                    <div class="interview-content">
+                        <h2>Our Interview Process</h2>
+                        <div class="interview-steps">
+                            <div class="interview-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Application Review</h4>
+                                    <p>Submit your resume and we'll review your background within 3-5 business days.</p>
+                                </div>
+                            </div>
+                            <div class="interview-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Initial Conversation</h4>
+                                    <p>A 30-minute call with our team to discuss your experience and learn about Tilli.</p>
+                                </div>
+                            </div>
+                            <div class="interview-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Technical or Role Interview</h4>
+                                    <p>Deep dive into your skills with relevant team members and a practical exercise.</p>
+                                </div>
+                            </div>
+                            <div class="interview-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Final Decision</h4>
+                                    <p>Meet with leadership, then we'll extend an offer within 48 hours of your final interview.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1089,6 +1420,54 @@
                         </div>
                         <h3>Workspace Stipend</h3>
                         <p>Setup your ideal workspace with our equipment stipend</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Office Location Section - Retool inspired -->
+        <section class="office-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Where We Work</span>
+                    <h2 class="section-title-dark">Our Headquarters</h2>
+                </div>
+                <div class="office-grid">
+                    <div class="office-card">
+                        <div class="office-image">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 21h18M5 21V7l8-4v18M13 21V7l6 3v11M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/>
+                            </svg>
+                        </div>
+                        <div class="office-info">
+                            <h3>McLean, Virginia</h3>
+                            <p>Our headquarters is located in the heart of Northern Virginia's tech corridor, minutes from DC.</p>
+                            <span class="office-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                8260 Greensboro Dr, Suite 270
+                            </span>
+                        </div>
+                    </div>
+                    <div class="office-card">
+                        <div class="office-image" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                        </div>
+                        <div class="office-info">
+                            <h3>Remote Friendly</h3>
+                            <p>We support flexible work arrangements with hybrid and remote options for the right roles.</p>
+                            <span class="office-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                </svg>
+                                U.S. Applicants Only
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
