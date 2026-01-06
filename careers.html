@@ -563,53 +563,42 @@
             margin: 0;
         }
 
-        /* Products Section - Bubble-style Scroll-Linked */
+        /* Products Section - Light, Minimal, Apple-inspired */
         .products-section-modern {
-            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
-            padding: 120px 0;
+            background: #ffffff;
+            padding: 140px 0;
             position: relative;
             overflow: visible;
         }
 
-        .products-section-modern::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 400px;
-            background: radial-gradient(ellipse, rgba(64, 153, 255, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
         .products-header {
             text-align: center;
-            margin-bottom: 72px;
+            margin-bottom: 100px;
             position: relative;
             z-index: 1;
         }
 
         .products-header .section-label {
-            color: rgba(255, 255, 255, 0.5);
+            color: #9ca3af;
         }
 
         .products-header .section-title-dark {
-            color: #ffffff;
+            color: #0a0a0a;
         }
 
         .products-header p {
             font-family: 'Inter', sans-serif;
             font-size: 17px;
-            color: rgba(255, 255, 255, 0.5);
-            margin: 20px 0 0;
+            color: #64748b;
+            margin: 20px auto 0;
+            max-width: 480px;
         }
 
         /* Scroll-linked two-column layout */
         .products-scroll-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 48px;
@@ -617,11 +606,11 @@
             z-index: 1;
         }
 
-        /* Left column: stacked product cards */
+        /* Left column: stacked product cards with generous spacing */
         .products-cards-column {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 100px;
         }
 
         /* Right column: JS-controlled sticky visual container */
@@ -638,16 +627,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: none; /* Disable transition for smooth scroll */
+            transition: none;
         }
 
         /* JS adds these classes to control sticky behavior */
         .products-visual-sticky.is-fixed {
             position: fixed;
             top: calc(50vh - 200px);
-            width: calc(50% - 78px); /* Match grid column width minus gap/padding */
+            width: calc(50% - 78px);
             max-width: 552px;
-            right: calc(50% - 600px + 48px); /* Position in right half of max-width container */
+            right: calc(50% - 600px + 48px);
         }
 
         .products-visual-sticky.is-bottom {
@@ -671,8 +660,8 @@
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(16px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
             pointer-events: none;
         }
 
@@ -682,34 +671,36 @@
             pointer-events: auto;
         }
 
-        /* Placeholder visual styling */
+        /* Placeholder visual styling - clean, minimal */
         .product-visual-placeholder {
             width: 100%;
             max-width: 450px;
             aspect-ratio: 16 / 10;
-            border-radius: 16px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.4);
+            color: #9ca3af;
             overflow: hidden;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
         }
 
         .product-visual-placeholder.tillix-visual {
-            background: linear-gradient(135deg, rgba(64, 153, 255, 0.15) 0%, rgba(64, 153, 255, 0.05) 100%);
-            border: 1px solid rgba(64, 153, 255, 0.2);
+            background: linear-gradient(145deg, #f0f7ff 0%, #f8fafc 100%);
+            border: 1px solid rgba(64, 153, 255, 0.15);
         }
 
         .product-visual-placeholder.nudge-visual {
-            background: linear-gradient(135deg, rgba(240, 147, 251, 0.15) 0%, rgba(240, 147, 251, 0.05) 100%);
-            border: 1px solid rgba(240, 147, 251, 0.2);
+            background: linear-gradient(145deg, #fdf4ff 0%, #f8fafc 100%);
+            border: 1px solid rgba(240, 147, 251, 0.15);
         }
 
         .product-visual-placeholder.tillipay-visual {
-            background: linear-gradient(135deg, rgba(79, 172, 254, 0.15) 0%, rgba(79, 172, 254, 0.05) 100%);
-            border: 1px solid rgba(79, 172, 254, 0.2);
+            background: linear-gradient(145deg, #f0f9ff 0%, #f8fafc 100%);
+            border: 1px solid rgba(79, 172, 254, 0.15);
         }
 
         /* Video/image inside placeholder */
@@ -718,108 +709,86 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 16px;
+            border-radius: 20px;
         }
 
-        /* Product cards - scroll-linked style */
+        /* Product cards - minimal, clean style */
         .product-card-scroll {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            padding: 48px 40px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0 0 0 32px;
+            transition: all 0.3s ease;
             position: relative;
-            min-height: 200px;
+            min-height: auto;
+            border-left: 2px solid #e5e7eb;
         }
 
         .product-card-scroll.active {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .product-card-scroll.tillix {
-            border-color: rgba(64, 153, 255, 0.15);
+            background: transparent;
         }
 
         .product-card-scroll.tillix.active {
-            border-color: rgba(64, 153, 255, 0.3);
-        }
-
-        .product-card-scroll.nudge {
-            border-color: rgba(240, 147, 251, 0.15);
+            border-left-color: #4099FF;
         }
 
         .product-card-scroll.nudge.active {
-            border-color: rgba(240, 147, 251, 0.3);
-        }
-
-        .product-card-scroll.tillipay {
-            border-color: rgba(79, 172, 254, 0.15);
+            border-left-color: #f093fb;
         }
 
         .product-card-scroll.tillipay.active {
-            border-color: rgba(79, 172, 254, 0.3);
+            border-left-color: #4facfe;
         }
 
         .product-card-scroll .product-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             margin-bottom: 20px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card-scroll.active .product-icon {
+            opacity: 1;
         }
 
         .product-card-scroll .product-icon svg {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
         }
 
         .product-card-scroll h3 {
             font-family: 'Sora', sans-serif;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 500;
-            color: #ffffff;
-            margin: 0 0 12px;
+            color: #0a0a0a;
+            margin: 0 0 14px;
+            letter-spacing: -0.01em;
         }
 
         .product-card-scroll p {
             font-family: 'Inter', sans-serif;
             font-size: 16px;
-            color: rgba(255, 255, 255, 0.55);
-            line-height: 1.7;
+            color: #64748b;
+            line-height: 1.75;
             margin: 0;
+            max-width: 400px;
         }
 
-        /* Active indicator */
+        /* Remove the old active indicator - using border-left instead */
         .product-card-scroll::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 3px;
-            height: 0;
-            border-radius: 2px;
-            transition: height 0.3s ease, background 0.3s ease;
-        }
-
-        .product-card-scroll.tillix.active::before {
-            height: 60px;
-            background: #4099FF;
-        }
-
-        .product-card-scroll.nudge.active::before {
-            height: 60px;
-            background: #f093fb;
-        }
-
-        .product-card-scroll.tillipay.active::before {
-            height: 60px;
-            background: #4facfe;
+            display: none;
         }
 
         /* Tablet: disable sticky, show visuals inline */
         @media (max-width: 1024px) {
+            .products-section-modern {
+                padding: 100px 0;
+            }
+
             .products-scroll-container {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 48px;
                 padding: 0 24px;
             }
 
@@ -828,18 +797,19 @@
             }
 
             .products-cards-column {
-                gap: 32px;
+                gap: 48px;
             }
 
             .product-card-scroll {
-                padding: 32px;
+                padding: 24px 0 24px 24px;
+                border-left: 2px solid #e5e7eb;
             }
 
             /* Show inline visual on tablet/mobile */
             .product-card-scroll .inline-visual {
                 display: block;
                 margin-top: 24px;
-                border-radius: 12px;
+                border-radius: 16px;
                 overflow: hidden;
             }
 
@@ -847,11 +817,7 @@
             .product-card-scroll .inline-visual video {
                 width: 100%;
                 height: auto;
-                border-radius: 12px;
-            }
-
-            .product-card-scroll::before {
-                display: none;
+                border-radius: 16px;
             }
         }
 
@@ -862,15 +828,15 @@
             }
 
             .products-header {
-                margin-bottom: 48px;
+                margin-bottom: 56px;
             }
 
             .product-card-scroll {
-                padding: 28px 24px;
+                padding: 20px 0 20px 20px;
             }
 
             .product-card-scroll h3 {
-                font-size: 20px;
+                font-size: 22px;
             }
 
             .product-card-scroll p {
@@ -1726,12 +1692,13 @@
             if (window.innerWidth <= 1024) return;
 
             const section = document.querySelector('.products-section-modern');
+            const scrollContainer = document.querySelector('.products-scroll-container');
             const visualColumn = document.querySelector('.products-visual-column');
             const stickyElement = document.querySelector('.products-visual-sticky');
             const productCards = document.querySelectorAll('.product-card-scroll[data-product]');
             const productVisuals = document.querySelectorAll('.product-visual[data-visual]');
 
-            if (!section || !visualColumn || !stickyElement || productCards.length === 0) return;
+            if (!section || !scrollContainer || !visualColumn || !stickyElement || productCards.length === 0) return;
 
             // Track current active product
             let currentProduct = 'tillix';
@@ -1757,24 +1724,22 @@
                 });
             }
 
-            // JS-based sticky positioning
+            // JS-based sticky positioning - use scrollContainer (cards area) not whole section
             function updateStickyPosition() {
-                const sectionRect = section.getBoundingClientRect();
-                const columnRect = visualColumn.getBoundingClientRect();
+                const containerRect = scrollContainer.getBoundingClientRect();
                 const viewportCenter = window.innerHeight / 2;
                 const stickyHeight = 400;
                 const topOffset = viewportCenter - (stickyHeight / 2);
 
-                // Calculate boundaries
-                const sectionTop = sectionRect.top;
-                const sectionBottom = sectionRect.bottom;
-                const startSticky = topOffset; // When section top reaches this point
-                const endSticky = sectionBottom - stickyHeight - topOffset;
+                // Calculate boundaries based on scroll container (cards area only)
+                const containerTop = containerRect.top;
+                const containerBottom = containerRect.bottom;
+                const endSticky = containerBottom - stickyHeight - topOffset;
 
-                if (sectionTop > startSticky) {
-                    // Section hasn't reached sticky zone yet - stay at top
+                if (containerTop > topOffset) {
+                    // Container hasn't reached sticky zone yet - stay at top
                     stickyElement.classList.remove('is-fixed', 'is-bottom');
-                } else if (sectionTop <= startSticky && endSticky > 0) {
+                } else if (containerTop <= topOffset && endSticky > 0) {
                     // In sticky zone - fix to viewport
                     stickyElement.classList.add('is-fixed');
                     stickyElement.classList.remove('is-bottom');
