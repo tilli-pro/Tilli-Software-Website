@@ -70,11 +70,35 @@
     <style>
         /* Careers Page Styles - Brex-inspired */
         .careers-hero-modern {
-            background: radial-gradient(ellipse 80% 50% at 50% 20%, rgba(64, 153, 255, 0.12) 0%, rgba(139, 92, 246, 0.06) 30%, transparent 60%);
+            background: #ffffff;
             color: #0a0a0a;
-            padding: 160px 0 120px;
+            padding: 80px 0 100px;
             text-align: center;
             position: relative;
+        }
+
+        .hero-logo-ingrained {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 40px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #f5f5f5 0%, #e8e8e8 100%);
+            border-radius: 40px;
+            box-shadow:
+                20px 20px 60px rgba(0, 0, 0, 0.08),
+                -20px -20px 60px rgba(255, 255, 255, 0.9),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-logo-ingrained img {
+            width: 100px;
+            height: auto;
+            opacity: 0.4;
+            filter: grayscale(100%) contrast(0.8);
         }
 
         .hero-label {
@@ -686,11 +710,10 @@
         <!-- Hero Section -->
         <section class="careers-hero-modern">
             <div class="container">
-                <span class="hero-label">Careers at Tilli</span>
-                <h1 class="hero-title-large">
-                    <span>Join Our Mission</span>
-                    <span class="accent">Redefine Digital Convenience</span>
-                </h1>
+                <div class="hero-logo-ingrained">
+                    <img src="Images/22_tilli_logo_color.png" alt="Tilli">
+                </div>
+                <h1 class="hero-title-large">Careers</h1>
                 <p class="hero-subtitle-modern">
                     At Tilli, we're building products that stand the test of time. Join us in creating innovative software solutions that transform how businesses handle payments and customer engagement.
                 </p>
