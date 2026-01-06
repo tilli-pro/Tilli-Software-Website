@@ -457,22 +457,22 @@
             height: 18px;
         }
 
-        /* Benefits Section - Bento Grid Style */
+        /* Benefits Section - Editorial Style */
         .benefits-section-modern {
             background: #ffffff;
-            padding: 120px 0;
+            padding: 100px 0;
         }
 
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 900px) {
             .benefits-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -485,52 +485,84 @@
         }
 
         .benefit-card-modern {
-            text-align: center;
-            padding: 40px 28px;
-            background: linear-gradient(180deg, #fafbfc 0%, #f8fafc 100%);
-            border-radius: 20px;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 32px 40px;
+            border-right: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
         }
 
-        .benefit-card-modern:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-            border-color: rgba(64, 153, 255, 0.12);
+        .benefits-grid .benefit-card-modern:nth-child(3n) {
+            border-right: none;
+        }
+
+        .benefits-grid .benefit-card-modern:nth-last-child(-n+3) {
+            border-bottom: none;
+        }
+
+        @media (max-width: 900px) {
+            .benefit-card-modern {
+                padding: 28px 32px;
+            }
+            .benefits-grid .benefit-card-modern:nth-child(3n) {
+                border-right: 1px solid #e5e7eb;
+            }
+            .benefits-grid .benefit-card-modern:nth-child(2n) {
+                border-right: none;
+            }
+            .benefits-grid .benefit-card-modern:nth-last-child(-n+3) {
+                border-bottom: 1px solid #e5e7eb;
+            }
+            .benefits-grid .benefit-card-modern:nth-last-child(-n+2) {
+                border-bottom: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .benefit-card-modern {
+                padding: 24px 0;
+                border-right: none !important;
+            }
+            .benefits-grid .benefit-card-modern:last-child {
+                border-bottom: none;
+            }
         }
 
         .benefit-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 14px;
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            margin-top: 2px;
         }
 
         .benefit-icon svg {
-            width: 26px;
-            height: 26px;
+            width: 22px;
+            height: 22px;
             color: #4099FF;
         }
 
+        .benefit-content {
+            flex: 1;
+        }
+
         .benefit-card-modern h3 {
-            font-family: 'Sora', sans-serif;
-            font-size: 17px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
             font-weight: 600;
-            color: #0a0a0a;
-            margin: 0 0 10px;
+            color: #111827;
+            margin: 0 0 6px;
+            letter-spacing: -0.01em;
         }
 
         .benefit-card-modern p {
             font-family: 'Inter', sans-serif;
             font-size: 14px;
-            color: #64748b;
-            line-height: 1.6;
+            color: #6b7280;
+            line-height: 1.5;
             margin: 0;
         }
 
@@ -1126,20 +1158,21 @@
                                 <path d="M6 12v5c3 3 9 3 12 0v-5"/>
                             </svg>
                         </div>
-                        <h3>Learn & Grow</h3>
-                        <p>Investment in your professional development with training, conferences, and certifications</p>
+                        <div class="benefit-content">
+                            <h3>Learn & Grow</h3>
+                            <p>Investment in your professional development with training, conferences, and certifications</p>
+                        </div>
                     </div>
                     <div class="benefit-card-modern">
                         <div class="benefit-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-                                <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/>
-                                <path d="m18 15-2-2"/>
-                                <path d="m15 18-2-2"/>
                             </svg>
                         </div>
-                        <h3>Comprehensive Healthcare</h3>
-                        <p>Health, dental, and vision insurance for you and your family</p>
+                        <div class="benefit-content">
+                            <h3>Comprehensive Healthcare</h3>
+                            <p>Health, dental, and vision insurance for you and your family</p>
+                        </div>
                     </div>
                     <div class="benefit-card-modern">
                         <div class="benefit-icon">
@@ -1147,8 +1180,10 @@
                                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                             </svg>
                         </div>
-                        <h3>Wellness Stipends</h3>
-                        <p>Gym memberships, massages, and wellness activities covered</p>
+                        <div class="benefit-content">
+                            <h3>Wellness Stipends</h3>
+                            <p>Gym memberships, massages, and wellness activities covered</p>
+                        </div>
                     </div>
                     <div class="benefit-card-modern">
                         <div class="benefit-icon">
@@ -1159,8 +1194,10 @@
                                 <line x1="3" y1="10" x2="21" y2="10"/>
                             </svg>
                         </div>
-                        <h3>Flexible Time Off</h3>
-                        <p>Recommended 3 weeks per year with flexible scheduling</p>
+                        <div class="benefit-content">
+                            <h3>Flexible Time Off</h3>
+                            <p>Recommended 3 weeks per year with flexible scheduling</p>
+                        </div>
                     </div>
                     <div class="benefit-card-modern">
                         <div class="benefit-icon">
@@ -1169,8 +1206,10 @@
                                 <polyline points="17 6 23 6 23 12"/>
                             </svg>
                         </div>
-                        <h3>Equity Program</h3>
-                        <p>Ownership stake in the company's success and growth</p>
+                        <div class="benefit-content">
+                            <h3>Equity Program</h3>
+                            <p>Ownership stake in the company's success and growth</p>
+                        </div>
                     </div>
                     <div class="benefit-card-modern">
                         <div class="benefit-icon">
@@ -1179,8 +1218,10 @@
                                 <polyline points="9 22 9 12 15 12 15 22"/>
                             </svg>
                         </div>
-                        <h3>Relocation Support</h3>
-                        <p>Assistance with relocation for the right candidates</p>
+                        <div class="benefit-content">
+                            <h3>Relocation Support</h3>
+                            <p>Assistance with relocation for the right candidates</p>
+                        </div>
                     </div>
                     <div class="benefit-card-modern">
                         <div class="benefit-icon">
@@ -1190,8 +1231,10 @@
                                 <path d="M16 11h.01"/>
                             </svg>
                         </div>
-                        <h3>401K with Match</h3>
-                        <p>Company matching on retirement contributions</p>
+                        <div class="benefit-content">
+                            <h3>401K with Match</h3>
+                            <p>Company matching on retirement contributions</p>
+                        </div>
                     </div>
                     <div class="benefit-card-modern">
                         <div class="benefit-icon">
@@ -1201,8 +1244,10 @@
                                 <line x1="12" y1="17" x2="12" y2="21"/>
                             </svg>
                         </div>
-                        <h3>Workspace Stipend</h3>
-                        <p>Setup your ideal workspace with our equipment stipend</p>
+                        <div class="benefit-content">
+                            <h3>Workspace Stipend</h3>
+                            <p>Setup your ideal workspace with our equipment stipend</p>
+                        </div>
                     </div>
                 </div>
             </div>
