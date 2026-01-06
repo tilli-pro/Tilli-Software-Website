@@ -498,36 +498,15 @@
             border-bottom: none;
         }
 
-        /* Center last row when it has 2 items (8 total) */
-        .benefits-grid .benefit-card-modern:nth-child(7) {
-            grid-column-start: 2;
-        }
-
-        .benefits-grid .benefit-card-modern:nth-child(8) {
-            border-right: none;
-        }
-
-        /* Restore border-bottom for row 2 col 3 (divider to row 3) */
-        .benefits-grid .benefit-card-modern:nth-child(6) {
-            border-bottom: 1px solid #e5e7eb;
-        }
-
         @media (max-width: 900px) {
             .benefit-card-modern {
                 padding: 28px 32px;
-            }
-            /* Reset centering for 2-column grid */
-            .benefits-grid .benefit-card-modern:nth-child(7) {
-                grid-column-start: auto;
             }
             .benefits-grid .benefit-card-modern:nth-child(3n) {
                 border-right: 1px solid #e5e7eb;
             }
             .benefits-grid .benefit-card-modern:nth-child(2n) {
                 border-right: none;
-            }
-            .benefits-grid .benefit-card-modern:nth-child(6) {
-                border-bottom: 1px solid #e5e7eb;
             }
             .benefits-grid .benefit-card-modern:nth-last-child(-n+3) {
                 border-bottom: 1px solid #e5e7eb;
