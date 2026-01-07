@@ -74,65 +74,252 @@
            Adding: Premium depth, refined spacing, floating cards
            ============================================= */
 
-        /* Hero Section - Subtle gradient background */
+        /* ===========================================
+           Hero Section - Glassmorphism Editorial Style
+           Design tokens: colors, radius, blur applied below
+           =========================================== */
         .careers-hero-modern {
-            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            /* Background: soft blue-to-white gradient */
+            background: linear-gradient(180deg,
+                #e8f4ff 0%,      /* --hero-gradient-start: soft blue */
+                #f0f7ff 40%,     /* --hero-gradient-mid */
+                #ffffff 100%    /* --hero-gradient-end: white */
+            );
             color: #0a0a0a;
-            padding: 100px 0 120px;
-            text-align: center;
+            padding: 80px 0 100px;
+            text-align: left;   /* Left-aligned layout */
             position: relative;
             overflow: hidden;
         }
 
+        /* Subtle radial accent - top right */
         .careers-hero-modern::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 20%, rgba(64, 153, 255, 0.03) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.02) 0%, transparent 50%);
+            top: -20%;
+            right: -10%;
+            width: 60%;
+            height: 80%;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(64, 153, 255, 0.08) 0%,   /* --accent-blue with 8% opacity */
+                transparent 70%
+            );
             pointer-events: none;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            max-width: 700px;
+        .careers-hero-modern .container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 48px;
+            position: relative;
+            z-index: 2;
         }
 
+        .hero-content {
+            max-width: 640px;
+        }
+
+        /* "CAREERS" label */
+        .hero-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #4099FF;              /* --primary-blue */
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* Main headline */
         .hero-title-neumorphic {
             font-family: 'Sora', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2.5rem, 5vw, 3.25rem);
             font-weight: 400;
             line-height: 1.15;
-            margin: 0 0 28px;
+            margin: 0 0 24px;
             color: #0a0a0a;
             letter-spacing: -0.02em;
         }
 
+        /* Subtitle */
         .hero-subtitle-neumorphic {
             font-family: 'Inter', sans-serif;
             font-size: 18px;
             font-weight: 400;
-            color: #64748b;
-            max-width: 520px;
-            margin: 0 auto 48px;
-            line-height: 1.75;
+            color: #64748b;              /* --text-muted */
+            max-width: 540px;
+            margin: 0 0 40px;
+            line-height: 1.7;
         }
 
-        .hero-cta-neumorphic {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
+        /* Primary CTA - pill button with outline */
+        .hero-cta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: #0a0a0a;
+            background: transparent;
+            border: 1.5px solid #0a0a0a;  /* --border-dark */
+            border-radius: 50px;          /* --radius-pill */
+            text-decoration: none;
+            cursor: pointer;
         }
 
-        .hero-cta-neumorphic .btn {
+        .hero-cta-pill svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 2;
+        }
+
+        /* ===========================================
+           Glass Panel - "Who We Are" Section
+           =========================================== */
+        .hero-glass-panel {
+            margin-top: 80px;
+            padding: 48px;
+            /* Glassmorphism effect */
+            background: rgba(255, 255, 255, 0.6);    /* --glass-bg */
+            backdrop-filter: blur(20px);             /* --glass-blur */
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);  /* --glass-border */
+            border-radius: 24px;                     /* --radius-large */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .glass-panel-content {
+            max-width: 480px;
+        }
+
+        .glass-panel-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #4099FF;              /* --primary-blue */
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .glass-panel-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 28px;
+            font-weight: 500;
+            color: #0a0a0a;
+            margin: 0 0 16px;
+            line-height: 1.3;
+        }
+
+        .glass-panel-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
             font-weight: 400;
+            color: #64748b;
+            line-height: 1.7;
+            margin: 0 0 28px;
+        }
+
+        /* "Read our story" button */
+        .glass-panel-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            background: #0a2540;         /* --button-dark */
+            border: none;
+            border-radius: 50px;         /* --radius-pill */
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .glass-panel-cta svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Value pills on right side */
+        .hero-value-pills {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .value-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 24px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;   /* --border-light */
+            border-radius: 50px;         /* --radius-pill */
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: #0a0a0a;
+        }
+
+        .value-pill svg {
+            width: 20px;
+            height: 20px;
+            color: #64748b;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 900px) {
+            .careers-hero-modern {
+                padding: 60px 0 80px;
+            }
+
+            .careers-hero-modern .container {
+                padding: 0 24px;
+            }
+
+            .hero-glass-panel {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding: 32px;
+                margin-top: 60px;
+            }
+
+            .hero-value-pills {
+                align-items: flex-start;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .value-pill {
+                padding: 10px 18px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-title-neumorphic {
+                font-size: 2rem;
+            }
+
+            .hero-glass-panel {
+                padding: 24px;
+            }
+
+            .glass-panel-title {
+                font-size: 22px;
+            }
         }
 
         /* Section Styling - Shared */
@@ -1083,14 +1270,70 @@
         <!-- Hero Section -->
         <section class="careers-hero-modern">
             <div class="container">
+                <!-- Left-aligned hero content -->
                 <div class="hero-content">
-                    <h1 class="hero-title-neumorphic">Careers</h1>
+                    <span class="hero-label">Careers</span>
+                    <h1 class="hero-title-neumorphic">We're building software that powers seamless experiences.</h1>
                     <p class="hero-subtitle-neumorphic">
-                        At Tilli, we're building products that stand the test of time. Join us in creating innovative software solutions that transform how businesses handle payments and customer engagement.
+                        Join a team changing the future of payments and customer engagement.
                     </p>
-                    <div class="hero-cta-neumorphic">
-                        <a href="#open-positions" class="btn btn-primary btn-icon" style="font-weight: 400;">View Open Positions <span class="arrow-circle">→</span></a>
-                        <a href="mailto:careers@tilli.pro" class="btn btn-secondary" style="font-weight: 400;">Send Your Resume</a>
+                    <a href="#open-positions" class="hero-cta-pill">
+                        See open roles
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12l7 7 7-7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Glass panel with mission + value pills -->
+                <div class="hero-glass-panel">
+                    <div class="glass-panel-content">
+                        <span class="glass-panel-label">Who We Are</span>
+                        <h2 class="glass-panel-title">Mission-first, value-driven</h2>
+                        <p class="glass-panel-text">
+                            Tilli is transforming how businesses connect with their customers through intelligent payments and communication. We use our values as guiding principles to shape how we build and how we work.
+                        </p>
+                        <a href="about.html" class="glass-panel-cta">
+                            Read our story
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="hero-value-pills">
+                        <div class="value-pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4M12 8h.01"/>
+                            </svg>
+                            User-centricity
+                        </div>
+                        <div class="value-pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                            </svg>
+                            Innovation
+                        </div>
+                        <div class="value-pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            Empowerment
+                        </div>
+                        <div class="value-pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            Integrity
+                        </div>
+                        <div class="value-pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                            Kindness
+                        </div>
                     </div>
                 </div>
             </div>
