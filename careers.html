@@ -1087,6 +1087,13 @@
             line-height: 1.7;
         }
 
+        .cta-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+
         .cta-link {
             display: inline-flex;
             align-items: center;
@@ -2111,12 +2118,20 @@
                     <div class="cta-text-column">
                         <h2 class="cta-title">Ready to Shape the Future?</h2>
                         <p class="cta-subtitle">Join our mission-driven team and help redefine digital convenience</p>
-                        <a href="#open-positions" class="cta-link">
-                            View open positions
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </a>
+                        <div class="cta-links">
+                            <a href="#open-positions" class="cta-link">
+                                View Open Positions
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                </svg>
+                            </a>
+                            <a href="mailto:careers@tilli.pro" class="cta-link">
+                                Send Your Resume
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
+                                </svg>
+                            </a>
+                        </div>
                         <p class="cta-note">Tilli is an equal-opportunity employer. Currently accepting U.S. applicants only.</p>
                     </div>
                     <div class="cta-images-column">
