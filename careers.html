@@ -916,40 +916,61 @@
             height: 16px;
         }
 
-        /* Image collage */
+        /* Image collage - Stripe style */
         .cta-images-column {
             position: relative;
-            height: 450px;
+            height: 480px;
+        }
+
+        /* Subtle vertical dotted line */
+        .cta-images-column::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -40px;
+            bottom: -40px;
+            width: 1px;
+            background: repeating-linear-gradient(
+                to bottom,
+                #d1d5db 0px,
+                #d1d5db 4px,
+                transparent 4px,
+                transparent 8px
+            );
+            z-index: 0;
         }
 
         .cta-image {
             position: absolute;
-            border-radius: 12px;
+            border-radius: 8px;
             object-fit: cover;
         }
 
+        /* Large image - top right */
         .cta-image-1 {
-            width: 320px;
-            height: 220px;
+            width: 340px;
+            height: 240px;
             top: 0;
             right: 0;
             z-index: 2;
         }
 
+        /* Medium image - bottom left */
         .cta-image-2 {
-            width: 240px;
+            width: 260px;
             height: 180px;
-            bottom: 60px;
+            bottom: 100px;
             left: 0;
             z-index: 1;
         }
 
+        /* Tall image - center, overlapping */
         .cta-image-3 {
-            width: 200px;
-            height: 280px;
+            width: 180px;
+            height: 260px;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-30%);
+            left: 45%;
+            transform: translateX(-50%);
             z-index: 3;
         }
 
@@ -968,27 +989,33 @@
             }
 
             .cta-images-column {
-                height: 300px;
+                height: 320px;
                 order: -1;
             }
 
+            .cta-images-column::before {
+                display: none;
+            }
+
             .cta-image-1 {
-                width: 55%;
-                height: 160px;
+                width: 60%;
+                height: 180px;
                 right: 0;
+                top: 0;
             }
 
             .cta-image-2 {
-                width: 45%;
+                width: 50%;
                 height: 140px;
                 left: 0;
-                bottom: 20px;
+                bottom: 60px;
             }
 
             .cta-image-3 {
-                width: 40%;
-                height: 200px;
+                width: 35%;
+                height: 180px;
                 left: 40%;
+                bottom: 0;
             }
         }
 
@@ -1855,9 +1882,9 @@
                         <p class="cta-note">Tilli is an equal-opportunity employer. Currently accepting U.S. applicants only.</p>
                     </div>
                     <div class="cta-images-column">
-                        <img src="Images/about/image 427.jpg" alt="Team collaboration" class="cta-image cta-image-1">
-                        <img src="Images/about/image 432.jpg" alt="Office space" class="cta-image cta-image-2">
-                        <img src="Images/about/hero-image.png" alt="Team meeting" class="cta-image cta-image-3">
+                        <img src="Images/tilliX.png" alt="tilliX Platform" class="cta-image cta-image-1">
+                        <img src="Images/nudge (product) (1).png" alt="Nudge Communications" class="cta-image cta-image-2">
+                        <img src="Images/tillipay (product) (1).png" alt="TilliPay Payments" class="cta-image cta-image-3">
                     </div>
                 </div>
             </div>
