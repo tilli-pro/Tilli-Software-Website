@@ -845,79 +845,151 @@
             }
         }
 
-        /* CTA Section - Refined Gradient */
+        /* CTA Section - Stripe Style */
         .cta-section-modern {
-            background: linear-gradient(135deg, #4099FF 0%, #7c3aed 50%, #8B5CF6 100%);
-            padding: 120px 0;
-            text-align: center;
+            background: #f6f9fc;
+            padding: 100px 0;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
-        .cta-section-modern::before {
+        .cta-section-modern .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        .cta-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .cta-text-column {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        /* Vertical accent line */
+        .cta-text-column::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .cta-content {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 1;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #4099FF;
         }
 
         .cta-title {
             font-family: 'Sora', sans-serif;
-            font-size: clamp(28px, 4vw, 44px);
-            font-weight: 400;
-            color: #ffffff;
-            margin: 0 0 24px;
-            letter-spacing: -0.02em;
+            font-size: 32px;
+            font-weight: 500;
+            color: #0a2540;
+            margin: 0 0 20px;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
         }
 
         .cta-subtitle {
             font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.85);
-            margin: 0 0 48px;
+            font-size: 17px;
+            color: #425466;
+            margin: 0 0 32px;
             line-height: 1.7;
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 48px;
-        }
-
-        .btn-cta-white {
+        .cta-link {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 18px 36px;
-            background: #ffffff;
-            color: #0a0a0a;
+            gap: 6px;
             font-family: 'Inter', sans-serif;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 500;
+            color: #4099FF;
             text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-cta-white:hover {
-            background: #f8fafc;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        .cta-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Image collage */
+        .cta-images-column {
+            position: relative;
+            height: 450px;
+        }
+
+        .cta-image {
+            position: absolute;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .cta-image-1 {
+            width: 320px;
+            height: 220px;
+            top: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        .cta-image-2 {
+            width: 240px;
+            height: 180px;
+            bottom: 60px;
+            left: 0;
+            z-index: 1;
+        }
+
+        .cta-image-3 {
+            width: 200px;
+            height: 280px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-30%);
+            z-index: 3;
+        }
+
+        .cta-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 24px;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 900px) {
+            .cta-layout {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .cta-images-column {
+                height: 300px;
+                order: -1;
+            }
+
+            .cta-image-1 {
+                width: 55%;
+                height: 160px;
+                right: 0;
+            }
+
+            .cta-image-2 {
+                width: 45%;
+                height: 140px;
+                left: 0;
+                bottom: 20px;
+            }
+
+            .cta-image-3 {
+                width: 40%;
+                height: 200px;
+                left: 40%;
+            }
         }
 
         .btn-cta-outline {
@@ -1770,24 +1842,23 @@
         <!-- CTA Section -->
         <section class="cta-section-modern">
             <div class="container">
-                <div class="cta-content">
-                    <h2 class="cta-title">Ready to Shape the Future?</h2>
-                    <p class="cta-subtitle">Join our mission-driven team and help redefine digital convenience</p>
-                    <div class="cta-buttons">
-                        <a href="#open-positions" class="btn-cta-white">
-                            View Open Positions
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                <div class="cta-layout">
+                    <div class="cta-text-column">
+                        <h2 class="cta-title">Ready to Shape the Future?</h2>
+                        <p class="cta-subtitle">Join our mission-driven team and help redefine digital convenience. We're building tools that transform how businesses connect with their customers.</p>
+                        <a href="#open-positions" class="cta-link">
+                            View open positions
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
                         </a>
-                        <a href="mailto:careers@tilli.pro" class="btn-cta-outline">
-                            Send Your Resume
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
-                            </svg>
-                        </a>
+                        <p class="cta-note">Tilli is an equal-opportunity employer. Currently accepting U.S. applicants only.</p>
                     </div>
-                    <p class="cta-note">Tilli is an equal-opportunity employer. Currently accepting U.S. applicants only.</p>
+                    <div class="cta-images-column">
+                        <img src="Images/about/image 427.jpg" alt="Team collaboration" class="cta-image cta-image-1">
+                        <img src="Images/about/image 432.jpg" alt="Office space" class="cta-image cta-image-2">
+                        <img src="Images/about/hero-image.png" alt="Team meeting" class="cta-image cta-image-3">
+                    </div>
                 </div>
             </div>
         </section>
