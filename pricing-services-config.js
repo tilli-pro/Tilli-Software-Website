@@ -72,8 +72,8 @@ const SERVICES_CONFIG = {
     campaigns: [
         {
             id: 'survey',
-            name: 'Surveys (Responses)',
-            tokens: 6,
+            name: 'Enrollments / Surveys',
+            tokens: 1,
             max: 50000,
             step: 500,
             competitor: 'Qualtrics',
@@ -82,8 +82,8 @@ const SERVICES_CONFIG = {
         },
         {
             id: 'payment-request',
-            name: 'Payment Requests',
-            tokens: 2,
+            name: 'Payment Requests / Collection',
+            tokens: 1,
             max: 50000,
             step: 500,
             competitor: 'SendGrid + Stripe',
@@ -93,7 +93,7 @@ const SERVICES_CONFIG = {
         {
             id: 'appointment-reminder',
             name: 'Appointment Reminders',
-            tokens: 2,
+            tokens: 1,
             max: 50000,
             step: 500,
             competitor: 'Calendly + Twilio',
@@ -104,7 +104,7 @@ const SERVICES_CONFIG = {
         {
             id: 'service-completion',
             name: 'Service Completion Notifications',
-            tokens: 2,
+            tokens: 1,
             max: 50000,
             step: 500,
             competitor: 'SendGrid',
@@ -114,7 +114,7 @@ const SERVICES_CONFIG = {
         {
             id: 'loyalty-qr',
             name: 'Loyalty Rewards with QR Codes',
-            tokens: 13,
+            tokens: 1,
             max: 50000,
             step: 500,
             competitor: 'Yotpo + SendGrid',
