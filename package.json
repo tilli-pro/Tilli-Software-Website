@@ -1,37 +1,20 @@
 {
-  "name": "tilli-website",
+  "name": "tilli-software-website",
   "version": "1.0.0",
-  "description": "Tilli Financial Solutions Website",
-  "main": "index.html",
+  "type": "module",
+  "description": "Tilli Software Website with Vtiger CRM Integration",
   "scripts": {
-    "start": "npx http-server . -p 9000 -o",
-    "dev": "npx http-server . -p 9000 -o -c-1",
-    "serve": "npx http-server . -p 9000",
-    "build": "node build.js",
-    "vercel-build": "node build.js",
-    "test": "echo 'No tests specified'"
+    "dev": "echo 'Use vercel dev directly'",
+    "deploy": "vercel --prod"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tilli/website.git"
-  },
-  "keywords": [
-    "tilli",
-    "financial",
-    "payments",
-    "website",
-    "static"
-  ],
-  "author": "Tilli Development Team",
-  "license": "MIT",
-  "devDependencies": {
-    "http-server": "^14.1.1"
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/kv": "^2.0.0",
+    "node-fetch": "^2.7.0",
+    "puppeteer-core": "^21.0.0",
+    "@sparticuz/chromium": "^119.0.0"
   },
   "engines": {
-    "node": ">=14.0.0"
-  },
-  "config": {
-    "port": 9000,
-    "host": "localhost"
+    "node": "22.x"
   }
 }

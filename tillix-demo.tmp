@@ -1,0 +1,1517 @@
+                        <div class="tillix-preview">
+                            <!-- Pre-Login View -->
+                            <div class="tillix-screen active" id="prelogin-screen">
+                                <div class="portal-header">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Ctext x='10' y='20' font-family='Inter' font-size='18' font-weight='600' fill='%23333'%3EtilliX%3C/text%3E%3C/svg%3E" alt="tilliX">
+                                    <span class="portal-title">Customer Portal</span>
+                                </div>
+                                <div class="soft-auth-container">
+                                    <h3>Quick Bill Pay</h3>
+                                    <p class="auth-subtitle">Access your account with minimal information</p>
+
+                                    <div class="bill-summary-card">
+                                        <div class="bill-alert">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            <span>Bill Due Today</span>
+                                        </div>
+                                        <div class="bill-details">
+                                            <div class="bill-row">
+                                                <span class="bill-label">Invoice #</span>
+                                                <span class="bill-value">IN78612345</span>
+                                            </div>
+                                            <div class="bill-row">
+                                                <span class="bill-label">Due Date</span>
+                                                <span class="bill-value due-date">Today</span>
+                                            </div>
+                                            <div class="bill-row highlight">
+                                                <span class="bill-label">Amount Due</span>
+                                                <span class="bill-value amount">$115.00</span>
+                                            </div>
+                                            <div class="bill-row">
+                                                <span class="bill-label">Last Payment</span>
+                                                <span class="bill-value">$125.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="bill-actions">
+                                            <button class="btn-secondary" onclick="window.viewBill()">
+                                                <i class="fas fa-file-invoice"></i> View Bill
+                                            </button>
+                                            <button class="btn-primary" onclick="window.payNow()">
+                                                <i class="fas fa-credit-card"></i> Pay Now
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="soft-auth-form">
+                                        <input type="text" placeholder="Account Number or Phone" class="auth-input">
+                                        <button class="btn-link">Access Full Account →</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Payment Selection View -->
+                            <div class="tillix-screen" id="payment-screen">
+                                <div class="portal-header">
+                                    <button class="back-btn" onclick="goBack()">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                    <span class="portal-title">Select Payment Method</span>
+                                </div>
+                                <div class="payment-container">
+                                    <div class="payment-summary">
+                                        <h4>Payment Summary</h4>
+                                        <div class="summary-row">
+                                            <span>Invoice IN78612345</span>
+                                            <span class="amount">$115.00</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Saved Payment Methods -->
+                                    <div class="saved-methods">
+                                        <h4>Saved Payment Methods</h4>
+                                        <div class="saved-cards">
+                                            <div class="saved-card" onclick="selectSavedPayment('visa-9876')">
+                                                <div class="card-icon">
+                                                    <i class="fab fa-cc-visa"></i>
+                                                </div>
+                                                <div class="card-details">
+                                                    <span class="card-name">Visa ending in 9876</span>
+                                                    <span class="card-exp">Exp: 12/25</span>
+                                                </div>
+                                                <div class="card-default">
+                                                    <span class="default-badge">Default</span>
+                                                </div>
+                                            </div>
+                                            <div class="saved-card" onclick="selectSavedPayment('mastercard-5432')">
+                                                <div class="card-icon">
+                                                    <i class="fab fa-cc-mastercard"></i>
+                                                </div>
+                                                <div class="card-details">
+                                                    <span class="card-name">Mastercard ending in 5432</span>
+                                                    <span class="card-exp">Exp: 08/26</span>
+                                                </div>
+                                            </div>
+                                            <div class="saved-card" onclick="selectSavedPayment('bank-1234')">
+                                                <div class="card-icon">
+                                                    <i class="fas fa-university"></i>
+                                                </div>
+                                                <div class="card-details">
+                                                    <span class="card-name">Chase Bank ****1234</span>
+                                                    <span class="card-exp">Checking Account</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Add New Payment Method -->
+                                    <div class="payment-methods">
+                                        <h4>Add New Payment Method</h4>
+                                        <div class="payment-grid">
+                                            <button class="payment-option" onclick="selectPayment('card')">
+                                                <i class="fas fa-plus-circle"></i>
+                                                <span>New Card</span>
+                                            </button>
+                                            <button class="payment-option" onclick="selectPayment('echeck')">
+                                                <i class="fas fa-university"></i>
+                                                <span>Bank Account</span>
+                                            </button>
+                                            <button class="payment-option" onclick="selectPayment('paypal')">
+                                                <i class="fab fa-paypal"></i>
+                                                <span>PayPal</span>
+                                            </button>
+                                            <button class="payment-option" onclick="selectPayment('venmo')">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="#4099FF">
+                                                    <path d="M3.5 3L8 20.5L13 3H18.5L11 22H5L0 3H3.5Z"/>
+                                                </svg>
+                                                <span>Venmo</span>
+                                            </button>
+                                            <button class="payment-option" onclick="selectPayment('applepay')">
+                                                <i class="fab fa-apple"></i>
+                                                <span>Apple Pay</span>
+                                            </button>
+                                            <button class="payment-option" onclick="selectPayment('googlepay')">
+                                                <i class="fab fa-google"></i>
+                                                <span>Google Pay</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card Payment Form -->
+                                    <div class="payment-form" id="card-form" style="display: none;">
+                                        <h4>Enter Card Information</h4>
+                                        <input type="text" placeholder="Card Number" class="payment-input" value="">
+                                        <div class="input-row">
+                                            <input type="text" placeholder="MM/YY" class="payment-input half">
+                                            <input type="text" placeholder="CVV" class="payment-input half">
+                                        </div>
+                                        <input type="text" placeholder="Name on Card" class="payment-input">
+                                        <label class="save-checkbox">
+                                            <input type="checkbox" checked>
+                                            <span>Save this payment method for future use</span>
+                                        </label>
+                                        <button class="btn-primary full" onclick="processPayment()">
+                                            <i class="fas fa-lock"></i> Pay $115.00 Securely
+                                        </button>
+                                    </div>
+
+                                    <!-- Bank Account Form -->
+                                    <div class="payment-form" id="bank-form" style="display: none;">
+                                        <h4>Enter Bank Account Information</h4>
+                                        <input type="text" placeholder="Account Holder Name" class="payment-input">
+                                        <input type="text" placeholder="Routing Number" class="payment-input">
+                                        <input type="text" placeholder="Account Number" class="payment-input">
+                                        <select class="payment-input">
+                                            <option>Checking</option>
+                                            <option>Savings</option>
+                                        </select>
+                                        <label class="save-checkbox">
+                                            <input type="checkbox" checked>
+                                            <span>Save this account for future use</span>
+                                        </label>
+                                        <button class="btn-primary full" onclick="processPayment()">
+                                            <i class="fas fa-lock"></i> Pay $115.00 via ACH
+                                        </button>
+                                    </div>
+
+                                    <!-- Quick Pay with Saved Method -->
+                                    <div class="payment-form" id="quick-pay-form" style="display: none;">
+                                        <h4 id="quick-pay-title">Pay with Visa ****9876</h4>
+                                        <div class="quick-pay-details">
+                                            <div class="payment-card-visual">
+                                                <div class="card-chip"></div>
+                                                <div class="card-number">**** **** **** 9876</div>
+                                                <div class="card-holder">JOHN DOE</div>
+                                                <div class="card-expiry">12/25</div>
+                                            </div>
+                                        </div>
+                                        <input type="text" placeholder="Enter CVV" class="payment-input" maxlength="3">
+                                        <button class="btn-primary full" onclick="processPayment()">
+                                            <i class="fas fa-lock"></i> Confirm Payment of $115.00
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Post-Login Dashboard -->
+                            <div class="tillix-screen" id="dashboard-screen">
+                                <div class="portal-header">
+                                    <div class="header-left">
+                                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='25' viewBox='0 0 80 25'%3E%3Ctext x='5' y='18' font-family='Inter' font-size='16' font-weight='600' fill='white'%3EtilliX%3C/text%3E%3C/svg%3E" alt="tilliX">
+                                    </div>
+                                    <div class="header-right">
+                                        <span class="user-name">Joe Smith</span>
+                                        <div class="user-avatar">JS</div>
+                                    </div>
+                                </div>
+
+                                <div class="dashboard-container">
+                                    <!-- Account Summary -->
+                                    <div class="account-summary">
+                                        <h2>Account Overview</h2>
+                                        <div class="summary-cards">
+                                            <div class="summary-card">
+                                                <span class="card-label">Current Balance</span>
+                                                <span class="card-value" style="font-size: 1rem; font-weight: bold;">$0.00</span>
+                                                <span class="card-status success">Paid in Full</span>
+                                            </div>
+                                            <div class="summary-card">
+                                                <span class="card-label">Next Bill Date</span>
+                                                <span class="card-value" id="next-bill-date" style="font-size: 1rem; font-weight: bold;">Dec 15, 2024</span>
+                                                <span class="card-status">In 30 days</span>
+                                            </div>
+                                            <div class="summary-card">
+                                                <span class="card-label">Auto-Pay</span>
+                                                <span class="card-value" style="font-size: 1rem; font-weight: bold; color: #22c55e;">Enabled</span>
+                                                <span class="card-status success">Card ****9876</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Recent Activity -->
+                                    <div class="recent-activity">
+                                        <h3>Recent Activity</h3>
+                                        <div class="activity-list">
+                                            <div class="activity-item success-item">
+                                                <div class="activity-icon">
+                                                    <i class="fas fa-check-circle"></i>
+                                                </div>
+                                                <div class="activity-details">
+                                                    <span class="activity-title">Payment Processed</span>
+                                                    <span class="activity-date">Just now</span>
+                                                </div>
+                                                <span class="activity-amount">-$115.00</span>
+                                            </div>
+                                            <div class="activity-item">
+                                                <div class="activity-icon">
+                                                    <i class="fas fa-file-invoice"></i>
+                                                </div>
+                                                <div class="activity-details">
+                                                    <span class="activity-title">Bill Generated</span>
+                                                    <span class="activity-date">Nov 1, 2024</span>
+                                                </div>
+                                                <span class="activity-amount">$115.00</span>
+                                            </div>
+                                            <div class="activity-item">
+                                                <div class="activity-icon">
+                                                    <i class="fas fa-credit-card"></i>
+                                                </div>
+                                                <div class="activity-details">
+                                                    <span class="activity-title">Previous Payment</span>
+                                                    <span class="activity-date">Oct 15, 2024</span>
+                                                </div>
+                                                <span class="activity-amount">-$125.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Quick Actions -->
+                                    <div class="quick-actions-dashboard">
+                                        <button class="action-card" onclick="window.openStatements()">
+                                            <i class="fas fa-download"></i>
+                                            <span>Download Statement</span>
+                                        </button>
+                                        <button class="action-card" onclick="window.openAutoPay()">
+                                            <i class="fas fa-cog"></i>
+                                            <span>Auto-Pay Settings</span>
+                                        </button>
+                                        <button class="action-card" onclick="window.openUsageDetails()">
+                                            <i class="fas fa-chart-line"></i>
+                                            <span>Usage Details</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Success Overlay -->
+                            <div class="success-overlay" id="success-overlay">
+                                <div class="success-content">
+                                    <div class="success-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <h3>Payment Successful!</h3>
+                                    <p>Your payment of $115.00 has been processed</p>
+                                    <p class="confirmation">Confirmation #: PAY-2024-78612345</p>
+                                    <button class="btn-primary" onclick="window.showDashboard()">View Dashboard</button>
+                                </div>
+                            </div>
+
+                            <!-- Bill View Modal -->
+                            <div id="bill-modal" class="bill-modal" style="display: none;" onclick="if(event.target === this) window.closeBillModal()">
+                                <div class="bill-modal-content">
+                                    <div class="bill-modal-header">
+                                        <h2>Invoice Details</h2>
+                                        <button class="close-modal" onclick="window.closeBillModal()">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="bill-modal-body">
+                                        <div class="invoice-header">
+                                            <div class="invoice-info">
+                                                <h3>Invoice #IN78612345</h3>
+                                                <p>Bill Date: <span id="bill-date">Nov 15, 2024</span></p>
+                                                <p>Due Date: <span id="due-date">Dec 15, 2024</span></p>
+                                            </div>
+                                            <div class="invoice-status">
+                                                <span class="status-badge due">Payment Due</span>
+                                                <div class="amount-due">
+                                                    <span class="amount-label">Total Due</span>
+                                                    <span class="amount-value">$115.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="invoice-details">
+                                            <h4>Service Details</h4>
+                                            <table class="invoice-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Description</th>
+                                                        <th>Period</th>
+                                                        <th>Usage</th>
+                                                        <th>Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Electricity Service</td>
+                                                        <td>Nov 1-30</td>
+                                                        <td>850 kWh</td>
+                                                        <td>$95.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Basic Service Charge</td>
+                                                        <td>Nov 2024</td>
+                                                        <td>-</td>
+                                                        <td>$15.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Taxes & Fees</td>
+                                                        <td>Nov 2024</td>
+                                                        <td>-</td>
+                                                        <td>$5.00</td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="3"><strong>Total Amount Due</strong></td>
+                                                        <td><strong>$115.00</strong></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+
+                                        <div class="invoice-actions">
+                                            <button class="btn-secondary" onclick="window.downloadInvoice()">
+                                                <i class="fas fa-download"></i> Download PDF
+                                            </button>
+                                            <button class="btn-primary" onclick="window.payFromInvoice()">
+                                                <i class="fas fa-credit-card"></i> Pay Now - $115.00
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <style>
+                            /* tilliX Complete Flow Styles */
+                            .tillix-preview {
+                                padding: 0;
+                                max-width: 450px;
+                                margin: 0 auto;
+                            }
+
+                            .tillix-screen {
+                                background: white;
+                                border-radius: 16px;
+                                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+                                overflow: hidden;
+                                display: none;
+                                min-height: 500px;
+                                position: relative;
+                                animation: fadeIn 0.5s ease;
+                            }
+
+                            .tillix-screen.active {
+                                display: block;
+                            }
+
+                            /* Portal Header */
+                            .portal-header {
+                                background: linear-gradient(135deg, #5B9EFF 0%, #4080E0 100%);
+                                color: white;
+                                padding: 1rem 1.5rem;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                            }
+
+                            .portal-title {
+                                font-weight: 600;
+                                font-size: 1rem;
+                            }
+
+                            .back-btn {
+                                background: none;
+                                border: none;
+                                color: white;
+                                font-size: 1.25rem;
+                                cursor: pointer;
+                                padding: 0.5rem;
+                            }
+
+                            .header-left img {
+                                height: 25px;
+                            }
+
+                            .header-right {
+                                display: flex;
+                                align-items: center;
+                                gap: 0.75rem;
+                            }
+
+                            .user-name {
+                                font-size: 0.9rem;
+                            }
+
+                            .user-avatar {
+                                width: 35px;
+                                height: 35px;
+                                background: white;
+                                color: #4080E0;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-weight: 600;
+                                font-size: 0.9rem;
+                            }
+
+                            /* Pre-Login Soft Auth */
+                            .soft-auth-container {
+                                padding: 2rem;
+                            }
+
+                            .soft-auth-container h3 {
+                                margin: 0 0 0.5rem 0;
+                                color: #1a1a1a;
+                                font-size: 1.5rem;
+                            }
+
+                            .auth-subtitle {
+                                color: #6b7280;
+                                margin-bottom: 2rem;
+                            }
+
+                            .bill-summary-card {
+                                background: #f8f9fa;
+                                border-radius: 12px;
+                                padding: 1.5rem;
+                                margin-bottom: 2rem;
+                            }
+
+                            .bill-alert {
+                                background: #fee2e2;
+                                color: #dc2626;
+                                padding: 0.75rem;
+                                border-radius: 8px;
+                                display: flex;
+                                align-items: center;
+                                gap: 0.5rem;
+                                margin-bottom: 1rem;
+                                font-weight: 600;
+                            }
+
+                            .bill-details {
+                                display: grid;
+                                gap: 0.75rem;
+                                margin-bottom: 1.5rem;
+                            }
+
+                            .bill-row {
+                                display: flex;
+                                justify-content: space-between;
+                                padding: 0.5rem 0;
+                                border-bottom: 1px solid #e5e7eb;
+                            }
+
+                            .bill-row.highlight {
+                                background: #fffbeb;
+                                padding: 0.75rem;
+                                border-radius: 6px;
+                                border: none;
+                            }
+
+                            .bill-label {
+                                color: #6b7280;
+                                font-size: 0.9rem;
+                            }
+
+                            .bill-value {
+                                font-weight: 600;
+                                color: #1a1a1a;
+                            }
+
+                            .bill-value.amount {
+                                font-size: 1.25rem;
+                                color: #dc2626;
+                            }
+
+                            .bill-value.due-date {
+                                color: #dc2626;
+                            }
+
+                            .bill-actions {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                gap: 1rem;
+                            }
+
+                            .btn-primary, .btn-secondary {
+                                padding: 0.75rem 1.5rem;
+                                border-radius: 8px;
+                                border: none;
+                                cursor: pointer;
+                                font-weight: 600;
+                                transition: all 0.3s ease;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 0.5rem;
+                            }
+
+                            .btn-primary {
+                                background: linear-gradient(135deg, #5B9EFF 0%, #4080E0 100%);
+                                color: white;
+                            }
+
+                            .btn-secondary {
+                                background: white;
+                                border: 2px solid #e5e7eb;
+                                color: #4080E0;
+                            }
+
+                            .btn-primary:hover {
+                                transform: translateY(-2px);
+                                box-shadow: 0 8px 20px rgba(64, 128, 224, 0.3);
+                            }
+
+                            .btn-secondary:hover {
+                                background: #f8f9fa;
+                            }
+
+                            .soft-auth-form {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 1rem;
+                            }
+
+                            .auth-input {
+                                padding: 0.75rem;
+                                border: 2px solid #e5e7eb;
+                                border-radius: 8px;
+                                font-size: 1rem;
+                            }
+
+                            .btn-link {
+                                background: none;
+                                border: none;
+                                color: #4080E0;
+                                cursor: pointer;
+                                font-weight: 600;
+                                padding: 0.5rem;
+                            }
+
+                            /* Payment Screen */
+                            .payment-container {
+                                padding: 2rem;
+                            }
+
+                            .payment-summary {
+                                background: #f0f7ff;
+                                padding: 1rem;
+                                border-radius: 8px;
+                                margin-bottom: 2rem;
+                            }
+
+                            .payment-summary h4 {
+                                margin: 0 0 0.5rem 0;
+                                color: #1a1a1a;
+                            }
+
+                            .summary-row {
+                                display: flex;
+                                justify-content: space-between;
+                                font-size: 0.9rem;
+                            }
+
+                            .payment-methods h4 {
+                                margin: 0 0 1rem 0;
+                                color: #1a1a1a;
+                            }
+
+                            .payment-grid {
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                                gap: 1rem;
+                                margin-bottom: 2rem;
+                            }
+
+                            .payment-option {
+                                background: white;
+                                border: 2px solid #e5e7eb;
+                                border-radius: 12px;
+                                padding: 1.5rem 1rem;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 0.5rem;
+                            }
+
+                            .payment-option:hover {
+                                border-color: #4080E0;
+                                background: #f0f7ff;
+                                transform: translateY(-2px);
+                            }
+
+                            .payment-option i, .payment-option svg {
+                                font-size: 1.5rem;
+                                color: #4080E0;
+                            }
+
+                            .payment-option span {
+                                font-size: 0.85rem;
+                                font-weight: 500;
+                            }
+
+                            .payment-form h4 {
+                                margin: 0 0 1rem 0;
+                            }
+
+                            .payment-input {
+                                width: 100%;
+                                padding: 0.75rem;
+                                border: 2px solid #e5e7eb;
+                                border-radius: 8px;
+                                margin-bottom: 1rem;
+                            }
+
+                            .input-row {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                gap: 1rem;
+                            }
+
+                            .payment-input.half {
+                                margin-bottom: 1rem;
+                            }
+
+                            .btn-primary.full {
+                                width: 100%;
+                            }
+
+                            /* Saved Payment Methods */
+                            .saved-methods {
+                                margin-bottom: 2rem;
+                            }
+
+                            .saved-methods h4 {
+                                margin: 0 0 1rem 0;
+                                color: #1a1a1a;
+                            }
+
+                            .saved-cards {
+                                display: grid;
+                                gap: 1rem;
+                            }
+
+                            .saved-card {
+                                background: white;
+                                border: 2px solid #e5e7eb;
+                                border-radius: 12px;
+                                padding: 1rem;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                display: flex;
+                                align-items: center;
+                                gap: 1rem;
+                            }
+
+                            .saved-card:hover {
+                                border-color: #4080E0;
+                                background: #f0f7ff;
+                                transform: translateX(5px);
+                            }
+
+                            .saved-card.selected {
+                                border-color: #4080E0;
+                                background: #f0f7ff;
+                            }
+
+                            .card-icon {
+                                font-size: 2rem;
+                                color: #4080E0;
+                                width: 50px;
+                            }
+
+                            .card-details {
+                                flex: 1;
+                                display: flex;
+                                flex-direction: column;
+                            }
+
+                            .card-name {
+                                font-weight: 600;
+                                color: #1a1a1a;
+                            }
+
+                            .card-exp {
+                                font-size: 0.85rem;
+                                color: #6b7280;
+                            }
+
+                            .default-badge {
+                                background: #10b981;
+                                color: white;
+                                padding: 0.25rem 0.75rem;
+                                border-radius: 20px;
+                                font-size: 0.75rem;
+                                font-weight: 600;
+                            }
+
+                            .save-checkbox {
+                                display: flex;
+                                align-items: center;
+                                gap: 0.5rem;
+                                margin: 1rem 0;
+                                cursor: pointer;
+                            }
+
+                            .save-checkbox input {
+                                width: 18px;
+                                height: 18px;
+                                cursor: pointer;
+                            }
+
+                            .payment-card-visual {
+                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                border-radius: 12px;
+                                padding: 2rem;
+                                color: white;
+                                position: relative;
+                                margin: 1.5rem 0;
+                            }
+
+                            .card-chip {
+                                width: 40px;
+                                height: 30px;
+                                background: gold;
+                                border-radius: 4px;
+                                margin-bottom: 1rem;
+                            }
+
+                            .card-number {
+                                font-size: 1.25rem;
+                                letter-spacing: 2px;
+                                margin-bottom: 1rem;
+                            }
+
+                            .card-holder {
+                                font-size: 0.9rem;
+                                text-transform: uppercase;
+                                margin-bottom: 0.5rem;
+                            }
+
+                            .card-expiry {
+                                font-size: 0.9rem;
+                            }
+
+                            /* Dashboard Screen */
+                            .dashboard-container {
+                                padding: 2rem;
+                            }
+
+                            .account-summary h2 {
+                                margin: 0 0 1.5rem 0;
+                                color: #1a1a1a;
+                                font-size: 1.5rem;
+                            }
+
+                            .summary-cards {
+                                display: grid;
+                                grid-template-columns: repeat(3, 1fr);
+                                gap: 1rem;
+                                margin-bottom: 2rem;
+                            }
+
+                            .summary-card {
+                                background: #f8f9fa;
+                                padding: 1.5rem;
+                                border-radius: 12px;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 0.5rem;
+                            }
+
+                            .card-label {
+                                color: #6b7280;
+                                font-size: 0.85rem;
+                            }
+
+                            .card-value {
+                                font-size: 1.5rem;
+                                font-weight: 700;
+                                color: #1a1a1a;
+                            }
+
+                            .card-status {
+                                font-size: 0.85rem;
+                                color: #6b7280;
+                            }
+
+                            .card-status.success {
+                                color: #10b981;
+                            }
+
+                            .recent-activity h3 {
+                                margin: 0 0 1rem 0;
+                                color: #1a1a1a;
+                            }
+
+                            .activity-list {
+                                background: white;
+                                border: 1px solid #e5e7eb;
+                                border-radius: 12px;
+                                overflow: hidden;
+                            }
+
+                            .activity-item {
+                                display: flex;
+                                align-items: center;
+                                padding: 1rem 1.5rem;
+                                border-bottom: 1px solid #f3f4f6;
+                            }
+
+                            .activity-item:last-child {
+                                border-bottom: none;
+                            }
+
+                            .activity-item.success-item {
+                                background: #f0fdf4;
+                            }
+
+                            .activity-icon {
+                                width: 40px;
+                                height: 40px;
+                                background: #f3f4f6;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin-right: 1rem;
+                            }
+
+                            .activity-item.success-item .activity-icon {
+                                background: #10b981;
+                                color: white;
+                            }
+
+                            .activity-details {
+                                flex: 1;
+                                display: flex;
+                                flex-direction: column;
+                            }
+
+                            .activity-title {
+                                font-weight: 600;
+                                color: #1a1a1a;
+                                font-size: 0.9rem;
+                            }
+
+                            .activity-date {
+                                color: #6b7280;
+                                font-size: 0.8rem;
+                            }
+
+                            .activity-amount {
+                                font-weight: 700;
+                                color: #1a1a1a;
+                            }
+
+                            .quick-actions-dashboard {
+                                display: grid;
+                                grid-template-columns: repeat(3, 1fr);
+                                gap: 1rem;
+                                margin-top: 2rem;
+                            }
+
+                            .action-card {
+                                background: white;
+                                border: 2px solid #e5e7eb;
+                                border-radius: 12px;
+                                padding: 1.5rem;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 0.5rem;
+                            }
+
+                            .action-card:hover {
+                                border-color: #4080E0;
+                                background: #f0f7ff;
+                            }
+
+                            .action-card i {
+                                font-size: 1.5rem;
+                                color: #4080E0;
+                            }
+
+                            /* Success Overlay */
+                            .success-overlay {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                background: rgba(0, 0, 0, 0.8);
+                                display: none;
+                                align-items: center;
+                                justify-content: center;
+                                z-index: 100;
+                            }
+
+                            .success-overlay.active {
+                                display: flex;
+                            }
+
+                            .success-content {
+                                background: white;
+                                padding: 3rem;
+                                border-radius: 16px;
+                                text-align: center;
+                                max-width: 400px;
+                            }
+
+                            .success-icon {
+                                font-size: 4rem;
+                                color: #10b981;
+                                margin-bottom: 1rem;
+                            }
+
+                            .success-content h3 {
+                                margin: 0 0 1rem 0;
+                                color: #1a1a1a;
+                            }
+
+                            .confirmation {
+                                background: #f3f4f6;
+                                padding: 0.75rem;
+                                border-radius: 8px;
+                                margin: 1rem 0;
+                                font-weight: 600;
+                            }
+
+                            /* Bill Modal Styles */
+                            .bill-modal {
+                                position: fixed;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background: rgba(0, 0, 0, 0.7);
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                z-index: 10000;
+                            }
+
+                            .bill-modal-content {
+                                background: white;
+                                border-radius: 16px;
+                                width: 90%;
+                                max-width: 700px;
+                                max-height: 90vh;
+                                overflow: hidden;
+                                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                                animation: fadeIn 0.3s ease;
+                            }
+
+                            .bill-modal-header {
+                                background: linear-gradient(135deg, #5B9EFF 0%, #4080E0 100%);
+                                color: white;
+                                padding: 1.5rem 2rem;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
+
+                            .bill-modal-header h2 {
+                                margin: 0;
+                                font-size: 1.5rem;
+                            }
+
+                            .close-modal {
+                                background: none;
+                                border: none;
+                                color: white;
+                                font-size: 1.5rem;
+                                cursor: pointer;
+                                padding: 0;
+                                width: 30px;
+                                height: 30px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                transition: opacity 0.3s;
+                            }
+
+                            .close-modal:hover {
+                                opacity: 0.8;
+                            }
+
+                            .bill-modal-body {
+                                padding: 2rem;
+                                overflow-y: auto;
+                                max-height: calc(90vh - 80px);
+                            }
+
+                            .invoice-header {
+                                display: flex;
+                                justify-content: space-between;
+                                margin-bottom: 2rem;
+                                padding-bottom: 1.5rem;
+                                border-bottom: 2px solid #f0f2f5;
+                            }
+
+                            .invoice-info h3 {
+                                margin: 0 0 0.5rem 0;
+                                color: #333;
+                                font-size: 1.25rem;
+                            }
+
+                            .invoice-info p {
+                                margin: 0.25rem 0;
+                                color: #666;
+                            }
+
+                            .invoice-status {
+                                text-align: right;
+                            }
+
+                            .status-badge {
+                                display: inline-block;
+                                padding: 0.25rem 0.75rem;
+                                border-radius: 20px;
+                                font-size: 0.875rem;
+                                font-weight: 600;
+                                margin-bottom: 1rem;
+                            }
+
+                            .status-badge.due {
+                                background: #fee2e2;
+                                color: #dc2626;
+                            }
+
+                            .amount-due {
+                                margin-top: 0.5rem;
+                            }
+
+                            .amount-label {
+                                display: block;
+                                color: #666;
+                                font-size: 0.875rem;
+                                margin-bottom: 0.25rem;
+                            }
+
+                            .amount-value {
+                                display: block;
+                                font-size: 2rem;
+                                font-weight: 700;
+                                color: #333;
+                            }
+
+                            .invoice-details {
+                                margin-bottom: 2rem;
+                            }
+
+                            .invoice-details h4 {
+                                margin: 0 0 1rem 0;
+                                color: #333;
+                                font-size: 1.125rem;
+                            }
+
+                            .invoice-table {
+                                width: 100%;
+                                border-collapse: collapse;
+                            }
+
+                            .invoice-table th {
+                                background: #f8f9fa;
+                                padding: 0.75rem;
+                                text-align: left;
+                                font-weight: 600;
+                                color: #333;
+                                border-bottom: 2px solid #e0e0e0;
+                            }
+
+                            .invoice-table td {
+                                padding: 0.75rem;
+                                border-bottom: 1px solid #f0f2f5;
+                                color: #666;
+                            }
+
+                            .invoice-table tbody tr:hover {
+                                background: #fafbfc;
+                            }
+
+                            .invoice-table tfoot td {
+                                padding: 1rem 0.75rem;
+                                font-size: 1.125rem;
+                                border-top: 2px solid #e0e0e0;
+                                border-bottom: none;
+                            }
+
+                            .invoice-actions {
+                                display: flex;
+                                gap: 1rem;
+                                justify-content: flex-end;
+                                padding-top: 1.5rem;
+                                border-top: 2px solid #f0f2f5;
+                            }
+
+                            /* Statements Modal Styles */
+                            .statements-list {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 1rem;
+                                margin: 1rem 0 2rem;
+                            }
+
+                            .statement-item {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                padding: 1rem;
+                                background: #f8f9fa;
+                                border-radius: 8px;
+                                transition: all 0.3s ease;
+                            }
+
+                            .statement-item:hover {
+                                background: #e9ecef;
+                            }
+
+                            .statement-info {
+                                display: flex;
+                                align-items: center;
+                                gap: 1rem;
+                            }
+
+                            .statement-info i {
+                                font-size: 2rem;
+                                color: #dc3545;
+                            }
+
+                            .statement-month {
+                                display: block;
+                                font-weight: 600;
+                                color: #333;
+                                margin-bottom: 0.25rem;
+                            }
+
+                            .statement-details {
+                                display: block;
+                                font-size: 0.875rem;
+                                color: #666;
+                            }
+
+                            .btn-download {
+                                padding: 0.5rem 1rem;
+                                background: #5B9EFF;
+                                color: white;
+                                border: none;
+                                border-radius: 6px;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            }
+
+                            .btn-download:hover {
+                                background: #4080E0;
+                                transform: translateY(-2px);
+                            }
+
+                            .statement-actions {
+                                display: flex;
+                                justify-content: center;
+                                padding-top: 1rem;
+                                border-top: 2px solid #f0f2f5;
+                            }
+
+                            /* Auto-Pay Settings Modal Styles */
+                            .autopay-status {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                padding: 1.5rem;
+                                background: #e6f7ff;
+                                border-radius: 12px;
+                                margin-bottom: 2rem;
+                            }
+
+                            .status-indicator {
+                                display: flex;
+                                align-items: center;
+                                gap: 1rem;
+                            }
+
+                            .status-indicator i {
+                                font-size: 2rem;
+                                color: #22c55e;
+                            }
+
+                            .status-indicator h4 {
+                                margin: 0;
+                                color: #333;
+                            }
+
+                            .status-indicator p {
+                                margin: 0.25rem 0 0;
+                                color: #666;
+                                font-size: 0.875rem;
+                            }
+
+                            .toggle-switch {
+                                position: relative;
+                                width: 60px;
+                                height: 30px;
+                            }
+
+                            .toggle-switch input {
+                                opacity: 0;
+                                width: 0;
+                                height: 0;
+                            }
+
+                            .slider {
+                                position: absolute;
+                                cursor: pointer;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                background-color: #ccc;
+                                transition: .4s;
+                                border-radius: 30px;
+                            }
+
+                            .slider:before {
+                                position: absolute;
+                                content: "";
+                                height: 22px;
+                                width: 22px;
+                                left: 4px;
+                                bottom: 4px;
+                                background-color: white;
+                                transition: .4s;
+                                border-radius: 50%;
+                            }
+
+                            input:checked + .slider {
+                                background-color: #22c55e;
+                            }
+
+                            input:checked + .slider:before {
+                                transform: translateX(30px);
+                            }
+
+                            .autopay-settings h4 {
+                                margin: 2rem 0 1rem;
+                                color: #333;
+                                font-size: 1.125rem;
+                            }
+
+                            .payment-methods-list {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 0.75rem;
+                            }
+
+                            .payment-method-option {
+                                display: flex;
+                                align-items: center;
+                                padding: 1rem;
+                                background: #f8f9fa;
+                                border: 2px solid transparent;
+                                border-radius: 8px;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            }
+
+                            .payment-method-option:hover {
+                                border-color: #5B9EFF;
+                            }
+
+                            .payment-method-option.selected {
+                                border-color: #5B9EFF;
+                                background: #f0f7ff;
+                            }
+
+                            .payment-method-option input {
+                                margin-right: 1rem;
+                            }
+
+                            .method-info {
+                                display: flex;
+                                align-items: center;
+                                gap: 1rem;
+                                flex: 1;
+                            }
+
+                            .method-name {
+                                display: block;
+                                font-weight: 600;
+                                color: #333;
+                            }
+
+                            .method-details {
+                                display: block;
+                                font-size: 0.875rem;
+                                color: #666;
+                                margin-top: 0.25rem;
+                            }
+
+                            .schedule-options, .amount-options {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 0.75rem;
+                            }
+
+                            .schedule-option, .amount-option {
+                                display: flex;
+                                align-items: center;
+                                padding: 0.75rem 1rem;
+                                background: #f8f9fa;
+                                border-radius: 6px;
+                                cursor: pointer;
+                            }
+
+                            .schedule-option:hover, .amount-option:hover {
+                                background: #e9ecef;
+                            }
+
+                            .schedule-option input, .amount-option input {
+                                margin-right: 0.75rem;
+                            }
+
+                            .modal-actions {
+                                display: flex;
+                                gap: 1rem;
+                                justify-content: flex-end;
+                                margin-top: 2rem;
+                                padding-top: 2rem;
+                                border-top: 2px solid #f0f2f5;
+                            }
+
+                            /* Usage Details Modal Styles */
+                            .usage-summary {
+                                display: grid;
+                                grid-template-columns: repeat(3, 1fr);
+                                gap: 1rem;
+                                margin-bottom: 2rem;
+                            }
+
+                            .usage-card {
+                                background: #f8f9fa;
+                                padding: 1.5rem;
+                                border-radius: 12px;
+                                text-align: center;
+                            }
+
+                            .usage-label {
+                                display: block;
+                                color: #666;
+                                font-size: 0.875rem;
+                                margin-bottom: 0.5rem;
+                            }
+
+                            .usage-value {
+                                display: block;
+                                font-size: 1.75rem;
+                                font-weight: 700;
+                                color: #333;
+                                margin-bottom: 0.5rem;
+                            }
+
+                            .usage-trend {
+                                display: block;
+                                font-size: 0.875rem;
+                                color: #666;
+                            }
+
+                            .usage-trend.up {
+                                color: #dc3545;
+                            }
+
+                            .usage-chart {
+                                margin: 2rem 0;
+                            }
+
+                            .chart-container {
+                                background: #f8f9fa;
+                                padding: 2rem;
+                                border-radius: 12px;
+                            }
+
+                            .bar-chart {
+                                display: flex;
+                                justify-content: space-around;
+                                align-items: flex-end;
+                                height: 200px;
+                            }
+
+                            .bar {
+                                width: 60px;
+                                background: linear-gradient(to top, #5B9EFF, #4080E0);
+                                border-radius: 4px 4px 0 0;
+                                position: relative;
+                                display: flex;
+                                align-items: flex-end;
+                                justify-content: center;
+                                transition: all 0.3s ease;
+                            }
+
+                            .bar.weekend {
+                                background: linear-gradient(to top, #ffc107, #ff9800);
+                            }
+
+                            .bar:hover {
+                                opacity: 0.8;
+                            }
+
+                            .bar span {
+                                position: absolute;
+                                bottom: -25px;
+                                font-size: 0.875rem;
+                                color: #666;
+                            }
+
+                            .usage-table {
+                                width: 100%;
+                                margin: 1rem 0;
+                            }
+
+                            .usage-tips {
+                                background: #e6f7ff;
+                                padding: 1.5rem;
+                                border-radius: 12px;
+                                margin: 2rem 0;
+                            }
+
+                            .tips-list {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 1rem;
+                                margin-top: 1rem;
+                            }
+
+                            .tip-item {
+                                display: flex;
+                                align-items: start;
+                                gap: 1rem;
+                            }
+
+                            .tip-item i {
+                                color: #ffc107;
+                                font-size: 1.25rem;
+                                margin-top: 0.25rem;
+                            }
+
+                            .tip-item p {
+                                margin: 0;
+                                color: #333;
+                                line-height: 1.5;
+                            }
+
+                            @keyframes fadeIn {
+                                from { opacity: 0; transform: translateY(10px); }
+                                to { opacity: 1; transform: translateY(0); }
+                            }
+
+                            @media (max-width: 768px) {
+                                .summary-cards {
+                                    grid-template-columns: 1fr;
+                                }
+
+                                .payment-grid {
+                                    grid-template-columns: 1fr;
+                                }
+
+                                .quick-actions-dashboard {
+                                    grid-template-columns: 1fr;
+                                }
+                            }
+                        </style>
+                    </div>

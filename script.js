@@ -1,25 +1,6 @@
-(function(){
-  const frame = document.getElementById('solutionsFrame');
-  const slides = frame ? frame.querySelectorAll('.solution-slide') : [];
-  const dotsWrap = document.getElementById('solutionsDots');
-  const dots = dotsWrap ? dotsWrap.querySelectorAll('.dot') : [];
-  if (!slides.length || !dots.length) return;
-  let current = 0;
-  function show(idx){
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = idx;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-  }
-  dots.forEach(d => d.addEventListener('click', () => show(parseInt(d.dataset.index)||0)));
-})();
 // DOM Content Loaded
-document.addEventListener('DOMContentLoaded', async function() {
-    // Ensure site-wide favicon
-    setFavicon('Tilli Home Page/tilli_U.png');
-    await includePartials();
-    // Initialize all functionality after partials are loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all functionality
     initNavigation();
     initCarousel();
     initEditorsCarousel();
@@ -27,207 +8,28 @@ document.addEventListener('DOMContentLoaded', async function() {
     initAnimations();
     initScrollEffects();
     initMobileMenu();
-    initIndustryTabs();
-    initBlogIndex();
-    initBlogPost();
-    initModals();
-    initProgressSteps();
 });
-
-async function includePartials() {
-    const containers = document.querySelectorAll('[data-include]');
-    const fetches = Array.from(containers).map(async container => {
-        const src = container.getAttribute('data-include');
-        try {
-            const res = await fetch(src, { cache: 'no-cache' });
-            const html = await res.text();
-            container.innerHTML = html;
-        } catch (e) {
-            // Fallback for file:// or blocked fetch: inject inline header markup
-            if (src && src.endsWith('partials/header.html')) {
-                container.innerHTML = getHeaderHTMLFallback();
-            } else if (src && src.endsWith('partials/footer.html')) {
-                container.innerHTML = getFooterHTMLFallback();
-            }
-        }
-    });
-    await Promise.all(fetches);
-}
-
-// Set or update the favicon across all pages
-function setFavicon(href) {
-    try {
-        const head = document.head || document.getElementsByTagName('head')[0];
-        if (!head || !href) return;
-
-        const existingIcon = head.querySelector('link[rel="icon"], link[rel="shortcut icon"]');
-        const iconLink = existingIcon || document.createElement('link');
-        iconLink.rel = 'icon';
-        iconLink.type = 'image/png';
-        iconLink.href = href;
-        if (!existingIcon) head.appendChild(iconLink);
-
-        const existingApple = head.querySelector('link[rel="apple-touch-icon"]');
-        const appleLink = existingApple || document.createElement('link');
-        appleLink.rel = 'apple-touch-icon';
-        appleLink.href = href;
-        if (!existingApple) head.appendChild(appleLink);
-    } catch (_) {}
-}
-
-function getHeaderHTMLFallback() {
-    return `
-<header class="header">
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="logo">
-                <a href="index.html" aria-label="Tilli Home">
-                    <img style="height:44px;width:auto" src="Tilli Home Page/tilli-logo.png" alt="Tilli Logo">
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li class="dropdown">
-                    <a href="index.html#products">Products</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="nudge.html"><span>Nudge</span><small>Digital Communication</small></a></li>
-                        <li><a href="tillix.html"><span>tilliX</span><small>Customer Experience</small></a></li>
-                        <li><a href="tillipay.html"><span>tilliPay</span><small>Global Payment Stack</small></a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="industries.html">Industries</a>
-                    <ul class="dropdown-menu dropdown-columns">
-                        <li><a href="banking-finance.html">Banking and Finance</a></li>
-                        <li><a href="retailers-merchants.html">Retailers &amp; Merchants</a></li>
-                        <li><a href="saas-billing.html">SaaS Billing</a></li>
-                        <li><a href="insurance.html">Insurance</a></li>
-                        <li><a href="public-sector.html">Public Sector</a></li>
-                        <li><a href="utilities.html">Utilities</a></li>
-                        <li><a href="rentals-leases.html">Rentals &amp; Leases</a></li>
-                        <li><a href="telecommunications.html">Telecommunications</a></li>
-                        <li><a href="education.html">Education and Universities</a></li>
-                        <li><a href="memberships.html">Memberships</a></li>
-                        <li><a href="gaming-developers.html">Gaming &amp; Developers</a></li>
-                        <li><a href="media-entertainment.html">Media and Entertainment</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#resources">Resources</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="press-release.html">Press Release</a></li>
-                        <li><a href="blog.html">Blogs</a></li>
-                        <li><a href="case-studies.html">Case Studies</a></li>
-                    </ul>
-                </li>
-                <li><a href="developer.html">Developer</a></li>
-                <li><a href="about.html">Company</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-            </ul>
-            <a class="cta-button" href="contact.html">Contact Us</a>
-            <a class="cta-button" href="free-trial.html">Free Trial</a>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-</header>`;
-}
-
-function getFooterHTMLFallback() {
-    return `
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <img src="Tilli Home Page/tilli-logo.png" alt="Tilli Logo">
-                    </div>
-                    <p>We’re devoted to creating a global consumer environment that feels more personalized and connected than ever before. Through cloud-based, customer-centric tools, we’re revolutionizing CPaaS and payment processing landscapes to create avenues that help businesses and people connect, collaborate, and make payments in real-time.</p>
-                    <a href="about.html" class="footer-link">More about us →</a>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="#request-demo">Request a Demo →</a></li>
-                            <li><a href="free-trial.html">Start a Free Trial →</a></li>
-                            <li><a href="contact.html">Contact →</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Industries</h4>
-                        <ul>
-                            <li><a href="utilities.html">Utilities</a></li>
-                            <li><a href="rentals-leases.html">Rentals &amp; Leases</a></li>
-                            <li><a href="banking-finance.html">Banking &amp; Finance</a></li>
-                            <li><a href="saas-billing.html">SaaS Billing</a></li>
-                            <li><a href="retailers-merchants.html">Retailers &amp; Merchants</a></li>
-                            <li><a href="public-sector.html">Public Sector</a></li>
-                            <li><a href="telecommunications.html">Telecommunications</a></li>
-                            <li><a href="insurance.html">Insurance</a></li>
-                            <li><a href="media-entertainment.html">Media and Entertainment</a></li>
-                            <li><a href="gaming-developers.html">Gaming &amp; Developers</a></li>
-                            <li><a href="memberships.html">Memberships</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Services</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <ul>
-                            <li><a href="press-release.html">Press Releases</a></li>
-                            <li><a href="#request-demo">Request a Demo</a></li>
-                            <li><a href="free-trial.html">Start a Free Trial</a></li>
-                            <li><a href="#">Compare Products</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="social-links">
-                    <a href="https://www.youtube.com/@tillisoftware" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.linkedin.com/company/tilli-llc/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.facebook.com/tillisoftware" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="https://x.com/tillisoftware" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </div>
-                <div class="footer-contact">
-                    <h5>Headquarters</h5>
-                    <p>8260 Greensboro Dr, Suite 270<br>McLean, VA 22102</p>
-                    <h5 style="margin-top:8px">India</h5>
-                    <p>1st Floor, SNP Towers, No. 112, 113, 114, Janardhana Hills,<br>Gachibowli, Hyderabad, Telangana, 500032, India</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>`;
-}
 
 // Navigation functionality
 function initNavigation() {
     const header = document.querySelector('.header');
     const navLinks = document.querySelectorAll('.nav-menu a');
-    const dropdownParents = document.querySelectorAll('.nav-menu .dropdown');
-    
+
     // Header scroll effect
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.boxShadow = 'none';
+    if (header) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Ensure transparent on page load
+        if (window.scrollY <= 10) {
+            header.classList.remove('scrolled');
         }
-    });
+    }
     
     // Smooth scrolling for navigation links
     navLinks.forEach(link => {
@@ -243,42 +45,6 @@ function initNavigation() {
                         behavior: 'smooth'
                     });
                 }
-            }
-        });
-    });
-
-    // Active link highlighting by current page
-    try {
-        const current = window.location.pathname.split('/').pop() || 'index.html';
-        navLinks.forEach(a => {
-            const href = a.getAttribute('href') || '';
-            // Extract page portion before any hash
-            const page = href.split('#')[0] || '';
-            if (page && page === current) {
-                a.classList.add('active');
-            } else if (!page && current === 'index.html' && href.startsWith('#')) {
-                // On index.html, hash links can be active based on presence
-                a.classList.toggle('active', window.location.hash === href);
-            }
-        });
-    } catch (_) {}
-
-    // Dropdowns: enable click-to-toggle on mobile
-    dropdownParents.forEach(parent => {
-        const trigger = parent.querySelector(':scope > a');
-        const menu = parent.querySelector(':scope > .dropdown-menu');
-        if (!trigger || !menu) return;
-
-        // On touch/click, toggle for mobile widths
-        trigger.addEventListener('click', function(e) {
-            // Allow normal navigation when not on mobile or when href is a page link
-            const isHash = (this.getAttribute('href') || '').startsWith('#');
-            const isMobile = window.matchMedia('(max-width: 768px)').matches;
-            if (isMobile) {
-                e.preventDefault();
-                parent.classList.toggle('open');
-            } else if (!isHash && parent.classList.contains('dropdown')) {
-                // let desktop clicks pass through to linked pages
             }
         });
     });
@@ -355,11 +121,10 @@ function initEditorsCarousel(){
 // Form handling
 function initFormHandling() {
     const contactForm = document.querySelector('.contact-form');
-    const captchaForm = document.querySelector('form.contact-form[data-captcha]');
     const newsletterForm = document.querySelector('.newsletter');
     
     // Contact form handling
-    if (contactForm && !captchaForm) {
+    if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -383,61 +148,6 @@ function initFormHandling() {
                 // Reset button
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-                this.classList.remove('loading');
-            }, 2000);
-        });
-    }
-
-    // Contact form with CAPTCHA (industry pages)
-    if (captchaForm) {
-        // Generate simple arithmetic question
-        const a = Math.floor(Math.random() * 9) + 1;
-        const b = Math.floor(Math.random() * 9) + 1;
-        const sum = a + b;
-        const captchaLabel = captchaForm.querySelector('#captcha-label');
-        if (captchaLabel) captchaLabel.textContent = `Solve: ${a} + ${b} =`;
-
-        captchaForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const emailInput = this.querySelector('input[name="email"]');
-            const captchaInput = this.querySelector('input[name="captcha"]');
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn ? submitBtn.textContent : 'Submitting...';
-
-            if (!emailInput || !isValidEmail(emailInput.value)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-
-            if (!captchaInput || parseInt(captchaInput.value, 10) !== sum) {
-                showNotification('Incorrect CAPTCHA. Please try again.', 'error');
-                return;
-            }
-
-            if (submitBtn) {
-                submitBtn.textContent = 'Submitting...';
-                submitBtn.disabled = true;
-            }
-            this.classList.add('loading');
-
-            setTimeout(() => {
-                this.reset();
-                showNotification('Thanks! Your brochure is downloading shortly.', 'success');
-                // Trigger brochure download if configured
-                const brochure = this.getAttribute('data-brochure');
-                if (brochure) {
-                    const link = document.createElement('a');
-                    link.href = brochure;
-                    link.download = '';
-                    document.body.appendChild(link);
-                    link.click();
-                    link.remove();
-                }
-                if (submitBtn) {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }
                 this.classList.remove('loading');
             }, 2000);
         });
@@ -568,96 +278,6 @@ function initMobileMenu() {
     }
 }
 
-// Industry tabs: swap title, copy and link
-function initIndustryTabs() {
-    const tabs = document.querySelectorAll('#industry-tabs a[data-industry]');
-    const titleSpan = document.getElementById('active-industry');
-    const copy = document.getElementById('industry-copy');
-    const link = document.getElementById('industry-link');
-    if (!tabs.length || !titleSpan || !copy || !link) return;
-
-    const contentByKey = {
-        banking: {
-            title: 'Banking and Finance',
-            text: 'Power secure, scalable payment experiences for banks and financial institutions. Automate compliance and deliver seamless journeys across every channel.',
-            href: 'banking-finance.html'
-        },
-        retail: {
-            title: 'Retails & Merchants',
-            text: 'Boost conversions with embedded checkout, abandoned-cart nudges, and real-time insights to optimize every customer journey.',
-            href: 'retailers-merchants.html'
-        },
-        saas: {
-            title: 'SaaS Billing',
-            text: 'Scale recurring subscription plans and communications with flexible billing workflows and retries.',
-            href: 'saas-billing.html'
-        },
-        insurance: {
-            title: 'Insurance',
-            text: 'Automate recurring payments and policy communications to keep customers informed and reduce churn.',
-            href: 'insurance.html'
-        },
-        public: {
-            title: 'Public Sector',
-            text: 'Bring communications online, integrate with legacy systems, and migrate data for smoother citizen experiences.',
-            href: 'public-sector.html'
-        },
-        utilities: {
-            title: 'Utilities',
-            text: 'Modernize billing and customer communications with a two-way platform that integrates with legacy systems and speeds up collections.',
-            href: 'utilities.html'
-        },
-        rentals: {
-            title: 'Rentals & Leases',
-            text: 'Create simple tenant payment pages and improve on-time collections with automated reminders.',
-            href: 'rentals-leases.html'
-        },
-        telecom: {
-            title: 'Telecommunications',
-            text: 'Scale outreach and payments with customizable messaging across channels and integrated billing.',
-            href: 'telecommunications.html'
-        },
-        education: {
-            title: 'Education and Universities',
-            text: 'Keep students engaged and informed via SMS, WhatsApp, IVR, and more while simplifying payments.',
-            href: 'education.html'
-        },
-        memberships: {
-            title: 'Memberships',
-            text: 'Enable easy enrollment and dues payments for clubs and associations on multiple channels.',
-            href: 'memberships.html'
-        },
-        gaming: {
-            title: 'Gaming & Developers',
-            text: 'Deliver immersive in-app experiences and seamless monetization with nudges and flexible payments.',
-            href: 'gaming-developers.html'
-        },
-        media: {
-            title: 'Media and Entertainment',
-            text: 'Set up subscriptions and creator onboarding with adaptable smart pages across platforms.',
-            href: 'media-entertainment.html'
-        }
-    };
-
-    // Default state corresponds to banking (shown initially)
-    function activate(key) {
-        const data = contentByKey[key] || contentByKey.banking;
-        titleSpan.textContent = data.title;
-        copy.textContent = data.text;
-        link.href = data.href;
-    }
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function(e) {
-            e.preventDefault();
-            tabs.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            const key = this.getAttribute('data-industry');
-            activate(key);
-        });
-    });
-}
-
 // Utility functions
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -767,7 +387,7 @@ function animateCounter(element) {
     requestAnimationFrame(updateCounter);
 }
 
-// Button click effects
+// Button click effects and actions
 document.addEventListener('click', function(e) {
     if (e.target.matches('.btn-primary, .btn-secondary, .cta-button')) {
         // Create ripple effect
@@ -777,7 +397,7 @@ document.addEventListener('click', function(e) {
         const size = Math.max(rect.width, rect.height);
         const x = e.clientX - rect.left - size / 2;
         const y = e.clientY - rect.top - size / 2;
-        
+
         ripple.style.cssText = `
             position: absolute;
             width: ${size}px;
@@ -790,14 +410,92 @@ document.addEventListener('click', function(e) {
             animation: ripple 0.6s linear;
             pointer-events: none;
         `;
-        
+
         button.style.position = 'relative';
         button.style.overflow = 'hidden';
         button.appendChild(ripple);
-        
+
         setTimeout(() => ripple.remove(), 600);
+
+        // Handle button actions
+        const buttonText = button.textContent.trim();
+
+        if (buttonText === 'Get Started Free' || buttonText === 'Start Free Trial') {
+            window.location.href = '/free-trial.html';
+        } else if (buttonText === 'Book a Demo' || buttonText === 'Request Demo') {
+            window.location.href = '/contact.html#demo';
+        } else if (buttonText === 'Calculate ROI' || buttonText === 'Calculate Your Savings') {
+            window.location.href = '/calculator.html';
+        } else if (buttonText === 'Learn More') {
+            // Find the closest section and determine appropriate page
+            const section = button.closest('section');
+            if (section && section.id) {
+                window.location.href = `#${section.id}`;
+            }
+        }
     }
 });
+
+// Notification function for demo purposes
+function showNotification(message, type = 'success') {
+    // Remove any existing notifications
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+
+    // Create new notification
+    const notification = document.createElement('div');
+    notification.className = `notification ${type} show`;
+    notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+        <span>${message}</span>
+    `;
+
+    document.body.appendChild(notification);
+
+    // Auto-remove after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Counter animation function
+function animateCounter(element) {
+    const target = parseInt(element.textContent.replace(/[^0-9]/g, ''));
+    const duration = 2000;
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+
+    const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+            element.textContent = Math.floor(current) + (element.textContent.includes('+') ? '+' : element.textContent.includes('%') ? '%' : '');
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = element.textContent;
+        }
+    };
+
+    updateCounter();
+}
+
+// Function to update the next bill date dynamically
+function updateNextBillDate() {
+    const nextBillDateElement = document.getElementById('next-bill-date');
+    if (nextBillDateElement) {
+        const today = new Date();
+        const nextBillDate = new Date(today);
+        nextBillDate.setDate(today.getDate() + 30);
+
+        const options = { month: 'short', day: 'numeric', year: 'numeric' };
+        const formattedDate = nextBillDate.toLocaleDateString('en-US', options);
+
+        nextBillDateElement.textContent = formattedDate;
+    }
+}
 
 // Add ripple animation CSS
 const style = document.createElement('style');
@@ -930,190 +628,96 @@ keyboardStyle.textContent = `
 `;
 document.head.appendChild(keyboardStyle);
 
-// Simple modal handling
-function initModals(){
-    function openModal(modal){
-        if(!modal) return;
-        modal.classList.add('is-open');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeModal(modal){
-        if(!modal) return;
-        modal.classList.remove('is-open');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-    }
+// SMS Conversation Animation for tilliX
+function animateSMSConversation() {
+    const smsMessages = document.querySelectorAll('.sms-message.animate-message');
+    const typingIndicator = document.querySelector('.typing-indicator');
 
-    // Open triggers
-    document.querySelectorAll('[data-modal-target]')
-        .forEach(btn => btn.addEventListener('click', function(e){
-            e.preventDefault();
-            const selector = this.getAttribute('data-modal-target');
-            const modal = document.querySelector(selector);
-            openModal(modal);
-        }));
+    if (smsMessages.length === 0) return;
 
-    // Close triggers
-    document.addEventListener('click', function(e){
-        const closeBtn = e.target.closest('[data-close-modal]');
-        if(closeBtn){
-            const modal = closeBtn.closest('.modal');
-            closeModal(modal);
-        }
+    // Reset all messages
+    smsMessages.forEach(msg => {
+        msg.classList.remove('visible');
+        msg.style.opacity = '0';
     });
 
-    // Esc to close
-    document.addEventListener('keydown', function(e){
-        if(e.key === 'Escape'){
-            document.querySelectorAll('.modal.is-open').forEach(m => closeModal(m));
-        }
-    });
-}
+    // Animate messages sequentially
+    smsMessages.forEach((message, index) => {
+        const delay = parseInt(message.dataset.delay) || (index * 1500);
 
-// Animate progress stepper when visible
-function initProgressSteps(){
-    const steps = document.querySelector('.progress-steps');
-    if(!steps) return;
-    const io = new IntersectionObserver((entries)=>{
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                steps.classList.add('is-visible');
-                io.unobserve(steps);
+        // Show typing indicator before company messages
+        if (message.classList.contains('company') && typingIndicator && index > 0) {
+            setTimeout(() => {
+                typingIndicator.style.display = 'flex';
+                // Auto-scroll to bottom
+                const container = typingIndicator.parentElement;
+                container.scrollTop = container.scrollHeight;
+            }, delay - 800);
+
+            setTimeout(() => {
+                typingIndicator.style.display = 'none';
+            }, delay - 100);
+        }
+
+        // Show the message
+        setTimeout(() => {
+            message.style.opacity = '1';
+            message.classList.add('visible');
+
+            // Auto-scroll to show new message
+            const container = message.parentElement;
+            container.scrollTop = container.scrollHeight;
+
+            // Add subtle bounce effect for customer message
+            if (message.classList.contains('customer')) {
+                message.style.animation = 'slideInUp 0.5s ease, bounce 0.3s ease 0.5s';
             }
-        });
-    }, { threshold: 0.3 });
-    io.observe(steps);
-}
-
-// Blog Index (Insights-style) rendering and pagination
-function initBlogIndex(){
-    const grid = document.getElementById('posts-grid');
-    const pagination = document.getElementById('posts-pagination');
-    const searchInput = document.getElementById('blog-search');
-    const chips = document.querySelectorAll('.chips .chip');
-    const dataEl = document.getElementById('posts-data');
-    if(!grid || !dataEl) return;
-
-    const data = JSON.parse(dataEl.textContent || '{}');
-    const pageSize = data.pageSize || 8;
-    const rawPosts = Array.isArray(data.posts) ? data.posts : [];
-    // Normalize dates for robust sorting (newest first)
-    function parseDateToTs(str){
-        if (!str) return 0;
-        const d = new Date(str);
-        if (!isNaN(d)) return d.getTime();
-        // Fallbacks for common formats (e.g., "Jan 2025", "2025-01-17")
-        const tryISO = Date.parse(str);
-        return isNaN(tryISO) ? 0 : tryISO;
-    }
-    const allPosts = rawPosts.map(p => ({...p, ts: parseDateToTs(p.dateISO || p.date)}));
-    let state = { q: '', filter: 'all', page: 1 };
-
-    function getFiltered(){
-        const q = state.q.trim().toLowerCase();
-        return allPosts.filter(p => {
-            const matchesFilter = state.filter === 'all' || (p.category || '').toLowerCase() === state.filter;
-            const matchesQuery = !q || (p.title||'').toLowerCase().includes(q);
-            return matchesFilter && matchesQuery;
-        });
-    }
-
-    function render(){
-        const items = getFiltered().sort((a,b) => (b.ts||0) - (a.ts||0));
-        const totalPages = Math.max(1, Math.ceil(items.length / pageSize));
-        if(state.page > totalPages) state.page = totalPages;
-        const start = (state.page - 1) * pageSize;
-        const pageItems = items.slice(start, start + pageSize);
-
-        grid.innerHTML = pageItems.map(p => `
-            <article class="post-card">
-                <a class="media" href="${p.href}">
-                    <img src="${p.image}" alt="${p.title}">
-                </a>
-                <div class="body">
-                    <span class="meta">${(p.category||'').replace('-', ' ')} • ${p.author || ''} • ${p.date || ''}</span>
-                    <h3 class="title"><a class="link-muted" href="${p.href}">${p.title}</a></h3>
-                </div>
-            </article>
-        `).join('');
-
-        // Pagination
-        pagination.innerHTML = '';
-        if(totalPages > 1){
-            for(let i=1;i<=totalPages;i++){
-                const btn = document.createElement('button');
-                btn.textContent = i;
-                btn.className = i === state.page ? 'is-active' : '';
-                btn.addEventListener('click', ()=>{ state.page = i; render(); window.scrollTo({top:0,behavior:'smooth'}); });
-                pagination.appendChild(btn);
-            }
-        }
-    }
-
-    // Events
-    if(searchInput){
-        searchInput.addEventListener('input', (e)=>{ state.q = e.target.value || ''; state.page = 1; render(); });
-    }
-    chips.forEach(chip => {
-        chip.addEventListener('click', ()=>{
-            chips.forEach(c=>c.classList.remove('is-active'));
-            chip.classList.add('is-active');
-            state.filter = chip.getAttribute('data-filter') || 'all';
-            state.page = 1;
-            render();
-        });
+        }, delay);
     });
-
-    render();
 }
 
-// Single Post: reading time, progress bar, share links
-function initBlogPost(){
-    const article = document.querySelector('.post .blog-post-body');
-    const readingTimeEl = document.getElementById('reading-time');
-    const progress = document.querySelector('.reading-progress span');
-    const share = document.querySelector('.share-bar');
-    if(!article) return;
+// Trigger animation when tilliX card comes into view
+const observeSMSAnimation = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Start animation
+            animateSMSConversation();
 
-    // Reading time (~200 wpm)
-    if(readingTimeEl){
-        const text = article.textContent || '';
-        const words = text.trim().split(/\s+/).length;
-        const minutes = Math.max(1, Math.ceil(words / 200));
-        readingTimeEl.textContent = `${minutes} min read`;
-    }
-
-    // Scroll progress
-    function updateProgress(){
-        const rect = article.getBoundingClientRect();
-        const total = article.scrollHeight - window.innerHeight;
-        const scrolled = Math.min(total, Math.max(0, window.scrollY - (article.offsetTop - 80)));
-        const pct = total > 0 ? (scrolled / total) * 100 : 0;
-        if(progress){ progress.style.width = pct + '%'; }
-    }
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress();
-
-    // Share
-    if(share){
-        const url = window.location.href;
-        share.querySelectorAll('a[data-network]').forEach(a => {
-            const net = a.getAttribute('data-network');
-            a.addEventListener('click', (e)=>{
-                e.preventDefault();
-                if(net === 'copy'){
-                    navigator.clipboard?.writeText(url);
-                    showNotification('Link copied to clipboard', 'success');
-                    return;
+            // Restart animation every 10 seconds while in view
+            const animationInterval = setInterval(() => {
+                if (entry.isIntersecting) {
+                    animateSMSConversation();
+                } else {
+                    clearInterval(animationInterval);
                 }
-                const title = document.title;
-                let shareUrl = '';
-                if(net === 'linkedin') shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
-                if(net === 'twitter') shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
-                if(net === 'facebook') shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-                if(shareUrl) window.open(shareUrl, '_blank', 'noopener,width=600,height=600');
-            });
-        });
+            }, 10000);
+
+            // Store interval ID for cleanup
+            entry.target.dataset.intervalId = animationInterval;
+        } else {
+            // Clear interval when out of view
+            const intervalId = entry.target.dataset.intervalId;
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+        }
+    });
+}, { threshold: 0.5 });
+
+// Start observing when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const smsConversation = document.querySelector('.sms-conversation');
+    if (smsConversation) {
+        observeSMSAnimation.observe(smsConversation);
     }
-}
+});
+
+// Add bounce keyframe animation
+const bounceStyle = document.createElement('style');
+bounceStyle.textContent = `
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+`;
+document.head.appendChild(bounceStyle);
