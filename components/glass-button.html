@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Button Component</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===========================================
+           CSS Variables - Tweak these to customize
+           =========================================== */
+        :root {
+            /* Glass effect colors */
+            --glass-bg-start: rgba(59, 130, 246, 0.25);    /* Blue gradient start */
+            --glass-bg-end: rgba(99, 102, 241, 0.2);       /* Blue gradient end */
+            --glass-border: rgba(255, 255, 255, 0.15);     /* Subtle white border */
+            --glass-highlight: rgba(255, 255, 255, 0.1);   /* Inner top highlight */
+
+            /* Hover state colors */
+            --glass-bg-start-hover: rgba(59, 130, 246, 0.4);
+            --glass-bg-end-hover: rgba(99, 102, 241, 0.35);
+            --glass-border-hover: rgba(255, 255, 255, 0.3);
+            --glass-glow: rgba(59, 130, 246, 0.3);
+
+            /* Text and misc */
+            --btn-text-color: #ffffff;
+            --btn-radius: 50px;                            /* Tilli standard radius */
+            --transition-speed: 250ms;
+        }
+
+        /* Demo container - dark background to showcase glass effect */
+        .demo-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .demo-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: -30px;
+        }
+
+        /* ===========================================
+           Glass Button - Secondary Style
+           =========================================== */
+        .btn-glass {
+            /* Typography */
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--btn-text-color);
+            text-decoration: none;
+
+            /* Layout */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+
+            /* Pill shape with Tilli standard radius */
+            border-radius: var(--btn-radius);
+
+            /* ==========================================
+               GLASS EFFECT BREAKDOWN:
+               1. Semi-transparent gradient background
+               2. Backdrop blur for frosted glass look
+               3. Subtle border for edge definition
+               4. Inner highlight using box-shadow inset
+               ========================================== */
+
+            /* 1. Semi-transparent blue gradient */
+            background: linear-gradient(
+                135deg,
+                var(--glass-bg-start) 0%,
+                var(--glass-bg-end) 100%
+            );
+
+            /* 2. Frosted glass blur effect */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            /* 3. Subtle border for definition */
+            border: 1px solid var(--glass-border);
+
+            /* 4. Inner highlight (top edge glow) + subtle outer shadow */
+            box-shadow:
+                inset 0 1px 1px var(--glass-highlight),     /* Top inner highlight */
+                0 2px 8px rgba(0, 0, 0, 0.1);               /* Soft outer shadow */
+
+            /* Smooth transition for all hover changes */
+            transition:
+                background var(--transition-speed) ease,
+                border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease,
+                transform var(--transition-speed) ease;
+
+            /* Ensure button is clickable */
+            cursor: pointer;
+        }
+
+        /* ===========================================
+           HOVER STATE:
+           - Brighter gradient
+           - More visible border
+           - Added glow effect
+           - Subtle lift (translateY)
+           =========================================== */
+        .btn-glass:hover {
+            /* Brighter gradient on hover */
+            background: linear-gradient(
+                135deg,
+                var(--glass-bg-start-hover) 0%,
+                var(--glass-bg-end-hover) 100%
+            );
+
+            /* More visible border */
+            border-color: var(--glass-border-hover);
+
+            /* Enhanced shadow with subtle glow + slight lift effect */
+            box-shadow:
+                inset 0 1px 2px rgba(255, 255, 255, 0.15),  /* Stronger inner highlight */
+                0 4px 16px var(--glass-glow),               /* Blue glow */
+                0 2px 4px rgba(0, 0, 0, 0.1);               /* Soft shadow for depth */
+
+            /* Subtle lift */
+            transform: translateY(-1px);
+        }
+
+        /* Active/pressed state */
+        .btn-glass:active {
+            transform: translateY(0);
+            box-shadow:
+                inset 0 1px 1px var(--glass-highlight),
+                0 1px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Focus state for accessibility */
+        .btn-glass:focus {
+            outline: none;
+            box-shadow:
+                inset 0 1px 1px var(--glass-highlight),
+                0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+
+        /* ===========================================
+           Size Variants (optional)
+           =========================================== */
+        .btn-glass.btn-sm {
+            font-size: 13px;
+            padding: 10px 20px;
+        }
+
+        .btn-glass.btn-lg {
+            font-size: 15px;
+            padding: 16px 32px;
+        }
+
+        /* ===========================================
+           With icon variant
+           =========================================== */
+        .btn-glass svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <span class="demo-label">Default State</span>
+        <a href="#" class="btn-glass">
+            Download Report
+        </a>
+
+        <span class="demo-label">With Icon</span>
+        <a href="#" class="btn-glass">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            Download Report
+        </a>
+
+        <span class="demo-label">Small Size</span>
+        <a href="#" class="btn-glass btn-sm">
+            Download Report
+        </a>
+
+        <span class="demo-label">Large Size</span>
+        <a href="#" class="btn-glass btn-lg">
+            Download Report
+        </a>
+    </div>
+</body>
+</html>

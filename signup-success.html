@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Successful | Tilli Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .success-container {
+            max-width: 700px;
+            margin: 100px auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .success-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            padding: 3rem;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .success-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        h1 {
+            color: #1a1a1a;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #6b7280;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .next-steps {
+            background: #f3f4f6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .next-steps h2 {
+            color: #1a1a1a;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+
+        .next-steps li i {
+            color: #325ef6;
+            margin-top: 0.25rem;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: linear-gradient(135deg, #325ef6, #4A90E2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(91, 158, 255, 0.3);
+        }
+
+        .automation-results {
+            background: #f0f9ff;
+            border: 2px solid #325ef6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+            display: none;
+        }
+
+        .automation-results.show {
+            display: block;
+        }
+
+        .automation-results h3 {
+            color: #1a1a1a;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .automation-item {
+            padding: 0.75rem;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+
+        .automation-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .automation-item i {
+            color: #10b981;
+            margin-top: 0.25rem;
+        }
+
+        .automation-item.failed i {
+            color: #ef4444;
+        }
+
+        .automation-details {
+            flex: 1;
+        }
+
+        .automation-details strong {
+            color: #1a1a1a;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .automation-details small {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .credentials-box {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+        }
+
+        .credentials-box p {
+            margin: 0.25rem 0;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- Top Banner -->
+        <div style="width: 100%; background: linear-gradient(90deg, #4169E1 0%, #00BFFF 100%); padding: 18px 20px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 1001; height: 62px; box-sizing: border-box;">
+            <span style="font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; color: #FFFFFF;">✨ See how much you could save with Tilli — calculate your ROI in 2 minutes.</span>
+            <a href="calculator.html" class="banner-cta-btn">
+                Calculate now <span class="arrow">→</span>
+            </a>
+        </div>
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="about.html">Company</a></li>
+                    <li><a href="valuebasedpricing.html">Pricing</a></li>
+                    <li><a href="press.html">Press</a></li>
+                </ul>
+                <a class="cta-button" href="signup.html">Sign Up</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+
+            <h1>Welcome to Tilli!</h1>
+            <p>Your signup request has been received successfully. Our team will review your information and reach out to you shortly to set up your account.</p>
+
+            <!-- Automation Results (shown if accounts were auto-created) -->
+            <div id="automation-results" class="automation-results">
+                <h3>Your Accounts Have Been Created!</h3>
+                <div id="automation-list"></div>
+            </div>
+
+            <div class="next-steps">
+                <h2>What Happens Next?</h2>
+                <ul>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>You'll receive a confirmation email with your signup details</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-user-check"></i>
+                        <span>Our team will review your request within 1 business day</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>We'll contact you to schedule an onboarding call</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-rocket"></i>
+                        <span>Get your account set up and start your free trial</span>
+                    </li>
+                </ul>
+            </div>
+
+            <a href="index.html" class="btn-home">
+                <i class="fas fa-home" style="margin-right: 0.5rem;"></i>
+                Return to Homepage
+            </a>
+        </div>
+    </div>
+
+    <!-- Vercel Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+        // Check if automation results were passed via URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const automationsParam = urlParams.get('automations');
+
+            if (automationsParam) {
+                try {
+                    const automations = JSON.parse(decodeURIComponent(automationsParam));
+                    displayAutomationResults(automations);
+                } catch (e) {
+                    console.error('Failed to parse automation results:', e);
+                }
+            }
+
+            // Also check sessionStorage (if passed from previous page)
+            const storedAutomations = sessionStorage.getItem('signup_automations');
+            if (storedAutomations) {
+                try {
+                    const automations = JSON.parse(storedAutomations);
+                    displayAutomationResults(automations);
+                    sessionStorage.removeItem('signup_automations');
+                } catch (e) {
+                    console.error('Failed to parse stored automation results:', e);
+                }
+            }
+        });
+
+        function displayAutomationResults(automations) {
+            const resultsDiv = document.getElementById('automation-results');
+            const listDiv = document.getElementById('automation-list');
+
+            let hasSuccessfulAutomation = false;
+            let successfulProducts = [];
+            let sharedPassword = null;
+            let html = '';
+
+            // Check which products were successfully created
+            if (automations.nudge && automations.nudge.success) {
+                hasSuccessfulAutomation = true;
+                successfulProducts.push('Nudge');
+                sharedPassword = automations.nudge.password;
+            }
+            if (automations.tillipay && automations.tillipay.success) {
+                hasSuccessfulAutomation = true;
+                successfulProducts.push('tilliPay');
+                if (!sharedPassword) sharedPassword = automations.tillipay.password;
+            }
+
+            // Display Nudge results
+            if (automations.nudge) {
+                html += `
+                    <div class="automation-item ${automations.nudge.success ? '' : 'failed'}">
+                        <i class="fas ${automations.nudge.success ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                        <div class="automation-details">
+                            <strong>Nudge Communications Platform</strong>
+                            <small>${automations.nudge.success ? 'Account created successfully!' : automations.nudge.message}</small>
+                            ${automations.nudge.success ? `
+                                <div class="credentials-box">
+                                    <p><strong>Login:</strong> <a href="https://app.nudge.net" target="_blank">app.nudge.net</a></p>
+                                    <p><strong>Email:</strong> Your registered email address</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Display tilliPay results
+            if (automations.tillipay) {
+                html += `
+                    <div class="automation-item ${automations.tillipay.success ? '' : 'failed'}">
+                        <i class="fas ${automations.tillipay.success ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                        <div class="automation-details">
+                            <strong>tilliPay Payment Orchestration</strong>
+                            <small>${automations.tillipay.success ? 'Account created successfully!' : automations.tillipay.message}</small>
+                            ${automations.tillipay.success ? `
+                                <div class="credentials-box">
+                                    <p><strong>Login:</strong> <a href="https://gps.tillipay.com/portal" target="_blank">gps.tillipay.com/portal</a></p>
+                                    <p><strong>Email:</strong> Your registered email address</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Add password reminder if any products were successful
+            if (hasSuccessfulAutomation) {
+                html += `
+                    <div style="background: #f0f9ff; border: 2px solid #325ef6; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                        <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #1a1a1a;"><i class="fas fa-key"></i> Login Credentials</p>
+                        <p style="margin: 0 0 0.5rem 0; font-size: 0.875rem; color: #1a1a1a;">Use your registered email address and the password you created during signup to log in to your accounts.</p>
+                        <p style="margin: 0; font-size: 0.875rem; color: #6b7280;">💡 The same password works for all your Tilli products.</p>
+                    </div>
+                `;
+            }
+
+            // Only show results section if there's at least one automation result
+            if (html) {
+                listDiv.innerHTML = html;
+                resultsDiv.classList.add('show');
+
+                // Update the main message based on successful products
+                if (hasSuccessfulAutomation) {
+                    const mainMessage = document.querySelector('.success-card > p');
+                    if (mainMessage) {
+                        if (successfulProducts.length > 1) {
+                            mainMessage.textContent = `Congratulations! Your ${successfulProducts.join(' and ')} accounts have been created successfully. Check your email for verification links and use your credentials below to log in.`;
+                        } else if (successfulProducts.length === 1) {
+                            mainMessage.textContent = `Congratulations! Your ${successfulProducts[0]} account has been created successfully. Check your email for a verification link and use your credentials below to log in.`;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

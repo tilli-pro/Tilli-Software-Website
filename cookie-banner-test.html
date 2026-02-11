@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Banner Test - Tilli</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 20px;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+        }
+        .test-button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 8px 8px 8px 0;
+            font-weight: 600;
+        }
+        .test-button:hover {
+            background: #1d4ed8;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .status.success {
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #d1fae5;
+        }
+        .status.info {
+            background: #eff6ff;
+            color: #1e40af;
+            border: 1px solid #dbeafe;
+        }
+        pre {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+    </style>
+    <!-- reb2b tracking script -->
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://b2bjsstore.s3.us-west-2.amazonaws.com/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("VN080HX77V6J");</script>
+</head>
+<body>
+    <div class="container">
+        <h1>Enhanced Cookie Banner Test Page</h1>
+        <p>This page is designed to test the enhanced cookie banner functionality. The banner should appear when you first visit the page (unless you've already given consent).</p>
+
+        <div class="test-section">
+            <h3>Test Controls</h3>
+            <button class="test-button" onclick="clearCookieConsent()">Clear Cookie Consent</button>
+            <button class="test-button" onclick="showPreferences()">Show Preferences Modal</button>
+            <button class="test-button" onclick="checkCookieStatus()">Check Current Status</button>
+            <div id="status-display"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Cookie Banner Features to Test</h3>
+            <ul>
+                <li><strong>Initial Banner:</strong> Should show on first visit with "Preferences", "Reject All", and "Accept All" buttons</li>
+                <li><strong>Preferences Modal:</strong> Should open when clicking "Preferences" with expandable sections</li>
+                <li><strong>Toggle Controls:</strong> Strictly necessary (always on), Performance, and Marketing toggles</li>
+                <li><strong>Save Settings:</strong> Should save custom preferences and hide banner</li>
+                <li><strong>Accept All:</strong> Should enable all cookies and hide banner</li>
+                <li><strong>Reject All:</strong> Should only allow necessary cookies and hide banner</li>
+                <li><strong>Persistence:</strong> Preferences should persist across page reloads</li>
+                <li><strong>Responsive Design:</strong> Should work on mobile and desktop</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>Analytics and Marketing Script Testing</h3>
+            <p>These scripts should only load when appropriate cookies are enabled:</p>
+            <script type="text/plain" data-cookiecategory="analytics">
+                console.log("Analytics script loaded! Performance cookies are enabled.");
+            </script>
+            <script type="text/plain" data-cookiecategory="marketing">
+                console.log("Marketing script loaded! Marketing cookies are enabled.");
+            </script>
+            <script type="text/plain" data-cookiecategory="performance">
+                console.log("Performance script loaded! Performance cookies are enabled.");
+            </script>
+        </div>
+
+        <div class="test-section">
+            <h3>Current Cookie Information</h3>
+            <div id="cookie-info">
+                <p>Click "Check Current Status" to see current cookie preferences.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function clearCookieConsent() {
+            // Clear all tilli cookies
+            document.cookie = 'tilli_cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            document.cookie = 'tilli_cookie_preferences=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+            updateStatus('Cookie consent cleared. Refresh the page to see the banner again.', 'info');
+
+            // Refresh page after a short delay
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        }
+
+        function showPreferences() {
+            if (window.tilliCookieBanner && window.tilliCookieBanner.showPreferences) {
+                window.tilliCookieBanner.showPreferences();
+                updateStatus('Preferences modal opened successfully.', 'success');
+            } else {
+                updateStatus('Cookie banner not loaded or showPreferences function not available.', 'info');
+            }
+        }
+
+        function checkCookieStatus() {
+            const consent = getCookie('tilli_cookie_consent');
+            const preferences = getCookie('tilli_cookie_preferences');
+
+            let statusText = '';
+            if (consent) {
+                statusText += `Consent Status: ${consent}<br>`;
+            } else {
+                statusText += 'Consent Status: No consent given<br>';
+            }
+
+            if (preferences) {
+                try {
+                    const prefs = JSON.parse(decodeURIComponent(preferences));
+                    statusText += `Preferences: ${JSON.stringify(prefs, null, 2)}`;
+                } catch (e) {
+                    statusText += `Preferences: ${preferences}`;
+                }
+            } else {
+                statusText += 'Preferences: None set';
+            }
+
+            document.getElementById('cookie-info').innerHTML = `<pre>${statusText}</pre>`;
+            updateStatus('Cookie status checked. See information below.', 'success');
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function updateStatus(message, type) {
+            const statusDiv = document.getElementById('status-display');
+            statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+
+        // Log when page loads
+        console.log('Cookie banner test page loaded');
+
+        // Check if cookie banner is available
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                if (window.tilliCookieBanner) {
+                    console.log('Cookie banner loaded successfully');
+                    updateStatus('Cookie banner loaded and ready for testing.', 'success');
+                } else {
+                    console.log('Cookie banner not detected');
+                    updateStatus('Cookie banner not detected. Check console for errors.', 'info');
+                }
+            }, 1000);
+        });
+    </script>
+
+    <!-- Enhanced Cookie Banner -->
+    <script src="enhanced-cookie-banner.js"></script>
+</body>
+</html>

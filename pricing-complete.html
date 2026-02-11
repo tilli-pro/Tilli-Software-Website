@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli Pricing Calculator - 26 Services, 1 Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .section-header:first-child {
+            margin-top: 0;
+        }
+
+        .column-headers {
+            display: grid;
+            grid-template-columns: 350px 1fr 100px 130px 220px 130px 130px;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: #f9fafb;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .column-headers div {
+            text-align: center;
+        }
+
+        .column-headers div:first-child {
+            text-align: left;
+        }
+
+        .service-row {
+            display: grid;
+            grid-template-columns: 350px 1fr 100px 130px 220px 130px 130px;
+            gap: 1rem;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            transition: all 0.2s;
+        }
+
+        .service-row:hover {
+            background: #f9fafb;
+            transform: translateX(4px);
+        }
+
+        .service-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .service-name {
+            font-weight: 600;
+            color: #111827;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-tokens {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-unique {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .badge-free {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .badge-own-tech {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .slider {
+            flex: 1;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .slider-value {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #374151;
+            min-width: 70px;
+            text-align: right;
+        }
+
+        .cost-box {
+            text-align: center;
+            padding: 0.625rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .tokens-box {
+            background: #f3f4f6;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .tilli-cost {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            color: #065f46;
+            border: 2px solid #10b981;
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .competitor-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .competitor-name {
+            font-size: 0.75rem;
+            color: #6b7280;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .competitor-cost {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #991b1b;
+            border: 2px solid #ef4444;
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .savings-box {
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .savings-positive .savings-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .savings-negative {
+            color: #dc2626;
+            font-size: 0.875rem;
+        }
+
+        .totals-dashboard {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-header h2 {
+            font-size: 2rem;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .totals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .total-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+
+        .total-card.tilli {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 3px solid #10b981;
+        }
+
+        .total-card.competitor {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 3px solid #ef4444;
+        }
+
+        .total-card.savings {
+            background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+            border: 3px solid #8b5cf6;
+        }
+
+        .total-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            color: #6b7280;
+        }
+
+        .total-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-card.tilli .total-amount {
+            color: #065f46;
+        }
+
+        .total-card.competitor .total-amount {
+            color: #991b1b;
+        }
+
+        .total-card.savings .total-amount {
+            color: #6d28d9;
+        }
+
+        .total-meta {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .savings-breakdown {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .savings-breakdown h3 {
+            font-size: 1.25rem;
+            color: #111827;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .savings-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .savings-item {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #e5e7eb;
+        }
+
+        .savings-item-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-bottom: 0.25rem;
+        }
+
+        .savings-item-amount {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .cta-section {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.25rem 4rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .free-tier-note {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .free-tier-note strong {
+            color: #92400e;
+            font-size: 1.125rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>💎 Tilli Pricing Calculator</h1>
+            <p class="subtitle">26 Services. 1 Platform. 1 Bill.</p>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-number" id="service-count">26</div>
+                    <div class="stat-label">Total Services</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="unique-count">8</div>
+                    <div class="stat-label">Unique Services</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="vendor-comparison">17+</div>
+                    <div class="stat-label">Vendors Replaced</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Free Tier Note -->
+        <div class="free-tier-note">
+            <strong>🎁 FREE TIER:</strong> First 10,000 tokens every month are FREE! No credit card required.
+        </div>
+
+        <!-- Totals Dashboard -->
+        <div class="totals-dashboard">
+            <div class="dashboard-header">
+                <h2>💰 Your Monthly Savings</h2>
+                <p style="color: #6b7280;">Adjust the sliders below to see real-time savings</p>
+            </div>
+
+            <div class="totals-grid">
+                <div class="total-card tilli">
+                    <div class="total-label">Tilli Total</div>
+                    <div class="total-amount" id="tilli-grand-total">$0.00</div>
+                    <div class="total-meta">One platform • One bill • One integration</div>
+                </div>
+
+                <div class="total-card competitor">
+                    <div class="total-label">Competitor Stack</div>
+                    <div class="total-amount" id="competitor-grand-total">$0.00</div>
+                    <div class="total-meta">17+ vendors • Multiple bills • Complex integration</div>
+                </div>
+
+                <div class="total-card savings">
+                    <div class="total-label">Monthly Savings</div>
+                    <div class="total-amount" id="total-monthly-savings">$0.00</div>
+                    <div class="total-meta" id="savings-percentage">0% cheaper</div>
+                </div>
+            </div>
+
+            <div class="savings-breakdown">
+                <h3>Savings by Category</h3>
+                <div class="savings-items">
+                    <div class="savings-item">
+                        <div class="savings-item-label">Communications</div>
+                        <div class="savings-item-amount" id="savings-communications">$0</div>
+                    </div>
+                    <div class="savings-item">
+                        <div class="savings-item-label">Campaigns</div>
+                        <div class="savings-item-amount" id="savings-campaigns">$0</div>
+                    </div>
+                    <div class="savings-item">
+                        <div class="savings-item-label">Documents</div>
+                        <div class="savings-item-amount" id="savings-documents">$0</div>
+                    </div>
+                    <div class="savings-item">
+                        <div class="savings-item-label">Payments</div>
+                        <div class="savings-item-amount" id="savings-payments">$0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Table -->
+        <div class="comparison-table">
+            <div class="column-headers">
+                <div>Service</div>
+                <div>Monthly Volume</div>
+                <div>Tokens</div>
+                <div>Tilli Cost</div>
+                <div>Best Competitor</div>
+                <div>Their Cost</div>
+                <div>You Save</div>
+            </div>
+
+            <!-- COMMUNICATIONS CHANNELS -->
+            <div class="section-header">
+                <i class="fas fa-paper-plane"></i> Communications Channels (6 Services)
+            </div>
+
+            <!-- Email -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">Email</div>
+                    <div class="service-tokens">1 token each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="email-slider" min="0" max="500000" step="5000" value="0">
+                    <div class="slider-value" id="email-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="email-tokens">0</div>
+                <div class="cost-box tilli-cost" id="email-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">SendGrid</div>
+                    <div class="cost-box competitor-cost" id="email-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="email-savings">-</div>
+            </div>
+
+            <!-- SMS -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">SMS</div>
+                    <div class="service-tokens">3 tokens each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="sms-slider" min="0" max="100000" step="1000" value="0">
+                    <div class="slider-value" id="sms-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="sms-tokens">0</div>
+                <div class="cost-box tilli-cost" id="sms-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Twilio</div>
+                    <div class="cost-box competitor-cost" id="sms-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="sms-savings">-</div>
+            </div>
+
+            <!-- IVR -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">IVR Minutes</div>
+                    <div class="service-tokens">11 tokens per minute</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="ivr-slider" min="0" max="10000" step="100" value="0">
+                    <div class="slider-value" id="ivr-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="ivr-tokens">0</div>
+                <div class="cost-box tilli-cost" id="ivr-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Five9</div>
+                    <div class="cost-box competitor-cost" id="ivr-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="ivr-savings">-</div>
+            </div>
+
+            <!-- WhatsApp Marketing -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">WhatsApp Marketing</div>
+                    <div class="service-tokens">6 tokens each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="whatsapp-marketing-slider" min="0" max="50000" step="500" value="0">
+                    <div class="slider-value" id="whatsapp-marketing-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="whatsapp-marketing-tokens">0</div>
+                <div class="cost-box tilli-cost" id="whatsapp-marketing-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Twilio WhatsApp</div>
+                    <div class="cost-box competitor-cost" id="whatsapp-marketing-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="whatsapp-marketing-savings">-</div>
+            </div>
+
+            <!-- WhatsApp Utility -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">WhatsApp Utility</div>
+                    <div class="service-tokens">4 tokens each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="whatsapp-utility-slider" min="0" max="50000" step="500" value="0">
+                    <div class="slider-value" id="whatsapp-utility-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="whatsapp-utility-tokens">0</div>
+                <div class="cost-box tilli-cost" id="whatsapp-utility-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Twilio WhatsApp</div>
+                    <div class="cost-box competitor-cost" id="whatsapp-utility-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="whatsapp-utility-savings">-</div>
+            </div>
+
+            <!-- Push Notifications -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">Push Notifications</div>
+                    <div class="service-tokens">1 token each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="push-slider" min="0" max="1000000" step="10000" value="0">
+                    <div class="slider-value" id="push-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="push-tokens">0</div>
+                <div class="cost-box tilli-cost" id="push-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">OneSignal</div>
+                    <div class="cost-box competitor-cost" id="push-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="push-savings">-</div>
+            </div>
+
+            <!-- CAMPAIGNS -->
+            <div class="section-header">
+                <i class="fas fa-bullhorn"></i> Campaigns (5 Services)
+            </div>
+
+            <!-- Surveys -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">Surveys / Enrollments</div>
+                    <div class="service-tokens">1 token per response</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="survey-slider" min="0" max="50000" step="500" value="0">
+                    <div class="slider-value" id="survey-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="survey-tokens">0</div>
+                <div class="cost-box tilli-cost" id="survey-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Qualtrics</div>
+                    <div class="cost-box competitor-cost" id="survey-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="survey-savings">-</div>
+            </div>
+
+            <!-- Payment Requests -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">Payment Requests / Collection</div>
+                    <div class="service-tokens">1 token each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="payment-request-slider" min="0" max="50000" step="500" value="0">
+                    <div class="slider-value" id="payment-request-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="payment-request-tokens">0</div>
+                <div class="cost-box tilli-cost" id="payment-request-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">SendGrid + Manual</div>
+                    <div class="cost-box competitor-cost" id="payment-request-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="payment-request-savings">-</div>
+            </div>
+
+            <!-- Appointment Reminders -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">Appointment Reminders</div>
+                    <div class="service-tokens">1 token each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="appointment-slider" min="0" max="50000" step="500" value="0">
+                    <div class="slider-value" id="appointment-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="appointment-tokens">0</div>
+                <div class="cost-box tilli-cost" id="appointment-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Calendly + Twilio</div>
+                    <div class="cost-box competitor-cost" id="appointment-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="appointment-savings">-</div>
+            </div>
+
+            <!-- Service Completion -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">Service Completion</div>
+                    <div class="service-tokens">1 token each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="service-completion-slider" min="0" max="50000" step="500" value="0">
+                    <div class="slider-value" id="service-completion-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="service-completion-tokens">0</div>
+                <div class="cost-box tilli-cost" id="service-completion-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">SendGrid</div>
+                    <div class="cost-box competitor-cost" id="service-completion-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="service-completion-savings">-</div>
+            </div>
+
+            <!-- Loyalty Rewards with QR -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">
+                        Loyalty Rewards with QR Codes
+                        <span class="badge badge-unique">⭐ UNIQUE</span>
+                    </div>
+                    <div class="service-tokens">1 token each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="loyalty-slider" min="0" max="50000" step="500" value="0">
+                    <div class="slider-value" id="loyalty-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="loyalty-tokens">0</div>
+                <div class="cost-box tilli-cost" id="loyalty-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Yotpo</div>
+                    <div class="cost-box competitor-cost" id="loyalty-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="loyalty-savings">-</div>
+            </div>
+
+            <!-- DIGITAL DOCUMENTS -->
+            <div class="section-header">
+                <i class="fas fa-file-signature"></i> Digital Documents (4 Services)
+            </div>
+
+            <!-- PDF Generation -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">Print Composition (PDF)</div>
+                    <div class="service-tokens">1 token each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="pdf-slider" min="0" max="100000" step="1000" value="0">
+                    <div class="slider-value" id="pdf-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="pdf-tokens">0</div>
+                <div class="cost-box tilli-cost" id="pdf-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">DocRaptor</div>
+                    <div class="cost-box competitor-cost" id="pdf-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="pdf-savings">-</div>
+            </div>
+
+            <!-- Digital Signatures -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">
+                        Digital Signatures
+                        <span class="badge badge-own-tech">💎 Own Tech</span>
+                    </div>
+                    <div class="service-tokens">7 tokens each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="signature-slider" min="0" max="5000" step="50" value="0">
+                    <div class="slider-value" id="signature-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="signature-tokens">0</div>
+                <div class="cost-box tilli-cost" id="signature-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">DocuSign</div>
+                    <div class="cost-box competitor-cost" id="signature-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="signature-savings">-</div>
+            </div>
+
+            <!-- Archived Documents -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">Archived Documents</div>
+                    <div class="service-tokens">4 tokens each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="archive-slider" min="0" max="50000" step="500" value="0">
+                    <div class="slider-value" id="archive-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="archive-tokens">0</div>
+                <div class="cost-box tilli-cost" id="archive-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">DocuWare</div>
+                    <div class="cost-box competitor-cost" id="archive-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="archive-savings">-</div>
+            </div>
+
+            <!-- QR Codes -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">QR Codes</div>
+                    <div class="service-tokens">1 token each</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="qr-slider" min="0" max="100000" step="1000" value="0">
+                    <div class="slider-value" id="qr-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="qr-tokens">0</div>
+                <div class="cost-box tilli-cost" id="qr-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">QR Code API</div>
+                    <div class="cost-box competitor-cost" id="qr-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="qr-savings">-</div>
+            </div>
+
+            <!-- PAY IN -->
+            <div class="section-header">
+                <i class="fas fa-arrow-down"></i> Pay In (3 Services)
+            </div>
+
+            <!-- ACH Transactions -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">
+                        ACH Transactions
+                        <span class="badge badge-unique">75% Cheaper!</span>
+                    </div>
+                    <div class="service-tokens">67 tokens + $0.20 fee</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="ach-slider" min="0" max="10000" step="100" value="0">
+                    <div class="slider-value" id="ach-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="ach-tokens">0</div>
+                <div class="cost-box tilli-cost" id="ach-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Stripe</div>
+                    <div class="cost-box competitor-cost" id="ach-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="ach-savings">-</div>
+            </div>
+
+            <!-- Card Transactions -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">
+                        Card Transactions
+                        <span class="badge badge-unique">7% Cheaper!</span>
+                    </div>
+                    <div class="service-tokens">67 tokens + 2.7% + $0.20</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="card-slider" min="0" max="10000" step="100" value="0">
+                    <div class="slider-value" id="card-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="card-tokens">0</div>
+                <div class="cost-box tilli-cost" id="card-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Stripe</div>
+                    <div class="cost-box competitor-cost" id="card-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="card-savings">-</div>
+            </div>
+
+            <!-- Returns -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">
+                        Returns / Refunds
+                        <span class="badge badge-unique">⭐ UNIQUE</span>
+                    </div>
+                    <div class="service-tokens">3334 tokens</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="returns-slider" min="0" max="1000" step="10" value="0">
+                    <div class="slider-value" id="returns-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="returns-tokens">0</div>
+                <div class="cost-box tilli-cost" id="returns-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Stripe (Manual)</div>
+                    <div class="cost-box competitor-cost" id="returns-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="returns-savings">-</div>
+            </div>
+
+            <!-- PAY OUTS -->
+            <div class="section-header">
+                <i class="fas fa-arrow-up"></i> Pay Outs (2 Services)
+            </div>
+
+            <!-- ACH Payouts -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">
+                        ACH Payouts
+                        <span class="badge badge-unique">⭐ UNIQUE</span>
+                    </div>
+                    <div class="service-tokens">67 tokens</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="payout-ach-slider" min="0" max="10000" step="100" value="0">
+                    <div class="slider-value" id="payout-ach-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="payout-ach-tokens">0</div>
+                <div class="cost-box tilli-cost" id="payout-ach-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Stripe Connect</div>
+                    <div class="cost-box competitor-cost" id="payout-ach-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="payout-ach-savings">-</div>
+            </div>
+
+            <!-- Virtual Cards -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">
+                        Virtual Cards Issuance
+                        <span class="badge badge-unique">⭐ UNIQUE</span>
+                    </div>
+                    <div class="service-tokens">134 tokens per card</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="virtual-card-slider" min="0" max="5000" step="50" value="0">
+                    <div class="slider-value" id="virtual-card-value">0</div>
+                </div>
+                <div class="cost-box tokens-box" id="virtual-card-tokens">0</div>
+                <div class="cost-box tilli-cost" id="virtual-card-tilli">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Marqeta</div>
+                    <div class="cost-box competitor-cost" id="virtual-card-competitor">$0.00</div>
+                </div>
+                <div class="savings-box" id="virtual-card-savings">-</div>
+            </div>
+
+            <!-- OTHER (FREE) -->
+            <div class="section-header">
+                <i class="fas fa-gift"></i> Other (2 FREE Services)
+            </div>
+
+            <!-- Preference Management -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">
+                        Free Preference Management
+                        <span class="badge badge-free">🎁 FREE</span>
+                    </div>
+                    <div class="service-tokens">0 tokens - Always FREE!</div>
+                </div>
+                <div class="slider-container">
+                    <div style="flex: 1; text-align: center; color: #10b981; font-weight: 600;">
+                        ✓ Included FREE
+                    </div>
+                </div>
+                <div class="cost-box tokens-box">0</div>
+                <div class="cost-box tilli-cost">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">OneTrust</div>
+                    <div class="cost-box competitor-cost">$1,000+</div>
+                </div>
+                <div class="savings-box savings-positive">
+                    <span class="savings-badge">$1,000+</span>
+                </div>
+            </div>
+
+            <!-- Customer Contacts -->
+            <div class="service-row">
+                <div class="service-info">
+                    <div class="service-name">
+                        Unlimited Customer Contacts
+                        <span class="badge badge-free">🎁 FREE</span>
+                    </div>
+                    <div class="service-tokens">0 tokens - Unlimited!</div>
+                </div>
+                <div class="slider-container">
+                    <div style="flex: 1; text-align: center; color: #10b981; font-weight: 600;">
+                        ✓ Unlimited FREE
+                    </div>
+                </div>
+                <div class="cost-box tokens-box">∞</div>
+                <div class="cost-box tilli-cost">$0.00</div>
+                <div class="competitor-info">
+                    <div class="competitor-name">Mailchimp</div>
+                    <div class="cost-box competitor-cost">$20-200</div>
+                </div>
+                <div class="savings-box savings-positive">
+                    <span class="savings-badge">$20-200</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Save Money?</h2>
+            <p>Start with 10,000 FREE tokens every month. No credit card required.</p>
+            <button class="cta-button" onclick="window.location.href='signup.html'">
+                Start Free Trial →
+            </button>
+            <p style="margin-top: 1.5rem; font-size: 0.875rem; color: #9ca3af;">
+                Join thousands of businesses saving 50-70% with Tilli
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Service Configuration
+        const SERVICES = {
+            // Communications
+            'email': { tokens: 1, competitor: 0.00095 },
+            'sms': { tokens: 3, competitor: 0.0079 },
+            'ivr': { tokens: 11, competitor: 0.125 },
+            'whatsapp-marketing': { tokens: 6, competitor: 0.0157 },
+            'whatsapp-utility': { tokens: 4, competitor: 0.0064 },
+            'push': { tokens: 1, competitor: 0.0010 },
+            // Campaigns
+            'survey': { tokens: 1, competitor: 0.05 },
+            'payment-request': { tokens: 1, competitor: 0.00095 },
+            'appointment': { tokens: 1, competitor: 0.0089 },
+            'service-completion': { tokens: 1, competitor: 0.00095 },
+            'loyalty': { tokens: 1, competitor: 0.10, baseCompetitor: 199 },
+            // Documents
+            'pdf': { tokens: 1, competitor: 0.015 },
+            'signature': { tokens: 7, competitor: 4.50 },
+            'archive': { tokens: 4, competitor: 0.05 },
+            'qr': { tokens: 1, competitor: 0.001 },
+            // Pay In
+            'ach': { tokens: 67, fee: 0.20, competitor: 0.80 },
+            'card': { tokens: 67, fee: 0.20, percent: 0.027, avgAmount: 100, competitor: 0.30, competitorPercent: 0.029 },
+            'returns': { tokens: 3334, competitor: 0 },
+            // Pay Outs
+            'payout-ach': { tokens: 67, competitor: 0.25 },
+            'virtual-card': { tokens: 134, competitor: 0.50 }
+        };
+
+        // Pricing Tiers
+        const TIERS = [
+            { min: 0, max: 10000, rate: 0 },
+            { min: 10001, max: 50000, rate: 0.00586 },
+            { min: 50001, max: 100000, rate: 0.00528 },
+            { min: 100001, max: 500000, rate: 0.00469 },
+            { min: 500001, max: 1000000, rate: 0.00410 },
+            { min: 1000001, max: Infinity, rate: 0.00352 }
+        ];
+
+        // Calculate token cost
+        function calculateTokenCost(tokens) {
+            if (tokens === 0) return 0;
+            let cost = 0;
+            let remaining = tokens;
+            for (const tier of TIERS) {
+                if (remaining <= 0) break;
+                const tierTokens = Math.min(remaining, tier.max - tier.min + 1);
+                cost += tierTokens * tier.rate;
+                remaining -= tierTokens;
+            }
+            return cost;
+        }
+
+        // Category savings tracking
+        let categorySavings = {
+            communications: 0,
+            campaigns: 0,
+            documents: 0,
+            payments: 0
+        };
+
+        // Update all calculations
+        function updateCalculations() {
+            let totalTilliCost = 0;
+            let totalCompetitorCost = 0;
+            let allTokens = 0;
+
+            // Reset category savings
+            categorySavings = { communications: 0, campaigns: 0, documents: 0, payments: 0 };
+
+            // Calculate each service
+            Object.keys(SERVICES).forEach(serviceId => {
+                const service = SERVICES[serviceId];
+                const slider = document.getElementById(`${serviceId}-slider`);
+                if (!slider) return;
+
+                const volume = parseInt(slider.value);
+                const tokens = volume * service.tokens;
+                allTokens += tokens;
+
+                // Get token rate for this volume
+                const tokenCost = calculateTokenCost(allTokens);
+                const tokenRate = allTokens > 0 ? tokenCost / allTokens : 0;
+
+                // Calculate Tilli cost
+                let tilliCost = tokens * tokenRate;
+                if (service.fee) tilliCost += volume * service.fee;
+                if (service.percent) tilliCost += volume * service.avgAmount * service.percent;
+
+                // Calculate competitor cost
+                let competitorCost = volume * service.competitor;
+                if (service.baseCompetitor) competitorCost += service.baseCompetitor;
+                if (service.competitorPercent) competitorCost += volume * service.avgAmount * service.competitorPercent;
+
+                // Update UI
+                document.getElementById(`${serviceId}-tokens`).textContent = Math.round(tokens);
+                document.getElementById(`${serviceId}-tilli`).textContent = `$${tilliCost.toFixed(2)}`;
+                document.getElementById(`${serviceId}-competitor`).textContent = `$${competitorCost.toFixed(2)}`;
+
+                // Calculate savings
+                const savings = competitorCost - tilliCost;
+                const savingsPercent = competitorCost > 0 ? (savings / competitorCost * 100) : 0;
+
+                const savingsEl = document.getElementById(`${serviceId}-savings`);
+                if (volume === 0) {
+                    savingsEl.innerHTML = '-';
+                    savingsEl.className = 'savings-box';
+                } else if (savings > 0) {
+                    savingsEl.innerHTML = `<span class="savings-badge">-${savingsPercent.toFixed(0)}%</span>`;
+                    savingsEl.className = 'savings-box savings-positive';
+                } else {
+                    savingsEl.textContent = `+${Math.abs(savingsPercent).toFixed(0)}%`;
+                    savingsEl.className = 'savings-box savings-negative';
+                }
+
+                // Add to totals
+                totalTilliCost += tilliCost;
+                totalCompetitorCost += competitorCost;
+
+                // Track category savings
+                if (['email', 'sms', 'ivr', 'whatsapp-marketing', 'whatsapp-utility', 'push'].includes(serviceId)) {
+                    categorySavings.communications += savings;
+                } else if (['survey', 'payment-request', 'appointment', 'service-completion', 'loyalty'].includes(serviceId)) {
+                    categorySavings.campaigns += savings;
+                } else if (['pdf', 'signature', 'archive', 'qr'].includes(serviceId)) {
+                    categorySavings.documents += savings;
+                } else if (['ach', 'card', 'returns', 'payout-ach', 'virtual-card'].includes(serviceId)) {
+                    categorySavings.payments += savings;
+                }
+            });
+
+            // Update grand totals
+            const totalSavings = totalCompetitorCost - totalTilliCost;
+            const savingsPercent = totalCompetitorCost > 0 ? (totalSavings / totalCompetitorCost * 100) : 0;
+
+            document.getElementById('tilli-grand-total').textContent = `$${totalTilliCost.toFixed(2)}`;
+            document.getElementById('competitor-grand-total').textContent = `$${totalCompetitorCost.toFixed(2)}`;
+            document.getElementById('total-monthly-savings').textContent = `$${totalSavings.toFixed(2)}`;
+            document.getElementById('savings-percentage').textContent =
+                totalSavings > 0 ? `${savingsPercent.toFixed(0)}% cheaper • $${(totalSavings * 12).toLocaleString()}/year saved` : '0% savings';
+
+            // Update category savings
+            document.getElementById('savings-communications').textContent = `$${categorySavings.communications.toFixed(0)}`;
+            document.getElementById('savings-campaigns').textContent = `$${categorySavings.campaigns.toFixed(0)}`;
+            document.getElementById('savings-documents').textContent = `$${categorySavings.documents.toFixed(0)}`;
+            document.getElementById('savings-payments').textContent = `$${categorySavings.payments.toFixed(0)}`;
+        }
+
+        // Initialize sliders
+        function initializeSliders() {
+            const sliders = document.querySelectorAll('.slider');
+            sliders.forEach(slider => {
+                const valueEl = document.getElementById(slider.id.replace('-slider', '-value'));
+                slider.addEventListener('input', function() {
+                    valueEl.textContent = parseInt(this.value).toLocaleString();
+                    updateCalculations();
+                });
+                valueEl.textContent = '0';
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSliders();
+            updateCalculations();
+        });
+    </script>
+</body>
+</html>

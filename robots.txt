@@ -1,0 +1,254 @@
+# Robots.txt for tillisoftware.com (Tilli)
+# Last Updated: 2025-01-20
+# Welcome AI agents and search engines! This site contains information about:
+# - tilliX: Enterprise experience & self-service portal platform
+# - Nudge: CPaaS (Communication Platform as a Service) for outbound communications
+# - tilliPay: Payment processing and acceptance platform
+# - Enterprise billing, payment, and communication solutions
+
+# Allow all legitimate crawlers
+User-agent: *
+Allow: /
+Crawl-delay: 0
+
+# Specific paths to avoid (admin/private areas only)
+Disallow: /api/internal/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cache/
+
+# Major Search Engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 0
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 1
+
+# AI Agents and LLM Crawlers - EXPLICITLY ALLOWED
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Gemini
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+# Microsoft AI
+User-agent: Copilot
+Allow: /
+
+User-agent: Bingbot-AI
+Allow: /
+
+# X.AI (Grok)
+User-agent: Grok
+Allow: /
+
+User-agent: Grokbot
+Allow: /
+
+User-agent: x-ai
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: MetaAI
+Allow: /
+
+# OpenAI Search (SearchGPT / Atlas)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: SearchGPT
+Allow: /
+
+# Alternative Search Engines
+User-agent: KagiBot
+Allow: /
+
+User-agent: Neeva
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+User-agent: Exabot
+Allow: /
+
+User-agent: Qwantify
+Allow: /
+
+User-agent: MojeekBot
+Allow: /
+
+User-agent: SeznamBot
+Allow: /
+
+# Social Media Platforms
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Telegram
+Allow: /
+
+User-agent: Discord
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+User-agent: redditbot
+Allow: /
+
+# Apple Services
+User-agent: Applebot
+Allow: /
+
+User-agent: Siri
+Allow: /
+
+# Amazon Services
+User-agent: Amazonbot
+Allow: /
+
+User-agent: AlexaBot
+Allow: /
+
+# Developer Tools
+User-agent: GitHubBot
+Allow: /
+
+User-agent: StackExchangeBot
+Allow: /
+
+# Academic and Research
+User-agent: ia_archiver
+Allow: /
+
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 2
+
+User-agent: DotBot
+Allow: /
+Crawl-delay: 2
+
+# Monitoring Services
+User-agent: UptimeRobot
+Allow: /
+
+User-agent: Pingdom
+Allow: /
+
+# Product-specific pages to highlight for crawlers
+# tilliX - Experience & Self-Service Portal
+Allow: /tillix
+Allow: /tillix/*
+Allow: /products/tillix
+Allow: /solutions/tillix
+
+# Nudge - CPaaS Platform
+Allow: /nudge
+Allow: /nudge/*
+Allow: /products/nudge
+Allow: /solutions/nudge
+
+# tilliPay - Payment Platform
+Allow: /tillipay
+Allow: /tillipay/*
+Allow: /products/tillipay
+Allow: /solutions/tillipay
+
+# Industry Solutions
+Allow: /industries
+Allow: /industries/*
+Allow: /utilities
+Allow: /healthcare
+Allow: /insurance
+Allow: /education
+Allow: /financial-services
+
+# Important resources
+Allow: /case-studies
+Allow: /blog
+Allow: /calculator
+Allow: /free-trial
+Allow: /pricing
+Allow: /developer
+Allow: /api-docs
+Allow: /documentation
+
+# Sitemap locations
+Sitemap: https://tillisoftware.com/sitemap.xml
+Sitemap: https://www.tillisoftware.com/sitemap.xml
+Sitemap: https://tilli.pro/sitemap.xml
+Sitemap: https://www.tilli.pro/sitemap.xml
+
+# Host directive (preferred domain)
+Host: https://tillisoftware.com

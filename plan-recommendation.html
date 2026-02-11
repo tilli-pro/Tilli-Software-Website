@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Recommended Plan - Tilli</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #FFFFFF;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .page-container {
+            background: #FFFFFF;
+            padding: 6rem 1rem 3rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .step.completed .step-number {
+            background: #10b981;
+            color: white;
+        }
+
+        .step.active .step-number {
+            background: linear-gradient(135deg, #4099FF 0%, #8B5CF6 100%);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .step.active .step-label {
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .step-connector {
+            height: 2px;
+            background: #e5e7eb;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            right: -50%;
+            z-index: -1;
+        }
+
+        .step:last-child .step-connector {
+            display: none;
+        }
+
+        .step.completed .step-connector {
+            background: #10b981;
+        }
+
+        /* Main Content */
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #111827;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.125rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Configuration Summary */
+        .summary-section {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .summary-section h2 {
+            font-size: 1.25rem;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .check-icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 20px;
+            height: 20px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        .service-name {
+            flex: 1;
+            font-weight: 500;
+            color: #111827;
+        }
+
+        .service-tokens {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .total-tokens {
+            background: #4099FF;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .total-tokens-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-tokens-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+
+        /* Recommended Plan */
+        .recommended-plan {
+            background: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%);
+            border: 3px solid #4099FF;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .recommended-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #4099FF 0%, #8B5CF6 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 12px rgba(64, 153, 255, 0.3);
+        }
+
+        .plan-name {
+            font-size: 2rem;
+            color: #111827;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            color: #111827;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-period {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .feature:last-child {
+            border-bottom: none;
+        }
+
+        .savings-highlight {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .savings-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .savings-amount {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .savings-detail {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Alternative Plans */
+        .alternative-plans {
+            margin-bottom: 3rem;
+        }
+
+        .alternative-plans h3 {
+            font-size: 1.25rem;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .plan-card {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .plan-card:hover {
+            border-color: #4099FF;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(64, 153, 255, 0.2);
+        }
+
+        .plan-card-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-card-price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #4099FF;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-card-tokens {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .select-button {
+            background: #4099FF;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .select-button:hover {
+            background: #3182CE;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(64, 153, 255, 0.3);
+        }
+
+        .cta-button-large {
+            background: #4099FF;
+            color: white;
+            border: none;
+            padding: 1.25rem 4rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(64, 153, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .cta-button-large:hover {
+            background: #3182CE;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(64, 153, 255, 0.3);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-link a {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .back-link a:hover {
+            color: #111827;
+        }
+
+        @media (max-width: 768px) {
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <!-- Top Banner -->
+        <div style="width: 100%; background: linear-gradient(90deg, #4169E1 0%, #00BFFF 100%); padding: 18px 20px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 1001; height: 62px; box-sizing: border-box;">
+            <span style="font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; color: #FFFFFF;">✨ See how much you could save with Tilli — calculate your ROI in 2 minutes.</span>
+            <a href="calculator.html" class="banner-cta-btn">
+                Calculate now <span class="arrow">→</span>
+            </a>
+        </div>
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="about.html">Company</a></li>
+                    <li><a href="valuebasedpricing.html">Pricing</a></li>
+                    <li><a href="press.html">Press</a></li>
+                </ul>
+                <a class="cta-button" href="signup.html">Sign Up</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-container">
+        <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <div class="steps">
+                <div class="step completed">
+                    <div class="step-number">✓</div>
+                    <div class="step-label">Configure</div>
+                    <div class="step-connector"></div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Review & Plan</div>
+                    <div class="step-connector"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Sign Up</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1>Your Personalized Plan</h1>
+            <p class="subtitle">Based on your selections, we recommend the perfect plan for you</p>
+
+            <!-- Configuration Summary -->
+            <div class="summary-section">
+                <h2>Your Configuration Summary</h2>
+                <div class="service-list" id="service-list"></div>
+
+                <div class="total-tokens">
+                    <div class="total-tokens-label">Total Monthly Tokens Needed</div>
+                    <div class="total-tokens-value" id="total-tokens">0</div>
+                </div>
+            </div>
+
+            <!-- Recommended Plan -->
+            <div class="recommended-plan" id="recommended-plan">
+                <div class="recommended-badge">✨ RECOMMENDED FOR YOU</div>
+
+                <div class="plan-name" id="plan-name">Professional Plan</div>
+                <div class="plan-price" id="plan-price">$199<span style="font-size: 1.5rem;">/mo</span></div>
+                <div class="plan-period">After free trial • Cancel anytime</div>
+
+                <div class="plan-features">
+                    <div class="feature">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span id="feature-first-month"><strong>First Month:</strong> 10,000 FREE tokens</span>
+                    </div>
+                    <div class="feature">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span id="feature-included"><strong>Then:</strong> 50,000 tokens/month included</span>
+                    </div>
+                    <div class="feature">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span id="feature-coverage">Covers your <strong id="coverage-tokens">31,700</strong> tokens/month usage</span>
+                    </div>
+                    <div class="feature">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span id="feature-buffer"><strong id="buffer-tokens">18,300</strong> tokens buffer for growth</span>
+                    </div>
+                    <div class="feature">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>All services included (no hidden TCO costs!)</span>
+                    </div>
+                </div>
+
+                <div class="savings-highlight">
+                    <div class="savings-label">Your Monthly Savings vs Competitors</div>
+                    <div class="savings-amount" id="savings-amount">$3,001</div>
+                    <div class="savings-detail">That's <strong id="annual-savings">$36,012</strong> saved per year</div>
+                </div>
+
+                <button class="cta-button-large" onclick="proceedToSignup()">
+                    Start Free Trial →
+                </button>
+
+                <div class="back-link">
+                    <a href="valuebasedpricing.html">← Back to configuration</a>
+                </div>
+            </div>
+
+            <!-- Alternative Plans -->
+            <div class="alternative-plans">
+                <h3>Not sure? Compare other plans:</h3>
+                <div class="plans-grid" id="plans-grid"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+        <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Products</h4>
+                        <ul>
+                            <li><a href="nudge.html">Nudge</a></li>
+                            <li><a href="tillix.html">tilliX</a></li>
+                            <li><a href="tillipay.html">Monay</a></li>
+                            <li><a href="index.html#product-comparison">Compare Products</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="industries.html">Industries</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="calculator.html">FAQS</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Developers</h4>
+                        <ul>
+                            <li><a href="developer.html">Documentation</a></li>
+                            <li><a href="developer.html">API Reference</a></li>
+                            <li><a href="developer.html">SDKs</a></li>
+                            <li><a href="calculator.html">Help Center</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="valuebasedpricing.html">Pricing</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Get Started Today</h4>
+                        <ul>
+                            <li><a href="free-trial.html" class="gradient-link">Start a Free Trial <span class="arrow">→</span></a></li>
+                            <li><a href="contact.html" class="gradient-link">Request a Demo <span class="arrow">→</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo">
+                        </div>
+                        <p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
+                        <p class="footer-copyright">&copy; 2026 — Copyright All Rights reserved</p>
+                    </div>
+
+                    <div class="footer-right">
+                        <div class="footer-status">
+                            <span class="status-indicator"></span>
+                            <span>Platform status</span>
+                        </div>
+                        <div class="footer-social">
+                            <a href="https://x.com/tillisoftware" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/tillisoftware" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.youtube.com/@tillisoftware" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                        <div class="footer-legal-links">
+                            <a href="calculator.html">Terms</a>
+                            <a href="privacy-policy/">Privacy</a>
+                            <a href="anti-slavery-policy.html">Anti-Slavery Policy</a>
+                            <a href="calculator.html">Cookies</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Vercel Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+        // Pricing tiers
+        const PLANS = {
+            trial: { name: 'Trial', price: 0, tokens: 10000, description: 'First month only' },
+            starter29: { name: 'Starter', price: 29, tokens: 5000, description: '~1,500 SMS or 5,000 emails' },
+            starter49: { name: 'Growth', price: 49, tokens: 10000, description: '~3,000 SMS or 10,000 emails' },
+            professional: { name: 'Professional', price: 199, tokens: 50000, description: '~15,000 SMS or 50,000 emails' },
+            enterprise: { name: 'Enterprise', price: 499, tokens: 150000, description: '~50,000 SMS or 150,000 emails' },
+            platinum: { name: 'Platinum', price: 1000, tokens: 300000, description: '~100,000 SMS or 300,000 emails' }
+        };
+
+        // Load configuration from sessionStorage
+        const config = JSON.parse(sessionStorage.getItem('tilliConfig') || '{}');
+
+        if (!config.services || config.services.length === 0) {
+            // Redirect back if no configuration found
+            window.location.href = 'pricing-tco-compact.html';
+        }
+
+        // Recommend plan based on token usage
+        function recommendPlan(totalTokens) {
+            if (totalTokens <= 5000) return 'starter29';
+            if (totalTokens <= 10000) return 'starter49';
+            if (totalTokens <= 50000) return 'professional';
+            if (totalTokens <= 150000) return 'enterprise';
+            return 'platinum';
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Display services
+            const serviceList = document.getElementById('service-list');
+            config.services.forEach(service => {
+                const item = document.createElement('div');
+                item.className = 'service-item';
+                item.innerHTML = `
+                    <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="service-name">${service.name}</span>
+                    <span class="service-tokens">${service.totalTokens.toLocaleString()} tokens</span>
+                `;
+                serviceList.appendChild(item);
+            });
+
+            // Display total tokens
+            document.getElementById('total-tokens').textContent = config.totalTokens.toLocaleString();
+
+            // Get recommended plan
+            const recommendedPlanKey = recommendPlan(config.totalTokens);
+            const recommendedPlan = PLANS[recommendedPlanKey];
+
+            // Update recommended plan details
+            document.getElementById('plan-name').textContent = recommendedPlan.name + ' Plan';
+            document.getElementById('plan-price').innerHTML = `$${recommendedPlan.price}<span style="font-size: 1.5rem;">/mo</span>`;
+            document.getElementById('feature-included').innerHTML = `<strong>Then:</strong> ${recommendedPlan.tokens.toLocaleString()} tokens/month included`;
+            document.getElementById('coverage-tokens').textContent = config.totalTokens.toLocaleString();
+
+            const buffer = recommendedPlan.tokens - config.totalTokens;
+            document.getElementById('buffer-tokens').textContent = buffer.toLocaleString();
+
+            // Update savings
+            document.getElementById('savings-amount').textContent = `$${Math.round(config.totalSavings).toLocaleString()}`;
+            document.getElementById('annual-savings').textContent = `$${Math.round(config.totalSavings * 12).toLocaleString()}`;
+
+            // Store recommended plan
+            config.recommendedPlan = recommendedPlanKey;
+            sessionStorage.setItem('tilliConfig', JSON.stringify(config));
+
+            // Display alternative plans
+            const plansGrid = document.getElementById('plans-grid');
+            Object.entries(PLANS).forEach(([key, plan]) => {
+                if (key === 'trial' || key === recommendedPlanKey) return;
+
+                const card = document.createElement('div');
+                card.className = 'plan-card';
+                card.innerHTML = `
+                    <div class="plan-card-name">${plan.name}</div>
+                    <div class="plan-card-price">$${plan.price}/mo</div>
+                    <div class="plan-card-tokens">${plan.tokens.toLocaleString()} tokens</div>
+                    <button class="select-button" onclick="selectPlan('${key}')">Select Plan</button>
+                `;
+                plansGrid.appendChild(card);
+            });
+        });
+
+        function selectPlan(planKey) {
+            config.recommendedPlan = planKey;
+            sessionStorage.setItem('tilliConfig', JSON.stringify(config));
+            proceedToSignup();
+        }
+
+        function proceedToSignup() {
+            window.location.href = 'signup.html';
+        }
+    </script>
+</body>
+</html>

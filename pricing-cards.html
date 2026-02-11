@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli Pricing - 26 Services, 1 Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.2);
+            padding: 1.5rem 2.5rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+
+        /* Totals Dashboard */
+        .totals-dashboard {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .dashboard-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-title h2 {
+            font-size: 2rem;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .totals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .total-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .total-card.tilli {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 3px solid #10b981;
+        }
+
+        .total-card.competitor {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 3px solid #ef4444;
+        }
+
+        .total-card.savings {
+            background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+            border: 3px solid #8b5cf6;
+        }
+
+        .total-label {
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            color: #6b7280;
+        }
+
+        .total-amount {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-card.tilli .total-amount {
+            color: #065f46;
+        }
+
+        .total-card.competitor .total-amount {
+            color: #991b1b;
+        }
+
+        .total-card.savings .total-amount {
+            color: #6d28d9;
+        }
+
+        .total-meta {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* Section Headers */
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+        }
+
+        .section-header:first-child {
+            margin-top: 0;
+        }
+
+        /* Service Cards Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Service Card */
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid #e5e7eb;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            flex: 1;
+        }
+
+        .service-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .service-tokens {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-unique {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .badge-free {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .badge-tech {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        .badge-savings {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            font-size: 0.75rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Slider Section */
+        .slider-section {
+            margin: 1rem 0;
+        }
+
+        .slider-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slider-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #e5e7eb 0%, #667eea 0%);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .comparison-box {
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .comparison-box.tilli {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 2px solid #10b981;
+        }
+
+        .comparison-box.competitor {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 2px solid #ef4444;
+        }
+
+        .comparison-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-box.tilli .comparison-label {
+            color: #065f46;
+        }
+
+        .comparison-box.competitor .comparison-label {
+            color: #991b1b;
+        }
+
+        .comparison-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .comparison-box.tilli .comparison-value {
+            color: #047857;
+        }
+
+        .comparison-box.competitor .comparison-value {
+            color: #dc2626;
+        }
+
+        .comparison-provider {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .comparison-tokens {
+            font-size: 0.75rem;
+            color: #065f46;
+            margin-top: 0.25rem;
+        }
+
+        /* Savings Banner */
+        .savings-banner {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .savings-amount {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .savings-percent {
+            font-size: 0.875rem;
+            opacity: 0.95;
+        }
+
+        /* Free Service Card */
+        .service-card.free {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 3px solid #10b981;
+        }
+
+        .free-badge {
+            background: white;
+            color: #065f46;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            display: inline-block;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-top: 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.25rem 4rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .no-volume {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>💎 Tilli Pricing Calculator</h1>
+            <p class="subtitle">26 Services. 1 Platform. 1 Bill.</p>
+            <div class="stats-row">
+                <div class="stat-box">
+                    <span class="stat-number">26</span>
+                    <span class="stat-label">Total Services</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Unique to Tilli</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">17+</span>
+                    <span class="stat-label">Vendors Replaced</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="total-savings-hero">$0</span>
+                    <span class="stat-label">Monthly Savings</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Totals Dashboard -->
+        <div class="totals-dashboard">
+            <div class="dashboard-title">
+                <h2>💰 Your Monthly Cost Comparison</h2>
+                <p style="color: #6b7280;">Adjust sliders below to calculate your savings</p>
+            </div>
+
+            <div class="totals-grid">
+                <div class="total-card tilli">
+                    <div class="total-label">Tilli Total</div>
+                    <div class="total-amount" id="grand-total-tilli">$0.00</div>
+                    <div class="total-meta">One platform • One bill</div>
+                </div>
+
+                <div class="total-card competitor">
+                    <div class="total-label">Competitor Stack</div>
+                    <div class="total-amount" id="grand-total-competitor">$0.00</div>
+                    <div class="total-meta">17+ vendors • Multiple bills</div>
+                </div>
+
+                <div class="total-card savings">
+                    <div class="total-label">You Save</div>
+                    <div class="total-amount" id="grand-total-savings">$0.00</div>
+                    <div class="total-meta" id="grand-savings-percent">0% cheaper</div>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 1.5rem; border-radius: 12px; text-align: center;">
+                <div style="color: #6b7280; margin-bottom: 0.5rem;">🎁 First 10,000 tokens every month are FREE!</div>
+                <div style="color: #10b981; font-weight: 600;">Annual Savings: <span id="annual-savings">$0</span></div>
+            </div>
+        </div>
+
+        <!-- COMMUNICATIONS CHANNELS -->
+        <div class="section-header">
+            <i class="fas fa-paper-plane"></i> Communications Channels (6 Services)
+        </div>
+
+        <div class="services-grid">
+            <!-- Email -->
+            <div class="service-card" id="card-email">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">Email Messages</div>
+                        <div class="service-tokens">1 token each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-email">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-email" min="0" max="500000" step="5000" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-email">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-email">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">SendGrid</div>
+                        <div class="comparison-value" id="cost-competitor-email">$0.00</div>
+                        <div class="comparison-provider">Pay-as-you-go</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-email" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-email">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-email">0% cheaper with Tilli</div>
+                </div>
+            </div>
+
+            <!-- SMS -->
+            <div class="service-card" id="card-sms">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">SMS Segments</div>
+                        <div class="service-tokens">3 tokens each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-sms">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-sms" min="0" max="100000" step="1000" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-sms">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-sms">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Twilio</div>
+                        <div class="comparison-value" id="cost-competitor-sms">$0.00</div>
+                        <div class="comparison-provider">$0.0079/segment</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-sms" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-sms">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-sms">0% cheaper with Tilli</div>
+                </div>
+            </div>
+
+            <!-- IVR -->
+            <div class="service-card" id="card-ivr">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">IVR Minutes</div>
+                        <div class="service-tokens">11 tokens per minute</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-ivr">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-ivr" min="0" max="10000" step="100" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-ivr">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-ivr">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Five9</div>
+                        <div class="comparison-value" id="cost-competitor-ivr">$0.00</div>
+                        <div class="comparison-provider">$125/agent/mo</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-ivr" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-ivr">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-ivr">0% cheaper with Tilli</div>
+                </div>
+            </div>
+
+            <!-- WhatsApp Marketing -->
+            <div class="service-card" id="card-whatsapp-marketing">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">WhatsApp Marketing</div>
+                        <div class="service-tokens">6 tokens each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-whatsapp-marketing">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-whatsapp-marketing" min="0" max="50000" step="500" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-whatsapp-marketing">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-whatsapp-marketing">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Twilio WhatsApp</div>
+                        <div class="comparison-value" id="cost-competitor-whatsapp-marketing">$0.00</div>
+                        <div class="comparison-provider">Marketing rate</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-whatsapp-marketing" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-whatsapp-marketing">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-whatsapp-marketing">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- WhatsApp Utility -->
+            <div class="service-card" id="card-whatsapp-utility">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">WhatsApp Utility</div>
+                        <div class="service-tokens">4 tokens each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-whatsapp-utility">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-whatsapp-utility" min="0" max="50000" step="500" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-whatsapp-utility">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-whatsapp-utility">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Twilio WhatsApp</div>
+                        <div class="comparison-value" id="cost-competitor-whatsapp-utility">$0.00</div>
+                        <div class="comparison-provider">Utility rate</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-whatsapp-utility" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-whatsapp-utility">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-whatsapp-utility">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- Push Notifications -->
+            <div class="service-card" id="card-push">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">Push Notifications</div>
+                        <div class="service-tokens">1 token each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-push">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-push" min="0" max="1000000" step="10000" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-push">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-push">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">OneSignal</div>
+                        <div class="comparison-value" id="cost-competitor-push">$0.00</div>
+                        <div class="comparison-provider">$0.0010/push</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-push" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-push">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-push">0% cheaper</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CAMPAIGNS -->
+        <div class="section-header">
+            <i class="fas fa-bullhorn"></i> Campaigns (5 Services)
+        </div>
+
+        <div class="services-grid">
+            <!-- Surveys -->
+            <div class="service-card" id="card-survey">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">Surveys / Enrollments</div>
+                        <div class="service-tokens">1 token per response</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-survey">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-survey" min="0" max="50000" step="500" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-survey">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-survey">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Qualtrics</div>
+                        <div class="comparison-value" id="cost-competitor-survey">$0.00</div>
+                        <div class="comparison-provider">$0.05/response</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-survey" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-survey">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-survey">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- Payment Requests -->
+            <div class="service-card" id="card-payment-request">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">Payment Requests</div>
+                        <div class="service-tokens">1 token each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-payment-request">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-payment-request" min="0" max="50000" step="500" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-payment-request">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-payment-request">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">SendGrid + Manual</div>
+                        <div class="comparison-value" id="cost-competitor-payment-request">$0.00</div>
+                        <div class="comparison-provider">Email only</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-payment-request" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-payment-request">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-payment-request">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- Appointment Reminders -->
+            <div class="service-card" id="card-appointment">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">Appointment Reminders</div>
+                        <div class="service-tokens">1 token each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-appointment">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-appointment" min="0" max="50000" step="500" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-appointment">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-appointment">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Calendly + Twilio</div>
+                        <div class="comparison-value" id="cost-competitor-appointment">$0.00</div>
+                        <div class="comparison-provider">$8/user + SMS</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-appointment" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-appointment">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-appointment">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- Service Completion -->
+            <div class="service-card" id="card-service-completion">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">Service Completion</div>
+                        <div class="service-tokens">1 token each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-service-completion">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-service-completion" min="0" max="50000" step="500" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-service-completion">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-service-completion">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">SendGrid</div>
+                        <div class="comparison-value" id="cost-competitor-service-completion">$0.00</div>
+                        <div class="comparison-provider">Transactional</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-service-completion" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-service-completion">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-service-completion">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- Loyalty Rewards with QR -->
+            <div class="service-card" id="card-loyalty">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">
+                            Loyalty Rewards with QR
+                            <span class="badge badge-unique">⭐ UNIQUE</span>
+                        </div>
+                        <div class="service-tokens">1 token each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-loyalty">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-loyalty" min="0" max="50000" step="500" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-loyalty">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-loyalty">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Yotpo</div>
+                        <div class="comparison-value" id="cost-competitor-loyalty">$199</div>
+                        <div class="comparison-provider">$199/mo base</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-loyalty" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-loyalty">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-loyalty">0% cheaper</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIGITAL DOCUMENTS -->
+        <div class="section-header">
+            <i class="fas fa-file-signature"></i> Digital Documents (4 Services)
+        </div>
+
+        <div class="services-grid">
+            <!-- PDF Generation -->
+            <div class="service-card" id="card-pdf">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">Print Composition (PDF)</div>
+                        <div class="service-tokens">1 token each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-pdf">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-pdf" min="0" max="100000" step="1000" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-pdf">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-pdf">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">DocRaptor</div>
+                        <div class="comparison-value" id="cost-competitor-pdf">$0.00</div>
+                        <div class="comparison-provider">$0.015/PDF</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-pdf" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-pdf">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-pdf">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- Digital Signatures -->
+            <div class="service-card" id="card-signature">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">
+                            Digital Signatures
+                            <span class="badge badge-tech">💎 Own Tech</span>
+                            <span class="badge badge-savings">91% Cheaper!</span>
+                        </div>
+                        <div class="service-tokens">7 tokens each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-signature">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-signature" min="0" max="5000" step="50" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-signature">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-signature">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">DocuSign</div>
+                        <div class="comparison-value" id="cost-competitor-signature">$0.00</div>
+                        <div class="comparison-provider">$4.50/signature</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-signature" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-signature">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-signature">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- Document Archive -->
+            <div class="service-card" id="card-archive">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">Archived Documents</div>
+                        <div class="service-tokens">4 tokens each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-archive">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-archive" min="0" max="50000" step="500" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-archive">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-archive">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">DocuWare</div>
+                        <div class="comparison-value" id="cost-competitor-archive">$0.00</div>
+                        <div class="comparison-provider">$0.05/document</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-archive" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-archive">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-archive">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- QR Codes -->
+            <div class="service-card" id="card-qr">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">QR Codes</div>
+                        <div class="service-tokens">1 token each</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-qr">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-qr" min="0" max="100000" step="1000" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-qr">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-qr">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">QR Code API</div>
+                        <div class="comparison-value" id="cost-competitor-qr">$0.00</div>
+                        <div class="comparison-provider">$0.001/code</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-qr" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-qr">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-qr">0% cheaper</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAY IN -->
+        <div class="section-header">
+            <i class="fas fa-arrow-down"></i> Pay In (3 Services)
+        </div>
+
+        <div class="services-grid">
+            <!-- ACH Transactions -->
+            <div class="service-card" id="card-ach">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">
+                            ACH Transactions
+                            <span class="badge badge-savings">75% Cheaper!</span>
+                        </div>
+                        <div class="service-tokens">67 tokens + $0.20 fee</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-ach">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-ach" min="0" max="10000" step="100" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-ach">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-ach">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Stripe</div>
+                        <div class="comparison-value" id="cost-competitor-ach">$0.00</div>
+                        <div class="comparison-provider">$0.80/transaction</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-ach" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-ach">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-ach">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- Card Transactions -->
+            <div class="service-card" id="card-card">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">
+                            Card Transactions
+                            <span class="badge badge-savings">7% Cheaper!</span>
+                        </div>
+                        <div class="service-tokens">67 tokens + 2.7% + $0.20</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-card">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-card" min="0" max="10000" step="100" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-card">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-card">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Stripe</div>
+                        <div class="comparison-value" id="cost-competitor-card">$0.00</div>
+                        <div class="comparison-provider">2.9% + $0.30</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-card" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-card">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-card">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- Returns -->
+            <div class="service-card" id="card-returns">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">
+                            Returns / Refunds
+                            <span class="badge badge-unique">⭐ UNIQUE</span>
+                        </div>
+                        <div class="service-tokens">3334 tokens</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-returns">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-returns" min="0" max="1000" step="10" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-returns">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-returns">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Stripe</div>
+                        <div class="comparison-value" id="cost-competitor-returns">$0</div>
+                        <div class="comparison-provider">Manual process</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-returns" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-returns">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-returns">Automated vs Manual</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAY OUTS -->
+        <div class="section-header">
+            <i class="fas fa-arrow-up"></i> Pay Outs (2 Services)
+        </div>
+
+        <div class="services-grid">
+            <!-- ACH Payouts -->
+            <div class="service-card" id="card-payout-ach">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">
+                            ACH Payouts
+                            <span class="badge badge-unique">⭐ UNIQUE</span>
+                        </div>
+                        <div class="service-tokens">67 tokens</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-payout-ach">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-payout-ach" min="0" max="10000" step="100" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-payout-ach">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-payout-ach">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Stripe Connect</div>
+                        <div class="comparison-value" id="cost-competitor-payout-ach">$0.00</div>
+                        <div class="comparison-provider">$0.25/payout</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-payout-ach" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-payout-ach">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-payout-ach">0% cheaper</div>
+                </div>
+            </div>
+
+            <!-- Virtual Cards -->
+            <div class="service-card" id="card-virtual-card">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">
+                            Virtual Cards Issuance
+                            <span class="badge badge-unique">⭐ UNIQUE</span>
+                        </div>
+                        <div class="service-tokens">134 tokens per card</div>
+                    </div>
+                </div>
+
+                <div class="slider-section">
+                    <div class="slider-label">
+                        <span>Monthly Volume</span>
+                        <span class="slider-value" id="value-virtual-card">0</span>
+                    </div>
+                    <input type="range" class="slider" id="slider-virtual-card" min="0" max="5000" step="50" value="0">
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value" id="cost-tilli-virtual-card">$0.00</div>
+                        <div class="comparison-tokens" id="tokens-virtual-card">0 tokens</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Marqeta</div>
+                        <div class="comparison-value" id="cost-competitor-virtual-card">$0.00</div>
+                        <div class="comparison-provider">$0.50/card</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner" id="savings-virtual-card" style="display: none;">
+                    <div class="savings-amount" id="savings-amount-virtual-card">$0.00</div>
+                    <div class="savings-percent" id="savings-percent-virtual-card">0% cheaper</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FREE SERVICES -->
+        <div class="section-header">
+            <i class="fas fa-gift"></i> Other (2 FREE Services)
+        </div>
+
+        <div class="services-grid">
+            <!-- Preference Management -->
+            <div class="service-card free">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">
+                            Free Preference Management
+                            <span class="badge badge-free">🎁 FREE</span>
+                        </div>
+                        <div class="service-tokens">0 tokens - Always FREE!</div>
+                    </div>
+                </div>
+
+                <div class="free-badge">✓ Included FREE with Tilli</div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value">$0.00</div>
+                        <div class="comparison-tokens">TCPA compliance included</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">OneTrust</div>
+                        <div class="comparison-value">$1,000+</div>
+                        <div class="comparison-provider">Enterprise only</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner">
+                    <div class="savings-amount">Save $1,000+/month</div>
+                    <div class="savings-percent">Always FREE on Tilli</div>
+                </div>
+            </div>
+
+            <!-- Customer Contacts -->
+            <div class="service-card free">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-name">
+                            Unlimited Customer Contacts
+                            <span class="badge badge-free">🎁 FREE</span>
+                        </div>
+                        <div class="service-tokens">0 tokens - Unlimited!</div>
+                    </div>
+                </div>
+
+                <div class="free-badge">✓ Unlimited FREE Storage</div>
+
+                <div class="comparison-section">
+                    <div class="comparison-box tilli">
+                        <div class="comparison-label">Tilli</div>
+                        <div class="comparison-value">$0.00</div>
+                        <div class="comparison-tokens">Pay per usage, not contacts</div>
+                    </div>
+                    <div class="comparison-box competitor">
+                        <div class="comparison-label">Mailchimp</div>
+                        <div class="comparison-value">$20-200</div>
+                        <div class="comparison-provider">Per contact pricing</div>
+                    </div>
+                </div>
+
+                <div class="savings-banner">
+                    <div class="savings-amount">Save $20-200/month</div>
+                    <div class="savings-percent">No contact-based fees</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>Ready to Save Money?</h2>
+            <p>Start with 10,000 FREE tokens every month. No credit card required.</p>
+            <button class="cta-button" onclick="window.location.href='signup.html'">
+                Start Free Trial →
+            </button>
+            <p style="margin-top: 1.5rem; font-size: 0.875rem; color: #9ca3af;">
+                Join thousands of businesses saving 50-70% with Tilli
+            </p>
+        </div>
+    </div>
+
+    <script src="pricing-cards.js"></script>
+</body>
+</html>

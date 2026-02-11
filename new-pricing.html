@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Configurator - Token-Based Usage Pricing | Tilli</title>
+    <meta name="description" content="Configure your perfect plan with token-based usage pricing. Only pay for what you use - no contact limits, no hidden fees.">
+
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Pricing Configurator Styles */
+        .pricing-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 0 3rem;
+            color: white;
+            text-align: center;
+        }
+
+        .pricing-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .pricing-hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .configurator-section {
+            padding: 3rem 0;
+            background: #f8f9fa;
+        }
+
+        .configurator-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+        }
+
+        .config-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .config-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .config-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .config-section h3 i {
+            color: #667eea;
+        }
+
+        .channel-input {
+            margin-bottom: 1.5rem;
+        }
+
+        .channel-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .channel-meta {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .channel-slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .channel-slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .channel-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+
+        .channel-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+        }
+
+        .channel-value {
+            min-width: 100px;
+            text-align: right;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .addon-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .addon-checkbox:hover {
+            border-color: #667eea;
+            background: #f9fafb;
+        }
+
+        .addon-checkbox input[type="checkbox"] {
+            margin-top: 0.25rem;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .addon-info {
+            flex: 1;
+        }
+
+        .addon-name {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+
+        .addon-desc {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .addon-price {
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        /* Summary Panel */
+        .summary-panel {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .summary-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #1f2937;
+        }
+
+        .tier-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .usage-breakdown {
+            margin-bottom: 1.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .usage-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .usage-item:last-child {
+            border-bottom: none;
+        }
+
+        .usage-name {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .usage-tokens {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .total-tokens {
+            background: #f3f4f6;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .total-tokens-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.25rem;
+        }
+
+        .total-tokens-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .pricing-summary {
+            margin-top: 1.5rem;
+        }
+
+        .price-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .price-line.total {
+            font-size: 1.25rem;
+            font-weight: 700;
+            border-top: 2px solid #e5e7eb;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .savings-badge {
+            background: #10b981;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .competitor-comparison {
+            background: #fef3c7;
+            border: 2px solid #fbbf24;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .competitor-comparison strong {
+            color: #92400e;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .comparison-column {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .comparison-column h4 {
+            margin: 0 0 0.75rem 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .comparison-column.tilli {
+            border: 2px solid #10b981;
+        }
+
+        .comparison-column.tilli h4 {
+            color: #10b981;
+        }
+
+        .comparison-column.competitors {
+            border: 2px solid #ef4444;
+        }
+
+        .comparison-column.competitors h4 {
+            color: #ef4444;
+        }
+
+        .comparison-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 0.875rem;
+        }
+
+        .comparison-item:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-item .service-name {
+            color: #6b7280;
+            flex: 1;
+        }
+
+        .comparison-item .service-cost {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .comparison-total {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 2px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .comparison-savings {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .comparison-savings .savings-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #065f46;
+            margin: 0.25rem 0;
+        }
+
+        .comparison-savings .savings-percent {
+            font-size: 1rem;
+            color: #047857;
+        }
+
+        .cta-button-large {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+
+        .features-included {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .features-included h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+            color: #374151;
+        }
+
+        .feature-item i {
+            color: #10b981;
+        }
+
+        /* Tier Comparison Table */
+        .tiers-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 2rem auto 0;
+            padding: 0 2rem;
+        }
+
+        .tier-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .tier-card.featured {
+            border-color: #667eea;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+            transform: scale(1.05);
+        }
+
+        .tier-card:hover {
+            border-color: #667eea;
+        }
+
+        .tier-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-price span {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .tier-tokens {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .tier-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tier-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .tier-features i {
+            color: #10b981;
+        }
+
+        @media (max-width: 1024px) {
+            .configurator-container {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-panel {
+                position: static;
+            }
+
+            .tiers-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tiers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tier-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <!-- Top Banner -->
+        <div style="width: 100%; background: linear-gradient(90deg, #4169E1 0%, #00BFFF 100%); padding: 18px 20px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 1001; height: 62px; box-sizing: border-box;">
+            <span style="font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; color: #FFFFFF;">✨ See how much you could save with Tilli — calculate your ROI in 2 minutes.</span>
+            <a href="calculator.html" class="banner-cta-btn">
+                Calculate now <span class="arrow">→</span>
+            </a>
+        </div>
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="about.html">Company</a></li>
+                    <li><a href="valuebasedpricing.html">Pricing</a></li>
+                    <li><a href="press.html">Press</a></li>
+                </ul>
+                <a class="cta-button" href="signup.html">Sign Up</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pricing-hero">
+        <div class="container">
+            <h1>Token-Based Usage Pricing</h1>
+            <p>Only pay for what you use. No contact limits. No hidden fees. Configure your perfect plan below.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Configurator -->
+    <section class="configurator-section">
+        <div class="configurator-container">
+            <!-- Configuration Panel -->
+            <div class="config-panel">
+                <!-- Communications Section -->
+                <div class="config-section">
+                    <h3><i class="fas fa-paper-plane"></i> Communications Channels</h3>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>Email Messages</span>
+                            <span class="channel-meta">0.1 tokens each</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="email-slider" min="0" max="500000" step="5000" value="0">
+                            <div class="channel-value" id="email-value">0</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>SMS Segments</span>
+                            <span class="channel-meta">1 token each</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="sms-slider" min="0" max="100000" step="1000" value="0">
+                            <div class="channel-value" id="sms-value">0</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>WhatsApp Messages</span>
+                            <span class="channel-meta">2 tokens each</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="whatsapp-slider" min="0" max="50000" step="500" value="0">
+                            <div class="channel-value" id="whatsapp-value">0</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>Push Notifications</span>
+                            <span class="channel-meta">0.05 tokens each</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="push-slider" min="0" max="1000000" step="10000" value="0">
+                            <div class="channel-value" id="push-value">0</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>IVR Minutes</span>
+                            <span class="channel-meta">3 tokens per minute</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="ivr-slider" min="0" max="10000" step="100" value="0">
+                            <div class="channel-value" id="ivr-value">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaigns Section -->
+                <div class="config-section">
+                    <h3><i class="fas fa-bullhorn"></i> Campaigns</h3>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>Payment Requests</span>
+                            <span class="channel-meta">0.1 tokens each</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="campaign-slider" min="0" max="10000" step="100" value="0">
+                            <div class="channel-value" id="campaign-value">0</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>Surveys (Responses Only)</span>
+                            <span class="channel-meta">0.1 tokens each</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="survey-slider" min="0" max="10000" step="100" value="0">
+                            <div class="channel-value" id="survey-value">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Documents & Signatures Section -->
+                <div class="config-section">
+                    <h3><i class="fas fa-file-signature"></i> Digital Documents & Signatures</h3>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>Digital Documents (PDF)</span>
+                            <span class="channel-meta">1 token each</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="pdf-slider" min="0" max="10000" step="100" value="0">
+                            <div class="channel-value" id="pdf-value">0</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>Digital Signatures</span>
+                            <span class="channel-meta">7 tokens each</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="signature-slider" min="0" max="5000" step="50" value="0">
+                            <div class="channel-value" id="signature-value">0</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>Archived Documents</span>
+                            <span class="channel-meta">4 tokens each</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="archive-slider" min="0" max="50000" step="500" value="0">
+                            <div class="channel-value" id="archive-value">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payments Section -->
+                <div class="config-section">
+                    <h3><i class="fas fa-credit-card"></i> Payment Processing</h3>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>ACH Transactions</span>
+                            <span class="channel-meta">67 tokens + $0.20</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="ach-slider" min="0" max="10000" step="100" value="0">
+                            <div class="channel-value" id="ach-value">0</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-input">
+                        <div class="channel-label">
+                            <span>Card Transactions</span>
+                            <span class="channel-meta">2.7% + $0.20 + 67 tokens</span>
+                        </div>
+                        <div class="channel-slider-container">
+                            <input type="range" class="channel-slider" id="card-slider" min="0" max="10000" step="100" value="0">
+                            <div class="channel-value" id="card-value">0</div>
+                        </div>
+                    </div>
+
+                    <div style="background: #ecfdf5; border: 2px solid #10b981; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                        <strong style="color: #065f46; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-gift"></i> Payment Link Communications are FREE!
+                        </strong>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: #047857;">Payment reminders and links don't use any tokens.</p>
+                    </div>
+                </div>
+
+                <!-- Add-Ons Section -->
+                <div class="config-section">
+                    <h3><i class="fas fa-puzzle-piece"></i> Add-Ons & Integrations</h3>
+
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="addon-ip">
+                        <div class="addon-info">
+                            <div class="addon-name">Dedicated Email IP</div>
+                            <div class="addon-desc">Protect your sender reputation with a dedicated IP address</div>
+                        </div>
+                        <div class="addon-price">$29/mo</div>
+                    </label>
+
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="addon-crm">
+                        <div class="addon-info">
+                            <div class="addon-name">CRM Connectors</div>
+                            <div class="addon-desc">Salesforce, Monday.com integrations</div>
+                        </div>
+                        <div class="addon-price">$99/mo</div>
+                    </label>
+
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="addon-erp">
+                        <div class="addon-info">
+                            <div class="addon-name">ERP Connectors</div>
+                            <div class="addon-desc">SAP, NetSuite, JD Edwards, Oracle, Zoho</div>
+                        </div>
+                        <div class="addon-price">$299/mo</div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Summary Panel -->
+            <div class="summary-panel">
+                <div class="summary-card">
+                    <h3>Your Plan Summary</h3>
+                    <div class="tier-badge" id="tier-name">Free Forever</div>
+
+                    <div class="total-tokens">
+                        <div class="total-tokens-label">Total Monthly Tokens</div>
+                        <div class="total-tokens-value" id="total-tokens">0</div>
+                    </div>
+
+                    <div class="usage-breakdown" id="usage-breakdown">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+
+                    <div class="competitor-comparison" id="competitor-comparison" style="display: none;">
+                        <div style="text-align: center; margin-bottom: 1rem;">
+                            <strong style="font-size: 1.125rem;">💰 Tilli vs Competitors - Side by Side</strong>
+                        </div>
+                        <div class="comparison-grid">
+                            <div class="comparison-column tilli">
+                                <h4>✅ Tilli All-In-One Platform</h4>
+                                <div id="tilli-breakdown"></div>
+                                <div class="comparison-total">
+                                    <span>Monthly Total:</span>
+                                    <span id="tilli-total">$0.00</span>
+                                </div>
+                            </div>
+                            <div class="comparison-column competitors">
+                                <h4>❌ Competitor Stack (Multiple Vendors)</h4>
+                                <div id="competitor-breakdown"></div>
+                                <div class="comparison-total">
+                                    <span>Monthly Total:</span>
+                                    <span id="competitor-total">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-savings" id="savings-box">
+                            <div style="font-size: 0.875rem; color: #047857;">You Save with Tilli</div>
+                            <div class="savings-amount" id="savings-amount">$0.00/month</div>
+                            <div class="savings-percent" id="savings-percent">0% cheaper than competitors</div>
+                            <div style="margin-top: 0.75rem; font-size: 0.875rem; color: #065f46;">
+                                ✓ One platform • One bill • One integration
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-summary">
+                        <div class="price-line">
+                            <span>Token Usage</span>
+                            <span id="token-cost">$0</span>
+                        </div>
+                        <div class="price-line">
+                            <span>ACH Fees</span>
+                            <span id="ach-fees">$0</span>
+                        </div>
+                        <div class="price-line">
+                            <span>Card Processing</span>
+                            <span id="card-fees">$0</span>
+                        </div>
+                        <div class="price-line">
+                            <span>Add-Ons</span>
+                            <span id="addon-cost">$0</span>
+                        </div>
+                        <div class="price-line total">
+                            <span>Total Monthly</span>
+                            <span id="total-cost">$0</span>
+                        </div>
+                    </div>
+
+                    <button class="cta-button-large" onclick="startTrial()">
+                        <i class="fas fa-rocket"></i> Start Free Trial
+                    </button>
+
+                    <div class="features-included">
+                        <h4>What's Included - Complete Value Proposition</h4>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>All Communication Channels</strong> - Email, SMS, WhatsApp, Push, IVR in one platform</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Built-in Payment Orchestration</strong> - ACH & Card processing with no separate payment gateway needed</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Payment Links FREE</strong> - Send payment reminders and links without consuming tokens</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Digital Document Management</strong> - PDF generation, digital signatures, and document archiving</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Complete API Access</strong> - RESTful APIs, webhooks, and SDKs for custom integrations</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Real-time Analytics & Reporting</strong> - Track campaign performance, payment status, and customer engagement</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Enterprise CRM/ERP Connectors</strong> - Pre-built integrations with Salesforce, SAP, Oracle, and more</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>24/7 Customer Support</strong> - Email, phone, and chat support with dedicated account managers for enterprise</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>No Setup Fees or Long-term Contracts</strong> - Pay only for what you use with transparent pricing</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>SOC 2 Type II & GDPR Compliant</strong> - Enterprise-grade security and compliance built-in</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tier Comparison Section -->
+    <section class="tiers-section">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Compare All Tiers</h2>
+            <p style="color: #6b7280; font-size: 1.125rem; margin-bottom: 3rem;">Choose the right tier or use the configurator above for custom pricing</p>
+        </div>
+
+        <div class="tiers-grid">
+            <!-- Free Tier -->
+            <div class="tier-card">
+                <div class="tier-name">Free Forever</div>
+                <div class="tier-price">$0<span>/month</span></div>
+                <div class="tier-tokens">Up to 10,000 tokens/month</div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check"></i> All channels</li>
+                    <li><i class="fas fa-check"></i> Payment links FREE</li>
+                    <li><i class="fas fa-check"></i> API access</li>
+                    <li><i class="fas fa-check"></i> Basic analytics</li>
+                    <li><i class="fas fa-check"></i> Email support</li>
+                </ul>
+            </div>
+
+            <!-- Starter Tier -->
+            <div class="tier-card">
+                <div class="tier-name">Starter</div>
+                <div class="tier-price">Starts at $234<span>/month</span></div>
+                <div class="tier-tokens">10K-50K tokens ($0.00586/token)</div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check"></i> Everything in Free</li>
+                    <li><i class="fas fa-check"></i> Advanced analytics</li>
+                    <li><i class="fas fa-check"></i> Phone support</li>
+                    <li><i class="fas fa-check"></i> Custom branding</li>
+                    <li><i class="fas fa-check"></i> Webhooks</li>
+                </ul>
+            </div>
+
+            <!-- Growth Tier (Featured) -->
+            <div class="tier-card featured">
+                <div class="tier-name">Growth</div>
+                <div class="tier-price">Starts at $498<span>/month</span></div>
+                <div class="tier-tokens">50K-100K tokens ($0.00528/token)</div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check"></i> Everything in Starter</li>
+                    <li><i class="fas fa-check"></i> Priority support</li>
+                    <li><i class="fas fa-check"></i> Advanced integrations</li>
+                    <li><i class="fas fa-check"></i> Custom workflows</li>
+                    <li><i class="fas fa-check"></i> Team collaboration</li>
+                </ul>
+            </div>
+
+            <!-- Professional Tier -->
+            <div class="tier-card">
+                <div class="tier-name">Professional</div>
+                <div class="tier-price">Starts at $2,374<span>/month</span></div>
+                <div class="tier-tokens">100K-500K tokens ($0.00469/token)</div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check"></i> Everything in Growth</li>
+                    <li><i class="fas fa-check"></i> Dedicated IP included</li>
+                    <li><i class="fas fa-check"></i> Custom integrations</li>
+                    <li><i class="fas fa-check"></i> SLA guarantee</li>
+                    <li><i class="fas fa-check"></i> Priority onboarding</li>
+                </ul>
+            </div>
+
+            <!-- Enterprise Tier -->
+            <div class="tier-card">
+                <div class="tier-name">Enterprise</div>
+                <div class="tier-price">Starts at $4,424<span>/month</span></div>
+                <div class="tier-tokens">500K-1M tokens ($0.00410/token)</div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check"></i> Everything in Professional</li>
+                    <li><i class="fas fa-check"></i> Account manager</li>
+                    <li><i class="fas fa-check"></i> Custom SLA</li>
+                    <li><i class="fas fa-check"></i> Advanced security</li>
+                    <li><i class="fas fa-check"></i> Compliance support</li>
+                </ul>
+            </div>
+
+            <!-- Scale Tier -->
+            <div class="tier-card">
+                <div class="tier-name">Scale</div>
+                <div class="tier-price">Custom<span></span></div>
+                <div class="tier-tokens">1M+ tokens ($0.00352/token)</div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check"></i> Everything in Enterprise</li>
+                    <li><i class="fas fa-check"></i> Dedicated infrastructure</li>
+                    <li><i class="fas fa-check"></i> Volume discounts</li>
+                    <li><i class="fas fa-check"></i> White-label options</li>
+                    <li><i class="fas fa-check"></i> Custom development</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+        <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Products</h4>
+                        <ul>
+                            <li><a href="nudge.html">Nudge</a></li>
+                            <li><a href="tillix.html">tilliX</a></li>
+                            <li><a href="tillipay.html">Monay</a></li>
+                            <li><a href="index.html#product-comparison">Compare Products</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="industries.html">Industries</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="calculator.html">FAQS</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Developers</h4>
+                        <ul>
+                            <li><a href="developer.html">Documentation</a></li>
+                            <li><a href="developer.html">API Reference</a></li>
+                            <li><a href="developer.html">SDKs</a></li>
+                            <li><a href="calculator.html">Help Center</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="valuebasedpricing.html">Pricing</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Get Started Today</h4>
+                        <ul>
+                            <li><a href="free-trial.html" class="gradient-link">Start a Free Trial <span class="arrow">→</span></a></li>
+                            <li><a href="contact.html" class="gradient-link">Request a Demo <span class="arrow">→</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo">
+                        </div>
+                        <p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
+                        <p class="footer-copyright">&copy; 2026 — Copyright All Rights reserved</p>
+                    </div>
+
+                    <div class="footer-right">
+                        <div class="footer-status">
+                            <span class="status-indicator"></span>
+                            <span>Platform status</span>
+                        </div>
+                        <div class="footer-social">
+                            <a href="https://x.com/tillisoftware" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/tillisoftware" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.youtube.com/@tillisoftware" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                        <div class="footer-legal-links">
+                            <a href="calculator.html">Terms</a>
+                            <a href="privacy-policy/">Privacy</a>
+                            <a href="anti-slavery-policy.html">Anti-Slavery Policy</a>
+                            <a href="calculator.html">Cookies</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+    <script>
+        // Token weights configuration
+        const TOKEN_WEIGHTS = {
+            email: 0.1,      // Cheapest communication
+            sms: 1,          // Medium cost
+            whatsapp: 2,     // Higher cost
+            push: 0.05,      // Very cheap
+            ivr: 3,          // Most expensive communication
+            campaign: 0.1,   // Payment requests (like email)
+            survey: 0.1,     // Survey responses (cheap)
+            pdf: 1,          // Documents
+            signature: 7,    // Digital signatures (keep high)
+            archive: 4,      // Document archiving (keep high)
+            ach: 67,         // Payment processing (keep high)
+            card: 67         // Payment processing (keep high)
+        };
+
+        // Tiered pricing structure - FIXED to charge properly above 10K tokens
+        const PRICING_TIERS = [
+            { min: 0, max: 10000, rate: 0 },                  // Free tier: 0-10K tokens
+            { min: 10001, max: 50000, rate: 0.00586 },        // Tier 1: 10K-50K
+            { min: 50001, max: 100000, rate: 0.00528 },       // Tier 2: 50K-100K
+            { min: 100001, max: 500000, rate: 0.00469 },      // Tier 3: 100K-500K
+            { min: 500001, max: 1000000, rate: 0.00410 },     // Tier 4: 500K-1M
+            { min: 1000001, max: Infinity, rate: 0.00352 }    // Tier 5: 1M+
+        ];
+
+        // Add-on pricing
+        const ADDONS = {
+            ip: 29,
+            crm: 99,
+            erp: 299
+        };
+
+        // Calculate token cost using tiered pricing
+        function calculateTokenCost(totalTokens) {
+            if (totalTokens === 0) return 0;
+
+            let cost = 0;
+            let remainingTokens = totalTokens;
+
+            for (let tier of PRICING_TIERS) {
+                if (remainingTokens <= 0) break;
+
+                const tierMax = tier.max === Infinity ? remainingTokens : tier.max;
+                const tokensInThisTier = Math.min(remainingTokens, tierMax - tier.min + 1);
+
+                if (tokensInThisTier > 0) {
+                    cost += tokensInThisTier * tier.rate;
+                    remainingTokens -= tokensInThisTier;
+                }
+            }
+
+            return cost;
+        }
+
+        // Get tier name based on total tokens
+        function getTierName(totalTokens) {
+            if (totalTokens <= 10000) return 'Free Forever';
+            if (totalTokens <= 50000) return 'Starter';
+            if (totalTokens <= 100000) return 'Growth';
+            if (totalTokens <= 500000) return 'Professional';
+            if (totalTokens <= 1000000) return 'Enterprise';
+            return 'Scale';
+        }
+
+        // Initialize all sliders
+        function initializeSliders() {
+            const sliders = ['email', 'sms', 'whatsapp', 'push', 'ivr', 'campaign', 'survey', 'pdf', 'signature', 'archive', 'ach', 'card'];
+
+            sliders.forEach(type => {
+                const slider = document.getElementById(`${type}-slider`);
+                const value = document.getElementById(`${type}-value`);
+
+                slider.addEventListener('input', function() {
+                    value.textContent = parseInt(this.value).toLocaleString();
+                    calculatePricing();
+                });
+            });
+
+            // Add-ons
+            ['ip', 'crm', 'erp'].forEach(addon => {
+                document.getElementById(`addon-${addon}`).addEventListener('change', calculatePricing);
+            });
+        }
+
+        // Calculate total tokens and pricing
+        function calculatePricing() {
+            let totalTokens = 0;
+            const breakdown = [];
+
+            // Calculate tokens for each channel
+            const channels = ['email', 'sms', 'whatsapp', 'push', 'ivr', 'campaign', 'survey', 'pdf', 'signature', 'archive', 'ach', 'card'];
+
+            channels.forEach(type => {
+                const volume = parseInt(document.getElementById(`${type}-slider`).value);
+                const tokens = volume * TOKEN_WEIGHTS[type];
+
+                if (volume > 0) {
+                    totalTokens += tokens;
+                    breakdown.push({
+                        name: formatChannelName(type),
+                        volume: volume,
+                        tokens: tokens
+                    });
+                }
+            });
+
+            // Calculate FREE token credits for payment flows
+            // Assumption: 50% email, 30% SMS, 20% IVR for payment communications
+            const achVolume = parseInt(document.getElementById('ach-slider').value);
+            const cardVolume = parseInt(document.getElementById('card-slider').value);
+            const totalPaymentVolume = achVolume + cardVolume;
+
+            const paymentEmailTokens = totalPaymentVolume * 0.50 * TOKEN_WEIGHTS.email;
+            const paymentSMSTokens = totalPaymentVolume * 0.30 * TOKEN_WEIGHTS.sms;
+            const paymentIVRTokens = totalPaymentVolume * 0.20 * TOKEN_WEIGHTS.ivr;
+            const freePaymentTokens = paymentEmailTokens + paymentSMSTokens + paymentIVRTokens;
+
+            // Add free payment communication tokens to breakdown
+            if (freePaymentTokens > 0) {
+                breakdown.push({
+                    name: '🎁 Free Payment Communications Credit',
+                    volume: totalPaymentVolume,
+                    tokens: -freePaymentTokens
+                });
+            }
+
+            // Apply free tokens discount
+            const billableTokens = Math.max(0, totalTokens - freePaymentTokens);
+
+            // Calculate token cost using tiered pricing on billable tokens only
+            const tokenCost = calculateTokenCost(billableTokens);
+
+            // ACH fees
+            const achFees = achVolume * 0.20;
+
+            // Card fees (2.7% + $0.20 - assume $100 avg transaction)
+            const cardFees = cardVolume * (100 * 0.027 + 0.20);
+
+            // Add-ons
+            let addonCost = 0;
+            if (document.getElementById('addon-ip').checked) addonCost += ADDONS.ip;
+            if (document.getElementById('addon-crm').checked) addonCost += ADDONS.crm;
+            if (document.getElementById('addon-erp').checked) addonCost += ADDONS.erp;
+
+            const totalCost = tokenCost + achFees + cardFees + addonCost;
+
+            // Update UI
+            document.getElementById('tier-name').textContent = getTierName(billableTokens);
+
+            // Show both total and billable tokens if different
+            let tokenDisplay = Math.round(billableTokens).toLocaleString();
+            if (freePaymentTokens > 0) {
+                tokenDisplay += ` (${Math.round(totalTokens).toLocaleString()} - ${Math.round(freePaymentTokens).toLocaleString()} free)`;
+            }
+            document.getElementById('total-tokens').textContent = tokenDisplay;
+
+            document.getElementById('token-cost').textContent = '$' + tokenCost.toFixed(2);
+            document.getElementById('ach-fees').textContent = '$' + achFees.toFixed(2);
+            document.getElementById('card-fees').textContent = '$' + cardFees.toFixed(2);
+            document.getElementById('addon-cost').textContent = '$' + addonCost.toFixed(0);
+            document.getElementById('total-cost').textContent = '$' + totalCost.toFixed(2);
+
+            // Update breakdown
+            updateBreakdown(breakdown);
+
+            // Show competitor comparison if relevant
+            if (totalTokens > 0) {
+                showCompetitorComparison(billableTokens, totalCost, achVolume, cardVolume);
+            }
+        }
+
+        function formatChannelName(type) {
+            const names = {
+                email: 'Email Messages',
+                sms: 'SMS Segments',
+                whatsapp: 'WhatsApp Messages',
+                push: 'Push Notifications',
+                ivr: 'IVR Minutes',
+                campaign: 'Payment Requests',
+                survey: 'Surveys (Responses)',
+                pdf: 'Digital Documents (PDF)',
+                signature: 'Digital Signatures',
+                archive: 'Archived Documents',
+                ach: 'ACH Transactions',
+                card: 'Card Transactions'
+            };
+            return names[type] || type;
+        }
+
+        function updateBreakdown(breakdown) {
+            const container = document.getElementById('usage-breakdown');
+
+            if (breakdown.length === 0) {
+                container.innerHTML = '<p style="color: #6b7280; font-size: 0.875rem; text-align: center; padding: 1rem 0;">Configure your usage above to see breakdown</p>';
+                return;
+            }
+
+            container.innerHTML = breakdown.map(item => `
+                <div class="usage-item">
+                    <span class="usage-name">${item.name} (${item.volume.toLocaleString()})</span>
+                    <span class="usage-tokens">${Math.round(item.tokens).toLocaleString()} tokens</span>
+                </div>
+            `).join('');
+        }
+
+        function showCompetitorComparison(tokens, cost, achVolume, cardVolume) {
+            const smsVolume = parseInt(document.getElementById('sms-slider').value);
+            const emailVolume = parseInt(document.getElementById('email-slider').value);
+            const whatsappVolume = parseInt(document.getElementById('whatsapp-slider').value);
+
+            // Competitor pricing (industry averages)
+            const twilioSMS = smsVolume * 0.0079; // Twilio SMS avg $0.0079/msg
+            const sendgridEmail = emailVolume * 0.00095; // SendGrid Marketing $0.00095/email
+            const twilioWhatsApp = whatsappVolume * 0.005; // Twilio WhatsApp avg
+            const mailchimpEmail = emailVolume > 500 ? (emailVolume * 0.002) : 13; // Mailchimp
+            const constantContactEmail = emailVolume > 500 ? (emailVolume * 0.0024) : 12; // Constant Contact
+
+            // Payment processing (competitors DON'T have this built-in - need Stripe)
+            const stripeACH = achVolume * 0.80; // Stripe ACH $0.80 per transaction
+            const stripeCard = cardVolume * (100 * 0.029 + 0.30); // Stripe 2.9% + $0.30
+            const totalStripePayments = stripeACH + stripeCard;
+
+            // Payment flow communications for competitors (50% email, 30% SMS, 20% IVR)
+            const totalPaymentVolume = achVolume + cardVolume;
+            const competitorPaymentEmails = totalPaymentVolume * 0.50;
+            const competitorPaymentSMS = totalPaymentVolume * 0.30;
+
+            // Competitor payment communication costs
+            const twilioPaymentSMS = competitorPaymentSMS * 0.0079;
+            const sendgridPaymentEmail = competitorPaymentEmails * 0.00095;
+            const mailchimpPaymentEmail = competitorPaymentEmails * 0.002;
+            const constantContactPaymentEmail = competitorPaymentEmails * 0.0024;
+
+            // Calculate competitor costs (communications + payment processing + payment notifications)
+            const twilioSendGridCost = twilioSMS + sendgridEmail + twilioWhatsApp + totalStripePayments + twilioPaymentSMS + sendgridPaymentEmail;
+            const mailchimpCost = mailchimpEmail + twilioSMS + twilioWhatsApp + totalStripePayments + twilioPaymentSMS + mailchimpPaymentEmail;
+            const constantContactCost = constantContactEmail + twilioSMS + twilioWhatsApp + totalStripePayments + twilioPaymentSMS + constantContactPaymentEmail;
+
+            // Average competitor cost
+            const avgCompetitorCost = (twilioSendGridCost + mailchimpCost + constantContactCost) / 3;
+
+            // Our total cost (already includes payment fees from calculatePricing)
+            const ourTotalCost = cost;
+
+            const savings = avgCompetitorCost - ourTotalCost;
+
+            // Show comparison if there are actual competitors to compare against
+            if ((smsVolume > 0 || emailVolume > 0 || whatsappVolume > 0 || achVolume > 0 || cardVolume > 0) && tokens > 0) {
+                const comparisonDiv = document.getElementById('competitor-comparison');
+                comparisonDiv.style.display = 'block';
+
+                let comparisonText = `<strong>💰 Competitive Advantage vs Twilio, SendGrid, Mailchimp, Constant Contact</strong><br>`;
+                comparisonText += `<div style="margin-top: 0.5rem; font-size: 0.875rem;">`;
+                comparisonText += `<strong>Tilli Total:</strong> $${ourTotalCost.toFixed(2)}/mo<br>`;
+                comparisonText += `<strong>Competitors Average:</strong> $${avgCompetitorCost.toFixed(2)}/mo<br>`;
+
+                if (totalStripePayments > 0) {
+                    comparisonText += `<small style="color: #6b7280;">(Includes Stripe: $${totalStripePayments.toFixed(2)}/mo + payment notification costs)</small><br>`;
+                }
+
+                comparisonText += `<span style="color: #065f46; font-weight: 600; font-size: 1rem; display: block; margin-top: 0.5rem;">`;
+
+                if (savings > 0) {
+                    comparisonText += `✓ You Save $${savings.toFixed(2)}/mo (${((savings/avgCompetitorCost)*100).toFixed(0)}% savings)`;
+                } else {
+                    comparisonText += `Competitive pricing with built-in payments and FREE payment communications`;
+                }
+
+                comparisonText += `</span><br>`;
+                comparisonText += `<small style="color: #047857; margin-top: 0.5rem; display: block; line-height: 1.6;">`;
+                comparisonText += `✓ <strong>Unified platform</strong> - No separate Stripe account needed<br>`;
+                comparisonText += `✓ <strong>FREE payment communications</strong> - Payment reminders don't consume tokens<br>`;
+                comparisonText += `✓ <strong>75% lower ACH fees</strong> - $0.20 vs Stripe's $0.80 per transaction<br>`;
+                comparisonText += `✓ <strong>Lower card fees</strong> - 2.7% + $0.20 vs Stripe's 2.9% + $0.30<br>`;
+                comparisonText += `✓ <strong>Built-in orchestration</strong> - Saves integration & maintenance costs`;
+                comparisonText += `</small></div>`;
+
+                document.getElementById('savings-text').innerHTML = comparisonText;
+            } else {
+                document.getElementById('competitor-comparison').style.display = 'none';
+            }
+        }
+
+        function startTrial() {
+            const totalTokens = document.getElementById('total-tokens').textContent;
+            window.location.href = `signup.html?tokens=${totalTokens}`;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSliders();
+            calculatePricing();
+        });
+    </script>
+</body>
+</html>

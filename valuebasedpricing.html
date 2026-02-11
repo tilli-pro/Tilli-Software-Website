@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilli Pricing Calculator - Total Cost of Ownership | Tilli</title>
+    <meta name="description" content="Compare Tilli's all-inclusive pricing vs competitors. Calculate your total cost of ownership and see how much you can save with Tilli's unified platform.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FFFFFF;
+            --panel: #FFFFFF;
+            --panel-soft: #F9FAFB;
+            --border: #E5E7EB;
+            --text: #1F2937;
+            --muted: #6B7280;
+            --accent: #4099FF;
+            --accent-2: #8B5CF6;
+            --success: #10B981;
+            --danger: #EF4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #FFFFFF;
+            color: #1F2937;
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        /* Override for header navigation to match home page */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: transparent !important;
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-bottom: 1px solid transparent !important;
+            box-shadow: none !important;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+            backdrop-filter: blur(70px) !important;
+            -webkit-backdrop-filter: blur(70px) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 2rem 1rem 3rem;
+            background: #FFFFFF;
+        }
+
+        .footer .container {
+            background: transparent;
+        }
+
+        /* Main pricing container */
+        .pricing-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 2rem 1rem 3rem;
+            background: #FFFFFF;
+            overflow: visible;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 360px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .content-area { min-width: 0; }
+
+        .sticky-summary {
+            position: sticky;
+            top: 80px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .hero {
+            background: #FFFFFF;
+            padding: 140px 2rem 4rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Gradient blob animation */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(68, 141, 230, 0.25) 0%, rgba(152, 178, 233, 0.15) 40%, rgba(152, 178, 233, 0.05) 60%, transparent 80%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: blobFloat 20s ease-in-out infinite;
+            z-index: 0;
+            filter: blur(80px);
+        }
+
+        @keyframes blobFloat {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            33% {
+                transform: translate(-45%, -50%) scale(1.05);
+            }
+            66% {
+                transform: translate(-55%, -50%) scale(0.95);
+            }
+        }
+
+        /* Floating dots */
+        .floating-dot {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(156, 163, 175, 0.4);
+            border-radius: 50%;
+            z-index: 0;
+            animation: floatDot linear infinite;
+        }
+
+        @keyframes floatDot {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(var(--drift));
+                opacity: 0;
+            }
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 48px;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            font-weight: 400;
+            color: #000000;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: #6B7280;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            margin-bottom: 3rem;
+            border: none;
+            box-shadow: none;
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0;
+            padding-left: 1.5rem;
+            border-bottom: none;
+        }
+
+        .section-header h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            letter-spacing: -0.01em;
+            text-align: left;
+            margin-left: 0;
+        }
+
+        .section-header h2 svg { color: var(--accent-2); }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #F8F9FA 0%, #F3F4F6 100%);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            cursor: pointer;
+            align-self: start;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            border-color: #93c5fd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .service-card.selected {
+            border-color: #3b82f6;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .service-card.unique {
+            border-color: rgba(250, 204, 21, 0.45);
+            box-shadow: 0 2px 6px rgba(250, 204, 21, 0.12);
+        }
+
+        .service-card.free {
+            border-color: rgba(52, 211, 153, 0.45);
+            box-shadow: 0 2px 6px rgba(52, 211, 153, 0.12);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .card-title-row {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            flex: 1;
+        }
+
+        .service-checkbox {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            accent-color: #325ef6;
+            flex-shrink: 0;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            appearance: none;
+            -webkit-appearance: none;
+            background: #fff;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .service-checkbox:checked {
+            background: #325ef6;
+            border-color: #325ef6;
+        }
+
+        .service-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .service-checkbox:hover {
+            border-color: #325ef6;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111827;
+            flex: 1;
+        }
+
+        .service-card.inactive {
+            opacity: 0.75;
+            filter: grayscale(0.2);
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .badge {
+            font-size: 0.65rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .badge-unique {
+            color: #facc15;
+            border-color: rgba(250,204,21,0.4);
+        }
+
+        .badge-free {
+            color: var(--success);
+            border-color: rgba(52,211,153,0.4);
+        }
+
+        .volume-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #4b5563;
+        }
+
+        .volume-value {
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .slider {
+            width: 100%;
+            appearance: none;
+            height: 6px;
+            border-radius: 999px;
+            background: rgba(99, 179, 237, 0.25);
+        }
+
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4099FF;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35);
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            border: none;
+            background: #4099FF;
+            cursor: pointer;
+        }
+
+        .comparison {
+            border-radius: 12px;
+            padding: 0.8rem;
+            border: 1px solid #e5e7eb;
+            background: #ffffff;
+        }
+
+        .comparison-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            padding: 0.35rem 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .comparison-row:last-child { border-bottom: none; }
+        .comparison-label { color: #4b5563; display:flex; gap:0.4rem; align-items:center; }
+        .comparison-value { font-weight: 600; }
+        .competitor-value { color: #ef4444; }
+        .tilli-value { color: #10b981; }
+
+        .savings {
+            margin-top: 0.9rem;
+            padding: 0.9rem;
+            border-radius: 12px;
+            background: #ecfdf5;
+            border: 1px solid #6ee7b7;
+            text-align: center;
+        }
+        .savings .savings-amount { font-size: 1.35rem; font-weight: 800; color: #1f2937 !important; }
+        .savings-label { font-size: 0.75rem; color: #374151; }
+
+        .details-toggle {
+            border: none;
+            background: transparent;
+            color: #3b82f6;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .details-toggle:hover {
+            color: #2563eb;
+        }
+
+        .details-content {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e5e7eb;
+            display: none;
+        }
+        .details-content.show { display: block; }
+
+        .tco-grid {
+            display: block;
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+        }
+
+        .tco-header-row {
+            display: grid;
+            grid-template-columns: 2fr 1.2fr 1.2fr;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background: #f3f4f6;
+            border-radius: 8px 8px 0 0;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tco-header {
+            font-weight: 600;
+            color: #111827;
+        }
+        .tco-header.competitor { text-align: center; color: #ef4444; }
+        .tco-header.tilli { text-align: center; color: #10b981; }
+
+        .tco-row {
+            display: grid;
+            grid-template-columns: 2fr 1.2fr 1.2fr;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            border-bottom: 1px solid #f3f4f6;
+            align-items: center;
+        }
+
+        .tco-row:last-child {
+            border-bottom: none;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .tco-label {
+            color: #4b5563;
+            font-size: 0.8rem;
+        }
+        .tco-value {
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .tco-value.cost { color: #ef4444; }
+        .tco-value.included { color: #10b981; }
+
+        .summary-cta {
+            background: linear-gradient(135deg, #F8F9FA 0%, #F3F4F6 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .summary-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-stats {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .summary-stat-label {
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+        .summary-stat-value {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .savings-highlight {
+            background: linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .savings-highlight .savings-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: white !important;
+        }
+
+        .savings-period {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .cta-note {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .summary-cta .cta-button {
+            width: 100%;
+            border: none;
+            border-radius: 50px;
+            padding: 0.875rem 1.5rem;
+            background: linear-gradient(90deg, #6CD3EF 0%, #5C9BF4 65%, #2E67F8 100%);
+            color: white;
+            font-weight: 400;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .summary-cta .cta-button:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(64, 153, 255, 0.3);
+        }
+
+        .summary-cta .cta-button:disabled {
+            background: #93c5fd;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 1200px) {
+            .main-layout { grid-template-columns: 1fr; }
+            .sticky-summary { position: relative; top: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .service-grid { grid-template-columns: 1fr; }
+            .hero { text-align: center; padding: 2.5rem 1.5rem 3rem; }
+            .hero div[style*="grid-template-columns: repeat(3"] {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <!-- Top Banner -->
+        <div style="width: 100%; background: linear-gradient(90deg, #4169E1 0%, #00BFFF 100%); padding: 18px 20px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 1001; height: 62px; box-sizing: border-box;">
+            <span style="font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; color: #FFFFFF;">✨ See how much you could save with Tilli — calculate your ROI in 2 minutes.</span>
+            <a href="calculator.html" class="banner-cta-btn">
+                Calculate now <span class="arrow">→</span>
+            </a>
+        </div>
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" aria-label="Tilli Home">
+                        <img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="about.html">Company</a></li>
+                    <li><a href="valuebasedpricing.html">Pricing</a></li>
+                    <li><a href="press.html">Press</a></li>
+                </ul>
+                <a class="cta-button" href="signup.html">Sign Up</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="pricing-container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>Transparent Pricing, Real Savings</h1>
+            <p class="subtitle">Compare Tilli's all-inclusive pricing with traditional solutions.<br>See exactly what you pay and how much you save.</p>
+
+            <style>
+                @keyframes shimmer {
+                    0% {
+                        background-position: -500px 0;
+                    }
+                    100% {
+                        background-position: 500px 0;
+                    }
+                }
+
+                .stat-number {
+                    font-family: 'Sora', sans-serif;
+                    font-size: 29px;
+                    font-weight: 400;
+                    color: #000000;
+                    margin-bottom: 0.5rem;
+                    background: linear-gradient(90deg, #000000 0%, #000000 40%, #448DE6 50%, #98B2E9 55%, #000000 60%, #000000 100%);
+                    background-size: 500px 100%;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    animation: shimmer 2s ease-in-out;
+                    animation-fill-mode: forwards;
+                }
+            </style>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <div style="text-align: center;">
+                    <div class="stat-number" style="animation-delay: 0s;">85%</div>
+                    <div style="font-size: 0.95rem; color: #6B7280;">Average Savings</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-number" style="animation-delay: 0.3s;">1 Platform</div>
+                    <div style="font-size: 0.95rem; color: #6B7280;">vs 15+ Tools</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-number" style="animation-delay: 0.6s;">24/7</div>
+                    <div style="font-size: 0.95rem; color: #6B7280;">Expert Support</div>
+                </div>
+            </div>
+
+            <script>
+                // Create floating dots in hero section
+                const hero = document.querySelector('.hero');
+                const dotCount = 15;
+
+                function createDot() {
+                    const dot = document.createElement('div');
+                    dot.className = 'floating-dot';
+
+                    // Random horizontal position
+                    const leftPosition = Math.random() * 100;
+                    dot.style.left = leftPosition + '%';
+
+                    // Random animation duration (15-30 seconds)
+                    const duration = 15 + Math.random() * 15;
+                    dot.style.animationDuration = duration + 's';
+
+                    // Random horizontal drift
+                    const drift = (Math.random() - 0.5) * 100;
+                    dot.style.setProperty('--drift', drift + 'px');
+
+                    // Random delay
+                    const delay = Math.random() * 10;
+                    dot.style.animationDelay = delay + 's';
+
+                    // Random size (2-5px)
+                    const size = 2 + Math.random() * 3;
+                    dot.style.width = size + 'px';
+                    dot.style.height = size + 'px';
+
+                    // Start from bottom
+                    dot.style.bottom = '0';
+
+                    hero.appendChild(dot);
+                }
+
+                // Create dots
+                for (let i = 0; i < dotCount; i++) {
+                    createDot();
+                }
+            </script>
+        </div>
+
+        <!-- Main Layout with Sticky Summary -->
+        <div class="main-layout">
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Communications Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    Communication Channels
+                </h2>
+            </div>
+            <div class="service-grid" id="communications-grid"></div>
+        </div>
+
+        <!-- Campaigns Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    Campaigns & Workflows
+                </h2>
+            </div>
+            <div class="service-grid" id="campaigns-grid"></div>
+        </div>
+
+        <!-- Documents Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    Digital Documents
+                </h2>
+            </div>
+            <div class="service-grid" id="documents-grid"></div>
+        </div>
+
+        <!-- Pay In Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    Payment Processing (Pay In)
+                </h2>
+            </div>
+            <div class="service-grid" id="payIn-grid"></div>
+        </div>
+
+        <!-- Pay Outs Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    Payouts & Disbursements
+                </h2>
+            </div>
+            <div class="service-grid" id="payOuts-grid"></div>
+        </div>
+
+        <!-- Other Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    Free Features
+                </h2>
+            </div>
+            <div class="service-grid" id="other-grid"></div>
+        </div>
+
+        <!-- Add-Ons Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6"></path>
+                        <path d="m4.93 4.93 4.24 4.24m5.66 5.66 4.24 4.24"></path>
+                        <path d="M1 12h6m6 0h6"></path>
+                        <path d="m4.93 19.07 4.24-4.24m5.66-5.66 4.24-4.24"></path>
+                    </svg>
+                    Add-Ons & Integrations
+                </h2>
+            </div>
+            <div class="service-grid" id="addons-grid"></div>
+        </div>
+            </div>
+
+            <!-- Sticky Summary Sidebar -->
+            <div class="sticky-summary">
+                <div class="summary-cta">
+                    <h3 class="summary-title">Your Configuration</h3>
+
+                    <div class="summary-stats">
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Services Selected</span>
+                            <span class="summary-stat-value" id="services-count">0</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Monthly Volume</span>
+                            <span class="summary-stat-value" id="total-volume">0</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Credits Needed</span>
+                            <span class="summary-stat-value" id="tokens-needed">0</span>
+                        </div>
+                    </div>
+
+                    <div class="savings-highlight">
+                        <span class="savings-amount" id="total-savings">$0</span>
+                        <span class="savings-period">Monthly Savings</span>
+                    </div>
+
+                    <button class="cta-button" onclick="proceedToRecommendation()" id="next-step-btn" disabled>
+                        Get Your Custom Plan
+                    </button>
+
+                    <p class="cta-note">
+                        Select at least one service to continue
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="pricing-services-config.js"></script>
+    <script>
+        // Pricing tiers
+        const TIERS = [
+            { min: 0, max: 10000, rate: 0 },
+            { min: 10001, max: 50000, rate: 0.008 },
+            { min: 50001, max: 100000, rate: 0.007 },
+            { min: 100001, max: 500000, rate: 0.006 },
+            { min: 500001, max: 1000000, rate: 0.005 },
+            { min: 1000001, max: Infinity, rate: 0.004 }
+        ];
+
+        // Calculate total tokens used across all enabled services
+        function getTotalTokensUsed() {
+            let totalTokens = 0;
+
+            Object.values(SERVICES_CONFIG).forEach(section => {
+                section.forEach(service => {
+                    const checkbox = document.getElementById(`${service.id}-checkbox`);
+                    const isEnabled = checkbox ? checkbox.checked : false;
+                    if (!isEnabled || service.isFree) return;
+
+                    const volume = parseInt(document.getElementById(`${service.id}-volume`)?.value || 0);
+                    if (volume > 0) {
+                        totalTokens += volume * service.tokens;
+                    }
+                });
+            });
+
+            return totalTokens;
+        }
+
+        // Calculate cost for specific token amount, considering global token usage
+        function calculateTokenCost(tokens, totalUsedSoFar = 0) {
+            if (tokens === 0) return 0;
+
+            let cost = 0;
+            let currentPosition = totalUsedSoFar;
+            let remaining = tokens;
+
+            for (const tier of TIERS) {
+                if (remaining <= 0) break;
+
+                // Calculate how many tokens in this tier
+                const tierStart = tier.min;
+                const tierEnd = tier.max;
+
+                // Skip if we're already past this tier
+                if (currentPosition > tierEnd) continue;
+
+                // Calculate how many tokens from this service fall in this tier
+                const availableInTier = tierEnd - Math.max(currentPosition, tierStart - 1);
+                const tokensInThisTier = Math.min(remaining, availableInTier);
+
+                cost += tokensInThisTier * tier.rate;
+                remaining -= tokensInThisTier;
+                currentPosition += tokensInThisTier;
+            }
+
+            return cost;
+        }
+
+        // TCO Hidden Costs - Realistic, Defensible Estimates
+        // setupCost = one-time (amortized /12 months), base = monthly fixed, perUnit = variable per unit
+        // minVolume = cost only applies above this threshold
+        const TCO_COSTS = {
+            'email': [
+                { label: 'API Integration (Dev)', setupCost: 3000, note: '$250/mo amortized' },
+                { label: 'Template Development', base: 400, minVolume: 1000, note: 'Monthly updates' },
+                { label: 'List Segmentation Tools', perUnit: 0.00003, minVolume: 5000, note: 'Scales with contacts' },
+                { label: 'Deliverability Monitoring', base: 150, minVolume: 10000, note: 'Required at scale' },
+                { label: 'Analytics Dashboard', base: 200, minVolume: 5000, note: 'Custom reporting' }
+            ],
+            'sms': [
+                { label: 'API Integration (Dev)', setupCost: 3600, note: '$300/mo amortized' },
+                { label: 'Message Template Mgmt', base: 300, minVolume: 1000, note: 'Dev time for edits' },
+                { label: 'URL Shortening Service', base: 49, minVolume: 1000, perUnit: 0.0005, note: 'Bitly/Rebrandly' },
+                { label: 'Compliance (DLT/TCPA)', base: 200, minVolume: 5000, note: 'Registration & monitoring' },
+                { label: 'Analytics & Reporting', base: 150, minVolume: 2000, note: 'Custom dashboards' }
+            ],
+            'whatsapp-marketing': [
+                { label: 'Business API Setup', setupCost: 6000, note: '$500/mo amortized' },
+                { label: 'Template Approval Process', base: 300, minVolume: 1000, note: 'Ongoing template mgmt' },
+                { label: 'Opt-in Compliance', base: 200, minVolume: 1000, note: 'Consent management' },
+                { label: 'Rich Media Storage (CDN)', perUnit: 0.0008, minVolume: 500, note: 'Image/video hosting' },
+                { label: 'Analytics Integration', base: 150, minVolume: 2000, note: 'Custom reporting' }
+            ],
+            'whatsapp-utility': [
+                { label: 'Business API Setup', setupCost: 6000, note: '$500/mo amortized' },
+                { label: 'CRM Integration (Dev)', setupCost: 4800, note: '$400/mo amortized' },
+                { label: 'Automation Logic', base: 400, minVolume: 1000, note: 'Custom workflows' },
+                { label: 'Analytics Tools', base: 150, minVolume: 2000, note: 'Reporting' }
+            ],
+            'push': [
+                { label: 'SDK Integration (Dev)', setupCost: 4800, note: '$400/mo amortized' },
+                { label: 'Device Token Mgmt', perUnit: 0.00002, minVolume: 10000, note: 'Storage & sync' },
+                { label: 'Segmentation Tools', base: 200, minVolume: 5000, note: 'Targeting logic' },
+                { label: 'Analytics Dashboard', base: 150, minVolume: 5000, note: 'Custom reporting' }
+            ],
+            'survey': [
+                { label: 'Survey Platform Dev', setupCost: 6000, note: '$500/mo amortized' },
+                { label: 'Response Storage', perUnit: 0.002, minVolume: 100, note: 'Database costs' },
+                { label: 'Analytics & Reports', base: 300, minVolume: 500, perUnit: 0.001, note: 'Scales with responses' }
+            ],
+            'payment-request': [
+                { label: 'Payment Link Integration', setupCost: 4800, note: '$400/mo amortized' },
+                { label: 'Email/SMS Templates', base: 300, minVolume: 100, note: 'Dev for edits' },
+                { label: 'Reminder Automation', base: 200, minVolume: 500, note: 'Scheduling logic' },
+                { label: 'Reconciliation Tools', base: 300, minVolume: 500, perUnit: 0.0003, note: 'Payment tracking' }
+            ],
+            'appointment-reminder': [
+                { label: 'Calendar Integration', setupCost: 3600, note: '$300/mo amortized' },
+                { label: 'Reminder Templates', base: 250, minVolume: 100, note: 'SMS/Email dev' },
+                { label: 'Timezone Logic', base: 200, minVolume: 500, note: 'Scheduling complexity' },
+                { label: 'Confirmation Tracking', base: 150, minVolume: 500, note: 'Response handling' }
+            ],
+            'service-completion': [
+                { label: 'Event Integration (Dev)', setupCost: 3600, note: '$300/mo amortized' },
+                { label: 'Notification Templates', base: 200, minVolume: 100, note: 'Multi-channel setup' },
+                { label: 'Status Tracking', base: 250, minVolume: 500, note: 'Database & logic' }
+            ],
+            'signature': [
+                { label: 'API Integration (Dev)', setupCost: 6000, note: '$500/mo amortized' },
+                { label: 'Template Customization', base: 500, minVolume: 50, note: 'Form design' },
+                { label: 'Workflow Automation', base: 400, minVolume: 100, note: 'Routing logic' },
+                { label: 'Document Storage', perUnit: 0.008, minVolume: 50, note: 'Long-term archiving' },
+                { label: 'Compliance & Audit', base: 300, minVolume: 100, note: 'Legal requirements' }
+            ],
+            'ivr': [
+                { label: 'Call Flow Design (Dev)', setupCost: 7200, note: '$600/mo amortized' },
+                { label: 'Per-Agent Licensing', base: 1000, minVolume: 100, note: '8 agents minimum' },
+                { label: 'CRM Integration', setupCost: 4800, note: '$400/mo amortized' },
+                { label: 'Call Recording Storage', perUnit: 0.015, minVolume: 100, note: 'Compliance storage' },
+                { label: 'Analytics & Reporting', base: 300, minVolume: 500, note: 'Custom dashboards' }
+            ],
+            'ach': [
+                { label: 'ACH API Integration', setupCost: 6000, note: '$500/mo amortized' },
+                { label: 'Bank Verification', base: 200, minVolume: 10, note: 'Plaid/similar service' },
+                { label: 'Fraud Detection', base: 300, minVolume: 100, perUnit: 0.005, note: 'Risk scoring' },
+                { label: 'Reconciliation Dashboard', base: 400, minVolume: 100, note: 'Payment tracking' },
+                { label: 'Failed Payment Handling', base: 200, minVolume: 50, note: 'Retry logic' }
+            ],
+            'card': [
+                { label: 'Gateway Integration', setupCost: 6000, note: '$500/mo amortized' },
+                { label: 'PCI Compliance Audit', base: 300, minVolume: 10, note: 'Annual audit ÷ 12' },
+                { label: 'Fraud Detection', base: 400, minVolume: 100, perUnit: 0.008, note: 'Risk engine' },
+                { label: '3D Secure Implementation', setupCost: 3600, note: '$300/mo amortized' },
+                { label: 'Chargeback Management', base: 200, minVolume: 100, perUnit: 0.015, note: 'Dispute handling' }
+            ]
+        };
+
+        function createServiceCard(service, sectionId) {
+            const card = document.createElement('div');
+            card.className = 'service-card';
+            if (service.unique) card.classList.add('unique');
+            if (service.isFree) card.classList.add('free');
+
+            // Start all sliders at 0 - user builds up from there
+            const defaultVolume = 0;
+            const isMonthlyFee = service.monthlyFee !== undefined;
+
+            card.innerHTML = `
+                <div class="card-header">
+                    <div class="card-title-row">
+                        <div class="card-title">
+                            ${service.name}
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            ${service.unique ? '<span class="badge badge-unique">Unique</span>' : ''}
+                            ${service.isFree ? '<span class="badge badge-free">FREE</span>' : ''}
+                            <input type="checkbox" class="service-checkbox" id="${service.id}-checkbox"
+                                   onchange="toggleService('${service.id}', this.checked)">
+                        </div>
+                    </div>
+                </div>
+
+                ${service.description ? `
+                    <div style="font-size: 0.75rem; color: #6b7280; margin-bottom: 0.75rem;">
+                        ${service.description}
+                    </div>
+                ` : ''}
+
+                ${service.isFree ? `
+                    <div class="volume-control">
+                        <div class="volume-label">
+                            <span>Monthly ${service.id === 'customer-contacts' ? 'Contacts' : 'Users'}</span>
+                            <span class="volume-value" id="${service.id}-volume-value">${defaultVolume.toLocaleString()}</span>
+                        </div>
+                        <input type="range" class="slider" id="${service.id}-volume"
+                               min="1000"
+                               max="100000"
+                               step="1000"
+                               value="${defaultVolume}">
+                    </div>
+                ` : ''}
+
+                ${!service.isFree && !isMonthlyFee ? `
+                    <div class="volume-control">
+                        <div class="volume-label">
+                            <span>Monthly Volume</span>
+                            <span class="volume-value" id="${service.id}-volume-value">${defaultVolume.toLocaleString()}</span>
+                        </div>
+                        <input type="range" class="slider" id="${service.id}-volume"
+                               min="${service.step || 100}"
+                               max="${service.max || 100000}"
+                               step="${service.step || 100}"
+                               value="${defaultVolume}">
+                    </div>
+                ` : ''}
+
+                <div class="comparison">
+                    <div class="comparison-row">
+                        <div class="comparison-label">
+                            <svg class="icon" style="width: 16px; height: 16px; color: #dc2626;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="15" y1="9" x2="9" y2="15"></line>
+                                <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                            ${service.competitor}
+                        </div>
+                        <div class="comparison-value competitor-value" id="${service.id}-competitor-total">$0</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-label">
+                            <svg class="icon check-icon" style="width: 16px; height: 16px;">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Tilli
+                        </div>
+                        <div class="comparison-value tilli-value" id="${service.id}-tilli-total">$0</div>
+                    </div>
+                </div>
+
+                <div class="savings" id="${service.id}-savings" style="display: none;">
+                    <div class="savings-amount" id="${service.id}-savings-amount">$0</div>
+                    <div class="savings-label">saved per month (<span id="${service.id}-savings-percent">0</span>%)</div>
+                </div>
+
+                ${TCO_COSTS[service.id] ? `
+                    <button class="details-toggle" onclick="toggleDetails('${service.id}')">
+                        <span id="${service.id}-toggle-text">Show TCO Details</span>
+                        <svg class="icon" style="width: 12px; height: 12px;" id="${service.id}-toggle-icon">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="details-content" id="${service.id}-details">
+                        <div class="tco-grid">
+                            <div class="tco-header-row">
+                                <div class="tco-header">Cost Item</div>
+                                <div class="tco-header competitor">${service.competitor}</div>
+                                <div class="tco-header tilli">Tilli</div>
+                            </div>
+                            ${TCO_COSTS[service.id].map((item, index) => `
+                                <div class="tco-row">
+                                    <div class="tco-label">${item.label}</div>
+                                    <div class="tco-value cost" id="${service.id}-tco-${index}">$${item.base || 0}</div>
+                                    <div class="tco-value included">✓ Included</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+
+            return card;
+        }
+
+        function toggleService(serviceId, isEnabled) {
+            const card = document.querySelector(`#${serviceId}-checkbox`).closest('.service-card');
+
+            if (isEnabled) {
+                card.classList.remove('inactive');
+                card.classList.add('selected');
+            } else {
+                card.classList.add('inactive');
+                card.classList.remove('selected');
+            }
+
+            // Find the service in config
+            let service = null;
+            Object.values(SERVICES_CONFIG).forEach(section => {
+                const found = section.find(s => s.id === serviceId);
+                if (found) service = found;
+            });
+
+            if (service) {
+                updateService(service);
+            }
+        }
+
+        function toggleDetails(serviceId) {
+            const details = document.getElementById(`${serviceId}-details`);
+            const toggleText = document.getElementById(`${serviceId}-toggle-text`);
+            const toggleIcon = document.getElementById(`${serviceId}-toggle-icon`);
+
+            if (details.classList.contains('show')) {
+                details.classList.remove('show');
+                toggleText.textContent = 'Show TCO Details';
+                toggleIcon.innerHTML = '<polyline points="6 9 12 15 18 9"></polyline>';
+            } else {
+                details.classList.add('show');
+                toggleText.textContent = 'Hide TCO Details';
+                toggleIcon.innerHTML = '<polyline points="18 15 12 9 6 15"></polyline>';
+            }
+        }
+
+        function updateService(service) {
+            // Check if service is enabled
+            const checkbox = document.getElementById(`${service.id}-checkbox`);
+            const isEnabled = checkbox ? checkbox.checked : false;
+
+            // If not enabled, reset everything to zero
+            if (!isEnabled) {
+                document.getElementById(`${service.id}-competitor-total`).textContent = '$0';
+                document.getElementById(`${service.id}-tilli-total`).textContent = '$0';
+                const savingsEl = document.getElementById(`${service.id}-savings`);
+                if (savingsEl) savingsEl.style.display = 'none';
+                updateTotalSavings();
+                return;
+            }
+
+            if (service.isFree) {
+                const volume = parseInt(document.getElementById(`${service.id}-volume`).value);
+                document.getElementById(`${service.id}-volume-value`).textContent = volume.toLocaleString();
+
+                let competitorCost = 0;
+
+                // Calculate competitor cost based on service
+                if (service.id === 'preference-mgmt') {
+                    // OneTrust charges ~$1000/mo base
+                    competitorCost = 1000;
+                } else if (service.id === 'customer-contacts') {
+                    // HubSpot charges $50/mo for 1000 contacts, scaling up
+                    if (volume <= 1000) {
+                        competitorCost = 50;
+                    } else if (volume <= 10000) {
+                        competitorCost = 450; // Professional tier
+                    } else {
+                        competitorCost = 1200; // Enterprise tier
+                    }
+                }
+
+                document.getElementById(`${service.id}-competitor-total`).textContent = `$${competitorCost}/mo`;
+                document.getElementById(`${service.id}-tilli-total`).textContent = 'FREE';
+
+                // Show savings
+                if (competitorCost > 0) {
+                    document.getElementById(`${service.id}-savings`).style.display = 'block';
+                    document.getElementById(`${service.id}-savings-amount`).textContent = `$${competitorCost}`;
+                    document.getElementById(`${service.id}-savings-percent`).textContent = '100';
+                }
+
+                updateTotalSavings();
+                return;
+            }
+
+            // Handle monthly fee add-ons
+            if (service.monthlyFee !== undefined) {
+                const tilliCost = service.monthlyFee;
+                const competitorCost = service.competitorRate || 0;
+
+                document.getElementById(`${service.id}-competitor-total`).textContent = `$${competitorCost}/mo`;
+                document.getElementById(`${service.id}-tilli-total`).textContent = `$${tilliCost}/mo`;
+
+                const savings = competitorCost - tilliCost;
+                if (savings > 0) {
+                    const savingsPercent = ((savings / competitorCost) * 100).toFixed(0);
+                    document.getElementById(`${service.id}-savings`).style.display = 'block';
+                    document.getElementById(`${service.id}-savings-amount`).textContent = `$${savings}`;
+                    document.getElementById(`${service.id}-savings-percent`).textContent = savingsPercent;
+                } else {
+                    document.getElementById(`${service.id}-savings`).style.display = 'none';
+                }
+
+                updateTotalSavings();
+                return;
+            }
+
+            const volume = parseInt(document.getElementById(`${service.id}-volume`).value);
+            document.getElementById(`${service.id}-volume-value`).textContent = volume.toLocaleString();
+
+            // Calculate competitor cost
+            let competitorCarrier = volume * (service.competitorRate || 0);
+            let competitorTotal = competitorCarrier;
+
+            // Add TCO hidden costs if available (realistic, volume-based)
+            if (TCO_COSTS[service.id] && volume > 0) {
+                TCO_COSTS[service.id].forEach((item, index) => {
+                    let itemCost = 0;
+
+                    // One-time setup cost (amortized over 12 months)
+                    if (item.setupCost) {
+                        itemCost += item.setupCost / 12;
+                    }
+
+                    // Only add costs if volume meets minimum threshold
+                    if (!item.minVolume || volume >= item.minVolume) {
+                        // Fixed monthly cost
+                        if (item.base) {
+                            itemCost += item.base;
+                        }
+
+                        // Variable cost (scales with volume)
+                        if (item.perUnit) {
+                            itemCost += volume * item.perUnit;
+                        }
+
+                        // Fixed cost above threshold (e.g., $500 once you hit 5000 volume)
+                        if (item.fixedAbove && volume >= item.minVolume) {
+                            itemCost += item.fixedAbove;
+                        }
+                    }
+
+                    competitorTotal += itemCost;
+
+                    // Update the TCO detail display
+                    const tcoElement = document.getElementById(`${service.id}-tco-${index}`);
+                    if (tcoElement) {
+                        if (itemCost > 0) {
+                            tcoElement.textContent = `$${itemCost.toFixed(0)}`;
+                            tcoElement.parentElement.style.opacity = '1';
+                        } else {
+                            tcoElement.textContent = '$0';
+                            tcoElement.parentElement.style.opacity = '0.4';
+                        }
+                    }
+                });
+            }
+
+            // Calculate Tilli cost considering all tokens used across services
+            const tilliTokens = volume * service.tokens;
+
+            // Get total tokens used by OTHER services
+            let tokensUsedByOthers = 0;
+            Object.values(SERVICES_CONFIG).forEach(section => {
+                section.forEach(otherService => {
+                    if (otherService.id === service.id || otherService.isFree) return;
+                    const otherCheckbox = document.getElementById(`${otherService.id}-checkbox`);
+                    const otherEnabled = otherCheckbox ? otherCheckbox.checked : false;
+                    if (!otherEnabled) return;
+
+                    const otherVolume = parseInt(document.getElementById(`${otherService.id}-volume`)?.value || 0);
+                    if (otherVolume > 0) {
+                        tokensUsedByOthers += otherVolume * otherService.tokens;
+                    }
+                });
+            });
+
+            let tilliCost = calculateTokenCost(tilliTokens, tokensUsedByOthers);
+
+            // Add extra fees if applicable (ACH, Card fees)
+            if (service.extraFee) {
+                tilliCost += volume * service.extraFee;
+            }
+
+            // Update display
+            document.getElementById(`${service.id}-competitor-total`).textContent = `$${Math.round(competitorTotal)}`;
+            document.getElementById(`${service.id}-tilli-total`).textContent = `$${Math.round(tilliCost)}`;
+
+            // Calculate savings
+            const savings = competitorTotal - tilliCost;
+            if (savings > 0) {
+                const savingsPercent = Math.round((savings / competitorTotal) * 100);
+                document.getElementById(`${service.id}-savings`).style.display = 'block';
+                document.getElementById(`${service.id}-savings-amount`).textContent = `$${Math.round(savings)}`;
+                document.getElementById(`${service.id}-savings-percent`).textContent = savingsPercent;
+            } else {
+                document.getElementById(`${service.id}-savings`).style.display = 'none';
+            }
+
+            updateTotalSavings();
+        }
+
+        function updateTotalSavings() {
+            let totalSavings = 0;
+
+            // Calculate savings for all services
+            Object.values(SERVICES_CONFIG).forEach(section => {
+                section.forEach(service => {
+                    // Check if service is enabled
+                    const checkbox = document.getElementById(`${service.id}-checkbox`);
+                    const isEnabled = checkbox ? checkbox.checked : false;
+                    if (!isEnabled) return;
+
+                    // Handle free services
+                    if (service.isFree) {
+                        const volume = parseInt(document.getElementById(`${service.id}-volume`)?.value || 10000);
+                        let competitorCost = 0;
+
+                        if (service.id === 'preference-mgmt') {
+                            competitorCost = 1000;
+                        } else if (service.id === 'customer-contacts') {
+                            if (volume <= 1000) {
+                                competitorCost = 50;
+                            } else if (volume <= 10000) {
+                                competitorCost = 450;
+                            } else {
+                                competitorCost = 1200;
+                            }
+                        }
+
+                        totalSavings += competitorCost;
+                        return;
+                    }
+
+                    // Handle monthly fee add-ons
+                    if (service.monthlyFee !== undefined) {
+                        const savings = (service.competitorRate || 0) - service.monthlyFee;
+                        if (savings > 0) {
+                            totalSavings += savings;
+                        }
+                        return;
+                    }
+
+                    const volume = parseInt(document.getElementById(`${service.id}-volume`)?.value || 0);
+                    if (volume === 0) return;
+
+                    // Competitor total with realistic TCO costs
+                    let competitorCarrier = volume * (service.competitorRate || 0);
+                    let competitorTotal = competitorCarrier;
+                    if (TCO_COSTS[service.id]) {
+                        TCO_COSTS[service.id].forEach(item => {
+                            let itemCost = 0;
+
+                            if (item.setupCost) {
+                                itemCost += item.setupCost / 12;
+                            }
+
+                            if (!item.minVolume || volume >= item.minVolume) {
+                                if (item.base) itemCost += item.base;
+                                if (item.perUnit) itemCost += volume * item.perUnit;
+                                if (item.fixedAbove && volume >= item.minVolume) itemCost += item.fixedAbove;
+                            }
+
+                            competitorTotal += itemCost;
+                        });
+                    }
+
+                    // Tilli total - calculate with correct token positioning
+                    const tilliTokens = volume * service.tokens;
+
+                    // Get tokens used by services processed before this one
+                    let tokensPriorToThis = 0;
+                    let foundCurrent = false;
+                    Object.values(SERVICES_CONFIG).forEach(sect => {
+                        sect.forEach(s => {
+                            if (s.id === service.id) {
+                                foundCurrent = true;
+                                return;
+                            }
+                            if (foundCurrent || s.isFree) return;
+
+                            const cb = document.getElementById(`${s.id}-checkbox`);
+                            const enabled = cb ? cb.checked : false;
+                            if (!enabled) return;
+
+                            const vol = parseInt(document.getElementById(`${s.id}-volume`)?.value || 0);
+                            if (vol > 0) {
+                                tokensPriorToThis += vol * s.tokens;
+                            }
+                        });
+                    });
+
+                    let tilliCost = calculateTokenCost(tilliTokens, tokensPriorToThis);
+                    if (service.extraFee) {
+                        tilliCost += volume * service.extraFee;
+                    }
+
+                    const savings = competitorTotal - tilliCost;
+                    if (savings > 0) {
+                        totalSavings += savings;
+                    }
+                });
+            });
+
+            document.getElementById('total-savings').textContent = `$${Math.round(totalSavings)}`;
+
+            // Count active services and calculate TCO reduction
+            let servicesUsed = 0;
+            let totalCompetitor = 0;
+            let totalTilli = 0;
+
+            Object.values(SERVICES_CONFIG).forEach(section => {
+                section.forEach(service => {
+                    // Check if service is enabled
+                    const checkbox = document.getElementById(`${service.id}-checkbox`);
+                    const isEnabled = checkbox ? checkbox.checked : false;
+                    if (!isEnabled) return;
+
+                    if (service.isFree) {
+                        const volume = parseInt(document.getElementById(`${service.id}-volume`)?.value || 10000);
+                        if (volume > 0) {
+                            servicesUsed++;
+                            if (service.id === 'preference-mgmt') {
+                                totalCompetitor += 1000;
+                            } else if (service.id === 'customer-contacts') {
+                                totalCompetitor += (volume <= 1000 ? 50 : volume <= 10000 ? 450 : 1200);
+                            }
+                        }
+                        return;
+                    }
+
+                    if (service.monthlyFee !== undefined) {
+                        servicesUsed++;
+                        totalCompetitor += service.competitorRate || 0;
+                        totalTilli += service.monthlyFee;
+                        return;
+                    }
+
+                    const volume = parseInt(document.getElementById(`${service.id}-volume`)?.value || 0);
+                    if (volume > 0) {
+                        servicesUsed++;
+
+                        let competitorCost = volume * (service.competitorRate || 0);
+                        if (TCO_COSTS[service.id]) {
+                            TCO_COSTS[service.id].forEach(item => {
+                                competitorCost += item.base + (volume * item.perUnit);
+                            });
+                        }
+                        totalCompetitor += competitorCost;
+
+                        const tilliTokens = volume * service.tokens;
+                        let tilliCost = calculateTokenCost(tilliTokens);
+                        if (service.extraFee) {
+                            tilliCost += volume * service.extraFee;
+                        }
+                        totalTilli += tilliCost;
+                    }
+                });
+            });
+
+            document.getElementById('services-count').textContent = servicesUsed;
+
+            // Calculate total volume across all enabled services
+            let totalVolume = 0;
+            Object.values(SERVICES_CONFIG).forEach(section => {
+                section.forEach(service => {
+                    const checkbox = document.getElementById(`${service.id}-checkbox`);
+                    const isEnabled = checkbox ? checkbox.checked : false;
+                    if (!isEnabled) return;
+
+                    const volumeSlider = document.getElementById(`${service.id}-volume`);
+                    if (volumeSlider) {
+                        totalVolume += parseInt(volumeSlider.value || 0);
+                    }
+                });
+            });
+
+            // Update token summary
+            const totalTokens = getTotalTokensUsed();
+            document.getElementById('tokens-needed').textContent = totalTokens.toLocaleString();
+            document.getElementById('total-volume').textContent = totalVolume.toLocaleString();
+
+            // Enable/disable next button
+            const nextBtn = document.getElementById('next-step-btn');
+            if (servicesUsed > 0) {
+                nextBtn.disabled = false;
+            } else {
+                nextBtn.disabled = true;
+            }
+        }
+
+        // Save configuration and proceed to recommendation page
+        function proceedToRecommendation() {
+            const config = {
+                services: [],
+                totalTokens: getTotalTokensUsed(),
+                totalSavings: 0,
+                competitorCost: 0,
+                tilliCost: 0
+            };
+
+            // Collect all selected services
+            Object.values(SERVICES_CONFIG).forEach(section => {
+                section.forEach(service => {
+                    const checkbox = document.getElementById(`${service.id}-checkbox`);
+                    const isEnabled = checkbox ? checkbox.checked : false;
+                    if (!isEnabled) return;
+
+                    const volumeEl = document.getElementById(`${service.id}-volume`);
+                    const volume = volumeEl ? parseInt(volumeEl.value || 0) : 0;
+
+                    config.services.push({
+                        id: service.id,
+                        name: service.name,
+                        volume: volume,
+                        tokens: service.tokens || 0,
+                        totalTokens: volume * (service.tokens || 0),
+                        isFree: service.isFree || false
+                    });
+                });
+            });
+
+            // Get totals from summary
+            const totalSavingsText = document.getElementById('total-savings')?.textContent || '$0';
+            config.totalSavings = Math.round(parseFloat(totalSavingsText.replace(/[$,]/g, ''))) || 0;
+            config.totalTokens = getTotalTokensUsed();
+
+            // Save to sessionStorage
+            sessionStorage.setItem('tilliConfig', JSON.stringify(config));
+
+            // Navigate to recommendation page
+            window.location.href = 'plan-recommendation.html';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render all sections
+            Object.entries(SERVICES_CONFIG).forEach(([sectionKey, services]) => {
+                const grid = document.getElementById(`${sectionKey}-grid`);
+                if (!grid) return;
+
+                services.forEach(service => {
+                    const card = createServiceCard(service, sectionKey);
+                    grid.appendChild(card);
+
+                    // Mark card as inactive by default
+                    card.classList.add('inactive');
+
+                    // Add click event to toggle card
+                    card.addEventListener('click', (e) => {
+                        // Don't toggle if clicking checkbox, slider, or button
+                        if (e.target.classList.contains('service-checkbox') ||
+                            e.target.tagName === 'INPUT' ||
+                            e.target.tagName === 'BUTTON' ||
+                            e.target.closest('button')) {
+                            return;
+                        }
+
+                        const checkbox = document.getElementById(`${service.id}-checkbox`);
+                        if (checkbox) {
+                            checkbox.checked = !checkbox.checked;
+                            toggleService(service.id, checkbox.checked);
+                            // Update selected state
+                            if (checkbox.checked) {
+                                card.classList.add('selected');
+                            } else {
+                                card.classList.remove('selected');
+                            }
+                        }
+                    });
+
+                    // Add event listener for slider
+                    if (service.isFree) {
+                        // Free services have sliders too, for comparison
+                        const slider = document.getElementById(`${service.id}-volume`);
+                        if (slider) {
+                            slider.addEventListener('input', () => updateService(service));
+                        }
+                        updateService(service);
+                    } else if (service.monthlyFee === undefined) {
+                        // Regular services with volume sliders
+                        const slider = document.getElementById(`${service.id}-volume`);
+                        if (slider) {
+                            slider.addEventListener('input', () => {
+                                // Auto-check the checkbox when user moves the slider
+                                const checkbox = document.getElementById(`${service.id}-checkbox`);
+                                if (checkbox && !checkbox.checked && parseInt(slider.value) > 0) {
+                                    checkbox.checked = true;
+                                    toggleService(service.id, true);
+                                }
+                                updateService(service);
+                            });
+                        }
+                        updateService(service);
+                    } else {
+                        // Monthly fee add-ons (no slider)
+                        updateService(service);
+                    }
+                });
+            });
+
+            updateTotalSavings();
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer" style="background: #000000 !important; color: #FFFFFF !important;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Products</h4>
+                        <ul>
+                            <li><a href="nudge.html">Nudge</a></li>
+                            <li><a href="tillix.html">tilliX</a></li>
+                            <li><a href="tillipay.html">Monay</a></li>
+                            <li><a href="index.html#product-comparison">Compare Products</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="industries.html">Industries</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="calculator.html">FAQS</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Developers</h4>
+                        <ul>
+                            <li><a href="developer.html">Documentation</a></li>
+                            <li><a href="developer.html">API Reference</a></li>
+                            <li><a href="developer.html">SDKs</a></li>
+                            <li><a href="calculator.html">Help Center</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Get Started Today</h4>
+                        <ul>
+                            <li><a href="free-trial.html" class="gradient-link">Start a Free Trial <span class="arrow">→</span></a></li>
+                            <li><a href="contact.html" class="gradient-link">Request a Demo <span class="arrow">→</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Mobile: Brand section at top -->
+                <div class="footer-brand mobile-brand">
+                    <div class="footer-logo">
+                        <img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo">
+                    </div>
+                    <p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="footer-brand desktop-brand">
+                        <div class="footer-logo">
+                            <img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo">
+                        </div>
+                        <p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
+                        <p class="footer-copyright">&copy; 2026 — Copyright All Rights reserved</p>
+                    </div>
+
+                    <div class="footer-right">
+                        <div class="footer-social-copyright">
+                            <div class="footer-social">
+                                <a href="https://x.com/tillisoftware" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/tillisoftware" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                                <a href="https://www.youtube.com/@tillisoftware" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                            <p class="mobile-copyright">&copy; 2026 — Copyright<br>All Rights reserved</p>
+                        </div>
+
+                        <div class="footer-headquarters">
+                            <h5>Headquarters</h5>
+                            <p>8260 Greensboro Dr,<br>Suite 270, McLean VA, 22102</p>
+                            <div class="footer-status">
+                                <span class="status-indicator"></span>
+                                <span>Platform status</span>
+                            </div>
+                        </div>
+
+                        <div class="footer-legal-links">
+                            <a href="#">Terms</a>
+                            <span class="separator">|</span>
+                            <a href="privacy-policy/">Privacy</a>
+                            <span class="separator">|</span>
+                            <a href="#">Cookies</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main script for header scroll effect -->
+    <script src="script.js"></script>
+
+    <script>
+        // Footer gradient border mouse tracking
+        const footer = document.querySelector('.footer');
+        if (footer) {
+            footer.addEventListener('mousemove', (e) => {
+                const rect = footer.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                footer.style.setProperty('--mouse-x', `${x}%`);
+            });
+        }
+    </script>
+
+    <!-- Vercel Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
