@@ -2413,6 +2413,24 @@ main {
         height: 160px !important;
         margin-top: 1rem !important;
     }
+
+    .beacon-card .xdex-inner > div:last-child {
+        height: auto !important;
+        min-height: 420px !important;
+    }
+
+    .beacon-card h3 {
+        font-size: 2rem !important;
+        line-height: 1.05 !important;
+    }
+
+    .beacon-card .xdex-inner > div:first-child > div[style*="grid-template-columns: repeat(3, minmax(0, 1fr))"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    .beacon-card .xdex-inner > div:last-child > div > div[style*="grid-template-columns: repeat(3, minmax(0, 1fr))"] {
+        grid-template-columns: 1fr !important;
+    }
 }
 
 /* Extra small mobile: max-width 480px */
