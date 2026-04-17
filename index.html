@@ -649,6 +649,24 @@
                         margin-top: 1rem !important;
                     }
 
+                    .beacon-card .xdex-inner > div:last-child {
+                        height: auto !important;
+                        min-height: 420px !important;
+                    }
+
+                    .beacon-card h3 {
+                        font-size: 2rem !important;
+                        line-height: 1.05 !important;
+                    }
+
+                    .beacon-card .xdex-inner > div:first-child > div[style*="grid-template-columns: repeat(3, minmax(0, 1fr))"] {
+                        grid-template-columns: 1fr !important;
+                    }
+
+                    .beacon-card .xdex-inner > div:last-child > div > div[style*="grid-template-columns: repeat(3, minmax(0, 1fr))"] {
+                        grid-template-columns: 1fr !important;
+                    }
+
                     .testimonial-card {
                         margin-bottom: 1rem;
                     }
@@ -1712,6 +1730,113 @@
 
                 <!-- Modern Product Cards Grid -->
                 <div class="products-grid-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 3rem 0;">
+                    <!-- Beacon Card (spans 2 columns) -->
+                    <div class="product-showcase-card beacon-card" style="background:
+                        radial-gradient(circle at top right, rgba(108, 211, 239, 0.24), transparent 26%),
+                        radial-gradient(circle at bottom left, rgba(46, 103, 248, 0.10), transparent 30%),
+                        linear-gradient(135deg, #F8FBFF 0%, #F2F7FF 55%, #FFFFFF 100%);
+                        border-radius: 28px; padding: 2.5rem; border: 1px solid rgba(50, 94, 246, 0.12); transition: all 0.3s ease; grid-column: span 2; box-shadow: 0 24px 60px rgba(50, 94, 246, 0.08); overflow: hidden; position: relative;">
+                        <div style="position: absolute; inset: 0; background:
+                            linear-gradient(90deg, transparent 0%, rgba(50,94,246,0.03) 48%, transparent 100%);
+                            pointer-events: none;"></div>
+                        <div class="xdex-inner" style="display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 2.25rem; align-items: stretch; position: relative; z-index: 1;">
+                            <div style="text-align: left;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1.25rem;">
+                                    <span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.95rem; border-radius: 999px; background: rgba(50, 94, 246, 0.08); border: 1px solid rgba(50, 94, 246, 0.16); color: #325EF6; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;">Big News</span>
+                                    <span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.95rem; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(50, 94, 246, 0.12); color: #2E67F8; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;">Launching Beacon</span>
+                                </div>
+                                <p style="color: #325EF6; line-height: 1.4; margin-bottom: 0.8rem; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">Nudge Add-On</p>
+                                <h3 style="font-family: 'Sora', sans-serif; font-weight: 400; color: #111827; font-size: clamp(2.2rem, 4vw, 3.35rem); line-height: 1.02; margin-bottom: 0.75rem; max-width: 12ch;">Beacon</h3>
+                                <p style="color: #1F2937; line-height: 1.14; margin-bottom: 1rem; font-size: clamp(1.2rem, 2vw, 1.75rem); font-weight: 500; max-width: 24ch;">AI Enterprise Relationship Management</p>
+                                <p style="color: #6B7280; line-height: 1.7; margin-bottom: 1.5rem; font-size: 15px; max-width: 42rem;">A new layer on top of ERP, CRM, and core banking systems that turns real-time financial and operational events into intelligent relationship engagement. Beacon gives enterprise teams predictive insights, automated workflows, proactive outreach, and <strong>JAREIS</strong>, its AI assistant: <strong>J</strong>ust <strong>A</strong>nother <strong>R</strong>ather <strong>E</strong>xtremely <strong>I</strong>ntelligent <strong>S</strong>ystem.</p>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 1.5rem;">
+                                    <span style="padding: 0.55rem 0.85rem; border-radius: 999px; background: #FFFFFF; color: #4B5563; font-size: 12px; font-weight: 600; border: 1px solid rgba(50, 94, 246, 0.10);">Predictive Client Intelligence</span>
+                                    <span style="padding: 0.55rem 0.85rem; border-radius: 999px; background: #FFFFFF; color: #4B5563; font-size: 12px; font-weight: 600; border: 1px solid rgba(50, 94, 246, 0.10);">Automated Relationship Workflows</span>
+                                    <span style="padding: 0.55rem 0.85rem; border-radius: 999px; background: #FFFFFF; color: #4B5563; font-size: 12px; font-weight: 600; border: 1px solid rgba(50, 94, 246, 0.10);">Unified System Orchestration</span>
+                                </div>
+                                <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; margin-bottom: 1.6rem;">
+                                    <div style="background: #FFFFFF; border: 1px solid rgba(50, 94, 246, 0.10); border-radius: 18px; padding: 1rem; box-shadow: 0 10px 24px rgba(50, 94, 246, 0.06);">
+                                        <div style="font-size: 11px; color: #93C5FD; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Systems</div>
+                                        <div style="font-size: 20px; color: #111827; font-weight: 700; margin-bottom: 0.15rem;">ERP + CRM</div>
+                                        <div style="font-size: 12px; color: #6B7280;">Plus core banking and operational platforms</div>
+                                    </div>
+                                    <div style="background: #FFFFFF; border: 1px solid rgba(50, 94, 246, 0.10); border-radius: 18px; padding: 1rem; box-shadow: 0 10px 24px rgba(50, 94, 246, 0.06);">
+                                        <div style="font-size: 11px; color: #93C5FD; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Coverage</div>
+                                        <div style="font-size: 20px; color: #111827; font-weight: 700; margin-bottom: 0.15rem;">3 Audiences</div>
+                                        <div style="font-size: 12px; color: #6B7280;">Customers, vendors, and employees</div>
+                                    </div>
+                                    <div style="background: #FFFFFF; border: 1px solid rgba(50, 94, 246, 0.10); border-radius: 18px; padding: 1rem; box-shadow: 0 10px 24px rgba(50, 94, 246, 0.06);">
+                                        <div style="font-size: 11px; color: #93C5FD; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Outcome</div>
+                                        <div style="font-size: 20px; color: #111827; font-weight: 700; margin-bottom: 0.15rem;">Real-Time ERM</div>
+                                        <div style="font-size: 12px; color: #6B7280;">Insights, automation, and engagement in one layer</div>
+                                    </div>
+                                </div>
+                                <a href="contact.html" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(90deg,#6CD3EF 0%,#5C9BF4 65%,#2E67F8 100%); color: #FFFFFF; padding: 0.9rem 1.2rem; border-radius: 999px; border: none; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; box-shadow: 0 14px 30px rgba(50, 94, 246, 0.16);">
+                                    <span>Talk to us about Beacon</span> <span style="font-size: 15px;">→</span>
+                                </a>
+                            </div>
+                            <div style="min-height: 100%; background: linear-gradient(180deg, #FFFFFF 0%, #F5F9FF 100%); border-radius: 24px; display: flex; align-items: center; justify-content: center; padding: 1.5rem; position: relative; overflow: hidden; border: 1px solid rgba(50, 94, 246, 0.10);">
+                                <style>
+                                    @keyframes beaconPulse {
+                                        0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(50, 94, 246, 0); }
+                                        50% { transform: scale(1.05); box-shadow: 0 0 0 14px rgba(50, 94, 246, 0.08); }
+                                    }
+                                    .beacon-core { animation: beaconPulse 4s ease-in-out infinite; }
+                                </style>
+                                <div style="width: 100%; max-width: 500px; display: grid; grid-template-rows: auto auto auto; gap: 1.25rem; align-items: start; position: relative;">
+                                    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; position: relative; z-index: 3;">
+                                        <div style="min-width: 0; min-height: 138px; padding: 0.95rem; border-radius: 16px; background: #FFFFFF; color: #0F172A; box-shadow: 0 14px 26px rgba(50, 94, 246, 0.10); border: 1px solid rgba(50, 94, 246, 0.08); display: flex; flex-direction: column; justify-content: flex-start;">
+                                            <img src="assets/icons/bar-chart.svg" alt="Analytics icon" style="width: 18px; height: 18px; margin-bottom: 0.45rem;">
+                                            <div style="font-size: 11px; color: #325EF6; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem;">Predict</div>
+                                            <div style="font-size: 13px; font-weight: 700;">Client intelligence</div>
+                                        </div>
+                                        <div style="min-width: 0; min-height: 138px; padding: 0.95rem; border-radius: 16px; background: #FFFFFF; color: #0F172A; box-shadow: 0 14px 26px rgba(50, 94, 246, 0.10); border: 1px solid rgba(50, 94, 246, 0.08); display: flex; flex-direction: column; justify-content: flex-start;">
+                                            <img src="assets/icons/zap.svg" alt="Automation icon" style="width: 18px; height: 18px; margin-bottom: 0.45rem;">
+                                            <div style="font-size: 11px; color: #325EF6; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem;">Automate</div>
+                                            <div style="font-size: 13px; font-weight: 700;">Relationship workflows</div>
+                                        </div>
+                                        <div style="min-width: 0; min-height: 138px; padding: 0.95rem; border-radius: 16px; background: #FFFFFF; color: #0F172A; box-shadow: 0 14px 26px rgba(50, 94, 246, 0.10); border: 1px solid rgba(50, 94, 246, 0.08); display: flex; flex-direction: column; justify-content: flex-start;">
+                                            <img src="assets/icons/globe.svg" alt="Orchestration icon" style="width: 18px; height: 18px; margin-bottom: 0.45rem;">
+                                            <div style="font-size: 11px; color: #325EF6; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem;">Orchestrate</div>
+                                            <div style="font-size: 13px; font-weight: 700;">Unified engagement</div>
+                                        </div>
+                                    </div>
+                                    <div style="position: relative; display: flex; align-items: center; justify-content: center; min-height: 250px; z-index: 1;">
+                                        <div style="position: absolute; z-index: 0; width: 300px; height: 300px; border-radius: 50%; border: 1px dashed rgba(50, 94, 246, 0.14);"></div>
+                                        <div style="position: absolute; z-index: 0; width: 238px; height: 238px; border-radius: 50%; border: 1px dashed rgba(50, 94, 246, 0.10);"></div>
+                                        <div class="beacon-core" style="position: relative; z-index: 2; width: 210px; height: 210px; border-radius: 50%; background:
+                                            radial-gradient(circle at 30% 30%, #6CD3EF 0%, #5C9BF4 28%, #325EF6 70%);
+                                            display: flex; align-items: center; justify-content: center; box-shadow: 0 24px 60px rgba(17, 24, 39, 0.30);">
+                                            <div style="width: 82%; text-align: center;">
+                                                <img src="assets/icons/bell.svg" alt="Beacon signals" style="width: 28px; height: 28px; margin: 0 auto 0.65rem; display: block; filter: brightness(0) invert(1);">
+                                                <div style="font-size: 12px; color: #E0F2FE; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem;">Now Launching</div>
+                                                <div style="font-size: 28px; color: #FFFFFF; font-family: 'Sora', sans-serif; font-weight: 400; line-height: 1.05; margin-bottom: 0.45rem;">Beacon</div>
+                                                <div style="font-size: 13px; color: #EFF6FF; line-height: 1.5;">AI ERM powered by Nudge + JAREIS</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; position: relative; z-index: 3;">
+                                        <div style="background: #FFFFFF; border-radius: 18px; padding: 1rem; border: 1px solid rgba(50, 94, 246, 0.08); box-shadow: 0 12px 24px rgba(50, 94, 246, 0.08); min-height: 164px;">
+                                            <div style="font-size: 11px; color: #93C5FD; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem;">Inputs</div>
+                                            <div style="font-size: 14px; color: #111827; font-weight: 700; margin-bottom: 0.15rem;">ERP, CRM, Core Banking</div>
+                                            <div style="font-size: 11px; color: #6B7280;">Normalizes operational and financial signals</div>
+                                        </div>
+                                        <div style="background: #FFFFFF; border-radius: 18px; padding: 1rem; border: 1px solid rgba(50, 94, 246, 0.08); box-shadow: 0 12px 24px rgba(50, 94, 246, 0.08); min-height: 164px;">
+                                            <div style="font-size: 11px; color: #93C5FD; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem;">Audience</div>
+                                            <div style="font-size: 14px; color: #111827; font-weight: 700; margin-bottom: 0.15rem;">Customers, Vendors, Employees</div>
+                                            <div style="font-size: 11px; color: #6B7280;">One system of engagement across enterprise relationships</div>
+                                        </div>
+                                        <div style="background: #FFFFFF; border-radius: 18px; padding: 1rem; border: 1px solid rgba(50, 94, 246, 0.08); box-shadow: 0 12px 24px rgba(50, 94, 246, 0.08); min-height: 164px;">
+                                            <div style="font-size: 11px; color: #93C5FD; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem;">AI Assistant</div>
+                                            <div style="font-size: 14px; color: #111827; font-weight: 700; margin-bottom: 0.15rem;">JAREIS</div>
+                                            <div style="font-size: 11px; color: #6B7280;">Beacon intelligence layer for guidance, insight, and action</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- tilliX Card -->
                     <div class="product-showcase-card" style="background: #F7F7F7; border-radius: 16px; padding: 2rem; border: none; transition: all 0.3s ease;">
                         <h3 style="font-family: 'Sora', sans-serif; font-weight: 400; color: #1a1a1a; font-size: 1.25rem; margin-bottom: 0.5rem;">tilliX</h3>
