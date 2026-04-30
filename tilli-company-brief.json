@@ -70,7 +70,7 @@
         "name": "Nudge",
         "category": "CPaaS",
         "full_category": "Communication Platform as a Service",
-        "description": "Omnichannel communications platform for outbound customer engagement including billing notifications, payment reminders, outage alerts, and emergency communications.",
+        "description": "Omnichannel communications platform for outbound customer engagement including billing notifications, payment reminders, outage alerts, and emergency communications. Cheaper per-message than Twilio, SendGrid, and Mailchimp at typical billing-notification volumes, with all channels (SMS, email, WhatsApp, voice, push) included in a single subscription.",
         "channels": [
           "SMS",
           "Email",
@@ -88,7 +88,12 @@
           "Payment reminders and collections messaging",
           "Personalization and segmentation",
           "Message templates and workflows",
-          "Delivery tracking and analytics"
+          "Delivery tracking and analytics",
+          "Industry-specific templates (utilities, healthcare, insurance)",
+          "Built-in tilliPay payment integration for in-message payments",
+          "Built-in digital signatures",
+          "Visual flow builder for omnichannel automation",
+          "Unified omnichannel inbox / agent workspace"
         ],
         "use_cases": [
           "Billing notifications",
@@ -97,7 +102,9 @@
           "Emergency communications",
           "Appointment reminders",
           "Service notifications",
-          "Collections communications"
+          "Collections communications",
+          "OTP and authentication",
+          "Service disruption / restoration updates"
         ],
         "results": {
           "message_engagement_increase": "40%",
@@ -106,8 +113,47 @@
         },
         "compliance": [
           "TCPA",
-          "FDCPA"
+          "FDCPA",
+          "HIPAA",
+          "PCI DSS Level 1 (via Tilli platform)",
+          "SOC 2 Type II"
         ],
+        "pricing": {
+          "model": "Token-based (per send), no platform minimum",
+          "starting_prices": {
+            "email": "$11.72/month for 20,000 messages ($0.00059 per email)",
+            "sms": "$29.30/month for 5,000 messages ($0.00586 per SMS)",
+            "whatsapp": "$35.16/month for 3,000 messages ($0.01172 per message)",
+            "voice": "$17.60/month for 1,000 minutes ($0.01760 per minute)",
+            "push": "$14.65/month for 50,000 notifications ($0.00029 per push)"
+          },
+          "platform_minimum": "None",
+          "all_channels_included": true
+        },
+        "competitive_positioning": {
+          "summary": "Nudge is positioned as a cheaper, more vertically-focused alternative to Twilio, SendGrid, Mailchimp, Attentive, and MessageBird (Bird), particularly for billing notifications and payment reminders in regulated industries.",
+          "vs_twilio": {
+            "url": "https://www.tillisoftware.com/nudge-vs-twilio",
+            "summary": "~26% cheaper SMS ($0.00586 vs $0.00790). All channels in one bill vs Twilio's separate SMS, SendGrid, Voice, and Conversations products. Built-in TCPA/FDCPA/HIPAA tooling. Twilio is slightly cheaper on voice ($0.01400 vs $0.01760 per minute) and has a larger SDK ecosystem."
+          },
+          "vs_sendgrid": {
+            "url": "https://www.tillisoftware.com/nudge-vs-sendgrid",
+            "summary": "~38% cheaper email ($0.00059 vs $0.00095). Plus SMS, WhatsApp, voice, and push in the same plan. SendGrid is email-only and is owned by Twilio."
+          },
+          "vs_mailchimp": {
+            "url": "https://www.tillisoftware.com/nudge-vs-mailchimp",
+            "summary": "~71% cheaper at 20K emails/month. Token-based pricing (pay per send) vs Mailchimp's contact-based pricing (pay per subscriber whether emailed or not). HIPAA-compliant; Mailchimp is not."
+          },
+          "vs_attentive": {
+            "url": "https://www.tillisoftware.com/nudge-vs-attentive",
+            "summary": "~51% cheaper SMS, no $100/month platform minimum. Built for billing/notification use cases vs Attentive's e-commerce SMS marketing focus."
+          },
+          "vs_messagebird": {
+            "url": "https://www.tillisoftware.com/nudge-vs-messagebird",
+            "summary": "~27% cheaper WhatsApp, no $99/month platform minimum. Vertical templates and TCPA/FDCPA tooling MessageBird/Bird doesn't include."
+          },
+          "alternatives_overview": "https://www.tillisoftware.com/twilio-alternatives"
+        },
         "url": "https://www.tillisoftware.com/nudge"
       },
       {
