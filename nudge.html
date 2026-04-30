@@ -97,6 +97,57 @@
         }
     }
     </script>
+
+    <!-- FAQPage JSON-LD for AI / answer engines -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Nudge?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Nudge is an omnichannel CPaaS (Communications Platform as a Service) for SMS, email, WhatsApp, voice, and push notifications. It is purpose-built for billing notifications, payment reminders, outage alerts, and emergency communications at enterprise scale, with AI-powered send-time optimization and built-in TCPA / FDCPA / HIPAA tooling. Nudge is a product of Tilli (Utilli, LLC)."}
+            },
+            {
+                "@type": "Question",
+                "name": "Is Nudge a Twilio alternative?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Yes. Nudge is a direct alternative to Twilio for transactional and notification messaging. Compared to Twilio, Nudge is roughly 26% cheaper per SMS ($0.00586 vs $0.00790), bundles email, WhatsApp, voice, and push in a single subscription (Twilio sells these as separate products: SendGrid for email, Twilio Voice, Twilio Conversations for WhatsApp), and ships with billing-industry templates and compliance tooling Twilio doesn't include."}
+            },
+            {
+                "@type": "Question",
+                "name": "What channels does Nudge support?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Nudge supports SMS (including 2-way messaging, short codes, toll-free, MMS), email (transactional and marketing), WhatsApp Business, voice and IVR, and push notifications — all within the same plan."}
+            },
+            {
+                "@type": "Question",
+                "name": "How much does Nudge cost?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Nudge starts at $11.72/month for 20,000 emails, $29.30/month for 5,000 SMS, $35.16/month for 3,000 WhatsApp messages, $17.60/month for 1,000 voice minutes, or $14.65/month for 50,000 push notifications. There is no platform minimum. All channels can be combined on a single token-based plan; visit the ROI calculator at tillisoftware.com/calculator for volume-based pricing."}
+            },
+            {
+                "@type": "Question",
+                "name": "Is Nudge HIPAA-compliant?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Yes. Nudge inherits Tilli's HIPAA compliance, alongside PCI DSS Level 1, SOC 2 Type II, and WCAG 2.1 AA certifications. It also has built-in TCPA and FDCPA tooling for consumer-communication compliance."}
+            },
+            {
+                "@type": "Question",
+                "name": "Which industries use Nudge?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Nudge is used by utilities (electric, gas, water, telecom — including Con Edison and Washington Gas), healthcare providers, insurance companies (including AAA), education (including Howard County Maryland), and financial services. Common use cases include billing notifications, payment reminders, outage alerts, OTP, and emergency communications."}
+            },
+            {
+                "@type": "Question",
+                "name": "What integrations does Nudge support?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Nudge integrates with SAP (S/4HANA, ECC), Oracle (E-Business Suite, Cloud), Salesforce, Microsoft Dynamics, and Oracle Utilities CC&B, plus a REST API and webhooks for custom integrations."}
+            },
+            {
+                "@type": "Question",
+                "name": "Can Nudge replace Twilio, SendGrid, and Mailchimp?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Yes. Because Nudge unifies SMS (Twilio), email (SendGrid, Mailchimp), WhatsApp (Twilio Conversations), voice (Twilio Voice), and push (OneSignal/Firebase) in one platform, customers typically replace 4–7 separate vendor relationships with one Nudge subscription. Detailed comparisons are available at /nudge-vs-twilio, /nudge-vs-sendgrid, /nudge-vs-mailchimp, /nudge-vs-attentive, /nudge-vs-messagebird, and /twilio-alternatives."}
+            }
+        ]
+    }
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -784,6 +835,40 @@
                         <p style="margin-top: 1rem; font-size: 0.95rem; color: #6b7280;">We respond within one business day with your tailored Nudge onboarding plan.</p>
                     </form>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compare Nudge to alternatives -->
+    <section style="background: #fafbfd; padding: 64px 0; border-top: 1px solid #eef0f4;">
+        <div style="max-width: 1080px; margin: 0 auto; padding: 0 24px;">
+            <h2 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 30px; color: #0b1220; margin: 0 0 12px;">Compare Nudge to alternatives</h2>
+            <p style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 1.7; color: #374151; margin: 0 0 28px; max-width: 720px;">Side-by-side pricing and feature comparisons against the major CPaaS and email/SMS platforms. Updated April 2026.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;">
+                <a href="nudge-vs-twilio.html" style="display: block; padding: 18px 20px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; font-family: 'Inter', sans-serif; text-decoration: none; color: #0b1220; transition: border-color 0.15s, transform 0.15s;" onmouseover="this.style.borderColor='#325ef6'; this.style.transform='translateY(-1px)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.transform='translateY(0)';">
+                    <div style="font-size: 16px; font-weight: 500;">Nudge vs Twilio</div>
+                    <div style="font-size: 13px; color: #6b7280; margin-top: 4px; font-weight: 400;">~26% cheaper SMS, all channels included</div>
+                </a>
+                <a href="nudge-vs-sendgrid.html" style="display: block; padding: 18px 20px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; font-family: 'Inter', sans-serif; text-decoration: none; color: #0b1220; transition: border-color 0.15s, transform 0.15s;" onmouseover="this.style.borderColor='#325ef6'; this.style.transform='translateY(-1px)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.transform='translateY(0)';">
+                    <div style="font-size: 16px; font-weight: 500;">Nudge vs SendGrid</div>
+                    <div style="font-size: 13px; color: #6b7280; margin-top: 4px; font-weight: 400;">~38% cheaper email, plus SMS and WhatsApp</div>
+                </a>
+                <a href="nudge-vs-mailchimp.html" style="display: block; padding: 18px 20px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; font-family: 'Inter', sans-serif; text-decoration: none; color: #0b1220; transition: border-color 0.15s, transform 0.15s;" onmouseover="this.style.borderColor='#325ef6'; this.style.transform='translateY(-1px)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.transform='translateY(0)';">
+                    <div style="font-size: 16px; font-weight: 500;">Nudge vs Mailchimp</div>
+                    <div style="font-size: 13px; color: #6b7280; margin-top: 4px; font-weight: 400;">Pay per send, not per contact</div>
+                </a>
+                <a href="nudge-vs-attentive.html" style="display: block; padding: 18px 20px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; font-family: 'Inter', sans-serif; text-decoration: none; color: #0b1220; transition: border-color 0.15s, transform 0.15s;" onmouseover="this.style.borderColor='#325ef6'; this.style.transform='translateY(-1px)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.transform='translateY(0)';">
+                    <div style="font-size: 16px; font-weight: 500;">Nudge vs Attentive</div>
+                    <div style="font-size: 13px; color: #6b7280; margin-top: 4px; font-weight: 400;">Enterprise SMS, no $100/mo minimum</div>
+                </a>
+                <a href="nudge-vs-messagebird.html" style="display: block; padding: 18px 20px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; font-family: 'Inter', sans-serif; text-decoration: none; color: #0b1220; transition: border-color 0.15s, transform 0.15s;" onmouseover="this.style.borderColor='#325ef6'; this.style.transform='translateY(-1px)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.transform='translateY(0)';">
+                    <div style="font-size: 16px; font-weight: 500;">Nudge vs MessageBird</div>
+                    <div style="font-size: 13px; color: #6b7280; margin-top: 4px; font-weight: 400;">Omnichannel CPaaS without minimums</div>
+                </a>
+                <a href="twilio-alternatives.html" style="display: block; padding: 18px 20px; background: #fff; border: 1px solid #325ef6; border-radius: 10px; font-family: 'Inter', sans-serif; text-decoration: none; color: #0b1220; transition: border-color 0.15s, transform 0.15s;" onmouseover="this.style.transform='translateY(-1px)';" onmouseout="this.style.transform='translateY(0)';">
+                    <div style="font-size: 16px; font-weight: 500; color: #1f4dc7;">Twilio alternatives →</div>
+                    <div style="font-size: 13px; color: #6b7280; margin-top: 4px; font-weight: 400;">Top 5 ranked, side-by-side</div>
+                </a>
             </div>
         </div>
     </section>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Nudge vs SendGrid: Email API Pricing & Features Compared (2026) | Tilli</title>
+    <meta name="description" content="Nudge vs SendGrid: Nudge transactional email is ~38% cheaper than SendGrid ($0.00059 vs $0.00095 per send) and includes SMS, WhatsApp, voice, and push in the same platform. SendGrid is email-only.">
+    <meta name="keywords" content="Nudge vs SendGrid, SendGrid alternative, transactional email API, cheaper than SendGrid, email API comparison, email marketing platform, email pricing">
+    <link rel="canonical" href="https://www.tillisoftware.com/nudge-vs-sendgrid">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.tillisoftware.com/nudge-vs-sendgrid">
+    <meta property="og:title" content="Nudge vs SendGrid: Email API Comparison">
+    <meta property="og:description" content="Nudge email at $0.00059/send vs SendGrid at $0.00095. Plus SMS, WhatsApp, voice, push — all in one bill.">
+    <meta property="og:site_name" content="Tilli">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nudge vs SendGrid: Email API Comparison">
+    <meta name="twitter:description" content="Nudge email at $0.00059/send vs SendGrid at $0.00095. Plus SMS, WhatsApp, voice, push.">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Utilli, LLC (dba tilli)">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="ai-content" content="yes">
+    <meta name="gptbot" content="index, follow">
+    <meta name="claude-web" content="index, follow">
+    <meta name="perplexitybot" content="index, follow">
+
+    <link rel="shortcut icon" href="/favicon.ico?v=2">
+    <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#325ef6">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.tillisoftware.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Nudge", "item": "https://www.tillisoftware.com/nudge"},
+            {"@type": "ListItem", "position": 3, "name": "Nudge vs SendGrid", "item": "https://www.tillisoftware.com/nudge-vs-sendgrid"}
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is Nudge cheaper than SendGrid?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Yes. Nudge sends 20,000 emails for $11.72/month ($0.00059 per email). SendGrid charges $19.00/month for the same volume ($0.00095 per email) — roughly 38% more. Nudge also includes SMS, WhatsApp, voice, and push notifications in the same subscription, while SendGrid is email-only."}
+            },
+            {
+                "@type": "Question",
+                "name": "Does Nudge support transactional and marketing email?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Yes. Nudge handles both transactional email (receipts, password resets, billing notifications, OTP) and marketing email (campaigns, drip sequences, customer engagement) in one platform. SendGrid splits this into separate plans (SendGrid Email API for transactional and SendGrid Marketing Campaigns for marketing) priced separately."}
+            },
+            {
+                "@type": "Question",
+                "name": "What email deliverability does Nudge offer?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Nudge offers managed deliverability with dedicated IP options, SPF/DKIM/DMARC support, automatic bounce and unsubscribe handling, and inbox-placement monitoring. Average inbox delivery is over 98% for properly authenticated domains, comparable to SendGrid."}
+            },
+            {
+                "@type": "Question",
+                "name": "Is SendGrid the same company as Twilio?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Yes — SendGrid was acquired by Twilio in 2019. SendGrid remains a separate product with its own dashboard, pricing, and bill. If you use Twilio for SMS and SendGrid for email, you have two separate Twilio-billed products. Nudge unifies both channels under one bill."}
+            },
+            {
+                "@type": "Question",
+                "name": "Can Nudge replace SendGrid for transactional email at scale?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Yes. Nudge handles enterprise transactional volume — billing notifications, payment receipts, OTP, and outage alerts — for utilities, healthcare, and insurance customers including Con Edison, Washington Gas, and AAA. The REST API supports the same templating, personalization, and webhook patterns SendGrid users expect."}
+            },
+            {
+                "@type": "Question",
+                "name": "Does Nudge support email templates and dynamic content?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Yes. Nudge ships with industry-specific email templates for billing notifications, payment reminders, and outage alerts, plus a templating engine with dynamic content, conditional logic, and personalization at parity with SendGrid's Dynamic Templates."}
+            },
+            {
+                "@type": "Question",
+                "name": "How long does it take to migrate from SendGrid to Nudge?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Most teams migrate transactional email in 1–3 weeks. Nudge provides a SendGrid-compatible REST API surface, template import tooling, and migration support for IP warm-up and DNS authentication."}
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Nudge",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "CPaaS",
+        "operatingSystem": "Web, Cloud",
+        "url": "https://www.tillisoftware.com/nudge",
+        "description": "Omnichannel CPaaS for SMS, email, WhatsApp, voice, and push. Cheaper than SendGrid for transactional and marketing email, with all channels included.",
+        "provider": {"@type": "Organization", "name": "Tilli", "url": "https://www.tillisoftware.com"},
+        "offers": {"@type": "Offer", "price": "11.72", "priceCurrency": "USD", "description": "Starts at $11.72/month for 20,000 emails. All channels included."}
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .compare-hero { background: linear-gradient(180deg, #f0f5ff 0%, #e8f0fe 50%, #f5f7fa 100%); padding: 140px 0 60px; }
+        .compare-container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+        .compare-eyebrow { display: inline-block; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: #325ef6; background: rgba(50, 94, 246, 0.08); padding: 6px 14px; border-radius: 999px; margin-bottom: 16px; }
+        .compare-h1 { font-family: 'Sora', sans-serif; font-weight: 400; font-size: 44px; line-height: 1.15; color: #0b1220; margin: 0 0 16px; }
+        .compare-tldr { font-family: 'Lato', sans-serif; font-size: 18px; line-height: 1.6; color: #374151; max-width: 760px; margin: 0 0 24px; }
+        .compare-meta { font-family: 'Inter', sans-serif; font-size: 13px; color: #6b7280; }
+        .compare-section { padding: 56px 0; }
+        .compare-section h2 { font-family: 'Sora', sans-serif; font-weight: 400; font-size: 30px; line-height: 1.25; color: #0b1220; margin: 0 0 20px; }
+        .compare-section h3 { font-family: 'Sora', sans-serif; font-weight: 400; font-size: 22px; color: #0b1220; margin: 32px 0 12px; }
+        .compare-section p { font-family: 'Lato', sans-serif; font-size: 16px; line-height: 1.7; color: #374151; margin: 0 0 14px; }
+        .compare-table-wrap { overflow-x: auto; margin: 16px 0 24px; }
+        .compare-table { width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; font-size: 15px; min-width: 640px; }
+        .compare-table th, .compare-table td { padding: 14px 16px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+        .compare-table thead th { background: #f8fafc; font-weight: 600; color: #0b1220; border-bottom: 2px solid #e5e7eb; }
+        .compare-table .col-nudge { background: rgba(50, 94, 246, 0.04); }
+        .compare-table .yes { color: #059669; font-weight: 600; }
+        .compare-table .no { color: #b91c1c; font-weight: 600; }
+        .compare-table .meh { color: #92400e; font-weight: 500; }
+        .compare-callout { background: #f0f9ff; border-left: 4px solid #325ef6; padding: 18px 22px; border-radius: 6px; margin: 20px 0; }
+        .compare-callout strong { font-family: 'Inter', sans-serif; color: #0b1220; }
+        .compare-callout p { margin: 0; color: #1e293b; font-size: 15px; }
+        .faq-block { border-top: 1px solid #e5e7eb; padding: 24px 0; }
+        .faq-block h3 { font-family: 'Sora', sans-serif; font-weight: 500; font-size: 20px; color: #0b1220; margin: 0 0 10px; }
+        .faq-block p { font-family: 'Lato', sans-serif; font-size: 16px; line-height: 1.7; color: #374151; margin: 0; }
+        .compare-cta { background: linear-gradient(135deg, #5B9EFF 0%, #4080E0 100%); border-radius: 14px; padding: 40px 32px; color: #fff; text-align: center; margin: 48px 0; }
+        .compare-cta h2 { color: #fff; margin-bottom: 8px; font-size: 28px; }
+        .compare-cta p { color: rgba(255,255,255,0.9); margin: 0 0 20px; font-size: 16px; }
+        .compare-cta a { display: inline-block; background: #fff; color: #1f4dc7; padding: 12px 24px; border-radius: 999px; font-family: 'Inter', sans-serif; font-weight: 500; text-decoration: none; margin: 4px 6px; }
+        .compare-cta a.secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.6); }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+        .related-grid a { display: block; padding: 16px 18px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; color: #0b1220; text-decoration: none; transition: border-color 0.15s, transform 0.15s; }
+        .related-grid a:hover { border-color: #325ef6; transform: translateY(-1px); }
+        .related-grid a span { display: block; font-weight: 400; font-size: 13px; color: #6b7280; margin-top: 4px; }
+        @media (max-width: 768px) {
+            .compare-h1 { font-size: 28px; }
+            .compare-section h2 { font-size: 24px; }
+            .compare-section { padding: 36px 0; }
+            .compare-cta { padding: 28px 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div style="width: 100%; background: linear-gradient(90deg, #4169E1 0%, #00BFFF 100%); padding: 18px 20px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 1001; height: 62px; box-sizing: border-box;">
+        <span style="font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; color: #FFFFFF;">✨ See how much you could save with Tilli — calculate your ROI in 2 minutes.</span>
+        <a href="calculator.html" class="banner-cta-btn">Calculate now <span class="arrow">→</span></a>
+    </div>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html" aria-label="Tilli Home"><img src="Images/22_tilli_logo_color.png" alt="Tilli Logo" style="height: 40px; width: auto;"></a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="industries.html">Industries</a></li>
+                <li><a href="about.html">Company</a></li>
+                <li><a href="valuebasedpricing.html">Pricing</a></li>
+                <li><a href="press.html">Press</a></li>
+            </ul>
+            <a class="cta-button" href="signup.html">Sign Up</a>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+</header>
+
+<section class="compare-hero">
+    <div class="compare-container">
+        <span class="compare-eyebrow">Comparison · Updated April 2026</span>
+        <h1 class="compare-h1">Nudge vs SendGrid: email API pricing and features compared</h1>
+        <p class="compare-tldr">
+            <strong>The short version:</strong> Nudge sends 20,000 emails for $11.72/month vs SendGrid's $19.00 — about 38% less.
+            More importantly, Nudge includes SMS, WhatsApp, voice, and push notifications in the same plan.
+            SendGrid is email-only; if you also send SMS, that's a separate Twilio bill on top.
+        </p>
+        <p class="compare-meta">By Tilli · ~6 min read · Categories: Email API, Transactional Email, SendGrid alternatives</p>
+    </div>
+</section>
+
+<section class="compare-section" style="background:#fff;">
+    <div class="compare-container">
+        <h2>At a glance</h2>
+        <div class="compare-table-wrap">
+            <table class="compare-table">
+                <thead><tr><th>Dimension</th><th class="col-nudge">Nudge</th><th>SendGrid</th></tr></thead>
+                <tbody>
+                    <tr><td>Email price (20,000/mo)</td><td class="col-nudge"><strong>$11.72 / $0.00059</strong></td><td>$19.00 / $0.00095</td></tr>
+                    <tr><td>Transactional email</td><td class="col-nudge yes">✓ Included</td><td class="yes">✓ Email API tier</td></tr>
+                    <tr><td>Marketing email</td><td class="col-nudge yes">✓ Same plan</td><td class="meh">~ Separate "Marketing Campaigns" plan</td></tr>
+                    <tr><td>SMS in same platform</td><td class="col-nudge yes">✓ Yes</td><td class="no">✗ Email only</td></tr>
+                    <tr><td>WhatsApp in same platform</td><td class="col-nudge yes">✓ Yes</td><td class="no">✗ Email only</td></tr>
+                    <tr><td>Voice / IVR in same platform</td><td class="col-nudge yes">✓ Yes</td><td class="no">✗ Email only</td></tr>
+                    <tr><td>Push notifications</td><td class="col-nudge yes">✓ Yes</td><td class="no">✗ Not offered</td></tr>
+                    <tr><td>Built-in payment processing</td><td class="col-nudge yes">✓ tilliPay</td><td class="no">✗ No</td></tr>
+                    <tr><td>Dedicated IP option</td><td class="col-nudge yes">✓</td><td class="yes">✓</td></tr>
+                    <tr><td>Industry billing templates</td><td class="col-nudge yes">✓ Utilities, healthcare</td><td class="no">✗ Generic templates</td></tr>
+                    <tr><td>TCPA / FDCPA tooling</td><td class="col-nudge yes">✓ Built-in</td><td class="meh">~ Customer-configured</td></tr>
+                    <tr><td>HIPAA</td><td class="col-nudge yes">✓ Compliant</td><td class="yes">✓ With BAA on Pro+</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="compare-callout">
+            <strong>Bottom line:</strong>
+            <p>If email is the only channel you'll ever need, SendGrid is fine — and its developer ecosystem is larger. If you're sending billing notifications, payment reminders, or outage alerts to consumers, you almost always need email + SMS together. Paying SendGrid for email and Twilio for SMS doubles your vendor surface area when Nudge handles both for less.</p>
+        </div>
+    </div>
+</section>
+
+<section class="compare-section" style="background:#fafbfd;">
+    <div class="compare-container">
+        <h2>Pricing breakdown</h2>
+        <p>Compared at 20,000 emails/month. Pricing reflects published list rates as of April 2026.</p>
+
+        <h3>Email — 20,000 messages/month</h3>
+        <div class="compare-table-wrap">
+            <table class="compare-table">
+                <thead><tr><th>Provider</th><th>Monthly cost</th><th>Per-email</th><th>Notes</th></tr></thead>
+                <tbody>
+                    <tr class="col-nudge"><td><strong>Nudge</strong></td><td><strong>$11.72</strong></td><td><strong>$0.00059</strong></td><td>Transactional + marketing in one plan; SMS/WhatsApp/voice/push included</td></tr>
+                    <tr><td>SendGrid (Email API)</td><td>$19.00</td><td>$0.00095</td><td>Email only; marketing requires separate plan</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>SendGrid prices both per-message and via fixed monthly tiers. The Essentials tier is the typical entry point for transactional traffic, with Pro and Premier tiers above it. Nudge is consistently cheaper per send across volumes between 5K and 500K emails/month.</p>
+
+        <h3>If you also send SMS</h3>
+        <p>SendGrid does not sell SMS. To send SMS alongside email, you'd add Twilio Programmable Messaging — typically $39.50/month for 5,000 SMS at $0.00790 per message. Nudge's $29.30/5K SMS is built into the same subscription as email, with one bill, one dashboard, and one set of API credentials.</p>
+
+        <h3>Combined channels — typical billing-notifications workload</h3>
+        <div class="compare-table-wrap">
+            <table class="compare-table">
+                <thead><tr><th>Stack</th><th>Email (20K)</th><th>SMS (5K)</th><th>Combined monthly</th></tr></thead>
+                <tbody>
+                    <tr class="col-nudge"><td><strong>Nudge</strong></td><td>$11.72</td><td>$29.30</td><td><strong>$41.02</strong> (one bill)</td></tr>
+                    <tr><td>SendGrid + Twilio</td><td>$19.00</td><td>$39.50</td><td>$58.50 (two bills)</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>That's a ~30% savings on combined channels — and avoids the operational overhead of two contracts, two compliance reviews, and two integration codebases.</p>
+    </div>
+</section>
+
+<section class="compare-section" style="background:#fff;">
+    <div class="compare-container">
+        <h2>Feature parity</h2>
+        <div class="compare-table-wrap">
+            <table class="compare-table">
+                <thead><tr><th>Feature</th><th class="col-nudge">Nudge</th><th>SendGrid</th></tr></thead>
+                <tbody>
+                    <tr><td>Transactional email API</td><td class="col-nudge yes">✓</td><td class="yes">✓</td></tr>
+                    <tr><td>Marketing campaigns</td><td class="col-nudge yes">✓ Same plan</td><td class="meh">~ Separate plan</td></tr>
+                    <tr><td>Dynamic templates / Handlebars</td><td class="col-nudge yes">✓</td><td class="yes">✓</td></tr>
+                    <tr><td>A/B testing</td><td class="col-nudge yes">✓</td><td class="yes">✓</td></tr>
+                    <tr><td>Bounce / unsubscribe handling</td><td class="col-nudge yes">✓ Automatic</td><td class="yes">✓ Automatic</td></tr>
+                    <tr><td>Inbox placement monitoring</td><td class="col-nudge yes">✓</td><td class="yes">✓</td></tr>
+                    <tr><td>Dedicated IP option</td><td class="col-nudge yes">✓</td><td class="yes">✓ Pro+ tiers</td></tr>
+                    <tr><td>SPF / DKIM / DMARC</td><td class="col-nudge yes">✓</td><td class="yes">✓</td></tr>
+                    <tr><td>Webhooks (delivery, open, click)</td><td class="col-nudge yes">✓</td><td class="yes">✓</td></tr>
+                    <tr><td>SMS in same platform</td><td class="col-nudge yes">✓</td><td class="no">✗ Email only</td></tr>
+                    <tr><td>WhatsApp / voice / push</td><td class="col-nudge yes">✓ All included</td><td class="no">✗ Email only</td></tr>
+                    <tr><td>Industry templates (billing/utilities)</td><td class="col-nudge yes">✓</td><td class="no">✗ Generic</td></tr>
+                    <tr><td>Built-in payment processing</td><td class="col-nudge yes">✓</td><td class="no">✗</td></tr>
+                    <tr><td>HIPAA</td><td class="col-nudge yes">✓ Standard</td><td class="yes">✓ With BAA on Pro+</td></tr>
+                    <tr><td>SOC 2 Type II</td><td class="col-nudge yes">✓</td><td class="yes">✓</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="compare-section" style="background:#fafbfd;">
+    <div class="compare-container">
+        <h2>Frequently asked: Nudge vs SendGrid</h2>
+
+        <div class="faq-block">
+            <h3>Is Nudge cheaper than SendGrid?</h3>
+            <p>Yes. Nudge sends 20,000 emails for $11.72/month ($0.00059 per email). SendGrid charges $19.00/month for the same volume ($0.00095 per email) — roughly 38% more. Nudge also includes SMS, WhatsApp, voice, and push notifications in the same subscription, while SendGrid is email-only.</p>
+        </div>
+
+        <div class="faq-block">
+            <h3>Does Nudge support transactional and marketing email?</h3>
+            <p>Yes. Nudge handles both transactional email (receipts, password resets, billing notifications, OTP) and marketing email (campaigns, drip sequences, customer engagement) in one platform. SendGrid splits this into separate plans (SendGrid Email API for transactional and SendGrid Marketing Campaigns for marketing) priced separately.</p>
+        </div>
+
+        <div class="faq-block">
+            <h3>What email deliverability does Nudge offer?</h3>
+            <p>Nudge offers managed deliverability with dedicated IP options, SPF/DKIM/DMARC support, automatic bounce and unsubscribe handling, and inbox-placement monitoring. Average inbox delivery is over 98% for properly authenticated domains, comparable to SendGrid.</p>
+        </div>
+
+        <div class="faq-block">
+            <h3>Is SendGrid the same company as Twilio?</h3>
+            <p>Yes — SendGrid was acquired by Twilio in 2019. SendGrid remains a separate product with its own dashboard, pricing, and bill. If you use Twilio for SMS and SendGrid for email, you have two separate Twilio-billed products. Nudge unifies both channels under one bill.</p>
+        </div>
+
+        <div class="faq-block">
+            <h3>Can Nudge replace SendGrid for transactional email at scale?</h3>
+            <p>Yes. Nudge handles enterprise transactional volume — billing notifications, payment receipts, OTP, and outage alerts — for utilities, healthcare, and insurance customers including Con Edison, Washington Gas, and AAA. The REST API supports the same templating, personalization, and webhook patterns SendGrid users expect.</p>
+        </div>
+
+        <div class="faq-block">
+            <h3>Does Nudge support email templates and dynamic content?</h3>
+            <p>Yes. Nudge ships with industry-specific email templates for billing notifications, payment reminders, and outage alerts, plus a templating engine with dynamic content, conditional logic, and personalization at parity with SendGrid's Dynamic Templates.</p>
+        </div>
+
+        <div class="faq-block">
+            <h3>How long does it take to migrate from SendGrid to Nudge?</h3>
+            <p>Most teams migrate transactional email in 1–3 weeks. Nudge provides a SendGrid-compatible REST API surface, template import tooling, and migration support for IP warm-up and DNS authentication.</p>
+        </div>
+    </div>
+</section>
+
+<section style="background:#fff; padding: 0 0 40px;">
+    <div class="compare-container">
+        <div class="compare-cta">
+            <h2>Cut your email bill by 38%</h2>
+            <p>See your exact savings vs SendGrid — plus what you'd save on SMS, WhatsApp, and voice in one platform.</p>
+            <a href="calculator.html">Calculate ROI</a>
+            <a href="contact.html" class="secondary">Talk to sales</a>
+        </div>
+
+        <h2 style="font-family: 'Sora', sans-serif; font-weight: 400; font-size: 26px; color: #0b1220; margin: 24px 0 8px;">Compare Nudge to other platforms</h2>
+        <div class="related-grid">
+            <a href="nudge-vs-twilio.html">Nudge vs Twilio<span>SMS, voice, WhatsApp</span></a>
+            <a href="nudge-vs-mailchimp.html">Nudge vs Mailchimp<span>Token vs contact-based pricing</span></a>
+            <a href="nudge-vs-attentive.html">Nudge vs Attentive<span>Enterprise SMS, no minimums</span></a>
+            <a href="nudge-vs-messagebird.html">Nudge vs MessageBird<span>Omnichannel CPaaS</span></a>
+            <a href="twilio-alternatives.html">Twilio alternatives<span>Category overview</span></a>
+            <a href="nudge.html">Nudge product page<span>Full feature list</span></a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-links">
+                <div class="footer-column"><h4>Products</h4><ul><li><a href="nudge.html">Nudge</a></li><li><a href="tillix.html">tilliX</a></li><li><a href="tillipay.html">Monay</a></li><li><a href="index.html#product-comparison">Compare Products</a></li></ul></div>
+                <div class="footer-column"><h4>Resources</h4><ul><li><a href="industries.html">Industries</a></li><li><a href="contact.html">Contact</a></li><li><a href="calculator.html">FAQS</a></li></ul></div>
+                <div class="footer-column"><h4>Developers</h4><ul><li><a href="developer.html">Documentation</a></li><li><a href="developer.html">API Reference</a></li><li><a href="developer.html">SDKs</a></li><li><a href="calculator.html">Help Center</a></li></ul></div>
+                <div class="footer-column"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="valuebasedpricing.html">Pricing</a></li></ul></div>
+                <div class="footer-column"><h4>Get Started Today</h4><ul><li><a href="free-trial.html" class="gradient-link">Start a Free Trial <span class="arrow">→</span></a></li><li><a href="contact.html" class="gradient-link">Request a Demo <span class="arrow">→</span></a></li></ul></div>
+            </div>
+            <div class="footer-brand mobile-brand">
+                <div class="footer-logo"><img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo"></div>
+                <p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-brand desktop-brand">
+                    <div class="footer-logo"><img src="Images/22_Utilli_logo_white.png" alt="Tilli Logo"></div>
+                    <p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
+                    <p class="footer-copyright">&copy; 2026 — Copyright All Rights reserved</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-social-copyright">
+                        <div class="footer-social">
+                            <a href="https://x.com/tillisoftware" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/tillisoftware" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.youtube.com/@tillisoftware" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.linkedin.com/company/tilli-llc/?viewAsMember=true" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                        <p class="mobile-copyright">&copy; 2026 — Copyright<br>All Rights reserved</p>
+                    </div>
+                    <div class="footer-headquarters">
+                        <h5>Headquarters</h5>
+                        <p>8260 Greensboro Dr,<br>Suite 270, McLean VA, 22102</p>
+                        <div class="footer-status"><span class="status-indicator"></span><span>Platform status</span></div>
+                    </div>
+                    <div class="footer-legal-links"><a href="#">Terms</a><span class="separator">|</span><a href="privacy-policy/">Privacy</a><span class="separator">|</span><a href="#">Cookies</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="enhanced-cookie-banner.js"></script>
+</body>
+</html>
