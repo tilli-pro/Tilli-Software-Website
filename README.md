@@ -224,7 +224,7 @@ For each item, “Status” reflects the live code; “Action” is content-only
 
 2) Standardize logo and address
 - Use a single logo asset path and update all headers/footers
-- Standardize HQ address to: 8260 Greensboro Dr, Suite 270, McLean, VA 22102
+- Standardize HQ address to: 8260 Greensboro Dr, STE 270, McLean, VA 22102
 
 3) Fix broken/placeholder links
 - Add favicon and `<link rel="icon" …>` to all pages

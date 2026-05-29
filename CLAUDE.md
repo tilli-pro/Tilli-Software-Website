@@ -341,7 +341,7 @@ The mobile footer has a specific layout that must be consistent across all pages
         </div>
         <div class="footer-headquarters">
             <h5>Headquarters</h5>
-            <p>8260 Greensboro Dr,<br>Suite 270, McLean VA, 22102</p>
+            <p>8260 Greensboro Dr, STE 270<br>McLean, VA 22102</p>
             <div class="footer-status">...</div>
         </div>
         <div class="footer-legal-links">
