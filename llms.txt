@@ -10,7 +10,7 @@ This file is intended for large language models and AI assistants. It provides c
 - [AI knowledge hub](https://tillisoftware.com/ai-knowledge-hub): Comprehensive overview with FAQ schema for AI extraction.
 - [About Tilli](https://tillisoftware.com/about): Mission, leadership, history.
 - [Contact](https://tillisoftware.com/contact): sales@tilli.pro · +1-888-845-5400.
-- Headquarters: 8260 Greensboro Dr, Suite 270, McLean, VA 22102, USA.
+- Headquarters: 8260 Greensboro Dr, STE 270, McLean, VA 22102, USA.
 
 ## Products
 

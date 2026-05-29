@@ -84,7 +84,7 @@
     ],
     "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8260 Greensboro Dr, Suite 270",
+        "streetAddress": "8260 Greensboro Dr, STE 270",
         "addressLocality": "McLean",
         "addressRegion": "VA",
         "postalCode": "22102",
@@ -553,11 +553,41 @@
                 .mobile-copyright {
                     display: none;
                 }
-                .footer-headquarters {
-                    display: none;
-                }
                 .footer-legal-links .separator {
                     display: none;
+                }
+
+                /* Footer Headquarters block — visible on every viewport */
+                .footer-headquarters {
+                    display: block;
+                    margin-top: 1rem;
+                }
+                .footer-headquarters h5 {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #FFFFFF;
+                    margin-bottom: 0.5rem;
+                }
+                .footer-headquarters p {
+                    font-size: 13px;
+                    color: #9CA3AF;
+                    margin-bottom: 0.5rem;
+                    line-height: 1.5;
+                }
+                .footer-headquarters .footer-status {
+                    /* Hidden on desktop — the Platform status pill lives in
+                       the brand column on the left, under the copyright
+                       line. The mobile media query below re-shows this one
+                       (inside the HQ block) and hides the brand-column copy
+                       instead. */
+                    display: none;
+                }
+                .footer-brand .footer-status {
+                    /* Shrink the pill to fit its content (indicator +
+                       "Platform status") instead of stretching across the
+                       full width of the brand column. */
+                    display: inline-flex;
+                    margin-top: 0.5rem;
                 }
 
                 /* Hide code overlays on mobile for better performance */
@@ -851,10 +881,18 @@
                         line-height: 1.5 !important;
                     }
 
-                    /* Platform status under address */
+                    /* Platform status under address — shown on mobile inside HQ block */
                     .footer-headquarters .footer-status {
+                        display: flex !important;
                         justify-content: center !important;
                         margin-top: 0.5rem !important;
+                    }
+
+                    /* The brand-column Platform status (visible on desktop) is
+                       hidden on mobile — the HQ-block copy above shows it for
+                       mobile users. */
+                    .footer-brand .footer-status {
+                        display: none !important;
                     }
 
                     .footer-status {
@@ -2883,6 +2921,10 @@
                         </div>
                         <p>Tilli is a comprehensive financial solutions platform that helps businesses automate payments, streamline billing, and enhance customer engagement through secure, cloud-based technology.</p>
                         <p class="footer-copyright">&copy; 2026 — Copyright All Rights reserved</p>
+                        <div class="footer-status">
+                            <span class="status-indicator"></span>
+                            <span>Platform status</span>
+                        </div>
                     </div>
 
                     <div class="footer-right">
@@ -2898,7 +2940,8 @@
 
                         <div class="footer-headquarters">
                             <h5>Headquarters</h5>
-                            <p>8260 Greensboro Dr,<br>Suite 270, McLean VA, 22102</p>
+                            <p>8260 Greensboro Dr, STE 270<br>McLean, VA 22102</p>
+                            <p><a href="mailto:info@tillisoftware.com" style="color: inherit; text-decoration: none;">info@tillisoftware.com</a></p>
                             <div class="footer-status">
                                 <span class="status-indicator"></span>
                                 <span>Platform status</span>
@@ -3990,7 +4033,7 @@
         <p>Website: https://tillisoftware.com</p>
         <p>Email: sales@tilli.pro</p>
         <p>Phone: 1-888-TILLI-00</p>
-        <p>Address: 8260 Greensboro Dr, Suite 270, McLean, VA 22102</p>
+        <p>Address: 8260 Greensboro Dr, STE 270, McLean, VA 22102</p>
     </div>
 </section>
 
