@@ -77,6 +77,11 @@
         #cc-main .cc-toggle:checked ~ .cc-toggle__slider { background: #325ef6 !important; }
         #cc-main.cc-window.cc-banner { padding: 1.5rem !important; box-shadow: 0 -4px 20px rgba(0,0,0,0.1) !important; }
 
+        /* Use overflow-x: clip (not hidden) so the sticky Contents
+           sidebar isn't broken — clip still prevents horizontal scroll
+           but does not create a scroll container like overflow:hidden. */
+        html, body { overflow-x: clip; }
+
         .terms-shell {
             max-width: 1120px;
             margin: 0 auto;
