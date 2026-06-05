@@ -600,6 +600,12 @@
             </div>
 
             <style>
+                /* Cookie modal: keep each section's title/description from
+                   colliding with the toggle switch + chevron on the right */
+                #tilli-cookie-modal button[onclick*="toggleExpansion"] { gap: 20px; }
+                #tilli-cookie-modal button[onclick*="toggleExpansion"] > div:first-child { flex: 1 1 auto; min-width: 0; }
+                #tilli-cookie-modal button[onclick*="toggleExpansion"] > div:last-child { flex-shrink: 0; }
+
                 @keyframes slideInUp {
                     from {
                         transform: translateY(100%);
