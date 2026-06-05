@@ -191,6 +191,45 @@
             margin: 14px 0 0 22px;
         }
 
+        .policy-section li {
+            margin-bottom: 8px;
+        }
+
+        .policy-section h3 {
+            font-size: 1.1rem;
+            color: #0f172a;
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
+
+        .policy-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 18px;
+            font-size: 0.95rem;
+        }
+
+        .policy-table th,
+        .policy-table td {
+            border: 1px solid #e2e8f0;
+            padding: 12px 14px;
+            text-align: left;
+            vertical-align: top;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .policy-table thead th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .policy-table td:first-child {
+            white-space: nowrap;
+            color: #0f172a;
+        }
+
         .policy-callout {
             background: #f8fbff;
             border: 1px solid #dbeafe;
@@ -282,138 +321,268 @@
         <div class="policy-shell">
             <section class="policy-hero">
                 <div class="policy-kicker">Privacy Policy</div>
-                <h1>Tilli Consolidated Privacy Policy</h1>
-                <p>Last updated: May 11, 2026</p>
-                <p>This policy describes how Tilli collects, uses, discloses, stores, and otherwise processes personal information across Tilli websites, products, support channels, communications, and production services, including current and future Tilli software offerings unless a more specific signed or expressly incorporated privacy document applies.</p>
-                <div class="policy-entity-list">
-                    <div class="policy-entity-card">
-                        <strong>United States operations</strong>
-                        Utilli LLC (doing business as Tilli)
-                    </div>
-                    <div class="policy-entity-card">
-                        <strong>India operations</strong>
-                        Tilli Software India Private Limited
-                    </div>
-                </div>
+                <h1>Privacy Policy</h1>
+                <p>Last modified: ____, 2026</p>
             </section>
 
             <div class="policy-grid">
                 <aside class="policy-nav" aria-label="Privacy policy table of contents">
                     <h2>Contents</h2>
                     <ul>
-                        <li><a href="#scope">1. Scope and Policy Owner</a></li>
-                        <li><a href="#roles">2. Roles and Context</a></li>
-                        <li><a href="#collect">3. Categories of Information We Collect</a></li>
-                        <li><a href="#use">4. How We Use Personal Information</a></li>
-                        <li><a href="#bases">5. Legal Bases and Processing Grounds</a></li>
-                        <li><a href="#disclose">6. How We Disclose Information</a></li>
-                        <li><a href="#cookies">7. Cookies, Analytics, and Similar Technologies</a></li>
-                        <li><a href="#customer-data">8. Customer Data and Service Provider Processing</a></li>
-                        <li><a href="#retention">9. Data Retention</a></li>
-                        <li><a href="#security">10. Security</a></li>
-                        <li><a href="#international">11. International Data Handling</a></li>
-                        <li><a href="#rights">12. Privacy Rights and Choices</a></li>
-                        <li><a href="#children">13. Children's Information</a></li>
-                        <li><a href="#changes">14. Changes to This Policy</a></li>
-                        <li><a href="#contact">15. Contact Information</a></li>
+                        <li><a href="#introduction">1. Introduction</a></li>
+                        <li><a href="#jurisdiction">2. Jurisdiction</a></li>
+                        <li><a href="#who">3. Who this policy applied to</a></li>
+                        <li><a href="#collect">4. What data do we collect?</a></li>
+                        <li><a href="#use">5. How do we use the data we collect?</a></li>
+                        <li><a href="#share">6. What data do we share with others, and why?</a></li>
+                        <li><a href="#retention">7. How long do we keep your data for?</a></li>
+                        <li><a href="#legal-basis">8. What are the legal basis for processing data?</a></li>
+                        <li><a href="#security">9. How do we secure your data?</a></li>
+                        <li><a href="#children">10. What about children’s data?</a></li>
+                        <li><a href="#rights">11. Your Data Protection Rights</a></li>
+                        <li><a href="#cookies">12. Cookie Notice</a></li>
+                        <li><a href="#updates">13. Policy Updates</a></li>
+                        <li><a href="#contact">14. Contact Us</a></li>
                     </ul>
                 </aside>
 
                 <article class="policy-content">
-                    <section class="policy-section" id="scope">
-                        <h2>1. Scope and Policy Owner</h2>
-                        <p>This Privacy Policy applies to Tilli websites, landing pages, contact forms, downloads, demos, support interactions, partner and vendor interactions, recruiting interactions, and Tilli software products and production services, including XDEX, TilliPay, tilliX, TilliBeacon, tilliArch, Nudge, JAREIS-enabled features, related APIs, portals, and support channels.</p>
-                        <p>This policy is intended to be a public-facing umbrella privacy policy. It may be supplemented by a data processing addendum, business associate agreement, customer contract, cookie notice, job applicant notice, product-specific privacy notice, or another signed or expressly incorporated privacy addendum. If a more specific signed or expressly incorporated document conflicts with this policy for a defined processing activity, the more specific document controls for that activity.</p>
+                    <section class="policy-section" id="introduction">
+                        <h2>1. Introduction</h2>
+                        <p>Welcome to Tilli and thank you for visiting our website.</p>
+                        <p>Utilli LLC, doing business as Tilli (“we,” “our,” or “us”) provides financial and digital infrastructure that powers seamless identity, communication, payment experiences, and related technologies (collectively, the “Services”).</p>
+                        <p>This Privacy Policy (“Policy”) explains how we collect, use, disclose, and protect Personal Information when you interact with our websites, applications, email communications, and other Services. It also outlines your rights and choices under applicable privacy laws and how you can contact us with any privacy-related questions or concerns.</p>
+                        <p>By using our Services, you consent to the data practices described in this notice. We may periodically update this policy and encourage you to review it regularly.</p>
+                        <p>If you have any questions or concerns about your privacy or anything in this notice, we encourage you to contact us at legal@tilli.pro.</p>
                     </section>
 
-                    <section class="policy-section" id="roles">
-                        <h2>2. Roles and Context</h2>
-                        <p>Tilli may act in different roles depending on the relationship and the product workflow, including as a controller or business collecting information directly, as a processor or service provider handling customer-directed data, or as an independent compliance actor for fraud, sanctions, AML, or security review where required by law, payment network requirements, processor requirements, or Tilli's legitimate operational needs.</p>
-                        <div class="policy-callout">
-                            Customer remains responsible for the legality of Customer Data submitted to the Services, including notices, permissions, consents, opt-ins, opt-outs, message content, and CTA logic initiated through Beacon, Nudge, tilliX, JAREIS, or any other Tilli product.
-                        </div>
+                    <section class="policy-section" id="jurisdiction">
+                        <h2>2. Jurisdiction</h2>
+                        <p>If you are located in the European Union (“EU”), or European Economic Area (“EEA”), please refer to the section below outlining your rights under the General Data Protection Regulation (GDPR), which provides detailed information about how you can access, control, and protect your personal data. Customers in California should additionally refer to the section of this notice below, which provides information regarding Tilli’s privacy practices in California.</p>
+                    </section>
+
+                    <section class="policy-section" id="who">
+                        <h2>3. Who this policy applied to</h2>
+                        <p>This Policy applies to:</p>
+                        <ul>
+                            <li>Customers: Organizations that directly have a contract with Tilli for the provision of Services.</li>
+                            <li>User: Any employee, representative, or authorized individual using the Services on behalf of the Customer</li>
+                            <li>Individuals visiting Tilli websites or interacting with Tilli marketing materials.</li>
+                            <li>Individuals who directly use a tilliPay digital wallet or other consumer-facing financial product.</li>
+                            <li>Business Partners: Financial institutions, processors, acquiring institutions, settlement providers, vendors, affiliates, referral partners, and other third parties that support or participate in Tilli’s services.</li>
+                            <li>End Users of the Platforms: Individuals who interact with communications, websites, portals, payment experiences, or other services operated by Tilli’s Customers.</li>
+                        </ul>
+                        <p>In many circumstances, Tilli does not collect End Users’ Personal Information on behalf of Customers, the applicable Customer may be responsible for determining how Personal Information is collected and used and for responding to privacy rights requests.</p>
                     </section>
 
                     <section class="policy-section" id="collect">
-                        <h2>3. Categories of Information We Collect</h2>
-                        <p>Depending on the interaction, Tilli may collect information you provide directly, information collected automatically, and information received from third parties.</p>
+                        <h2>4. What data do we collect?</h2>
+                        <p>We may collect personal information that you voluntarily provide to us when you:</p>
                         <ul>
-                            <li>Name, email address, phone number, mailing address, employer, title, and business contact details.</li>
-                            <li>Account registration, login, administrative profile, billing, payment, invoice, remittance, support, and communication records.</li>
-                            <li>Marketing preferences, demo requests, surveys, event registrations, job application materials, and recruiting information.</li>
-                            <li>Identity-verification, onboarding, fraud, or compliance information where relevant to a payment, vendor, or regulated workflow.</li>
-                            <li>IP address, device identifiers, browser type, operating system, approximate geolocation, logs, page views, clickstream data, telemetry, diagnostics, and configuration data.</li>
-                            <li>Information from customers, partners, integrations, payment processors, verification services, cloud providers, analytics tools, CRM providers, and publicly available business-intelligence sources.</li>
+                            <li>Register for an account</li>
+                            <li>Subscribe to our services</li>
+                            <li>Contact us for support</li>
+                            <li>Fill out forms on our website</li>
+                            <li>Apply for employment</li>
+                        </ul>
+                        <p>The following categories of personal data may be collected by or on behalf of Tilli:</p>
+                        <h3>Data provided by directly to us</h3>
+                        <p>We may collect information directly from individuals and organizations, including but not limited to:</p>
+                        <ul>
+                            <li>Personal Identifiers: Name, email address, telephone numbers, mailing address or service address</li>
+                            <li>Government-issued Identification: Passport, driving license, or other forms of official ID</li>
+                            <li>Billing Information: Bank account credentials, credit/debit card details, billing information</li>
+                            <li>Employment and Professional Information: Employer name, job title, business contact details, tax identification numbers (where applicable)</li>
+                            <li>Contact Information: we may collect names, email addresses, or phone numbers from customer support communications</li>
+                        </ul>
+                        <h3>Information Related to Business Relationships</h3>
+                        <p>Where applicable, we may collect information relating to businesses, merchants, partners, and other organizations that engage with Tilli or use our Services, including:</p>
+                        <ul>
+                            <li>Legal Business Name: The registered legal name of a business entity for identification, contracting, compliance, and operational purposes.</li>
+                            <li>Doing-Business-As (DBA) Name: Any trade names, assumed names, or operating names under which a business conducts its activities.</li>
+                            <li>Business Registration Information: Information relating to the formation, registration, incorporation, or legal status of a business, including registration numbers and jurisdiction of formation.</li>
+                            <li>Tax Identification Numbers: Employer Identification Numbers (EINs), taxpayer identification numbers, or similar identifiers used for tax, compliance, verification, and reporting purposes.</li>
+                            <li>Authorized Representative Information: Information relating to individuals authorized to act on behalf of a business, including officers, directors, administrators, or account administrators.</li>
+                            <li>Beneficial Ownership Information: Information relating to individuals who directly or indirectly own, control, or have a significant interest in a business entity where required for onboarding, compliance, verification, or risk management purposes.</li>
+                            <li>Business Formation Documentation: Corporate formation records, certificates of incorporation, partnership agreements, operating agreements, organizational documents, or similar records used to verify the legitimacy of a business.</li>
+                            <li>Licensing Information: Professional licenses, business licenses, permits, registrations, or other authorizations that may be required to operate a business or access certain Services.</li>
+                            <li>Compliance and Onboarding Information: Information collected during customer onboarding, due diligence reviews, account verification, risk assessments, contractual reviews, or other compliance-related processes.</li>
+                        </ul>
+                        <h3>Payment and Transaction Information</h3>
+                        <p>Depending on the Services used, we may collect information relating to payments, transactions, and related financial activities, including:</p>
+                        <ul>
+                            <li>Transaction Information: Details relating to payments, transfers, purchases, receipts, transaction amounts, dates, currencies, and transaction status.</li>
+                            <li>Payment Status Information: Information regarding the processing, authorization, completion, rejection, cancellation, or failure of a payment transaction.</li>
+                            <li>Billing Records: Invoices, billing details, payment history, account balances, and other records associated with the provision of Services.</li>
+                            <li>Settlement Information: Information relating to the transfer, reconciliation, settlement, or disbursement of funds between parties participating in a transaction.</li>
+                            <li>Refund and Dispute Information: Records relating to refunds, reversals, chargebacks, disputes, inquiries, investigations, or claims associated with transactions.</li>
+                            <li>Merchant Identifiers: Merchant account numbers, merchant identification numbers, customer account identifiers, or other unique identifiers associated with business relationships or payment processing activities.</li>
+                            <li>Payment Method Information: Information relating to payment methods used in connection with the Services. Tilli does not necessarily store full payment card information and may rely on payment processors or financial institution partners for payment processing functions.</li>
+                        </ul>
+                        <h3>Data from third-party sources</h3>
+                        <p>We may also collect personal data from other sources, such as:</p>
+                        <ul>
+                            <li>Service Providers and Payment Partners: Including card networks, banks, and fraud monitoring tools</li>
+                            <li>Merchants and Business Partners: We may collect information relating to your transaction</li>
+                            <li>Credit Reporting Agencies and Government Entities: Where permitted by law and necessary for identity verification, fraud prevention, or compliance with financial and regulatory obligations.</li>
                         </ul>
                     </section>
 
                     <section class="policy-section" id="use">
-                        <h2>4. How We Use Personal Information</h2>
-                        <p>Tilli may use personal information to provide, operate, maintain, support, and secure the Site and Services; manage accounts and customer relationships; process transactions, onboarding, support, and contract administration; send operational messages and security notices; power workflow, orchestration, analytics, and AI assistance requested by customers; improve performance, reliability, and usability; prevent fraud, abuse, spam, sanctions breaches, or account misuse; comply with law; and conduct marketing and sales activities in accordance with applicable law and preferences.</p>
+                        <h2>5. How do we use the data we collect?</h2>
+                        <p>Tilli collects and uses data collected from you for the following purposes:</p>
+                        <ul>
+                            <li>To Provide and Operate Services: Including providing communications services, customer engagement tools, payment-related services, onboarding services, identity-related services, and platform functionality.</li>
+                            <li>To Support Business Relationships: Including account administration, customer support, service delivery, billing, onboarding, and contractual performance.</li>
+                            <li>To Process Transactions: Including supporting payment processing, settlement, reconciliation, refunds, disputes, and related operational activities.</li>
+                            <li>To Improve and Develop Services: Including analytics, troubleshooting, product development, testing, performance monitoring, and service enhancement.</li>
+                            <li>To Communicate With You: Including service notifications, operational updates, customer support communications, legal notices, and marketing communications where permitted by law.</li>
+                            <li>To Maintain Security and Prevent Fraud: Including monitoring activity, investigating suspicious behavior, detecting fraud, preventing misuse, and protecting our Services.</li>
+                            <li>To Comply With Legal and Regulatory Obligations: Including compliance with applicable laws, regulations, legal processes, contractual obligations, payment network requirements, and financial institution requirements.</li>
+                            <li>To Support Financial Crime Compliance: Including identity verification, know-your-customer (KYC), know-your-business (KYB), beneficial ownership verification, sanctions screening, fraud prevention, anti-money laundering compliance, and related compliance activities where applicable.</li>
+                        </ul>
                     </section>
 
-                    <section class="policy-section" id="bases">
-                        <h2>5. Legal Bases and Processing Grounds</h2>
-                        <p>Where applicable law requires a legal basis for processing, Tilli may rely on performance of a contract, steps requested before entering into a contract, compliance with legal or regulatory obligations, Tilli's legitimate interests, consent, or another basis permitted under applicable law.</p>
-                    </section>
-
-                    <section class="policy-section" id="disclose">
-                        <h2>6. How We Disclose Information</h2>
-                        <p>Tilli may disclose personal information to affiliates, service providers, subprocessors, contractors, advisors, payment processors, banks, networks, verification vendors, fraud and sanctions tools, cloud providers, AI or telecom providers, customers and authorized users where necessary to deliver the Services, third-party integrations at Customer direction, regulators or law enforcement where required or appropriate, and parties involved in a corporate transaction.</p>
-                        <p>Tilli does not sell personal information for money. If Tilli engages in targeted advertising or similar activity covered by specific privacy laws, Tilli will address those activities through the applicable notice, consent, or opt-out mechanisms.</p>
-                    </section>
-
-                    <section class="policy-section" id="cookies">
-                        <h2>7. Cookies, Analytics, and Similar Technologies</h2>
-                        <p>Tilli may use cookies, pixels, SDKs, and similar technologies to remember preferences, operate core website and product functionality, analyze traffic and performance, support marketing attribution, and improve content, security, and user experience. Tilli may provide cookie preference tools where required and may honor browser or device-level controls to the extent required by applicable law and technically supported.</p>
-                    </section>
-
-                    <section class="policy-section" id="customer-data">
-                        <h2>8. Customer Data and Service Provider Processing</h2>
-                        <p>Where Tilli handles personal information on behalf of a customer through the Services, Tilli generally acts as a processor, service provider, or similar vendor and processes that information in accordance with customer instructions, the applicable contract, and Tilli's operational, security, fraud, compliance, and legal obligations.</p>
-                        <p>Customers are responsible for determining whether the Services are appropriate for their use cases, providing legally required notices to end users, obtaining valid permissions or consent where required, configuring retention and workflow settings appropriately, and reviewing AI-generated or workflow-generated CTAs before relying on them in regulated or customer-facing contexts where human review is warranted.</p>
+                    <section class="policy-section" id="share">
+                        <h2>6. What data do we share with others, and why?</h2>
+                        <p>Tilli may share personal data with third parties in accordance with this Privacy Policy to operate, provide, improve, and protect our Services, or as required by law. This includes sharing data with our affiliates, business partners, and service providers in specific circumstances, as described below.</p>
+                        <h3>With Tilli service providers and business partners</h3>
+                        <p>We engage third-party service providers and partners to support our Services. These entities act on our behalf and are bound by contractual obligations to protect your data and process it only as instructed by Tilli.</p>
+                        <p>We may share personal data with:</p>
+                        <ul>
+                            <li>Payment processors and facilitators to enable financial transactions and manage payment services</li>
+                            <li>Partners to provide Services offer certain Services in conjunction with these Partners.</li>
+                            <li>Affiliate entities in connection with mergers, acquisitions, and other transactions.</li>
+                            <li>Cloud storage and infrastructure providers to host and store data securely</li>
+                            <li>Marketing partners and advertising platforms to help promote our Services and measure engagement</li>
+                            <li>Data analytics providers to help us understand usage trends and improve performance</li>
+                            <li>Professional service firms, including legal advisors, auditors, consultants, and accountants who assist us in fulfilling our business and legal obligations</li>
+                        </ul>
+                        <p>These providers process your data in accordance with strict confidentiality and security obligations.</p>
+                        <h3>For legal reasons or in the event of a dispute</h3>
+                        <p>We may disclose personal data when we believe it is legally required or appropriate to:</p>
+                        <ul>
+                            <li>Comply with applicable laws, regulations, legal proceedings, or enforceable governmental requests</li>
+                            <li>Protect the rights, safety, and property of Tilli, our users, or others, including to detect, investigate, and prevent fraud or security issues</li>
+                            <li>Enforce our agreements, including investigating potential violations</li>
+                        </ul>
+                        <p>If we enter or intend to enter a transaction that modifies the structure of our business, such as a reorganization, merger, sale, joint venture, assignment, transfer, change of control, or other disposition of all or part of our business, assets, or stock, we may share Personal Data with third parties in connection with such transaction. Any other entity that buys us or part of our business will have the right to continue to use your Personal Data, subject to the terms of this Policy.</p>
+                        <h3>With consent</h3>
+                        <p>Tilli may share your personal data other than as described in this notice if we notify you and you consent to the sharing.</p>
                     </section>
 
                     <section class="policy-section" id="retention">
-                        <h2>9. Data Retention</h2>
-                        <p>Tilli retains personal information for as long as reasonably necessary to provide the Site and Services, maintain business and contractual records, meet legal, tax, accounting, security, and compliance obligations, investigate fraud or incidents, enforce contracts, or preserve evidence. Retention periods may vary by product, data category, customer configuration, jurisdiction, and legal obligation.</p>
+                        <h2>7. How long do we keep your data for?</h2>
+                        <p>Tilli retains data for as long as necessary to fulfil the purposes described in this policy. The retention period may vary depending on the type of data, the nature of the user’s relationship with Tilli, and any applicable legal, regulatory, or operational requirements.</p>
+                        <p>Customers may request deletion of their accounts at any time by contacting us at legal@tilli.pro. However, certain data may be retained after such a request to comply with legal obligations, resolve disputes, enforce agreements, or other legitimate business purposes as outlined in this policy.</p>
+                    </section>
+
+                    <section class="policy-section" id="legal-basis">
+                        <h2>8. What are the legal basis for processing data?</h2>
+                        <p>Where required by applicable data protection laws such as the GDPR, Tilli processes Personal Data based on one or more of the following legal bases:</p>
+                        <ul>
+                            <li><strong>Performance of a contract</strong> To provide and manage our services, including account setup, processing transactions, customer support, and other activities necessary to fulfil our agreement with users.</li>
+                            <li><strong>Legal obligations</strong> To comply with applicable laws and regulatory requirements, including fraud prevention, anti-money laundering (AML), and know-your-customer (KYC) obligations.</li>
+                            <li><strong>Legitimate interests</strong> To operate and improve our services, ensure security, prevent misuse, respond to inquiries, and develop new features, provided these interests are not overridden by your rights and freedoms.</li>
+                            <li><strong>Consent</strong> Where required, we rely on your consent to process your Personal Data. You may withdraw your consent at any time.</li>
+                            <li><strong>Other legal basis</strong> Where applicable, we may process Personal Data on other legal grounds as permitted under relevant laws.</li>
+                        </ul>
                     </section>
 
                     <section class="policy-section" id="security">
-                        <h2>10. Security</h2>
-                        <p>Tilli maintains reasonable administrative, technical, and organizational safeguards designed to protect personal information against unauthorized access, use, disclosure, alteration, or destruction.</p>
-                        <div class="policy-callout">
-                            No system can be guaranteed to be completely secure. Tilli does not promise that the Site or Services will be immune from every security event, intrusion, or vulnerability. Customers remain responsible for securing their own environments, credentials, endpoints, integrations, and user access controls.
-                        </div>
-                    </section>
-
-                    <section class="policy-section" id="international">
-                        <h2>11. International Data Handling</h2>
-                        <p>Tilli may process and transfer personal information in the United States, India, and other jurisdictions where Tilli, its affiliates, subprocessors, or service providers operate. Where required, Tilli may use contractual, organizational, or technical mechanisms intended to support lawful cross-border processing.</p>
-                    </section>
-
-                    <section class="policy-section" id="rights">
-                        <h2>12. Privacy Rights and Choices</h2>
-                        <p>Depending on applicable law and the person's relationship to Tilli, individuals may have rights to request access, correction, deletion, restriction, portability, objection, withdrawal of consent, or opt-out of certain marketing or advertising-related processing. These rights are not absolute and may be limited by law, legal privilege, security concerns, trade secret protection, fraud prevention, contractual commitments, or Tilli's obligations to customers or regulators.</p>
-                        <p>Marketing emails may generally be opted out of using unsubscribe links or by contacting Tilli. Operational or transactional communications may still be sent where necessary.</p>
+                        <h2>9. How do we secure your data?</h2>
+                        <p>Tilli makes reasonable efforts to provide a level of security appropriate to the risk associated with the processing of your Personal Data.  Personal information may be transferred to, processed in, and stored in jurisdictions outside your state, province, or country of residence. Tilli implements safeguards to protect Personal Information transferred across borders.</p>
+                        <p>We implement appropriate technical and organizational security measures to protect your personal information, including:</p>
+                        <ul>
+                            <li>Encryption of data in transit and at rest</li>
+                            <li>Regular security assessments and audits</li>
+                            <li>Access controls and authentication measures</li>
+                            <li>Employee training on data protection</li>
+                            <li>Incident response procedures</li>
+                        </ul>
+                        <p>We maintain PCI DSS, SOC 2 Type II, and HIPAA compliance standards to ensure the highest level of data security.</p>
+                        <p>We regularly review and update our practices to ensure the continued integrity of our systems.</p>
+                        <p>However, no method of transmission over the internet or method of electronic storage is completely secure, and we cannot guarantee absolute security. We encourage you to help protect your information by using strong, unique passwords and contacting us promptly if you believe your account has been compromised.</p>
                     </section>
 
                     <section class="policy-section" id="children">
-                        <h2>13. Children's Information</h2>
-                        <p>Tilli's Site and Services are not directed to children, and Tilli does not knowingly collect personal information directly from children except where information is provided through a customer-controlled workflow and the customer is responsible for the lawful basis and required notices.</p>
+                        <h2>10. What about children’s data?</h2>
+                        <p>Tilli’s Services are intended for businesses and individuals who are at least eighteen (18) years of age. We do not knowingly collect personal information from children under the applicable age threshold.</p>
+                        <p>Under the GDPR, the processing of personal data of children is lawful only where the child is at least 16 years old, unless Member State law allows for a lower age limit (which may not be below 13 years). In such cases, consent must be given or authorized by the holder of parental responsibility over the child.</p>
+                        <p>If you believe that a child has provided us with personal information without proper authorization, please contact us at legal@tilli.pro. We will take reasonable steps to delete such information.</p>
                     </section>
 
-                    <section class="policy-section" id="changes">
-                        <h2>14. Changes to This Policy</h2>
-                        <p>Tilli may update this policy from time to time to reflect changes in law, operations, products, data practices, or risk posture. When required, Tilli will post the updated policy date and provide additional notice or consent mechanisms.</p>
+                    <section class="policy-section" id="rights">
+                        <h2>11. Your Data Protection Rights</h2>
+                        <p>Depending on your place of residence and subject to applicable data protection laws, you may have specific rights in relation to your personal data. These rights are designed to give you control over how your personal information is collected, used, shared, and retained, and apply to individuals located in jurisdictions such as the European Union (EU), European Economic Area (EEA), the United Kingdom, California, and other U.S. states with privacy legislation.</p>
+                        <h3>If You Are Located in the EU/EEA or UK (GDPR and UK GDPR)</h3>
+                        <p>If you reside in the EU, EEA, or UK, and Tilli acts as a data controller of your personal data, you are entitled to the following rights under the General Data Protection Regulation (GDPR) or UK GDPR:</p>
+                        <ul>
+                            <li>Right to Access - You can request a copy of the personal data we hold about you, as well as information about how we process it.</li>
+                            <li>Right to Rectification - You can request correction of inaccurate or incomplete personal data.</li>
+                            <li>Right to Erasure (Right to Be Forgotten) - You can request that we delete your personal data when it is no longer necessary for the purposes it was collected or if you withdraw your consent.</li>
+                            <li>Right to Restrict Processing - In certain circumstances, you can ask us to limit how we use your personal data, for example, while we investigate your concerns about its accuracy or our use of it.</li>
+                            <li>Right to Data Portability - You have the right to request a copy of your personal data in a structured, commonly used, and machine-readable format, and you can ask us to transfer it to another organization, where technically feasible.</li>
+                            <li>Right to Object - You can object to the processing of your personal data in certain situations, such as when it is processed for direct marketing or based on our legitimate interests.</li>
+                            <li>Right to Withdraw Consent: If you have given us consent to process your personal data, you can withdraw it at any time. This will not affect the lawfulness of processing based on consent before it is withdrawn.</li>
+                            <li>Right to Raise Concerns with Authorities - If you believe that your data protection rights have not been fully respected, you may raise the matter with your local data protection authority or another relevant supervisory body.</li>
+                        </ul>
+                        <h3>California residents may request that Tilli:</h3>
+                        <p>Subject to applicable exceptions and definitional differences among various U.S. state laws, residents of California and other states with privacy laws may have the following rights regarding their personal information:</p>
+                        <p>Right to Know / Access - You have the right to request that we disclose:</p>
+                        <ul>
+                            <li>The categories and specific pieces of personal information we have collected about you;</li>
+                            <li>The categories of sources from which that information was collected;</li>
+                            <li>The business or commercial purposes for collecting or disclosing your information; and</li>
+                            <li>The categories of third parties to whom we disclose personal information.</li>
+                        </ul>
+                        <ul>
+                            <li>Right to Correct - You may request correction of inaccurate personal information that we maintain about you.</li>
+                            <li>Right to Delete - You may request that we delete your personal information, subject to certain legal exceptions (e.g., fraud prevention, legal obligations, or contractual requirements).</li>
+                            <li>Right to Data Portability - You may request a copy of the personal information you provided to us in a portable, machine-readable format.</li>
+                            <li>Right to Opt-Out of Sale or Sharing - You may opt out of the sale or sharing of your personal data for targeted advertising.</li>
+                            <li>Right to Limit Use of Sensitive Personal Information - Where applicable, you may request that we limit our use and disclosure of sensitive personal information (e.g., geolocation, precise financial data) to what is necessary to provide requested services.</li>
+                            <li>Right to Non-Discrimination - You will not be discriminated against for exercising your privacy rights. This includes denial of service, being charged different prices, or receiving a different level of quality.</li>
+                        </ul>
+                        <p>California law requires us to explain how we handle “Do Not Track” (DNT) signals from your web browser. We respect your privacy by honoring these settings when your browser sends them.</p>
+                        <p>Please not that some Personal Information we collect may be subject to other laws that override state or regional privacy regulations, such as the Payment Card Industry Data Security Standard (PCI DSS), or other applicable financial or commercial regulations.</p>
+                        <p>We retain personal data only as long as necessary for legitimate business purposes, legal obligations, dispute resolution, and enforcement of our agreements.</p>
+                        <p>Certain Tilli Services are provided to businesses, merchants, government entities, and other organizations that use our technology to communicate with, serve, and collect payments from their own customers (“End Users”). If as an End User, your data was collected by, stored, processed, and used by such organization, requests relating to your Personal Information may need to be submitted to them, as they are responsible for managing it.</p>
+                    </section>
+
+                    <section class="policy-section" id="cookies">
+                        <h2>12. Cookie Notice</h2>
+                        <p>Tilli uses cookies ad similar technologies  for a number of purposes, including: authenticating users, remembering user preferences and settings, determining the popularity of content, delivering and measuring the effectiveness of advertising campaigns, analyzing site traffic and trends, and generally understanding the online behaviors and interests of people who interact with our Services.</p>
+                        <h3>Your choices</h3>
+                        <p>You have the right to choose whether or not to accept cookies. To reject the cookies, you may configure the browser settings from the ‘Help’ or ‘Preferences’ menu.</p>
+                        <h3>Types and purposes of cookies</h3>
+                        <p>Please note that the cookies used may vary between our products: Nudge, tilliX, tilliOne, and tilliPay as not all products utilize the same types of cookies; however, our main website exclusively uses strictly necessary, advertising, and analytics cookies to ensure essential functionality and improve user experience.</p>
+                        <p>The following table sets out the different categories of cookies that our Services use and why we use them. The lists of third-party cookie providers are intended merely as illustrative and should not be viewed as a comprehensive list.</p>
+                        <table class="policy-table">
+                                <thead><tr><th>Types of Cookies</th><th>Purpose</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>Strictly necessary</strong></td><td>These cookies are essential to the basic operation of our website and services. They enable core functionality such as secure account login, authentication, session management, navigation, fraud detection, and language or regional preference settings. Because they are necessary for the site to function, they cannot be disabled through cookie preference tools.</td></tr>
+                                    <tr><td><strong>Functionality cookies</strong></td><td>These provide functionality that help us deliver products and Services. For example, cookies help you log in by pre-filling fields and retain user preferences like display settings. We may also use cookies and similar technologies to help us provide you and others with social plug-ins and other customized content and experiences, such as making suggestions to you and others.</td></tr>
+                                    <tr><td><strong>Analytics Cookies</strong></td><td>These cookies collect aggregated data about how users interact with our Services. They allow us to analyze traffic sources, monitor performance, understand usage patterns, identify areas for improvement, and test new features. This helps us make informed product decisions and improve the quality, speed, and relevance of our Services over time.</td></tr>
+                                    <tr><td><strong>Marketing Cookies</strong></td><td>These cookies and similar tracking technologies (e.g., pixels or beacons) are used to deliver targeted advertising and measure marketing effectiveness. They track actions such as ad views, clicks, conversions, and how users respond to email campaigns. This helps us and our partners tailor ads to your interests and improve the relevance and performance of ad content.</td></tr>
+                                    <tr><td><strong>Mobile-specific</strong></td><td>These tracking technologies function specifically within mobile applications. They are used for in-app personalization, ad targeting, attribution tracking, app analytics, and measuring the performance of mobile ad campaigns across different platforms and devices.</td></tr>
+                                </tbody>
+                        </table>
+                    </section>
+
+                    <section class="policy-section" id="updates">
+                        <h2>13. Policy Updates</h2>
+                        <p>We may update this privacy policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. The updated version will be indicated by an updated "Effective Date" and will be effective as soon as it is accessible.</p>
                     </section>
 
                     <section class="policy-section" id="contact">
-                        <h2>15. Contact Information</h2>
+                        <h2>14. Contact Us</h2>
+                        <p>If you have questions or comments about this privacy policy, please contact us at:</p>
                         <div class="policy-callout">
-                            <p><strong>Email:</strong> <a href="mailto:privacy@tilli.pro">privacy@tilli.pro</a></p>
-                            <p><strong>Legal:</strong> <a href="mailto:legal@tilli.pro">legal@tilli.pro</a></p>
-                            <p><strong>Mailing Address:</strong> 8260 Greensboro Dr, STE 270, McLean, VA 22102, United States</p>
+                            <p>Utilli LLC (dba Tilli)</p>
+                            <p><strong>Email:</strong> <a href="mailto:legal@tilli.pro">legal@tilli.pro</a></p>
+                            <p><strong>Phone:</strong> +1 301 760 7760</p>
+                            <p><strong>Address:</strong> 8260 Greensboro Dr, Suite 270<br>McLean, VA 22102<br>United States</p>
                         </div>
                     </section>
                 </article>
