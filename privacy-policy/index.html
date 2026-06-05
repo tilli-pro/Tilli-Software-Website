@@ -272,6 +272,25 @@
                 max-height: none;
                 overflow: visible;
             }
+            .policy-nav h2 {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 0;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+            .policy-nav h2::after {
+                content: '\2304';
+                font-size: 1.2rem;
+                line-height: 1;
+                transition: transform 0.2s ease;
+            }
+            .policy-nav.toc-open h2 { margin-bottom: 14px; }
+            .policy-nav.toc-open h2::after { transform: rotate(180deg); }
+            .policy-nav ul { display: none; }
+            .policy-nav.toc-open ul { display: block; }
         }
 
         @media (max-width: 640px) {
