@@ -721,3 +721,39 @@ bounceStyle.textContent = `
     }
 `;
 document.head.appendChild(bounceStyle);
+
+
+// Collapsible "Contents" table-of-contents on mobile (legal pages)
+(function () {
+    var navs = document.querySelectorAll('.policy-nav, .terms-nav');
+    if (!navs.length) return;
+    var mq = window.matchMedia('(max-width: 960px)');
+    navs.forEach(function (nav) {
+        var heading = nav.querySelector('h2');
+        if (!heading) return;
+        heading.setAttribute('role', 'button');
+        heading.setAttribute('tabindex', '0');
+        function setAria() {
+            var expanded = !mq.matches || nav.classList.contains('toc-open');
+            heading.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        }
+        function toggle() {
+            if (!mq.matches) return;            // desktop: sidebar always open
+            nav.classList.toggle('toc-open');
+            setAria();
+        }
+        heading.addEventListener('click', toggle);
+        heading.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                if (mq.matches) { nav.classList.remove('toc-open'); setAria(); }
+            });
+        });
+        function sync() { if (!mq.matches) nav.classList.remove('toc-open'); setAria(); }
+        if (mq.addEventListener) { mq.addEventListener('change', sync); }
+        else if (mq.addListener) { mq.addListener(sync); }
+        setAria();
+    });
+})();

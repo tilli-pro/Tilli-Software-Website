@@ -317,13 +317,6 @@
                                             transform: translateX(20px);
                                             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                                         "></div>
-                                        <span style="
-                                            position: absolute;
-                                            left: 8px;
-                                            font-size: 10px;
-                                            font-weight: 600;
-                                            color: white;
-                                        ">ON</span>
                                     </div>
                                     <svg class="expand-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s;">
                                         <polyline points="9 18 15 12 9 6"></polyline>
@@ -414,15 +407,6 @@
                                             transition: transform 0.2s;
                                             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                                         "></div>
-                                        <span style="
-                                            position: absolute;
-                                            left: 8px;
-                                            font-size: 10px;
-                                            font-weight: 600;
-                                            color: white;
-                                            text-transform: uppercase;
-                                            pointer-events: none;
-                                        ">ON</span>
                                     </label>
                                     <svg class="expand-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s;">
                                         <polyline points="9 18 15 12 9 6"></polyline>
@@ -513,15 +497,6 @@
                                             transition: transform 0.2s;
                                             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                                         "></div>
-                                        <span style="
-                                            position: absolute;
-                                            left: 8px;
-                                            font-size: 10px;
-                                            font-weight: 600;
-                                            color: white;
-                                            text-transform: uppercase;
-                                            pointer-events: none;
-                                        ">ON</span>
                                     </label>
                                     <svg class="expand-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s;">
                                         <polyline points="9 18 15 12 9 6"></polyline>
@@ -600,6 +575,12 @@
             </div>
 
             <style>
+                /* Cookie modal: keep each section's title/description from
+                   colliding with the toggle switch + chevron on the right */
+                #tilli-cookie-modal button[onclick*="toggleExpansion"] { gap: 20px; }
+                #tilli-cookie-modal button[onclick*="toggleExpansion"] > div:first-child { flex: 1 1 auto; min-width: 0; }
+                #tilli-cookie-modal button[onclick*="toggleExpansion"] > div:last-child { flex-shrink: 0; }
+
                 @keyframes slideInUp {
                     from {
                         transform: translateY(100%);

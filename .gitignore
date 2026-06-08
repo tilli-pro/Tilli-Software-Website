@@ -19,3 +19,6 @@ yarn-error.log*
 
 # Vercel
 .vercel
+
+# Legal source documents (working source, not site assets)
+legal docs/
