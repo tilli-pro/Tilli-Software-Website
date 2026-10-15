@@ -612,30 +612,289 @@
         .beacon-soon-card > p{color:#6B7280;margin:0 0 20px;font-size:15px;line-height:1.6}
         .beacon-soon-alt{margin-top:28px;color:#6B7280;font-size:15px}
         .beacon-soon-alt a{color:#325EF6;font-weight:500}
+        .beacon-soon-card{scroll-margin-top:160px}
+        .beacon-hero-tip{margin-top:28px;max-width:34rem;background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
+        .beacon-hero-tip i{color:#325EF6;margin-top:3px}
+        .beacon-hero-tip strong{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#111827;margin-bottom:4px}
+        .beacon-hero-tip span{color:#4B5563;font-size:15px;line-height:1.5}
+
+        .bs{padding:96px 0 72px;background:#FAFAFA;border-top:1px solid #F0F0F0}
+        .bs-head{max-width:1120px;margin:0 auto 40px;padding:0 20px;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+        .bs-eyebrow{color:#325EF6;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
+        .bs-head h2{font-family:'Sora','Inter',sans-serif;font-weight:500;font-size:clamp(1.9rem,3.6vw,2.75rem);line-height:1.1;color:#111827;margin:0;max-width:36rem;text-wrap:balance}
+        .bs-head p{color:#6B7280;font-size:16px;line-height:1.6;margin:0;max-width:26rem}
+        .bs-track{--bs-gutter:max(20px,calc((100vw - 1120px) / 2));display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--bs-gutter);padding:8px var(--bs-gutter) 40px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+        .bs-track::-webkit-scrollbar{display:none}
+        .bs-track:focus-visible{outline:2px solid #325EF6;outline-offset:4px}
+        .bs-card{flex:0 0 min(620px,86vw);scroll-snap-align:start;background:#FFFFFF;border:1px solid #E7E7E7;border-radius:24px;padding:clamp(24px,4vw,44px);box-shadow:0 18px 40px rgba(17,24,39,.07);display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease}
+        .bs-card:hover{transform:translateY(-4px);box-shadow:0 24px 48px rgba(17,24,39,.1)}
+        .bs-card-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px}
+        .bs-chip{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:#F5F5F5;border:1px solid #E5E5E5;color:#525252;font-size:14px;font-weight:500}
+        .bs-chip i{color:#325EF6;font-size:12px}
+        .bs-count{color:#525252;font-size:15px;font-variant-numeric:tabular-nums}
+        .bs-card h3{font-family:'Sora','Inter',sans-serif;font-weight:600;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.12;letter-spacing:-.01em;color:#0A0A0A;margin:0 0 18px;text-wrap:balance}
+        .bs-card-desc{color:#6B6B6B;font-size:16px;line-height:1.65;margin:0 0 32px}
+        .bs-points{list-style:none;padding:0;margin:auto 0 0;display:flex;flex-direction:column;gap:12px}
+        .bs-points li{display:flex;align-items:center;gap:14px;padding:15px 18px;border:1px solid #E7E7E7;border-radius:14px;background:#FCFCFC;color:#525252;font-size:15px}
+        .bs-points i{color:#325EF6;width:16px;text-align:center}
+        .bs-tip{margin-top:12px;padding:16px 18px;border:1px solid #E7E7E7;border-radius:14px;background:#FCFCFC}
+        .bs-tip strong{display:block;font-size:12px;font-weight:600;letter-spacing:.1em;color:#0A0A0A;margin-bottom:6px}
+        .bs-tip span{color:#525252;font-size:14px;line-height:1.5}
+        .bs-controls{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+        .bs-dots{display:flex;gap:8px;flex-wrap:wrap}
+        .bs-dot{width:22px;height:7px;border-radius:999px;border:0;padding:0;background:#D9D9D9;cursor:pointer;transition:width .25s ease,background .25s ease}
+        .bs-dot[aria-current="true"]{width:38px;background:#171717}
+        .bs-arrows{display:flex;gap:8px}
+        .bs-arrow{width:44px;height:44px;border-radius:999px;border:1px solid #E5E5E5;background:#FFFFFF;color:#325EF6;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background .2s ease}
+        .bs-arrow:hover:not(:disabled){background:#F0F4FF}
+        .bs-arrow:disabled{opacity:.35;cursor:default}
+        .bs-dot:focus-visible,.bs-arrow:focus-visible{outline:2px solid #325EF6;outline-offset:3px}
+
+        .bs-cta{padding:88px 20px;background:#0A0A0A;color:#FFFFFF;text-align:center}
+        .bs-cta h2{font-family:'Sora','Inter',sans-serif;font-weight:500;font-size:clamp(1.9rem,4vw,3rem);line-height:1.1;margin:0 auto 16px;max-width:40rem;text-wrap:balance;color:#FFFFFF}
+        .bs-cta p{color:#A3A3A3;font-size:17px;line-height:1.6;margin:0 auto 32px;max-width:36rem}
+        .bs-cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+        .bs-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s ease,background .2s ease}
+        .bs-btn:hover{transform:translateY(-2px)}
+        .bs-btn-primary{background:#325EF6;color:#FFFFFF}
+        .bs-btn-primary:hover{background:#2649D8}
+        .bs-btn-ghost{border:1px solid #404040;color:#FFFFFF}
+        .bs-btn-ghost:hover{background:#171717}
+        @media (max-width:600px){.bs-controls{flex-direction:column-reverse;align-items:flex-start}.bs-dot{width:14px}.bs-dot[aria-current="true"]{width:28px}}
+        @media (prefers-reduced-motion:reduce){.bs-track{scroll-behavior:auto}.bs-card,.bs-dot,.bs-btn{transition:none}.bs-card:hover,.bs-btn:hover{transform:none}}
     </style>
 
     <main class="beacon-soon">
         <div class="beacon-soon-inner">
             <section class="beacon-soon-copy" aria-labelledby="beacon-soon-title">
                 <span class="beacon-pill"><span class="beacon-pill-dot" aria-hidden="true"></span>Coming Soon</span>
-                <h1 id="beacon-soon-title">Beacon is almost here.</h1>
-                <p class="beacon-soon-tag">AI Enterprise Relationship Management</p>
-                <p class="beacon-soon-lede">A new layer on top of ERP, CRM, and core banking systems that turns real-time financial and operational events into intelligent relationship engagement, with predictive insights, automated workflows, proactive outreach, and JAREIS, its AI assistant.</p>
+                <h1 id="beacon-soon-title">Signals are everywhere. Intelligence is rare.</h1>
+                <p class="beacon-soon-tag">Meet Beacon, coming soon from Tilli.</p>
+                <p class="beacon-soon-lede">Your organization generates millions of customer signals every day across billing, payments, service, and engagement tools. Beacon brings them into one operational workspace, and JAREIS, its AI assistant, helps your team act on them before problems grow.</p>
                 <ul class="beacon-soon-list">
-                    <li><i class="fas fa-chart-line" aria-hidden="true"></i><span><strong>Predictive client intelligence</strong> across customers, vendors, and employees.</span></li>
-                    <li><i class="fas fa-diagram-project" aria-hidden="true"></i><span><strong>Automated relationship workflows</strong> triggered by real-time events.</span></li>
-                    <li><i class="fas fa-layer-group" aria-hidden="true"></i><span><strong>Unified orchestration</strong> on top of your existing ERP, CRM, and core banking stack.</span></li>
+                    <li><i class="fas fa-timeline" aria-hidden="true"></i><span><strong>One unified customer timeline</strong> with real-time signal detection across your systems.</span></li>
+                    <li><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i><span><strong>JAREIS AI</strong>: ask questions in plain language and get answers instantly.</span></li>
+                    <li><i class="fas fa-bell" aria-hidden="true"></i><span><strong>Intelligent Nudges</strong> that reach customers before issues escalate.</span></li>
                 </ul>
+                <div class="beacon-hero-tip">
+                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                    <div><strong>Try asking JAREIS</strong><span>&ldquo;What should our team prioritize this morning?&rdquo;</span></div>
+                </div>
                 <p class="beacon-soon-alt">Looking for Nudge, tilliPay, or tilliX today? <a href="#" data-book-demo="">Book a demo</a></p>
             </section>
 
-            <section class="beacon-soon-card" aria-labelledby="beacon-register-title">
+            <section class="beacon-soon-card" id="beacon-register" aria-labelledby="beacon-register-title">
                 <h2 id="beacon-register-title">Register for early access</h2>
                 <p>Register to download, or request a sneak preview with our team.</p>
                 <div data-beacon-form></div>
             </section>
         </div>
     </main>
+
+    <section class="bs" aria-labelledby="bs-title">
+        <div class="bs-head">
+            <div>
+                <p class="bs-eyebrow">The Beacon story</p>
+                <h2 id="bs-title">From reactive service to proactive outcomes.</h2>
+            </div>
+            <p>Swipe through the 11 ideas behind Beacon, and the questions your team will be able to ask JAREIS on day one.</p>
+        </div>
+
+        <div class="bs-track" id="bs-track" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Beacon features">
+            <article class="bs-card" aria-roledescription="slide" aria-label="1 of 11">
+                <div class="bs-card-top"><span class="bs-chip"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>Modern Customer Operations</span><span class="bs-count">1 / 11</span></div>
+                <h3>Too many systems. Not enough clarity.</h3>
+                <p class="bs-card-desc">Customer data lives across billing systems, service platforms, payment systems, and engagement tools. Teams waste time searching for answers instead of solving problems.</p>
+                <ul class="bs-points">
+                    <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Fragmented systems slow teams down</li>
+                    <li><i class="fas fa-stopwatch" aria-hidden="true"></i>Context scattered across platforms</li>
+                    <li><i class="fas fa-chart-line" aria-hidden="true"></i>Decisions delayed by missing signals</li>
+                </ul>
+                <div class="bs-tip"><strong>JAREIS TIP</strong><span>Try asking JAREIS: &ldquo;Show all systems linked to this account.&rdquo;</span></div>
+            </article>
+            <article class="bs-card" aria-roledescription="slide" aria-label="2 of 11">
+                <div class="bs-card-top"><span class="bs-chip"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>Customer Behavior</span><span class="bs-count">2 / 11</span></div>
+                <h3>Customers rarely act first.</h3>
+                <p class="bs-card-desc">Most consumers respond only after receiving a bill, a reminder, or a service alert. Without proactive engagement, organizations spend more time reacting to problems.</p>
+                <ul class="bs-points">
+                    <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Payments happen after reminders</li>
+                    <li><i class="fas fa-stopwatch" aria-hidden="true"></i>Support calls follow unresolved issues</li>
+                    <li><i class="fas fa-chart-line" aria-hidden="true"></i>Engagement happens too late</li>
+                </ul>
+                <div class="bs-tip"><strong>JAREIS TIP</strong><span>Try asking JAREIS: &ldquo;Who has not responded to recent billing reminders?&rdquo;</span></div>
+            </article>
+            <article class="bs-card" aria-roledescription="slide" aria-label="3 of 11">
+                <div class="bs-card-top"><span class="bs-chip"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>Enterprise Operations</span><span class="bs-count">3 / 11</span></div>
+                <h3>Organizations must lead the interaction.</h3>
+                <p class="bs-card-desc">To reduce costs and improve experience, organizations must anticipate customer needs and respond before problems escalate.</p>
+                <ul class="bs-points">
+                    <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Detect signals earlier</li>
+                    <li><i class="fas fa-stopwatch" aria-hidden="true"></i>Guide customer decisions</li>
+                    <li><i class="fas fa-chart-line" aria-hidden="true"></i>Prevent costly escalations</li>
+                </ul>
+                <div class="bs-tip"><strong>JAREIS TIP</strong><span>Try asking JAREIS: &ldquo;Which accounts show early risk signals this week?&rdquo;</span></div>
+            </article>
+            <article class="bs-card" aria-roledescription="slide" aria-label="4 of 11">
+                <div class="bs-card-top"><span class="bs-chip"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>Beacon Workspace</span><span class="bs-count">4 / 11</span></div>
+                <h3>Beacon turns signals into action.</h3>
+                <p class="bs-card-desc">Beacon unifies customer activity, billing signals, engagement history, and service events into a single operational workspace.</p>
+                <ul class="bs-points">
+                    <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Unified customer timeline</li>
+                    <li><i class="fas fa-stopwatch" aria-hidden="true"></i>Real-time signal detection</li>
+                    <li><i class="fas fa-chart-line" aria-hidden="true"></i>Integrated enterprise systems</li>
+                </ul>
+                <div class="bs-tip"><strong>JAREIS TIP</strong><span>Try asking JAREIS: &ldquo;Open the full timeline for this customer.&rdquo;</span></div>
+            </article>
+            <article class="bs-card" aria-roledescription="slide" aria-label="5 of 11">
+                <div class="bs-card-top"><span class="bs-chip"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>JAREIS AI</span><span class="bs-count">5 / 11</span></div>
+                <h3>Ask questions. Get answers instantly.</h3>
+                <p class="bs-card-desc">JAREIS, Beacon&rsquo;s AI assistant, helps teams find insights, navigate systems, and understand customer signals without searching across platforms.</p>
+                <ul class="bs-points">
+                    <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Natural language queries</li>
+                    <li><i class="fas fa-stopwatch" aria-hidden="true"></i>AI-driven insights</li>
+                    <li><i class="fas fa-chart-line" aria-hidden="true"></i>Instant system navigation</li>
+                </ul>
+                <div class="bs-tip"><strong>JAREIS TIP</strong><span>Try asking JAREIS: &ldquo;Why is this account trending toward delinquency?&rdquo;</span></div>
+            </article>
+            <article class="bs-card" aria-roledescription="slide" aria-label="6 of 11">
+                <div class="bs-card-top"><span class="bs-chip"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>Intelligent Nudges</span><span class="bs-count">6 / 11</span></div>
+                <h3>Reach customers before problems grow.</h3>
+                <p class="bs-card-desc">Beacon identifies engagement opportunities based on billing events, activity patterns, and behavioral signals.</p>
+                <ul class="bs-points">
+                    <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Timely engagement prompts</li>
+                    <li><i class="fas fa-stopwatch" aria-hidden="true"></i>Personalized outreach</li>
+                    <li><i class="fas fa-chart-line" aria-hidden="true"></i>Higher response rates</li>
+                </ul>
+                <div class="bs-tip"><strong>JAREIS TIP</strong><span>Try asking JAREIS: &ldquo;Draft a nudge for accounts due in 3 days.&rdquo;</span></div>
+            </article>
+            <article class="bs-card" aria-roledescription="slide" aria-label="7 of 11">
+                <div class="bs-card-top"><span class="bs-chip"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>Operational Impact</span><span class="bs-count">7 / 11</span></div>
+                <h3>Act earlier. Reduce operational costs.</h3>
+                <p class="bs-card-desc">By identifying issues sooner, Beacon helps organizations prevent service escalations, reduce support calls, and lower operational expenses.</p>
+                <ul class="bs-points">
+                    <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Fewer reactive service events</li>
+                    <li><i class="fas fa-stopwatch" aria-hidden="true"></i>Faster resolution times</li>
+                    <li><i class="fas fa-chart-line" aria-hidden="true"></i>Efficient team operations</li>
+                </ul>
+                <div class="bs-tip"><strong>JAREIS TIP</strong><span>Try asking JAREIS: &ldquo;Show avoidable escalations from last month.&rdquo;</span></div>
+            </article>
+            <article class="bs-card" aria-roledescription="slide" aria-label="8 of 11">
+                <div class="bs-card-top"><span class="bs-chip"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>Growth Signals</span><span class="bs-count">8 / 11</span></div>
+                <h3>Turn insights into opportunity.</h3>
+                <p class="bs-card-desc">Beacon highlights revenue moments through billing patterns, engagement activity, and account behavior.</p>
+                <ul class="bs-points">
+                    <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Behavioral insights</li>
+                    <li><i class="fas fa-stopwatch" aria-hidden="true"></i>Upsell and cross-sell signals</li>
+                    <li><i class="fas fa-chart-line" aria-hidden="true"></i>Data-driven opportunities</li>
+                </ul>
+                <div class="bs-tip"><strong>JAREIS TIP</strong><span>Try asking JAREIS: &ldquo;Which customers are ready for a premium plan offer?&rdquo;</span></div>
+            </article>
+            <article class="bs-card" aria-roledescription="slide" aria-label="9 of 11">
+                <div class="bs-card-top"><span class="bs-chip"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>Enterprise Security</span><span class="bs-count">9 / 11</span></div>
+                <h3>Trust built into every interaction.</h3>
+                <p class="bs-card-desc">Beacon protects sensitive data with secure authentication, tenant isolation, and enterprise-grade architecture.</p>
+                <ul class="bs-points">
+                    <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Passwordless authentication</li>
+                    <li><i class="fas fa-stopwatch" aria-hidden="true"></i>Tenant-isolated architecture</li>
+                    <li><i class="fas fa-chart-line" aria-hidden="true"></i>Secure operational access</li>
+                </ul>
+                <div class="bs-tip"><strong>JAREIS TIP</strong><span>Try asking JAREIS: &ldquo;Show access history for this tenant workspace.&rdquo;</span></div>
+            </article>
+            <article class="bs-card" aria-roledescription="slide" aria-label="10 of 11">
+                <div class="bs-card-top"><span class="bs-chip"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>The Beacon Advantage</span><span class="bs-count">10 / 11</span></div>
+                <h3>Proactive organizations build stronger relationships.</h3>
+                <p class="bs-card-desc">Beacon helps organizations anticipate needs, guide customers at the right moment, and transform reactive interactions into proactive outcomes.</p>
+                <ul class="bs-points">
+                    <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Faster decisions</li>
+                    <li><i class="fas fa-stopwatch" aria-hidden="true"></i>Stronger engagement</li>
+                    <li><i class="fas fa-chart-line" aria-hidden="true"></i>AI-assisted operations with JAREIS</li>
+                </ul>
+                <div class="bs-tip"><strong>JAREIS TIP</strong><span>Try asking JAREIS: &ldquo;What should our team prioritize this morning?&rdquo;</span></div>
+            </article>
+            <article class="bs-card" aria-roledescription="slide" aria-label="11 of 11">
+                <div class="bs-card-top"><span class="bs-chip"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>The Beacon Manifesto</span><span class="bs-count">11 / 11</span></div>
+                <h3>Signals are everywhere. Intelligence is rare.</h3>
+                <p class="bs-card-desc">Modern organizations generate millions of customer signals every day. Beacon turns that data into intelligence so teams can act earlier with clarity, trust, and confidence.</p>
+                <ul class="bs-points">
+                    <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Turn signals into proactive decisions</li>
+                    <li><i class="fas fa-stopwatch" aria-hidden="true"></i>Build stronger customer relationships</li>
+                    <li><i class="fas fa-chart-line" aria-hidden="true"></i>Act securely with enterprise-grade trust</li>
+                </ul>
+                <div class="bs-tip"><strong>JAREIS TIP</strong><span>Try asking JAREIS: &ldquo;Summarize top account risks and actions for today.&rdquo;</span></div>
+            </article>
+        </div>
+
+        <div class="bs-controls">
+            <div class="bs-dots" id="bs-dots" role="group" aria-label="Choose slide"></div>
+            <div class="bs-arrows">
+                <button type="button" class="bs-arrow" id="bs-prev" aria-label="Previous slide"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                <button type="button" class="bs-arrow" id="bs-next" aria-label="Next slide"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="bs-cta" aria-labelledby="bs-cta-title">
+        <h2 id="bs-cta-title">Be first to see Beacon.</h2>
+        <p>Register to download the moment it launches, or ask for a guided sneak preview with our team.</p>
+        <div class="bs-cta-actions">
+            <a class="bs-btn bs-btn-primary" href="#beacon-register">Register for early access <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            <a class="bs-btn bs-btn-ghost" href="#" data-book-demo="">Book a demo</a>
+        </div>
+    </section>
+
+    <script>
+    (function () {
+        var track = document.getElementById('bs-track');
+        if (!track) return;
+        var cards = Array.prototype.slice.call(track.querySelectorAll('.bs-card'));
+        var dotsWrap = document.getElementById('bs-dots');
+        var prev = document.getElementById('bs-prev');
+        var next = document.getElementById('bs-next');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var current = 0;
+
+        var dots = cards.map(function (_, i) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'bs-dot';
+            b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            b.addEventListener('click', function () { go(i); });
+            dotsWrap.appendChild(b);
+            return b;
+        });
+
+        function go(i) {
+            i = Math.max(0, Math.min(cards.length - 1, i));
+            current = i;
+            track.scrollTo({ left: cards[i].offsetLeft - cards[0].offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
+        }
+
+        function update() {
+            var base = cards[0].offsetLeft;
+            var best = 0, bestDist = Infinity;
+            cards.forEach(function (c, i) {
+                var d = Math.abs(c.offsetLeft - base - track.scrollLeft);
+                if (d < bestDist) { bestDist = d; best = i; }
+            });
+            if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) best = cards.length - 1;
+            current = best;
+            dots.forEach(function (d, i) { d.setAttribute('aria-current', i === best ? 'true' : 'false'); });
+            prev.disabled = best === 0;
+            next.disabled = best === cards.length - 1;
+        }
+
+        prev.addEventListener('click', function () { go(current - 1); });
+        next.addEventListener('click', function () { go(current + 1); });
+        track.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+        });
+        var raf;
+        track.addEventListener('scroll', function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+    })();
+    </script>
 
     <script src="script.js"></script>
 
