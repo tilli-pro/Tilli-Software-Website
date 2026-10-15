@@ -423,7 +423,11 @@ document.addEventListener('click', function(e) {
         if (buttonText === 'Get Started Free' || buttonText === 'Start Free Trial') {
             window.location.href = '/free-trial.html';
         } else if (buttonText === 'Book a Demo' || buttonText === 'Request Demo') {
-            window.location.href = '/contact.html#demo';
+            if (typeof window.openBookingModal === 'function') {
+                window.openBookingModal();
+            } else {
+                window.location.href = '/contact.html#demo';
+            }
         } else if (buttonText === 'Calculate ROI' || buttonText === 'Calculate Your Savings') {
             window.location.href = '/calculator.html';
         } else if (buttonText === 'Learn More') {
