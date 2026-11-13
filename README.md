@@ -358,7 +358,7 @@ All section headers use consistent styling on mobile. Defined in `styles.css` an
 ### Footer
 - Standard design from index.html used across all pages
 - White logo (`Images/22_Utilli_logo_white.png`), dark background (#1f2937)
-- Product name: "Monay" (not "Money")
+- Product name: "tilliPay"
 - Social icons: X, Instagram, Facebook, YouTube, LinkedIn
 
 #### Mobile Footer Layout (≤768px)
