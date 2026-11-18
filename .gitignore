@@ -22,3 +22,8 @@ yarn-error.log*
 
 # Legal source documents (working source, not site assets)
 legal docs/
+
+# Decommissioned Monay-branded images (Monay is no longer affiliated; product is now tilliPay)
+Images/press/tillis-monay-payment-gateway-1080x627.jpg
+Blog Page images/ignore - Tilli Blog Images/tillis-monay-payment-gateway-1080x627.jpg
+Blog Page images/ignore - Tilli Blog Images/monay-payment-facilitator-1080x627.jpg

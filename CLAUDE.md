@@ -309,7 +309,7 @@ All section headers must use consistent styling on mobile. This is defined in `s
 - All pages should use the footer from index.html as reference
 - Logo: White version (`Images/22_Utilli_logo_white.png`)
 - Background: Dark (#1f2937)
-- Product name: "Monay" (not "Money")
+- Product name: "tilliPay"
 
 #### Mobile Footer Layout (≤768px)
 The mobile footer has a specific layout that must be consistent across all pages:
